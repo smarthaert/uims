@@ -18,14 +18,19 @@ public class ImageResponseHandler implements ResponseHandler<String> {
 	Logger log = Logger.getLogger(ImageResponseHandler.class.getName());
 	public String handleResponse(HttpResponse response)
 			throws ClientProtocolException, IOException {
-		HeaderIterator hi = response.headerIterator();
+		//print the response cookies 
+		HeaderIterator hi = response.headerIterator("Set-Cookie");
 		while(hi.hasNext()){
 			log.info(hi.next().toString());
 		}
+		
+		//get and save check image
 		InputStream ins =  response.getEntity().getContent();
 		BufferedImage bi = ImageIO.read(ins);  
         File f =new File("qqimg.jpg");  
         ImageIO.write(bi, "jpg", f);  
+        
+        //return image file path
 		return f.getAbsolutePath();
 	}
 
