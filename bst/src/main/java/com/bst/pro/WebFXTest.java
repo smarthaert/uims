@@ -1,237 +1,337 @@
 package com.bst.pro;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.logging.Logger;
 
-import org.apache.http.HttpHost;
+import javax.imageio.ImageIO;
+
+import org.apache.http.HeaderIterator;
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.CookieStore;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.params.ClientPNames;
-import org.apache.http.client.params.CookiePolicy;
-import org.apache.http.client.utils.URIUtils;
-import org.apache.http.client.utils.URLEncodedUtils;
-import org.apache.http.conn.params.ConnRoutePNames;
+import org.apache.http.client.protocol.ClientContext;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.protocol.HttpContext;
 
+import com.bst.pro.util.ImageResponseHandler;
+
 public class WebFXTest {
 
-	static DefaultHttpClient httpclient = new DefaultHttpClient();
-	static HttpContext localContext = new BasicHttpContext();
-	static BasicCookieStore bcs = new BasicCookieStore();
+	static Logger log = Logger.getLogger(WebFXTest.class.getName());
 
 	public static void main(String[] args) {
-		HttpHost proxy = new HttpHost("10.100.0.6",8080,"http");
-		httpclient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, proxy);
 
-		httpclient.getParams().setParameter(ClientPNames.COOKIE_POLICY, CookiePolicy.BROWSER_COMPATIBILITY);
-		
-		//http://webim.feixin.10086.cn/
-		//IsCookiesEnable	Received	true	/	webim.feixin.10086.cn	(Session)	Server	No	No
-		
-		//https://webim.feixin.10086.cn/login.aspx
-		String loginUrl = "https://webim.feixin.10086.cn/login.aspx";
-		BasicClientCookie bcc = new BasicClientCookie("IsCookiesEnable", "true");
-		bcc.setDomain("webim.feixin.10086.cn");
-		bcc.setPath("/");
-		bcs.addCookie(bcc);
-		String context = getText(loginUrl);
-//		System.out.println(context);
-		List<Cookie> cookies = bcs.getCookies();
-		for(Cookie cookie : cookies){
-			System.out.println(cookie.toString());
-		}
-	
-		//https://webim.feixin.10086.cn/login.aspx
-			//IsCookiesEnable	Sent	true	/	webim.feixin.10086.cn	(Session)	Server	No	No
-		String checkImgUrl = "https://webim.feixin.10086.cn/WebIM/GetPicCode.aspx";
-		BasicClientCookie ccpsession = new BasicClientCookie("ccpsession", "7f671465-95b6-47e9-a3b5-1d23ce8e0698");
-		bcc.setDomain(".webim.feixin.10086.cn");
-		bcc.setPath("/");
-		bcs.addCookie(ccpsession);
-		
-		BasicClientCookie IsCookiesEnable = new BasicClientCookie("IsCookiesEnable", "true");
-		bcc.setDomain(".webim.feixin.10086.cn");
-		bcc.setPath("/");
-		bcs.addCookie(IsCookiesEnable);
-		
-		List<NameValuePair> qparams = new ArrayList<NameValuePair>();
-		qparams.add(new BasicNameValuePair("",""));
-		qparams.add(new BasicNameValuePair("",""));
+		basicLogin();
+
+		// cookieAutoManagerLogin();
+	}
+
+	private static void cookieAutoManagerLogin() {
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpContext localContext = new BasicHttpContext();
+		CookieStore cookieStore = new BasicCookieStore();
+		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
+
+		HttpGet chkImgGet = new HttpGet(
+				"http://passport.csdn.net/ajax/verifyhandler.ashx?r=0.21973005150126756");
+		String cookie = "__utma=17226283.649901018.1336879658.1336879658.1336879658.1; __utmb=17226283.2.10.1336879658; __utmc=17226283; __utmz=17226283.1336879658.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __message_sys_msg_id=0; __message_gu_msg_id=0; __message_cnel_msg_id=0; __message_district_code=000000; __message_in_school=0; ";
+		chkImgGet.addHeader("Cookie", cookie);
+
+		ResponseHandler<String> imgHandler = new ImageResponseHandler();
+		String check = null;
 		try {
-			URI uri = URIUtils.createURI("https", "webim.feixin.10086.cn", 443, "WebIM/GetPicCode.aspx", URLEncodedUtils.format(qparams, "UTF-8"), null);
-		} catch (URISyntaxException e1) {
+			String imgPath = httpclient.execute(chkImgGet, imgHandler,
+					localContext);
+			log.info("请打开" + imgPath + "，并且在这里输入其中的字符串，然后回车：");
+			InputStreamReader ins = new InputStreamReader(System.in);
+			BufferedReader br = new BufferedReader(ins);
+			check = br.readLine();
+
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			chkImgGet.abort();
+		}
+
+		List<Cookie> cookies = cookieStore.getCookies();
+		for (Cookie c : cookies) {
+			log.info(c.getName() + " : " + c.getValue());
+		}
+
+		HttpGet loginGet = new HttpGet(
+				"http://passport.csdn.net/ajax/accounthandler.ashx?t=log&u=a_t_jamy&p=250656506&c="
+						+ check
+						+ "&remember=0&f=http%3A%2F%2Fpassport.csdn.net%2Faccount%2Flogin&rand=0.4073978272758557");
+
+		ResponseHandler<String> responseHandler = new BasicResponseHandler();
+		try {
+			String responseBody = httpclient.execute(loginGet, responseHandler,
+					localContext);
+			log.info(responseBody);
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			loginGet.abort();
+		}
+
+		httpclient.getConnectionManager().shutdown();
+	}
+
+	/**
+	 * 
+	 */
+	private static void basicLogin() {
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpGet httpget = new HttpGet(
+				"https://webim.feixin.10086.cn/WebIM/GetPicCode.aspx?Type=ccpsession&0.6949566061972312");
+
+		String cookie = "webim_loginCounter=1336800284234; IsCookiesEnable=true; ";
+		httpget.addHeader("Cookie", cookie);
+		httpget.addHeader("Accept", "*/*");
+		httpget.addHeader("Accept-Encoding", "gzip, deflate");
+		httpget
+				.addHeader("Referer",
+						"https://webim.feixin.10086.cn/login.aspx");
+		httpget
+				.addHeader(
+						"User-Agent",
+						"Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)");
+
+		HttpResponse response = null;
+		try {
+			response = httpclient.execute(httpget);
+			HeaderIterator hi = response.headerIterator("Set-Cookie");
+			while (hi.hasNext()) {
+				String setCookie = hi.next().toString();
+				// get the cookie from the string
+				setCookie = setCookie.substring(setCookie.indexOf(":") + 1);
+				setCookie = setCookie.substring(1, setCookie.indexOf(";"));
+				cookie += setCookie + "; ";
+				log.info(setCookie);
+			}
+		} catch (ClientProtocolException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} finally {
+		}
+
+		InputStream ins = null;
+		try {
+			ins = response.getEntity().getContent();
+		} catch (IllegalStateException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		String imgPath = getCheckImage(checkImgUrl);  
-		BasicClientCookie webim_loginCounter = new BasicClientCookie("webim_loginCounter", "1336726000812");
-		bcc.setDomain(".webim.feixin.10086.cn");
-		bcc.setPath("/");
-		bcs.addCookie(webim_loginCounter);
-		
-		System.out.println("请打开"+imgPath+"，并且在这里输入其中的字符串，然后回车：");
-        InputStreamReader ins = new InputStreamReader(System.in);  
-        BufferedReader br = new BufferedReader(ins);  
-        String check = null;
-        try {
+		BufferedImage bi = null;
+		try {
+			bi = ImageIO.read(ins);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		File file = new File("qqimg.jpg");
+		try {
+			ImageIO.write(bi, "jpg", file);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		httpget.abort();
+
+		String imgPath = file.getAbsolutePath();
+
+		log.info("请打开" + imgPath + "，并且在这里输入其中的字符串，然后回车：");
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+		String check = null;
+		try {
 			check = br.readLine();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}    
-		//https://webim.feixin.10086.cn/WebIM/GetPicCode.aspx?Type=ccpsession&0.8241476046703796
-			//0.8241476046703796	
-			//Type	ccpsession
-			//ccpsession	Sent	7f671465-95b6-47e9-a3b5-1d23ce8e0698	/	.webim.feixin.10086.cn	(Session)	Server	No	No
-			//ccpsession	Received	e3dc3b96-cd6b-41dc-b98e-13d032b64265	/	.webim.feixin.10086.cn	(Session)	Server	No	No
-			//IsCookiesEnable	Sent	true	/	.webim.feixin.10086.cn	(Session)	Server	No	No
-			//webim_loginCounter	Sent	1336726000812	/	.webim.feixin.10086.cn	Fri, 11 May 2012 08:46:40 UTC	JavaScript	No	No
-
-			
-		//https://webim.feixin.10086.cn/WebIM/Login.aspx
-			//Ccp	jmdk	8	
-			//OnlineStatus	400	16	
-			//Pwd	my156004	12	
-			//UserName	13611913741	20	
-		
-		//https://webim.feixin.10086.cn/SetCounter.aspx?Version=1&coutertype=500300001,500200016,500800002&tag=default&val=1&rand=0.5356358343101127
-			//coutertype	500300001,500200016,500800002
-			//rand	0.5356358343101127
-			//tag	default
-			//val	1
-			//Version	1
-		
-		//https://webim.feixin.10086.cn/main.aspx
-			
-		//https://webim.feixin.10086.cn/WebIM/GetPersonalInfo.aspx?Version=0
-			//Version	0
-			//POST
-			//222857364p20172-e2e5bf9b-b9db-413b-a2ed-a29bae92c747
-		//https://webim.feixin.10086.cn/WebIM/GetCred.aspx?Version=1
-			//Version	1
-			//POST
-			//222857364p20172-e2e5bf9b-b9db-413b-a2ed-a29bae92c747
-		//https://webim.feixin.10086.cn/WebIM/GetGroupList.aspx?Version=2
-			//Version	2
-			//POST
-			//222857364p20172-e2e5bf9b-b9db-413b-a2ed-a29bae92c747
-		//https://webim.feixin.10086.cn/WebIM/GetPortrait.aspx?did=222857364&Size=3&Crc=-1517160110&mid=222857364
-			//Crc	-1517160110
-			//did	222857364
-			//mid	222857364
-			//Size	3
-		//https://webim.feixin.10086.cn/WebIM/GetContactList.aspx?Version=3
-			//Version	3
-			//POST
-			//222857364p20172-e2e5bf9b-b9db-413b-a2ed-a29bae92c747
-		//https://webim.feixin.10086.cn/WebIM/GetConnect.aspx?Version=4
-			//Version	4
-			//POST
-			//reported		9	
-			//ssid	222857364p20172-e2e5bf9b-b9db-413b-a2ed-a29bae92c747	57	
-		//https://webim.feixin.10086.cn/WebIM/GetConnect.aspx?Version=5
-			//Version	5
-			//POST
-			//reported		9	
-			//ssid	222857364p20172-e2e5bf9b-b9db-413b-a2ed-a29bae92c747	57	
-		
-		//https://webim.feixin.10086.cn/content/WebIM/SendSMS.aspx?Version=6
-			//Version	6
-			//POST
-			//Message	test...	15	
-			//Receivers	222857364	19	
-			//ssid	222857364p20172-e2e5bf9b-b9db-413b-a2ed-a29bae92c747	57	
-			//UserName	222857364	18	
-		//https://webim.feixin.10086.cn/WebIM/GetPortrait.aspx?did=229057283&Size=5&Crc=1098269575&mid=222857364
-			//Crc	1098269575
-			//did	229057283
-			//mid	222857364
-			//Size	5
-		//https://webim.feixin.10086.cn/WebIM/Logout.aspx?Version=13
-			//Version	13
-			//ssid	222857364p20172-e2e5bf9b-b9db-413b-a2ed-a29bae92c747	57	
-		//http://feixin.10086.cn/account/loginout?ul=https://webim.feixin.10086.cn/login.aspx
-			//ASP.NET_SessionId	Received	kdszw255oq4fyx55og4d31zy	/	feixin.10086.cn	(Session)	Server	Yes	No
-			//webim_remindmsgs	Sent	645048052-39532%21191-0-e2e5bf9bb9db413ba2eda29bae92c747	/	.feixin.10086.cn	Thu, 10 May 2012 05:03:52 GMT	JavaScript	No	No
-			//ul	https://webim.feixin.10086.cn/login.aspx
-			
-			//https://webim.feixin.10086.cn/login.aspx
-
-	}
-
-	private static String getText(String redirectLocation) {
-
-		HttpGet httpget = new HttpGet(redirectLocation);
-		// Create a response handler
-		ResponseHandler<String> responseHandler = new BasicResponseHandler();
-		String responseBody = "";
-		try {
-			responseBody = httpclient.execute(httpget, responseHandler);
-		} catch (Exception e) {
-			e.printStackTrace();
-			responseBody = null;
-		} finally {
-			httpget.abort();
-			// httpclient.getConnectionManager().shutdown();
 		}
-		return responseBody;
-	}
 
-	private static String postText(String url, Map<String, String> values) {
-		HttpPost httppost = new HttpPost(url);
+		// HttpGet loginGet = new
+		// HttpGet("http://passport.csdn.net/ajax/accounthandler.ashx?t=log&u=a_t_jamy&p=250656506&c="
+		// +
+		// check +
+		// "&remember=0&f=http%3A%2F%2Fpassport.csdn.net%2Faccount%2Flogin&rand=0.4073978272758557");
+		HttpPost loginPost = new HttpPost(
+				"https://webim.feixin.10086.cn/WebIM/Login.aspx");
+
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-		for (Map.Entry<String, String> e : values.entrySet()) {
-			nvps.add(new BasicNameValuePair(e.getKey(), e.getValue()));
-		}
-		// Create a response handler
-		ResponseHandler<String> responseHandler = new BasicResponseHandler();
-		String responseBody = "";
+		nvps.add(new BasicNameValuePair("Ccp", check));
+		nvps.add(new BasicNameValuePair("OnlineStatus", "400"));
+		nvps.add(new BasicNameValuePair("Pwd", "my156004"));
+		nvps.add(new BasicNameValuePair("UserName", "13611913741"));
 		try {
-			httppost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
-			responseBody = httpclient.execute(httppost, responseHandler);
-		} catch (Exception e) {
-			e.printStackTrace();
-			responseBody = null;
-		} finally {
-			httppost.abort();
-			// httpclient.getConnectionManager().shutdown();
+			loginPost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
-		return responseBody;
-	}
-	
-	private static String getCheckImage(String url){  
 
-		HttpGet httpget = new HttpGet(url);
-		// Create a response handler
-		ResponseHandler<String> responseHandler = new ImageResponseHandler();
-		String imgPath = "";
+		loginPost.addHeader("Cookie", cookie);
+		loginPost.addHeader("Accept", "application/json, text/javascript, */*");
+		loginPost.addHeader("Accept-Encoding", "gzip, deflate");
+		loginPost.addHeader("Referer",
+				"https://webim.feixin.10086.cn/login.aspx");
+		loginPost
+				.addHeader(
+						"User-Agent",
+						"Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)");
+
+		String ssid = null;
 		try {
-			imgPath = httpclient.execute(httpget, responseHandler);
-			System.out.println(imgPath);
-		} catch (Exception e) {
+			HttpResponse postResponse = httpclient.execute(loginPost);
+			log.info(postResponse.getEntity().getContent().toString());
+			HeaderIterator postHi = postResponse.headerIterator("Set-Cookie");
+			while (postHi.hasNext()) {
+				String setCookie = postHi.next().toString();
+				// get the cookie from the string
+				setCookie = setCookie.substring(setCookie.indexOf(":") + 1);
+				setCookie = setCookie.substring(1, setCookie.indexOf(";"));
+				// get ssid
+				if (setCookie.contains("webim_sessionid")) {
+					ssid = setCookie.substring(setCookie.indexOf("=") + 1,
+							setCookie.length());
+				}
+				log.info(setCookie);
+			}
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			imgPath = null;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
-			httpget.abort();
-			// httpclient.getConnectionManager().shutdown();
+			loginPost.abort();
 		}
-		return imgPath;
-    }  
+
+		HttpPost smPost = new HttpPost(
+				"https://webim.feixin.10086.cn/WebIM/SendMsg.aspx?Version=1");
+
+		nvps = new ArrayList<NameValuePair>();
+		nvps.add(new BasicNameValuePair("IsSendSms", "0"));
+		nvps.add(new BasicNameValuePair("msg", "今天外面在下雨哦。"));
+		nvps.add(new BasicNameValuePair("ssid", ssid));
+		nvps.add(new BasicNameValuePair("To", "888983017"));
+		try {
+			smPost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		smPost.addHeader("Cookie", cookie);
+		smPost.addHeader("Accept", "application/json, text/javascript, */*");
+		smPost.addHeader("Accept-Encoding", "gzip, deflate");
+		smPost.addHeader("Referer", "https://webim.feixin.10086.cn/login.aspx");
+		smPost
+				.addHeader(
+						"User-Agent",
+						"Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)");
+
+		try {
+			HttpResponse smResponse = httpclient.execute(smPost);
+			log.info(smResponse.getEntity().getContent().toString());
+			HeaderIterator postHi = smResponse.headerIterator("Set-Cookie");
+			while (postHi.hasNext()) {
+				String setCookie = postHi.next().toString();
+				// get the cookie from the string
+				setCookie = setCookie.substring(setCookie.indexOf(":") + 1);
+				setCookie = setCookie.substring(1, setCookie.indexOf(";"));
+				log.info(setCookie);
+			}
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			smPost.abort();
+		}
+
+		smPost = new HttpPost(
+				"https://webim.feixin.10086.cn/WebIM/SendMsg.aspx?Version=2");
+
+		nvps = new ArrayList<NameValuePair>();
+		nvps.add(new BasicNameValuePair("IsSendSms", "0"));
+		nvps.add(new BasicNameValuePair("msg", "加油～加油～！。"));
+		nvps.add(new BasicNameValuePair("ssid", ssid));
+		nvps.add(new BasicNameValuePair("To", "888983017"));
+		try {
+			smPost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		smPost.addHeader("Cookie", cookie);
+		smPost.addHeader("Accept", "application/json, text/javascript, */*");
+		smPost.addHeader("Accept-Encoding", "gzip, deflate");
+		smPost.addHeader("Referer", "https://webim.feixin.10086.cn/login.aspx");
+		smPost
+				.addHeader(
+						"User-Agent",
+						"Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)");
+
+		try {
+			HttpResponse smResponse = httpclient.execute(smPost);
+			log.info(smResponse.getEntity().getContent().toString());
+			HeaderIterator postHi = smResponse.headerIterator("Set-Cookie");
+			while (postHi.hasNext()) {
+				String setCookie = postHi.next().toString();
+				// get the cookie from the string
+				setCookie = setCookie.substring(setCookie.indexOf(":") + 1);
+				setCookie = setCookie.substring(1, setCookie.indexOf(";"));
+				log.info(setCookie);
+			}
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			smPost.abort();
+		}
+
+		httpclient.getConnectionManager().shutdown();
+	}
 }

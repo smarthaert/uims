@@ -1,13 +1,90 @@
 package com.bst.pro;
 
-import org.apache.http.conn.params.ConnRoutePNames;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.List;
+import java.util.logging.Logger;
+
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.CookieStore;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.params.ClientPNames;
+import org.apache.http.client.params.CookiePolicy;
+import org.apache.http.client.protocol.ClientContext;
+import org.apache.http.cookie.Cookie;
+import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
+import org.jsoup.nodes.Document;
+
+import com.bst.pro.util.ImageResponseHandler;
+import com.bst.pro.util.JsoupResponseHandler;
 
 public class MNTradeTest {
+	static Logger log = Logger.getLogger(MNTradeTest.class.getName());
+	
+	
+	//create httpclient
+	static HttpClient httpclient = new DefaultHttpClient();
+	//create context
+	static HttpContext localContext = new BasicHttpContext();
+	//create cookie manager
+	static CookieStore cookieStroe = new BasicCookieStore();
+	
 	public static void main(String[] args) {
-//		DefaultHttpClient dhc = new DefaultHttpClient();
-//		dhc.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, new HttpHost("10.100.0.6", 8080));
-//		
+		
+
+		//bind cookie manager to context
+		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStroe);
+		localContext.setAttribute(ClientPNames.COOKIE_POLICY, CookiePolicy.BROWSER_COMPATIBILITY);
+		
+		//run application rule
+		//first visit url: http://mntrade.gtja.com/mncg/login/login.jsp
+		String loginUrl = "http://mntrade.gtja.com/mncg/login/login.jsp";
+		getText(loginUrl);
+		
+		//second 
+		String bindUrl = "http://www.gtja.com/jccy/mncg/mncgBind.jsp?from=cmncg&roomId=null";
+		getText(bindUrl);
+		
+		
+		HttpGet httpget = new HttpGet(
+		"http://www.gtja.com/share/verifyCodeWhite.jsp");
+
+		ResponseHandler<String> irh = new ImageResponseHandler();
+		String imgPath = null;
+		try {
+			imgPath = httpclient.execute(httpget, irh, localContext);
+			cookieDisplay(cookieStroe);
+		} catch (ClientProtocolException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} finally {
+			httpget.abort();
+		}
+		
+		log.info("请打开" + imgPath + "，并且在这里输入其中的字符串，然后回车：");
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+		String check = null;
+		try {
+			check = br.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+		httpclient.getConnectionManager().shutdown();
+		
+		
 		
 		//http://mntrade.gtja.com/mncg/login/login.jsp
 			//MNCGJSESSIONID	Received	2ndzPq0T26WflHMsvxJ1k7XV2pQW81PVFQG1X0nBGVFKyYdSq484!-26193917	/	mntrade.gtja.com	(Session)	Server	No	No
@@ -122,7 +199,7 @@ public class MNTradeTest {
 				//sign	0d02c23e98fdf42f429200100b69f3cb
 				//timestamp	1336554209625
 
-				//ģ�⳴��ϵͳ
+				//ģ�⳴��ϵͳ
 			//http://mntrade.gtja.com/mncg/roomIndexAction.do?method=getMyRoom&current_page=1
 				//MNCGJSESSIONID	Sent	2ndzPq0T26WflHMsvxJ1k7XV2pQW81PVFQG1X0nBGVFKyYdSq484!-26193917	/	mntrade.gtja.com	(Session)	Server	No	No
 				//current_page	1
@@ -132,5 +209,37 @@ public class MNTradeTest {
 				//edition	pro
 				//method	loginRoom
 				//roomId	1
+	}
+
+	/**
+	 * @param httpclient
+	 * @param localContext
+	 * @param cookieStroe
+	 */
+	private static void getText(String url) {
+		HttpGet httpget = new HttpGet(url);
+		ResponseHandler<Document> jrh = new JsoupResponseHandler();
+		try {
+			Document loginPage = httpclient.execute(httpget, jrh, localContext);
+			cookieDisplay(cookieStroe);
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			httpget.abort();
+		}
+	}
+
+	/**
+	 * @param cookieStroe
+	 */
+	private static void cookieDisplay(CookieStore cookieStroe) {
+		List<Cookie> cookies = cookieStroe.getCookies();
+		for(Cookie cookie : cookies){
+			log.info(">>>" + cookie.getName() + " : " + cookie.getValue() + " | " + cookie.getDomain());
+		}
 	}
 }

@@ -15,6 +15,9 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
+import org.jsoup.nodes.Document;
+
+import com.bst.pro.util.JsoupResponseHandler;
 
 public class NetYiTest {
 	static HttpClient httpclient = new DefaultHttpClient();
@@ -67,15 +70,17 @@ public class NetYiTest {
 
 	private static Map<String, String> getPrePostData() {
 		// 从loginFp页面获得Post表单数据
-		String pageCont = getText(netyiUrlloginFp);
-		String value = null;
-		int start = pageCont.indexOf("id=\"__VIEWSTATE\"");
-		if(start > 0){
-			int add1 = pageCont.indexOf("value=", start);
-			int add2 = pageCont.indexOf("\"", add1);
-			int add3 = pageCont.indexOf("\"", add2+1);
-			value =pageCont.substring(add2+1, add3);
-		}
+//		String pageCont = getText(netyiUrlloginFp);
+//		String value = null;
+//		int start = pageCont.indexOf("id=\"__VIEWSTATE\"");
+//		if(start > 0){
+//			int add1 = pageCont.indexOf("value=", start);
+//			int add2 = pageCont.indexOf("\"", add1);
+//			int add3 = pageCont.indexOf("\"", add2+1);
+//			value =pageCont.substring(add2+1, add3);
+//		}
+		Document doc = getText(netyiUrlloginFp);
+		String value = doc.select("#__VIEWSTATE").attr("value");
 		/*
 		if(start != -1){
 			int sta1 = pageCont.indexOf("\"", start);
@@ -99,21 +104,23 @@ public class NetYiTest {
 		return map;
 	}
 
-	private static String getText(String redirectLocation) {
+	private static Document getText(String redirectLocation) {
 		
 		HttpGet httpget = new HttpGet(redirectLocation);
 		// Create a response handler
-		ResponseHandler<String> responseHandler = new BasicResponseHandler();
-		String responseBody = "";
+//		ResponseHandler<String> responseHandler = new BasicResponseHandler();
+//		String responseBody = "";
+		ResponseHandler<Document> responseHandler = new JsoupResponseHandler();
+		Document doc = null;
 		try {
-			responseBody = httpclient.execute(httpget, responseHandler);
+			doc = httpclient.execute(httpget, responseHandler);
 		} catch (Exception e) {
 			e.printStackTrace();
-			responseBody = null;
+			doc = null;
 		} finally {
 			httpget.abort();
 			// httpclient.getConnectionManager().shutdown();
 		}
-		return responseBody;
+		return doc;
 	}
 }
