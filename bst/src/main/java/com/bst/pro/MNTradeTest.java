@@ -3,26 +3,38 @@ package com.bst.pro;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.lang.annotation.Retention;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.params.ClientPNames;
 import org.apache.http.client.params.CookiePolicy;
 import org.apache.http.client.protocol.ClientContext;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.BasicCookieStore;
+import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HTTP;
 import org.apache.http.protocol.HttpContext;
 import org.jsoup.nodes.Document;
 
 import com.bst.pro.util.ImageResponseHandler;
+import com.bst.pro.util.JSONObjectResponseHandler;
 import com.bst.pro.util.JsoupResponseHandler;
+import com.hfutxf.weibo4j.org.json.JSONException;
+import com.hfutxf.weibo4j.org.json.JSONObject;
 
 public class MNTradeTest {
 	static Logger log = Logger.getLogger(MNTradeTest.class.getName());
@@ -34,6 +46,8 @@ public class MNTradeTest {
 	static HttpContext localContext = new BasicHttpContext();
 	//create cookie manager
 	static CookieStore cookieStroe = new BasicCookieStore();
+
+
 	
 	public static void main(String[] args) {
 		
@@ -51,36 +65,62 @@ public class MNTradeTest {
 		String bindUrl = "http://www.gtja.com/jccy/mncg/mncgBind.jsp?from=cmncg&roomId=null";
 		getText(bindUrl);
 		
-		
-		HttpGet httpget = new HttpGet(
-		"http://www.gtja.com/share/verifyCodeWhite.jsp");
+		//get check image
+		String check = getChkImage();
 
-		ResponseHandler<String> irh = new ImageResponseHandler();
-		String imgPath = null;
+		//real login
+		String currentToken = loginInterfacePost(check);
+		
+		//single login
+		HttpPost singleloginPost = new HttpPost("http://www.gtja.com/single.do");
+
+		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+		nvps.add(new BasicNameValuePair("BranchName", ""));
+		nvps.add(new BasicNameValuePair("characteristic", "null"));
+		nvps.add(new BasicNameValuePair("currentToken", currentToken));
+		nvps.add(new BasicNameValuePair("employeeId", "hell"));
+		nvps.add(new BasicNameValuePair("iframe", ""));
+		nvps.add(new BasicNameValuePair("isSingle", "0"));
+		nvps.add(new BasicNameValuePair("longType", "mncg"));
+		nvps.add(new BasicNameValuePair("method", "userLogin"));
+		nvps.add(new BasicNameValuePair("newPath", "null"));
+		nvps.add(new BasicNameValuePair("Page", ""));
+		nvps.add(new BasicNameValuePair("passWord", "MTIzNDU2"));
+		nvps.add(new BasicNameValuePair("passWord1", "4444"));
+		nvps.add(new BasicNameValuePair("pwd", "123456"));
+		nvps.add(new BasicNameValuePair("systype", "null"));
+		nvps.add(new BasicNameValuePair("uName", "hell"));
+		nvps.add(new BasicNameValuePair("userCode", "2"));
+		nvps.add(new BasicNameValuePair("userLevel", "1003"));
+		nvps.add(new BasicNameValuePair("userName", "hell"));
+		nvps.add(new BasicNameValuePair("verifyCode", check));
+
+		
 		try {
-			imgPath = httpclient.execute(httpget, irh, localContext);
-			cookieDisplay(cookieStroe);
-		} catch (ClientProtocolException e1) {
+			singleloginPost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
+		} catch (UnsupportedEncodingException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} finally {
-			httpget.abort();
 		}
 		
-		log.info("请打开" + imgPath + "，并且在这里输入其中的字符串，然后回车：");
-		InputStreamReader isr = new InputStreamReader(System.in);
-		BufferedReader br = new BufferedReader(isr);
-		String check = null;
+		singleloginPost.addHeader("Cookie", "tykLoginUserName=null; checksavetykLoginUserName=0; ");
+		
+		ResponseHandler<Document> jrh = new JsoupResponseHandler();
+		String ssid = null;
 		try {
-			check = br.readLine();
+			Document doc = httpclient.execute(singleloginPost, jrh, localContext);
+			log.info(doc.select("a").attr("href"));
+			cookieDisplay(cookieStroe);
+			
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			singleloginPost.abort();
 		}
-
 		
 		httpclient.getConnectionManager().shutdown();
 		
@@ -122,6 +162,7 @@ public class MNTradeTest {
 				//checksavetykLoginUserName	Sent	0	/	www.gtja.com	(Session)	JavaScript	No	No
 				//JSESSIONID	Sent	T14hPq0T7fFysLWz8bTyHTqPGlmv9v1LThgLJnzGKzhRnhznhkcQ!972763046!-818033016	/	www.gtja.com	(Session)	Server	No	No
 				//tykLoginUserName	Sent	null	/	www.gtja.com	(Session)	JavaScript	No	No
+				
 				//POST
 				//BranchName	
 				//characteristic	null
@@ -209,6 +250,106 @@ public class MNTradeTest {
 				//edition	pro
 				//method	loginRoom
 				//roomId	1
+	}
+
+	/**
+	 * @param check
+	 * @return 
+	 */
+	private static String loginInterfacePost(String check) {
+		HttpPost loginPost = new HttpPost(
+		"http://www.gtja.com/login/verificationLoginInterface.jsp" +
+		"?m=0.5218843634038155" +
+		"&uName=hell&tickUserName=on" +
+		"&pwd=123456" +
+		"&verifyCode=" +
+		check +
+		"&characteristic=null" +
+		"&systype=null" +
+		"&userName=hell" +
+		"&passWord=MTIzNDU2" + //todo
+		"&passWord1=4444" +	//todo
+		"&userCode=2" +
+		"&longType=mncg" +
+		"&newPath=null" +
+		"&BranchName=" +
+		"&Page=" +
+		"&isSingle=0" +
+		"&iframe=" +
+		"&userLevel=" +
+		"&employeeId=" +
+		"&currentToken=" +
+		"&method=");
+
+		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+		try {
+			loginPost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		loginPost.addHeader("Cookie", "tykLoginUserName=null; checksavetykLoginUserName=0; ");
+		
+//		ResponseHandler<String> brh = new BasicResponseHandler();
+		ResponseHandler<JSONObject> jrh = new JSONObjectResponseHandler();
+		String ssid = null;
+		String currentToken = null;
+		try {
+			JSONObject json = httpclient.execute(loginPost, jrh, localContext);
+			currentToken = json.getJSONObject("currentToken").toString();
+			log.info(currentToken);
+			cookieDisplay(cookieStroe);
+			
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			loginPost.abort();
+		}
+		return currentToken; 
+	}
+
+	/**
+	 * @return 
+	 * 
+	 */
+	private static String getChkImage() {
+		HttpGet httpget = new HttpGet(
+		"http://www.gtja.com/share/verifyCodeWhite.jsp");
+
+		ResponseHandler<String> irh = new ImageResponseHandler();
+		String imgPath = null;
+		try {
+			imgPath = httpclient.execute(httpget, irh, localContext);
+			cookieDisplay(cookieStroe);
+		} catch (ClientProtocolException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} finally {
+			httpget.abort();
+		}
+		
+		log.info("请打开" + imgPath + "，并且在这里输入其中的字符串，然后回车：");
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader(isr);
+		String check = null;
+		try {
+			check = br.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return check;
 	}
 
 	/**

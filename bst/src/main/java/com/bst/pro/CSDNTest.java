@@ -34,31 +34,44 @@ public class CSDNTest {
 
 	public static void main(String[] args) {
 
-		// basicLogin();
+//		basicLogin();
 
 		cookieAutoManagerLogin();
 	}
 
 	private static void cookieAutoManagerLogin() {
+		//create client
 		HttpClient httpclient = new DefaultHttpClient();
+		//create context 
 		HttpContext localContext = new BasicHttpContext();
+		//create cookie store
 		CookieStore cookieStore = new BasicCookieStore();
+		
+		//bind the store
 		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
 
+		//create request
 		HttpGet chkImgGet = new HttpGet(
 				"http://passport.csdn.net/ajax/verifyhandler.ashx?r=0.21973005150126756");
+		
+		//init cookie info
 		String cookie = "__utma=17226283.649901018.1336879658.1336879658.1336879658.1; __utmb=17226283.2.10.1336879658; __utmc=17226283; __utmz=17226283.1336879658.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __message_sys_msg_id=0; __message_gu_msg_id=0; __message_cnel_msg_id=0; __message_district_code=000000; __message_in_school=0; ";
+		//add to header
 		chkImgGet.addHeader("Cookie", cookie);
 
+		
 		ResponseHandler<String> imgHandler = new ImageResponseHandler();
 		String check = null;
 		try {
 			String imgPath = httpclient.execute(chkImgGet, imgHandler,
 					localContext);
+			
+			//print the response cookies from cookiestore
 			List<Cookie> cookies = cookieStore.getCookies();
 			for (Cookie c : cookies) {
 				log.info("Image:>>> " + c.getName() + " : " + c.getValue());
 			}
+			
 			log.info("请打开" + imgPath + "，并且在这里输入其中的字符串，然后回车：");
 			InputStreamReader ins = new InputStreamReader(System.in);
 			BufferedReader br = new BufferedReader(ins);
@@ -74,6 +87,7 @@ public class CSDNTest {
 			chkImgGet.abort();
 		}
 
+		//create login request
 		HttpGet loginGet = new HttpGet(
 				"http://passport.csdn.net/ajax/accounthandler.ashx?t=log&u=a_t_jamy&p=250656506&c="
 						+ check
@@ -83,6 +97,7 @@ public class CSDNTest {
 		try {
 			String responseBody = httpclient.execute(loginGet, responseHandler,
 					localContext);
+			
 			List<Cookie> cookies = cookieStore.getCookies();
 			for (Cookie c : cookies) {
 				log.info("Login:>>> " + c.getName() + " : " + c.getValue());
@@ -105,7 +120,9 @@ public class CSDNTest {
 	 * 
 	 */
 	private static void basicLogin() {
+		//HTTPCLIENT 相当于浏览器
 		HttpClient httpclient = new DefaultHttpClient();
+		//发请求
 		HttpGet httpget = new HttpGet(
 				"http://passport.csdn.net/ajax/verifyhandler.ashx?r=0.21973005150126756");
 
@@ -163,6 +180,7 @@ public class CSDNTest {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		//一定记得把请求的资源释放掉
 		httpget.abort();
 
 		String imgPath = file.getAbsolutePath();
@@ -206,6 +224,7 @@ public class CSDNTest {
 			loginGet.abort();
 		}
 
+		//关闭浏览器
 		httpclient.getConnectionManager().shutdown();
 	}
 
