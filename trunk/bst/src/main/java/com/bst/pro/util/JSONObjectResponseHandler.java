@@ -2,6 +2,9 @@ package com.bst.pro.util;
 
 import java.io.IOException;
 
+import net.sf.json.JSONException;
+import net.sf.json.JSONObject;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
@@ -11,8 +14,6 @@ import org.apache.http.client.HttpResponseException;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.util.EntityUtils;
 
-import com.hfutxf.weibo4j.org.json.JSONException;
-import com.hfutxf.weibo4j.org.json.JSONObject;
 
 public class JSONObjectResponseHandler implements ResponseHandler<JSONObject> {
 
@@ -30,7 +31,7 @@ public class JSONObjectResponseHandler implements ResponseHandler<JSONObject> {
         	return null;
         }else{
         	try {
-				json = new JSONObject(EntityUtils.toString(entity));
+				json = JSONObject.fromObject(EntityUtils.toString(entity));
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

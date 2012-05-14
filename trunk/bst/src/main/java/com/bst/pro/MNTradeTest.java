@@ -26,8 +26,8 @@ import org.apache.http.client.protocol.ClientContext;
 import org.apache.http.conn.params.ConnRoutePNames;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.BasicCookieStore;
-import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HTTP;
@@ -35,6 +35,7 @@ import org.apache.http.protocol.HttpContext;
 import org.jsoup.nodes.Document;
 
 import com.bst.pro.util.ImageResponseHandler;
+import com.bst.pro.util.JSONObjectResponseHandler;
 import com.bst.pro.util.JsoupResponseHandler;
 
 public class MNTradeTest {
@@ -77,6 +78,46 @@ public class MNTradeTest {
 		
 		//single login
 		singleLoginPost(check, currentToken);
+		
+		HttpPost loginPost = new HttpPost(
+				"http://mntrade.gtja.com/mncg/stockAction.do?method=getHQ&stkcode=002006&bsflag=1");
+
+				List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+				try {
+					loginPost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
+				} catch (UnsupportedEncodingException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+//				loginPost.addHeader("Cookie", "tykLoginUserName=null; checksavetykLoginUserName=0; ");
+				
+//				ResponseHandler<String> brh = new BasicResponseHandler();
+				ResponseHandler<JSONObject> jrh = new JSONObjectResponseHandler();
+				String ssid = null;
+				String currentToken = null;
+				try {
+					JSONObject json = httpclient.execute(loginPost, jrh, localContext);
+					log.info(currentToken);
+//					String jsonStr = httpclient.execute(loginPost, brh, localContext);
+//					log.info(jsonStr);
+//					JSONObject json = JSONObject.fromObject(jsonStr);;
+					currentToken = json.get("currentToken").toString();
+					
+					cookieDisplay(cookieStroe);
+					
+				} catch (ClientProtocolException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} finally {
+					loginPost.abort();
+				}
 		
 		httpclient.getConnectionManager().shutdown();
 		
@@ -206,6 +247,39 @@ public class MNTradeTest {
 				//edition	pro
 				//method	loginRoom
 				//roomId	1
+		
+			//http://mntrade.gtja.com/mncg/stockAction.do?method=getFunds
+				//MNCGJSESSIONID	Sent	2ndzPq0T26WflHMsvxJ1k7XV2pQW81PVFQG1X0nBGVFKyYdSq484!-26193917	/	mntrade.gtja.com	(Session)	Server	No	No
+				//method	getFunds
+				//POST
+			//http://mntrade.gtja.com/mncg/stockAction.do?method=getStockPosition&current_page=1
+				//MNCGJSESSIONID	Sent	2ndzPq0T26WflHMsvxJ1k7XV2pQW81PVFQG1X0nBGVFKyYdSq484!-26193917	/	mntrade.gtja.com	(Session)	Server	No	No
+				//current_page	1
+				//method	getStockPosition
+				//POST
+			//http://mntrade.gtja.com/mncg/stock/buy.jsp
+				//MNCGJSESSIONID	Sent	2ndzPq0T26WflHMsvxJ1k7XV2pQW81PVFQG1X0nBGVFKyYdSq484!-26193917	/	mntrade.gtja.com	(Session)	Server	No	No
+			//http://mntrade.gtja.com/mncg/stockAction.do?method=getHQ&stkcode=&bsflag=1
+				//MNCGJSESSIONID	Sent	2ndzPq0T26WflHMsvxJ1k7XV2pQW81PVFQG1X0nBGVFKyYdSq484!-26193917	/	mntrade.gtja.com	(Session)	Server	No	No
+				//bsflag	1
+				//method	getHQ
+				//stkcode	
+				//POST
+			//http://mntrade.gtja.com/mncg/quoteAction.do?method=getNearZQCode&stockCode=0020&timestamp=1336554678045
+				//MNCGJSESSIONID	Sent	2ndzPq0T26WflHMsvxJ1k7XV2pQW81PVFQG1X0nBGVFKyYdSq484!-26193917	/	mntrade.gtja.com	(Session)	Server	No	No
+				//method	getNearZQCode
+				//stockCode	0020
+				//timestamp	1336554678045
+				//返回动态匹配的股票列表信息
+			//http://mntrade.gtja.com/mncg/stockAction.do?method=getHQ&stkcode=002006&bsflag=1
+				//MNCGJSESSIONID	Sent	2ndzPq0T26WflHMsvxJ1k7XV2pQW81PVFQG1X0nBGVFKyYdSq484!-26193917	/	mntrade.gtja.com	(Session)	Server	No	No
+				//bsflag	1
+				//method	getHQ
+				//stkcode	002006
+				//POST
+				//返回指定股票代码的5档买卖信息。
+			
+		
 	}
 
 	private static void singleLoginPost(String check, String currentToken) {
@@ -240,7 +314,16 @@ public class MNTradeTest {
 			e1.printStackTrace();
 		}
 		
-		singleloginPost.addHeader("Cookie", "tykLoginUserName=null; checksavetykLoginUserName=0; ");
+//		singleloginPost.addHeader("Cookie", "tykLoginUserName=null; checksavetykLoginUserName=0; ");
+		
+		BasicClientCookie tykLoginUserName = new BasicClientCookie("tykLoginUserName", "null");
+		tykLoginUserName.setDomain("www.gtja.com");
+		tykLoginUserName.setPath("/");
+		cookieStroe.addCookie(tykLoginUserName);
+		BasicClientCookie checksavetykLoginUserName = new BasicClientCookie("checksavetykLoginUserName", "0");
+		checksavetykLoginUserName.setDomain("www.gtja.com");
+		checksavetykLoginUserName.setPath("/");
+		cookieStroe.addCookie(checksavetykLoginUserName);
 		
 		ResponseHandler<Document> jrh = new JsoupResponseHandler();
 		String ssid = null;
@@ -297,19 +380,18 @@ public class MNTradeTest {
 			e1.printStackTrace();
 		}
 		
-		loginPost.addHeader("Cookie", "tykLoginUserName=null; checksavetykLoginUserName=0; ");
+//		loginPost.addHeader("Cookie", "tykLoginUserName=null; checksavetykLoginUserName=0; ");
 		
-		ResponseHandler<String> brh = new BasicResponseHandler();
-//		ResponseHandler<JSONObject> jrh = new JSONObjectResponseHandler();
+//		ResponseHandler<String> brh = new BasicResponseHandler();
+		ResponseHandler<JSONObject> jrh = new JSONObjectResponseHandler();
 		String ssid = null;
 		String currentToken = null;
 		try {
-//			JSONObject json = httpclient.execute(loginPost, jrh, localContext);
-//			currentToken = json.getJSONObject("currentToken").toString();
-//			log.info(currentToken);
-			String jsonStr = httpclient.execute(loginPost, brh, localContext);
-			log.info(jsonStr);
-			JSONObject json = JSONObject.fromObject(jsonStr);;
+			JSONObject json = httpclient.execute(loginPost, jrh, localContext);
+			log.info(currentToken);
+//			String jsonStr = httpclient.execute(loginPost, brh, localContext);
+//			log.info(jsonStr);
+//			JSONObject json = JSONObject.fromObject(jsonStr);;
 			currentToken = json.get("currentToken").toString();
 			
 			cookieDisplay(cookieStroe);
