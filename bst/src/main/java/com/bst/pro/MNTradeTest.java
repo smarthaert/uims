@@ -4,11 +4,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.lang.annotation.Retention;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import net.sf.json.JSONException;
+import net.sf.json.JSONObject;
+
+import org.apache.http.HttpHost;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.CookieStore;
@@ -20,6 +23,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.params.ClientPNames;
 import org.apache.http.client.params.CookiePolicy;
 import org.apache.http.client.protocol.ClientContext;
+import org.apache.http.conn.params.ConnRoutePNames;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.BasicResponseHandler;
@@ -31,14 +35,12 @@ import org.apache.http.protocol.HttpContext;
 import org.jsoup.nodes.Document;
 
 import com.bst.pro.util.ImageResponseHandler;
-import com.bst.pro.util.JSONObjectResponseHandler;
 import com.bst.pro.util.JsoupResponseHandler;
-import com.hfutxf.weibo4j.org.json.JSONException;
-import com.hfutxf.weibo4j.org.json.JSONObject;
 
 public class MNTradeTest {
 	static Logger log = Logger.getLogger(MNTradeTest.class.getName());
 	
+	static HttpHost proxy = new HttpHost("10.100.0.6", 8080, "http");
 	
 	//create httpclient
 	static HttpClient httpclient = new DefaultHttpClient();
@@ -50,7 +52,9 @@ public class MNTradeTest {
 
 	
 	public static void main(String[] args) {
-		
+	
+		//set http proxy
+		httpclient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, proxy);
 
 		//bind cookie manager to context
 		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStroe);
@@ -72,55 +76,7 @@ public class MNTradeTest {
 		String currentToken = loginInterfacePost(check);
 		
 		//single login
-		HttpPost singleloginPost = new HttpPost("http://www.gtja.com/single.do");
-
-		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-		nvps.add(new BasicNameValuePair("BranchName", ""));
-		nvps.add(new BasicNameValuePair("characteristic", "null"));
-		nvps.add(new BasicNameValuePair("currentToken", currentToken));
-		nvps.add(new BasicNameValuePair("employeeId", "hell"));
-		nvps.add(new BasicNameValuePair("iframe", ""));
-		nvps.add(new BasicNameValuePair("isSingle", "0"));
-		nvps.add(new BasicNameValuePair("longType", "mncg"));
-		nvps.add(new BasicNameValuePair("method", "userLogin"));
-		nvps.add(new BasicNameValuePair("newPath", "null"));
-		nvps.add(new BasicNameValuePair("Page", ""));
-		nvps.add(new BasicNameValuePair("passWord", "MTIzNDU2"));
-		nvps.add(new BasicNameValuePair("passWord1", "4444"));
-		nvps.add(new BasicNameValuePair("pwd", "123456"));
-		nvps.add(new BasicNameValuePair("systype", "null"));
-		nvps.add(new BasicNameValuePair("uName", "hell"));
-		nvps.add(new BasicNameValuePair("userCode", "2"));
-		nvps.add(new BasicNameValuePair("userLevel", "1003"));
-		nvps.add(new BasicNameValuePair("userName", "hell"));
-		nvps.add(new BasicNameValuePair("verifyCode", check));
-
-		
-		try {
-			singleloginPost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		singleloginPost.addHeader("Cookie", "tykLoginUserName=null; checksavetykLoginUserName=0; ");
-		
-		ResponseHandler<Document> jrh = new JsoupResponseHandler();
-		String ssid = null;
-		try {
-			Document doc = httpclient.execute(singleloginPost, jrh, localContext);
-			log.info(doc.select("a").attr("href"));
-			cookieDisplay(cookieStroe);
-			
-		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			singleloginPost.abort();
-		}
+		singleLoginPost(check, currentToken);
 		
 		httpclient.getConnectionManager().shutdown();
 		
@@ -252,6 +208,58 @@ public class MNTradeTest {
 				//roomId	1
 	}
 
+	private static void singleLoginPost(String check, String currentToken) {
+		HttpPost singleloginPost = new HttpPost("http://www.gtja.com/single.do");
+
+		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+		nvps.add(new BasicNameValuePair("BranchName", ""));
+		nvps.add(new BasicNameValuePair("characteristic", "null"));
+		nvps.add(new BasicNameValuePair("currentToken", currentToken));
+		nvps.add(new BasicNameValuePair("employeeId", "hell"));
+		nvps.add(new BasicNameValuePair("iframe", ""));
+		nvps.add(new BasicNameValuePair("isSingle", "0"));
+		nvps.add(new BasicNameValuePair("longType", "mncg"));
+		nvps.add(new BasicNameValuePair("method", "userLogin"));
+		nvps.add(new BasicNameValuePair("newPath", "null"));
+		nvps.add(new BasicNameValuePair("Page", ""));
+		nvps.add(new BasicNameValuePair("passWord", "MTIzNDU2"));
+		nvps.add(new BasicNameValuePair("passWord1", "4444"));
+		nvps.add(new BasicNameValuePair("pwd", "123456"));
+		nvps.add(new BasicNameValuePair("systype", "null"));
+		nvps.add(new BasicNameValuePair("uName", "hell"));
+		nvps.add(new BasicNameValuePair("userCode", "2"));
+		nvps.add(new BasicNameValuePair("userLevel", "1003"));
+		nvps.add(new BasicNameValuePair("userName", "hell"));
+		nvps.add(new BasicNameValuePair("verifyCode", check));
+
+		
+		try {
+			singleloginPost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		singleloginPost.addHeader("Cookie", "tykLoginUserName=null; checksavetykLoginUserName=0; ");
+		
+		ResponseHandler<Document> jrh = new JsoupResponseHandler();
+		String ssid = null;
+		try {
+			Document doc = httpclient.execute(singleloginPost, jrh, localContext);
+			log.info(doc.select("a").attr("href"));
+			cookieDisplay(cookieStroe);
+			
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			singleloginPost.abort();
+		}
+	}
+
 	/**
 	 * @param check
 	 * @return 
@@ -291,14 +299,19 @@ public class MNTradeTest {
 		
 		loginPost.addHeader("Cookie", "tykLoginUserName=null; checksavetykLoginUserName=0; ");
 		
-//		ResponseHandler<String> brh = new BasicResponseHandler();
-		ResponseHandler<JSONObject> jrh = new JSONObjectResponseHandler();
+		ResponseHandler<String> brh = new BasicResponseHandler();
+//		ResponseHandler<JSONObject> jrh = new JSONObjectResponseHandler();
 		String ssid = null;
 		String currentToken = null;
 		try {
-			JSONObject json = httpclient.execute(loginPost, jrh, localContext);
-			currentToken = json.getJSONObject("currentToken").toString();
-			log.info(currentToken);
+//			JSONObject json = httpclient.execute(loginPost, jrh, localContext);
+//			currentToken = json.getJSONObject("currentToken").toString();
+//			log.info(currentToken);
+			String jsonStr = httpclient.execute(loginPost, brh, localContext);
+			log.info(jsonStr);
+			JSONObject json = JSONObject.fromObject(jsonStr);;
+			currentToken = json.get("currentToken").toString();
+			
 			cookieDisplay(cookieStroe);
 			
 		} catch (ClientProtocolException e) {
