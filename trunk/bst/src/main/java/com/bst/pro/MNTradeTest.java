@@ -26,6 +26,7 @@ import org.apache.http.client.protocol.ClientContext;
 import org.apache.http.conn.params.ConnRoutePNames;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.BasicCookieStore;
+import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.message.BasicNameValuePair;
@@ -41,7 +42,7 @@ import com.bst.pro.util.JsoupResponseHandler;
 public class MNTradeTest {
 	static Logger log = Logger.getLogger(MNTradeTest.class.getName());
 	
-	static HttpHost proxy = new HttpHost("10.100.0.6", 8080, "http");
+//	static HttpHost proxy = new HttpHost("10.100.0.6", 8080, "http");
 	
 	//create httpclient
 	static HttpClient httpclient = new DefaultHttpClient();
@@ -55,7 +56,7 @@ public class MNTradeTest {
 	public static void main(String[] args) {
 	
 		//set http proxy
-		httpclient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, proxy);
+//		httpclient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, proxy);
 
 		//bind cookie manager to context
 		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStroe);
@@ -79,6 +80,18 @@ public class MNTradeTest {
 		//single login
 		singleLoginPost(check, currentToken);
 		
+		//visit toMncy.jsp
+		//get mncy and sign values
+		String toMncyUrl = "http://www.gtja.com/jccy/mncg/toMncg.jsp";
+		Document doc = getText2(toMncyUrl);
+		String mncg = doc.select("form input[name=mncg]").attr("value");
+		String sign = doc.select("form input[name=sign]").attr("value");
+		
+		
+		//visit usersAction.jsp to login mncg model
+		
+
+		//query stock info by id
 		HttpPost loginPost = new HttpPost(
 				"http://mntrade.gtja.com/mncg/stockAction.do?method=getHQ&stkcode=002006&bsflag=1");
 
@@ -90,19 +103,10 @@ public class MNTradeTest {
 					e1.printStackTrace();
 				}
 				
-//				loginPost.addHeader("Cookie", "tykLoginUserName=null; checksavetykLoginUserName=0; ");
-				
-//				ResponseHandler<String> brh = new BasicResponseHandler();
-				ResponseHandler<JSONObject> jrh = new JSONObjectResponseHandler();
-				String ssid = null;
-				String currentToken = null;
+				ResponseHandler<String> brh = new BasicResponseHandler();
 				try {
-					JSONObject json = httpclient.execute(loginPost, jrh, localContext);
-					log.info(currentToken);
-//					String jsonStr = httpclient.execute(loginPost, brh, localContext);
-//					log.info(jsonStr);
-//					JSONObject json = JSONObject.fromObject(jsonStr);;
-					currentToken = json.get("currentToken").toString();
+					String responseBody = httpclient.execute(loginPost, brh, localContext);
+					log.info(responseBody);
 					
 					cookieDisplay(cookieStroe);
 					
@@ -467,6 +471,25 @@ public class MNTradeTest {
 		}finally{
 			httpget.abort();
 		}
+	}
+	
+	private static Document getText2(String url) {
+		HttpGet httpget = new HttpGet(url);
+		ResponseHandler<Document> jrh = new JsoupResponseHandler();
+		Document page = null; 
+		try {
+			page = httpclient.execute(httpget, jrh, localContext);
+			cookieDisplay(cookieStroe);
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			httpget.abort();
+		}
+		return page;
 	}
 
 	/**
