@@ -87,6 +87,7 @@ public class MNTradeTest {
 		Document doc = getText(toMncyUrl);
 
 		String jsStr = doc.select("script").toString();
+		//use regex util to get info
 		Pattern p = Pattern.compile("document.location=\"([^\\\"]+)\"");
 		Matcher m = p.matcher(jsStr);
 		String loginMncgUrl = null;
@@ -122,11 +123,21 @@ public class MNTradeTest {
 		postText(getFundsUrl);
 
 		// query stock info by id
-		String queryStr = "http://mntrade.gtja.com/mncg/stockAction.do?method=getHQ&stkcode=002006&bsflag=1";
-
-		postText(queryStr);
+		String stockCode = "002006";
+		queryStockByCode(stockCode);
 
 		httpclient.getConnectionManager().shutdown();
+	}
+
+	/**
+	 * @param stockCode
+	 */
+	private static void queryStockByCode(String stockCode) {
+		String queryStr = "http://mntrade.gtja.com/mncg/stockAction.do?method=getHQ&stkcode=" +
+				stockCode +
+				"&bsflag=1";
+
+		postText(queryStr);
 	}
 
 	private static void postText(String queryStr) {
