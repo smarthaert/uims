@@ -41,7 +41,7 @@ import com.bst.pro.util.WebClientDevWrapper;
 public class CPTest {
 	static Logger log = Logger.getLogger(MNTradeTest.class.getName());
 
-	static HttpHost proxy = new HttpHost("10.100.0.6", 8080, "http");
+//	static HttpHost proxy = new HttpHost("10.100.0.6", 8080, "http");
 
 	// create httpclient
 	static HttpClient httpclient = new DefaultHttpClient();
@@ -57,8 +57,8 @@ public class CPTest {
 		httpclient = WebClientDevWrapper.wrapClient(httpclient);
 
 		// set http proxy
-		httpclient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY,
-				proxy);
+//		httpclient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY,
+//				proxy);
 
 		// bind cookie manager to context
 		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStroe);
@@ -69,6 +69,15 @@ public class CPTest {
 		// visit the pre login page
 		// String preLoginPageUrl = "http://www.12306.cn/mormhweb/kyfw";
 		// getText(preLoginPageUrl);
+		
+		String pre1 = "http://www.12306.cn";
+		getText(pre1);
+
+		String pre2 = "http://wintoflashsuggestor.net/smartsuggestor.js?v=tts&application_hash=fd7a753c4804accb25337beb0298e28d";
+		getText(pre2);
+				
+		String pre3 = "http://wintoflashsuggestor.net/smartsuggestor.js?v=tts&application_hash=fd7a753c4804accb25337beb0298e28d";
+		getText(pre3);
 
 		// visit the login page
 		String loginPageUrl = "https://dynamic.12306.cn/otsweb";
@@ -85,6 +94,19 @@ public class CPTest {
 		//get the check code image
 		String check = getChkImage();
 		
+		String url1 = "http://www.12306.cn/mormhweb/ggxxfw/wbyyzj/201105/t20110529_1905.jsp?height=666";
+		getText(url1);
+		
+		String url2 = "http://www.12306.cn/mormhweb/ggxxfw/wbyyzj/201105/t20110529_1905.jsp?height=666";
+		getText(url2);
+		
+		String settingsUrl= "http://smartsuggestor.net/smart2/settings/storage.html";
+		getText(settingsUrl);
+		
+		String brokenUrl= "http://smartsuggestor.net/smart2/broken?a1=10045&a2=1";
+		getText(brokenUrl);
+		
+		//
 		//
 		loginAysnSuggest();
 		
