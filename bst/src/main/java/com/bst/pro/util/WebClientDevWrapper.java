@@ -1,4 +1,5 @@
 package com.bst.pro.util;
+
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
@@ -12,11 +13,14 @@ import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
+
 /*
  This code is public domain: you are free to use, link and/or modify it in any way you want, for all purposes including commercial applications.
  */
 public class WebClientDevWrapper {
-	public static HttpClient wrapClient(HttpClient base) {
+	public static DefaultHttpClient wrapClient(HttpClient base) {
+		
+
 		try {
 			SSLContext ctx = SSLContext.getInstance("TLS");
 			X509TrustManager tm = new X509TrustManager() {
