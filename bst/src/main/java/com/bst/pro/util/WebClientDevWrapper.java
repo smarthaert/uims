@@ -15,6 +15,7 @@ import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 /*
+ * 处理自签发证书的问题，配置客户端信任所有服务器主机名（不验证证书中的主机名与正在通信的主机名一致）
  This code is public domain: you are free to use, link and/or modify it in any way you want, for all purposes including commercial applications.
  */
 public class WebClientDevWrapper {

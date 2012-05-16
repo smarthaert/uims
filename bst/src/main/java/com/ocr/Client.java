@@ -1,4 +1,4 @@
-package com.serverMain;  
+package com.ocr;  
 import java.io.BufferedInputStream;  
 import java.io.DataOutputStream;  
 import java.io.FileInputStream;  

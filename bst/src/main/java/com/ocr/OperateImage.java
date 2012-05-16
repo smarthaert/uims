@@ -1,4 +1,4 @@
-package com.serverMain;
+package com.ocr;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;

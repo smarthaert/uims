@@ -1,4 +1,4 @@
-package com.serverMain;  
+package com.ocr;  
 import java.net.ServerSocket;  
 import java.util.concurrent.ExecutorService;  
 import java.util.concurrent.Executors;  
