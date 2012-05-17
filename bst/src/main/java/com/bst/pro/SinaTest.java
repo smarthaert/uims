@@ -6,6 +6,9 @@ public class SinaTest extends BasicHttpClient {
 	public static void main(String[] args) {
 		//visit start page to get pluginUrl
 		//<script type="text/javascript" src="http://js.t.sinajs.cn/t4/apps/secure/js/login/plugin.js?version=5a0ed6785bc45f79"></script>
+		
+		//
+		//wa.src = ('https:' == doc.location.protocol ? 'https://' : 'http://') + 'js.t.sinajs.cn/open/analytics/js/suda.js?version=5a0ed6785bc45f79';
 		String startPageUrl = "http://weibo.com";
 		getText(startPageUrl);
 		
@@ -20,6 +23,10 @@ public class SinaTest extends BasicHttpClient {
 		//p	fe55e24c15322ed8e655ce949078e67299d6
 		//r	16157100
 		//s	0
+		
+		//use this js to get a_gifUrl
+		String sudaJsUrl = "http://js.t.sinajs.cn/open/analytics/js/suda.js?version=5a0ed6785bc45f79";
+		getText(sudaJsUrl);
 		
 		String a_gifUrl = "http://beacon.sina.com.cn/a.gif?V=2&CI=sz:1400x1050|dp:16|ac:Mozilla|an:MSIE|cpu:x86|pf:Win32|jv:1.3|ct:lan|lg:zh-cn|tz:-8|fv:10|ja:1&PI=pid:0-9999-0-0-1|st:0|et:2|ref:|hp:N|PGLS:|ZT:|MT:|keys:|dom:536|ifr:0|nld:|drd:|bp:1|url:&UI=vid:879410263224.1612.1337171859734|sid:879410263224.1612.1337171859734|lv::1:1:1|un:|uo:|ae:&EX=ex1:|ex2:&gUid_1337171860078";
 		//ULOGIN_IMG	Sent	fe55e24c15322ed8e655ce949078e67299d6	/	.sina.com.cn	(Session)			
