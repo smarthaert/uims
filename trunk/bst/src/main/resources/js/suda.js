@@ -1,52 +1,26 @@
 (function() {
-    var af = window,//
-    k = document,//
-    z = navigator,//
-    ae = z.userAgent,//
-    o = af.screen,//
-    r = af.location.href;//
-    var ad = r.indexOf("https") > -1 ? "https://": "http://",
-    u = "beacon.sina.com.cn";
-    var p = ad + u + "/a.gif?",
-    P = ad + u + "/g.gif?",
-    y = ad + u + "/d.gif?",
-    e = ad + u + "/e.gif?";
+    var af = window, k = document, z = navigator, ae = z.userAgent, o = af.screen, r = af.location.href;
+    var ad = r.indexOf("https") > -1 ? "https://" : "http://", u = "beacon.sina.com.cn";
+    var p = ad + u + "/a.gif?", P = ad + u + "/g.gif?", y = ad + u + "/d.gif?", e = ad + u + "/e.gif?";
     var c = 0;
-    var T = k.referrer.toLowerCase();//
-    var C = "SINAGLOBAL",
-    b = "Apache",
-    aj = "ULV",
-    m = "SUP",
-    am = "UOR",
-    Z = "_s_acc",
-    R = "_s_tentry";
+    var T = k.referrer.toLowerCase();
+    var C = "SINAGLOBAL", b = "Apache", aj = "ULV", m = "SUP", am = "UOR", Z = "_s_acc", R = "_s_tentry";
     var ak = 0;
     var x = false;
-    var ah = false,
-    h = false;
+    var ah = false, h = false;
     var ag = "";
-    var Y = 16777215,
-    H = 0,
-    V, d = 0;
-    var ai = "",
-    G = "",
-    F = "";
-    var j = [],
-    J = [],
-    aa = [];
+    var Y = 16777215, H = 0, V, d = 0;
+    var ai = "", G = "", F = "";
+    var j = [], J = [], aa = [];
     var at = 0;
     var X = (function() {
-        var i = window.localStorage,
-        D, au;
+        var i = window.localStorage, D, au;
         if (i) {
-            return {
-                get: function(aw) {
+            return {get: function(aw) {
                     return unescape(i.getItem(aw))
-                },
-                set: function(aw, ax) {
+                },set: function(aw, ax) {
                     i.setItem(aw, escape(ax))
-                }
-            }
+                }}
         } else {
             if (window.ActiveXObject) {
                 D = document.documentElement;
@@ -54,39 +28,36 @@
                 try {
                     D.addBehavior("#default#userdata");
                     D.save("localstorage")
-                } catch(av) {}
-                return {
-                    set: function(aw, ax) {
+                } catch (av) {
+                }
+                return {set: function(aw, ax) {
                         try {
                             D.setAttribute(aw, ax);
                             D.save(au)
-                        } catch(ay) {}
-                    },
-                    get: function(aw) {
+                        } catch (ay) {
+                        }
+                    },get: function(aw) {
                         try {
                             D.load(au);
                             return D.getAttribute(aw)
-                        } catch(ax) {}
-                    }
-                }
+                        } catch (ax) {
+                        }
+                    }}
             } else {
-                return {
-                    get: g,
-                    set: s
-                }
+                return {get: g,set: s}
             }
         }
     })();
     function W(av, D) {
         var au = k.getElementsByName(av);
-        var i = (D > 0) ? D: 0;
-        return (au.length > i) ? au[i].content: ""
+        var i = (D > 0) ? D : 0;
+        return (au.length > i) ? au[i].content : ""
     }
     function ao(ax, D, av, au) {
         if (ax == "") {
             return ""
         }
-        au = (au == "") ? "=": au;
+        au = (au == "") ? "=" : au;
         D += au;
         var aw = ax.indexOf(D);
         if (aw < 0) {
@@ -103,7 +74,7 @@
         if (undefined == i || "" == i) {
             return ""
         }
-        return ao(k.cookie, i, ";", "")//
+        return ao(k.cookie, i, ";", "")
     }
     function s(aw, i, D, av) {
         if (i != null) {
@@ -111,14 +82,14 @@
                 av = "weibo.com"
             }
             if ((undefined == D) || (null == D) || ("" == D)) {
-                k.cookie = aw + "=" + i + ";domain=" + av + ";path=/"//
+                k.cookie = aw + "=" + i + ";domain=" + av + ";path=/"
             } else {
                 var au = new Date();
                 var ax = au.getTime();
                 ax = ax + 86400000 * D;
                 au.setTime(ax);
                 ax = au.getTime();
-                k.cookie = aw + "=" + i + ";domain=" + av + ";expires=" + au.toUTCString() + ";path=/"//
+                k.cookie = aw + "=" + i + ";domain=" + av + ";expires=" + au.toUTCString() + ";path=/"
             }
         }
     }
@@ -212,8 +183,7 @@
                 return i
             }
         };
-        for (var ax = 0,
-        ay = aB.length; ax < ay; ax++) {
+        for (var ax = 0, ay = aB.length; ax < ay; ax++) {
             if (aB[ax]) {
                 var aw = aB[ax].split("=");
                 var D = aw[0];
@@ -235,8 +205,7 @@
         return aA
     }
     function l(au, aw) {
-        for (var av = 0,
-        D = au.length; av < D; av++) {
+        for (var av = 0, D = au.length; av < D; av++) {
             aw(au[av], av)
         }
     }
@@ -248,33 +217,23 @@
             return ""
         }
     }
-    var w = {
-        screenSize: function() {
-            return (Y & 8388608 == 8388608) ? o.width + "x" + o.height: ""
-        },
-        colorDepth: function() {
-            return (Y & 4194304 == 4194304) ? o.colorDepth: ""
-        },
-        appCode: function() {
-            return (Y & 2097152 == 2097152) ? z.appCodeName: ""//
-        },
-        appName: function() {
-            return (Y & 1048576 == 1048576) ? ((z.appName.indexOf("Microsoft Internet Explorer") > -1) ? "MSIE": z.appName) : ""//
-        },
-        cpu: function() {
-            return (Y & 524288 == 524288) ? (z.cpuClass || z.oscpu) : ""//
-        },
-        platform: function() {
+    var w = {screenSize: function() {
+            return (Y & 8388608 == 8388608) ? o.width + "x" + o.height : ""
+        },colorDepth: function() {
+            return (Y & 4194304 == 4194304) ? o.colorDepth : ""
+        },appCode: function() {
+            return (Y & 2097152 == 2097152) ? z.appCodeName : ""
+        },appName: function() {
+            return (Y & 1048576 == 1048576) ? ((z.appName.indexOf("Microsoft Internet Explorer") > -1) ? "MSIE" : z.appName) : ""
+        },cpu: function() {
+            return (Y & 524288 == 524288) ? (z.cpuClass || z.oscpu) : ""
+        },platform: function() {
             return (Y & 262144 == 262144) ? (z.platform) : ""
-        },
-        jsVer: function() {
+        },jsVer: function() {
             if (Y & 131072 != 131072) {
                 return ""
             }
-            var aw, i, ay, au = 1,
-            av = 0,
-            D = (z.appName.indexOf("Microsoft Internet Explorer") > -1) ? "MSIE": z.appName,
-            ax = z.appVersion;
+            var aw, i, ay, au = 1, av = 0, D = (z.appName.indexOf("Microsoft Internet Explorer") > -1) ? "MSIE" : z.appName, ax = z.appVersion;
             if ("MSIE" == D) {
                 i = "MSIE";
                 aw = ax.indexOf(i);
@@ -298,33 +257,28 @@
                 }
             }
             return au
-        },
-        network: function() {
+        },network: function() {
             if (Y & 65536 != 65536) {
                 return ""
             }
             var i = "";
-            i = (z.connection && z.connection.type) ? z.connection.type: i;
+            i = (z.connection && z.connection.type) ? z.connection.type : i;
             try {
-                k.body.addBehavior("#default#clientCaps");//
-                i = k.body.connectionType//
-            } catch(D) {
+                k.body.addBehavior("#default#clientCaps");
+                i = k.body.connectionType
+            } catch (D) {
                 i = "unkown"
             }
             return i
-        },
-        language: function() {
+        },language: function() {
             return (Y & 32768 == 32768) ? (z.systemLanguage || z.language) : ""
-        },
-        timezone: function() {
+        },timezone: function() {
             return (Y & 16384 == 16384) ? (new Date().getTimezoneOffset() / 60) : ""
-        },
-        flashVer: function() {
+        },flashVer: function() {
             if (Y & 8192 != 8192) {
                 return ""
             }
-            var ax = z.plugins,
-            au, ay, aA;
+            var ax = z.plugins, au, ay, aA;
             if (ax && ax.length) {
                 for (var aw in ax) {
                     ay = ax[aw];
@@ -349,7 +303,8 @@
                                 au = av;
                                 break
                             }
-                        } catch(az) {}
+                        } catch (az) {
+                        }
                     }
                 } else {
                     if (ae.indexOf("webtv/2.5") != -1) {
@@ -362,15 +317,11 @@
                 }
             }
             return au
-        },
-        javaEnabled: function() {
+        },javaEnabled: function() {
             if (Y & 4096 != 4096) {
                 return ""
             }
-            var au = z.plugins,
-            D = z.javaEnabled(),
-            av,
-            aw;
+            var au = z.plugins, D = z.javaEnabled(), av, aw;
             if (D == true) {
                 return 1
             }
@@ -395,12 +346,9 @@
                 }
             }
             return D ? 1 : 0
-        }
-    };
-    var f = {
-        pageId: function(i) {
-            var D = i || ai,
-            ax = "-9999-0-0-1";
+        }};
+    var f = {pageId: function(i) {
+            var D = i || ai, ax = "-9999-0-0-1";
             if ((undefined == D) || ("" == D)) {
                 try {
                     var au = W("publishid");
@@ -415,24 +363,21 @@
                     } else {
                         D = "0"
                     }
-                } catch(av) {
+                } catch (av) {
                     D = "0"
                 }
                 D = D + ax
             }
             return D
-        },
-        sessionCount: function() {
+        },sessionCount: function() {
             var i = g("_s_upa");
             if (i == "") {
                 i = 0
             }
             return i
-        },
-        excuteCount: function() {
+        },excuteCount: function() {
             return c
-        },
-        referrer: function() {
+        },referrer: function() {
             if (Y & 2048 != 2048) {
                 return ""
             }
@@ -444,24 +389,21 @@
                 }
             }
             return escape(T)
-        },
-        isHomepage: function() {
+        },isHomepage: function() {
             if (Y & 1024 != 1024) {
                 return ""
             }
             var D = "";
             try {
-                k.body.addBehavior("#default#homePage");//
-                D = k.body.isHomePage(r) ? "Y": "N"//
-            } catch(i) {
+                k.body.addBehavior("#default#homePage");
+                D = k.body.isHomePage(r) ? "Y" : "N"
+            } catch (i) {
                 D = "unkown"
             }
             return D
-        },
-        PGLS: function() {
+        },PGLS: function() {
             return (Y & 512 == 512) ? W("stencil") : ""
-        },
-        ZT: function() {
+        },ZT: function() {
             if (Y & 256 != 256) {
                 return ""
             }
@@ -469,43 +411,34 @@
             i.replace(",", ".");
             i.replace(";", ",");
             return escape(i)
-        },
-        mediaType: function() {
+        },mediaType: function() {
             return (Y & 128 == 128) ? W("mediaid") : ""
-        },
-        domCount: function() {
-            return (Y & 64 == 64) ? k.getElementsByTagName("*").length: ""
-        },
-        iframeCount: function() {
-            return (Y & 32 == 32) ? k.getElementsByTagName("iframe").length: ""
-        },
-        onloadTime: function() {
+        },domCount: function() {
+            return (Y & 64 == 64) ? k.getElementsByTagName("*").length : ""
+        },iframeCount: function() {
+            return (Y & 32 == 32) ? k.getElementsByTagName("iframe").length : ""
+        },onloadTime: function() {
             var i;
             if (typeof __GLOBAL_STATS_PAGESTART_TIME__ != "undefined" && typeof __GLOBAL_STATS_PAGEONLOAD_TIME__ != "undefined") {
                 i = __GLOBAL_STATS_PAGEONLOAD_TIME__ - __GLOBAL_STATS_PAGESTART_TIME__
             }
-            return (Y & 16 == 16) ? i || "": ""
-        },
-        domReadyTime: function() {
+            return (Y & 16 == 16) ? i || "" : ""
+        },domReadyTime: function() {
             var i;
             if (typeof __GLOBAL_STATS_PAGESTART_TIME__ != "undefined" && typeof __GLOBAL_STATS_DOMREADY_TIME__ != "undefined") {
                 i = __GLOBAL_STATS_DOMREADY_TIME__ - __GLOBAL_STATS_PAGESTART_TIME__
             }
-            return (Y & 8 == 8) ? i || "": ""
-        },
-        bigpipe: function() {
+            return (Y & 8 == 8) ? i || "" : ""
+        },bigpipe: function() {
             return (typeof $CONFIG != "undefined" && typeof $CONFIG.bigpipe != "undefined" && $CONFIG.bigpipe == "true") ? 1 : 0
-        },
-        getRealURL: function() {
+        },getRealURL: function() {
             var i = "";
             if (typeof STK != "undefined" && typeof STK.historyM != "undefined" && typeof STK.historyM.parseURL != "undefined") {
                 i = escape(STK.historyM.parseURL().url)
             }
             return i
-        }
-    };
-    var O = {
-        visitorId: function() {
+        }};
+    var O = {visitorId: function() {
             if ("" != C) {
                 var i = g(C);
                 if ("" == i) {
@@ -516,8 +449,7 @@
             } else {
                 return ""
             }
-        },
-        sessionId: function() {
+        },sessionId: function() {
             var i = g(b);
             if ("" == i) {
                 var D = new Date();
@@ -525,13 +457,11 @@
                 s(b, i)
             }
             return i
-        },
-        lastVisit: function() {
+        },lastVisit: function() {
             var au = g(b);
             var aw = g(aj);
             var av = aw.split(":");
-            var ax = "",
-            D;
+            var ax = "", D;
             if (av.length >= 6) {
                 if (au != av[4]) {
                     D = new Date();
@@ -564,8 +494,7 @@
                 s(aj, D.getTime() + ax + ":" + au + ":", 360)
             }
             return ax
-        },
-        userNick: function() {
+        },userNick: function() {
             if (ag != "") {
                 return ag
             }
@@ -581,8 +510,7 @@
             } else {
                 return ""
             }
-        },
-        userOrigin: function() {
+        },userOrigin: function() {
             if (Y & 4 != 4) {
                 return ""
             }
@@ -593,18 +521,10 @@
             } else {
                 return ""
             }
-        },
-        advCount: function() {
+        },advCount: function() {
             return (Y & 2 == 2) ? g(Z) : ""
-        },
-        setUOR: function() {
-            var az = g(am),
-            aD = "",
-            D = "",
-            aC = "",
-            aw = "",
-            aA = r.toLowerCase(),
-            au = k.referrer.toLowerCase();//
+        },setUOR: function() {
+            var az = g(am), aD = "", D = "", aC = "", aw = "", aA = r.toLowerCase(), au = k.referrer.toLowerCase();
             var aE = /[&|?]c=spr(_[A-Za-z0-9]{1,}){3,}/;
             var ay = new Date();
             if (aA.match(aE)) {
@@ -624,8 +544,7 @@
                 }
                 s(am, aD + "," + D + "," + aC, 365)
             } else {
-                var ax = 0,
-                aB = az.split(",");
+                var ax = 0, aB = az.split(",");
                 if (aB.length >= 1) {
                     aD = aB[0]
                 }
@@ -650,8 +569,7 @@
                     s(am, aD + "," + D + "," + aC, 365)
                 }
             }
-        },
-        setAEC: function(i) {
+        },setAEC: function(i) {
             if ("" == i) {
                 return
             }
@@ -660,37 +578,15 @@
                 D = D + i + ","
             }
             s(Z, D, 7)
-        }
-    };
-    var ar = {
-        picList: [{
-            url: "http://ww1.sinaimg.cn/large/53d96fe3tw1diw52tyd28j.jpg",
-            size: 23243
-        },
-        {
-            url: "http://ww2.sinaimg.cn/large/53d96fe3tw1diw52tyd28j.jpg",
-            size: 23243
-        },
-        {
-            url: "http://ww3.sinaimg.cn/large/53d96fe3tw1diw52tyd28j.jpg",
-            size: 23243
-        },
-        {
-            url: "http://ww4.sinaimg.cn/large/53d96fe3tw1diw52tyd28j.jpg",
-            size: 23243
-        }],
-        picOk: false,
-        picData: [],
-        picture: function() {
+        }};
+    var ar = {picList: [{url: "http://ww1.sinaimg.cn/large/53d96fe3tw1diw52tyd28j.jpg",size: 23243}, {url: "http://ww2.sinaimg.cn/large/53d96fe3tw1diw52tyd28j.jpg",size: 23243}, {url: "http://ww3.sinaimg.cn/large/53d96fe3tw1diw52tyd28j.jpg",size: 23243}, {url: "http://ww4.sinaimg.cn/large/53d96fe3tw1diw52tyd28j.jpg",size: 23243}],picOk: false,picData: [],picture: function() {
             if ((H & 8) != 8) {
                 ar.picOk = true;
                 return ""
             }
             var av = new Date().getTime();
-            var ax = [],
-            au;
-            for (var aw = 0,
-            D = ar.picList.length; aw < D; aw++) {
+            var ax = [], au;
+            for (var aw = 0, D = ar.picList.length; aw < D; aw++) {
                 au = new Image();
                 SUDA.img = au;
                 au.src = ar.picList[aw].url + "?" + Math.random();
@@ -706,35 +602,14 @@
                 })(aw);
                 ax.push(au)
             }
-        },
-        porList: [{
-            url: "http://tp1.sinaimg.cn/1772026304/50/5603504743/1",
-            size: 3488
-        },
-        {
-            url: "http://tp2.sinaimg.cn/1780417033/50/1280367872/0",
-            size: 4021
-        },
-        {
-            url: "http://tp3.sinaimg.cn/1075913170/50/5601477177/1",
-            size: 3456
-        },
-        {
-            url: "http://tp4.sinaimg.cn/1245851035/50/1279876078/1",
-            size: 2519
-        }],
-        porOk: false,
-        porData: [],
-        portait: function() {
+        },porList: [{url: "http://tp1.sinaimg.cn/1772026304/50/5603504743/1",size: 3488}, {url: "http://tp2.sinaimg.cn/1780417033/50/1280367872/0",size: 4021}, {url: "http://tp3.sinaimg.cn/1075913170/50/5601477177/1",size: 3456}, {url: "http://tp4.sinaimg.cn/1245851035/50/1279876078/1",size: 2519}],porOk: false,porData: [],portait: function() {
             if ((H & 4) != 4) {
                 ar.porOk = true;
                 return ""
             }
             var av = new Date().getTime();
-            var ax = [],
-            au;
-            for (var aw = 0,
-            D = ar.porList.length; aw < D; aw++) {
+            var ax = [], au;
+            for (var aw = 0, D = ar.porList.length; aw < D; aw++) {
                 au = new Image();
                 SUDA.img = au;
                 au.src = ar.porList[aw].url + "?" + Math.random();
@@ -750,23 +625,14 @@
                 })(aw);
                 ax.push(au)
             }
-        },
-        jsList: [{
-            url: "http://js.t.sinajs.cn/t4/home/static/suda/feed.png",
-            size: 21287
-        }],
-        jsOk: false,
-        jsData: [],
-        jsSpeed: function() {
+        },jsList: [{url: "http://js.t.sinajs.cn/t4/home/static/suda/feed.png",size: 21287}],jsOk: false,jsData: [],jsSpeed: function() {
             if ((H & 2) != 2) {
                 ar.jsOk = true;
                 return ""
             }
             var av = new Date().getTime();
-            var ax = [],
-            au;
-            for (var aw = 0,
-            D = ar.jsList.length; aw < D; aw++) {
+            var ax = [], au;
+            for (var aw = 0, D = ar.jsList.length; aw < D; aw++) {
                 au = new Image();
                 SUDA.img = au;
                 au.src = ar.jsList[aw].url + "?" + Math.random();
@@ -782,23 +648,14 @@
                 })(aw);
                 ax.push(au)
             }
-        },
-        cssList: [{
-            url: "http://img.t.sinajs.cn/t4/style/images/mobile/android/cp_3.jpg",
-            size: 24472
-        }],
-        cssOk: false,
-        cssData: [],
-        cssSpeed: function() {
+        },cssList: [{url: "http://img.t.sinajs.cn/t4/style/images/mobile/android/cp_3.jpg",size: 24472}],cssOk: false,cssData: [],cssSpeed: function() {
             if ((H & 1) != 1) {
                 ar.cssOk = true;
                 return ""
             }
             var av = new Date().getTime();
-            var ax = [],
-            au;
-            for (var aw = 0,
-            D = ar.cssList.length; aw < D; aw++) {
+            var ax = [], au;
+            for (var aw = 0, D = ar.cssList.length; aw < D; aw++) {
                 au = new Image();
                 SUDA.img = au;
                 au.src = ar.cssList[aw].url + "?" + Math.random();
@@ -814,48 +671,36 @@
                 })(aw);
                 ax.push(au)
             }
-        }
-    };
-    var t = {
-        CI: function() {
+        }};
+    var t = {CI: function() {
             var i = ["sz:" + w.screenSize(), "dp:" + w.colorDepth(), "ac:" + w.appCode(), "an:" + w.appName(), "cpu:" + w.cpu(), "pf:" + w.platform(), "jv:" + w.jsVer(), "ct:" + w.network(), "lg:" + w.language(), "tz:" + w.timezone(), "fv:" + w.flashVer(), "ja:" + w.javaEnabled()];
             return "CI=" + i.join("|")
-        },
-        PI: function(i) {
+        },PI: function(i) {
             var D = ["pid:" + f.pageId(i), "st:" + f.sessionCount(), "et:" + f.excuteCount(), "ref:" + f.referrer(), "hp:" + f.isHomepage(), "PGLS:" + f.PGLS(), "ZT:" + f.ZT(), "MT:" + f.mediaType(), "keys:", "dom:" + f.domCount(), "ifr:" + f.iframeCount(), "nld:" + f.onloadTime(), "drd:" + f.domReadyTime(), "bp:" + f.bigpipe(), "url:" + f.getRealURL()];
             return "PI=" + D.join("|")
-        },
-        UI: function() {
+        },UI: function() {
             var i = ["vid:" + O.visitorId(), "sid:" + O.sessionId(), "lv:" + O.lastVisit(), "un:" + O.userNick(), "uo:" + O.userOrigin(), "ae:" + O.advCount()];
             return "UI=" + i.join("|")
-        },
-        EX: function(D, i) {
+        },EX: function(D, i) {
             if (Y & 1 != 1) {
                 return ""
             }
-            D = (null != D) ? D || "": G;
-            i = (null != i) ? i || "": F;
+            D = (null != D) ? D || "" : G;
+            i = (null != i) ? i || "" : F;
             return "EX=ex1:" + D + "|ex2:" + i
-        },
-        P_PI: function() {
+        },P_PI: function() {
             var i = ["pic:" + ar.picture(), "por:" + ar.portait(), "js:" + ar.jsSpeed(), "css:" + ar.cssSpeed(), "ref:" + f.referrer()];
             return "PI=" + i.join("|")
-        },
-        P_UI: function() {
+        },P_UI: function() {
             var i = ["vid:" + O.visitorId(), "sid:" + O.sessionId(), "un:" + O.userNick()];
             return "UI=" + i.join("|")
-        },
-        V: function() {
+        },V: function() {
             return "V=2"
-        },
-        R: function() {
+        },R: function() {
             return "gUid_" + new Date().getTime()
-        }
-    };
+        }};
     function L() {
-        var ax = "-",
-        au = k.referrer.toLowerCase(),
-        D = r.toLowerCase();
+        var ax = "-", au = k.referrer.toLowerCase(), D = r.toLowerCase();
         if ("" == g(R)) {
             if ("" != au) {
                 ax = S(au)
@@ -906,6 +751,36 @@
             s(C, aw)
         }
         var D = p + [t.V(), t.CI(), t.PI(i), t.UI(), t.EX(av, au), t.R()].join("&");
+        //V=2
+        //CI
+        //publishid	=>0-9999-0-0-1
+        //g() _s_upa ""
+        //c 2
+        //T => http://login.sina.com.cn/sso/login.php?url=http%3a%2f%2fweibo.com%2f&_rand=1337609911.1192&gateway=1&service=miniblog&entry=miniblog&useticket=1&returntype=meta
+        //unknown
+        //(Y & 512 == 512) ? W("stencil") : ""	(16777215)
+        //W("subjectid"); ""
+        //(Y & 128 == 128) ? W("mediaid") : ""
+        //(Y & 64 == 64) ? k.getElementsByTagName("*").length : ""
+        //(Y & 32 == 32) ? k.getElementsByTagName("iframe").length : ""
+        //i = __GLOBAL_STATS_PAGEONLOAD_TIME__ - __GLOBAL_STATS_PAGESTART_TIME__
+        //i = __GLOBAL_STATS_DOMREADY_TIME__ - __GLOBAL_STATS_PAGESTART_TIME__
+        //$CONFIG.bigpipe == "true" ""
+        //i = escape(STK.historyM.parseURL().url) ""
+        
+        //g(C)	SINAGLOBAL  1232985227834.4333.1336833278848
+        //		Apache	1232985227834.4333.1336833278848
+        //Apache	ULV	1336833278872:1:1:1:1232985227834.4333.1336833278848:	ax = av[5] + ":" + av[1] + ":" + av[2] + ":" + av[3]	
+        //SUP	
+        //UOR	i.split(":") D[0]
+        //_s_acc	
+        
+        //D = (null != D) ? D || "" : G;	i = (null != i) ? i || "" : F;
+        //"gUid_" + new Date().getTime()
+        
+        
+        
+        
         B(D);
         al()
     }
@@ -916,7 +791,7 @@
                 return
             }
         }
-        if ("https:" == k.location.protocol || x == true) {//
+        if ("https:" == k.location.protocol || x == true) {
             return
         }
         if (typeof V == "function") {
@@ -968,9 +843,8 @@
             if (D.urls.replace(/\s/g, "") != "") {
                 var ax = D.urls.split(",");
                 if (ax.length > 0) {
-                    for (var av = 0,
-                    aw = ax.length; av < aw; av++) {
-                        var aA = ax[av] + (ax[av].indexOf("?") == -1 ? "?": "&") + aB + "&gUid_" + new Date().getTime();
+                    for (var av = 0, aw = ax.length; av < aw; av++) {
+                        var aA = ax[av] + (ax[av].indexOf("?") == -1 ? "?" : "&") + aB + "&gUid_" + new Date().getTime();
                         ac(aA)
                     }
                 }
@@ -980,15 +854,10 @@
     function E(ay) {
         var aB = ap(ay);
         var D = aB.target;
-        var aw = "",
-        aA = "",
-        az = "",
-        av = "",
-        i = "",
-        ax = "";
+        var aw = "", aA = "", az = "", av = "", i = "", ax = "";
         var au;
         if (D != null && D.getAttribute && (!D.getAttribute("suda-uatrack") && !D.getAttribute("suda-actrack") && !D.getAttribute("suda-data"))) {
-            while (D != null && D.getAttribute && ( !! D.getAttribute("suda-uatrack") || !!D.getAttribute("suda-actrack") || !!D.getAttribute("suda-data")) == false) {
+            while (D != null && D.getAttribute && (!!D.getAttribute("suda-uatrack") || !!D.getAttribute("suda-actrack") || !!D.getAttribute("suda-data")) == false) {
                 if (D == k.body) {
                     return
                 }
@@ -1009,11 +878,7 @@
             }
             ax = f.getRealURL();
             au.value = au.value + az;
-            au.key && SUDA.uaTrack && SUDA.uaTrack(au.key, au.value || au.key, {
-                href: i,
-                realUrl: ax,
-                urls: av
-            })
+            au.key && SUDA.uaTrack && SUDA.uaTrack(au.key, au.value || au.key, {href: i,realUrl: ax,urls: av})
         }
         if (aw) {
             au = Q(aw);
@@ -1042,84 +907,81 @@
                 return ""
             }
             switch (aE) {
-            case "parent":
-                au = au.parentNode;
-                while (au != null) {
-                    if (au.getAttribute("suda-sizzle") != null) {
-                        if (aJ != "*" && au.tagName.toLowerCase() != aJ) {
-                            au = au.parentNode;
-                            if (au == document.body) {
-                                return ""
-                            }
-                            continue
-                        }
-                        aG = au.getAttribute("suda-sizzle");
-                        az = aG.split(",");
-                        if (aG[0] && D == aG[0]) {
-                            return (au.getAttribute("suda-ext") || "") + U(au, aG)
-                        } else {
-                            au = au.parentNode;
-                            if (au == document.body) {
-                                return ""
-                            }
-                            continue
-                        }
-                    }
+                case "parent":
                     au = au.parentNode;
-                    if (au == document.body) {
-                        return ""
-                    }
-                }
-                return "";
-            case "sibling":
-                au = au.parentNode.children || au.parentNode.childNodes;
-                for (var aw = 0,
-                aA = au.length; aw < aA; aw++) {
-                    if (au[aw].getAttribute("suda-sizzle") != null) {
-                        if (aJ != "*" && au[aw].tagName.toLowerCase() != aJ) {
-                            continue
+                    while (au != null) {
+                        if (au.getAttribute("suda-sizzle") != null) {
+                            if (aJ != "*" && au.tagName.toLowerCase() != aJ) {
+                                au = au.parentNode;
+                                if (au == document.body) {
+                                    return ""
+                                }
+                                continue
+                            }
+                            aG = au.getAttribute("suda-sizzle");
+                            az = aG.split(",");
+                            if (aG[0] && D == aG[0]) {
+                                return (au.getAttribute("suda-ext") || "") + U(au, aG)
+                            } else {
+                                au = au.parentNode;
+                                if (au == document.body) {
+                                    return ""
+                                }
+                                continue
+                            }
                         }
-                        aG = au[aw].getAttribute("suda-sizzle");
-                        az = aG.split(",");
-                        if (aG[0] && D == aG[0]) {
-                            return (au[aw].getAttribute("suda-ext") || "") + U(au[aw], aG)
-                        } else {
-                            continue
-                        }
-                    }
-                }
-                return "";
-            case "child":
-                au = au.getElementsByTagName(aJ);
-                for (var av = 0,
-                ay = au.length; av < ay; av++) {
-                    if (au[av].getAttribute("suda-sizzle") != null) {
-                        if (aJ != "*" && au[av].tagName.toLowerCase() != aJ) {
-                            continue
-                        }
-                        aG = au[av].getAttribute("suda-sizzle");
-                        az = aG.split(",");
-                        if (aG[0] && D == aG[0]) {
-                            return (au[av].getAttribute("suda-ext") || "") + U(au[av], aG)
-                        } else {
-                            continue
+                        au = au.parentNode;
+                        if (au == document.body) {
+                            return ""
                         }
                     }
-                }
-                return ""
+                    return "";
+                case "sibling":
+                    au = au.parentNode.children || au.parentNode.childNodes;
+                    for (var aw = 0, aA = au.length; aw < aA; aw++) {
+                        if (au[aw].getAttribute("suda-sizzle") != null) {
+                            if (aJ != "*" && au[aw].tagName.toLowerCase() != aJ) {
+                                continue
+                            }
+                            aG = au[aw].getAttribute("suda-sizzle");
+                            az = aG.split(",");
+                            if (aG[0] && D == aG[0]) {
+                                return (au[aw].getAttribute("suda-ext") || "") + U(au[aw], aG)
+                            } else {
+                                continue
+                            }
+                        }
+                    }
+                    return "";
+                case "child":
+                    au = au.getElementsByTagName(aJ);
+                    for (var av = 0, ay = au.length; av < ay; av++) {
+                        if (au[av].getAttribute("suda-sizzle") != null) {
+                            if (aJ != "*" && au[av].tagName.toLowerCase() != aJ) {
+                                continue
+                            }
+                            aG = au[av].getAttribute("suda-sizzle");
+                            az = aG.split(",");
+                            if (aG[0] && D == aG[0]) {
+                                return (au[av].getAttribute("suda-ext") || "") + U(au[av], aG)
+                            } else {
+                                continue
+                            }
+                        }
+                    }
+                    return ""
             }
         } else {
-            var aI = aD.split("["),
-            aF;
+            var aI = aD.split("["), aF;
             switch (aI.length) {
-            case 1:
-                aJ = aI[0];
-                break;
-            case 2:
-            default:
-                aJ = aI[0];
-                aF = aI[1];
-                break
+                case 1:
+                    aJ = aI[0];
+                    break;
+                case 2:
+                default:
+                    aJ = aI[0];
+                    aF = aI[1];
+                    break
             }
             if (aF) {
                 aF = aF.replace(/['"\]]/g, "").split("=");
@@ -1153,51 +1015,50 @@
         }
     }
     if (window.SUDA && Object.prototype.toString.call(window.SUDA) === "[object Array]") {
-        for (var an = 0,
-        A = SUDA.length; an < A; an++) {
+        for (var an = 0, A = SUDA.length; an < A; an++) {
             switch (SUDA[an][0]) {
-            case "setGatherType":
-                Y = SUDA[an][1];
-                break;
-            case "setGatherInfo":
-                ai = SUDA[an][1] || ai;
-                G = SUDA[an][2] || G;
-                F = SUDA[an][3] || F;
-                break;
-            case "setPerformance":
-                H = SUDA[an][1];
-                break;
-            case "setPerformanceFilter":
-                V = SUDA[an][1];
-                break;
-            case "setPerformanceInterval":
-                d = SUDA[an][1] * 1 || 0;
-                d = isNaN(d) ? 0 : d;
-                break;
-            case "setGatherMore":
-                j.push(SUDA[an].slice(1));
-                break;
-            case "acTrack":
-                J.push(SUDA[an].slice(1));
-                break;
-            case "uaTrack":
-                aa.push(SUDA[an].slice(1));
-                break
+                case "setGatherType":
+                    Y = SUDA[an][1];
+                    break;
+                case "setGatherInfo":
+                    ai = SUDA[an][1] || ai;
+                    G = SUDA[an][2] || G;
+                    F = SUDA[an][3] || F;
+                    break;
+                case "setPerformance":
+                    H = SUDA[an][1];
+                    break;
+                case "setPerformanceFilter":
+                    V = SUDA[an][1];
+                    break;
+                case "setPerformanceInterval":
+                    d = SUDA[an][1] * 1 || 0;
+                    d = isNaN(d) ? 0 : d;
+                    break;
+                case "setGatherMore":
+                    j.push(SUDA[an].slice(1));
+                    break;
+                case "acTrack":
+                    J.push(SUDA[an].slice(1));
+                    break;
+                case "uaTrack":
+                    aa.push(SUDA[an].slice(1));
+                    break
             }
         }
     }
     L();
     O.setUOR();
     ah = (function(D, i) {
-        if (af.top == af) {//
+        if (af.top == af) {
             return false
         } else {
             try {
-                if (k.body.clientHeight == 0) {//
+                if (k.body.clientHeight == 0) {
                     return false
                 }
-                return ((k.body.clientHeight >= D) && (k.body.clientWidth >= i)) ? false: true//
-            } catch(au) {
+                return ((k.body.clientHeight >= D) && (k.body.clientWidth >= i)) ? false : true
+            } catch (au) {
                 return true
             }
         }
@@ -1212,20 +1073,17 @@
         })
     }
     if (j.length > 0) {
-        l(j,
-        function(D, i) {
+        l(j, function(D, i) {
             v.apply(null, D)
         })
     }
     if (J.length > 0) {
-        l(J,
-        function(D, i) {
-            K.apply(null, D)//
+        l(J, function(D, i) {
+            K.apply(null, D)
         })
     }
     if (aa.length > 0) {
-        l(aa,
-        function(D, i) {
+        l(aa, function(D, i) {
             N.apply(null, D)
         })
     }
@@ -1234,10 +1092,10 @@
         v.apply(null, arguments)
     };
     SUDA.acTrack = function() {
-        K.apply(null, arguments)//
+        K.apply(null, arguments)
     };
     SUDA.uaTrack = function() {
         N.apply(null, arguments)
     };
-    q(k.body, "click", E)//
+    q(k.body, "click", E)
 })();
