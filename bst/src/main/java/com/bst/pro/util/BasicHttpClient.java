@@ -4,8 +4,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import javax.script.ScriptEngineManager;
 
 import net.sf.json.JSONException;
 
@@ -26,6 +30,7 @@ import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.protocol.HttpContext;
@@ -37,10 +42,24 @@ public class BasicHttpClient {
 
 	// create httpclient
 	static HttpClient httpclient = new DefaultHttpClient();
+	public static HttpClient getHttpclient() {
+		return httpclient;
+	}
+
+	public static HttpContext getLocalContext() {
+		return localContext;
+	}
+
+	public static CookieStore getCookieStroe() {
+		return cookieStroe;
+	}
+
 	// create context
 	static HttpContext localContext = new BasicHttpContext();
 	// create cookie manager
 	static CookieStore cookieStroe = new BasicCookieStore();
+	
+	protected static ScriptEngineManager sem = new ScriptEngineManager();
 
 	/**
 	 * 使用本地cookie管理
@@ -98,6 +117,34 @@ public class BasicHttpClient {
 			loginPost.abort();
 		}
 	}
+	/**
+	 * 带参数POST
+	 * @param url
+	 * @param values
+	 * @return
+	 */
+	protected static String postText(String url, Map<String, String> values) {
+		HttpPost httppost = new HttpPost(url);
+		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+		for (Map.Entry<String, String> e : values.entrySet()) {
+			nvps.add(new BasicNameValuePair(e.getKey(), e.getValue()));
+		}
+		// Create a response handler
+		ResponseHandler<String> brh = new BasicResponseHandler();
+		String responseBody = "";
+		try {
+			httppost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
+			responseBody = httpclient.execute(httppost, brh,
+					localContext);
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseBody = null;
+		} finally {
+			httppost.abort();
+			// httpclient.getConnectionManager().shutdown();
+		}
+		return responseBody;
+	}
 
 	/**
 	 * 获取验证码并提示用户输入
@@ -140,6 +187,25 @@ public class BasicHttpClient {
 	 */
 	protected static Document getText(String url) {
 		HttpGet httpget = new HttpGet(url);
+
+		ResponseHandler<Document> jrh = new JsoupResponseHandler();
+		Document page = null;
+		try {
+			page = httpclient.execute(httpget, jrh, localContext);
+			log.debug(page.toString());
+			cookieDisplay(cookieStroe);
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			httpget.abort();
+		}
+		return page;
+	}
+	
+	protected static Document getText(URI uri) {
+		HttpGet httpget = new HttpGet(uri);
 
 		ResponseHandler<Document> jrh = new JsoupResponseHandler();
 		Document page = null;
