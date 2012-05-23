@@ -15,7 +15,6 @@ import java.util.regex.Pattern;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
-import org.apache.http.client.utils.URIUtils;
 import org.apache.log4j.Logger;
 import org.jsoup.nodes.Document;
 
@@ -27,7 +26,7 @@ public class SinaTest extends BasicHttpClient {
 	
 	public static void main(String[] args) {
 		//use proxy 
-		setProxy("10.100.0.6", 8080, "http");
+//		setProxy("10.100.0.6", 8080, "http");
 		
 		//visit start page to get pluginUrl
 		//<script type="text/javascript" src="http://js.t.sinajs.cn/t4/apps/secure/js/login/plugin.js?version=5a0ed6785bc45f79"></script>
@@ -102,8 +101,8 @@ public class SinaTest extends BasicHttpClient {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		String username = "a.t.jamy@ustc.edu";
-		String password = "zaqwsxcde123";
+		String username = "randb001@163.com";
+		String password = "zaqwsxcde";
 		String sp = "";
 		String su = "";
 		String spFunStr = "sinaSSOEncoder.hex_sha1(\"\" + sinaSSOEncoder.hex_sha1(sinaSSOEncoder.hex_sha1('" +
@@ -286,7 +285,7 @@ public class SinaTest extends BasicHttpClient {
 		//http://kandian.com/logon/do_crossdomain.php?action=login&savestate=1337776681&callback=sinaSSOController.doCrossDomainCallBack&scriptId=ssoscript0&client=ssologin.js(v1.3.22)&_=1337171883156
 		
 		
-		//send blog
+		//send mini blog
 		//http://weibo.com/aj/mblog/add?__rnd=1337171949156
 		//Query String
 		//U_TRS1	Received	000000a9.3d015ee3.4fb39fdf.dfd00358	/	.sina.com.cn	Sat, 14-May-22 12:38:55 GMT			
