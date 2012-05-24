@@ -26,9 +26,12 @@ public class SinaTest extends BasicHttpClient {
 	
 	public static void main(String[] args) {
 		//use proxy 
-//		setProxy("10.100.0.6", 8080, "http");
+		setProxy("10.100.0.6", 8080, "http");
 		
-		//visit start page to get pluginUrl
+		String username = "guodayaofan@163.com";
+		String password = "bgtyhnmju";
+		
+		//visit start page to get pluginUrl and wvr
 		//<script type="text/javascript" src="http://js.t.sinajs.cn/t4/apps/secure/js/login/plugin.js?version=5a0ed6785bc45f79"></script>
 		
 		//
@@ -42,6 +45,16 @@ public class SinaTest extends BasicHttpClient {
 		if (m.find()) {
 			version = m.group(1);
 			log.info(version);
+		}
+		
+
+		String confJs = doc.select("script:not([src])").html(); 
+		p = Pattern.compile("\"&wvr=([^\\\"]+)\"");
+		m = p.matcher(confJs); 
+		String wvr = null;
+		if (m.find()) {
+			wvr = m.group(1);
+			log.info(wvr);
 		}
 		
 		
@@ -101,8 +114,6 @@ public class SinaTest extends BasicHttpClient {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		String username = "randb001@163.com";
-		String password = "zaqwsxcde";
 		String sp = "";
 		String su = "";
 		String spFunStr = "sinaSSOEncoder.hex_sha1(\"\" + sinaSSOEncoder.hex_sha1(sinaSSOEncoder.hex_sha1('" +
@@ -283,6 +294,41 @@ public class SinaTest extends BasicHttpClient {
 		
 		//visit this page to get SSOLoginState
 		//http://kandian.com/logon/do_crossdomain.php?action=login&savestate=1337776681&callback=sinaSSOController.doCrossDomainCallBack&scriptId=ssoscript0&client=ssologin.js(v1.3.22)&_=1337171883156
+		String do_crossdomainUrl = "http://kandian.com/logon/do_crossdomain.php?action=login&savestate=1337776681" +
+				"&callback=sinaSSOController.doCrossDomainCallBack&scriptId=ssoscript0&client=ssologin.js(v1.3.22)" +
+				"&_=" +
+				"1337171883156";
+		
+		
+		//visit this page to get _surl and pic_id
+		//{text: c,pic_id: d,rank: e,_surl: j}
+		//c = l.API.getWords(), d = l.API.getExtra(), e = o.rank(), j = l.API.getShortUrlLog(),
+		//var b, c = e.textEl.getAttribute("extra") || "";
+		//http://js2.t.sinajs.cn/t4/home/js/pl/content/publisherTop.js?version=5a0ed6785bc45f79
+		String publisherTopUrl = "http://js2.t.sinajs.cn/t4/home/js/pl/content/publisherTop.js?" +
+				"version=" +
+				version;
+		
+		//visit this page to get deliverUrl
+		//extra:{psId:"PDPS000000028368",wbVersion:$CONFIG.isnarrow?"v4":"v4w",rnd:"0",jsonp:"JSONP_164GNI9952"
+		//extra:\{psId:"([^\\\"]+)",wbVersion:\$CONFIG.isnarrow\?"([^\\\"]+)":"([^\\\"]+)",rnd:"([^\\\"]+)",jsonp:"([^\\\"]+)"
+		//http://js2.t.sinajs.cn/t4/home/js/pl/content/promotetopic.js?version=5a0ed6785bc45f79
+		String promotetopicUrl = "http://js2.t.sinajs.cn/t4/home/js/pl/content/promotetopic.js?" +
+				"version=" +
+				version;
+//				"5a0ed6785bc45f79";
+		
+		
+		//visit this page to get SinaRot
+		//http://ta.sass.sina.com.cn/front/deliver?psId=PDPS000000028368&wbVersion=v4&rnd=0&jsonp=JSONP_164GNI9952&_t=1&_v=STK_133717188476552
+		String deliverUrl = "http://ta.sass.sina.com.cn/front/deliver?psId=PDPS000000028368" +
+				"&wbVersion=v4" +
+				"&rnd=0" +
+				"&jsonp=JSONP_164GNI9952" +
+				"&_t=1" +
+				"&_v=STK_133717188476552";
+		
+		
 		
 		
 		//send mini blog
@@ -291,8 +337,8 @@ public class SinaTest extends BasicHttpClient {
 		//U_TRS1	Received	000000a9.3d015ee3.4fb39fdf.dfd00358	/	.sina.com.cn	Sat, 14-May-22 12:38:55 GMT			
 		//U_TRS2	Received	000000a9.3d155ee3.4fb39fdf.4833579d	/	.sina.com.cn	(Session)			
 
-		//_s_tentry	Sent	-	/	.weibo.com	(Session)			
-		//ads_ck	Sent	1	/	.weibo.com	Thu, 17 May 2012 12:38:07 UTC			
+			//_s_tentry	Sent	-	/	.weibo.com	(Session)			
+			//ads_ck	Sent	1	/	.weibo.com	Thu, 17 May 2012 12:38:07 UTC			
 			//ALF	Sent	1337776681	/	.weibo.com	Wed, 23-May-2012 12:38:01 GMT			
 			//Apache	Sent	879410263224.1612.1337171859734	/	.weibo.com	(Session)			
 			//SINAGLOBAL	Sent	879410263224.1612.1337171859734	/	.weibo.com	(Session)			
@@ -301,11 +347,21 @@ public class SinaTest extends BasicHttpClient {
 			//SUE	Sent	es=6e13315a56b2f0304a0edc20160df2cc&ev=v1&es2=9bb55245e4550483f04554583841468d&rs0=J9FJp1N6EtWBTxNph8tjCEDmqbyJ6v5U1v%2F%2Beb%2F34wNUT8MUXWOkx%2FRJq9vs4i3GaXUL4kOof8Z%2B6ces5QNw%2Fcmzrj7SLEmLD1at08N1F8DdNumF5mM4elSYXEieceVTZvqtQkKpmPE7feJ5feEVjEYTJiI%2F5ApulE1oVBBbexo%3D&rv=0	/	.weibo.com	(Session)			
 			//SUP	Sent	cv=1&bt=1337171882&et=1337258282&d=c909&i=5cc4&us=1&vf=0&vt=0&ac=0&uid=2641401734&user=a.t.jamy%40ustc.edu&ag=4&name=a.t.jamy%40ustc.edu&nick=%E4%B9%96%E4%B9%96%E7%9A%84%E7%AC%A8%E7%AC%A8&fmp=&lcp=2012-01-16%2009%3A11%3A10	/	.weibo.com	(Session)			
 			//SUS	Sent	SID-2641401734-1337171882-JA-ie2v4-063edd74257dab0172bd69e6ea34153f	/	.weibo.com	(Session)			
-		//ULV	Sent	1337171860078:1:1:1:879410263224.1612.1337171859734:	/	.weibo.com	Sat, 11 May 2013 12:37:40 UTC			
+		//ULV	Sent	1337171860078:1:1:1:879410263224.1612.1337171859734:	/	.weibo.com	Sat, 11 May 2013 12:37:40 UTC			//s(aj, D.getTime() + ax + ":" + au + ":", 360)
 			//un	Sent	a.t.jamy@ustc.edu	/	.weibo.com	Sat, 26 May 2012 12:38:03 UTC			
 		//UOR	Sent	,weibo.com,	/	.weibo.com	Thu, 16 May 2013 12:37:39 UTC			
 			//USRHAWB	Sent	usrmdins211152	/	.weibo.com	(Session)			
-		//wvr	Sent	3.6	/	.weibo.com	Wed, 23 May 2012 12:37:50		
+			//wvr	Sent	3.6	/	.weibo.com	Wed, 23 May 2012 12:37:50		
+		
+		
+		//POST DATA
+			//_surl		6	
+			//_t	0	4	
+			//location	home	13	//d = {location: $CONFIG.location};
+			//module	stissue	14	b = a.kit.extra.merge(b, a.core.json.queryToJson(a.kit.dom.parentAttr(arguments[c++], "diss-data", arguments[c]) || "")); 
+			//pic_id		7	
+		//rank		5	
+			//text	一直以为今天周四/生命中又多了一天/呵呵/	176	
 		
 	}
 }
