@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,11 +37,16 @@ import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.protocol.HttpContext;
 import org.apache.log4j.Logger;
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import com.bst.pro.util.DealDecision;
 import com.bst.pro.util.ImageResponseHandler;
 import com.bst.pro.util.JSONObjectResponseHandler;
 import com.bst.pro.util.JsoupResponseHandler;
+import com.bst.pro.util.PanKou;
+import com.bst.pro.util.StockInfo;
+import com.bst.pro.util.StockReport;
 
 public class MNTradeTest {
 	static Logger log = Logger.getLogger(MNTradeTest.class.getName());
@@ -113,34 +120,99 @@ public class MNTradeTest {
 		getText(loginMncgUrl);
 
 		// visit my room page
+		// get all the bisai 
 		String myRoomUrl = "http://mntrade.gtja.com/mncg/roomIndexAction.do?method=getMyRoom&current_page=1";
 		postText(myRoomUrl);
+		
 
 		String loginRoomUrl = "http://mntrade.gtja.com/mncg/loginAction.do?method=loginRoom&edition=pro&roomId=1";
 		getText(loginRoomUrl);
-
+		
+		
 		String getFundsUrl = "http://mntrade.gtja.com/mncg/stockAction.do?method=getFunds";
-		postText(getFundsUrl);
+		String rpStr = postText(getFundsUrl);
+		//每天报告资产总值和盈亏
+		Document rpDoc = Jsoup.parse(rpStr);
+		StockReport sr = new StockReport(rpDoc);
 
-		// query stock info by id
-		String stockCode = "002006";
-		queryStockByCode(stockCode);
+		//根据盈亏情况决定是否卖出
+		//http://mntrade.gtja.com/mncg/stockAction.do?method=getStockPosition&current_page=1
+		String stockListPageUrl = "http://mntrade.gtja.com/mncg/stockAction.do?method=getStockPosition&current_page=1";
+		String stockListStr = postText(stockListPageUrl);
+		Document slDoc = Jsoup.parse(stockListStr);
+		DealDecision dd = new DealDecision(slDoc);
+		List<StockInfo> sellStockList = dd.getSellStock();
+		for(StockInfo si : sellStockList){
+			String ret = sellStock(si);
+			log.info(ret);
+		}
+		
+		
+		//委托成功短信通知
+		//{cssweb_type:'success',cssweb_msg:'委托成功，委托编号为：1011473'}
 
+		//logout the system
+		
 		httpclient.getConnectionManager().shutdown();
+	}
+
+	private static String sellStock(StockInfo si) {
+		// query stock info by id
+		String stockCode = si.getStockCode();
+		String qty = Integer.toBinaryString(si.getStockQuantity());
+		String pankouStr = queryStockByCode(stockCode);
+		Document pkDoc = Jsoup.parse(pankouStr);
+		PanKou pk = new PanKou(pkDoc, 1);
+		//get the price
+		String price = new Float(pk.getSellPrice(Integer.parseInt(qty))).toString();
+		
+		
+		//sell stock 
+		//http://mntrade.gtja.com/mncg/stockAction.do?method=saleStock
+		//Cookie info
+			//MNCGJSESSIONID	Sent	v2m1P2nBBHTMJ2DqQrQh7hv16ZJ80SlPD752ftwJkyyj1bh22LVh!-26193917	/	mntrade.gtja.com	(Session)	Server	No	No
+		//Query String 
+			//method	saleStock
+		//Post Data
+			//bsflag	2	8	
+			//market	0	8	
+			//price	15.68	11	//价格
+			//qty	7	5	//数量
+			//saleStatus	0	12	
+			//seat	undefined	14	
+			//secuid	85900	12	//资金帐号
+			//stkcode	300148	14	//股票代码
+		//Result
+			//{cssweb_type:'success',cssweb_msg:'委托成功，委托编号为：1011376'}
+		
+		String sellStockUrl = "http://mntrade.gtja.com/mncg/stockAction.do?method=saleStock";
+		Map<String, String> postData = new HashMap<String, String>();
+		
+		postData.put("bsflag", "2");//b8	
+		postData.put("market", "0");//m8	
+		postData.put("price", price);//p11	
+		postData.put("qty", qty);//q5	
+		postData.put("saleStatus", "0");//s12	
+		postData.put("seat", "undefined");//s14	
+		postData.put("secuid", "85900");//s12	
+		postData.put("stkcode", stockCode);//s14	
+		
+		String ret = postText(sellStockUrl, postData);
+		return ret;
 	}
 
 	/**
 	 * @param stockCode
 	 */
-	private static void queryStockByCode(String stockCode) {
+	private static String queryStockByCode(String stockCode) {
 		String queryStr = "http://mntrade.gtja.com/mncg/stockAction.do?method=getHQ&stkcode=" +
 				stockCode +
 				"&bsflag=1";
 
-		postText(queryStr);
+		return postText(queryStr);
 	}
 
-	private static void postText(String queryStr) {
+	private static String postText(String queryStr) {
 		HttpPost loginPost = new HttpPost(queryStr);
 
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
@@ -151,8 +223,9 @@ public class MNTradeTest {
 		}
 
 		ResponseHandler<String> brh = new BasicResponseHandler();
+		String responseBody = null;
 		try {
-			String responseBody = httpclient.execute(loginPost, brh,
+			responseBody = httpclient.execute(loginPost, brh,
 					localContext);
 			log.debug(responseBody);
 
@@ -167,6 +240,36 @@ public class MNTradeTest {
 		} finally {
 			loginPost.abort();
 		}
+		return responseBody; 
+	}
+	
+	/**
+	 * 带参数POST
+	 * @param url
+	 * @param values
+	 * @return
+	 */
+	protected static String postText(String url, Map<String, String> values) {
+		HttpPost httppost = new HttpPost(url);
+		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+		for (Map.Entry<String, String> e : values.entrySet()) {
+			nvps.add(new BasicNameValuePair(e.getKey(), e.getValue()));
+		}
+		// Create a response handler
+		ResponseHandler<String> brh = new BasicResponseHandler();
+		String responseBody = "";
+		try {
+			httppost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
+			responseBody = httpclient.execute(httppost, brh,
+					localContext);
+		} catch (Exception e) {
+			e.printStackTrace();
+			responseBody = null;
+		} finally {
+			httppost.abort();
+			// httpclient.getConnectionManager().shutdown();
+		}
+		return responseBody;
 	}
 
 	private static void singleLoginPost(String check, String currentToken) {
