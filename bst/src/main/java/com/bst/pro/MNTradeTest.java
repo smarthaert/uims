@@ -51,7 +51,7 @@ import com.bst.pro.util.StockReport;
 public class MNTradeTest {
 	static Logger log = Logger.getLogger(MNTradeTest.class.getName());
 
-	static HttpHost proxy = new HttpHost("10.100.0.6", 8080, "http");
+//	static HttpHost proxy = new HttpHost("10.100.0.6", 8080, "http");
 
 	// create httpclient
 	static HttpClient httpclient = new DefaultHttpClient();
@@ -62,8 +62,8 @@ public class MNTradeTest {
 
 	public static void main(String[] args) {
 		// set http proxy
-		httpclient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY,
-				proxy);
+//		httpclient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY,
+//				proxy);
 
 		// bind cookie manager to context
 		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStroe);
@@ -134,6 +134,7 @@ public class MNTradeTest {
 		//每天报告资产总值和盈亏
 		Document rpDoc = Jsoup.parse(rpStr);
 		StockReport sr = new StockReport(rpDoc);
+		
 
 		//根据盈亏情况决定是否卖出
 		//http://mntrade.gtja.com/mncg/stockAction.do?method=getStockPosition&current_page=1
@@ -146,6 +147,9 @@ public class MNTradeTest {
 			String ret = sellStock(si);
 			log.info(ret);
 		}
+		
+		//查询挂单，对于已经成交的短信通知。
+		
 		
 		
 		//委托成功短信通知
