@@ -3,6 +3,12 @@ package com.bst.product.plugin.elt;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpResponse;
+import org.apache.http.ProtocolException;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.DefaultRedirectStrategy;
+import org.apache.http.protocol.HttpContext;
 import org.jsoup.nodes.Document;
 
 import com.bst.pro.util.BasicHttpClient;
@@ -11,9 +17,40 @@ public class ELTTest extends BasicHttpClient {
 
 	public static void main(String[] args) {
 
+		//handle 301 and 302 redirect
+		((DefaultHttpClient)getHttpclient()).setRedirectStrategy(new DefaultRedirectStrategy() {
+			public boolean isRedirected(HttpRequest request,
+					HttpResponse response, HttpContext context) {
+				boolean isRedirect = false;
+				try {
+					isRedirect = super.isRedirected(request, response, context);
+				} catch (ProtocolException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				if (!isRedirect) {
+					int responseCode = response.getStatusLine().getStatusCode();
+					if (responseCode == 301 || responseCode == 302) {
+						return true;
+					}
+				}
+				return isRedirect;
+			}
+		});
+		
 		//step1
 		//start page to get __EVENTVALIDATION and __VIEWSTATE
 		//http://e1.englishtown.com/partner/coolschool/
+		//Cookie Info
+			//BigIPCT	Received	vOMkSyWdACbKvwponxWhRC2+QPgNj2LPDpIcGSoMRdIEl3DNItQ54xjQsojyjjq6x7KFLGtj+pBzwQ==	/	e1.englishtown.com	(Session)	Server	No	No
+			//ctr	Received	cn_sh	/	.englishtown.com	Fri, 20-Feb-2015 13:04:43 GMT	Server	No	No
+			//EFID	Received	e960f758-3fa5-4109-bab5-4f6a6412aa51	/	.englishtown.com	Fri, 20-Feb-2015 13:04:43 GMT	Server	No	No
+			//et_ctxtsoc	Received	ver=1|~~	/	.englishtown.com	(Session)	Server	No	No
+			//etctxtsess	Received	ver=1.5|AEMAbwBvAGwAfgAtADEAfgBVAH4A	/	.englishtown.com	(Session)	Server	No	No
+			//lng	Received	cs	/	.englishtown.com	Fri, 20-Feb-2015 13:04:43 GMT	Server	No	No
+			//PartnerSite	Received	Cool	/	e1.englishtown.com	(Session)	Server	No	No
+			//srperc	Received	8	/	.englishtown.com	(Session)	Server	No	No
+			//VMsi	Received	593722786	/	.englishtown.com	(Session)	Server	No	No
 		String startPageUrl = "http://e1.englishtown.com/partner/coolschool/";
 		Document doc = getText(startPageUrl);
 		
@@ -32,13 +69,13 @@ public class ELTTest extends BasicHttpClient {
 			//referer	http://e1.englishtown.com/partner/coolschool/Default.aspx	77	
 			//UserName	nli4700	16	
 		//Cookie info
-			//ctr	Sent	cn_sh	/	.englishtown.com	Fri, 20-Feb-2015 13:04:43 GMT	Server	No	No
-			//EFID	Sent	E960F758-3FA5-4109-BAB5-4F6A6412AA51	/	.englishtown.com	Fri, 20-Feb-2015 13:04:43 GMT	Server	No	No
-			//et_ctxtsoc	Sent	ver=1|~~	/	.englishtown.com	(Session)	Server	No	No
-			//etctxtsess	Sent	ver=1.5|AEMAbwBvAGwAfgAtADEAfgBVAH4A	/	.englishtown.com	(Session)	Server	No	No
-			//lng	Sent	cs	/	.englishtown.com	Fri, 20-Feb-2015 13:04:43 GMT	Server	No	No
-			//srperc	Sent	8	/	.englishtown.com	(Session)	Server	No	No
-			//VMsi	Sent	593722786	/	.englishtown.com	(Session)	Server	No	No
+				//ctr	Sent	cn_sh	/	.englishtown.com	Fri, 20-Feb-2015 13:04:43 GMT	Server	No	No
+				//EFID	Sent	E960F758-3FA5-4109-BAB5-4F6A6412AA51	/	.englishtown.com	Fri, 20-Feb-2015 13:04:43 GMT	Server	No	No
+				//et_ctxtsoc	Sent	ver=1|~~	/	.englishtown.com	(Session)	Server	No	No
+				//etctxtsess	Sent	ver=1.5|AEMAbwBvAGwAfgAtADEAfgBVAH4A	/	.englishtown.com	(Session)	Server	No	No
+				//lng	Sent	cs	/	.englishtown.com	Fri, 20-Feb-2015 13:04:43 GMT	Server	No	No
+				//srperc	Sent	8	/	.englishtown.com	(Session)	Server	No	No
+				//VMsi	Sent	593722786	/	.englishtown.com	(Session)	Server	No	No
 		String loginUrl = "https://securecn.englishtown.com/login/handler.ashx";
 		
 		Map<String, String> data = new HashMap<String, String>();
@@ -56,7 +93,7 @@ public class ELTTest extends BasicHttpClient {
 		//{"d":{"__type":"LoadStudentBookingCardResult:EFSchools.Englishtown.Oboe.Client.Result","Success":true,"ErrorCode":"","BookingCardClassList":[{"__type":"BookingCardClassInfo:EFSchools.Englishtown.Oboe.Client.Booking","ScheduledClass_id":3051523,"City":"Shanghai","School":"SH Shinmay Union Square","ClassCategory_id":3,"ClassRoomName":"Integrity","ClassTopicName":"","ClassDate":"2012-05-30 12:40:00","StartTimePeriod":"20:40-21:30","BookingStatus":1,"NextStatus":4,"ClassType":"English Corner High","LevelCode":"0A","RankOfWait":0,"RankOfStandby":0,"FriendCapacity":0,"InvitedFriendsCount":0,"SeatLeft":8,"School_id":39,"TopicNameChinese":null,"AddressChinese":null},{"__type":"BookingCardClassInfo:EFSchools.Englishtown.Oboe.Client.Booking","ScheduledClass_id":3057594,"City":"Shanghai","School":"SH Shinmay Union Square","ClassCategory_id":2,"ClassRoomName":"Grace","ClassTopicName":"Experiences - Talking about experiences","ClassDate":"2012-05-30 11:40:00","StartTimePeriod":"19:40-20:30","BookingStatus":1,"NextStatus":4,"ClassType":"Intermediate A","LevelCode":"0A","RankOfWait":0,"RankOfStandby":0,"FriendCapacity":0,"InvitedFriendsCount":0,"SeatLeft":0,"School_id":39,"TopicNameChinese":null,"AddressChinese":null},{"__type":"BookingCardClassInfo:EFSchools.Englishtown.Oboe.Client.Booking","ScheduledClass_id":3051466,"City":"Shanghai","School":"SH Shinmay Union Square","ClassCategory_id":2,"ClassRoomName":"Grace","ClassTopicName":"Let's make a deal - Getting a good price","ClassDate":"2012-05-28 10:40:00","StartTimePeriod":"18:40-19:30","BookingStatus":1,"NextStatus":4,"ClassType":"Intermediate B","LevelCode":"0A","RankOfWait":0,"RankOfStandby":0,"FriendCapacity":0,"InvitedFriendsCount":0,"SeatLeft":7,"School_id":39,"TopicNameChinese":null,"AddressChinese":null}],"Paging":{"__type":"PagingResult:EFSchools.Englishtown.Oboe.Client.Result","PageSize":15,"PageIndex":1,"PageCount":1}}}
 		//http://e1.englishtown.com/services/oboe2/1.0/bookingjsonservice.svc/LoadStudentBookingCard
 		//POST data
-			//{"loadParams":{"Member_id":19647339,"BeginDate":"2012-05-25 16:00:00","EndDate":"2012-06-17 16:00:00","LevelCode":"6","Token":"1d5cb76fb371c72902877ede781678b8","UtcDate":"2012-05-26 12:05:40","PartnerCode":"Cool","Paging":{"PageIndex":"1","PageSize":"15"}}}
+			//(Content)	{"loadParams":{"Member_id":19647339,"BeginDate":"2012-05-25 16:00:00","EndDate":"2012-06-17 16:00:00","LevelCode":"6","Token":"1d5cb76fb371c72902877ede781678b8","UtcDate":"2012-05-26 12:05:40","PartnerCode":"Cool","Paging":{"PageIndex":"1","PageSize":"15"}}}	258	
 		//Cookie Info
 			//BigIPCT2	Received	e8D9+VsUdaFjRMVonxWhRC2+QPgNj7K/fEEt4IyymwQ/Igok9l8Ko9nYi9LPUdfvjaWldNeEaKynhj8=	/	e1.englishtown.com	(Session)	Server	No	No
 			//bhCookieSess	Sent	1	/	e1.englishtown.com	(Session)	Server	No	No
@@ -86,7 +123,11 @@ public class ELTTest extends BasicHttpClient {
 			//techcheck_fcount	Sent	2	/	e1.englishtown.com	Sun, 26 May 2013 12:05:33 GMT	JavaScript	No	No
 			//Translator3_User_Preference	Sent	False~False~False~zh-CN	/	e1.englishtown.com	(Session)	Server	No	No
 			//VMsi	Sent	593722786	/	.englishtown.com	(Session)	Server	No	No
-		
+		String getDataUrl = "http://e1.englishtown.com/services/oboe2/1.0/bookingjsonservice.svc/LoadStudentBookingCard";
+		data.clear();
+		String queryStr = "{\"loadParams\":{\"Member_id\":19647339,\"BeginDate\":\"2012-05-25 16:00:00\",\"EndDate\":\"2012-06-17 16:00:00\",\"LevelCode\":\"6\",\"Token\":\"1d5cb76fb371c72902877ede781678b8\",\"UtcDate\":\"2012-05-26 12:05:40\",\"PartnerCode\":\"Cool\",\"Paging\":{\"PageIndex\":\"1\",\"PageSize\":\"15\"}}}";
+		data.put("(Content)", queryStr);
+		postText(getDataUrl, data);
 		
 		//logout
 		//http://e1.englishtown.com/master/welcome/members/logout.asp
