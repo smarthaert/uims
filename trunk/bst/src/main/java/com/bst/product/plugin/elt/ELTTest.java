@@ -2,6 +2,8 @@ package com.bst.product.plugin.elt;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
@@ -9,12 +11,15 @@ import org.apache.http.ProtocolException;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.DefaultRedirectStrategy;
 import org.apache.http.protocol.HttpContext;
+import org.apache.log4j.Logger;
 import org.jsoup.nodes.Document;
 
 import com.bst.pro.util.BasicHttpClient;
 
 public class ELTTest extends BasicHttpClient {
 
+	static Logger log = Logger.getLogger(ELTTest.class.getName());
+	
 	public static void main(String[] args) {
 
 		//handle 301 and 302 redirect
@@ -87,7 +92,30 @@ public class ELTTest extends BasicHttpClient {
 		data.put("pt", "Cool");//7
 		data.put("referer", "http://e1.englishtown.com/partner/coolschool/Default.aspx");//77
 		data.put("UserName", "nli4700");//16
-		String jsData = postText(loginUrl, data);
+		postText(loginUrl, data);
+		
+		//visit this page to get token
+		//http://e1.englishtown.com/school/smart/bookingcard
+		//'1d5cb76fb371c72902877ede781678b8', //token
+		String bookingCardUrl = "http://e1.englishtown.com/school/smart/bookingcard";
+		doc = getText(bookingCardUrl);
+		String tokenJsStr = doc.select("script:eq(1)").html();
+		Pattern p = Pattern.compile("'([^\\']+)', //token");
+		Matcher m = p.matcher(tokenJsStr);
+		String token = null;
+		if (m.find()) {
+			token = m.group(1);
+			log.info(token);
+		}
+		
+
+		p = Pattern.compile("'([^\\']+)', //level code");
+		m = p.matcher(tokenJsStr);
+		String levelCode = null;
+		if (m.find()) {
+			levelCode = m.group(1);
+			log.info(levelCode);
+		}
 		
 		//get app info
 		//{"d":{"__type":"LoadStudentBookingCardResult:EFSchools.Englishtown.Oboe.Client.Result","Success":true,"ErrorCode":"","BookingCardClassList":[{"__type":"BookingCardClassInfo:EFSchools.Englishtown.Oboe.Client.Booking","ScheduledClass_id":3051523,"City":"Shanghai","School":"SH Shinmay Union Square","ClassCategory_id":3,"ClassRoomName":"Integrity","ClassTopicName":"","ClassDate":"2012-05-30 12:40:00","StartTimePeriod":"20:40-21:30","BookingStatus":1,"NextStatus":4,"ClassType":"English Corner High","LevelCode":"0A","RankOfWait":0,"RankOfStandby":0,"FriendCapacity":0,"InvitedFriendsCount":0,"SeatLeft":8,"School_id":39,"TopicNameChinese":null,"AddressChinese":null},{"__type":"BookingCardClassInfo:EFSchools.Englishtown.Oboe.Client.Booking","ScheduledClass_id":3057594,"City":"Shanghai","School":"SH Shinmay Union Square","ClassCategory_id":2,"ClassRoomName":"Grace","ClassTopicName":"Experiences - Talking about experiences","ClassDate":"2012-05-30 11:40:00","StartTimePeriod":"19:40-20:30","BookingStatus":1,"NextStatus":4,"ClassType":"Intermediate A","LevelCode":"0A","RankOfWait":0,"RankOfStandby":0,"FriendCapacity":0,"InvitedFriendsCount":0,"SeatLeft":0,"School_id":39,"TopicNameChinese":null,"AddressChinese":null},{"__type":"BookingCardClassInfo:EFSchools.Englishtown.Oboe.Client.Booking","ScheduledClass_id":3051466,"City":"Shanghai","School":"SH Shinmay Union Square","ClassCategory_id":2,"ClassRoomName":"Grace","ClassTopicName":"Let's make a deal - Getting a good price","ClassDate":"2012-05-28 10:40:00","StartTimePeriod":"18:40-19:30","BookingStatus":1,"NextStatus":4,"ClassType":"Intermediate B","LevelCode":"0A","RankOfWait":0,"RankOfStandby":0,"FriendCapacity":0,"InvitedFriendsCount":0,"SeatLeft":7,"School_id":39,"TopicNameChinese":null,"AddressChinese":null}],"Paging":{"__type":"PagingResult:EFSchools.Englishtown.Oboe.Client.Result","PageSize":15,"PageIndex":1,"PageCount":1}}}
@@ -95,7 +123,7 @@ public class ELTTest extends BasicHttpClient {
 		//POST data
 			//(Content)	{"loadParams":{"Member_id":19647339,"BeginDate":"2012-05-25 16:00:00","EndDate":"2012-06-17 16:00:00","LevelCode":"6","Token":"1d5cb76fb371c72902877ede781678b8","UtcDate":"2012-05-26 12:05:40","PartnerCode":"Cool","Paging":{"PageIndex":"1","PageSize":"15"}}}	258	
 		//Cookie Info
-			//BigIPCT2	Received	e8D9+VsUdaFjRMVonxWhRC2+QPgNj7K/fEEt4IyymwQ/Igok9l8Ko9nYi9LPUdfvjaWldNeEaKynhj8=	/	e1.englishtown.com	(Session)	Server	No	No
+				//BigIPCT2	Received	e8D9+VsUdaFjRMVonxWhRC2+QPgNj7K/fEEt4IyymwQ/Igok9l8Ko9nYi9LPUdfvjaWldNeEaKynhj8=	/	e1.englishtown.com	(Session)	Server	No	No
 			//bhCookieSess	Sent	1	/	e1.englishtown.com	(Session)	Server	No	No
 			//bhResults	Sent	bhfx=11.2 r202&bhfv=2&bhpb=1	/	e1.englishtown.com	(Session)	JavaScript	No	No
 			//BigIPCT	Sent	0p42JRQY3Iwsk29onxWhRC2+QPgNj5WWtw23ynQ9VR5/kUYcYtwkmgHd7xCyCGpmeNLy8DPDjx9aRw==	/	e1.englishtown.com	(Session)	Server	No	No
@@ -125,7 +153,15 @@ public class ELTTest extends BasicHttpClient {
 			//VMsi	Sent	593722786	/	.englishtown.com	(Session)	Server	No	No
 		String getDataUrl = "http://e1.englishtown.com/services/oboe2/1.0/bookingjsonservice.svc/LoadStudentBookingCard";
 		data.clear();
-		String queryStr = "{\"loadParams\":{\"Member_id\":19647339,\"BeginDate\":\"2012-05-25 16:00:00\",\"EndDate\":\"2012-06-17 16:00:00\",\"LevelCode\":\"6\",\"Token\":\"1d5cb76fb371c72902877ede781678b8\",\"UtcDate\":\"2012-05-26 12:05:40\",\"PartnerCode\":\"Cool\",\"Paging\":{\"PageIndex\":\"1\",\"PageSize\":\"15\"}}}";
+		String queryStr = "{\"loadParams\":{\"Member_id\":19647339,\"BeginDate\":\"2012-05-25 16:00:00\",\"EndDate\":\"2012-06-17 16:00:00\",\"" +
+				"LevelCode\":\"" +
+				levelCode +
+//				"6" +
+				"\",\"" +
+				"Token\":\"" +
+				token +
+//				"1d5cb76fb371c72902877ede781678b8" +
+				"\",\"UtcDate\":\"2012-05-26 12:05:40\",\"PartnerCode\":\"Cool\",\"Paging\":{\"PageIndex\":\"1\",\"PageSize\":\"15\"}}}";
 		data.put("(Content)", queryStr);
 		postText(getDataUrl, data);
 		
