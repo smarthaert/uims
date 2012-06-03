@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>ipojo.spell</artifactId>
 		<groupId>ipojo.examples</groupId>
-		<version>1.0</version>
+		<version>1.0.0</version>
 	</parent>
 	<groupId>ipojo.examples</groupId>
 	<artifactId>spell.checker</artifactId>
