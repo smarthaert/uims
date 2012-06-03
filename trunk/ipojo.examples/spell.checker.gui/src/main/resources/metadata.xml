@@ -1,0 +1,8 @@
+<ipojo>
+	<component classname="spell.gui.SpellCheckerGui">
+		<requires field="m_checker" />
+		<callback transition="validate" method="start" />
+		<callback transition="invalidate" method="stop" />
+	</component>
+	<instance component="spell.gui.SpellCheckerGui" />
+</ipojo>

@@ -1,0 +1,6 @@
+<ipojo>
+	<component classname="spell.english.EnglishDictionary">
+		<provides />
+	</component>
+	<instance component="spell.english.EnglishDictionary" />
+</ipojo>
