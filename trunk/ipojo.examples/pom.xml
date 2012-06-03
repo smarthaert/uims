@@ -3,7 +3,7 @@
 	<groupId>ipojo.examples</groupId>
 	<artifactId>ipojo.spell</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0</version>
+	<version>1.0.0</version>
 	<modules>
 		<module>spell.services</module>
 		<module>spell.checker</module>
