@@ -1,0 +1,7 @@
+<ipojo>
+	<component classname="spell.checker.SpellCheck">
+		<requires field="m_dictionary" />
+		<provides />
+	</component>
+	<instance component="spell.checker.SpellCheck" />
+</ipojo>
