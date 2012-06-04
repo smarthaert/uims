@@ -4,13 +4,13 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>samples.hello</artifactId>
+		<artifactId>samples.annotations</artifactId>
 		<groupId>iPOJO.Annotations</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 	</parent>
 	<groupId>iPOJO.Annotations</groupId>
 	<artifactId>service.provider</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>bundle</packaging>
 	<name>service.provider</name>
 	<url>http://maven.apache.org</url>
@@ -49,8 +49,21 @@
 							!ipojo.example.hello.impl,
 							ipojo.example.hello.*
 						</Export-Package>
+						<Private-Package>ipojo.example.hello.impl</Private-Package>
 					</instructions>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-ipojo-plugin</artifactId>
+				<version>1.8.4</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>ipojo-bundle</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

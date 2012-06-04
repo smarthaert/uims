@@ -4,13 +4,13 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>samples.hello</artifactId>
+		<artifactId>samples.annotations</artifactId>
 		<groupId>iPOJO.Annotations</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 	</parent>
 	<groupId>iPOJO.Annotations</groupId>
 	<artifactId>service.consumer</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>bundle</packaging>
 	<name>service.consumer</name>
 	<url>http://maven.apache.org</url>
@@ -21,7 +21,7 @@
 		<dependency>
 			<groupId>iPOJO.Annotations</groupId>
 			<artifactId>service.provider</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
@@ -47,12 +47,24 @@
 						<Bundle-SymbolicName>
 							${pom.artifactId}
 						</Bundle-SymbolicName>
-						<Export-Package>
+						<Private-Package>
 							ipojo.example.hello.client.*
-						</Export-Package>
+						</Private-Package>
 						<Import-Package>ipojo.example.hello.*</Import-Package>
 					</instructions>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-ipojo-plugin</artifactId>
+				<version>1.8.4</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>ipojo-bundle</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
