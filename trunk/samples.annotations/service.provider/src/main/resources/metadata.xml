@@ -1,0 +1,3 @@
+<ipojo>
+	<instance component="ipojo.example.hello.impl.HelloImpl" />
+</ipojo>
