@@ -1,16 +1,35 @@
 <ipojo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="org.apache.felix.ipojo http://felix.apache.org/ipojo/schemas/CURRENT/core.xsd"
 	xmlns="org.apache.felix.ipojo">
-	<!--
-		Declare your component types and instances here
-	-->
-
-	<!--
-
-	<component classname="$YOUR_COMPONENT_CLASS">
-
-	</component>
-	<instance component="$YOUR_COMPONENT_CLASS" />
-
-	-->
+	<!-- Declare instances only -->
+	<instance component="customer">
+		<property name="customer.name" value="customer-1" />
+	</instance>
+	<instance component="customer">
+		<property name="customer.name" value="customer-2" />
+	</instance>
+	<instance component="customer">
+		<property name="customer.name" value="customer-3" />
+	</instance>
+	<instance component="customer">
+		<property name="customer.name" value="customer-4" />
+	</instance>
+	<instance component="customer">
+		<property name="customer.name" value="customer-5" />
+	</instance>
+	<instance component="customer">
+		<property name="customer.name" value="customer-6" />
+	</instance>
+	<instance component="customer">
+		<property name="customer.name" value="customer-7" />
+	</instance>
+	<instance component="customer">
+		<property name="customer.name" value="customer-8" />
+	</instance>
+	<instance component="customer">
+		<property name="customer.name" value="customer-9" />
+	</instance>
+	<instance component="customer">
+		<property name="customer.name" value="customer-10" />
+	</instance>
 </ipojo>
