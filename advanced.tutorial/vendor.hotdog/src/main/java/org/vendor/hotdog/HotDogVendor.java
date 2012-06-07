@@ -9,7 +9,7 @@ import org.vendor.services.Vendor;
 import org.vendor.services.ingredient.Bun;
 import org.vendor.services.ingredient.Wiener;
 
-@Component(name="HD")
+@Component(name="HD", public_factory=false, architecture=true)
 @Provides
 @Instantiate
 public class HotDogVendor implements Vendor {

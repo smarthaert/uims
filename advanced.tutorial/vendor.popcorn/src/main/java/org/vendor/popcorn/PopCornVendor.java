@@ -21,7 +21,9 @@ package org.vendor.popcorn;
 import org.apache.felix.ipojo.annotations.Component;
 import org.apache.felix.ipojo.annotations.Controller;
 import org.apache.felix.ipojo.annotations.Instantiate;
+import org.apache.felix.ipojo.annotations.Property;
 import org.apache.felix.ipojo.annotations.Provides;
+import org.apache.felix.ipojo.annotations.StaticServiceProperty;
 import org.vendor.services.Product;
 import org.vendor.services.Vendor;
 
@@ -29,9 +31,9 @@ import org.vendor.services.Vendor;
  * A popcorn vendor implementation.
  * To sell popcorn, the vendor use corn. This implementation manage its own corn stock.
  */
-@Component(name="popcorn", public_factory=true, architecture=true)
-@Provides
-@Instantiate
+@Component(name="popcorn", architecture=true)
+@Provides(properties={@StaticServiceProperty(name="managed.service.pid", type="java.lang.String", value="Super.PopCorn.Stock")})
+@Instantiate(name="SuperPopCorn")
 public class PopCornVendor implements Vendor {
     
     /**
@@ -71,6 +73,7 @@ public class PopCornVendor implements Vendor {
      * This method is synchronized to avoid to client being served during the update.
      * @param newStock : the stock of corn to add to the current stock.
      */
+    @Property(name="stock", value="5")
     public synchronized void refillStock(int newStock) {
         m_corn_stock += newStock;
         System.out.println("Refill the stock : " + m_corn_stock);

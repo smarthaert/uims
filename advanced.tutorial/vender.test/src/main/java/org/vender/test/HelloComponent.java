@@ -1,4 +1,4 @@
-package org.vendor.customer.creator;
+package org.vender.test;
 
 import org.apache.felix.ipojo.annotations.Component;
 import org.apache.felix.ipojo.annotations.Instantiate;
@@ -8,7 +8,7 @@ import org.apache.felix.ipojo.annotations.Instantiate;
 public class HelloComponent {
 
 	public HelloComponent() {
-		System.out.println("Hello vendor.customer.creator");
+		System.out.println("Hello vender.test");
 	}
 
 }

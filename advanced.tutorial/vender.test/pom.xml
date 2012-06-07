@@ -9,22 +9,16 @@
 	</parent>
 	<packaging>bundle</packaging>
 	<groupId>com.bst.samples</groupId>
-	<artifactId>vendor.customer</artifactId>
+	<artifactId>vender.test</artifactId>
 	<version>1.0.0</version>
 
-	<name>vendor.customer</name>
+	<name>vender.test</name>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.felix</groupId>
 			<artifactId>org.apache.felix.ipojo.annotations</artifactId>
-			<version>1.8.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.bst.samples</groupId>
-			<artifactId>vendor.services</artifactId>
-			<version>1.0.0</version>
-			<scope>compile</scope>
+			<version>1.6.0</version>
 		</dependency>
 	</dependencies>
 
@@ -33,19 +27,20 @@
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
-				<version>2.3.7</version>
+				<version>2.1.0</version>
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Private-Package>${private.packages}</Private-Package>
+						<Import-Package>${import.packages}</Import-Package> <!-- defined in bundle.properties -->
+						<Export-Package>${export.packages}</Export-Package> <!-- define in bundle.properties -->
 					</instructions>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-ipojo-plugin</artifactId>
-				<version>1.8.4</version>
 				<executions>
 					<execution>
 						<goals>
@@ -56,7 +51,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.5.1</version>
+				<version>2.3.2</version>
 				<configuration>
 					<source>1.5</source>
 					<target>1.5</target>
@@ -77,6 +72,21 @@
 							<files>
 								<file>bundle.properties</file>
 							</files>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-junit4osgi-plugin</artifactId>
+				<version>1.0.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<deployprojectartifact>true</deployprojectartifact>
 						</configuration>
 					</execution>
 				</executions>

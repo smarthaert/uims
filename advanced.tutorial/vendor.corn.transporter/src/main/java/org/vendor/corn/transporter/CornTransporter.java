@@ -22,35 +22,45 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.apache.felix.ipojo.annotations.Component;
-import org.apache.felix.ipojo.annotations.Provides;
+import org.apache.felix.ipojo.annotations.Instantiate;
+import org.apache.felix.ipojo.annotations.Requires;
+import org.apache.felix.ipojo.annotations.Validate;
 import org.osgi.service.cm.Configuration;
 import org.osgi.service.cm.ConfigurationAdmin;
 
-
 /**
- * The corn transport refill corn stock.
- *This class use iPOJO reconfiguration features to reconfigure the popcorn vendor.
+ * The corn transport refill corn stock. This class use iPOJO reconfiguration
+ * features to reconfigure the popcorn vendor.
  */
+@Component(name = "transporter", public_factory = false, architecture = true)
+@Instantiate
 public class CornTransporter {
-    
-    private ConfigurationAdmin m_configAdmin;
-    
-    
-    /**
-     * Reconfigure the popcorn vendor with the configuration admin. 
-     */
-    public void refillStock() {
-        try {
-            // Retrieve or Create the instance configuration from the configuration admin
-            Configuration configuration = m_configAdmin.getConfiguration("Super.PopCorn.Stock", "file:../vendor.popcorn/output/vendor.popcorn.jar");
-            configuration.setBundleLocation("file:../vendor.popcorn/output/vendor.popcorn.jar");
-            Properties props = new Properties();
-            props.put("stock", new Integer(15)); // Delivered corn
-            configuration.update(props);
-            System.out.println("Update configuration of " + configuration.getPid() + "(" + configuration.getBundleLocation() + ")");
-            configuration.delete();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } //We indicates the set ManagedService PID
-    }
+
+	@Requires
+	private ConfigurationAdmin m_configAdmin;
+
+	/**
+	 * Reconfigure the popcorn vendor with the configuration admin.
+	 */
+	@Validate
+	public void refillStock() {
+		try {
+			// Retrieve or Create the instance configuration from the
+			// configuration admin
+			Configuration configuration = m_configAdmin.getConfiguration(
+					"Super.PopCorn.Stock",
+					"file:D:/may/sDrive/advanced.tutorial/vendor.corn.transporter/target/vendor.corn.transporter-1.0.0.jar");
+			configuration
+					.setBundleLocation("file:D:/may/sDrive/advanced.tutorial/vendor.corn.transporter/target/vendor.corn.transporter-1.0.0.jar");
+			Properties props = new Properties();
+			props.put("stock", new Integer(15)); // Delivered corn
+			configuration.update(props);
+			System.out.println("Update configuration of "
+					+ configuration.getPid() + "("
+					+ configuration.getBundleLocation() + ")");
+			configuration.delete();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} // We indicates the set ManagedService PID
+	}
 }
