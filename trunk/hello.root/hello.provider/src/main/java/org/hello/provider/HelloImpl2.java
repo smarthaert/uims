@@ -11,10 +11,10 @@ import com.hello.service.Hello;
  * 
  * @author <a href="mailto:dev@felix.apache.org">Felix Project Team</a>
  */
-@Component(name = "HelloProvider")
+@Component(name = "HelloProvider2")
 @Provides
-@Instantiate(name="HelloService")
-public class HelloImpl implements Hello {
+@Instantiate(name="HelloService2")
+public class HelloImpl2 implements Hello {
 
 	/**
 	 * Returns an 'Hello' message.
@@ -25,6 +25,6 @@ public class HelloImpl implements Hello {
 	 * @see ipojo.example.hello.Hello#sayHello(java.lang.String)
 	 */
 	public String sayHello(String name) {
-		return "helloiiiiii " + name;
+		return "hello0000 " + name;
 	}
 }
