@@ -24,7 +24,7 @@ public class HelloClient implements Runnable {
 	/**
 	 * Hello services. Injected by the container.
 	 * */
-	@Requires
+	@Requires(from="HelloService2")
 	private Hello[] m_hello;
 
 	/**
