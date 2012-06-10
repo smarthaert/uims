@@ -14,6 +14,5 @@
 		<module>vendor.customer.creator</module>
 		<module>vendor.popcorn</module>
 		<module>vendor.corn.transporter</module>
-		<module>vender.test</module>
 	</modules>
 </project>

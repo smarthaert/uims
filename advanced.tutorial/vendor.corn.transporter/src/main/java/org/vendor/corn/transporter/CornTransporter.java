@@ -32,7 +32,7 @@ import org.osgi.service.cm.ConfigurationAdmin;
  * The corn transport refill corn stock. This class use iPOJO reconfiguration
  * features to reconfigure the popcorn vendor.
  */
-@Component(name = "transporter", public_factory = false, architecture = true)
+@Component(name = "transporter", publicFactory = false, architecture = true)
 @Instantiate
 public class CornTransporter {
 
@@ -49,9 +49,9 @@ public class CornTransporter {
 			// configuration admin
 			Configuration configuration = m_configAdmin.getConfiguration(
 					"Super.PopCorn.Stock",
-					"file:D:/may/sDrive/advanced.tutorial/vendor.corn.transporter/target/vendor.corn.transporter-1.0.0.jar");
+					"file:D:/svn/uims/advanced.tutorial/vendor.popcorn/target/vendor.popcorn-1.0.0.jar");
 			configuration
-					.setBundleLocation("file:D:/may/sDrive/advanced.tutorial/vendor.corn.transporter/target/vendor.corn.transporter-1.0.0.jar");
+					.setBundleLocation("file:D:/svn/uims/advanced.tutorial/vendor.popcorn/target/vendor.popcorn-1.0.0.jar");
 			Properties props = new Properties();
 			props.put("stock", new Integer(15)); // Delivered corn
 			configuration.update(props);
