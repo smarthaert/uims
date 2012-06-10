@@ -51,7 +51,7 @@ public class Customer {
      */
     public Customer() {
         Product product = vendor.sell();
-        System.out.println("Customer " + name + " bought " +  product.getProductType() + " from " + product.getProductType());
+        System.out.println("Customer " + name + " bought " +  product.getProductType() + " from " + product.getProductOrigin());
     }
 
 }

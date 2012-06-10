@@ -10,7 +10,7 @@ import org.vendor.services.ingredient.Wiener;
 /**
  * Component implementation providing both buns and wieners.
  */
-@Component(name="buns_and_wieners", public_factory=false, architecture=true)
+@Component(name="buns_and_wieners", publicFactory=false, architecture=true)
 @Provides
 @Instantiate(name="buns_and_wieners")
 public class BunWienerProvider implements Bun, Wiener {
