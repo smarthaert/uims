@@ -1,0 +1,16 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>felix.framework</groupId>
+  <artifactId>felix.framework.launching</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>felix.framework.launching</name>
+  <modules>
+  	<module>custom.framework.launcher</module>
+  	<module>felix.interaction</module>
+  	<module>host.application</module>
+  	<module>providing.host.application.services</module>
+  	<module>using.services.provided.by.bundles</module>
+  </modules>
+</project>
