@@ -35,4 +35,8 @@ public class HostActivator2 implements BundleActivator {
 		m_registration.unregister();
 		m_context = null;
 	}
+
+	public BundleContext getContext() {
+		return m_context;
+	}
 }

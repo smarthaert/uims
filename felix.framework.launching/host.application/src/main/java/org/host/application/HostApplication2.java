@@ -1,19 +1,24 @@
 package org.host.application;
 
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Logger;
 
 import org.apache.felix.framework.Felix;
 import org.apache.felix.framework.util.FelixConstants;
 import org.osgi.framework.BundleException;
 import org.osgi.framework.Constants;
+import org.osgi.util.tracker.ServiceTracker;
+import org.using.services.provided.by.bundles.Command;
 
 public class HostApplication2 {
+	Logger log = Logger.getLogger(HostApplication2.class.getName());
 	private HostActivator2 m_activator = null;
 	private Felix m_felix = null;
 	private Map m_lookupMap = new HashMap();
+	private ServiceTracker m_tracker = null;
 
 	public HostApplication2() {
 		// Initialize the map for the property lookup service.
@@ -40,10 +45,14 @@ public class HostApplication2 {
 			m_felix = new Felix(configMap);
 			// Now start Felix instance.
 			m_felix.start();
+
 		} catch (Exception ex) {
 			System.err.println("Could not create framework: " + ex);
 			ex.printStackTrace();
 		}
+		m_tracker = new ServiceTracker(m_activator.getContext(),
+				Lookup.class.getName(), null);
+		m_tracker.open();
 	}
 
 	public void shutdownApplication() {
@@ -61,5 +70,14 @@ public class HostApplication2 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public void getServices() {
+
+		Object[] services = m_tracker.getServices();
+		for (int i = 0; (services != null) && (i < services.length); i++) {
+			System.out.println(((Lookup) services[i]).lookup("name1"));
+		}
+
 	}
 }
