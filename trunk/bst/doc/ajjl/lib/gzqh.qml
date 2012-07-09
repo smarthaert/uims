@@ -362,7 +362,7 @@ End Function
 
 Function _data_sj()
 	//时间 52,42  FFFFFF
-	qx=52
+	qx = 52
 	qy = 42
 	num = 5
 	txtColor = "FFFFFF"
@@ -462,18 +462,134 @@ End Function
 Function _s_bo()
 	'买入-开仓
 	Call _bo()
+End Function
+
+'买入-开仓
+Function _s_bo2()
+	'买入-开仓
+	Call _bo2()
 	'设置止损线
-	Call _guard_line()
+	Call _bo2_guard_line()
 End Function
 
 
-'执行止损线挂单
-Function _guard_line()
+'执行止损线挂单 看涨
+Function _bo2_guard_line()
+	Dim smsTxt
+	Dim cjPrice
+	Dim ycjPrice
+	Dim newPrice
+	
+	
 	'查成交记录获取成交价格
+	cjPrice = _getCJPrice()
+	smsTxt = " 看涨开仓价格:" & cjPrice
+	
+	newPrice = cjPrice - 5
+	TracePrint "计算止损价格：" & newPrice
 	
 	'下达止损挂单
+	TracePrint "下达止损挂单"
+	Call _sc0(newPrice)
+		
+	newPrice = cjPrice + 10
+	TracePrint "计算止盈价格：" & newPrice
+	
+	'下达止盈挂单
+	TracePrint "下达止盈挂单"
+	Call _sc0(newPrice)
+	
+	'查询预下单成交价格
+	ycjPrice = _getYCJPrice()
+	TracePrint "查询预下单成交价格:" & ycjPrice
+	smsTxt = smsTxt & " 平仓价格:" & ycjPrice
+	
+	'计算本次操作盈亏
+	yk = cjPrice - ycjPrice
+	If yk < 0 Then 
+		'止盈
+		TracePrint "盈利:" & abs(yk) & "点"
+		smsTxt = smsTxt & " 盈利:" & abs(yk) & "点"
+	Else 
+		'止损
+		TracePrint "亏损:" & yk & "点"
+		smsTxt = smsTxt & " 亏损:" & yk & "点"
+	End If	
+	
+	'发送短信
+	TracePrint "发送短信:" & smsTxt
+	sendSMS(smsTxt)
+	
 End Function
 
+'调用短信接口发送短信
+Function sendSMS(smsTxt)
+	Delay 2000
+	
+End Function
+	
+
+Function _getCJPrice()
+	'在委托页面循环等待成交状态
+	Do While _getCJState()
+		Delay 100
+	Loop
+	
+	Delay 200
+	
+	'去成交页面查询成交价格
+	TracePrint "去成交页面查询成交价格"
+	MoveTo 193, 765
+	Delay 10
+	LeftClick 1
+	Delay 10
+	
+	_getCJPrice = "2000.0"
+	
+	'获取成交价格
+	TracePrint "获取成交价格：" & _getCJPrice
+	Delay 200
+End Function
+
+
+Function _getYCJPrice()
+	'在委托页面循环等待成交状态
+	Do While _getYCJState()
+		Delay 100
+	Loop
+	
+	Delay 200
+	
+	'去成交页面查询成交价格
+	TracePrint "去成交页面查询成交价格中"
+	MoveTo 193, 765
+	Delay 10
+	LeftClick 1
+	Delay 10
+	
+	_getYCJPrice = "2050.0"
+	
+	'获取成交价格
+	TracePrint "获取成交价格：" & _getYCJPrice
+	Delay 200
+End Function
+
+'如果状态变更已成，返回false
+Function _getCJState()
+	TracePrint "获取成交状态成功"
+	Delay 200
+	
+	_getCJState = 0	'false
+End Function
+
+'如果状态变更已成，返回false
+'这里要查询两处的价格
+Function _getYCJState()
+	TracePrint "获取预埋成交状态成功"
+	Delay 200
+	
+	_getCJState = 0	'false
+End Function
 
 '买入-平仓
 Function _bc()
@@ -487,6 +603,33 @@ Function _bc()
 	'执行操作
 	Call _action()
 End Function
+
+'买入-平仓
+Function _bc2()
+	'买入-平仓
+	act_conf(0) = "IF1207"	'合约
+	act_conf(1) = "1"		'买入
+	act_conf(2) = "2"		'平仓
+	act_conf(3) = price_c - 5	'价格
+	act_conf(4) = "1"		'委手
+	
+	'执行操作
+	Call _action2()
+End Function
+
+'买入-平仓
+Function _bc0(newPrice)
+	'买入-平仓
+	act_conf(0) = "IF1207"	'合约
+	act_conf(1) = "1"		'买入
+	act_conf(2) = "2"		'平仓
+	act_conf(3) = newPrice	'价格
+	act_conf(4) = "1"		'委手
+	
+	'执行操作
+	Call _action2()
+End Function
+
 
 
 '卖出-开仓
@@ -503,6 +646,80 @@ Function _so()
 End Function
 
 
+'卖出-开仓
+Function _s_so2()
+	'卖出-开仓
+	Call _so2()
+	
+	'设置止损线
+	Call _so2_guard_line()
+End Function
+
+
+'执行止损线挂单 看涨
+Function _so2_guard_line()
+	Dim smsTxt
+	Dim cjPrice
+	Dim ycjPrice
+	Dim newPrice
+	
+	
+	'查成交记录获取成交价格
+	cjPrice = _getCJPrice()
+	smsTxt = " 看跌开仓价格:" & cjPrice
+	
+	newPrice = cjPrice + 5
+	TracePrint "计算止损价格：" & newPrice
+	
+	'下达止损挂单
+	TracePrint "下达止损挂单"
+	Call _bc0(newPrice)
+		
+	newPrice = cjPrice - 10
+	TracePrint "计算止盈价格：" & newPrice
+	
+	'下达止盈挂单
+	TracePrint "下达止盈挂单"
+	Call _bc0(newPrice)
+	
+	'查询预下单成交价格
+	ycjPrice = _getYCJPrice()
+	TracePrint "查询预下单成交价格:" & ycjPrice
+	smsTxt = smsTxt & " 平仓价格:" & ycjPrice
+	
+	'计算本次操作盈亏
+	yk = cjPrice - ycjPrice
+	If yk > 0 Then 
+		'止盈
+		TracePrint "盈利:" & yk & "点"
+		smsTxt = smsTxt & " 盈利:" & abs(yk) & "点"
+	Else 
+		'止损
+		TracePrint "亏损:" & abs(yk) & "点"
+		smsTxt = smsTxt & " 亏损:" & yk & "点"
+	End If	
+	
+	'发送短信
+	TracePrint "发送短信:" & smsTxt
+	sendSMS(smsTxt)
+	
+End Function
+
+
+'卖出-开仓
+Function _so2()
+	'卖出-开仓
+	act_conf(0) = "IF1207"	'合约
+	act_conf(1) = "2"		'卖出
+	act_conf(2) = "1"		'开仓
+	act_conf(3) = price_f + 5	'价格
+	act_conf(4) = "1"		'委手
+	
+	'执行操作
+	Call _action2()
+End Function
+
+
 '卖出-平仓
 Function _sc()
 	'卖出-平仓
@@ -514,6 +731,32 @@ Function _sc()
 	
 	'执行操作
 	Call _action()
+End Function
+
+'卖出-平仓
+Function _sc2()
+	'卖出-平仓
+	act_conf(0) = "IF1207"	'合约
+	act_conf(1) = "2"		'卖出
+	act_conf(2) = "2"		'平仓
+	act_conf(3) = price_f + 5	'价格
+	act_conf(4) = "1"		'委手
+	
+	'执行操作
+	Call _action2()
+End Function
+
+'卖出-平仓
+Function _sc0(newPrice)
+	'卖出-平仓
+	act_conf(0) = "IF1207"	'合约
+	act_conf(1) = "2"		'卖出
+	act_conf(2) = "2"		'平仓
+	act_conf(3) = newPrice	'价格
+	act_conf(4) = "1"		'委手
+	
+	'执行操作
+	Call _action2()
 End Function
 
 
@@ -529,6 +772,83 @@ Function _bo()
 	'执行操作
 	Call _action()
 End Function
+
+
+'买入-开仓
+Function _bo2()
+	'买入-开仓
+	act_conf(0) = "IF1207"	'合约
+	act_conf(1) = "1"		'买入
+	act_conf(2) = "1"		'开仓
+	act_conf(3) = price_c - 5	'价格
+	act_conf(4) = "1"		'委手
+	
+	'执行操作
+	Call _action2()
+End Function
+
+
+Function _action2()
+	'【位置】中金标签页
+	'MoveTo 256, 277
+	'Delay 10
+	'LeftDoubleClick 1
+	'【位置】委托F3
+	'MoveTo 23, 299
+	MoveTo 42, 765
+	Delay 10
+	LeftClick 1
+	Delay 10
+	'【位置】产品目录第二行
+	'MoveTo 44, 74
+	'Delay 10
+	'LeftDoubleClick 1
+	'Delay 10
+	'【位置】合约代码
+	'MoveTo 1547, 331
+	MoveTo 1280, 789
+	Delay 10
+	LeftClick 1
+	Delay 10
+	KeyPress "BackSpace", 1
+	Delay 10
+	'合约代码
+	SayString act_conf(0)
+	Delay 10
+	KeyPress "Tab", 1
+	Delay 10
+	'买入
+	SayString act_conf(1)
+	Delay 10
+	KeyPress "Tab", 1
+	Delay 10
+	'开仓
+	SayString act_conf(2)
+	Delay 10
+	KeyPress "Tab", 1
+	Delay 10
+	'委托价格
+	'TracePrint act_conf(3)
+	SayString act_conf(3)
+	Delay 10
+	KeyPress "Tab", 1
+	Delay 10
+	'委手
+	SayString act_conf(4)
+	Delay 10
+	'KeyPress "Tab", 1
+	'Delay 10
+	'MoveTo 1495, 456
+	MoveTo 1346, 914
+	Delay 10
+	'确认提交
+	LeftClick 1
+	Delay 10
+	KeyPress "BackSpace", 1
+	Delay 10
+End Function
+
+
 
 Function _action()
 	'【位置】中金标签页
