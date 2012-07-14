@@ -11,7 +11,7 @@ import java.util.Map;
 
 import javax.script.ScriptEngineManager;
 
-import net.sf.json.JSONException;
+import net.sf.json.JSONObject;
 
 import org.apache.http.HttpHost;
 import org.apache.http.NameValuePair;
@@ -111,12 +111,11 @@ public class BasicHttpClient {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (JSONException e) {
-			e.printStackTrace();
 		} finally {
 			loginPost.abort();
 		}
 	}
+	
 	/**
 	 * 带参数POST
 	 * @param url
@@ -136,6 +135,7 @@ public class BasicHttpClient {
 			httppost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
 			responseBody = httpclient.execute(httppost, brh,
 					localContext);
+			cookieDisplay(cookieStroe);
 		} catch (Exception e) {
 			e.printStackTrace();
 			responseBody = null;
@@ -144,6 +144,64 @@ public class BasicHttpClient {
 			// httpclient.getConnectionManager().shutdown();
 		}
 		return responseBody;
+	}
+	
+
+	/**
+	 * 带参数POST
+	 * @param url
+	 * @param values
+	 * @return
+	 */
+	protected static Document postTextToDoc(String url, Map<String, String> values) {
+		HttpPost httppost = new HttpPost(url);
+		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+		for (Map.Entry<String, String> e : values.entrySet()) {
+			nvps.add(new BasicNameValuePair(e.getKey(), e.getValue()));
+		}
+		// Create a response handler
+		ResponseHandler<Document> jrh = new JsoupResponseHandler();
+		Document page = null;
+		try {
+			httppost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
+			page = httpclient.execute(httppost, jrh,
+					localContext);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			httppost.abort();
+			// httpclient.getConnectionManager().shutdown();
+		}
+		return page;
+	}
+	
+
+	/**
+	 * 带参数POST
+	 * @param url
+	 * @param values
+	 * @return
+	 */
+	protected static JSONObject postTextToJson(String url, Map<String, String> values) {
+		HttpPost httppost = new HttpPost(url);
+		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+		for (Map.Entry<String, String> e : values.entrySet()) {
+			nvps.add(new BasicNameValuePair(e.getKey(), e.getValue()));
+		}
+		// Create a response handler
+		ResponseHandler<JSONObject> jrh = new JSONObjectResponseHandler();
+		JSONObject json = null;
+		try {
+			httppost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
+			json = httpclient.execute(httppost, jrh,
+					localContext);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			httppost.abort();
+			// httpclient.getConnectionManager().shutdown();
+		}
+		return json;
 	}
 
 	/**
@@ -233,5 +291,9 @@ public class BasicHttpClient {
 			log.info(">>>" + cookie.getName() + " : " + cookie.getValue()
 					+ " | " + cookie.getDomain());
 		}
+	}
+	
+	protected static void shutdown() {
+		httpclient.getConnectionManager().shutdown();
 	}
 }

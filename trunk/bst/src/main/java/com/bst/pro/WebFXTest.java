@@ -113,7 +113,8 @@ public class WebFXTest {
 		HttpGet httpget = new HttpGet(
 				"https://webim.feixin.10086.cn/WebIM/GetPicCode.aspx?Type=ccpsession&0.6949566061972312");
 
-		String cookie = "webim_loginCounter=1336800284234; IsCookiesEnable=true; ";
+//		String cookie = "webim_loginCounter=1336800284234; IsCookiesEnable=true; ";
+		String cookie = "";
 		httpget.addHeader("Cookie", cookie);
 		httpget.addHeader("Accept", "*/*");
 		httpget.addHeader("Accept-Encoding", "gzip, deflate");
@@ -287,16 +288,32 @@ public class WebFXTest {
 			//ssid	222857364p20172-fe65029b-067d-4fde-97ad-85d8eb7f072b	57	
 			//SubscribeFlag	0	15	
 			//UserName	13636532333	20	
+//		HttpPost queryUid = new HttpPost("https://webim.feixin.10086.cn/content/WebIM/AddBuddy.aspx?Version=1");
+//		
+//		nvps = new ArrayList<NameValuePair>();
+//		nvps.add(new BasicNameValuePair("AddType", "1"));
+//		nvps.add(new BasicNameValuePair("BuddyLists", "0"));
+//		nvps.add(new BasicNameValuePair("Ccp", ccp));
+//		nvps.add(new BasicNameValuePair("CcpId", ccpId));
+//		nvps.add(new BasicNameValuePair("Desc", "马勇"));
+//		nvps.add(new BasicNameValuePair("LocalName", ""));
+//		nvps.add(new BasicNameValuePair("PhraseId", "0"));
+//		nvps.add(new BasicNameValuePair("ssid", ssid));
+//		nvps.add(new BasicNameValuePair("SubscribeFlag", "0"));
+//		nvps.add(new BasicNameValuePair("UserName", "13636532333"));
+//		
+		
+
 		
 		
 		HttpPost smPost = new HttpPost(
-				"https://webim.feixin.10086.cn/WebIM/SendMsg.aspx?Version=1");
+				"https://webim.feixin.10086.cn/WebIM/SendMsg.aspx?Version=2");
 
 		nvps = new ArrayList<NameValuePair>();
 		nvps.add(new BasicNameValuePair("IsSendSms", "0"));
-		nvps.add(new BasicNameValuePair("msg", "今天外面在下雨哦。"));
+		nvps.add(new BasicNameValuePair("msg", "今天外面不下雨哦。"));
 		nvps.add(new BasicNameValuePair("ssid", ssid));
-		nvps.add(new BasicNameValuePair("To", "888983017"));
+		nvps.add(new BasicNameValuePair("To", "223534907"));
 		try {
 			smPost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
 		} catch (UnsupportedEncodingException e1) {
@@ -335,7 +352,7 @@ public class WebFXTest {
 		}
 
 		smPost = new HttpPost(
-				"https://webim.feixin.10086.cn/WebIM/SendMsg.aspx?Version=2");
+				"https://webim.feixin.10086.cn/WebIM/SendMsg.aspx?Version=3");
 
 		nvps = new ArrayList<NameValuePair>();
 		nvps.add(new BasicNameValuePair("IsSendSms", "0"));
