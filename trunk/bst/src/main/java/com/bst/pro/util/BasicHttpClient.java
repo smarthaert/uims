@@ -14,7 +14,10 @@ import javax.script.ScriptEngineManager;
 import net.sf.json.JSONObject;
 
 import org.apache.http.HttpHost;
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.ProtocolException;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpClient;
@@ -30,6 +33,7 @@ import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.DefaultRedirectStrategy;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HTTP;
@@ -52,6 +56,32 @@ public class BasicHttpClient {
 
 	public static CookieStore getCookieStroe() {
 		return cookieStroe;
+	}
+	
+	protected static void fixSelfSignedCertificate() {
+		// fix the self-signed https certificate
+				httpclient = WebClientDevWrapper.wrapClient(httpclient);
+
+				//handle 301 and 302 redirect
+				((DefaultHttpClient)httpclient).setRedirectStrategy(new DefaultRedirectStrategy() {
+					public boolean isRedirected(HttpRequest request,
+							HttpResponse response, HttpContext context) {
+						boolean isRedirect = false;
+						try {
+							isRedirect = super.isRedirected(request, response, context);
+						} catch (ProtocolException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						if (!isRedirect) {
+							int responseCode = response.getStatusLine().getStatusCode();
+							if (responseCode == 301 || responseCode == 302) {
+								return true;
+							}
+						}
+						return isRedirect;
+					}
+				});
 	}
 
 	// create context
@@ -260,6 +290,30 @@ public class BasicHttpClient {
 			httpget.abort();
 		}
 		return page;
+	}
+	
+	/**
+	 * 发送get请求并解析得到的页面为Document对象
+	 * @param url
+	 * @return
+	 */
+	protected static String getTextAsString(String url) {
+		HttpGet httpget = new HttpGet(url);
+
+		ResponseHandler<String> brh = new BasicResponseHandler();
+		String pageStr = null;
+		try {
+			pageStr = httpclient.execute(httpget, brh, localContext);
+			log.debug(pageStr.toString());
+			cookieDisplay(cookieStroe);
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			httpget.abort();
+		}
+		return pageStr;
 	}
 	
 	protected static Document getText(URI uri) {
