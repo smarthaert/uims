@@ -852,6 +852,80 @@ End Function
 
 Function _action()
 	'【位置】中金标签页
+	'MoveTo 256, 277
+	MoveTo 257, 834
+
+	Delay 10
+	LeftDoubleClick 1
+	'【位置】委托F3
+	'MoveTo 23, 299
+	MoveTo 28, 857
+
+	Delay 10
+	LeftClick 1
+	Delay 10
+	'【位置】产品目录第二行
+	'MoveTo 44, 74
+	MoveTo 36, 757
+
+	Delay 10
+	LeftDoubleClick 1
+	Delay 10
+	'【位置】合约代码
+	'MoveTo 1547, 331
+	MoveTo 1338, 888
+
+	Delay 10
+	LeftClick 1
+	Delay 10
+	'合约代码
+	SayString act_conf(0)
+	Delay 10
+	KeyDown "Tab", 1
+	Delay 10
+	KeyUp "Tab", 1
+	Delay 10
+	'买入
+	SayString act_conf(1)
+	Delay 10
+	KeyDown "Tab", 1
+	Delay 10
+	'开仓
+	SayString act_conf(2)
+	Delay 10
+	KeyDown "Tab", 1
+	Delay 10
+	KeyUp "Tab", 1
+	Delay 10
+	'委托价格
+	'TracePrint act_conf(3)
+	SayString act_conf(3)
+	Delay 10
+	KeyDown "Tab", 1
+	Delay 10
+	KeyUp "Tab", 1
+	Delay 10
+	'委手
+	SayString act_conf(4)
+	Delay 10
+	KeyDown "Tab", 1
+	Delay 10
+	KeyUp "Tab", 1
+	Delay 10
+	'MoveTo 1495, 456
+	MoveTo 1296, 1015
+
+	Delay 10
+	'确认提交
+	LeftClick 1
+	Delay 10
+End Function
+
+
+
+
+Function _action_bak()
+	'【位置】中金标签页
 	MoveTo 256, 277
 	Delay 10
 	LeftDoubleClick 1
@@ -1526,8 +1600,10 @@ End Function
 
 Function ztj()
 	//1449,397 0000FF 涨停价
-	qx=1449
-	qy = 397
+	//MoveTo 1253, 955	笔记本初始化环境
+
+	qx=1253
+	qy = 955
 	num = 7
 	txtColor = "0000FF"
 	txtHight = 10
@@ -1567,7 +1643,7 @@ End Function
 
 
 
-Function kpj(h_MLMain, L, T)
+Function kpj_b(h_MLMain, L, T)
 	//949, 49 开盘价
 	//953, 53
 	qx=953
@@ -1587,11 +1663,33 @@ Function kpj(h_MLMain, L, T)
 
 End Function
 
+Function kpj()
+	//949, 49 开盘价
+	//953, 53
+	qx=953
+	qy = 53
+	num = 4
+	txtColor = "00FFFF"
+	txtHight = 10
+	txtWidth = 6
+	confFile = "D:\conf.ini"
+	txtSplit = 2
+	numText = ""
+	
+	section = "color:" & txtColor & "|h:" & txtHight & "|w:" & txtWidth & "|s:" & txtSplit &  "|f:1"
+	
+	Call _parser_int2()
+	kpj = numText
+
+End Function
+
 
 Function dtj()
 	//1449,374 008000 跌停价
-	qx=1449
-	qy = 374
+	//MoveTo 1253, 932	笔记本 初始化环境中
+
+	qx=1253
+	qy = 932
 	num = 7
 	txtColor = "008000"
 	txtHight = 10

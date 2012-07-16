@@ -23,16 +23,21 @@ SetupOCXFile=
 [Comment]
 
 [Script]
-	'Call initHangQinWindow
-	'Delay 1000
+	Call initHangQinWindow
+	Delay 1000
 	
-	'Call initJiaoYiWindow
+	Call initJiaoYiWindow
 
+	'测试能否取得价格区间
 	
 	'价格区间
-	UserVar price_o = "2579.0"	"开盘价"
-	price_f = "2000.0"	'Lib.gzqh.dtj()
-	price_c = "3000.0"	'Lib.gzqh.ztj()
+	'price_o = Lib.gzqh.kpj()
+	'TracePrint price_o
+	price_f = Lib.gzqh.dtj()
+	price_c = Lib.gzqh.ztj()
+	MessageBox "取得的跌停价为：" & price_f & "涨停价为：" & price_c
+	
+	EndScript
 
 	'挂单操作
 	Dim act_conf(5)
@@ -50,11 +55,12 @@ Function initHangQinWindow()
 
 	initX = 0
 	initY = 0
-	initH = 1408
-	initW = 700
+	initW = 1408
+	initH = 700
 
 	
 	h_HangQing = Plugin.Window.Find(0, "国泰君安锐智版V9.08 - [组合图-沪深1207]")
+
 	Delay 100
 	TracePrint "查找窗口：" & h_HangQing
 	
@@ -71,7 +77,7 @@ Function initHangQinWindow()
 	TracePrint "边框大小：       " & W2 - W1 & "             " & H2 - H1
 	*/
 	//下面这句是改变窗口大小
-	Call Plugin.Window.Size(h_HangQing, initH, initW)
+	Call Plugin.Window.Size(h_HangQing, initW, initH)
 	Delay 100
 	TracePrint "当前改变窗口大小" & initH & "|" & initW
 	
@@ -91,11 +97,13 @@ Function initJiaoYiWindow()
 
 	initX = 0
 	initY = 700
-	initH = 1408
-	initW = 300
+	initW = 1408
+	initH = 300
 	
 	
-	h_JiaoYi = Plugin.Window.Find(0, "国泰君安期货网上交易（仿真）V5.0--『81500466:马勇』")
+	'h_JiaoYi = Plugin.Window.Find(0, "国泰君安期货网上交易（仿真）V5.0--『81500466:马勇』")
+	h_JiaoYi = Plugin.Window.Find(0, "国泰君安模拟交易(V3.0.8.1017)--『5070083』")
+
 	Delay 100
 	TracePrint "查找窗口：" & h_JiaoYi
 	
@@ -112,7 +120,7 @@ Function initJiaoYiWindow()
 	TracePrint "边框大小：       " & W2 - W1 & "             " & H2 - H1
 	*/
 	//下面这句是改变窗口大小
-	Call Plugin.Window.Size(h_JiaoYi, initH, initW)
+	Call Plugin.Window.Size(h_JiaoYi, initW, initH)
 	Delay 100
 	TracePrint "当前改变窗口大小" & initH & "|" & initW
 	
