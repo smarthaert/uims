@@ -28,7 +28,9 @@ SetupOCXFile=
 '价格区间
 UserVar price_o = "2579.0"	"开盘价"
 price_f = Lib.gzqh.dtj()
+TracePrint price_f
 price_c = Lib.gzqh.ztj()
+TracePrint price_c
 
 '挂单操作
 Dim act_conf(5)
