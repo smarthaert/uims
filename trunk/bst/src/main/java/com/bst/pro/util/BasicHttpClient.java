@@ -205,6 +205,28 @@ public class BasicHttpClient {
 		return page;
 	}
 	
+	/**
+	 * 带参数POST
+	 * @param url
+	 * @param values
+	 * @return
+	 */
+	protected static JSONObject getTextToJson(String url) {
+		HttpGet httpget = new HttpGet(url);
+		// Create a response handler
+		ResponseHandler<JSONObject> jrh = new JSONObjectResponseHandler();
+		JSONObject json = null;
+		try {
+			json = httpclient.execute(httpget, jrh,
+					localContext);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			httpget.abort();
+			// httpclient.getConnectionManager().shutdown();
+		}
+		return json;
+	}
 
 	/**
 	 * 带参数POST

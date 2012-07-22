@@ -5,78 +5,78 @@ import javax.swing.text.TabableView;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-public class PanKou {
-	private float buyPrice1;
+public abstract class PanKou {
+	protected double buyPrice1;
 
-	private float buyPrice10;
-	private float buyPrice2;
-	private float buyPrice3;
-	private float buyPrice4;
-	private float buyPrice5;
+	protected double buyPrice10;
+	protected double buyPrice2;
+	protected double buyPrice3;
+	protected double buyPrice4;
+	protected double buyPrice5;
 
-	private float buyPrice6;
-	private float buyPrice7;
-	private float buyPrice8;
-	private float buyPrice9;
-	private int buyQuantity1;
+	protected double buyPrice6;
+	protected double buyPrice7;
+	protected double buyPrice8;
+	protected double buyPrice9;
+	protected int buyQuantity1;
 
-	private int buyQuantity10;
-	private int buyQuantity2;
-	private int buyQuantity3;
-	private int buyQuantity4;
+	protected int buyQuantity10;
+	protected int buyQuantity2;
+	protected int buyQuantity3;
+	protected int buyQuantity4;
 
-	private int buyQuantity5;
+	protected int buyQuantity5;
 
-	private int buyQuantity6;
+	protected int buyQuantity6;
 
-	private int buyQuantity7;
+	protected int buyQuantity7;
 
-	private int buyQuantity8;
+	protected int buyQuantity8;
 
-	private int buyQuantity9;
+	protected int buyQuantity9;
 
 	private int level;
 
 	private int maxBuyQty;
 	private int maxSellQty;
 
-	public float getBuyPrice1() {
+	public double getBuyPrice1() {
 		return buyPrice1;
 	}
 
-	public float getBuyPrice10() {
+	public double getBuyPrice10() {
 		return buyPrice10;
 	}
 
-	public float getBuyPrice2() {
+	public double getBuyPrice2() {
 		return buyPrice2;
 	}
 
-	public float getBuyPrice3() {
+	public double getBuyPrice3() {
 		return buyPrice3;
 	}
 
-	public float getBuyPrice4() {
+	public double getBuyPrice4() {
 		return buyPrice4;
 	}
 
-	public float getBuyPrice5() {
+	public double getBuyPrice5() {
 		return buyPrice5;
 	}
 
-	public float getBuyPrice6() {
+	public double getBuyPrice6() {
 		return buyPrice6;
 	}
 
-	public float getBuyPrice7() {
+	public double getBuyPrice7() {
 		return buyPrice7;
 	}
 
-	public float getBuyPrice8() {
+	public double getBuyPrice8() {
 		return buyPrice8;
 	}
 
-	public float getBuyPrice9() {
+	public double getBuyPrice9() {
 		return buyPrice9;
 	}
 
@@ -161,43 +161,43 @@ public class PanKou {
 		return maxSellQty;
 	}
 
-	public float getSellPrice1() {
+	public double getSellPrice1() {
 		return sellPrice1;
 	}
 
-	public float getSellPrice10() {
+	public double getSellPrice10() {
 		return sellPrice10;
 	}
 
-	public float getSellPrice2() {
+	public double getSellPrice2() {
 		return sellPrice2;
 	}
 
-	public float getSellPrice3() {
+	public double getSellPrice3() {
 		return sellPrice3;
 	}
 
-	public float getSellPrice4() {
+	public double getSellPrice4() {
 		return sellPrice4;
 	}
 
-	public float getSellPrice5() {
+	public double getSellPrice5() {
 		return sellPrice5;
 	}
 
-	public float getSellPrice6() {
+	public double getSellPrice6() {
 		return sellPrice6;
 	}
 
-	public float getSellPrice7() {
+	public double getSellPrice7() {
 		return sellPrice7;
 	}
 
-	public float getSellPrice8() {
+	public double getSellPrice8() {
 		return sellPrice8;
 	}
 
-	public float getSellPrice9() {
+	public double getSellPrice9() {
 		return sellPrice9;
 	}
 
@@ -241,29 +241,29 @@ public class PanKou {
 		return sellQuantity9;
 	}
 
-	private float sellPrice1;
-	private float sellPrice10;
-	private float sellPrice2;
-	private float sellPrice3;
-	private float sellPrice4;
+	protected double sellPrice1;
+	protected double sellPrice10;
+	protected double sellPrice2;
+	protected double sellPrice3;
+	protected double sellPrice4;
 
-	private float sellPrice5;
-	private float sellPrice6;
-	private float sellPrice7;
-	private float sellPrice8;
-	private float sellPrice9;
+	protected double sellPrice5;
+	protected double sellPrice6;
+	protected double sellPrice7;
+	protected double sellPrice8;
+	protected double sellPrice9;
 
-	private int sellQuantity1;
-	private int sellQuantity10;
-	private int sellQuantity2;
-	private int sellQuantity3;
-	private int sellQuantity4;
+	protected int sellQuantity1;
+	protected int sellQuantity10;
+	protected int sellQuantity2;
+	protected int sellQuantity3;
+	protected int sellQuantity4;
 
-	private int sellQuantity5;
-	private int sellQuantity6;
-	private int sellQuantity7;
-	private int sellQuantity8;
-	private int sellQuantity9;
+	protected int sellQuantity5;
+	protected int sellQuantity6;
+	protected int sellQuantity7;
+	protected int sellQuantity8;
+	protected int sellQuantity9;
 
 	public PanKou(Document doc, int level) {
 		super();
@@ -297,177 +297,13 @@ public class PanKou {
 		}
 	}
 
-	private void buildLevel1(Document doc) {
+	public abstract void buildLevel1(Document doc);
 
-		this.sellPrice5 = Float.parseFloat(doc
-				.select("table tr:eq(0) td:eq(1)").html());
-		this.sellQuantity5 = Integer.parseInt(doc.select(
-				"table tr:eq(0) td:eq(2)").html());
+	public abstract void buildLevel1(String docStr);
 
-		this.sellPrice4 = Float.parseFloat(doc
-				.select("table tr:eq(1) td:eq(1)").html());
-		this.sellQuantity4 = Integer.parseInt(doc.select(
-				"table tr:eq(1) td:eq(2)").html());
+	public abstract void buildLevel2(Document doc);
 
-		this.sellPrice3 = Float.parseFloat(doc
-				.select("table tr:eq(2) td:eq(1)").html());
-		this.sellQuantity3 = Integer.parseInt(doc.select(
-				"table tr:eq(2) td:eq(2)").html());
-
-		this.sellPrice2 = Float.parseFloat(doc
-				.select("table tr:eq(3) td:eq(1)").html());
-		this.sellQuantity2 = Integer.parseInt(doc.select(
-				"table tr:eq(3) td:eq(2)").html());
-
-		this.sellPrice1 = Float.parseFloat(doc
-				.select("table tr:eq(4) td:eq(1)").html());
-		this.sellQuantity1 = Integer.parseInt(doc.select(
-				"table tr:eq(4) td:eq(2)").html());
-
-		//jump one row
-		
-		this.buyPrice1 = Float.parseFloat(doc.select("table tr:eq(6) td:eq(1)")
-				.html());
-		this.buyQuantity1 = Integer.parseInt(doc.select(
-				"table tr:eq(6) td:eq(2)").html());
-
-		this.buyPrice2 = Float.parseFloat(doc.select("table tr:eq(7) td:eq(1)")
-				.html());
-		this.buyQuantity2 = Integer.parseInt(doc.select(
-				"table tr:eq(7) td:eq(2)").html());
-
-		this.buyPrice3 = Float.parseFloat(doc.select("table tr:eq(8) td:eq(1)")
-				.html());
-		this.buyQuantity3 = Integer.parseInt(doc.select(
-				"table tr:eq(8) td:eq(2)").html());
-
-		this.buyPrice4 = Float.parseFloat(doc.select("table tr:eq(9) td:eq(1)")
-				.html());
-		this.buyQuantity4 = Integer.parseInt(doc.select(
-				"table tr:eq(9) td:eq(2)").html());
-
-		this.buyPrice5 = Float.parseFloat(doc.select("table tr:eq(10) td:eq(1)")
-				.html());
-		this.buyQuantity5 = Integer.parseInt(doc.select(
-				"table tr:eq(10) td:eq(2)").html());
-
-	}
-
-	private void buildLevel1(String docStr) {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void buildLevel2(Document doc) {
-		
-
-		this.sellPrice10 = Float.parseFloat(doc
-				.select("table tr:eq(0) td:eq(1)").html());
-		this.sellQuantity10 = Integer.parseInt(doc.select(
-				"table tr:eq(0) td:eq(2)").html());
-
-		this.sellPrice9 = Float.parseFloat(doc
-				.select("table tr:eq(1) td:eq(1)").html());
-		this.sellQuantity9 = Integer.parseInt(doc.select(
-				"table tr:eq(1) td:eq(2)").html());
-
-		this.sellPrice8 = Float.parseFloat(doc
-				.select("table tr:eq(2) td:eq(1)").html());
-		this.sellQuantity8 = Integer.parseInt(doc.select(
-				"table tr:eq(2) td:eq(2)").html());
-
-		this.sellPrice7 = Float.parseFloat(doc
-				.select("table tr:eq(3) td:eq(1)").html());
-		this.sellQuantity7 = Integer.parseInt(doc.select(
-				"table tr:eq(3) td:eq(2)").html());
-
-		this.sellPrice6 = Float.parseFloat(doc
-				.select("table tr:eq(4) td:eq(1)").html());
-		this.sellQuantity6 = Integer.parseInt(doc.select(
-				"table tr:eq(4) td:eq(2)").html());
-
-		this.sellPrice5 = Float.parseFloat(doc
-				.select("table tr:eq(5) td:eq(1)").html());
-		this.sellQuantity5 = Integer.parseInt(doc.select(
-				"table tr:eq(5) td:eq(2)").html());
-
-		this.sellPrice4 = Float.parseFloat(doc
-				.select("table tr:eq(6) td:eq(1)").html());
-		this.sellQuantity4 = Integer.parseInt(doc.select(
-				"table tr:eq(6) td:eq(2)").html());
-
-		this.sellPrice3 = Float.parseFloat(doc
-				.select("table tr:eq(7) td:eq(1)").html());
-		this.sellQuantity3 = Integer.parseInt(doc.select(
-				"table tr:eq(7) td:eq(2)").html());
-
-		this.sellPrice2 = Float.parseFloat(doc
-				.select("table tr:eq(8) td:eq(1)").html());
-		this.sellQuantity2 = Integer.parseInt(doc.select(
-				"table tr:eq(8) td:eq(2)").html());
-
-		this.sellPrice1 = Float.parseFloat(doc
-				.select("table tr:eq(9) td:eq(1)").html());
-		this.sellQuantity1 = Integer.parseInt(doc.select(
-				"table tr:eq(9) td:eq(2)").html());
-
-		//jump one row
-		
-		this.buyPrice1 = Float.parseFloat(doc.select("table tr:eq(11) td:eq(1)")
-				.html());
-		this.buyQuantity1 = Integer.parseInt(doc.select(
-				"table tr:eq(11) td:eq(2)").html());
-
-		this.buyPrice2 = Float.parseFloat(doc.select("table tr:eq(12) td:eq(1)")
-				.html());
-		this.buyQuantity2 = Integer.parseInt(doc.select(
-				"table tr:eq(12) td:eq(2)").html());
-
-		this.buyPrice3 = Float.parseFloat(doc.select("table tr:eq(13) td:eq(1)")
-				.html());
-		this.buyQuantity3 = Integer.parseInt(doc.select(
-				"table tr:eq(13) td:eq(2)").html());
-
-		this.buyPrice4 = Float.parseFloat(doc.select("table tr:eq(14) td:eq(1)")
-				.html());
-		this.buyQuantity4 = Integer.parseInt(doc.select(
-				"table tr:eq(14) td:eq(2)").html());
-
-		this.buyPrice5 = Float.parseFloat(doc.select("table tr:eq(15) td:eq(1)")
-				.html());
-		this.buyQuantity5 = Integer.parseInt(doc.select(
-				"table tr:eq(15) td:eq(2)").html());
-		
-		this.buyPrice6 = Float.parseFloat(doc.select("table tr:eq(16) td:eq(1)")
-				.html());
-		this.buyQuantity6 = Integer.parseInt(doc.select(
-				"table tr:eq(16) td:eq(2)").html());
-
-		this.buyPrice7 = Float.parseFloat(doc.select("table tr:eq(17) td:eq(1)")
-				.html());
-		this.buyQuantity7 = Integer.parseInt(doc.select(
-				"table tr:eq(17) td:eq(2)").html());
-
-		this.buyPrice8 = Float.parseFloat(doc.select("table tr:eq(18) td:eq(1)")
-				.html());
-		this.buyQuantity8 = Integer.parseInt(doc.select(
-				"table tr:eq(18) td:eq(2)").html());
-
-		this.buyPrice9 = Float.parseFloat(doc.select("table tr:eq(19) td:eq(1)")
-				.html());
-		this.buyQuantity9 = Integer.parseInt(doc.select(
-				"table tr:eq(19) td:eq(2)").html());
-
-		this.buyPrice10 = Float.parseFloat(doc.select("table tr:eq(20) td:eq(1)")
-				.html());
-		this.buyQuantity10 = Integer.parseInt(doc.select(
-				"table tr:eq(20) td:eq(2)").html());
-	}
-
-	private void buildLevel2(String docStr) {
-		// TODO Auto-generated method stub
-
-	}
+	public abstract void buildLevel2(String docStr);
 
 	/**
 	 * get sell price by taget sell quantity to sell stock quickly
@@ -475,8 +311,8 @@ public class PanKou {
 	 * @param tagetQty
 	 * @return
 	 */
-	public float getSellPrice(int tagetQty) {
-		float price = 0;
+	public double getSellPrice(int tagetQty) {
+		double price = 0;
 		if (tagetQty >= getMaxBuyQty()) {
 			return getMaxSellQtyPrice();
 		}
@@ -558,8 +394,8 @@ public class PanKou {
 		return price;
 	}
 
-	private float getMaxSellQtyPrice() {
-		float price = 0;
+	private double getMaxSellQtyPrice() {
+		double price = 0;
 		switch (level) {
 		case 1:
 			price = buyPrice5;
@@ -572,5 +408,14 @@ public class PanKou {
 			break;
 		}
 		return price;
+	}
+
+	public boolean isSale(double cbj, double zyp) {
+		boolean ret = false;
+		//根据当前价来判断
+		if((cbj * (1 + zyp)) < buyPrice1){
+			ret = true;
+		}
+		return ret;
 	}
 }

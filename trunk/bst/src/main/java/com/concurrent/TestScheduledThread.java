@@ -15,11 +15,18 @@ public class TestScheduledThread {
 
 			public void run() {
 				System.out.println(new Date() + " beep" + (++count));
+				try {
+					Thread.currentThread().sleep(3000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		};
+		
 		// 1秒钟后运行，并每隔2秒运行一次
 		final ScheduledFuture beeperHandle = scheduler.scheduleAtFixedRate(
-				beeper, 1, 2, SECONDS);
+				beeper, 1, 5, SECONDS);
 		// 2秒钟后运行，并每次在上次任务运行完后等待5秒后重新运行
 		final ScheduledFuture beeperHandle2 = scheduler.scheduleWithFixedDelay(
 				beeper, 2, 5, SECONDS);
@@ -31,7 +38,7 @@ public class TestScheduledThread {
 				scheduler.shutdown();
 			}
 		}, 30, SECONDS);
-		
+				
 		
 	}
 }
