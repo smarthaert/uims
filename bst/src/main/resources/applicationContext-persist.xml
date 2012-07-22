@@ -1,0 +1,36 @@
+<bean id="sessionFactory"
+	class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+	<property name="annotatedClasses">
+		<list>
+			<value>org.sonatype.mavenbook.weather.model.Atmosphere</value>
+		</list>
+	</property>
+	<property name="hibernateProperties">
+		<props>
+			<prop key="hibernate.show_sql">false</prop>
+			<prop key="hibernate.format_sql">true</prop>
+			<prop key="hibernate.transaction.factory_class">
+				org.hibernate.transaction.JDBCTransactionFactory
+			</prop>
+			<prop key="hibernate.dialect">
+				org.hibernate.dialect.HSQLDialect
+			</prop>
+			<prop key="hibernate.connection.pool_size">0</prop>
+			<prop key="hibernate.connection.driver_class">
+				org.hsqldb.jdbcDriver
+			</prop>
+			<prop key="hibernate.connection.url">
+				jdbc:hsqldb:data/weather;shutdown=true
+			</prop>
+			<prop key="hibernate.connection.username">sa</prop>
+			<prop key="hibernate.connection.password"></prop>
+			<prop key="hibernate.connection.autocommit">true</prop>
+			<prop key="hibernate.jdbc.batch_size">0</prop>
+		</props>
+	</property>
+</bean>
+
+<bean id="companyDAO" class="com.bst.pro.dao.CompanyDAO">
+	<property name="sessionFactory" ref="sessionFactory" />
+</bean>
+</beans>

@@ -166,7 +166,7 @@ public class MNTradeTest {
 		String qty = Integer.toBinaryString(si.getStockQuantity());
 		String pankouStr = queryStockByCode(stockCode);
 		Document pkDoc = Jsoup.parse(pankouStr);
-		PanKou pk = new PanKou(pkDoc, 1);
+		PanKou pk = new MNTPanKou(pkDoc, 1);
 		//get the price
 		String price = new Float(pk.getSellPrice(Integer.parseInt(qty))).toString();
 		

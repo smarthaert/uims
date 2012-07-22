@@ -1,16 +1,23 @@
 package com.bst.pro;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.apache.http.client.CookieStore;
 import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.log4j.Logger;
 import org.jsoup.nodes.Document;
 
+import com.bst.pro.bo.GTPanKou;
 import com.bst.pro.bo.ZQZCObject;
 import com.bst.pro.util.BasicHttpClient;
+import com.bst.pro.util.PanKou;
 
 public class GTradeTest extends BasicHttpClient {
 	
@@ -18,48 +25,75 @@ public class GTradeTest extends BasicHttpClient {
 	
 	public static void main(String[] args) {
 		
-		String startTime = "09:30";
-		String midEndTime = "11:30";
-		String midStartTime = "13:00";
-		String endTime = "15:00";
+		String preStartTime = "09:00:00";
+		String startTime = "09:30:00";
+		String midEndTime = "11:30:00";
+		String midStartTime = "13:00:00";
+		String endTime = "15:00:00";
+		final double zyp = 0.05;
+		
+		//定时器
+		final Timer t = new Timer();
+		
+		
+		final ZQZCObject zqzc = null;
+		
+		
+		TimerTask initTranEnvTask = new TimerTask() {
+			
+			@Override
+			public void run() {
+				initTranEnv();
+				preTran(zqzc);
+			}
+		};
+		
+		TimerTask caopanActionTask = new TimerTask() {
+			
+			@Override
+			public void run() {
+				caopanAction(zyp, zqzc);
+			}
+		};
+
+		TimerTask shoupanActionTask = new TimerTask() {
+			
+			@Override
+			public void run() {
+				
+			}
+		};
+		
 		
 		
 		//程序实现逻辑
 		//【开盘前】
 			//每天9：00开始初始化交易环境包括
 			//登录交易用户
-			initTranEnv();
+			
 		
 			//检查当前持仓情况 包括持仓列表
 			
 			//根据持仓列表【目前只考虑5条以内的持仓情况】，判断开仓时间、可操作时间，开仓价格，操作价格
 			//【短信通知用户当前的持仓列表和当天的可操作列表】
-		
-		
+			executeTaskAtTime(preStartTime, t, initTranEnvTask);
+			
 		//【开盘后】
 			//如果交易时间段且有当前可操作的持仓，循环定时扫描持仓股票行情【默认一分钟一次】，根据当前行情决定如何操作
 				//对于可操作股票，进行卖出操作。
 				//对于需要平仓的股票提交平仓申请。
 				//监控平仓结果，对于成功平仓的操作，计算该股票的盈亏，短信通知用户。
+			executeTaskAtTime(startTime, t, caopanActionTask);
+			//11:30休息2个小时 13：30开始
+			
 		
 		//【收盘后】，或者当前无可操作的股票时，
 			//计算当天累计操作盈亏和证券持仓盈亏，短信通知用户。
-		
+			executeTaskAtTime(endTime, t, shoupanActionTask);
+			
+			
 		
 			
-			//证券资产
-			String searchStackDetailUrl = "https://trade.gtja.com/webtrade/trade/webTradeAction.do?method=searchStackDetail";
-			//cookie info 
-//			BranchName	Sent	上海威海路证券营业部	/	.trade.gtja.com	Fri, 19 Jul 2013 07:30:19 UTC	JavaScript	No	No
-//			countType	Sent	Z	/	.trade.gtja.com	Fri, 19 Jul 2013 07:30:19 UTC	JavaScript	No	No
-//			JSESSIONID	Sent	YyYtQH3PN22mlhtP1hhdTXnxJ8hn4X2DrvyZXB5HDzrFHdYWNMGm!1843357978!-1955906632	/	.trade.gtja.com	(Session)	Server	No	Yes
-//			MyBranchCodeList	Sent	3119	/	.trade.gtja.com	Fri, 19 Jul 2013 07:30:19 UTC	JavaScript	No	No
-			Document zqzcDoc = getText(searchStackDetailUrl);
-			ZQZCObject zqzc = new ZQZCObject(zqzcDoc);
-			//zqzc对象有证券列表和盈亏，但是没有购买时间。当前初始化的时候取得的列表应该都是T+1可交易的
-			String smsTxt = "【开盘前】当天账户概况如下：" ;
-			
-			smsTxt = smsTxt + "当天证券列表如下：";
 			
 			
 			
@@ -94,17 +128,15 @@ public class GTradeTest extends BasicHttpClient {
 //		String  PaperBuy = "https://trade.gtja.com/webtrade/trade/PaperBuy.jsp";
 		
 		
-		String stockCode = "600676";
 		
-		queryHq(stockCode);
 		
-		String b_price = "";
-		String b_qty = "";
-		String b_radiobutton = "";
-		String b_radiobutton2 = "";
-		String b_stkcode = stockCode;
-		
-		buyStock(b_price, b_qty, b_radiobutton, b_radiobutton2, b_stkcode);
+//		String b_price = "";
+//		String b_qty = "";
+//		String b_radiobutton = "";
+//		String b_radiobutton2 = "";
+//		String b_stkcode = "";
+//		
+//		buyStock(b_price, b_qty, b_radiobutton, b_radiobutton2, b_stkcode);
 		
 		
 //		String webTradeAction = "https://trade.gtja.com/webtrade/trade/webTradeAction.do";
@@ -127,14 +159,14 @@ public class GTradeTest extends BasicHttpClient {
 //		radiobutton2	S	14	
 //		saleStatus	0	12	
 //		stkcode	600676	14	
-		
-		String s_price = "";
-		String s_qty = "";
-		String s_radiobutton = "";
-		String s_radiobutton2 = "";
-		String s_stkcode = stockCode;
-		
-		saleStock(s_price, s_qty, s_radiobutton, s_radiobutton2, s_stkcode);
+//		
+//		String s_price = "";
+//		String s_qty = "";
+//		String s_radiobutton = "";
+//		String s_radiobutton2 = "";
+//		String s_stkcode = "";
+//		
+//		saleStock(s_price, s_qty, s_radiobutton, s_radiobutton2, s_stkcode);
 		
 		
 //		String Papersale = "https://trade.gtja.com/webtrade/trade/Papersale.jsp";
@@ -145,6 +177,38 @@ public class GTradeTest extends BasicHttpClient {
 		
 		
 		shutdown();
+	}
+
+	private static void caopanAction(double zyp, final ZQZCObject zqzc) {
+		List<ZQZCObject.ZQZCItem> list = zqzc.getZqzcList();
+		
+		for(ZQZCObject.ZQZCItem item : list){
+			String stockCode = item.getZqdm();
+			
+			Document doc = queryHq(stockCode);
+			PanKou pk  = new GTPanKou(doc, 1);
+			//如果达到预期收益就进行卖出操作
+			if(pk.isSale(item.getCbj(), zyp)){
+				saleStock(pk.getBuyPrice1() + "", 1 + "", "i", "S", stockCode);
+			}
+		}
+	}
+
+	private static ZQZCObject preTran(ZQZCObject zqzc) {
+		//证券资产
+		String searchStackDetailUrl = "https://trade.gtja.com/webtrade/trade/webTradeAction.do?method=searchStackDetail";
+		//cookie info 
+//			BranchName	Sent	上海威海路证券营业部	/	.trade.gtja.com	Fri, 19 Jul 2013 07:30:19 UTC	JavaScript	No	No
+//			countType	Sent	Z	/	.trade.gtja.com	Fri, 19 Jul 2013 07:30:19 UTC	JavaScript	No	No
+//			JSESSIONID	Sent	YyYtQH3PN22mlhtP1hhdTXnxJ8hn4X2DrvyZXB5HDzrFHdYWNMGm!1843357978!-1955906632	/	.trade.gtja.com	(Session)	Server	No	Yes
+//			MyBranchCodeList	Sent	3119	/	.trade.gtja.com	Fri, 19 Jul 2013 07:30:19 UTC	JavaScript	No	No
+		Document zqzcDoc = getText(searchStackDetailUrl);
+		zqzc = new ZQZCObject(zqzcDoc);
+		//zqzc对象有证券列表和盈亏，但是没有购买时间。当前初始化的时候取得的列表应该都是T+1可交易的
+		String smsTxt = "【开盘前】当天账户概况如下：" ;
+		
+		smsTxt = smsTxt + "当天证券列表如下：";
+		return zqzc;
 	}
 
 	public static void buy2() {
@@ -200,7 +264,7 @@ public class GTradeTest extends BasicHttpClient {
 		postText(entrustBusinessOut, postData);
 	}
 
-	public static void saleStock(String price, String qty, String radiobutton,
+	public static void saleStock(String d, String i, String radiobutton,
 			String radiobutton2, String stkcode) {
 		String entrustBusinessOut = "https://trade.gtja.com/webtrade/trade/webTradeAction.do?method=entrustBusinessOut";
 		
@@ -225,8 +289,8 @@ public class GTradeTest extends BasicHttpClient {
 		Map<String, String> postData = new HashMap<String, String>();
 		postData.put("costprice", "0");
 		postData.put("gtja_entrust_sno", Long.toString(new Date().getTime()));
-		postData.put("price", price);
-		postData.put("qty", qty);
+		postData.put("price", d);
+		postData.put("qty", i);
 		postData.put("radiobutton", radiobutton);
 		postData.put("radiobutton2", radiobutton2);
 		postData.put("saleStatus", "common");
@@ -275,7 +339,7 @@ public class GTradeTest extends BasicHttpClient {
 		setLocalCookieManger();
 	}
 
-	public static void queryHq(String stockCode) {
+	public static Document queryHq(String stockCode) {
 		String getHqUrl = "https://trade.gtja.com/webtrade/trade/webTradeAction.do?method=getHq&stkcode=" +
 //				"600676" +
 				stockCode +
@@ -290,7 +354,7 @@ public class GTradeTest extends BasicHttpClient {
 //		bsflag	B
 //		method	getHq
 //		stkcode	601988
-		getText(getHqUrl);
+		return getText(getHqUrl);
 	}
 
 	public static void login(String branchCode, String branchName,
@@ -425,5 +489,29 @@ public class GTradeTest extends BasicHttpClient {
 //		method	requestToken
 //		tokenRequestInfo	01010100
 		getText(requestToken);
+	}
+	
+
+	/**
+	 * 指定时刻执行任务
+	 * @param startTimeStr
+	 * @param t
+	 * @param task
+	 */
+	private static void executeTaskAtTime(String startTimeStr, final Timer t,
+			TimerTask task) {
+		Date now = new Date();
+		SimpleDateFormat df =new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"); 
+		SimpleDateFormat dfDate=new SimpleDateFormat("yyyy-MM-dd "); 
+		String dateStr = dfDate.format(now);
+		
+		Date d = null;
+		try {
+			d = df.parse(dateStr + startTimeStr);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		t.schedule(task , d);
 	}
 }
