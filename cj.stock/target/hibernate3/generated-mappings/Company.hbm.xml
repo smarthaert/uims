@@ -1,0 +1,330 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012-7-24 17:52:08 by Hibernate Tools 3.2.0.CR1 -->
+<hibernate-mapping>
+    <class name="Company" table="company" catalog="google">
+        <id name="id" type="string">
+            <column name="_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="acogs" type="double">
+            <column name="aCOGS" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="aintcov" type="double">
+            <column name="aINTCOV" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ani" type="double">
+            <column name="aNI" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ataxrate" type="double">
+            <column name="aTAXRATE" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="averageVolume" type="double">
+            <column name="averageVolume" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="beta" type="double">
+            <column name="beta" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="betaDown" type="double">
+            <column name="betaDown" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="betaRas" type="double">
+            <column name="betaRAS" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="betaUp" type="double">
+            <column name="betaUp" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="bookValuePerShareYear" type="double">
+            <column name="bookValuePerShareYear" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="CFloat" type="double">
+            <column name="c_float" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="capitalGain" type="double">
+            <column name="capitalGain" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="cashPerShareYear" type="double">
+            <column name="cashPerShareYear" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="currentRatioYear" type="double">
+            <column name="currentRatioYear" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="dpsrecentYear" type="double">
+            <column name="dPSRecentYear" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="dividend" type="double">
+            <column name="dividend" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="dividendNextQuarter" type="double">
+            <column name="dividendNextQuarter" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="dividendPerShare" type="double">
+            <column name="dividendPerShare" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="dividendRecentQuarter" type="double">
+            <column name="dividendRecentQuarter" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="dividendYield" type="double">
+            <column name="dividendYield" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ebitd" type="double">
+            <column name="eBITD" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ebitdmargin" type="double">
+            <column name="eBITDMargin" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="eps" type="double">
+            <column name="ePS" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="epsgrowthRate10years" type="double">
+            <column name="ePSGrowthRate10Years" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="epsgrowthRate5years" type="double">
+            <column name="ePSGrowthRate5Years" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="earningsAfterTaxes" type="double">
+            <column name="earningsAfterTaxes" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="earningsBeforeTaxes" type="double">
+            <column name="earningsBeforeTaxes" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="exchange" type="string">
+            <column name="exchange" />
+        </property>
+        <property name="expenseRatio" type="double">
+            <column name="expenseRatio" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="forwardPe1year" type="double">
+            <column name="forwardPE1Year" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="grossMargin" type="double">
+            <column name="grossMargin" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="high52week" type="double">
+            <column name="high52Week" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="iad" type="double">
+            <column name="iAD" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="id_1" type="string">
+            <column name="id" />
+        </property>
+        <property name="incomeDividend" type="double">
+            <column name="incomeDividend" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="institutionalPercentHeld" type="double">
+            <column name="institutionalPercentHeld" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ltdebtToAssetsQuarter" type="double">
+            <column name="lTDebtToAssetsQuarter" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ltdebtToAssetsYear" type="double">
+            <column name="lTDebtToAssetsYear" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ltdebtToCapitalQuarter" type="double">
+            <column name="lTDebtToCapitalQuarter" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ltdebtToCapitalYear" type="double">
+            <column name="lTDebtToCapitalYear" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ltdebtToEquityQuarter" type="double">
+            <column name="lTDebtToEquityQuarter" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ltdebtToEquityYear" type="double">
+            <column name="lTDebtToEquityYear" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="low52week" type="double">
+            <column name="low52Week" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="marketCap" type="double">
+            <column name="marketCap" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="marketCapRas" type="double">
+            <column name="marketCapRAS" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="marketCapShareBasis" type="double">
+            <column name="marketCapShareBasis" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="navChange" type="double">
+            <column name="navChange" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="navChangePercent" type="double">
+            <column name="navChangePercent" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="navPrior" type="double">
+            <column name="navPrior" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="netAssets" type="double">
+            <column name="netAssets" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="netIncomeChangePerc" type="double">
+            <column name="netIncomeChangePerc" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="netIncomeGrowthRate5years" type="double">
+            <column name="netIncomeGrowthRate5Years" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="netProfitMarginPercent" type="double">
+            <column name="netProfitMarginPercent" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="nextYearEps" type="double">
+            <column name="nextYearEPS" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="nprice" type="double">
+            <column name="nprice" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="operatingMargin" type="double">
+            <column name="operatingMargin" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="pe" type="double">
+            <column name="pE" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="price13weekPercChange" type="double">
+            <column name="price13WeekPercChange" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="price150dayAverage" type="double">
+            <column name="price150DayAverage" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="price1dayPercChange" type="double">
+            <column name="price1DayPercChange" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="price200dayAverage" type="double">
+            <column name="price200DayAverage" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="price26weekPercChange" type="double">
+            <column name="price26WeekPercChange" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="price4weekPercChange" type="double">
+            <column name="price4WeekPercChange" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="price50dayAverage" type="double">
+            <column name="price50DayAverage" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="price52weekPercChange" type="double">
+            <column name="price52WeekPercChange" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="priceSales" type="double">
+            <column name="priceSales" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="priceToBook" type="double">
+            <column name="priceToBook" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="priceToCashFlowPerShare" type="double">
+            <column name="priceToCashFlowPerShare" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="priceYtdpercChange" type="double">
+            <column name="priceYTDPercChange" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="quoteChange" type="double">
+            <column name="quoteChange" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="quoteLast" type="double">
+            <column name="quoteLast" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="quotePercChange" type="double">
+            <column name="quotePercChange" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="return13week" type="double">
+            <column name="return13Week" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="return156week" type="double">
+            <column name="return156Week" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="return1week" type="double">
+            <column name="return1Week" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="return260week" type="double">
+            <column name="return260Week" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="return4week" type="double">
+            <column name="return4Week" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="return52week" type="double">
+            <column name="return52Week" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="returnDay" type="double">
+            <column name="returnDay" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="returnOnAssets5years" type="double">
+            <column name="returnOnAssets5Years" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="returnOnAssetsPtm" type="double">
+            <column name="returnOnAssetsPTM" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="returnOnAssetsQuarter" type="double">
+            <column name="returnOnAssetsQuarter" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="returnOnAssetsTtm" type="double">
+            <column name="returnOnAssetsTTM" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="returnOnAssetsYear" type="double">
+            <column name="returnOnAssetsYear" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="returnOnEquity5years" type="double">
+            <column name="returnOnEquity5Years" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="returnOnEquityPtm" type="double">
+            <column name="returnOnEquityPTM" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="returnOnEquityQuarter" type="double">
+            <column name="returnOnEquityQuarter" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="returnOnEquityTtm" type="double">
+            <column name="returnOnEquityTTM" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="returnOnEquityYear" type="double">
+            <column name="returnOnEquityYear" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="returnOnInvestment5years" type="double">
+            <column name="returnOnInvestment5Years" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="returnOnInvestmentQuarter" type="double">
+            <column name="returnOnInvestmentQuarter" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="returnOnInvestmentTtm" type="double">
+            <column name="returnOnInvestmentTTM" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="returnOnInvestmentYear" type="double">
+            <column name="returnOnInvestmentYear" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="returnYtd" type="double">
+            <column name="returnYTD" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="revenueGrowthRate10years" type="double">
+            <column name="revenueGrowthRate10Years" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="revenueGrowthRate5years" type="double">
+            <column name="revenueGrowthRate5Years" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="shortInterestRatioPercent" type="double">
+            <column name="shortInterestRatioPercent" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="ticker" type="string">
+            <column name="ticker" />
+        </property>
+        <property name="title" type="string">
+            <column name="title" />
+        </property>
+        <property name="totalDebtToAssetsQuarter" type="double">
+            <column name="totalDebtToAssetsQuarter" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="totalDebtToAssetsYear" type="double">
+            <column name="totalDebtToAssetsYear" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="totalDebtToCapitalQuarter" type="double">
+            <column name="totalDebtToCapitalQuarter" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="totalDebtToCapitalYear" type="double">
+            <column name="totalDebtToCapitalYear" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="totalDebtToEquityQuarter" type="double">
+            <column name="totalDebtToEquityQuarter" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="totalDebtToEquityYear" type="double">
+            <column name="totalDebtToEquityYear" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="volume" type="double">
+            <column name="volume" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

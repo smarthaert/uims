@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012-7-24 17:52:08 by Hibernate Tools 3.2.0.CR1 -->
+<hibernate-mapping>
+    <class name="Historicalprices" table="historicalprices" catalog="google">
+        <id name="id" type="string">
+            <column name="_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="close" type="double">
+            <column name="close" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="date" type="timestamp">
+            <column name="date" length="0" />
+        </property>
+        <property name="high" type="double">
+            <column name="high" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="low" type="double">
+            <column name="low" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="open" type="double">
+            <column name="open" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="volume" type="long">
+            <column name="volume" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
