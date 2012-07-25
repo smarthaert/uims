@@ -4,8 +4,8 @@
                              http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.sonatype.mvnexbook</groupId>
-		<artifactId>mvnex-examples</artifactId>
+		<groupId>org.sonatype.mavenbook</groupId>
+		<artifactId>maven-examples</artifactId>
 		<version>1.0</version>
 	</parent>
 	<artifactId>simple-model</artifactId>
