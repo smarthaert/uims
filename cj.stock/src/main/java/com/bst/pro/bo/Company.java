@@ -1,6 +1,8 @@
 package com.bst.pro.bo;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
@@ -8,12 +10,21 @@ import javax.persistence.Id;
 public class Company {
 	
 	@Id
-	String _id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	Integer _id;
+	
 	public Company() {
 		
 	}
 	String title;
-	String id;
+	String myid;
+	boolean hasOc;
+	public boolean isHasOc() {
+		return hasOc;
+	}
+	public void setHasOc(boolean hasOc) {
+		this.hasOc = hasOc;
+	}
 	String ticker;
 	String exchange;
 	
@@ -30,11 +41,11 @@ public class Company {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getId() {
-		return id;
+	public String getMyid() {
+		return myid;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setMyid(String myid) {
+		this.myid = myid;
 	}
 	public String getTicker() {
 		return ticker;
