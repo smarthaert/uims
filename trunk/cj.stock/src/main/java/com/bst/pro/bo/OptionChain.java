@@ -3,24 +3,44 @@ package com.bst.pro.bo;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 @Entity
 public class OptionChain {
 	
 	@Id
-	String _id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	Integer _id;
 	public OptionChain() {
 		
 	}
+
+	String ticker;
+	String exchange;
+	
 	Date expiration = null;	//expiration
 	String opt = null;		//Calls & Puts
 	double strike;	//Strike 
 	double price;	//Price 
-	double change;	//Change 
+	double chan;	//Change 
 	double bid;		//Bid 
 	double ask;		//Ask 
 	long volume;	//Volume 
 	long openInt;	//Open Int 
+	
+	public String getTicker() {
+		return ticker;
+	}
+	public void setTicker(String ticker) {
+		this.ticker = ticker;
+	}
+	public String getExchange() {
+		return exchange;
+	}
+	public void setExchange(String exchange) {
+		this.exchange = exchange;
+	}
 	public Date getExpiration() {
 		return expiration;
 	}
@@ -46,10 +66,10 @@ public class OptionChain {
 		this.price = price;
 	}
 	public double getChange() {
-		return change;
+		return chan;
 	}
 	public void setChange(double change) {
-		this.change = change;
+		this.chan = change;
 	}
 	public double getBid() {
 		return bid;

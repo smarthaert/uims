@@ -3,17 +3,39 @@ package com.bst.pro.bo;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class HistoricalPrices {
 
 	@Id
-	String _id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	Integer _id;
 	public HistoricalPrices() {
 		
 	}
 
+	String ticker;
+	public String getTicker() {
+		return ticker;
+	}
+
+	public void setTicker(String ticker) {
+		this.ticker = ticker;
+	}
+
+	public String getExchange() {
+		return exchange;
+	}
+
+	public void setExchange(String exchange) {
+		this.exchange = exchange;
+	}
+
+	String exchange;
+	
 	Date date = null; // Date
 	double open; // Open
 	double high; // High

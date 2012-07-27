@@ -4,11 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 
 import net.sf.json.JSONObject;
 
@@ -275,7 +277,7 @@ public class BasicHttpClient {
 			httpget.abort();
 		}
 
-		log.info("请打�?" + imgPath + "，并且在这里输入其中的字符串，然后回车：");
+		log.info("请打�?" + imgPath + "，并且在这里输入其中的字符串，然后回车：");
 
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader(isr);
@@ -289,7 +291,7 @@ public class BasicHttpClient {
 	}
 
 	/**
-	 * 发�?�get请求并解析得到的页面为Document对象
+	 * 发�?�get请求并解析得到的页面为Document对象
 	 * @param url
 	 * @return
 	 */
@@ -300,7 +302,9 @@ public class BasicHttpClient {
 		Document page = null;
 		try {
 			page = httpclient.execute(httpget, jrh, localContext);
-			log.debug(page.toString());
+			if(page != null){
+				log.debug(page.toString());
+			}
 			cookieDisplay(cookieStroe);
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
@@ -313,12 +317,27 @@ public class BasicHttpClient {
 	}
 	
 	/**
-	 * 发�?�get请求并解析得到的页面为Document对象
+	 * 发�?�get请求并解析得到的页面为Document对象
 	 * @param url
 	 * @return
 	 */
 	protected static String getTextAsString(String url) {
-		HttpGet httpget = new HttpGet(url);
+		URL _url = null;
+		try {
+			_url = new URL(url);
+		} catch (MalformedURLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		URI uri = null;
+		try {
+			uri = new URI(_url.getProtocol(), _url.getHost(), _url.getPath(), _url.getQuery(), null);
+		} catch (URISyntaxException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		HttpGet httpget = new HttpGet(uri);
+//		HttpGet httpget = new HttpGet(url);
 
 		ResponseHandler<String> brh = new BasicResponseHandler();
 		String pageStr = null;
@@ -356,7 +375,7 @@ public class BasicHttpClient {
 	}
 
 	/**
-	 * 显示本地Cookie库中的内�?
+	 * 显示本地Cookie库中的内�?
 	 * @param cookieStroe
 	 */
 	protected static void cookieDisplay(CookieStore cookieStroe) {
