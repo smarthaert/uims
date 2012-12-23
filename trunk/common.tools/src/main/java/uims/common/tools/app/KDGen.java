@@ -26,7 +26,7 @@ public class KDGen extends BasicMultiThreadedHttpClient {
 
 	static Logger log = Logger.getLogger(KDGen.class.getName());
 
-	static String num = "243489553027";
+	static String num = "243489559219";
 	private static String id;
 
 	// create context
