@@ -401,7 +401,7 @@ public class BasicMultiThreadedHttpClient {
 		String invoiceInfo[] = new String[10];
 		// 过滤背景色及图像二值化
 		new SoundBinImage().releaseSound(invoiceDir + oid
-				+ ".jpg", invoiceDir + oid + ".png", 180);
+				+ ".jpg", invoiceDir + oid + ".png", 130);
 
 		// OCR识别
 		String invoiceBinNumberFileName = invoiceDir + oid;

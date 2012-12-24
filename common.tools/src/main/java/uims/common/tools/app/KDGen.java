@@ -19,6 +19,7 @@ import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.log4j.Logger;
+import org.jsoup.nodes.Document;
 
 import uims.common.tools.util.BasicMultiThreadedHttpClient;
 
@@ -40,6 +41,109 @@ public class KDGen extends BasicMultiThreadedHttpClient {
 	}
 
 	private void action() {
+		// queryIds();
+
+//		genIds();
+		
+
+		setLocalCookieManger();
+		
+		queryInit();
+		
+		queryIds20();
+
+		shutdown();
+	}
+
+	private void queryIds20() {
+		
+
+		String imgUrl = "http://kf.sf-express.com/css/loginmgmt/imgcode?flag=1";
+//		__utma	Sent	265537869.174798303.1356352082.1356352082.1356352082.1	/	.sf-express.com	Wed, 24 Dec 2014 12:28:01 UTC	JavaScript	No	No
+//		__utmb	Sent	265537869.1.10.1356352082	/	.sf-express.com	Mon, 24 Dec 2012 12:58:01 UTC	JavaScript	No	No
+//		__utmc	Sent	265537869	/	.sf-express.com	(Session)	JavaScript	No	No
+//		__utmz	Sent	265537869.1356352082.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)	/	.sf-express.com	Tue, 25 Jun 2013 00:28:01 UTC	JavaScript	No	No
+//		JSESSIONID	Sent	6B6270A4A50F525A47CA1967D4B98CC7	/	.kf.sf-express.com	(Session)	Server	No	No
+//		locale	Sent	zh_CN	/	.kf.sf-express.com	Tue, 25-Dec-2012 05:08:08 GMT	Server	No	No
+//		SERVERID	Sent	css9	/	.kf.sf-express.com	(Session)	Server	No	No
+		String checkNum = getChkImageOCR(imgUrl, "1");
+		
+		
+		String queryUrl = "http://kf.sf-express.com/css/myquery/queryWQSBill.action?waybills=" +
+				"243489559228%0D%0A243489559237%0D%0A243489559246%0D%0A243489559255%0D%0A243489559264%0D%0A243489559273%0D%0A243489559282%0D%0A243489559291%0D%0A243489559307%0D%0A243489559316%0D%0A243489559325%0D%0A243489559334%0D%0A243489559343%0D%0A243489559352%0D%0A243489559361%0D%0A243489559370%0D%0A243489559389%0D%0A243489559398%0D%0A243489559403%0D%0A243489559412" +
+				"&verifycode=" +
+				checkNum +//"6wz6" +
+				"";
+//		verifycode	6wz6
+//		waybills	243489559228
+//		243489559237
+//		243489559246
+//		243489559255
+//		243489559264
+//		243489559273
+//		243489559282
+//		243489559291
+//		243489559307
+//		243489559316
+//		243489559325
+//		243489559334
+//		243489559343
+//		243489559352
+//		243489559361
+//		243489559370
+//		243489559389
+//		243489559398
+//		243489559403
+//		243489559412
+
+//		__utma	Sent	265537869.174798303.1356352082.1356352082.1356352082.1	/	.sf-express.com	Wed, 24 Dec 2014 12:28:01 UTC	JavaScript	No	No
+//		__utmb	Sent	265537869.1.10.1356352082	/	.sf-express.com	Mon, 24 Dec 2012 12:58:01 UTC	JavaScript	No	No
+//		__utmc	Sent	265537869	/	.sf-express.com	(Session)	JavaScript	No	No
+//		__utmz	Sent	265537869.1356352082.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)	/	.sf-express.com	Tue, 25 Jun 2013 00:28:01 UTC	JavaScript	No	No
+//		JSESSIONID	Sent	6B6270A4A50F525A47CA1967D4B98CC7	/	.kf.sf-express.com	(Session)	Server	No	No
+//		locale	Sent	zh_CN	/	.kf.sf-express.com	Tue, 25-Dec-2012 05:08:08 GMT	Server	No	No
+//		SERVERID	Sent	css9	/	.kf.sf-express.com	(Session)	Server	No	No
+		
+		Document doc = getText(queryUrl);
+		doc.select("table");
+	}
+
+	private void queryInit() {
+		String sidUrl = "http://kf.sf-express.com/css/myquery/trackSmallBywqs.action?locale=zh_CN&region=CN";
+//		JSESSIONID	Received	6B6270A4A50F525A47CA1967D4B98CC7	/	.kf.sf-express.com	(Session)	Server	No	No
+//		locale	Received	zh_CN	/	.kf.sf-express.com	Tue, 25-Dec-2012 05:08:08 GMT	Server	No	No
+//		SERVERID	Received	css9	/	.kf.sf-express.com	(Session)	Server	No	No
+		getText(sidUrl);
+	}
+
+	private void genIds() {
+		// 读取文件
+		File idFile = new File("id.txt");
+
+		String line = null;
+		ArrayList<String> cLines = new ArrayList<String>();
+		for (int i = 0; i < 10000; i++) {
+			String nextNum = genCheckNum(num);
+			line = nextNum;
+			cLines.add(line);
+
+			num = nextNum;
+
+			if ((i + 1) % 20 == 0) {
+				line = "";
+				cLines.add(line);
+			}
+
+		}
+
+		try {
+			FileUtils.writeLines(idFile, cLines);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void queryIds() {
 		setLocalCookieManger();
 
 		// 读取文件
@@ -109,7 +213,7 @@ public class KDGen extends BasicMultiThreadedHttpClient {
 		// + sessionid;//"32BA1874BCBA8B355E0F4C268C8EC59C"
 
 		JSONObject retJson = getTextToJson(queryStatuUrl);
-		if(retJson == null){
+		if (retJson == null) {
 			return isOk;
 		}
 		if (retJson.getString("status").equals("200")) {
