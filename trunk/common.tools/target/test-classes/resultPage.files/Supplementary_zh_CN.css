@@ -1,0 +1,180 @@
+.validation-advice {
+	BORDER-RIGHT: #808080 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #808080 1px solid; PADDING-LEFT: 1px; FONT-WEIGHT: bold; MARGIN-BOTTOM: 2px; PADDING-BOTTOM: 1px; MARGIN-LEFT: 0px; VERTICAL-ALIGN: middle; BORDER-LEFT: #808080 1px solid; COLOR: #fff; MARGIN-RIGHT: 0px; PADDING-TOP: 1px; BORDER-BOTTOM: #808080 1px solid; BACKGROUND-COLOR: #ff5b5b
+}
+#RecipientAddressNotice {
+	DISPLAY: inline; MARGIN-LEFT: 5px; COLOR: #000000
+}
+.note {
+	BORDER-RIGHT: #dddddd 2px dashed; PADDING-RIGHT: 1px; BORDER-TOP: #dddddd 2px dashed; MARGIN-TOP: 5px; PADDING-LEFT: 1px; FONT-SIZE: 12px; PADDING-BOTTOM: 1px; MARGIN-LEFT: 26px; BORDER-LEFT: #dddddd 2px dashed; WIDTH: 725px; LINE-HEIGHT: 20px; PADDING-TOP: 1px; BORDER-BOTTOM: #dddddd 2px dashed; FONT-FAMILY: simsun, Arial, Helvetica, sans-serif; TEXT-ALIGN: left; margin-buttom: 2px
+}
+.note1 {
+	BORDER-RIGHT: #dddddd 2px dashed; PADDING-RIGHT: 1px; BORDER-TOP: #dddddd 2px dashed; MARGIN-TOP: 15px; PADDING-LEFT: 1px; FONT-SIZE: 12px; PADDING-BOTTOM: 1px; MARGIN-LEFT: 36px; BORDER-LEFT: #dddddd 2px dashed; WIDTH: 700px; LINE-HEIGHT: 20px; PADDING-TOP: 1px; BORDER-BOTTOM: #dddddd 2px dashed; FONT-FAMILY: simsun, Arial, Helvetica, sans-serif; HEIGHT: 42px; TEXT-ALIGN: left; margin-buttom: 2px
+}
+.tel {
+	COLOR: #ff0000
+}
+BODY {
+	PADDING-LEFT: 0px; SCROLLBAR-FACE-COLOR: white; FONT-SIZE: 12px; MARGIN: 0px; SCROLLBAR-HIGHLIGHT-COLOR: white; SCROLLBAR-SHADOW-COLOR: #add0eb; SCROLLBAR-3DLIGHT-COLOR: #add0eb; SCROLLBAR-ARROW-COLOR: #5e9cc7; SCROLLBAR-TRACK-COLOR: white; FONT-FAMILY: simsun, Arial, Helvetica, sans-serif; SCROLLBAR-DARKSHADOW-COLOR: white; BACKGROUND-COLOR: #f5f5f5
+}
+.lheadline {
+	MARGIN-TOP: 5px; FONT-WEIGHT: bold; FONT-SIZE: 26px; MARGIN-LEFT: 25px; COLOR: #df1f36; LINE-HEIGHT: 1.5; FONT-FAMILY: ºÚÌå; LETTER-SPACING: 1px; TEXT-ALIGN: left
+}
+.lheadline1 {
+	MARGIN-TOP: 5px; FONT-WEIGHT: bold; FONT-SIZE: 26px; MARGIN-LEFT: 25px; COLOR: #df1f36; LINE-HEIGHT: 1.5; FONT-FAMILY: ºÚÌå; LETTER-SPACING: 1px; TEXT-ALIGN: left
+}
+.lheadlinefor {
+	MARGIN-TOP: 5px; FONT-WEIGHT: bold; FONT-SIZE: 26px; MARGIN-LEFT: 25px; COLOR: #df1f36; LINE-HEIGHT: 1.5; FONT-FAMILY: ºÚÌå; LETTER-SPACING: 1px; TEXT-ALIGN: left
+}
+.lheadline1 {
+	MARGIN-TOP: 20px; FONT-SIZE: 30px; MARGIN-LEFT: 20px; POSITION: relative; margin-buttom: 50px
+}
+.colheadline {
+	BACKGROUND: #ca000a
+}
+.sheadline {
+	FONT-WEIGHT: bolder; FONT-SIZE: 14px; MARGIN-LEFT: 5px; COLOR: white; TEXT-ALIGN: left
+}
+.sheadline1 {
+	FONT-WEIGHT: bolder; FONT-SIZE: 14px; MARGIN-LEFT: 5px; COLOR: white; TEXT-ALIGN: left
+}
+.colheadline1 {
+	BACKGROUND: white
+}
+.sheadline1 {
+	FONT-WEIGHT: bold; COLOR: black
+}
+.tail {
+	BACKGROUND: #ca000a; COLOR: white
+}
+.trColor1 {
+	BACKGROUND: #e2e2e2
+}
+.trColor2 {
+	BACKGROUND: #d4d4d4
+}
+.clew {
+	FONT-SIZE: 12px; COLOR: red
+}
+.clew P {
+	FONT-WEIGHT: bold
+}
+.tdtext-right {
+	WIDTH: 14%; HEIGHT: 35px; align: right
+}
+.divtext-center {
+	TEXT-JUSTIFY: distribute-all-lines; MARGIN-LEFT: 5px; WIDTH: 80px; TEXT-ALIGN-LAST: justify; TEXT-ALIGN: center
+}
+.subscribe {
+	MARGIN-TOP: 0px; DISPLAY: inline; BACKGROUND: red; MARGIN-LEFT: 0px; WIDTH: 35px; MARGIN-RIGHT: 10px; TEXT-ALIGN: center; padding-buttom: 5px
+}
+.tdtext-left {
+	TEXT-ALIGN: left
+}
+.tableColor1 {
+	BACKGROUND: #e2e2e2; HEIGHT: 30px; TEXT-ALIGN: center
+}
+.tableColor2 {
+	FONT-WEIGHT: bold; BACKGROUND: #d4d4d4; HEIGHT: 30px; TEXT-ALIGN: center
+}
+.tableColor21 {
+	FONT-WEIGHT: bold; BACKGROUND: #d4d4d4; HEIGHT: 30px; TEXT-ALIGN: center
+}
+.tableColor21 {
+	BACKGROUND: #ca000a
+}
+.tdtext-color {
+	COLOR: white
+}
+.tr-center-color-bold {
+	FONT-WEIGHT: bold; BACKGROUND: #d4d4d4; HEIGHT: 35px; TEXT-ALIGN: center
+}
+.tr-center-color {
+	BACKGROUND: #e2e2e2; HEIGHT: 35px; TEXT-ALIGN: center
+}
+.tr-left-color-bold {
+	PADDING-LEFT: 10px; FONT-WEIGHT: bold; BACKGROUND: #d4d4d4; HEIGHT: 35px; TEXT-ALIGN: left
+}
+.td-left-color {
+	BACKGROUND: #e2e2e2; HEIGHT: 35px; TEXT-ALIGN: left
+}
+.tdtext-right-color {
+	BACKGROUND: #d4d4d4; WIDTH: 11%; HEIGHT: 35px; align: right
+}
+.tdtext-right-color1 {
+	BACKGROUND: #d4d4d4; WIDTH: 11%; HEIGHT: 35px; align: right
+}
+.tdtext-right-color1 {
+	BACKGROUND: #e2e2e2
+}
+.tdtext-left-color {
+	PADDING-LEFT: 5px; BACKGROUND: #e2e2e2; HEIGHT: 35px; TEXT-ALIGN: left
+}
+.query-bgcolor2 {
+	BACKGROUND: #d4d4d4
+}
+.query-bgcolor1 {
+	BACKGROUND: #e2e2e2
+}
+.tdtext-center-color-bold {
+	FONT-WEIGHT: bold; BACKGROUND: #d4d4d4; WIDTH: 25%; HEIGHT: 20px; TEXT-ALIGN: center
+}
+.tdtext-center-color {
+	BACKGROUND: #e2e2e2; WIDTH: 25%; HEIGHT: 35px; TEXT-ALIGN: center
+}
+.lh30 {
+	CURSOR: pointer; LINE-HEIGHT: 20px; HEIGHT: 15px
+}
+.btn1 {
+	MARGIN-TOP: 0px; DISPLAY: block; FONT-SIZE: 12px; WIDTH: 100%; CURSOR: pointer; LINE-HEIGHT: 20px; HEIGHT: 25px; TEXT-ALIGN: center
+}
+.btn1 A {
+	PADDING-RIGHT: 0px; MARGIN-TOP: 2px; DISPLAY: block; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; CURSOR: pointer; COLOR: #ca000a; PADDING-TOP: 0px
+}
+.btn1 A SPAN {
+	PADDING-RIGHT: 2px; DISPLAY: block; PADDING-LEFT: 1px; BACKGROUND: url(../../images/order/Lbtn_r_r.gif) no-repeat right top; PADDING-BOTTOM: 0px; CURSOR: pointer; COLOR: white; PADDING-TOP: 0px
+}
+.btnSubmit {
+	MARGIN-TOP: 10px; DISPLAY: block; FONT-SIZE: 22px; WIDTH: 100%; CURSOR: pointer; LINE-HEIGHT: 30px; HEIGHT: 20px; TEXT-ALIGN: center
+}
+.btnSubmit A {
+	PADDING-RIGHT: 0px; MARGIN-TOP: 2px; DISPLAY: block; PADDING-LEFT: 2px; PADDING-BOTTOM: 0px; CURSOR: pointer; COLOR: #ca000a; PADDING-TOP: 0px
+}
+.btnSubmit A SPAN {
+	PADDING-RIGHT: 2px; DISPLAY: block; PADDING-LEFT: 1px; BACKGROUND: url(../../images/order/Lbtn_r_r_Submit.gif) no-repeat right top; PADDING-BOTTOM: 0px; COLOR: white; PADDING-TOP: 0px
+}
+.topPicture {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; BACKGROUND: url(../../images/loginmgmt/frame/os_bg.jpg) repeat-x; PADDING-BOTTOM: 0px; WIDTH: 100%; PADDING-TOP: 0px; HEIGHT: 65px; align: right
+}
+.topPictureLeft {
+	BACKGROUND: url(../../images/loginmgmt/frame/images_zh_CN/os.jpg); FLOAT: left; WIDTH: 200px; HEIGHT: 65px
+}
+.please {
+	MARGIN-LEFT: 5px; COLOR: red
+}
+.please P {
+	DISPLAY: inline; FONT-WEIGHT: bold
+}
+.manyOrder {
+	COLOR: red; TEXT-ALIGN: left
+}
+.smsScription {
+	HEIGHT: 35px; TEXT-ALIGN: left
+}
+.applyPrize {
+	PADDING-LEFT: 15px; BACKGROUND: #d4d4d4; HEIGHT: 75px
+}
+.special-center-color {
+	BACKGROUND: #d4d4d4; WIDTH: 13%; TEXT-ALIGN: center
+}
+.errorMessage {
+	FONT-WEIGHT: bold; MARGIN-BOTTOM: 2px; MARGIN-LEFT: 2px; COLOR: #ff0000
+}
+#batchDelete {
+	COLOR: #df1f36; TEXT-ALIGN: left
+}
+FIELDSET {
+	BORDER-RIGHT: #ccc 0px solid; BORDER-TOP: #ccc 0px solid; PADDING-LEFT: 5px; MARGIN: 5px; BORDER-LEFT: #ccc 0px solid; WIDTH: 705px; BORDER-BOTTOM: #ccc 0px solid
+}
+FIELDSET P {
+	TEXT-ALIGN: left
+}
