@@ -16,8 +16,8 @@ public class JsoupResponseHandler implements ResponseHandler<Document> {
 		// TODO Auto-generated method stub
 		Document doc = null;
 		try{
-//			doc = Jsoup.parse(response.getEntity().getContent(), "UTF-8", "");
-			doc = Jsoup.parse(response.getEntity().getContent(), "gb2312", "");
+			doc = Jsoup.parse(response.getEntity().getContent(), "UTF-8", "");
+//			doc = Jsoup.parse(response.getEntity().getContent(), "gb2312", "");
 		}catch(TruncatedChunkException e){
 			e.printStackTrace();
 		}

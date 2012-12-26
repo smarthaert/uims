@@ -20,6 +20,7 @@ import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.log4j.Logger;
 import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 import uims.common.tools.util.BasicMultiThreadedHttpClient;
 
@@ -27,7 +28,7 @@ public class KDGen extends BasicMultiThreadedHttpClient {
 
 	static Logger log = Logger.getLogger(KDGen.class.getName());
 
-	static String num = "243489559219";
+	static String num = "243490331503";
 	private static String id;
 
 	// create context
@@ -43,103 +44,143 @@ public class KDGen extends BasicMultiThreadedHttpClient {
 	private void action() {
 		// queryIds();
 
-//		genIds();
-		
-
 		setLocalCookieManger();
-		
+
 		queryInit();
-		
-		queryIds20();
+
+		genIds();
 
 		shutdown();
 	}
 
-	private void queryIds20() {
-		
+	private int queryIds20(String idList) {
 
+		int idOkNum = 0;
 		String imgUrl = "http://kf.sf-express.com/css/loginmgmt/imgcode?flag=1";
-//		__utma	Sent	265537869.174798303.1356352082.1356352082.1356352082.1	/	.sf-express.com	Wed, 24 Dec 2014 12:28:01 UTC	JavaScript	No	No
-//		__utmb	Sent	265537869.1.10.1356352082	/	.sf-express.com	Mon, 24 Dec 2012 12:58:01 UTC	JavaScript	No	No
-//		__utmc	Sent	265537869	/	.sf-express.com	(Session)	JavaScript	No	No
-//		__utmz	Sent	265537869.1356352082.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)	/	.sf-express.com	Tue, 25 Jun 2013 00:28:01 UTC	JavaScript	No	No
-//		JSESSIONID	Sent	6B6270A4A50F525A47CA1967D4B98CC7	/	.kf.sf-express.com	(Session)	Server	No	No
-//		locale	Sent	zh_CN	/	.kf.sf-express.com	Tue, 25-Dec-2012 05:08:08 GMT	Server	No	No
-//		SERVERID	Sent	css9	/	.kf.sf-express.com	(Session)	Server	No	No
+		// __utma Sent 265537869.174798303.1356352082.1356352082.1356352082.1 /
+		// .sf-express.com Wed, 24 Dec 2014 12:28:01 UTC JavaScript No No
+		// __utmb Sent 265537869.1.10.1356352082 / .sf-express.com Mon, 24 Dec
+		// 2012 12:58:01 UTC JavaScript No No
+		// __utmc Sent 265537869 / .sf-express.com (Session) JavaScript No No
+		// __utmz Sent
+		// 265537869.1356352082.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)
+		// / .sf-express.com Tue, 25 Jun 2013 00:28:01 UTC JavaScript No No
+		// JSESSIONID Sent 6B6270A4A50F525A47CA1967D4B98CC7 / .kf.sf-express.com
+		// (Session) Server No No
+		// locale Sent zh_CN / .kf.sf-express.com Tue, 25-Dec-2012 05:08:08 GMT
+		// Server No No
+		// SERVERID Sent css9 / .kf.sf-express.com (Session) Server No No
 		String checkNum = getChkImageOCR(imgUrl, "1");
-		
-		
-		String queryUrl = "http://kf.sf-express.com/css/myquery/queryWQSBill.action?waybills=" +
-				"243489559228%0D%0A243489559237%0D%0A243489559246%0D%0A243489559255%0D%0A243489559264%0D%0A243489559273%0D%0A243489559282%0D%0A243489559291%0D%0A243489559307%0D%0A243489559316%0D%0A243489559325%0D%0A243489559334%0D%0A243489559343%0D%0A243489559352%0D%0A243489559361%0D%0A243489559370%0D%0A243489559389%0D%0A243489559398%0D%0A243489559403%0D%0A243489559412" +
-				"&verifycode=" +
-				checkNum +//"6wz6" +
-				"";
-//		verifycode	6wz6
-//		waybills	243489559228
-//		243489559237
-//		243489559246
-//		243489559255
-//		243489559264
-//		243489559273
-//		243489559282
-//		243489559291
-//		243489559307
-//		243489559316
-//		243489559325
-//		243489559334
-//		243489559343
-//		243489559352
-//		243489559361
-//		243489559370
-//		243489559389
-//		243489559398
-//		243489559403
-//		243489559412
 
-//		__utma	Sent	265537869.174798303.1356352082.1356352082.1356352082.1	/	.sf-express.com	Wed, 24 Dec 2014 12:28:01 UTC	JavaScript	No	No
-//		__utmb	Sent	265537869.1.10.1356352082	/	.sf-express.com	Mon, 24 Dec 2012 12:58:01 UTC	JavaScript	No	No
-//		__utmc	Sent	265537869	/	.sf-express.com	(Session)	JavaScript	No	No
-//		__utmz	Sent	265537869.1356352082.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)	/	.sf-express.com	Tue, 25 Jun 2013 00:28:01 UTC	JavaScript	No	No
-//		JSESSIONID	Sent	6B6270A4A50F525A47CA1967D4B98CC7	/	.kf.sf-express.com	(Session)	Server	No	No
-//		locale	Sent	zh_CN	/	.kf.sf-express.com	Tue, 25-Dec-2012 05:08:08 GMT	Server	No	No
-//		SERVERID	Sent	css9	/	.kf.sf-express.com	(Session)	Server	No	No
-		
+		String queryUrl = "http://kf.sf-express.com/css/myquery/queryWQSBill.action?waybills="
+				+ idList + // "243489559228%0D%0A243489559237%0D%0A243489559246%0D%0A243489559255%0D%0A243489559264%0D%0A243489559273%0D%0A243489559282%0D%0A243489559291%0D%0A243489559307%0D%0A243489559316%0D%0A243489559325%0D%0A243489559334%0D%0A243489559343%0D%0A243489559352%0D%0A243489559361%0D%0A243489559370%0D%0A243489559389%0D%0A243489559398%0D%0A243489559403%0D%0A243489559412"
+							// +
+				"&verifycode=" + checkNum + // "6wz6" +
+				"";
+		// verifycode 6wz6
+		// waybills 243489559228
+		// 243489559237
+		// 243489559246
+		// 243489559255
+		// 243489559264
+		// 243489559273
+		// 243489559282
+		// 243489559291
+		// 243489559307
+		// 243489559316
+		// 243489559325
+		// 243489559334
+		// 243489559343
+		// 243489559352
+		// 243489559361
+		// 243489559370
+		// 243489559389
+		// 243489559398
+		// 243489559403
+		// 243489559412
+
+		// __utma Sent 265537869.174798303.1356352082.1356352082.1356352082.1 /
+		// .sf-express.com Wed, 24 Dec 2014 12:28:01 UTC JavaScript No No
+		// __utmb Sent 265537869.1.10.1356352082 / .sf-express.com Mon, 24 Dec
+		// 2012 12:58:01 UTC JavaScript No No
+		// __utmc Sent 265537869 / .sf-express.com (Session) JavaScript No No
+		// __utmz Sent
+		// 265537869.1356352082.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)
+		// / .sf-express.com Tue, 25 Jun 2013 00:28:01 UTC JavaScript No No
+		// JSESSIONID Sent 6B6270A4A50F525A47CA1967D4B98CC7 / .kf.sf-express.com
+		// (Session) Server No No
+		// locale Sent zh_CN / .kf.sf-express.com Tue, 25-Dec-2012 05:08:08 GMT
+		// Server No No
+		// SERVERID Sent css9 / .kf.sf-express.com (Session) Server No No
+
 		Document doc = getText(queryUrl);
-		doc.select("table");
+		Elements lines = doc
+				.select("table>tbody>tr:eq(1)>td:eq(1)>table>tbody>tr:eq(1)>td>table>tbody>tr:has(td:gt(2))");
+		////*[@id="bill243489559255"]/td[2]/table/tbody
+		String line = null;
+		String queryDate = "2012-12-26";
+		for (int i = 1; i < lines.size(); i++) {
+			String date = lines.get(i).select("tr>td:eq(1)").get(0).text();
+			String state = lines.get(i).select("tr>td:eq(3)").get(0).text();
+			if ((!state.contains("签收人是"))
+					&& (date.equals(queryDate))) {//最新状态
+				String date0 = lines.get(i + 2).select("tr>td:eq(1)").get(0).select("table>tbody>tr:eq(1)>td:eq(0)").text();
+				if(date0.equals(queryDate)){//签收时间
+					String postcode = lines.get(i).select("tr>td:eq(0)").get(0)
+							.text();
+					String location = lines.get(i).select("tr>td:eq(4)").get(0)
+							.text();
+
+					line = postcode + "|" + date + "|" + location;
+					log.info(line);
+					idOkNum++;
+					System.out.println(line);
+				}
+				try {
+					Thread.currentThread().sleep(10000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			i = i + 2;
+		}
+
+		 System.out.println("========================================================");
+		 return idOkNum;
 	}
 
 	private void queryInit() {
 		String sidUrl = "http://kf.sf-express.com/css/myquery/trackSmallBywqs.action?locale=zh_CN&region=CN";
-//		JSESSIONID	Received	6B6270A4A50F525A47CA1967D4B98CC7	/	.kf.sf-express.com	(Session)	Server	No	No
-//		locale	Received	zh_CN	/	.kf.sf-express.com	Tue, 25-Dec-2012 05:08:08 GMT	Server	No	No
-//		SERVERID	Received	css9	/	.kf.sf-express.com	(Session)	Server	No	No
+		// JSESSIONID Received 6B6270A4A50F525A47CA1967D4B98CC7 /
+		// .kf.sf-express.com (Session) Server No No
+		// locale Received zh_CN / .kf.sf-express.com Tue, 25-Dec-2012 05:08:08
+		// GMT Server No No
+		// SERVERID Received css9 / .kf.sf-express.com (Session) Server No No
 		getText(sidUrl);
 	}
 
 	private void genIds() {
-		// 读取文件
-		File idFile = new File("id.txt");
 
-		String line = null;
-		ArrayList<String> cLines = new ArrayList<String>();
-		for (int i = 0; i < 10000; i++) {
+
+		String idList = "";
+
+		int idOkNum = 0;
+		for (int i = 0; i < 100000 && idOkNum < 5; i++) {
 			String nextNum = genCheckNum(num);
-			line = nextNum;
-			cLines.add(line);
+			idList = idList + nextNum;
 
 			num = nextNum;
 
 			if ((i + 1) % 20 == 0) {
-				line = "";
-				cLines.add(line);
+				System.out.println("nextNum:" + nextNum);
+				idOkNum = idOkNum + queryIds20(idList);
+				
+				idList = "";
+			} else {
+				idList = idList + "%0D%0A";
 			}
 
-		}
-
-		try {
-			FileUtils.writeLines(idFile, cLines);
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 	}
 
