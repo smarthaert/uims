@@ -2,7 +2,7 @@ unit MyGraph;
 interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls,
-  Forms, Dialogs, jpeg, Registry;
+  Forms, Dialogs, jpeg, Registry, clipbrd, fUtils;
 type
   TCapMode = (cmCapFullScr, cmCapWindow, cmCapWindowClient, cmCapObject);
   TSaveType = (stBitMap, stJPEG);
@@ -162,8 +162,9 @@ begin
       cmCapWindowClient: CapClient(Getforegroundwindow, bmp, CapCursor);
       cmCapObject: CapObject(bmp, CapCursor);
     end;
-    if not DirectoryExists(ExtractFilePath(PathName)) then
+    if IS_IMG_SAVE_TO_FILE AND not DirectoryExists(ExtractFilePath(PathName)) then
     begin
+      ShowMessage('保存路径不存在!');
       Result := False;
       Exit;
     end;
@@ -196,7 +197,11 @@ begin
       bmp.Canvas.CopyRect(rect1, tmpbmp.Canvas, rect2);
       TmpBmp.Free;
     end;
-    TPic.Create.SavePic(PathName, bmp, SaveType, PicQuality);
+    if IS_IMG_SAVE_TO_FILE then
+      TPic.Create.SavePic(PathName, bmp, SaveType, PicQuality);
+
+    Clipboard.Assign(bmp);
+      
     bmp.Free;
     Result := True;
   except
