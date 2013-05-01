@@ -485,16 +485,24 @@ object frmMain2: TfrmMain2
       object N13: TMenuItem
         Caption = '-'
       end
+      object N12: TMenuItem
+        Tag = 103
+        Caption = #20197#27178#32447#26631#27880#23567#25968
+        Checked = True
+        OnClick = mi100Click
+      end
       object miShowKLineHighLow: TMenuItem
         Tag = 104
         Caption = 'K'#32447#39640#20302#20215#26631#27880
         Checked = True
         OnClick = mi100Click
       end
-      object N12: TMenuItem
-        Tag = 103
-        Caption = #20197#27178#32447#26631#27880#23567#25968
-        Checked = True
+      object N18: TMenuItem
+        Caption = '-'
+      end
+      object N19: TMenuItem
+        Tag = 105
+        Caption = #25130#23631#20445#23384#21040#25991#20214
         OnClick = mi100Click
       end
       object N10: TMenuItem

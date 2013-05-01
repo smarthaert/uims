@@ -63,6 +63,8 @@ type
     OpenDialog1: TOpenDialog;
     N16: TMenuItem;
     N17: TMenuItem;
+    N18: TMenuItem;
+    N19: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure GRIDDrawCell(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
@@ -868,6 +870,7 @@ begin
       101: IS_SHOW_DATESCALE := Checked;
       102: ShowBackgroundDotLine := Checked;
       103: IS_FRACTION_UNDERLINE := Checked;
+      105: IS_IMG_SAVE_TO_FILE := Checked;
     end;
     GRID.Repaint;
     ITERATE_DATA(DataIndex);
@@ -1337,11 +1340,14 @@ end;
 
 procedure TfrmMain2.N17Click(Sender: TObject);
 begin
+  if IS_IMG_SAVE_TO_FILE then
+  begin
   OpenDialog1.Filter := '图像文件(*.JPG)|*.JPG';
   if OpenDialog1.Execute then
     //避免截取内容被遮挡
     GRID.Repaint;
   ITERATE_DATA(FDataIndex);
+  end;
   CapAndSaveToFile(OpenDialog1.FileName + '.JPG', cmCapWindowClient, stJPEG, false, word(100), pf32bit, 0, 100, 0, 0);
 end;
 
