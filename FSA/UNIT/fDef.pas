@@ -175,21 +175,29 @@ begin
       lstSplit.DelimitedText := line;
       //ShowMessage(lstSplit.Strings[0]);
 
-      if length(lstSplit.Strings[1]) = 6 then
+      if length(lstSplit.Strings[1]) = 4 then
       begin
-        rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[0], 4)), StrToInt(MidStr(lstSplit.Strings[0], 5, 2)), StrToInt(RightStr(lstSplit.Strings[0], 2)), StrToInt(LeftStr(lstSplit.Strings[1], 2)), StrToInt(MidStr(lstSplit.Strings[1], 3, 2)), StrToInt(RightStr(lstSplit.Strings[1], 2)), 0);
+        rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[0], 4)), StrToInt(MidStr(lstSplit.Strings[0], 5, 2)), StrToInt(RightStr(lstSplit.Strings[0], 2)), StrToInt(LeftStr(lstSplit.Strings[1], 2)), StrToInt(RightStr(lstSplit.Strings[1], 2)), 0, 0);
       end
       else
       begin
-        rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[0], 4)), StrToInt(MidStr(lstSplit.Strings[0], 5, 2)), StrToInt(RightStr(lstSplit.Strings[0], 2)), StrToInt(LeftStr(lstSplit.Strings[1], 1)), StrToInt(MidStr(lstSplit.Strings[1], 2, 2)), StrToInt(RightStr(lstSplit.Strings[1], 2)), 0);
+        rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[0], 4)), StrToInt(MidStr(lstSplit.Strings[0], 5, 2)), StrToInt(RightStr(lstSplit.Strings[0], 2)), StrToInt(LeftStr(lstSplit.Strings[1], 1)), StrToInt(RightStr(lstSplit.Strings[1], 2)), 0, 0);
       end;
 
 
 
+      
+      rec.OP := StrToFloat(lstSplit.Strings[2]);
+      rec.CP := StrToFloat(lstSplit.Strings[3]);
+      rec.HP := StrToFloat(lstSplit.Strings[4]);
+      rec.LP := StrToFloat(lstSplit.Strings[5]);
+
+      {
       rec.OP := StrToInt(lstSplit.Strings[2]) / 10000;
       rec.HP := StrToInt(lstSplit.Strings[3]) / 10000;
       rec.LP := StrToInt(lstSplit.Strings[4]) / 10000;
       rec.CP := StrToInt(lstSplit.Strings[5]) / 10000;
+      }
       rec.VOL := StrToInt(lstSplit.Strings[6]);
 
       try
