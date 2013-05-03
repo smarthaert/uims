@@ -57,7 +57,7 @@ type
 { IDataFile }
  //function getData(Date: WORD): Pointer;->Date<MAX_DATADAY means Index from tail toward header, or Search data by Date
   IDataFile = interface(IBaseDataFile)
-    function getData(Date: WORD): Pointer;
+    function getData(Date: Integer): Pointer;
     function getStockName: string;
     function indexOf(Date: TDateTime): Integer; overload; //Search by Date, Index from header to tail
     function indexOf(Date: TDateTime; L, H: Integer): Integer; overload; //Search by Date, Index from header to tail
@@ -78,7 +78,7 @@ type
     function getFileName: string; override;
     function getFilePath: string; override;
     function getRecSize: Integer; override;
-    function getData(Date: WORD): Pointer; virtual;
+    function getData(Date: Integer): Pointer; virtual;
     function getStockName: string; virtual;
     function indexOf(Date: TDateTime): Integer; overload; //Search by Date, Index from header to tail
     function indexOf(Date: TDateTime; L, H: Integer): Integer; overload; //Search by Date, Index from header to tail
@@ -168,6 +168,7 @@ begin
     reset(rText);
     while not EOF(rText) do
     begin
+    {
       readln(rText, line);
 
       lstSplit := TStringList.Create;
@@ -183,14 +184,36 @@ begin
       begin
         rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[0], 4)), StrToInt(MidStr(lstSplit.Strings[0], 5, 2)), StrToInt(RightStr(lstSplit.Strings[0], 2)), StrToInt(LeftStr(lstSplit.Strings[1], 1)), StrToInt(RightStr(lstSplit.Strings[1], 2)), 0, 0);
       end;
-
-
-
-      
+            
       rec.OP := StrToFloat(lstSplit.Strings[2]);
       rec.CP := StrToFloat(lstSplit.Strings[3]);
       rec.HP := StrToFloat(lstSplit.Strings[4]);
       rec.LP := StrToFloat(lstSplit.Strings[5]);
+      rec.VOL := StrToInt(lstSplit.Strings[6]);
+    }
+      readln(rText, line);
+
+      lstSplit := TStringList.Create;
+      lstSplit.Delimiter := ',';
+      lstSplit.DelimitedText := line;
+      //ShowMessage(lstSplit.Strings[0]);
+
+      if length(lstSplit.Strings[2]) = 4 then
+      begin
+        rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[1], 4)), StrToInt(MidStr(lstSplit.Strings[1], 5, 2)), StrToInt(RightStr(lstSplit.Strings[1], 2)), StrToInt(LeftStr(lstSplit.Strings[2], 2)), StrToInt(RightStr(lstSplit.Strings[2], 2)), 0, 0);
+      end
+      else
+      begin
+        rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[1], 4)), StrToInt(MidStr(lstSplit.Strings[1], 5, 2)), StrToInt(RightStr(lstSplit.Strings[1], 2)), StrToInt(LeftStr(lstSplit.Strings[2], 1)), StrToInt(RightStr(lstSplit.Strings[2], 2)), 0, 0);
+      end;
+
+      //ShowMessage(FormatDateTime('yyyy-mm-dd  hh:nn', rec.Date));
+
+      rec.OP := StrToFloat(lstSplit.Strings[3]);
+      rec.CP := StrToFloat(lstSplit.Strings[4]);
+      rec.HP := StrToFloat(lstSplit.Strings[5]);
+      rec.LP := StrToFloat(lstSplit.Strings[6]);
+      rec.VOL := StrToInt(lstSplit.Strings[10]);
 
       {
       rec.OP := StrToInt(lstSplit.Strings[2]) / 10000;
@@ -198,7 +221,7 @@ begin
       rec.LP := StrToInt(lstSplit.Strings[4]) / 10000;
       rec.CP := StrToInt(lstSplit.Strings[5]) / 10000;
       }
-      rec.VOL := StrToInt(lstSplit.Strings[6]);
+
 
       try
         M.Write(rec, SizeOf(rec));
@@ -270,7 +293,7 @@ begin
   end;
 end;
 
-function TDataFile.getData(Date: WORD): Pointer;
+function TDataFile.getData(Date: Integer): Pointer;
 begin
   //if Date > 20000 then
   if Date > getCount then //限制的最大的数据范围是20000，为什么呢？
