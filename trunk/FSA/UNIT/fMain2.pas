@@ -65,6 +65,9 @@ type
     N17: TMenuItem;
     N18: TMenuItem;
     N19: TMenuItem;
+    XTDAT1: TMenuItem;
+    DATTXT1: TMenuItem;
+    SaveDialog1: TSaveDialog;
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure GRIDDrawCell(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
@@ -93,6 +96,8 @@ type
     procedure N11Click(Sender: TObject);
     procedure N15Click(Sender: TObject);
     procedure N17Click(Sender: TObject);
+    procedure XTDAT1Click(Sender: TObject);
+    procedure DATTXT1Click(Sender: TObject);
   private
     FDataIndex: Integer;
     function GetDataPerPage: Integer;
@@ -1066,7 +1071,7 @@ begin
     if DataIndex > 0 then
       GRID.Canvas.TextOut(800, GRID.RowHeights[0] + 1, '位置: ' + '[' + FormatFloat('00,000', StkDataFile.getCount - DataIndex) + ']  ' + FormatFloat('0,000', (StkDataFile.getCount - PageStart) / DataPerPage) + ' / ' + FormatFloat('0,000', StkDataFile.getCount / DataPerPage))
     else
-      GRID.Canvas.TextOut(800, GRID.RowHeights[0] + 1, '位置: ' + '[' + FormatFloat('00,000', StkDataFile.getCount) + ']  ' + FormatFloat('0,000', (StkDataFile.getCount - PageStart)  / DataPerPage) + ' / ' + FormatFloat('0,000', StkDataFile.getCount / DataPerPage));
+      GRID.Canvas.TextOut(800, GRID.RowHeights[0] + 1, '位置: ' + '[' + FormatFloat('00,000', StkDataFile.getCount) + ']  ' + FormatFloat('0,000', (StkDataFile.getCount - PageStart) / DataPerPage) + ' / ' + FormatFloat('0,000', StkDataFile.getCount / DataPerPage));
 
     if Index <> -1 then
     begin
@@ -1078,19 +1083,19 @@ begin
         GRID.Canvas.TextOut(0, GRID.RowHeights[0] + 1, 'MA30: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[1];
       if MA[1][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(120, GRID.RowHeights[0] + 1, 'MA60: ' + FormatFloat('0,000.00', MA[1][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(130, GRID.RowHeights[0] + 1, 'MA60: ' + FormatFloat('0,000.00', MA[1][StkDataFile.getCount - Index - 1]))
       else
-        GRID.Canvas.TextOut(120, GRID.RowHeights[0] + 1, 'MA60: ' + '                ');
+        GRID.Canvas.TextOut(130, GRID.RowHeights[0] + 1, 'MA60: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[2];
       if MA[2][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(240, GRID.RowHeights[0] + 1, 'MA120: ' + FormatFloat('0,000.00', MA[2][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(260, GRID.RowHeights[0] + 1, 'MA120: ' + FormatFloat('0,000.00', MA[2][StkDataFile.getCount - Index - 1]))
       else
-        GRID.Canvas.TextOut(240, GRID.RowHeights[0] + 1, 'MA120: ' + '                ');
+        GRID.Canvas.TextOut(260, GRID.RowHeights[0] + 1, 'MA120: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[3];
       if MA[3][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(368, GRID.RowHeights[0] + 1, 'MA250: ' + FormatFloat('0,000.00', MA[3][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(398, GRID.RowHeights[0] + 1, 'MA250: ' + FormatFloat('0,000.00', MA[3][StkDataFile.getCount - Index - 1]))
       else
-        GRID.Canvas.TextOut(368, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
+        GRID.Canvas.TextOut(398, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
 
 
     //绘制VOL部分
@@ -1342,13 +1347,141 @@ procedure TfrmMain2.N17Click(Sender: TObject);
 begin
   if IS_IMG_SAVE_TO_FILE then
   begin
-  OpenDialog1.Filter := '图像文件(*.JPG)|*.JPG';
-  if OpenDialog1.Execute then
+    OpenDialog1.Filter := '图像文件(*.JPG)|*.JPG';
+    if OpenDialog1.Execute then
     //避免截取内容被遮挡
-    GRID.Repaint;
-  ITERATE_DATA(FDataIndex);
+      GRID.Repaint;
+    ITERATE_DATA(FDataIndex);
   end;
   CapAndSaveToFile(OpenDialog1.FileName + '.JPG', cmCapWindowClient, stJPEG, false, word(100), pf32bit, 0, 100, 0, 0);
 end;
 
+procedure TfrmMain2.XTDAT1Click(Sender: TObject);
+var
+  i: Integer;
+  lstSplit: TStringList;
+  rec: TStkDataRec;
+  line: string;
+  rText: TextFile;
+  M: TMemoryStream;
+begin
+//加载TXT文件转换为DAT文件
+  OpenDialog1.Filter := '文本文件(*.txt)|*.txt';
+
+  if OpenDialog1.Execute then
+
+    if FileExists(OpenDialog1.FileName) then
+    begin
+      M := TMemoryStream.Create;
+   //M.LoadFromFile(FileName);
+      AssignFile(rText, OpenDialog1.FileName);
+      reset(rText);
+      while not EOF(rText) do
+      begin
+        readln(rText, line);
+
+        lstSplit := TStringList.Create;
+        lstSplit.Delimiter := ',';
+        lstSplit.DelimitedText := line;
+
+        if length(lstSplit.Strings[2]) = 4 then
+        begin
+          rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[1], 4)), StrToInt(MidStr(lstSplit.Strings[1], 5, 2)), StrToInt(RightStr(lstSplit.Strings[1], 2)), StrToInt(LeftStr(lstSplit.Strings[2], 2)), StrToInt(RightStr(lstSplit.Strings[2], 2)), 0, 0);
+        end
+        else
+        begin
+          rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[1], 4)), StrToInt(MidStr(lstSplit.Strings[1], 5, 2)), StrToInt(RightStr(lstSplit.Strings[1], 2)), StrToInt(LeftStr(lstSplit.Strings[2], 1)), StrToInt(RightStr(lstSplit.Strings[2], 2)), 0, 0);
+        end;
+
+        rec.OP := StrToFloat(lstSplit.Strings[3]);
+        rec.CP := StrToFloat(lstSplit.Strings[4]);
+        rec.HP := StrToFloat(lstSplit.Strings[5]);
+        rec.LP := StrToFloat(lstSplit.Strings[6]);
+        rec.VOL := StrToInt(lstSplit.Strings[10]);
+
+
+        try
+          M.Write(rec, SizeOf(rec));
+
+        finally
+
+        end;
+      end;
+
+      SaveDialog1.Filter := '文本文件(*.DAT)|*.DAT';
+
+      if SaveDialog1.Execute then
+        M.SaveToFile(SaveDialog1.FileName);
+
+      _free_(M);
+      closefile(rText);
+    end;
+end;
+
+procedure TfrmMain2.DATTXT1Click(Sender: TObject);
+var
+  i: Integer;
+  lstSplit: TStringList;
+  rec: TStkDataRec;
+  line, timeStr: string;
+  rText: TextFile;
+  M: TMemoryStream;
+begin
+//加载TXT文件转换为DAT文件
+  OpenDialog1.Filter := '文本文件(*.txt)|*.txt';
+
+  if OpenDialog1.Execute then
+
+    if FileExists(OpenDialog1.FileName) then
+    begin
+
+      SaveDialog1.Filter := '文本文件(*.DAT)|*.DAT';
+
+      if SaveDialog1.Execute then
+      begin
+        M := TMemoryStream.Create;
+
+        M.LoadFromFile(SaveDialog1.FileName);
+    //移动指针到最后位置
+        M.Seek(M.Size, 0);
+        AssignFile(rText, OpenDialog1.FileName);
+        reset(rText);
+        while not EOF(rText) do
+        begin
+          readln(rText, line);
+
+          lstSplit := TStringList.Create;
+          lstSplit.Delimiter := '	';
+          lstSplit.DelimitedText := line;
+
+          timeStr := Trim(lstSplit.Strings[0]);
+          rec.Date := EncodeDateTime(2013, StrToInt(LeftStr(timeStr, 2)), StrToInt(MidStr(timeStr, 4, 2)), StrToInt(MidStr(timeStr, 7, 2)), StrToInt(RightStr(timeStr, 2)), 0, 0);
+
+          rec.OP := StrToFloat(lstSplit.Strings[1]);
+          rec.CP := StrToFloat(lstSplit.Strings[4]);
+          rec.HP := StrToFloat(lstSplit.Strings[2]);
+          rec.LP := StrToFloat(lstSplit.Strings[3]);
+          rec.VOL := StrToInt(lstSplit.Strings[5]);
+
+
+          try
+            M.Write(rec, SizeOf(rec));
+
+          finally
+
+          end;
+        end;
+
+      end;
+      //SaveDialog1.Filter := '文本文件(*.DAT)|*.DAT';
+
+      //if SaveDialog1.Execute then
+        M.SaveToFile(SaveDialog1.FileName);
+
+      _free_(M);
+      closefile(rText);
+    end;
+end;
+
 end.
+

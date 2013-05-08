@@ -162,7 +162,7 @@ begin
       cmCapWindowClient: CapClient(Getforegroundwindow, bmp, CapCursor);
       cmCapObject: CapObject(bmp, CapCursor);
     end;
-    if IS_IMG_SAVE_TO_FILE AND not DirectoryExists(ExtractFilePath(PathName)) then
+    if IS_IMG_SAVE_TO_FILE and not DirectoryExists(ExtractFilePath(PathName)) then
     begin
       ShowMessage('保存路径不存在!');
       Result := False;
@@ -201,7 +201,7 @@ begin
       TPic.Create.SavePic(PathName, bmp, SaveType, PicQuality);
 
     Clipboard.Assign(bmp);
-      
+
     bmp.Free;
     Result := True;
   except
