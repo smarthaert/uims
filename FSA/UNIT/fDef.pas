@@ -184,7 +184,7 @@ begin
       begin
         rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[0], 4)), StrToInt(MidStr(lstSplit.Strings[0], 5, 2)), StrToInt(RightStr(lstSplit.Strings[0], 2)), StrToInt(LeftStr(lstSplit.Strings[1], 1)), StrToInt(RightStr(lstSplit.Strings[1], 2)), 0, 0);
       end;
-            
+
       rec.OP := StrToFloat(lstSplit.Strings[2]);
       rec.CP := StrToFloat(lstSplit.Strings[3]);
       rec.HP := StrToFloat(lstSplit.Strings[4]);

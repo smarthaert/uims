@@ -461,6 +461,14 @@ object frmMain2: TfrmMain2
         Caption = #23631#24149#25130#23631'(CTRL+INSERT)'
         OnClick = N17Click
       end
+      object XTDAT1: TMenuItem
+        Caption = 'TXT'#36716'DAT'
+        OnClick = XTDAT1Click
+      end
+      object DATTXT1: TMenuItem
+        Caption = 'TXT'#25968#25454#34917#24405
+        OnClick = DATTXT1Click
+      end
     end
     object N1: TMenuItem
       Caption = #35774#32622
@@ -517,5 +525,9 @@ object frmMain2: TfrmMain2
   object OpenDialog1: TOpenDialog
     Left = 184
     Top = 56
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 296
+    Top = 88
   end
 end
