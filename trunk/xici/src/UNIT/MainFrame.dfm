@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 162
-  Top = 20
+  Left = 400
+  Top = 164
   Width = 897
-  Height = 848
+  Height = 662
   Caption = #20054#20054#20195#29702#39564#35777#22120
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -341,7 +341,7 @@ object Form1: TForm1
   object action: TButton
     Left = 80
     Top = 72
-    Width = 97
+    Width = 73
     Height = 25
     Caption = #21152#36733#39029#38754
     TabOrder = 1
@@ -357,36 +357,27 @@ object Form1: TForm1
   end
   object WebBrowser1: TWebBrowser
     Left = 8
-    Top = 112
+    Top = 104
     Width = 873
-    Height = 697
+    Height = 521
     TabOrder = 3
     ControlData = {
-      4C0000003A5A0000094800000000000000000000000000000000000000000000
+      4C0000003A5A0000D93500000000000000000000000000000000000000000000
       000000004C000000000000000000000001000000E0D057007335CF11AE690800
       2B2E126208000000000000004C0000000114020000000000C000000000000046
       8000000000000000000000000000000000000000000000000000000000000000
       00000000000000000100000000000000000000000000000000000000}
   end
   object Button1: TButton
-    Left = 192
+    Left = 168
     Top = 72
-    Width = 89
+    Width = 73
     Height = 25
     BiDiMode = bdLeftToRight
     Caption = #27979#35797#20195#29702
     ParentBiDiMode = False
     TabOrder = 4
     OnClick = Button1Click
-  end
-  object Button2: TButton
-    Left = 824
-    Top = 72
-    Width = 57
-    Height = 25
-    Caption = #20572#27490
-    TabOrder = 5
-    OnClick = Button2Click
   end
   object IdHTTP1: TIdHTTP
     MaxLineAction = maException
@@ -412,5 +403,13 @@ object Form1: TForm1
     SSLOptions.VerifyDepth = 0
     Left = 320
     Top = 80
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 696
+    Top = 80
+  end
+  object IdAntiFreeze1: TIdAntiFreeze
+    Left = 600
+    Top = 96
   end
 end
