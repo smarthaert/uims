@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, IdHTTP, IdBaseComponent, IdComponent, IdTCPConnection,
   IdTCPClient, IdSSLOpenSSLHeaders, IdIOHandler, IdIOHandlerSocket,
-  IdSSLOpenSSL, RegExpr, HtmlHelper, MSHTML, SHDocVw, OleCtrls;
+  IdSSLOpenSSL, RegExpr, HtmlHelper, MSHTML, SHDocVw, OleCtrls,
+  IdAntiFreezeBase, IdAntiFreeze;
 
 type
   TForm1 = class(TForm)
@@ -19,10 +20,15 @@ type
     Button1: TButton;
     Label1: TLabel;
     Label2: TLabel;
-    Button2: TButton;
+    OpenDialog1: TOpenDialog;
+    IdAntiFreeze1: TIdAntiFreeze;
     procedure actionClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
   private
     { Private declarations }
   protected
@@ -38,10 +44,11 @@ type
   public
     { Public declarations }
   end;
-  
+
 var
   Form1: TForm1;
-  checkFlag:Boolean;
+  checkFlag: Boolean;
+  pauseFlag: Boolean;
 
 implementation
 
@@ -259,7 +266,7 @@ end;
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
-var 
+var
   ID: THandle;
   doc: IHTMLDocument2;
 begin
@@ -284,25 +291,38 @@ begin
 
   table := list.item(0, 0) as IHTMLTable;
 
-  for i := 1 to table.rows.length do
+  i := 1;
+  while i < table.rows.length - 1 do
   //for i := 1 to 10 do
   begin
     if not checkFlag then Exit;
-    row := table.rows.item(i, i) as IHTMLTableRow;
-    cell := row.cells.item(0, 0) as IHTMLElement;
-    //ShowMessage(cell.innerText);
-    cell.innerText := '检测中'; //去掉图标
-    Application.ProcessMessages;
-    
-    ip := row.cells.item(1, 1) as IHTMLElement;
-    port := row.cells.item(2, 2) as IHTMLElement;
-    isOk := testProxyByUrl(ip.innerText, StrToInt(Trim(port.innerText)), testUrl.Text);
-    if isOk then
-      cell.innerText := '可用==>' //去掉图标
+    if pauseFlag then begin
+      Application.ProcessMessages;
+      Sleep(300);
+    end
     else
-      cell.innerText := '无效'; //去掉图标;
+    begin
+      row := table.rows.item(i, i) as IHTMLTableRow;
+      cell := row.cells.item(0, 0) as IHTMLElement;
+    //ShowMessage(cell.innerText);
+      cell.innerText := '检测中'; //去掉图标
+      Application.ProcessMessages;
 
-    Application.ProcessMessages;
+      ip := row.cells.item(1, 1) as IHTMLElement;
+      port := row.cells.item(2, 2) as IHTMLElement;
+      isOk := testProxyByUrl(ip.innerText, StrToInt(Trim(port.innerText)), testUrl.Text);
+      if isOk then
+        cell.innerText := '可用==>' //去掉图标
+      else
+        cell.innerText := '无效'; //去掉图标;
+
+      Application.ProcessMessages;
+      Sleep(1000);
+
+      //if (i mod StrToInt(batNum.Text)) = 0 then
+        //pauseFlag := True;
+      i := i + 1;
+    end;
   end;
 end;
 
@@ -310,6 +330,76 @@ end;
 procedure TForm1.Button2Click(Sender: TObject);
 begin
   checkFlag := False;
+end;
+
+procedure TForm1.Button3Click(Sender: TObject);
+begin
+  pauseFlag := True;
+end;
+
+procedure TForm1.Button4Click(Sender: TObject);
+begin
+  pauseFlag := False;
+end;
+
+procedure TForm1.Button5Click(Sender: TObject);
+var
+  i: Integer;
+  lstSplit: TStringList;
+  line: string;
+  rText: TextFile;
+  ip, port: string;
+  isOk: Boolean;
+begin
+  if OpenDialog1.Execute then
+  begin
+    if FileExists(OpenDialog1.FileName) then
+    begin
+      i := 1;
+      AssignFile(rText, OpenDialog1.FileName);
+      reset(rText);
+      checkFlag := True;
+      while not EOF(rText) do
+
+
+      begin
+        readln(rText, line);
+        //Edit1.Text := IntToStr(i);
+        lstSplit := TStringList.Create;
+        lstSplit.Delimiter := ' ';
+        lstSplit.DelimitedText := line;
+
+        ip := lstSplit.Strings[0];
+        port := lstSplit.Strings[1];
+        isOk := testProxyByUrl(ip, StrToInt(Trim(port)), testUrl.Text);
+        if isOk then
+        begin
+          //Edit1.Text := {Edit1.Text + '//' + }Trim(ip) + ':' + Trim(port) + '  ' + lstSplit.Strings[2] + lstSplit.Strings[3];
+          //pauseFlag := True;
+        end;
+        Application.ProcessMessages;
+        Sleep(1000);
+        {
+        if (i mod StrToInt(batNum.Text)) = 0 then
+          pauseFlag := True;
+
+        while pauseFlag do
+        begin
+          Application.ProcessMessages;
+          Sleep(300);
+          if not checkFlag then
+            Exit;
+        end; }
+        i := i +1;
+      end
+    end;
+    closefile(rText);
+  end;
+end;
+
+procedure TForm1.Button6Click(Sender: TObject);
+begin
+  pauseFlag := False;
 end;
 
 end.
