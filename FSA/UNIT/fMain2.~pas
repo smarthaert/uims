@@ -626,9 +626,9 @@ begin
   if ShowBackgroundDotLine then
   begin
     _setPen_(C, clWhite, 1, psDot, pmCopy);
-    Y := Fy2Iy(50, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, DEF_COLOR[4]); //绘制上线
+    Y := Fy2Iy(80, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, DEF_COLOR[4]); //绘制上线
     Y := Fy2Iy(0, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, clSilver);
-    Y := Fy2Iy(-50, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, clGreen);
+    Y := Fy2Iy(-80, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, clGreen);
   end;
   _setPen_(C, clWhite, 1, psSolid, pmCopy);
 
@@ -1110,7 +1110,7 @@ begin
       end;
 
     //绘制PL部分
-      GRID.Canvas.Font.Color := DEF_COLOR[0];
+      GRID.Canvas.Font.Color := DEF_COLOR[4];
       if PL[0][StkDataFile.getCount - Index - 1] <> -9999 then
       begin
         if PL[0][StkDataFile.getCount - Index - 1] > 0 then
