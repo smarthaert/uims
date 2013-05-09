@@ -86,7 +86,8 @@ type
     procedure miDownOneClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
-    procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+    procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);       
+    procedure onMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure FormActivate(Sender: TObject);
     procedure miPageFirstClick(Sender: TObject);
     procedure miFirstClick(Sender: TObject);
@@ -187,7 +188,7 @@ var
   R: TRect;
 begin
   w := Round(GRID.ClientWidth * 19 / 20);
-  GRID.ColWidths[1] := Max(24, Round(GRID.ClientWidth - w));
+  GRID.ColWidths[1] := Max(24, Round(GRID.ClientWidth - w)); //左半部分宽度
   GRID.ColWidths[0] := GRID.ClientWidth - GRID.ColWidths[1];
 
   //定义不同区域的高度
@@ -289,7 +290,7 @@ begin
   if (Value <> FUnitWidth) and (StkDataFile <> nil) then
   begin
     FUnitWidth := Value;
-    NewPageStart := DataIndex - DataPerPage div 2;
+    NewPageStart := DataIndex - DataPerPage div 2;//定位到最中间
     NewPageStart := Max(0, NewPageStart);
     NewPageStart := Min(NewPageStart, StkDataFile.getCount - DataPerPage);
     FPageStart := NewPageStart;
@@ -344,7 +345,7 @@ end;
 function TfrmMain2.GetDataPerPage: Integer;
 begin
   if FUnitWidth > 0 then
-    Result := _width_(GRID.CellRect(0, 1)) div FUnitWidth
+    Result := _width_(GRID.CellRect(0, 1)) div FUnitWidth  //左边总宽度除以单元宽度
   else Result := 0;
 end;
 
@@ -1038,7 +1039,7 @@ begin
     end;
   end;
 end;
-
+//绘制header部分
 procedure TfrmMain2.ITERATE_DATA(Index: Integer);
 var
   I: Integer;
@@ -1105,7 +1106,7 @@ begin
       if P <> nil then
       begin
         GRID.Canvas.Font.Color := DEF_COLOR[5];
-        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + 1, 'VOL: ' + FormatFloat('000,000.00', P.VOL));
+        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + 1, 'VOL: ' + FormatFloat('0.00', P.VOL) + '                 ');
       end;
 
     //绘制PL部分
@@ -1113,9 +1114,9 @@ begin
       if PL[0][StkDataFile.getCount - Index - 1] <> -9999 then
       begin
         if PL[0][StkDataFile.getCount - Index - 1] > 0 then
-          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL250: ' + FormatFloat('+0,000.00', PL[0][StkDataFile.getCount - Index - 1]))
+          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL250: ' + FormatFloat('+0.00', PL[0][StkDataFile.getCount - Index - 1]) + '                 ')
         else
-          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL250: ' + FormatFloat(' -0,000.00', -PL[0][StkDataFile.getCount - Index - 1]));
+          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL250: ' + FormatFloat(' -0.00', -PL[0][StkDataFile.getCount - Index - 1]) + '                 ');
       end
       else
       begin
@@ -1224,9 +1225,31 @@ begin
   if Shift = [ssLeft] then DataIndex := PixelToDataIndex(X);
 end;
 
-procedure TfrmMain2.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+procedure TfrmMain2.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);   
+var
+  R: TRect;
 begin
   if Shift = [ssLeft] then DataIndex := PixelToDataIndex(X);
+end;
+
+procedure TfrmMain2.OnMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
+var
+  R: TRect;
+  C: TCanvas;
+begin
+  //if Shift = [ssLeft] then DataIndex := PixelToDataIndex(X);
+  R := GRID.CellRect(0, 0);
+  C := GRID.Canvas;
+  {
+  C.MoveTo(R.Left, Y);
+  C.LineTo(R.Left, Y);
+
+  C.MoveTo(X, R.Top);
+  C.LineTo(X, R.Bottom);
+  }
+  
+  _setPen_(Canvas, clFuchsia, 1, psSolid, pmXOR);
+  _line_(Canvas, R.Left, Y, R.Left, Y);
 end;
 
 procedure TfrmMain2.FormActivate(Sender: TObject);
@@ -1272,7 +1295,7 @@ end;
 
 procedure TfrmMain2.miQuickRightClick(Sender: TObject);
 begin
-  DataIndex := DataIndex - DataPerPage div 8;
+  DataIndex := DataIndex - DataPerPage div 8;  //8分之一屏幕移动
 end;
 
 procedure TfrmMain2.CLEAR_ALL_CALCULATE_DATA;

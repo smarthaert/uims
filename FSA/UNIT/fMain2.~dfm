@@ -1,6 +1,6 @@
 object frmMain2: TfrmMain2
-  Left = 190
-  Top = 129
+  Left = 728
+  Top = 183
   AutoScroll = False
   Caption = #37329#34701#25968#25454#30424#21518#20998#26512#22823#24072' - Kylin v1.00'
   ClientHeight = 239
@@ -350,6 +350,7 @@ object frmMain2: TfrmMain2
     ScrollBars = ssNone
     TabOrder = 0
     OnDrawCell = GRIDDrawCell
+    OnMouseMove = onMouseMove
   end
   object Header: TStringGrid
     Left = 18

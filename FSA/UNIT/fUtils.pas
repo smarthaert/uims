@@ -764,7 +764,7 @@ end;
 procedure _line_(Canvas: TCanvas; X1, Y1, X2, Y2: Integer);
 begin
   Canvas.MoveTo(X1, Y1);
-  Canvas.LineTo(X2, Y2);
+  Canvas.LineTo(X2, Y2); //绘制鼠标左键点击
 end;
 
 procedure _lineBox_(Canvas: TCanvas; Rect: TRect);
@@ -791,7 +791,7 @@ procedure _line_(Canvas: TCanvas; X1, Y1, X2, Y2: Integer; LineColor: TColor);
 begin
   Canvas.Pen.Color := LineColor;
   Canvas.MoveTo(X1, Y1);
-  Canvas.LineTo(X2, Y2);
+  Canvas.LineTo(X2, Y2);//绘制K线的引线
 end;
 
 function _calcMA_(Data: TArrayOfSingle; MAC: Integer): TArrayOfSingle;
@@ -934,7 +934,7 @@ begin
 end;
 
 //DRAW_SCALE(C, Rect, ArrayOdSingle([80, 50, 20]), 0, 100, 0, 100);
-
+//绘制右边数字提示
 procedure DRAW_SCALE(C: TCanvas; R: TRect; Values: TArrayOfSingle; L, H, LL, HH: Single);
 var
   I, TW, TH, Y, GapX, Precise: Integer;
@@ -943,7 +943,7 @@ begin
   if Length(Values) = 0 then Exit;
   _setBrush_(C, clBlack, bsSolid);
   C.Font.Name := 'ARIAL';
-  C.Font.Height := Min(_height_(R) div Length(Values), Round(_width_(R) / 3.5));
+  C.Font.Height := Min(_height_(R) div Length(Values), Round(_width_(R) / 5.5));
   TH := C.TextHeight('0');
   if H > 1000 then Precise := 0 else Precise := 2;
   TW := C.TextWidth(_vs_(H, Precise, True, False)) + 4;
