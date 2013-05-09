@@ -235,7 +235,7 @@ begin
         1: DrawScaleK(C, Rect);
         2: DrawScaleV(C, Rect);
 //      	3: DRAW_SCALE(C, Rect, ArrayOdSingle([80, 50, 20]), 0, 100, 0, 100);
-        3: DRAW_SCALE(C, Rect, ArrayOdSingle([60, -0, -60]), -110, 110, -110, 110);
+        3: DRAW_SCALE(C, Rect, ArrayOdSingle([80, -0, -80]), -110, 110, -110, 110);
       end;
   end;
   if (VertLine <> nil) and VertLine.Visible then VertLine.Paint;
@@ -431,8 +431,8 @@ begin
         Rt.Left := Min(R.Right - TW - 1, Max(Rt.Left, 1));
         Rt.Right := Rt.Left + TW + 2;
         if not IS_FRACTION_UNDERLINE then
-          _textRectBackground_(C, Rt, str, C.Font.Height, clRed, GRID.Color, taCenter, tlTop, True)
-        else _textRect_(C, Rt, str, clRed, GRID.Color, taCenter, tlTop, False);
+          _textRectBackground_(C, Rt, str, C.Font.Height, DEF_COLOR[4], GRID.Color, taCenter, tlTop, True)
+        else _textRect_(C, Rt, str, DEF_COLOR[4], GRID.Color, taCenter, tlTop, False);
       end;
     end;
 
@@ -496,7 +496,7 @@ begin
         X2 := UnitWidth * (I + 1);
         Y1 := Fy2Iy(P^.OP, R, High, Low);
         Y2 := Fy2Iy(P^.CP, R, High, Low);
-        if Y1 > Y2 then C.Pen.Color := clRed
+        if Y1 > Y2 then C.Pen.Color := DEF_COLOR[4]
         else if Y1 < Y2 then C.Pen.Color := clAqua
         else C.Pen.Color := clLime;
         C.Brush.Color := C.Pen.Color;
@@ -566,7 +566,7 @@ begin
       P := StkDataFile.getData(J);
       if P <> nil then
       begin
-        if P^.CP > P^.OP then C.Pen.Color := clRed
+        if P^.CP > P^.OP then C.Pen.Color := DEF_COLOR[4]
         else if P^.CP < P^.OP then C.Pen.Color := clAqua
         else C.Pen.Color := clLime;
         C.Brush.Color := C.Pen.Color;
@@ -599,12 +599,12 @@ begin
   _setBrush_(C, GRID.Color, bsSolid);
   if ShowBackgroundDotLine then
   begin
-    _setPen_(C, clRed, 1, psDot, pmCopy);
-    Y := Fy2Iy(80, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, clRed);
+    _setPen_(C, DEF_COLOR[4], 1, psDot, pmCopy);
+    Y := Fy2Iy(80, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, DEF_COLOR[4]);
     Y := Fy2Iy(50, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, clSilver);
     Y := Fy2Iy(20, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, clAqua);
   end;
-  _setPen_(C, clRed, 1, psSolid, pmCopy);
+  _setPen_(C, DEF_COLOR[4], 1, psSolid, pmCopy);
 
   for I := 0 to Length(RSIC) - 1 do
     if RSIC[I] > 0 then
@@ -625,16 +625,16 @@ begin
   _setBrush_(C, GRID.Color, bsSolid);
   if ShowBackgroundDotLine then
   begin
-    _setPen_(C, clRed, 1, psDot, pmCopy);
-    Y := Fy2Iy(80, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, clRed);
+    _setPen_(C, clWhite, 1, psDot, pmCopy);
+    Y := Fy2Iy(50, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, DEF_COLOR[4]); //绘制上线
     Y := Fy2Iy(0, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, clSilver);
-    Y := Fy2Iy(-80, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, clAqua);
+    Y := Fy2Iy(-50, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, clGreen);
   end;
-  _setPen_(C, clRed, 1, psSolid, pmCopy);
+  _setPen_(C, clWhite, 1, psSolid, pmCopy);
 
   for I := 0 to Length(PLC) - 1 do
     if PLC[I] > 0 then
-      DrawLine(PL[I], DEF_COLOR[I], C, R, High, Low);
+      DrawLine(PL[I], DEF_COLOR[4], C, R, High, Low);
 
   //C.TextOut(100,100,FloatToStr(PL[0][DataIndex]));
 end;
@@ -1106,7 +1106,7 @@ begin
       if P <> nil then
       begin
         GRID.Canvas.Font.Color := DEF_COLOR[5];
-        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + 1, 'VOL: ' + FormatFloat('000,000.00', P.VOL) + '                 ');
+        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + 1, 'VOL: ' + FormatFloat('0.00', P.VOL) + '                 ');
       end;
 
     //绘制PL部分
@@ -1149,7 +1149,7 @@ begin
   case ACol of
     00: Q.FC := clYellow;
     01: Q.FC := clWhite;
-    11: Q.FC := _if_(Pos('+', Q.S) > 0, clRed, _if_(Pos('-', Q.S) > 0, clAqua, Q.FC));
+    11: Q.FC := _if_(Pos('+', Q.S) > 0, DEF_COLOR[4], _if_(Pos('-', Q.S) > 0, clAqua, Q.FC));
   else Q.FC := _if_(ACol mod 2 = 0, clSilver, clFuchsia);
   end;
   case ACol of
