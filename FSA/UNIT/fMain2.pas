@@ -109,7 +109,7 @@ type
     MA: array[0..5] of TArrayOfSingle;
     VMA: array[0..2] of TArrayOfSingle;
     RSI: array[0..1] of TArrayOfSingle;
-    PL: array[0..0] of TArrayOfSingle;
+    PL: array[0..5] of TArrayOfSingle;
     FStockName: string;
     FPageStart: Integer;
     FUnitWidth: Integer;
@@ -430,8 +430,8 @@ begin
         Rt.Left := Min(R.Right - TW - 1, Max(Rt.Left, 1));
         Rt.Right := Rt.Left + TW + 2;
         if not IS_FRACTION_UNDERLINE then
-          _textRectBackground_(C, Rt, str, C.Font.Height, clRed or $008000, GRID.Color, taCenter, tlTop, True)
-        else _textRect_(C, Rt, str, clRed or $008000, GRID.Color, taCenter, tlTop, False);
+          _textRectBackground_(C, Rt, str, C.Font.Height, clRed, GRID.Color, taCenter, tlTop, True)
+        else _textRect_(C, Rt, str, clRed, GRID.Color, taCenter, tlTop, False);
       end;
     end;
 
@@ -451,8 +451,8 @@ begin
         Rt.Left := Min(R.Right - TW - 1, Max(Rt.Left, 1));
         Rt.Right := Rt.Left + TW + 2;
         if not IS_FRACTION_UNDERLINE then
-          _textRectBackground_(C, Rt, str, C.Font.Height, clAqua and $C0C0C0, GRID.Color, taCenter, tlTop, True)
-        else _textRect_(C, Rt, str, clAqua and $C0C0C0, GRID.Color, taCenter, tlTop, False);
+          _textRectBackground_(C, Rt, str, C.Font.Height, TColor($00FF04), GRID.Color, taCenter, tlTop, True)
+        else _textRect_(C, Rt, str, TColor($00FF04), GRID.Color, taCenter, tlTop, False);
       end;
     end;
 
@@ -839,6 +839,7 @@ begin
       begin
         XX := UnitWidth * I + UnitWidth div 2; // In pixels
         _setBrush_(C, GRID.Color, bsSolid);
+        
         if ShowBackgroundDotLine then
         begin
           _setPen_(C, cl3DDkShadow, 1, psDot, pmCopy);
@@ -850,7 +851,7 @@ begin
         if ShowText then
         begin
      //str := IntToStr(ymd);
-          str := FormatDateTime('yyyy/MM/dd ', P.Date) + days[DayofWeek(P.Date)];
+          str := FormatDateTime('yyyy/MM/dd ', P.Date);// + days[DayofWeek(P.Date)];
           C.Font.Name := 'ARIAL';
           C.Font.Height := Max(2, Round(_height_(R) * 0.05) - 2);
           TW := C.TextWidth(str);
@@ -1065,17 +1066,18 @@ begin
         if I mod 2 = 1 then Header.Cells[I, 0] := '';
     end;
 
-
+    {
     //绘制当前位置
     GRID.Canvas.Font.Color := DEF_COLOR[0];
     if DataIndex > 0 then
       GRID.Canvas.TextOut(800, GRID.RowHeights[0] + 1, '位置: ' + '[' + FormatFloat('00,000', StkDataFile.getCount - DataIndex) + ']  ' + FormatFloat('0,000', (StkDataFile.getCount - PageStart) / DataPerPage) + ' / ' + FormatFloat('0,000', StkDataFile.getCount / DataPerPage))
     else
       GRID.Canvas.TextOut(800, GRID.RowHeights[0] + 1, '位置: ' + '[' + FormatFloat('00,000', StkDataFile.getCount) + ']  ' + FormatFloat('0,000', (StkDataFile.getCount - PageStart) / DataPerPage) + ' / ' + FormatFloat('0,000', StkDataFile.getCount / DataPerPage));
-
+    }
     if Index <> -1 then
     begin
     //绘制MA部分
+      GRID.Canvas.Font.Size := 8;
       GRID.Canvas.Font.Color := DEF_COLOR[0];
       if MA[0][StkDataFile.getCount - Index - 1] <> -9999 then
         GRID.Canvas.TextOut(0, GRID.RowHeights[0] + 1, 'MA30: ' + FormatFloat('0,000.00', MA[0][StkDataFile.getCount - Index - 1]))
@@ -1083,19 +1085,19 @@ begin
         GRID.Canvas.TextOut(0, GRID.RowHeights[0] + 1, 'MA30: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[1];
       if MA[1][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(130, GRID.RowHeights[0] + 1, 'MA60: ' + FormatFloat('0,000.00', MA[1][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(180, GRID.RowHeights[0] + 1, 'MA60: ' + FormatFloat('0,000.00', MA[1][StkDataFile.getCount - Index - 1]))
       else
-        GRID.Canvas.TextOut(130, GRID.RowHeights[0] + 1, 'MA60: ' + '                ');
+        GRID.Canvas.TextOut(180, GRID.RowHeights[0] + 1, 'MA60: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[2];
       if MA[2][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(260, GRID.RowHeights[0] + 1, 'MA120: ' + FormatFloat('0,000.00', MA[2][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(360, GRID.RowHeights[0] + 1, 'MA120: ' + FormatFloat('0,000.00', MA[2][StkDataFile.getCount - Index - 1]))
       else
-        GRID.Canvas.TextOut(260, GRID.RowHeights[0] + 1, 'MA120: ' + '                ');
+        GRID.Canvas.TextOut(360, GRID.RowHeights[0] + 1, 'MA120: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[3];
       if MA[3][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(398, GRID.RowHeights[0] + 1, 'MA250: ' + FormatFloat('0,000.00', MA[3][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(548, GRID.RowHeights[0] + 1, 'MA250: ' + FormatFloat('0,000.00', MA[3][StkDataFile.getCount - Index - 1]))
       else
-        GRID.Canvas.TextOut(398, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
+        GRID.Canvas.TextOut(548, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
 
 
     //绘制VOL部分
@@ -1317,7 +1319,7 @@ begin
     else
     begin
       if lstSplit.Count <> 2 then
-        date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[0], 4)), StrToInt(MidStr(lstSplit.Strings[0], 6, 2)), StrToInt(RightStr(lstSplit.Strings[0], 2)), 9, 15, 0, 0)
+        date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[0], 4)), StrToInt(MidStr(lstSplit.Strings[0], 6, 2)), StrToInt(RightStr(lstSplit.Strings[0], 2)), 9, 16, 0, 0)
       else
       begin
         if Length(lstSplit.Strings[1]) <> 8 then

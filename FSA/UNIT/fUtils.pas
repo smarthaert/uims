@@ -16,7 +16,7 @@ const
     '柜电子二,柜电子三,柜电子四,柜电子五,柜营建,柜航运,柜观光,柜金融,柜贸易,柜证券,柜管理,柜其他,' +
     '柜权证,柜公司债一&c=柜公司债二&c=柜公司债三&c=柜公司债四&c=柜公司债五&c=柜公司债六';
 
-  DEF_COLOR: array[0..5] of TColor = (clYellow, clLime, clRed, clAqua, clFuchsia, clSilver);
+  DEF_COLOR: array[0..5] of TColor = (clWhite, clYellow, TColor($F703F8), TColor($00FF04), clFuchsia, clSilver);
 var
   FONT_CHINESE: string = '标楷体';
   FONT_DIGIT: string = 'ARIAL';
@@ -905,6 +905,7 @@ var
   I, Y: Integer;
   D: Single;
 begin
+{
   LineCount := Max(3, LineCount div 2 * 2 + 1);
   D := _div_(H - L, LineCount - 1);
   SetLength(FValueList, LineCount);
@@ -929,7 +930,7 @@ begin
     C.MoveTo(R.Left + 1, Y);
     C.LineTo(R.Right - 1, Y);
   end;
-
+  }
 end;
 
 //DRAW_SCALE(C, Rect, ArrayOdSingle([80, 50, 20]), 0, 100, 0, 100);
