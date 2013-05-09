@@ -16,7 +16,7 @@ const
     '柜电子二,柜电子三,柜电子四,柜电子五,柜营建,柜航运,柜观光,柜金融,柜贸易,柜证券,柜管理,柜其他,' +
     '柜权证,柜公司债一&c=柜公司债二&c=柜公司债三&c=柜公司债四&c=柜公司债五&c=柜公司债六';
 
-  DEF_COLOR: array[0..5] of TColor = (clWhite, clYellow, TColor($F703F8), TColor($00FF04), clFuchsia, clSilver);
+  DEF_COLOR: array[0..5] of TColor = (clWhite, clYellow, TColor($F703F8), TColor($00FF04), TColor($3130FF), clSilver);
 var
   FONT_CHINESE: string = '标楷体';
   FONT_DIGIT: string = 'ARIAL';
@@ -943,7 +943,7 @@ begin
   if Length(Values) = 0 then Exit;
   _setBrush_(C, clBlack, bsSolid);
   C.Font.Name := 'ARIAL';
-  C.Font.Height := Min(_height_(R) div Length(Values), Round(_width_(R) / 5.5));
+  C.Font.Height := Min(_height_(R) div Length(Values), Round(_width_(R) / 5.5));  //字体大小
   TH := C.TextHeight('0');
   if H > 1000 then Precise := 0 else Precise := 2;
   TW := C.TextWidth(_vs_(H, Precise, True, False)) + 4;
@@ -955,7 +955,7 @@ begin
     InflateRect(Rt, -1, 0);
     OffsetRect(Rt, R.Left + GapX, Y - TH div 2);
     if Rt.Bottom < R.Bottom + 2 then
-      _textRect_(C, Rt, _vs_(Values[I], Precise, True, False), clSilver, clBlack, taRightJustify);
+      _textRect_(C, Rt, _vs_(Values[I], Precise, True, False), DEF_COLOR[4], clBlack, taRightJustify);
   end;
 end;
 
