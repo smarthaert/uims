@@ -1086,19 +1086,19 @@ begin
         GRID.Canvas.TextOut(0, GRID.RowHeights[0] + 1, 'MA30: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[1];
       if MA[1][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(180, GRID.RowHeights[0] + 1, 'MA60: ' + FormatFloat('0,000.00', MA[1][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(160, GRID.RowHeights[0] + 1, 'MA60: ' + FormatFloat('0,000.00', MA[1][StkDataFile.getCount - Index - 1]))
       else
-        GRID.Canvas.TextOut(180, GRID.RowHeights[0] + 1, 'MA60: ' + '                ');
+        GRID.Canvas.TextOut(160, GRID.RowHeights[0] + 1, 'MA60: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[2];
       if MA[2][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(360, GRID.RowHeights[0] + 1, 'MA120: ' + FormatFloat('0,000.00', MA[2][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(320, GRID.RowHeights[0] + 1, 'MA120: ' + FormatFloat('0,000.00', MA[2][StkDataFile.getCount - Index - 1]))
       else
-        GRID.Canvas.TextOut(360, GRID.RowHeights[0] + 1, 'MA120: ' + '                ');
+        GRID.Canvas.TextOut(320, GRID.RowHeights[0] + 1, 'MA120: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[3];
       if MA[3][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(548, GRID.RowHeights[0] + 1, 'MA250: ' + FormatFloat('0,000.00', MA[3][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(488, GRID.RowHeights[0] + 1, 'MA250: ' + FormatFloat('0,000.00', MA[3][StkDataFile.getCount - Index - 1]))
       else
-        GRID.Canvas.TextOut(548, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
+        GRID.Canvas.TextOut(488, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
 
 
     //绘制VOL部分
@@ -1110,7 +1110,7 @@ begin
       end;
 
     //绘制PL部分
-      GRID.Canvas.Font.Color := DEF_COLOR[0];
+      GRID.Canvas.Font.Color := DEF_COLOR[4];
       if PL[0][StkDataFile.getCount - Index - 1] <> -9999 then
       begin
         if PL[0][StkDataFile.getCount - Index - 1] > 0 then
