@@ -1,6 +1,6 @@
 object frmMain2: TfrmMain2
-  Left = 370
-  Top = 173
+  Left = 190
+  Top = 129
   AutoScroll = False
   Caption = #37329#34701#25968#25454#30424#21518#20998#26512#22823#24072' - Kylin v1.00'
   ClientHeight = 239
@@ -339,6 +339,8 @@ object frmMain2: TfrmMain2
     BorderStyle = bsNone
     ColCount = 2
     Ctl3D = True
+    DefaultColWidth = 32
+    DefaultRowHeight = 12
     Enabled = False
     FixedCols = 0
     RowCount = 4
