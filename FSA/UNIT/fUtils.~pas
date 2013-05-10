@@ -198,7 +198,7 @@ const
   FILTER_KEY_STKIDNAME = '<td align=center bgcolor=#FFFfff nowrap><a href=/q/q_';
   FILTER_KEY_STKDATA = '<td align="center" bgcolor="#FFFfff" nowrap>';
 //TPriceState = (psCeil, psUp, psEven, psDown, psFloor, psNonTrade);
-  PSFC_COLOR: array[TPriceState] of TColor = (clYellow, DEF_COLOR[4], clBlack, clGreen, clWhite, clBlack);
+  PSFC_COLOR: array[TPriceState] of TColor = (clYellow, clRed, clBlack, clGreen, clWhite, clBlack);
   PSBC_COLOR: array[TPriceState] of TColor = (clRed, clBtnFace, clBtnFace, clBtnFace, clGreen, clBtnFace);
 
 implementation
