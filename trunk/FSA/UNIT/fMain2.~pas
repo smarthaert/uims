@@ -10,7 +10,7 @@ const
   MAC: array[0..3] of Integer = (30, 60, 120, 250);
   VMAC: array[0..2] of Integer = (5, 10, 30);
   RSIC: array[0..1] of Integer = (5, 10);
-  PLC: array[0..0] of Integer = (1);
+  PLC: array[0..4] of Integer = (2, 1, 1, 3, 3);
 
 type
 { TVertLine }
@@ -110,7 +110,7 @@ type
     MA: array[0..5] of TArrayOfSingle;
     VMA: array[0..2] of TArrayOfSingle;
     RSI: array[0..1] of TArrayOfSingle;
-    PL: array[0..5] of TArrayOfSingle;
+    PL: array[0..4] of TArrayOfSingle;
     FStockName: string;
     FPageStart: Integer;
     FUnitWidth: Integer;
@@ -125,6 +125,7 @@ type
     procedure DrawScaleK(C: TCanvas; R: TRect);
     procedure DrawScaleV(C: TCanvas; R: TRect);
     procedure DrawLine(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single);
+    procedure DrawText(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single; Text: string);
     procedure SetStockName(const Value: string);
     procedure SetPageStart(Value: Integer);
     procedure SetUnitWidth(Value: Integer);
@@ -363,8 +364,8 @@ var
   I: Integer;
 begin
   for I := 0 to Length(PLC) - 1 do
-    if PLC[I] = 0 then PL[I] := nil
-    else PL[I] := _calcPL_(StkDataFile.getCP, MA, PLC[I]);
+    if PLC[I] = 0 then PL[I] := nil //0代表不计算
+    else PL[I] := _calcPL_(I, StkDataFile.getCP, MA, PLC[I]);
 end;
 
 procedure TfrmMain2.CalcRSI;
@@ -577,7 +578,7 @@ begin
         if UnitWidth > 2 then
         begin
           C.Rectangle(Rect(X1 + 1, Y1, X2 - 1, Y2));
-          if P^.CP > P^.OP then
+          if P^.CP > P^.OP then //针对上涨的成交量绘制空心的成交量柱
           begin
             C.Brush.Color := clBlack;
             C.Rectangle(Rect(X1 + 1, Y1 + 1, X2 - 1, Y2 - 1));
@@ -642,9 +643,12 @@ begin
   _setPen_(C, clWhite, 1, psSolid, pmCopy);
 
   for I := 0 to Length(PLC) - 1 do
-    if PLC[I] > 0 then
-      DrawLine(PL[I], DEF_COLOR[4], C, R, High, Low);
-
+    case PLC[I] of
+      2:
+        DrawLine(PL[I], DEF_COLOR[4], C, R, High, Low);
+      3:
+        DrawText(PL[I], DEF_COLOR[4], C, R, High, Low, '');
+    end;
   //C.TextOut(100,100,FloatToStr(PL[0][DataIndex]));
 end;
 
@@ -810,6 +814,65 @@ begin
           FirstDataFound := True;
         end
         else C.LineTo(X, Y);
+      end;
+    end;
+  end;
+end;
+
+
+procedure TfrmMain2.DrawText(A: TArrayOfSingle; Color: TColor;
+  C: TCanvas; R: TRect; High, Low: Single; Text: string);
+var
+  I, J, X, Y, Len: Integer;
+  FirstDataFound: Boolean;
+begin
+  if A <> nil then
+  begin
+    FirstDataFound := False;
+    _setPen_(C, Color, 1, psSolid, pmCopy);
+
+    C.Brush.Color := GRID.Color;
+    C.Brush.Style := bsSolid;
+    Len := Length(A);
+    for I := 0 to DataPerPage - 1 do
+    begin
+      J := PageStart + DataPerPage - I - 1;
+      J := PageIndex2DataIndex(J);
+      //if _valid_(J,0,Len-1) then
+      if _valid_(J, 0, Len - 1) and (A[J] <> -9999) then //没有计算出来均线时不显示，-9999代表无数据
+      begin
+        X := UnitWidth * I + UnitWidth div 2;
+        Y := Fy2Iy(A[J], R, High, Low);
+        if not FirstDataFound then
+        begin
+          C.MoveTo(X, Y);
+          FirstDataFound := True;
+        end
+        else
+          if A[J] = 1 then
+          begin
+              //C.Brush.Color := DEF_COLOR[4];
+              //C.Brush.Color := clBlack;
+              //C.TextOut(X, Y-12, '↑')
+            _line_(C, X, Y - 10, X, Y, DEF_COLOR[4]);
+          end
+          else
+            if A[J] = -1 then
+            begin
+              //C.Brush.Color := DEF_COLOR[3];
+              //C.Brush.Color := clBlack;
+              //C.TextOut(X, Y, '↓');
+              _line_(C, X, Y, X, Y + 10, DEF_COLOR[3]);
+            end
+            else
+              if A[J] = 0 then
+              begin
+              //C.Brush.Color := DEF_COLOR[3];
+              //C.Brush.Color := clBlack;
+              //C.TextOut(X, Y, '↓');
+                _line_(C, X, Y-3, X, Y + 3, DEF_COLOR[1]);
+              end;
+
       end;
     end;
   end;
@@ -1096,19 +1159,19 @@ begin
         GRID.Canvas.TextOut(0, GRID.RowHeights[0] + 1, 'MA30: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[1];
       if MA[1][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(160, GRID.RowHeights[0] + 1, 'MA60: ' + FormatFloat('0,000.00', MA[1][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(140, GRID.RowHeights[0] + 1, 'MA60: ' + FormatFloat('0,000.00', MA[1][StkDataFile.getCount - Index - 1]))
       else
-        GRID.Canvas.TextOut(160, GRID.RowHeights[0] + 1, 'MA60: ' + '                ');
+        GRID.Canvas.TextOut(140, GRID.RowHeights[0] + 1, 'MA60: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[2];
       if MA[2][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(320, GRID.RowHeights[0] + 1, 'MA120: ' + FormatFloat('0,000.00', MA[2][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(280, GRID.RowHeights[0] + 1, 'MA120: ' + FormatFloat('0,000.00', MA[2][StkDataFile.getCount - Index - 1]))
       else
-        GRID.Canvas.TextOut(320, GRID.RowHeights[0] + 1, 'MA120: ' + '                ');
+        GRID.Canvas.TextOut(280, GRID.RowHeights[0] + 1, 'MA120: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[3];
       if MA[3][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(488, GRID.RowHeights[0] + 1, 'MA250: ' + FormatFloat('0,000.00', MA[3][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(428, GRID.RowHeights[0] + 1, 'MA250: ' + FormatFloat('0,000.00', MA[3][StkDataFile.getCount - Index - 1]))
       else
-        GRID.Canvas.TextOut(488, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
+        GRID.Canvas.TextOut(428, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
 
 
     //绘制VOL部分
@@ -1124,17 +1187,42 @@ begin
       if PL[0][StkDataFile.getCount - Index - 1] <> -9999 then
       begin
         if PL[0][StkDataFile.getCount - Index - 1] > 0 then
-          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL250: ' + FormatFloat('+0.00', PL[0][StkDataFile.getCount - Index - 1]) + '                 ')
+          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL偏离: ' + FormatFloat('+0.00', PL[0][StkDataFile.getCount - Index - 1]) + '                 ')
         else
-          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL250: ' + FormatFloat(' -0.00', -PL[0][StkDataFile.getCount - Index - 1]) + '                 ');
+          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL偏离: ' + FormatFloat(' -0.00', -PL[0][StkDataFile.getCount - Index - 1]) + '                 ');
       end
       else
       begin
-        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL250: ' + '                  ');
+        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL偏离: ' + '                  ');
       end;
+
+      GRID.Canvas.Font.Color := DEF_COLOR[3];
+      if PL[1][StkDataFile.getCount - Index - 1] <> -9999 then
+      begin
+        if PL[1][StkDataFile.getCount - Index - 1] > 0 then
+          GRID.Canvas.TextOut(120, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250斜率: ' + FormatFloat('+0.00', PL[1][StkDataFile.getCount - Index - 1]) + '                 ')
+        else
+          GRID.Canvas.TextOut(120, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250斜率: ' + FormatFloat(' -0.00', -PL[1][StkDataFile.getCount - Index - 1]) + '                 ');
+      end
+      else
+      begin
+        GRID.Canvas.TextOut(120, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250斜率: ' + '                  ');
+      end;
+
+      GRID.Canvas.Font.Color := DEF_COLOR[1];
+      if PL[2][StkDataFile.getCount - Index - 1] <> -9999 then
+      begin
+        if PL[2][StkDataFile.getCount - Index - 1] > 0 then
+          GRID.Canvas.TextOut(240, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250与120距离: ' + FormatFloat('+0.00', PL[2][StkDataFile.getCount - Index - 1]) + '                 ')
+        else
+          GRID.Canvas.TextOut(240, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250与120距离: ' + FormatFloat(' -0.00', -PL[2][StkDataFile.getCount - Index - 1]) + '                 ');
+      end
+      else
+      begin
+        GRID.Canvas.TextOut(240, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250与120距离: ' + '                  ');
+      end;
+
     end;
-
-
   end;
 end;
 

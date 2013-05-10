@@ -176,7 +176,7 @@ procedure _line_(Canvas: TCanvas; X1, Y1, X2, Y2: Integer; LineColor: TColor); o
 procedure _lineBox_(Canvas: TCanvas; X1, Y1, X2, Y2: Integer); overload;
 procedure _lineBox_(Canvas: TCanvas; Rect: TRect); overload;
 function _calcMA_(Data: TArrayOfSingle; MAC: Integer): TArrayOfSingle;
-function _calcPL_(Data: TArrayOfSingle; MA: array of TArrayOfSingle; PLC: Integer): TArrayOfSingle;
+function _calcPL_(Index: Integer; Data: TArrayOfSingle; MA: array of TArrayOfSingle; PLC: Integer): TArrayOfSingle;
 function _div_(Value, DivNum: Single; DefaultWhenDivZero: Single = 0): Extended;
 procedure DRAW_HORZ_SCALE(C: TCanvas; R: TRect; L, H, LL, HH: Single; LineCount: Integer; RoundToPrice: Boolean);
 procedure DRAW_SCALE(C: TCanvas; R: TRect; L, H, LL, HH: Single; LineCount: Integer; RoundToPrice: Boolean); overload;
@@ -817,7 +817,7 @@ end;
 
 //计算当前价格与250均价的差额
 
-function _calcPL_(Data: TArrayOfSingle; MA: array of TArrayOfSingle; PLC: Integer): TArrayOfSingle;
+function _calcPL_(Index: Integer; Data: TArrayOfSingle; MA: array of TArrayOfSingle; PLC: Integer): TArrayOfSingle;
 var
   Sum: Single;
   I: Integer;
@@ -826,12 +826,59 @@ begin
   if Length(Data) * PLC = 0 then Exit;
   SetLength(Result, Length(Data));
 
-  for I := 0 to Length(Result) - 1 do
-  begin
-    if MA[3][I] <> -9999 then
-      Result[I] := Data[I] - MA[3][I] //250周期偏离
-    else
-      Result[I] := -9999;
+
+  case Index of
+    0:
+      for I := 0 to Length(Result) - 1 do
+      begin
+        if MA[3][I] <> -9999 then
+          Result[I] := Data[I] - MA[3][I] //250周期偏离
+        else
+          Result[I] := -9999;
+      end;
+    1:
+      for I := 0 to Length(Result) - 1 do
+      begin
+        if MA[3][I - 5] <> -9999 then
+          Result[I] := MA[3][I] - MA[3][I - 5] //250周期偏离
+        else
+          Result[I] := -9999;
+      end;
+    2:
+      for I := 0 to Length(Result) - 1 do
+      begin
+        if MA[3][I] <> -9999 then
+          Result[I] := MA[3][I] - MA[2][I] //250周期偏离
+        else
+          Result[I] := -9999;
+      end;
+    3: //均线多空排列
+      for I := 0 to Length(Result) - 1 do
+      begin
+        if MA[3][I] <> -9999 then
+          if ((max(abs(MA[2][I] - MA[3][I]), max(abs(MA[1][I] - MA[3][I]), max(abs(MA[1][I] - MA[2][I]), max(abs(MA[0][I] - MA[3][I]), max(abs(MA[0][I] - MA[1][I]), abs(MA[0][I] - MA[2][I]))))))) < 15) and (abs(MA[3][I] - MA[3][I-1]) > 0.05) then
+          begin
+            if (MA[0][I] < MA[1][I]) and (MA[1][I] < MA[2][I]) and (MA[2][I] < MA[3][I]) then
+              Result[I] := -1
+            else
+              if (MA[0][I] > MA[1][I]) and (MA[1][I] > MA[2][I]) and (MA[2][I] > MA[3][I]) then
+                Result[I] := 1
+              else
+                Result[I] := -9999;
+          end
+          else
+            Result[I] := -9999;
+      end;
+    4: //均线粘合
+      for I := 0 to Length(Result) - 1 do
+      begin
+        if MA[2][I] <> -9999 then
+          if (max(MA[0][I], max(MA[1][I], MA[2][I])) - min(MA[0][I], min(MA[1][I], MA[2][I]))) < 2 then
+             //Result[I] := max(MA[0][I],max(MA[1][I],MA[2][I])) - min(MA[0][I],min(MA[1][I],MA[2][I]))
+            Result[I] := 0
+          else
+            Result[I] := -9999;
+      end;
   end;
 end;
 
