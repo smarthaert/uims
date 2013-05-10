@@ -86,7 +86,7 @@ type
     procedure miDownOneClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
-    procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);       
+    procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure onMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure FormActivate(Sender: TObject);
     procedure miPageFirstClick(Sender: TObject);
@@ -290,7 +290,7 @@ begin
   if (Value <> FUnitWidth) and (StkDataFile <> nil) then
   begin
     FUnitWidth := Value;
-    NewPageStart := DataIndex - DataPerPage div 2;//定位到最中间
+    NewPageStart := DataIndex - DataPerPage div 2; //定位到最中间
     NewPageStart := Max(0, NewPageStart);
     NewPageStart := Min(NewPageStart, StkDataFile.getCount - DataPerPage);
     FPageStart := NewPageStart;
@@ -345,7 +345,7 @@ end;
 function TfrmMain2.GetDataPerPage: Integer;
 begin
   if FUnitWidth > 0 then
-    Result := _width_(GRID.CellRect(0, 1)) div FUnitWidth  //左边总宽度除以单元宽度
+    Result := _width_(GRID.CellRect(0, 1)) div FUnitWidth //左边总宽度除以单元宽度
   else Result := 0;
 end;
 
@@ -496,8 +496,8 @@ begin
         X2 := UnitWidth * (I + 1);
         Y1 := Fy2Iy(P^.OP, R, High, Low);
         Y2 := Fy2Iy(P^.CP, R, High, Low);
-        if Y1 > Y2 then C.Pen.Color := DEF_COLOR[4]
-        else if Y1 < Y2 then C.Pen.Color := clAqua
+        if Y1 > Y2 then C.Pen.Color := DEF_COLOR[4] //阳线颜色
+        else if Y1 < Y2 then C.Pen.Color := clAqua //阴线颜色
         else C.Pen.Color := clLime;
         C.Brush.Color := C.Pen.Color;
         if UnitWidth > 2 then
@@ -574,7 +574,16 @@ begin
         X2 := UnitWidth * (I + 1);
         Y1 := R.Bottom;
         Y2 := Fy2Iy(P^.VOL, R, High, Low);
-        if UnitWidth > 2 then C.Rectangle(Rect(X1, Y1, X2, Y2))
+        if UnitWidth > 2 then
+        begin
+          C.Rectangle(Rect(X1 + 1, Y1, X2 - 1, Y2));
+          if P^.CP > P^.OP then
+          begin
+            C.Brush.Color := clBlack;
+            C.Rectangle(Rect(X1 + 1, Y1 + 1, X2 - 1, Y2 - 1));
+            C.Brush.Color := C.Pen.Color;
+          end;
+        end
         else _line_(C, X1, Y1, X1, Y2);
       end;
     end;
@@ -840,7 +849,7 @@ begin
       begin
         XX := UnitWidth * I + UnitWidth div 2; // In pixels
         _setBrush_(C, GRID.Color, bsSolid);
-        
+
         if ShowBackgroundDotLine then
         begin
           _setPen_(C, cl3DDkShadow, 1, psDot, pmCopy);
@@ -852,7 +861,7 @@ begin
         if ShowText then
         begin
      //str := IntToStr(ymd);
-          str := FormatDateTime('yyyy/MM/dd ', P.Date);// + days[DayofWeek(P.Date)];
+          str := FormatDateTime('yyyy/MM/dd ', P.Date); // + days[DayofWeek(P.Date)];
           C.Font.Name := 'ARIAL';
           C.Font.Height := Max(2, Round(_height_(R) * 0.05) - 2);
           TW := C.TextWidth(str);
@@ -1040,6 +1049,7 @@ begin
   end;
 end;
 //绘制header部分
+
 procedure TfrmMain2.ITERATE_DATA(Index: Integer);
 var
   I: Integer;
@@ -1086,19 +1096,19 @@ begin
         GRID.Canvas.TextOut(0, GRID.RowHeights[0] + 1, 'MA30: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[1];
       if MA[1][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(180, GRID.RowHeights[0] + 1, 'MA60: ' + FormatFloat('0,000.00', MA[1][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(160, GRID.RowHeights[0] + 1, 'MA60: ' + FormatFloat('0,000.00', MA[1][StkDataFile.getCount - Index - 1]))
       else
-        GRID.Canvas.TextOut(180, GRID.RowHeights[0] + 1, 'MA60: ' + '                ');
+        GRID.Canvas.TextOut(160, GRID.RowHeights[0] + 1, 'MA60: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[2];
       if MA[2][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(360, GRID.RowHeights[0] + 1, 'MA120: ' + FormatFloat('0,000.00', MA[2][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(320, GRID.RowHeights[0] + 1, 'MA120: ' + FormatFloat('0,000.00', MA[2][StkDataFile.getCount - Index - 1]))
       else
-        GRID.Canvas.TextOut(360, GRID.RowHeights[0] + 1, 'MA120: ' + '                ');
+        GRID.Canvas.TextOut(320, GRID.RowHeights[0] + 1, 'MA120: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[3];
       if MA[3][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(548, GRID.RowHeights[0] + 1, 'MA250: ' + FormatFloat('0,000.00', MA[3][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(488, GRID.RowHeights[0] + 1, 'MA250: ' + FormatFloat('0,000.00', MA[3][StkDataFile.getCount - Index - 1]))
       else
-        GRID.Canvas.TextOut(548, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
+        GRID.Canvas.TextOut(488, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
 
 
     //绘制VOL部分
@@ -1225,7 +1235,7 @@ begin
   if Shift = [ssLeft] then DataIndex := PixelToDataIndex(X);
 end;
 
-procedure TfrmMain2.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);   
+procedure TfrmMain2.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
 var
   R: TRect;
 begin
@@ -1247,7 +1257,7 @@ begin
   C.MoveTo(X, R.Top);
   C.LineTo(X, R.Bottom);
   }
-  
+
   _setPen_(Canvas, clFuchsia, 1, psSolid, pmXOR);
   _line_(Canvas, R.Left, Y, R.Left, Y);
 end;
@@ -1295,7 +1305,7 @@ end;
 
 procedure TfrmMain2.miQuickRightClick(Sender: TObject);
 begin
-  DataIndex := DataIndex - DataPerPage div 8;  //8分之一屏幕移动
+  DataIndex := DataIndex - DataPerPage div 8; //8分之一屏幕移动
 end;
 
 procedure TfrmMain2.CLEAR_ALL_CALCULATE_DATA;
@@ -1501,7 +1511,7 @@ begin
       //SaveDialog1.Filter := '文本文件(*.DAT)|*.DAT';
 
       //if SaveDialog1.Execute then
-        M.SaveToFile(SaveDialog1.FileName);
+      M.SaveToFile(SaveDialog1.FileName);
 
       _free_(M);
       closefile(rText);

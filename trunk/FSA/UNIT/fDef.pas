@@ -331,16 +331,16 @@ var
   M: Integer;
   //D: TDateTime;
   P, Q: PStkDataRec;
-  t1:string;
-  t2:string;
+  t1: string;
+  t2: string;
 begin
   Result := -1;
   if L <= H then
   begin
     M := (L + H) shr 1;
     P := getData(M);
-      t1:=FormatDateTime('yyyy-mm-dd hh:nn', Date);
-      t2:=FormatDateTime('yyyy-mm-dd hh:nn', P.Date);
+    t1 := FormatDateTime('yyyy-mm-dd hh:nn', Date);
+    t2 := FormatDateTime('yyyy-mm-dd hh:nn', P.Date);
     if P <> nil then
     begin
       if Date = P.Date then Result := M
