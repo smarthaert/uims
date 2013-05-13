@@ -837,10 +837,10 @@ begin
           Result[I] := -9999;
       end;
     1:
-      for I := 0 to Length(Result) - 1 do
+      for I := 5 to Length(Result) - 1 do
       begin
         if MA[3][I - 5] <> -9999 then
-          Result[I] := MA[3][I] - MA[3][I - 5] //250周期偏离
+          Result[I] := MA[3][I] - MA[3][I - 5] //250斜率
         else
           Result[I] := -9999;
       end;
@@ -848,7 +848,7 @@ begin
       for I := 0 to Length(Result) - 1 do
       begin
         if MA[3][I] <> -9999 then
-          Result[I] := MA[3][I] - MA[2][I] //250周期偏离
+          Result[I] := MA[3][I] - MA[2][I] //250与120距离
         else
           Result[I] := -9999;
       end;
@@ -856,7 +856,7 @@ begin
       for I := 0 to Length(Result) - 1 do
       begin
         if MA[3][I] <> -9999 then
-          if ((max(abs(MA[2][I] - MA[3][I]), max(abs(MA[1][I] - MA[3][I]), max(abs(MA[1][I] - MA[2][I]), max(abs(MA[0][I] - MA[3][I]), max(abs(MA[0][I] - MA[1][I]), abs(MA[0][I] - MA[2][I]))))))) < 15) and (abs(MA[3][I] - MA[3][I-1]) > 0.05) then
+          if ((max(abs(MA[2][I] - MA[3][I]), max(abs(MA[1][I] - MA[3][I]), max(abs(MA[1][I] - MA[2][I]), max(abs(MA[0][I] - MA[3][I]), max(abs(MA[0][I] - MA[1][I]), abs(MA[0][I] - MA[2][I]))))))) < 15) and (abs(MA[3][I] - MA[3][I - 1]) > 0.05) then
           begin
             if (MA[0][I] < MA[1][I]) and (MA[1][I] < MA[2][I]) and (MA[2][I] < MA[3][I]) then
               Result[I] := -1

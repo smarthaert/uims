@@ -1148,7 +1148,7 @@ begin
     else
       GRID.Canvas.TextOut(800, GRID.RowHeights[0] + 1, '位置: ' + '[' + FormatFloat('00,000', StkDataFile.getCount) + ']  ' + FormatFloat('0,000', (StkDataFile.getCount - PageStart) / DataPerPage) + ' / ' + FormatFloat('0,000', StkDataFile.getCount / DataPerPage));
     }
-    if Index <> -1 then
+    if Index >= 0 then
     begin
     //绘制MA部分
       GRID.Canvas.Font.Size := 8;
@@ -1175,12 +1175,12 @@ begin
 
 
     //绘制VOL部分
+      GRID.Canvas.Font.Color := DEF_COLOR[5];
       P := StkDataFile.getData(Index);
       if P <> nil then
-      begin
-        GRID.Canvas.Font.Color := DEF_COLOR[5];
-        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + 1, 'VOL: ' + FormatFloat('0.00', P.VOL) + '                 ');
-      end;
+        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + 1, 'VOL: ' + FormatFloat('0.00', P.VOL) + '                 ')
+      else
+        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + 1, 'VOL: ' + '                 ');
 
     //绘制PL部分
       GRID.Canvas.Font.Color := DEF_COLOR[4];
@@ -1220,9 +1220,30 @@ begin
       else
       begin
         GRID.Canvas.TextOut(240, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250与120距离: ' + '                  ');
-      end;
+      end
+      end
+    else //越界部分
+    begin
+    //绘制MA部分
+      GRID.Canvas.Font.Size := 8;
+      GRID.Canvas.Font.Color := DEF_COLOR[0];
+      GRID.Canvas.TextOut(0, GRID.RowHeights[0] + 1, 'MA30: ' + '                ');
+      GRID.Canvas.Font.Color := DEF_COLOR[1];
+      GRID.Canvas.TextOut(140, GRID.RowHeights[0] + 1, 'MA60: ' + '                ');
+      GRID.Canvas.Font.Color := DEF_COLOR[2];
+      GRID.Canvas.TextOut(280, GRID.RowHeights[0] + 1, 'MA120: ' + '                ');
+      GRID.Canvas.Font.Color := DEF_COLOR[3];
+      GRID.Canvas.TextOut(428, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
+      
+    //绘制PL部分
+      GRID.Canvas.Font.Color := DEF_COLOR[4];
+      GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL偏离: ' + '                  ');
 
-    end;
+      GRID.Canvas.Font.Color := DEF_COLOR[3];
+      GRID.Canvas.TextOut(120, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250斜率: ' + '                  ');
+      GRID.Canvas.Font.Color := DEF_COLOR[1];
+      GRID.Canvas.TextOut(240, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250与120距离: ' + '                  ');
+      end;
   end;
 end;
 
@@ -1326,8 +1347,21 @@ end;
 procedure TfrmMain2.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
 var
   R: TRect;
+  C: TCanvas;
 begin
   if Shift = [ssLeft] then DataIndex := PixelToDataIndex(X);
+
+  {
+  FDataIndex := DataIndex;
+
+  R := GRID.CellRect(0, 1);//K线区域
+  C := GRID.Canvas;
+  _setPen_(C, DEF_COLOR[4], 1, psDot, pmCopy);
+  C.MoveTo(X, R.Top);
+  C.LineTo(X, R.Bottom);
+  C.MoveTo(R.Left, Y);
+  C.LineTo(R.Right, Y);
+  }
 end;
 
 procedure TfrmMain2.OnMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
