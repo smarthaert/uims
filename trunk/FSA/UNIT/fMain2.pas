@@ -68,6 +68,9 @@ type
     XTDAT1: TMenuItem;
     DATTXT1: TMenuItem;
     SaveDialog1: TSaveDialog;
+    N20: TMenuItem;
+    miQuickPageDown: TMenuItem;
+    miQuickPageUp: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure GRIDDrawCell(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
@@ -93,7 +96,9 @@ type
     procedure miFirstClick(Sender: TObject);
     procedure miLastClick(Sender: TObject);
     procedure miQuickLeftClick(Sender: TObject);
-    procedure miQuickRightClick(Sender: TObject);
+    procedure miQuickRightClick(Sender: TObject);  
+    procedure miQuickPageUpClick(Sender: TObject);
+    procedure miQuickPageDownClick(Sender: TObject);
     procedure N11Click(Sender: TObject);
     procedure N15Click(Sender: TObject);
     procedure N17Click(Sender: TObject);
@@ -1097,6 +1102,8 @@ begin
       VK_DOWN: N6.Click;
       VK_HOME: miPageFirst.Click;
       VK_END: miPageLast.Click;
+      VK_PRIOR: miQuickPageUp.Click;
+      VK_NEXT: miQuickPageDown.Click;
     end;
   end
   else if Shift = [ssCtrl] then
@@ -1221,7 +1228,7 @@ begin
       begin
         GRID.Canvas.TextOut(240, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250与120距离: ' + '                  ');
       end
-      end
+    end
     else //越界部分
     begin
     //绘制MA部分
@@ -1234,7 +1241,7 @@ begin
       GRID.Canvas.TextOut(280, GRID.RowHeights[0] + 1, 'MA120: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[3];
       GRID.Canvas.TextOut(428, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
-      
+
     //绘制PL部分
       GRID.Canvas.Font.Color := DEF_COLOR[4];
       GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL偏离: ' + '                  ');
@@ -1243,7 +1250,7 @@ begin
       GRID.Canvas.TextOut(120, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250斜率: ' + '                  ');
       GRID.Canvas.Font.Color := DEF_COLOR[1];
       GRID.Canvas.TextOut(240, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250与120距离: ' + '                  ');
-      end;
+    end;
   end;
 end;
 
@@ -1430,6 +1437,16 @@ begin
   DataIndex := DataIndex - DataPerPage div 8; //8分之一屏幕移动
 end;
 
+procedure TfrmMain2.miQuickPageUpClick(Sender: TObject);
+begin
+  DataIndex := DataIndex + DataPerPage -270;
+end;
+
+procedure TfrmMain2.miQuickPageDownClick(Sender: TObject);
+begin
+  DataIndex := DataIndex - DataPerPage -270;
+end;
+
 procedure TfrmMain2.CLEAR_ALL_CALCULATE_DATA;
 var
   I: Integer;
@@ -1580,64 +1597,71 @@ var
   i: Integer;
   lstSplit: TStringList;
   rec: TStkDataRec;
-  line, timeStr: string;
+  line, timeStr, str: string;
   rText: TextFile;
   M: TMemoryStream;
 begin
-//加载TXT文件转换为DAT文件
-  OpenDialog1.Filter := '文本文件(*.txt)|*.txt';
 
-  if OpenDialog1.Execute then
+  InputQuery('请输入补录数据所属年份：', '日期格式：yyyy', str);
+  //ShowMessage(str); //显示输入的内容
+  if str <> '' then
+  begin
+    OpenDialog1.Filter := '文本文件(*.txt)|*.txt';
 
-    if FileExists(OpenDialog1.FileName) then
-    begin
+    if OpenDialog1.Execute then
 
-      SaveDialog1.Filter := '文本文件(*.DAT)|*.DAT';
-
-      if SaveDialog1.Execute then
+      if FileExists(OpenDialog1.FileName) then
       begin
-        M := TMemoryStream.Create;
 
-        M.LoadFromFile(SaveDialog1.FileName);
-    //移动指针到最后位置
-        M.Seek(M.Size, 0);
-        AssignFile(rText, OpenDialog1.FileName);
-        reset(rText);
-        while not EOF(rText) do
+        SaveDialog1.Filter := '文本文件(*.DAT)|*.DAT';
+
+        if SaveDialog1.Execute then
         begin
-          readln(rText, line);
+          M := TMemoryStream.Create;
 
-          lstSplit := TStringList.Create;
-          lstSplit.Delimiter := '	';
-          lstSplit.DelimitedText := line;
+          M.LoadFromFile(SaveDialog1.FileName);
+    //移动指针到最后位置
+          M.Seek(M.Size, 0);
+          AssignFile(rText, OpenDialog1.FileName);
+          reset(rText);
+          while not EOF(rText) do
+          begin
+            readln(rText, line);
 
-          timeStr := Trim(lstSplit.Strings[0]);
-          rec.Date := EncodeDateTime(2013, StrToInt(LeftStr(timeStr, 2)), StrToInt(MidStr(timeStr, 4, 2)), StrToInt(MidStr(timeStr, 7, 2)), StrToInt(RightStr(timeStr, 2)), 0, 0);
+            lstSplit := TStringList.Create;
+            lstSplit.Delimiter := '	';
+            lstSplit.DelimitedText := line;
 
-          rec.OP := StrToFloat(lstSplit.Strings[1]);
-          rec.CP := StrToFloat(lstSplit.Strings[4]);
-          rec.HP := StrToFloat(lstSplit.Strings[2]);
-          rec.LP := StrToFloat(lstSplit.Strings[3]);
-          rec.VOL := StrToInt(lstSplit.Strings[5]);
+            timeStr := Trim(lstSplit.Strings[0]);
+            rec.Date := EncodeDateTime(StrToInt(str), StrToInt(LeftStr(timeStr, 2)), StrToInt(MidStr(timeStr, 4, 2)), StrToInt(MidStr(timeStr, 7, 2)), StrToInt(RightStr(timeStr, 2)), 0, 0);
+
+            rec.OP := StrToFloat(lstSplit.Strings[1]);
+            rec.CP := StrToFloat(lstSplit.Strings[4]);
+            rec.HP := StrToFloat(lstSplit.Strings[2]);
+            rec.LP := StrToFloat(lstSplit.Strings[3]);
+            rec.VOL := StrToInt(lstSplit.Strings[5]);
 
 
-          try
-            M.Write(rec, SizeOf(rec));
+            try
+              M.Write(rec, SizeOf(rec));
 
-          finally
+            finally
 
+            end;
           end;
-        end;
 
-      end;
+        end;
       //SaveDialog1.Filter := '文本文件(*.DAT)|*.DAT';
 
       //if SaveDialog1.Execute then
-      M.SaveToFile(SaveDialog1.FileName);
+        M.SaveToFile(SaveDialog1.FileName);
 
-      _free_(M);
-      closefile(rText);
-    end;
+        _free_(M);
+        closefile(rText);
+      end;
+  end
+  else
+    ShowMessage('未知的数据年份！');
 end;
 
 end.
