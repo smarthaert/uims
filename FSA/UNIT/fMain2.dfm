@@ -431,6 +431,17 @@ object frmMain2: TfrmMain2
     end
     object N8: TMenuItem
       Caption = #24555#36895#31227#21205
+      object miQuickPageUp: TMenuItem
+        Caption = #24448#24038'1'#39029'(PageUp)'
+        OnClick = miQuickPageUpClick
+      end
+      object miQuickPageDown: TMenuItem
+        Caption = #24448#21491'1'#39029'(PageDown)'
+        OnClick = miQuickPageDownClick
+      end
+      object N20: TMenuItem
+        Caption = '-'
+      end
       object miQuickLeft: TMenuItem
         Caption = #24448#24038'1/8'#39029'(CTRL+LEFTl)'
         OnClick = miQuickLeftClick
@@ -469,7 +480,7 @@ object frmMain2: TfrmMain2
         OnClick = XTDAT1Click
       end
       object DATTXT1: TMenuItem
-        Caption = 'TXT'#25968#25454#34917#24405
+        Caption = #27599#26085'TXT'#25968#25454#34917#24405
         OnClick = DATTXT1Click
       end
     end
