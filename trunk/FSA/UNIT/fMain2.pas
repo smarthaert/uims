@@ -825,7 +825,7 @@ begin
 end;
 
 
-procedure TfrmMain2.DrawText(A: TArrayOfSingle; Color: TColor;
+procedure TfrmMain2.DrawText(A: TArrayOfSingle; Color: TColor;  //PL指标上绘制提示信息
   C: TCanvas; R: TRect; High, Low: Single; Text: string);
 var
   I, J, X, Y, Len: Integer;
@@ -859,7 +859,7 @@ begin
               //C.Brush.Color := DEF_COLOR[4];
               //C.Brush.Color := clBlack;
               //C.TextOut(X, Y-12, '↑')
-            _line_(C, X, Y - 10, X, Y, DEF_COLOR[4]);
+            _line_(C, X, Y - 10, X, Y, DEF_COLOR[4]);        //多头排列
           end
           else
             if A[J] = -1 then
@@ -867,7 +867,7 @@ begin
               //C.Brush.Color := DEF_COLOR[3];
               //C.Brush.Color := clBlack;
               //C.TextOut(X, Y, '↓');
-              _line_(C, X, Y, X, Y + 10, DEF_COLOR[3]);
+              _line_(C, X, Y, X, Y + 10, DEF_COLOR[3]);      //空头排列
             end
             else
               if A[J] = 0 then
@@ -875,7 +875,7 @@ begin
               //C.Brush.Color := DEF_COLOR[3];
               //C.Brush.Color := clBlack;
               //C.TextOut(X, Y, '↓');
-                _line_(C, X, Y - 3, X, Y + 3, DEF_COLOR[1]);
+                _line_(C, X-2, Y, X+2, Y, DEF_COLOR[1]);    //粘合
               end;
 
       end;
@@ -1439,12 +1439,12 @@ end;
 
 procedure TfrmMain2.miQuickPageUpClick(Sender: TObject);
 begin
-  DataIndex := DataIndex + DataPerPage -270;
+  DataIndex := DataIndex + (DataPerPage div 270 * 270);
 end;
 
 procedure TfrmMain2.miQuickPageDownClick(Sender: TObject);
 begin
-  DataIndex := DataIndex - DataPerPage -270;
+  DataIndex := DataIndex - (DataPerPage div 270 * 270);
 end;
 
 procedure TfrmMain2.CLEAR_ALL_CALCULATE_DATA;
