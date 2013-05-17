@@ -875,7 +875,7 @@ begin
               //C.Brush.Color := DEF_COLOR[3];
               //C.Brush.Color := clBlack;
               //C.TextOut(X, Y, '¡ý');
-                _line_(C, X-2, Y, X+2, Y, DEF_COLOR[1]);    //Õ³ºÏ
+                _line_(C, X-3, Y, X+3, Y, DEF_COLOR[1]);    //Õ³ºÏ
               end;
 
       end;
