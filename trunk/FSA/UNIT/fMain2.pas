@@ -1139,7 +1139,8 @@ begin
       Header.Cells[09, 0] := _vs_(P.CP);
       if Q = nil then Header.Cells[11, 0] := ''
       else Header.Cells[11, 0] := _vs_(P.CP - Q.CP, 2, True, True);
-      Header.Cells[13, 0] := _vs_(P.VOL, _if_(Pos('指数', StockName) > 0, 2, 0));
+      //Header.Cells[13, 0] := _vs_(P.VOL, _if_(Pos('指数', StockName) > 0, 2, 0));  
+      Header.Cells[13, 0] := _vs_(P.VOL, 0, True, False);
     end
     else begin
       Header.Cells[01, 0] := IntToStr(FDataIndex);
@@ -1509,7 +1510,7 @@ begin
       idx := StkDataFile.indexOf(date);
       if idx <> -1 then
       begin
-        PageStart := idx - DataPerPage + 1;
+        PageStart := idx - (DataPerPage div 2) + 1;
         DataIndex := idx;
       end;
     end;
