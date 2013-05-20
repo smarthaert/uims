@@ -23,6 +23,7 @@ var
   IS_FRACTION_UNDERLINE: Boolean = False;
   IS_CHINESE_AUTOCOLOR: Boolean = False;
   IS_DRAW_MA: Boolean = True; //平均线开关
+  IS_DRAW_MA_5: Boolean = False;
   IS_SHOW_DATESCALE: Boolean = True; //日期座标开关
   IS_IMG_SAVE_TO_FILE: Boolean = false; //日期座标开关
   ShowBackgroundDotLine: Boolean = True;

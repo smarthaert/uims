@@ -486,23 +486,28 @@ object frmMain2: TfrmMain2
     end
     object N1: TMenuItem
       Caption = #35774#32622
-      object mi100: TMenuItem
+      object N21: TMenuItem
         Tag = 100
         Caption = #26174#31034#22343#32447
         Checked = True
-        OnClick = mi100Click
+        OnClick = mi1001Click
+      end
+      object mi1001: TMenuItem
+        Tag = 1001
+        Caption = #26174#31034'5'#20998#38047#22343#32447
+        OnClick = mi1001Click
       end
       object mi101: TMenuItem
         Tag = 101
         Caption = #26174#31034#26102#38388#22352#26631
         Checked = True
-        OnClick = mi100Click
+        OnClick = mi1001Click
       end
       object N4: TMenuItem
         Tag = 102
         Caption = #26174#31034#32972#26223#22352#26631#32447
         Checked = True
-        OnClick = mi100Click
+        OnClick = mi1001Click
       end
       object N13: TMenuItem
         Caption = '-'
@@ -511,13 +516,13 @@ object frmMain2: TfrmMain2
         Tag = 103
         Caption = #20197#27178#32447#26631#27880#23567#25968
         Checked = True
-        OnClick = mi100Click
+        OnClick = mi1001Click
       end
       object miShowKLineHighLow: TMenuItem
         Tag = 104
         Caption = 'K'#32447#39640#20302#20215#26631#27880
         Checked = True
-        OnClick = mi100Click
+        OnClick = mi1001Click
       end
       object N18: TMenuItem
         Caption = '-'
@@ -525,7 +530,7 @@ object frmMain2: TfrmMain2
       object N19: TMenuItem
         Tag = 105
         Caption = #25130#23631#20445#23384#21040#25991#20214
-        OnClick = mi100Click
+        OnClick = mi1001Click
       end
       object N10: TMenuItem
         Caption = '-'

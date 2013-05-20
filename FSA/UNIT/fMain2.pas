@@ -7,7 +7,7 @@ uses
   Dialogs, Grids, StdCtrls, Menus, fDef, ExtCtrls, DateUtils, StrUtils, MyGraph;
 
 const
-  MAC: array[0..3] of Integer = (30, 60, 120, 250);
+  MAC: array[0..4] of Integer = (5, 30, 60, 120, 250);
   VMAC: array[0..2] of Integer = (5, 10, 30);
   RSIC: array[0..1] of Integer = (5, 10);
   PLC: array[0..4] of Integer = (2, 1, 1, 3, 3);
@@ -31,7 +31,7 @@ type
     GRID: TStringGrid;
     MainMenu1: TMainMenu;
     N1: TMenuItem;
-    mi100: TMenuItem;
+    mi1001: TMenuItem;
     mi101: TMenuItem;
     N3: TMenuItem;
     mi0: TMenuItem;
@@ -71,10 +71,11 @@ type
     N20: TMenuItem;
     miQuickPageDown: TMenuItem;
     miQuickPageUp: TMenuItem;
+    N21: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure GRIDDrawCell(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
-    procedure mi100Click(Sender: TObject);
+    procedure mi1001Click(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure mi0Click(Sender: TObject);
     procedure N5Click(Sender: TObject);
@@ -129,7 +130,8 @@ type
     procedure DrawPL(C: TCanvas; R: TRect); overload;
     procedure DrawScaleK(C: TCanvas; R: TRect);
     procedure DrawScaleV(C: TCanvas; R: TRect);
-    procedure DrawLine(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single);
+    procedure DrawLine(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single);     
+    procedure DrawLineStyle(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single; Style: TPenStyle);
     procedure DrawText(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single; Text: string);
     procedure SetStockName(const Value: string);
     procedure SetPageStart(Value: Integer);
@@ -523,10 +525,13 @@ begin
     end;
 
     if IS_DRAW_MA then
-      for I := 0 to Length(MAC) - 1 do
+    begin
+      if (MAC[0] > 0) and IS_DRAW_MA_5 then
+          DrawLineStyle(MA[0], TColor($C6C300), C, R, High, Low, psDot);
+      for I := 1 to Length(MAC) - 1 do
         if MAC[I] > 0 then
-          DrawLine(MA[I], DEF_COLOR[I], C, R, High, Low);
-
+          DrawLine(MA[I], DEF_COLOR[I-1], C, R, High, Low);
+    end;
   end;
 end;
 
@@ -595,9 +600,11 @@ begin
     end;
 
     if IS_DRAW_MA then
+    begin
       for I := 0 to Length(VMAC) - 1 do
         if VMAC[I] > 0 then
           DrawLine(VMA[I], DEF_COLOR[I], C, R, High, Low);
+    end;
   end;
 end;
 
@@ -825,6 +832,42 @@ begin
 end;
 
 
+procedure TfrmMain2.DrawLineStyle(A: TArrayOfSingle; Color: TColor;
+  C: TCanvas; R: TRect; High, Low: Single; Style: TPenStyle);
+var
+  I, J, X, Y, Len: Integer;
+  FirstDataFound: Boolean;
+begin
+  if A <> nil then
+  begin
+    FirstDataFound := False;
+    _setPen_(C, Color, 1, Style, pmCopy);
+
+    C.Brush.Color := GRID.Color;
+    C.Brush.Style := bsSolid;
+    Len := Length(A);
+    for I := 0 to DataPerPage - 1 do
+    begin
+      J := PageStart + DataPerPage - I - 1;
+      J := PageIndex2DataIndex(J);
+      //if _valid_(J,0,Len-1) then
+      if _valid_(J, 0, Len - 1) and (A[J] <> -9999) then //没有计算出来均线时不显示，-1代表无数据
+      begin
+        X := UnitWidth * I + UnitWidth div 2;
+        Y := Fy2Iy(A[J], R, High, Low);
+        if not FirstDataFound then
+        begin
+          C.MoveTo(X, Y);
+          FirstDataFound := True;
+        end
+        else C.LineTo(X, Y);
+      end;
+    end;
+  end;
+end;
+
+
+
 procedure TfrmMain2.DrawText(A: TArrayOfSingle; Color: TColor;  //PL指标上绘制提示信息
   C: TCanvas; R: TRect; High, Low: Single; Text: string);
 var
@@ -944,13 +987,14 @@ begin
   C.Pen.Style := psSolid;
 end;
 
-procedure TfrmMain2.mi100Click(Sender: TObject);
+procedure TfrmMain2.mi1001Click(Sender: TObject);
 begin
   with TMenuItem(Sender) do
   begin
     Checked := not Checked;
     case Tag of
       100: IS_DRAW_MA := Checked;
+      1001:IS_DRAW_MA_5 := Checked;
       101: IS_SHOW_DATESCALE := Checked;
       102: ShowBackgroundDotLine := Checked;
       103: IS_FRACTION_UNDERLINE := Checked;
