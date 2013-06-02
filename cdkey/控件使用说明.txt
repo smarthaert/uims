@@ -1,0 +1,3 @@
+安装后，在控件面板上会增加computerId这一页，在这里你就可找到此控件。访问控件的CPUSerialNumber和MacAddress属性，就可得到机器的CUP序列号和网上的Mac地址
+  label1.Caption:=ComputerId1.MacAddress;//得到Mac地址
+  label2.Caption:=ComputerId1.CPUSerialNumber;//得到CUP序列号
