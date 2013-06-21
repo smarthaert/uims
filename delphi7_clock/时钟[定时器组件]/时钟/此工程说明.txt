@@ -1,0 +1,15 @@
+2011年3月3日 无幻
+文件夹结构：
+时钟
+├Bin：生成程序文件夹
+├Dcu：存放Dcu文件夹
+├Doc：文档文件夹
+├Image：素材文件夹
+└Source：源代码文件夹
+
+使用方法说明：
+1.必须要先安装Source文件夹的Clock.pas组件，安装方法略；
+2.再打开工程ProjectTest.dpr即可，注意是Delphi 7开发的。
+
+功能说明：
+此时钟组件类是派生自TGraphicControl，利用定时器来显示不同时刻的时钟。
