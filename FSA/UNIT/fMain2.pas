@@ -7,7 +7,7 @@ uses
   Dialogs, Grids, StdCtrls, Menus, fDef, ExtCtrls, DateUtils, StrUtils, MyGraph;
 
 const
-  MAC: array[0..4] of Integer = (5, 30, 60, 120, 250);
+  MAC: array[0..5] of Integer = (5, 30, 60, 120, 250,1800);
   VMAC: array[0..2] of Integer = (5, 10, 30);
   RSIC: array[0..1] of Integer = (5, 10);
   PLC: array[0..4] of Integer = (2, 1, 1, 3, 3);
