@@ -1,0 +1,229 @@
+采用0.01搜索店铺，使用s=40来翻页
+http://s.taobao.com/search?promote=0&sort=price-asc&fs=0&initiative_id=tbindexz_20130701&tab=all&q=0.01&olu=yes&isprepay=1&atype=b&filterFineness=2&s=40
+
+获取店铺旺旺ID（用来唯一标识店铺）
+记录旺旺ID，比较是否重复，如果不重复
+
+@方式进入店铺
+http://shopsearch.taobao.com/search?q=%4085yxb&source=srp
+返回店铺地址
+http://w351.taobao.com/shop/view_shop.htm?user_number_id=142581130
+
+价格排序获得列表
+http://w351.taobao.com/search.htm?search=y&orderType=price_asc
+
+登录店铺获得产品列表（价格到排序）
+获取价格为0.01的前6个产品编号
+
+采用item_id=26037744099&bankfrom=&outer_id=26037744099来
+#放入购物车
+
+http://cart.taobao.com/add_cart_item.htm?item_id=26024812528&bankfrom=&outer_id=26024812528&outer_id_type=1&quantity=1&nekot=1372656405926&ct=dfe730ce8aa3a0ccc20053a64a581786&deliveryCityCode=310100
+
+http://cart.taobao.com/add_cart_item.htm?item_id=26037744099&bankfrom=&outer_id=26037744099&outer_id_type=1&quantity=1&nekot=1372656537514&ct=dfe730ce8aa3a0ccc20053a64a581786&deliveryCityCode=310100
+
+
+
+
+
+
+
+
+###########################################################################################################
+创建页面元素，增加内容
+var s = document.createElement("style");
+document.head.appendChild(s);
+
+
+直接以html形式嵌入
+html.push('</div>');
+	html.push('</div>');
+
+	$("body").append(html.join(""));
+	
+
+利用页面自己的jquery
+
+嵌入自己的jquery
+
+
+
+post: function (url, data, dataType, succCallback, errorCallback, featureFlag, refer) {
+		var onError = function (xhr) {
+			var code = utility.checkResponse(xhr);
+			if (code < 1) {
+				alert("警告：" + (code == 0 ? "操作失败" : "系统已强制退出登录") + "，可能是系统已升级。" +
+					(featureFlag ? "\n为了保证您的安全，功能【" + featureFlag + "】已被自动禁用，请重新登录。\n在助手升级后，功能将会被自动重新开启。\n\n请重新登录。" : ""));
+				utility.disableFeature(featureFlag);
+
+				if (code == -1) {
+					//被强退
+					self.location = "/otsweb/loginAction.do?method=init";
+				}
+			} else {
+				if (errorCallback) errorCallback.apply(this, arguments);
+			}
+		}
+		$.ajax({
+			url: url,
+			data: data,
+			timeout: 10000,
+			type: "POST",
+			success: function (data, state, xhr) {
+				if (utility.checkResponse(xhr) < 1) onError(xhr);
+				else {
+					if (succCallback) succCallback.apply(this, arguments);
+				}
+			},
+			error: onError,
+			dataType: dataType,
+			refer: utility.getFullUrl(refer)
+		});
+	},
+	checkResponse: function (xhr) {
+		var text = xhr.responseText;
+		if (!text || text.indexOf("<title>登录</title>") != -1) return -1;
+		if (text == "-1") return 0;
+		return 1;
+	},
+	get: function (url, data, dataType, succCallback, errorCallback, featureFlag, refer) {
+		var onError = function (xhr) {
+			var code = utility.checkResponse(xhr);
+			if (code < 1) {
+				alert("警告：" + (code == 0 ? "操作失败" : "系统已强制退出登录") + "，可能是系统已升级。" +
+					(featureFlag ? "\n为了保证您的安全，功能【" + featureFlag + "】已被自动禁用，请重新登录。\n在助手升级后，功能将会被自动重新开启。\n\n请重新登录。" : ""));
+				utility.disableFeature(featureFlag);
+
+				if (code == -1) {
+					//被强退
+					self.location = "/otsweb/loginAction.do?method=init";
+				}
+			} else {
+				if (errorCallback) errorCallback.apply(this, arguments);
+			}
+		}
+		$.ajax({
+			url: url,
+			data: data,
+			timeout: 10000,
+			type: "GET",
+			success: function (data, state, xhr) {
+				if (utility.checkResponse(xhr) < 1) onError(xhr);
+				else {
+					if (succCallback) succCallback.apply(this, arguments);
+				}
+			},
+			error: onError,
+			dataType: dataType,
+			refer: utility.getFullUrl(refer)
+		});
+	},
+	
+	
+	
+
+function queryMyOrder() {
+	$(".table_clist").each(function () {
+		var tb = $(this);
+		tb.find("tr:gt(0):not(.table_plgq)").each(function () {
+			var tr = $(this);
+			var cell = tr.find("td:eq(3)");
+			var html = cell.html();
+			var code = /<!--\s*(.+?)-->/i.exec(html);
+
+			if (code[1]) {
+				cell.append(code[1]);
+			}
+		});
+	});
+}
+
+
+
+parent.playAudio();
+
+function initPagePayOrder() {
+	new Audio(utility.getAudioUrl()).play();
+}
+
+
+
+function injectMainPageFunction() {
+	//资源
+	var main = $("#main")[0];
+	main.onload = function () {
+		var location = null;
+		try {
+			location = main.contentWindow.location + '';
+		} catch (e) {
+			//出错了，跨站
+		}
+		if (!location || location == "http://www.12306.cn/mormhweb/logFiles/error.html") {
+			resubmitForm();
+		}
+	}
+	
+
+
+window.playAudio = function () {
+		new Audio(utility.getAudioUrl()).play();
+	};
+	window.playFailAudio = function () {
+		utility.playFailAudio();
+	};
+	
+	
+function submitConfirmOrder() {
+		jQuery.ajax({
+			url: confirmUrl,
+			data: $('#confirmPassenger').serialize(),
+			type: "POST",
+			timeout: 10000,
+			dataType: 'json',
+			success: function (msg) {
+				console.log(msg);
+
+				var errmsg = msg.errMsg;
+				if (errmsg != 'Y') {
+					if (errmsg.indexOf("包含未付款订单") != -1) {
+						alert("您有未支付订单! 等啥呢, 赶紧点确定支付去.");
+						window.location.replace("/otsweb/order/myOrderAction.do?method=queryMyOrderNotComplete&leftmenu=Y");
+						return;
+					}
+					if (errmsg.indexOf("重复提交") != -1) {
+						stop("重复提交错误，已刷新TOKEN，请重新输入验证码提交");
+						reloadToken();
+						reloadCode();
+						return;
+					}
+					if (errmsg.indexOf("后台处理异常") != -1 || errmsg.indexOf("非法请求") != -1) {
+						if (lastform) {
+							utility.notify("后台处理异常，已自动重新提交表单，请填写验证码并提交！");
+							lastform.submit();
+						} else {
+							stop("后台处理异常，请返回查询页重新预定！");
+						}
+						return;
+					}
+					if (errmsg.indexOf("包含排队中") != -1) {
+						console.log("惊现排队中的订单， 进入轮询状态");
+						waitingForQueueComplete();
+						return;
+					}
+
+
+					setCurOperationInfo(false, errmsg);
+					stop(errmsg);
+					reloadCode();
+				} else {
+					utility.notify("彩票已买下, 正在等待开奖，请及时注意开奖状态");
+					waitingForQueueComplete();
+				}
+			},
+			error: function (msg) {
+				setCurOperationInfo(false, "当前请求发生错误");
+				utility.delayInvoke(null, submitForm, 3000);
+			}
+		});
+	}
+	
