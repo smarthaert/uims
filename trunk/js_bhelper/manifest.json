@@ -6,7 +6,7 @@
 		"exclude_matches": [  ],
 		"include_globs": [  ],
 		"js": [ "jquery-2.0.2.js", "taobao_001_helper.user.js" ],
-		"matches": [ "http://s.taobao.com/*" ],
+		"matches": [ "http://*.taobao.com/*" ],
 		"run_at": "document_idle"
 	} ],
 	"browser_action": {
