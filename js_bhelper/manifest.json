@@ -26,7 +26,7 @@
 		"128": "icons/icon_128.png"
 	},
 	"homepage_url": "http://www.fishlee.net/",
-	"permissions": [ "http://www.12306.cn/", "https://*.12306.cn/*", "notifications", "webRequest","webRequestBlocking"],
+	"permissions": [ "http://*.taobao.com/*", "notifications", "webRequest","webRequestBlocking"],
    "update_url": "http://www.fishlee.net/service/update/44/updateinfo.xml",
    "background": {
 	"page": "background.html"
