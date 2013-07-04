@@ -1,12 +1,14 @@
 ﻿var utility = {
+	getFullUrl: function (path) {
+		if (typeof (path) == 'undefined' || !path) return "";
+		return location.protocol + "//" + location.host + path;
+	},
 	post: function (url, data, dataType, succCallback, errorCallback, featureFlag, refer) {
 			var onError = function (xhr) {
 				var code = utility.checkResponse(xhr);
 				if (code < 1) {
 					alert("警告：" + (code == 0 ? "操作失败" : "系统已强制退出登录") + "，可能是系统已升级。" +
 						(featureFlag ? "\n为了保证您的安全，功能【" + featureFlag + "】已被自动禁用，请重新登录。\n在助手升级后，功能将会被自动重新开启。\n\n请重新登录。" : ""));
-					utility.disableFeature(featureFlag);
-	
 					if (code == -1) {
 						//被强退
 						self.location = "/otsweb/loginAction.do?method=init";
@@ -96,8 +98,8 @@ $(document).ready(function () {
 		
 		var addUrl = "http://cart.taobao.com/add_cart_item.htm?item_id=" + id + "&bankfrom=&outer_id=" + id + "&outer_id_type=1&quantity=1&nekot=1372656405926&ct=dfe730ce8aa3a0ccc20053a64a581786&deliveryCityCode=310100";
 		console.log(addUrl);
-		
-		utility.get(addUrl, { tourFlag: flag }, "json", function (data) {
+		var testUrl = "http://www.baidu.com";
+		utility.get(testUrl, {}, "json", function (data) {
 				var obj = $("#status_" + flag);
 				if (data.waitTime == 0 || data.waitTime == -1) {
 					obj.css({ "color": "green" }).html("订票成功！");
