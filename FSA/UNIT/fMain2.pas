@@ -127,7 +127,8 @@ type
     procedure DrawK(C: TCanvas; R: TRect); overload;
     procedure DrawV(C: TCanvas; R: TRect); overload;
     procedure DrawRSI(C: TCanvas; R: TRect); overload;
-    procedure DrawPL(C: TCanvas; R: TRect); overload;
+    procedure DrawPL(C: TCanvas; R: TRect); overload;  
+    procedure DrawMA(C: TCanvas; R: TRect); overload;
     procedure DrawScaleK(C: TCanvas; R: TRect);
     procedure DrawScaleV(C: TCanvas; R: TRect);
     procedure DrawLine(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single);     
@@ -202,9 +203,9 @@ begin
   //定义不同区域的高度
   h := (GRID.ClientHeight - 24) / 24;
   GRID.RowHeights[0] := 24;
-  GRID.RowHeights[1] := Round(h * 12);
-  GRID.RowHeights[2] := Round(h * 6);
-  GRID.RowHeights[3] := Round(h * 6);
+  GRID.RowHeights[1] := Round(h * 11);
+  GRID.RowHeights[2] := Round(h * 11);
+  GRID.RowHeights[3] := Round(h * 2);
   R := GRID.CellRect(0, 0);
   InflateRect(R, -1, -1);
   Header.BoundsRect := R;
@@ -234,16 +235,19 @@ begin
     0: case ARow of
         0: ;
         1: DrawK(C, Rect);
-        2: DrawV(C, Rect);
+        //2: DrawV(C, Rect);
        //3: DrawRSI(C, Rect);
-        3: DrawPL(C, Rect);
+        //2: DrawPL(C, Rect);
+        2: DrawMA(C, Rect);
+        3: DrawV(C, Rect);
       end;
     1: case ARow of
         0: ;
         1: DrawScaleK(C, Rect);
-        2: DrawScaleV(C, Rect);
+        //2: DrawScaleV(C, Rect);
 //      	3: DRAW_SCALE(C, Rect, ArrayOdSingle([80, 50, 20]), 0, 100, 0, 100);
-        3: DRAW_SCALE(C, Rect, ArrayOdSingle([80, -0, -80]), -110, 110, -110, 110);
+        //2: DRAW_SCALE(C, Rect, ArrayOdSingle([80, -0, -80]), -110, 110, -110, 110);
+        3: DrawScaleV(C, Rect);
       end;
   end;
   if (VertLine <> nil) and VertLine.Visible then VertLine.Paint;
@@ -661,6 +665,63 @@ begin
       3:
         DrawText(PL[I], DEF_COLOR[4], C, R, High, Low, '');
     end;
+  //C.TextOut(100,100,FloatToStr(PL[0][DataIndex]));
+end;
+
+procedure TfrmMain2.DrawMA(C: TCanvas; R: TRect);
+var
+  C3: TColor;
+  High, Low, D: Single;
+  I, Y, J, X1, X2, Y1, Y2, X3, Y3, M, N: Integer;
+  P: PStkDataRec;
+  HIndex, LIndex: TArrayOfInteger; //Range 0 to DataPerPage-1.
+  HA, LA: TArrayOfSingle;
+  str: string;
+  Rt: TRect;
+  TH, TW: Integer;
+begin
+  HA := nil;
+  LA := nil;
+
+  if FindKLineScaleHighLow(StkDataFile, High, Low, HA, LA, HIndex, LIndex) then
+  begin
+    ScaleHigh[1] := High;
+    ScaleLow[1] := Low;
+    D := (High - Low) / 20;
+    High := High + D;
+    Low := Low - D * 2;
+    InflateRect(R, 0, -2);
+    if ShowBackgroundDotLine then
+      DRAW_HORZ_SCALE(C, R, ScaleLow[1], ScaleHigh[1], Low, High, _height_(R) div 25, True);
+
+    if miShowKLineHighLow.Checked and (Length(HIndex) > 0) then
+    begin
+      C.Font.Name := 'ARIAL';
+      C.Font.Height := Max(2, Round(_height_(R) * 0.05) - 1);
+      C.Pen.Color := GRID.Color;
+      for I := 0 to Length(HIndex) - 1 do
+      begin
+        str := _vs_(HA[HIndex[I]]);
+        TW := C.TextWidth(str);
+        TH := C.TextHeight(str);
+        X1 := 1 + UnitWidth * HIndex[I] - TW div 2 + UnitWidth div 2 - 1;
+        Y1 := Fy2Iy(HA[HIndex[I]], R, High, Low) - TH + 1;
+        Rt := Rect(X1, Y1, X1 + TW, Y1 + TH);
+        Rt.Left := Min(R.Right - TW - 1, Max(Rt.Left, 1));
+        Rt.Right := Rt.Left + TW + 2;
+        if not IS_FRACTION_UNDERLINE then
+          _textRectBackground_(C, Rt, str, C.Font.Height, DEF_COLOR[4], GRID.Color, taCenter, tlTop, True)
+        else _textRect_(C, Rt, str, DEF_COLOR[4], GRID.Color, taCenter, tlTop, False);
+      end;
+    end;
+   end;
+  
+  _setPen_(C, clWhite, 1, psSolid, pmCopy);
+
+  DrawLineStyle(MA[0], TColor($C6C300), C, R, High, Low, psDot);
+  for I := 1 to Length(MAC) - 1 do
+    if MAC[I] > 0 then
+      DrawLine(MA[I], DEF_COLOR[I-1], C, R, High, Low);
   //C.TextOut(100,100,FloatToStr(PL[0][DataIndex]));
 end;
 
@@ -1225,7 +1286,7 @@ begin
       else
         GRID.Canvas.TextOut(428, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
 
-
+    {
     //绘制VOL部分
       GRID.Canvas.Font.Color := DEF_COLOR[5];
       P := StkDataFile.getData(Index);
@@ -1233,7 +1294,8 @@ begin
         GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + 1, 'VOL: ' + FormatFloat('0.00', P.VOL) + '                 ')
       else
         GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + 1, 'VOL: ' + '                 ');
-
+    }
+    {
     //绘制PL部分
       GRID.Canvas.Font.Color := DEF_COLOR[4];
       if PL[0][StkDataFile.getCount - Index - 1] <> -9999 then
@@ -1273,6 +1335,7 @@ begin
       begin
         GRID.Canvas.TextOut(240, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250与120距离: ' + '                  ');
       end
+      }
     end
     else //越界部分
     begin
@@ -1286,7 +1349,7 @@ begin
       GRID.Canvas.TextOut(280, GRID.RowHeights[0] + 1, 'MA120: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[3];
       GRID.Canvas.TextOut(428, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
-
+    {
     //绘制PL部分
       GRID.Canvas.Font.Color := DEF_COLOR[4];
       GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL偏离: ' + '                  ');
@@ -1295,7 +1358,9 @@ begin
       GRID.Canvas.TextOut(120, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250斜率: ' + '                  ');
       GRID.Canvas.Font.Color := DEF_COLOR[1];
       GRID.Canvas.TextOut(240, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250与120距离: ' + '                  ');
+      }
     end;
+
   end;
 end;
 
