@@ -719,10 +719,9 @@ begin
   _setPen_(C, clWhite, 1, psSolid, pmCopy);
 
   DrawLineStyle(MA[0], TColor($C6C300), C, R, High, Low, psDot);
-  for I := 1 to Length(MAC) - 1 do
+  for I := 1 to Length(MAC) - 2 do
     if MAC[I] > 0 then
       DrawLine(MA[I], DEF_COLOR[I-1], C, R, High, Low);
-  //C.TextOut(100,100,FloatToStr(PL[0][DataIndex]));
 end;
 
 function TfrmMain2.FindKLineScaleHighLow(DataFile: IDataFile;
@@ -1286,15 +1285,15 @@ begin
       else
         GRID.Canvas.TextOut(428, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
 
-    {
+
     //绘制VOL部分
       GRID.Canvas.Font.Color := DEF_COLOR[5];
       P := StkDataFile.getData(Index);
       if P <> nil then
-        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + 1, 'VOL: ' + FormatFloat('0.00', P.VOL) + '                 ')
+        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'VOL: ' + FormatFloat('0.00', P.VOL) + '                 ')
       else
-        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + 1, 'VOL: ' + '                 ');
-    }
+        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'VOL: ' + '                 ');
+    
     {
     //绘制PL部分
       GRID.Canvas.Font.Color := DEF_COLOR[4];
