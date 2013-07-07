@@ -204,7 +204,7 @@ const
 
 implementation
 
-uses SysUtils, Math;
+uses SysUtils, Math, fMain2;
 
 { TSplitStrList }
 

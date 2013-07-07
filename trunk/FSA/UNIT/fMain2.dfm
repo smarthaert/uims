@@ -1,10 +1,10 @@
 object frmMain2: TfrmMain2
-  Left = 728
-  Top = 183
+  Left = 243
+  Top = 125
   AutoScroll = False
   Caption = #37329#34701#25968#25454#30424#21518#20998#26512#22823#24072' - Kylin v1.00'
-  ClientHeight = 239
-  ClientWidth = 440
+  ClientHeight = 768
+  ClientWidth = 1024
   Color = clBtnFace
   Constraints.MinHeight = 200
   Constraints.MinWidth = 120
@@ -333,8 +333,8 @@ object frmMain2: TfrmMain2
   object GRID: TStringGrid
     Left = 0
     Top = 0
-    Width = 440
-    Height = 239
+    Width = 1024
+    Height = 768
     Align = alClient
     BorderStyle = bsNone
     ColCount = 2
