@@ -148,7 +148,7 @@ begin
     ADOQuery1.Post;
     ADOQuery1.Refresh;
     Fr_Stock.ADOQuery1.Edit;
-    Fr_Stock.ADOQuery1.FieldByName('EnterFiag').AsBoolean:=True;
+    Fr_Stock.ADOQuery1.FieldByName('EnterFiag').AsString:='1';
     Fr_Stock.ADOQuery1.Post;
     Fr_Stock.ADOQuery1.Refresh;
   end
@@ -176,7 +176,7 @@ begin
     ADOQuery1.Post;
     ADOQuery1.Refresh;
     Fr_Stock.ADOQuery1.Edit;
-    Fr_Stock.ADOQuery1.FieldByName('EnterFiag').AsBoolean:=True;
+    Fr_Stock.ADOQuery1.FieldByName('EnterFiag').AsString:='1';
     Fr_Stock.ADOQuery1.Post;
     Fr_Stock.ADOQuery1.Refresh;
   end;

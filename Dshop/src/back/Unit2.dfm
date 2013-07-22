@@ -1,9 +1,8 @@
 object Fr_Main: TFr_Main
-  Left = 197
-  Top = 108
+  Left = 427
+  Top = 229
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = #36196#23792#32593#32852#31185#25216
   ClientHeight = 525
   ClientWidth = 790
   Color = clBtnFace

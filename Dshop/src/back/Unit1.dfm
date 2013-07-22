@@ -12270,7 +12270,7 @@ object Fr_Pass: TFr_Pass
     Active = True
     DisableTag = 99
     SkinControls = [xcMainMenu, xcRadioButton, xcButton, xcBitBtn, xcSpeedButton, xcSystemMenu]
-    Options = [xoPreview, xoToolbarBK, xoCaptionButtonHint]
+    Options = [xoPreview, xoToolbarBK]
     Skin3rd.Strings = (
       'TTBDock=Panel'
       'TTBToolbar=Panel'
@@ -12359,7 +12359,7 @@ object Fr_Pass: TFr_Pass
       'TOVCDBNUMERICFIELD=Edit')
     SkinStore = '(Good)'
     SkinFormtype = sfMainform
-    Version = '5.40.07.15'
+    Version = '4.04.04.11'
     MenuUpdate = True
     MenuMerge = False
     Left = 8

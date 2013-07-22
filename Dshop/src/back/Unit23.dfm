@@ -1,6 +1,6 @@
 object Fr_VIPRecord: TFr_VIPRecord
-  Left = 187
-  Top = 159
+  Left = 620
+  Top = 216
   BorderStyle = bsSingle
   Caption = #20250#21592#20805#20540#35760#24405
   ClientHeight = 453
@@ -129,7 +129,7 @@ object Fr_VIPRecord: TFr_VIPRecord
             item
               Alignment = taCenter
               Expanded = False
-              FieldName = 'Vip_3.VipID'
+              FieldName = 'VipID'
               Title.Alignment = taCenter
               Title.Caption = #20250#21592#21345#21495
               Width = 96
@@ -154,7 +154,7 @@ object Fr_VIPRecord: TFr_VIPRecord
             end
             item
               Expanded = False
-              FieldName = 'Vip_3.Money'
+              FieldName = 'Money'
               Title.Alignment = taCenter
               Title.Caption = #20805#20540#37329#39069
               Width = 60
@@ -162,7 +162,7 @@ object Fr_VIPRecord: TFr_VIPRecord
             end
             item
               Expanded = False
-              FieldName = 'Vip_1.Money'
+              FieldName = 'Money1'
               Title.Alignment = taCenter
               Title.Caption = #20805#20540#37329#39069
               Width = 60
@@ -179,7 +179,7 @@ object Fr_VIPRecord: TFr_VIPRecord
             item
               Alignment = taCenter
               Expanded = False
-              FieldName = 'Vip_3.UserName'
+              FieldName = 'UserName'
               Title.Alignment = taCenter
               Title.Caption = #25805#20316#21592
               Width = 50
@@ -212,7 +212,7 @@ object Fr_VIPRecord: TFr_VIPRecord
             item
               Alignment = taCenter
               Expanded = False
-              FieldName = 'Vip_1.UserName'
+              FieldName = 'UserName1'
               Title.Alignment = taCenter
               Title.Caption = #21150#21345#21592
               Visible = True
@@ -222,7 +222,6 @@ object Fr_VIPRecord: TFr_VIPRecord
     end
   end
   object ADOQuery1: TADOQuery
-    Active = True
     Connection = Fr_Pass.ADOConnection1
     CursorType = ctStatic
     Parameters = <>

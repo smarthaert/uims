@@ -216,7 +216,6 @@ object Fr_KuCunPanDian: TFr_KuCunPanDian
     end
   end
   object ADOQuery1: TADOQuery
-    Active = True
     Connection = Fr_Pass.ADOConnection1
     CursorType = ctStatic
     Parameters = <>

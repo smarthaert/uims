@@ -117,10 +117,17 @@ var
   Data     : String;
 begin
   vIniFile:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.Ini');
+  {
   Data:='Provider='+vIniFile.Readstring('System','Provider','')+';';
   Data:=Data+'Data Source='+vIniFile.Readstring('System','Data Source','')+';';
   Data:=Data+'Persist Security Info=False';
   ADOConnection1.ConnectionString:=Data;
+  }
+  ADOConnection1.ConnectionString:='Provider=MSDASQL.1;' +
+            'Persist Security Info=False;' +
+            'User ID=root;' +
+            'Password=root;' +
+            'Data Source=shop';
   ADOQuery1.SQL.Clear;
   ADOQuery1.SQL.Add('Select * from ManaGer');
   Try

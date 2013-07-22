@@ -152,10 +152,17 @@ begin
   //写机器ID码
   PCID;
   //联接数据库
+  {
   Data:='Provider='+vIniFile.Readstring('System','Provider','')+';';
   Data:=Data+'Data Source='+vIniFile.Readstring('System','Data Source','')+';';
   Data:=Data+'Persist Security Info=False';
   ADOQuery1.ConnectionString:=Data;
+  }
+  ADOQuery1.ConnectionString:='Provider=MSDASQL.1;' +
+            'Persist Security Info=False;' +
+            'User ID=root;' +
+            'Password=root;' +
+            'Data Source=shop';
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
   ADOQuery1.SQL.Add('Select * from Manager');

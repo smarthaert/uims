@@ -1,6 +1,6 @@
 object Fr_VipMoney: TFr_VipMoney
-  Left = 248
-  Top = 156
+  Left = 617
+  Top = 262
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #30913#21345#20805#20540

@@ -97,7 +97,7 @@ begin
   end;
   //检查用户编号是否存在
   ADOQuery2.SQL.Clear;
-  ADOQuery2.SQL.Add('Select * from Manager where UserID="'+RzEdit1.Text+'"');
+  ADOQuery2.SQL.Add('Select * from ManaGer where UserID="'+RzEdit1.Text+'"');
   ADOQuery2.Open;
   if ADOQuery2.RecordCount<>0 then begin
     ShowMessage('用户编号不能重复,请重新输入~~!');
@@ -173,7 +173,7 @@ begin
   end;
   //检查用户编号是否存在
   ADOQuery2.SQL.Clear;
-  ADOQuery2.SQL.Add('Select * from Manager where UserID="'+RzEdit1.Text+'"');
+  ADOQuery2.SQL.Add('Select * from ManaGer where UserID="'+RzEdit1.Text+'"');
   ADOQuery2.Open;
   if ADOQuery2.RecordCount<>0 then begin
     if ADOQuery1.FieldByName('ID').AsString=ADOQuery2.FieldByName('ID').AsString then begin
@@ -210,7 +210,7 @@ end;
 procedure TFr_Manager.FormShow(Sender: TObject);
 begin
   ADOquery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from Manager');
+  ADOQuery1.SQL.Add('Select * from ManaGer');
   ADOQuery1.Open;
 end;
 
