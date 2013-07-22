@@ -8,7 +8,7 @@ uses
   RzEdit;
 
 type
-  TFr_VIP = class(TForm)
+  TFr_Vip = class(TForm)
     Panel1: TPanel;
     Panel2: TPanel;
     Label1: TLabel;

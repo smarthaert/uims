@@ -10,7 +10,7 @@ uses
   Unit5 in 'Unit5.pas' {Fr_Feeder},
   Unit6 in 'Unit6.pas' {Fr_Unit},
   Unit8 in 'Unit8.pas' {Fr_S_Feeder},
-  Unit20 in 'Unit20.pas' {Fr_VIP},
+  Unit20 in 'Unit20.pas' {Fr_Vip},
   Unit4 in 'Unit4.pas' {Fr_Stock_Add},
   Unit11 in 'Unit11.pas' {Fr_ChuKuMingXi},
   Unit12 in 'Unit12.pas' {Fr_MaoLiFenXi},
@@ -25,7 +25,7 @@ uses
   Unit21 in 'Unit21.pas' {Fr_Card},
   Unit22 in 'Unit22.pas' {Fr_VipMoney},
   Unit19 in 'Unit19.pas' {Fr_Manager},
-  Unit23 in 'Unit23.pas' {Fr_VIPRecord};
+  Unit23 in 'Unit23.pas' {Fr_VipRecord};
 
 {$R *.res}
 

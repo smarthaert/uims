@@ -184,7 +184,7 @@ begin
   ADOQuery1.FieldByName('PurchaseScalar').AsString := RzEdit4.Text;
   ADOQuery1.FieldByName('PurchasePrice').AsString  := RzEdit5.Text;
   ADOQuery1.FieldByName('Unit').AsString           := RzComboBox1.Text;
-  ADOQuery1.FieldByName('EnterFiag').AsBoolean     := False;
+  ADOQuery1.FieldByName('EnterFiag').AsString     := '0';
   ADOQuery1.FieldByName('PurchaseDate').AsString   := FormatdateTime('yyyy-mm-dd tt', Now);
   ADOQuery1.FieldByName('UserName').AsString       := Fr_Main.Label5.Caption;
 

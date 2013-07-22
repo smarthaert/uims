@@ -156,10 +156,17 @@ begin
   Main.Top :=(GetSystemMetrics(SM_CySCREEN)-Main.Height) div 2 - 13;
   Main.Left :=(GetSystemMetrics(SM_CxSCREEN)-Main.Width) div 2;
   //建立数据库链接
+  {
   Data:='Provider='+vIniFile.Readstring('System','Provider','')+';';
   Data:=Data+'Data Source='+vIniFile.Readstring('System','Data Source','')+';';
   Data:=Data+'Persist Security Info=False';
   ADOConnection1.ConnectionString:=Data;
+  }
+  ADOConnection1.ConnectionString:='Provider=MSDASQL.1;' +
+            'Persist Security Info=False;' +
+            'User ID=root;' +
+            'Password=root;' +
+            'Data Source=shop';
   //初始单号
   for i:=1 to 9999 do
   begin
@@ -270,8 +277,7 @@ begin
     ADOQuery3.Append;
     ADOQuery3.FieldByName('InvoiceID').AsString := Label26.Caption;
     ADOQuery3.FieldByName('AR').AsString  := Label7.Caption;
-    ADOQuery3.FieldByName('Hang').AsBoolean := False;
-    ADOQuery3.FieldByName('Hang').AsBoolean     := False;
+    ADOQuery3.FieldByName('Hang').AsString := '0';
     ADOQuery3.FieldByName('SellDate').AsString  := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
     ADOQuery3.FieldByName('UserName').AsString  := Label19.Caption;
     ADOQuery3.Post;

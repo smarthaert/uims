@@ -219,11 +219,11 @@ begin
   while not(ADOQuery1.Eof) do begin
     c1:=c1+ADOQuery1.FieldByName('SellScalar').AsCurrency;
     c2:=c2+ADOQuery1.FieldByName('PurchasePrice').AsCurrency*ADOQuery1.FieldByName('SellScalar').AsCurrency;
-    if ID<>ADOQuery1.FieldByName('Sell_Main.InvoiceID').AsString then begin
+    if ID<>ADOQuery1.FieldByName('InvoiceID').AsString then begin
       c3:=c3+ADOQuery1.FieldByName('PU').AsCurrency;
-      ID:=ADOQuery1.FieldByName('Sell_Main.InvoiceID').AsString;
+      ID:=ADOQuery1.FieldByName('InvoiceID').AsString;
     end;
-    ID:=ADOQuery1.FieldByName('Sell_Main.InvoiceID').AsString;
+    ID:=ADOQuery1.FieldByName('InvoiceID').AsString;
     ADOQuery1.Next;
   end;
 

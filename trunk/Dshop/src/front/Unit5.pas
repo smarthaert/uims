@@ -170,7 +170,7 @@ begin
   Main.ADOQuery2.Edit;
   Main.ADOQuery2.FieldByName('AR').AsString:=Main.Label7.Caption;
   Main.ADOQuery2.FieldByName('PU').AsString:=Label2.Caption;
-  Main.ADOQuery2.FieldByName('Hang').AsBoolean:=True;
+  Main.ADOQuery2.FieldByName('Hang').AsString:='1';
   if StrToCurr(Main.Label7.Caption)-StrToCurr(Label2.Caption)<>0 then
     Main.ADOQuery2.FieldByName('Remark').AsCurrency:=StrToCurr(Main.Label7.Caption)-StrToCurr(Label2.Caption);
   Main.ADOQuery2.Post;
