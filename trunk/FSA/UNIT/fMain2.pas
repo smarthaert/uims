@@ -8,7 +8,7 @@ uses
 
 const
   MAC: array[0..5] of Integer = (5, 30, 60, 120, 250,1800);
-  VMAC: array[0..2] of Integer = (5, 10, 30);
+  VMAC: array[0..3] of Integer = (5, 10, 30, -1);
   RSIC: array[0..1] of Integer = (5, 10);
   PLC: array[0..4] of Integer = (2, 1, 1, 3, 3);
 
@@ -114,7 +114,7 @@ type
     ScaleHigh: array[0..3] of Single;
     ScaleLow: array[0..3] of Single;
     MA: array[0..5] of TArrayOfSingle;
-    VMA: array[0..2] of TArrayOfSingle;
+    VMA: array[0..3] of TArrayOfSingle;
     RSI: array[0..1] of TArrayOfSingle;
     PL: array[0..4] of TArrayOfSingle;
     FStockName: string;
@@ -203,9 +203,9 @@ begin
   //定义不同区域的高度
   h := (GRID.ClientHeight - 24) / 24;
   GRID.RowHeights[0] := 24;
-  GRID.RowHeights[1] := Round(h * 11);
-  GRID.RowHeights[2] := Round(h * 11);
-  GRID.RowHeights[3] := Round(h * 2);
+  GRID.RowHeights[1] := Round(h * 12);
+  GRID.RowHeights[2] := Round(h * 4);
+  GRID.RowHeights[3] := Round(h * 8);
   R := GRID.CellRect(0, 0);
   InflateRect(R, -1, -1);
   Header.BoundsRect := R;
@@ -235,11 +235,11 @@ begin
     0: case ARow of
         0: ;
         1: DrawK(C, Rect);
-        //2: DrawV(C, Rect);
+        2: DrawV(C, Rect);
        //3: DrawRSI(C, Rect);
         //2: DrawPL(C, Rect);
-        2: DrawMA(C, Rect);
-        3: DrawV(C, Rect);
+        3: DrawMA(C, Rect);
+        //3: DrawV(C, Rect);
       end;
     1: case ARow of
         0: ;
@@ -247,7 +247,7 @@ begin
         //2: DrawScaleV(C, Rect);
 //      	3: DRAW_SCALE(C, Rect, ArrayOdSingle([80, 50, 20]), 0, 100, 0, 100);
         //2: DRAW_SCALE(C, Rect, ArrayOdSingle([80, -0, -80]), -110, 110, -110, 110);
-        3: DrawScaleV(C, Rect);
+        2: DrawScaleV(C, Rect);
       end;
   end;
   if (VertLine <> nil) and VertLine.Visible then VertLine.Paint;
@@ -607,7 +607,11 @@ begin
     begin
       for I := 0 to Length(VMAC) - 1 do
         if VMAC[I] > 0 then
-          DrawLine(VMA[I], DEF_COLOR[I], C, R, High, Low);
+          DrawLine(VMA[I], DEF_COLOR[I], C, R, High, Low)
+        else
+        begin
+          DrawLineStyle(MA[0], TColor($C6C300), C, R, High, Low, psDot);
+        end;
     end;
   end;
 end;

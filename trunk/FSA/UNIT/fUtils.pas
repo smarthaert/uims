@@ -807,11 +807,15 @@ begin
   for I := 0 to Length(Result) - 1 do
   begin
     Sum := Sum + Data[I];
-    //if I < MAC then Result[I] := Sum / (I+1)
-    if I < MAC then Result[I] := -9999
+    if MAC=-1 then
+      Result[I] := 4000
     else begin
-      Sum := Sum - Data[I - MAC];
-      Result[I] := Sum / MAC;
+      //if I < MAC then Result[I] := Sum / (I+1)
+      if I < MAC then Result[I] := -9999
+      else begin
+        Sum := Sum - Data[I - MAC];
+        Result[I] := Sum / MAC;
+      end;
     end;
   end;
 end;
