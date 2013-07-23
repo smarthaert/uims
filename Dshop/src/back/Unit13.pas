@@ -16,7 +16,6 @@ type
     Button2: TButton;
     Button3: TButton;
     Panel5: TPanel;
-    DBGrid1: TDBGrid;
     Panel3: TPanel;
     RadioButton1: TRadioButton;
     RadioButton2: TRadioButton;
@@ -33,8 +32,9 @@ type
     Label6: TLabel;
     ADOQuery1: TADOQuery;
     DataSource1: TDataSource;
+    dbgrd1: TDBGrid;
     procedure Button1Click(Sender: TObject);
-    procedure DBGrid1CellClick(Column: TColumn);
+    procedure dbgrd1CellClick(Column: TColumn);
     procedure Button3Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -101,7 +101,7 @@ begin
   end;
 end;
 
-procedure TFr_JinHouTongJi.DBGrid1CellClick(Column: TColumn);
+procedure TFr_JinHouTongJi.dbgrd1CellClick(Column: TColumn);
 var
   i:Integer;
   c:Currency;

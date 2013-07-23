@@ -1,10 +1,10 @@
 object Fr_VIPRecord: TFr_VIPRecord
-  Left = 620
-  Top = 216
+  Left = 299
+  Top = 51
   BorderStyle = bsSingle
   Caption = #20250#21592#20805#20540#35760#24405
-  ClientHeight = 453
-  ClientWidth = 688
+  ClientHeight = 741
+  ClientWidth = 1016
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,8 +19,8 @@ object Fr_VIPRecord: TFr_VIPRecord
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 688
-    Height = 453
+    Width = 1016
+    Height = 741
     Align = alClient
     BevelInner = bvLowered
     BorderWidth = 1
@@ -28,13 +28,13 @@ object Fr_VIPRecord: TFr_VIPRecord
     object Panel2: TPanel
       Left = 3
       Top = 3
-      Width = 682
-      Height = 447
+      Width = 1010
+      Height = 735
       Align = alClient
       Color = 15723503
       TabOrder = 0
       object Label6: TLabel
-        Left = 214
+        Left = 377
         Top = 33
         Width = 255
         Height = 29
@@ -47,8 +47,8 @@ object Fr_VIPRecord: TFr_VIPRecord
         ParentFont = False
       end
       object Panel5: TPanel
-        Left = 62
-        Top = 374
+        Left = 226
+        Top = 649
         Width = 558
         Height = 43
         BevelInner = bvRaised
@@ -91,19 +91,19 @@ object Fr_VIPRecord: TFr_VIPRecord
         end
       end
       object Panel3: TPanel
-        Left = 62
-        Top = 77
-        Width = 558
-        Height = 297
+        Left = 63
+        Top = 66
+        Width = 884
+        Height = 583
         BevelInner = bvRaised
         BevelOuter = bvLowered
         Color = 15723503
         TabOrder = 1
-        object DBGrid1: TDBGrid
+        object dbgrd1: TDBGrid
           Left = 2
           Top = 2
-          Width = 554
-          Height = 293
+          Width = 880
+          Height = 579
           Align = alClient
           BorderStyle = bsNone
           Color = 15723503
@@ -129,35 +129,61 @@ object Fr_VIPRecord: TFr_VIPRecord
             item
               Alignment = taCenter
               Expanded = False
-              FieldName = 'VipID'
+              FieldName = 'VipID1'
               Title.Alignment = taCenter
               Title.Caption = #20250#21592#21345#21495
-              Width = 96
+              Width = 99
               Visible = True
             end
             item
               Alignment = taCenter
               Expanded = False
-              FieldName = 'Name'
+              FieldName = 'Name1'
               Title.Alignment = taCenter
               Title.Caption = #20250#21592#22995#21517
-              Width = 55
+              Width = 78
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'Address'
+              FieldName = 'Address1'
               Title.Alignment = taCenter
               Title.Caption = #20250#21592#22320#22336
-              Width = 130
+              Width = 167
               Visible = True
             end
             item
+              Alignment = taCenter
               Expanded = False
-              FieldName = 'Money'
+              FieldName = 'Tel1'
               Title.Alignment = taCenter
-              Title.Caption = #20805#20540#37329#39069
-              Width = 60
+              Title.Caption = #32852#31995#30005#35805
+              Visible = True
+            end
+            item
+              Alignment = taCenter
+              Expanded = False
+              FieldName = 'State1'
+              Title.Alignment = taCenter
+              Title.Caption = #29366#24577
+              Visible = True
+            end
+            item
+              Alignment = taCenter
+              Expanded = False
+              FieldName = 'UserName1'
+              Title.Alignment = taCenter
+              Title.Caption = #21457#21345#21592
+              Width = 50
+              Visible = True
+            end
+            item
+              Alignment = taCenter
+              Expanded = False
+              FieldName = 'UserName3'
+              Title.Alignment = taCenter
+              Title.Caption = #20805#20540#21592
+              Width = 57
               Visible = True
             end
             item
@@ -170,7 +196,15 @@ object Fr_VIPRecord: TFr_VIPRecord
             end
             item
               Expanded = False
-              FieldName = 'Date'
+              FieldName = 'Money3'
+              Title.Alignment = taCenter
+              Title.Caption = #20805#20540#37329#39069
+              Width = 61
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'Date1'
               Title.Alignment = taCenter
               Title.Caption = #20805#20540#26085#26399
               Width = 65
@@ -179,42 +213,10 @@ object Fr_VIPRecord: TFr_VIPRecord
             item
               Alignment = taCenter
               Expanded = False
-              FieldName = 'UserName'
-              Title.Alignment = taCenter
-              Title.Caption = #25805#20316#21592
-              Width = 50
-              Visible = True
-            end
-            item
-              Alignment = taCenter
-              Expanded = False
-              FieldName = 'Tel'
-              Title.Alignment = taCenter
-              Title.Caption = #32852#31995#30005#35805
-              Visible = True
-            end
-            item
-              Alignment = taCenter
-              Expanded = False
-              FieldName = 'Remark'
+              FieldName = 'Remark1'
               Title.Alignment = taCenter
               Title.Caption = #22791#27880
-              Visible = True
-            end
-            item
-              Alignment = taCenter
-              Expanded = False
-              FieldName = 'State'
-              Title.Alignment = taCenter
-              Title.Caption = #29366#24577
-              Visible = True
-            end
-            item
-              Alignment = taCenter
-              Expanded = False
-              FieldName = 'UserName1'
-              Title.Alignment = taCenter
-              Title.Caption = #21150#21345#21592
+              Width = 93
               Visible = True
             end>
         end

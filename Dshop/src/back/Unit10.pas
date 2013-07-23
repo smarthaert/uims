@@ -194,10 +194,13 @@ begin
   while ADOQuery2.RecordCount<>0 do begin
     ADOQuery2.SQL.Clear;
     if i=0 then
-      S:='Select Top 50 * from MXSP'
+      //S:='Select Top 50 * from MXSP'
+      S:='Select * from MXSP limit 0,50'
     else
-      S:='Select Top 50 * from MXSP Where (ID NOT IN (Select Top '+
-         CurrToStr(50*i)+' ID From MXSP))';
+      S:='Select * from MXSP limit 0,50';
+
+      {S:='Select Top 50 * from MXSP Where (ID NOT IN (Select Top '+
+         CurrToStr(50*i)+' ID From MXSP))';}
     ADOQuery2.SQL.Add(S);
     ADOQuery2.Open;
     if ADOQuery2.RecordCount<>0 then begin

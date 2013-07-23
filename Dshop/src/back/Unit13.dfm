@@ -1,11 +1,11 @@
 object Fr_JinHouTongJi: TFr_JinHouTongJi
-  Left = 192
-  Top = 107
+  Left = 229
+  Top = 17
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #36827#36135#32479#35745
-  ClientHeight = 453
-  ClientWidth = 688
+  ClientHeight = 741
+  ClientWidth = 1016
   Color = clBtnFace
   Font.Charset = GB2312_CHARSET
   Font.Color = clWindowText
@@ -20,8 +20,8 @@ object Fr_JinHouTongJi: TFr_JinHouTongJi
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 688
-    Height = 453
+    Width = 1016
+    Height = 741
     Align = alClient
     BevelInner = bvLowered
     BorderWidth = 1
@@ -29,16 +29,16 @@ object Fr_JinHouTongJi: TFr_JinHouTongJi
     object Panel2: TPanel
       Left = 3
       Top = 3
-      Width = 682
-      Height = 447
+      Width = 1010
+      Height = 735
       Align = alClient
       Color = 15723503
       TabOrder = 0
       object Label1: TLabel
-        Left = 236
-        Top = 43
-        Width = 210
-        Height = 29
+        Left = 400
+        Top = 40
+        Width = 208
+        Height = 32
         Caption = #36827#12288#36135#12288#32479#12288#35745
         Font.Charset = GB2312_CHARSET
         Font.Color = clWindowText
@@ -48,16 +48,16 @@ object Fr_JinHouTongJi: TFr_JinHouTongJi
         ParentFont = False
       end
       object Panel6: TPanel
-        Left = 337
-        Top = 377
-        Width = 260
+        Left = 120
+        Top = 641
+        Width = 764
         Height = 42
         BevelInner = bvRaised
         BevelOuter = bvLowered
         Color = 15723503
         TabOrder = 0
         object Button1: TButton
-          Left = 12
+          Left = 84
           Top = 8
           Width = 75
           Height = 25
@@ -68,7 +68,7 @@ object Fr_JinHouTongJi: TFr_JinHouTongJi
           OnClick = Button1Click
         end
         object Button2: TButton
-          Left = 93
+          Left = 349
           Top = 8
           Width = 75
           Height = 25
@@ -76,7 +76,7 @@ object Fr_JinHouTongJi: TFr_JinHouTongJi
           TabOrder = 1
         end
         object Button3: TButton
-          Left = 174
+          Left = 598
           Top = 8
           Width = 75
           Height = 25
@@ -86,19 +86,19 @@ object Fr_JinHouTongJi: TFr_JinHouTongJi
         end
       end
       object Panel5: TPanel
-        Left = 85
-        Top = 86
-        Width = 512
-        Height = 244
+        Left = 63
+        Top = 76
+        Width = 884
+        Height = 516
         BevelInner = bvRaised
         BevelOuter = bvLowered
         Color = 15723503
         TabOrder = 1
-        object DBGrid1: TDBGrid
+        object dbgrd1: TDBGrid
           Left = 2
           Top = 2
-          Width = 508
-          Height = 240
+          Width = 880
+          Height = 512
           Align = alClient
           BorderStyle = bsNone
           Color = 15723503
@@ -121,7 +121,7 @@ object Fr_JinHouTongJi: TFr_JinHouTongJi
           TitleFont.Height = -12
           TitleFont.Name = #23435#20307
           TitleFont.Style = []
-          OnCellClick = DBGrid1CellClick
+          OnCellClick = dbgrd1CellClick
           Columns = <
             item
               Expanded = False
@@ -135,7 +135,7 @@ object Fr_JinHouTongJi: TFr_JinHouTongJi
               FieldName = 'BarCode'
               Title.Alignment = taCenter
               Title.Caption = #21830#21697#26465#30721
-              Width = 85
+              Width = 91
               Visible = True
             end
             item
@@ -143,7 +143,15 @@ object Fr_JinHouTongJi: TFr_JinHouTongJi
               FieldName = 'GoodsName'
               Title.Alignment = taCenter
               Title.Caption = #21830#21697#21517#31216
-              Width = 112
+              Width = 216
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'FeederName'
+              Title.Alignment = taCenter
+              Title.Caption = #20379#36135#21830#21517#31216
+              Width = 220
               Visible = True
             end
             item
@@ -181,14 +189,6 @@ object Fr_JinHouTongJi: TFr_JinHouTongJi
             end
             item
               Expanded = False
-              FieldName = 'FeederName'
-              Title.Alignment = taCenter
-              Title.Caption = #20379#36135#21830#21517#31216
-              Width = 100
-              Visible = True
-            end
-            item
-              Expanded = False
               FieldName = 'UserName'
               Title.Alignment = taCenter
               Title.Caption = #25805#20316#21592
@@ -197,8 +197,8 @@ object Fr_JinHouTongJi: TFr_JinHouTongJi
         end
       end
       object Panel3: TPanel
-        Left = 85
-        Top = 330
+        Left = 372
+        Top = 594
         Width = 252
         Height = 47
         BevelInner = bvRaised
@@ -241,8 +241,8 @@ object Fr_JinHouTongJi: TFr_JinHouTongJi
         end
       end
       object Panel4: TPanel
-        Left = 337
-        Top = 330
+        Left = 624
+        Top = 594
         Width = 260
         Height = 47
         BevelInner = bvRaised
@@ -268,18 +268,6 @@ object Fr_JinHouTongJi: TFr_JinHouTongJi
           Top = 21
           Width = 104
           Height = 20
-          CalendarColors.Days = clWindowText
-          CalendarColors.FillDays = clBtnShadow
-          CalendarColors.DaysOfWeek = clWindowText
-          CalendarColors.Lines = clBtnShadow
-          CalendarColors.SelectedDateBack = clHighlight
-          CalendarColors.SelectedDateFore = clHighlightText
-          CalendarColors.TodaysDateFrame = clMaroon
-          ClockFaceColors.Face = clBtnFace
-          ClockFaceColors.Hands = clWindowText
-          ClockFaceColors.Numbers = clWindowText
-          ClockFaceColors.HourTicks = clBtnShadow
-          ClockFaceColors.MinuteTicks = clWindowText
           EditType = etDate
           Format = 'yyyy-mm-dd'
           Alignment = taRightJustify
@@ -295,18 +283,6 @@ object Fr_JinHouTongJi: TFr_JinHouTongJi
           Top = 21
           Width = 104
           Height = 20
-          CalendarColors.Days = clWindowText
-          CalendarColors.FillDays = clBtnShadow
-          CalendarColors.DaysOfWeek = clWindowText
-          CalendarColors.Lines = clBtnShadow
-          CalendarColors.SelectedDateBack = clHighlight
-          CalendarColors.SelectedDateFore = clHighlightText
-          CalendarColors.TodaysDateFrame = clMaroon
-          ClockFaceColors.Face = clBtnFace
-          ClockFaceColors.Hands = clWindowText
-          ClockFaceColors.Numbers = clWindowText
-          ClockFaceColors.HourTicks = clBtnShadow
-          ClockFaceColors.MinuteTicks = clWindowText
           EditType = etDate
           Format = 'yyyy-mm-dd'
           Alignment = taRightJustify
@@ -319,10 +295,10 @@ object Fr_JinHouTongJi: TFr_JinHouTongJi
         end
       end
       object Panel7: TPanel
-        Left = 85
-        Top = 377
+        Left = 120
+        Top = 593
         Width = 252
-        Height = 42
+        Height = 48
         BevelInner = bvRaised
         BevelOuter = bvLowered
         Color = 15723503

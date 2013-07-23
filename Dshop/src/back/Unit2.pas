@@ -52,7 +52,6 @@ type
     Image1: TImage;
     Label1: TLabel;
     Label2: TLabel;
-    Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     SpeedButton1: TSpeedButton;
@@ -165,7 +164,7 @@ end;
 
 procedure TFr_Main.Label3Click(Sender: TObject);
 begin
-  ShellExecute(Handle, 'open', PCHAR(Label3.Caption), '', '', SW_SHOWNORMAL);
+  //ShellExecute(Handle, 'open', PCHAR(Label3.Caption), '', '', SW_SHOWNORMAL);
 end;
 
 procedure TFr_Main.N12Click(Sender: TObject);

@@ -1,11 +1,11 @@
 object Fr_S_Feeder: TFr_S_Feeder
-  Left = 238
-  Top = 153
+  Left = 375
+  Top = 225
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #20379#36135#21830#36873#25321
-  ClientHeight = 196
-  ClientWidth = 515
+  ClientHeight = 240
+  ClientWidth = 698
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,8 +20,8 @@ object Fr_S_Feeder: TFr_S_Feeder
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 515
-    Height = 196
+    Width = 698
+    Height = 240
     Align = alClient
     BevelInner = bvLowered
     BorderWidth = 1
@@ -29,16 +29,16 @@ object Fr_S_Feeder: TFr_S_Feeder
     object Panel2: TPanel
       Left = 3
       Top = 3
-      Width = 509
-      Height = 190
+      Width = 692
+      Height = 234
       Align = alClient
       Color = 15723503
       TabOrder = 0
       object DBGrid1: TDBGrid
         Left = 1
         Top = 1
-        Width = 507
-        Height = 188
+        Width = 690
+        Height = 232
         Align = alClient
         BorderStyle = bsNone
         Color = 15723503
@@ -70,7 +70,7 @@ object Fr_S_Feeder: TFr_S_Feeder
             FieldName = 'FeederID'
             Title.Alignment = taCenter
             Title.Caption = #32534#21495
-            Width = 30
+            Width = 65
             Visible = True
           end
           item
@@ -78,7 +78,15 @@ object Fr_S_Feeder: TFr_S_Feeder
             FieldName = 'FeederName'
             Title.Alignment = taCenter
             Title.Caption = #36135#21830#21517#31216
-            Width = 110
+            Width = 152
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Address'
+            Title.Alignment = taCenter
+            Title.Caption = #32852#31995#22320#22336
+            Width = 204
             Visible = True
           end
           item
@@ -88,14 +96,6 @@ object Fr_S_Feeder: TFr_S_Feeder
             Title.Alignment = taCenter
             Title.Caption = #32852#31995#20154
             Width = 50
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'Address'
-            Title.Alignment = taCenter
-            Title.Caption = #32852#31995#22320#22336
-            Width = 80
             Visible = True
           end
           item

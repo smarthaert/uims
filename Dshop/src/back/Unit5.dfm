@@ -1,11 +1,11 @@
 object Fr_Feeder: TFr_Feeder
-  Left = 210
-  Top = 131
+  Left = 254
+  Top = 56
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #36135#21830#26723#26696
-  ClientHeight = 453
-  ClientWidth = 688
+  ClientHeight = 741
+  ClientWidth = 1016
   Color = clBtnFace
   Font.Charset = GB2312_CHARSET
   Font.Color = clWindowText
@@ -20,8 +20,8 @@ object Fr_Feeder: TFr_Feeder
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 688
-    Height = 453
+    Width = 1016
+    Height = 741
     Align = alClient
     BevelInner = bvLowered
     BorderWidth = 1
@@ -29,16 +29,16 @@ object Fr_Feeder: TFr_Feeder
     object Panel2: TPanel
       Left = 3
       Top = 3
-      Width = 682
-      Height = 447
+      Width = 1010
+      Height = 735
       Align = alClient
       BevelInner = bvRaised
       BevelOuter = bvNone
       Color = 15723503
       TabOrder = 0
       object Label1: TLabel
-        Left = 211
-        Top = 33
+        Left = 368
+        Top = 32
         Width = 270
         Height = 29
         Caption = #20379#12288#36135#12288#21830#12288#26723#12288#26696
@@ -50,19 +50,19 @@ object Fr_Feeder: TFr_Feeder
         ParentFont = False
       end
       object Panel3: TPanel
-        Left = 85
-        Top = 76
-        Width = 512
-        Height = 217
+        Left = 56
+        Top = 72
+        Width = 888
+        Height = 520
         BevelInner = bvRaised
         BevelOuter = bvLowered
         Color = 15723503
         TabOrder = 0
-        object DBGrid1: TDBGrid
+        object dbgrd1: TDBGrid
           Left = 2
           Top = 2
-          Width = 508
-          Height = 213
+          Width = 884
+          Height = 516
           Align = alClient
           BorderStyle = bsNone
           Color = 15723503
@@ -85,7 +85,7 @@ object Fr_Feeder: TFr_Feeder
           TitleFont.Height = -12
           TitleFont.Name = #23435#20307
           TitleFont.Style = []
-          OnDblClick = DBGrid1DblClick
+          OnDblClick = dbgrd1DblClick
           Columns = <
             item
               Alignment = taRightJustify
@@ -93,7 +93,7 @@ object Fr_Feeder: TFr_Feeder
               FieldName = 'FeederID'
               Title.Alignment = taCenter
               Title.Caption = #32534#21495
-              Width = 30
+              Width = 93
               Visible = True
             end
             item
@@ -101,7 +101,7 @@ object Fr_Feeder: TFr_Feeder
               FieldName = 'FeederName'
               Title.Alignment = taCenter
               Title.Caption = #36135#21830#21517#31216
-              Width = 110
+              Width = 179
               Visible = True
             end
             item
@@ -110,7 +110,7 @@ object Fr_Feeder: TFr_Feeder
               FieldName = 'LinkMan'
               Title.Alignment = taCenter
               Title.Caption = #32852#31995#20154
-              Width = 50
+              Width = 75
               Visible = True
             end
             item
@@ -118,7 +118,7 @@ object Fr_Feeder: TFr_Feeder
               FieldName = 'Address'
               Title.Alignment = taCenter
               Title.Caption = #32852#31995#22320#22336
-              Width = 80
+              Width = 239
               Visible = True
             end
             item
@@ -127,7 +127,7 @@ object Fr_Feeder: TFr_Feeder
               FieldName = 'Zipcode'
               Title.Alignment = taCenter
               Title.Caption = #37038#32534
-              Width = 50
+              Width = 93
               Visible = True
             end
             item
@@ -136,7 +136,7 @@ object Fr_Feeder: TFr_Feeder
               FieldName = 'Tel'
               Title.Alignment = taCenter
               Title.Caption = #30005#35805
-              Width = 75
+              Width = 107
               Visible = True
             end
             item
@@ -145,16 +145,16 @@ object Fr_Feeder: TFr_Feeder
               FieldName = 'Fax'
               Title.Alignment = taCenter
               Title.Caption = #20256#30495
-              Width = 75
+              Width = 80
               Visible = True
             end>
         end
       end
       object Panel5: TPanel
-        Left = 405
-        Top = 293
-        Width = 192
-        Height = 121
+        Left = 736
+        Top = 592
+        Width = 208
+        Height = 120
         BevelInner = bvRaised
         BevelOuter = bvLowered
         Color = 15723503
@@ -217,10 +217,10 @@ object Fr_Feeder: TFr_Feeder
         end
       end
       object Panel4: TPanel
-        Left = 85
-        Top = 293
-        Width = 320
-        Height = 121
+        Left = 56
+        Top = 592
+        Width = 672
+        Height = 120
         BevelInner = bvRaised
         BevelOuter = bvLowered
         Color = 15723503
@@ -240,7 +240,7 @@ object Fr_Feeder: TFr_Feeder
           Caption = #32534#12288#12288#21495':'
         end
         object Label4: TLabel
-          Left = 165
+          Left = 501
           Top = 42
           Width = 54
           Height = 12
@@ -254,7 +254,7 @@ object Fr_Feeder: TFr_Feeder
           Caption = #32852#31995#22320#22336':'
         end
         object Label6: TLabel
-          Left = 165
+          Left = 501
           Top = 66
           Width = 54
           Height = 12
@@ -268,7 +268,7 @@ object Fr_Feeder: TFr_Feeder
           Caption = #32852#31995#30005#35805':'
         end
         object Label8: TLabel
-          Left = 165
+          Left = 501
           Top = 90
           Width = 54
           Height = 12
@@ -277,7 +277,7 @@ object Fr_Feeder: TFr_Feeder
         object RzEdit1: TRzEdit
           Left = 75
           Top = 15
-          Width = 225
+          Width = 590
           Height = 18
           AutoSize = False
           FrameHotColor = 14593668
@@ -291,7 +291,7 @@ object Fr_Feeder: TFr_Feeder
         object RzEdit2: TRzEdit
           Left = 75
           Top = 39
-          Width = 81
+          Width = 414
           Height = 18
           AutoSize = False
           FrameHotColor = 14593668
@@ -303,9 +303,9 @@ object Fr_Feeder: TFr_Feeder
           OnKeyPress = RzEdit2KeyPress
         end
         object RzEdit3: TRzEdit
-          Left = 219
+          Left = 563
           Top = 39
-          Width = 81
+          Width = 102
           Height = 18
           AutoSize = False
           FrameHotColor = 14593668
@@ -319,7 +319,7 @@ object Fr_Feeder: TFr_Feeder
         object RzEdit4: TRzEdit
           Left = 75
           Top = 63
-          Width = 81
+          Width = 414
           Height = 18
           AutoSize = False
           FrameHotColor = 14593668
@@ -331,9 +331,9 @@ object Fr_Feeder: TFr_Feeder
           OnKeyPress = RzEdit4KeyPress
         end
         object RzEdit5: TRzEdit
-          Left = 219
+          Left = 563
           Top = 63
-          Width = 81
+          Width = 102
           Height = 18
           AutoSize = False
           FrameHotColor = 14593668
@@ -347,7 +347,7 @@ object Fr_Feeder: TFr_Feeder
         object RzEdit6: TRzEdit
           Left = 75
           Top = 87
-          Width = 81
+          Width = 414
           Height = 18
           AutoSize = False
           FrameHotColor = 14593668
@@ -359,9 +359,9 @@ object Fr_Feeder: TFr_Feeder
           OnKeyPress = RzEdit6KeyPress
         end
         object RzEdit7: TRzEdit
-          Left = 219
+          Left = 563
           Top = 87
-          Width = 81
+          Width = 102
           Height = 18
           AutoSize = False
           FrameHotColor = 14593668
