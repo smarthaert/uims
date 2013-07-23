@@ -13,7 +13,6 @@ type
     Panel2: TPanel;
     Panel3: TPanel;
     Panel5: TPanel;
-    DBGrid1: TDBGrid;
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
@@ -38,13 +37,14 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
+    dbgrd1: TDBGrid;
     procedure Button5Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
-    procedure DBGrid1DblClick(Sender: TObject);
+    procedure dbgrd1DblClick(Sender: TObject);
     procedure RzEdit1KeyPress(Sender: TObject; var Key: Char);
     procedure RzEdit2KeyPress(Sender: TObject; var Key: Char);
     procedure RzEdit3KeyPress(Sender: TObject; var Key: Char);
@@ -172,7 +172,7 @@ begin
   RzEdit1.SetFocus;
 end;
 
-procedure TFr_Feeder.DBGrid1DblClick(Sender: TObject);
+procedure TFr_Feeder.dbgrd1DblClick(Sender: TObject);
 begin
   Button4.Click;
 end;

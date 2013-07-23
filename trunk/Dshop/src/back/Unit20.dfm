@@ -1,11 +1,11 @@
 object Fr_VIP: TFr_VIP
-  Left = 515
-  Top = 126
+  Left = 250
+  Top = 42
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #20250#21592#31649#29702
-  ClientHeight = 453
-  ClientWidth = 688
+  ClientHeight = 741
+  ClientWidth = 1016
   Color = clBtnFace
   Font.Charset = GB2312_CHARSET
   Font.Color = clWindowText
@@ -20,8 +20,8 @@ object Fr_VIP: TFr_VIP
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 688
-    Height = 453
+    Width = 1016
+    Height = 741
     Align = alClient
     BevelInner = bvLowered
     BorderWidth = 1
@@ -29,16 +29,16 @@ object Fr_VIP: TFr_VIP
     object Panel2: TPanel
       Left = 3
       Top = 3
-      Width = 682
-      Height = 447
+      Width = 1010
+      Height = 735
       Align = alClient
       Color = 15723503
       TabOrder = 0
       object Label1: TLabel
-        Left = 236
-        Top = 43
-        Width = 210
-        Height = 29
+        Left = 401
+        Top = 40
+        Width = 208
+        Height = 32
         Caption = #20250#12288#21592#12288#31649#12288#29702
         Font.Charset = GB2312_CHARSET
         Font.Color = clWindowText
@@ -48,19 +48,19 @@ object Fr_VIP: TFr_VIP
         ParentFont = False
       end
       object Panel3: TPanel
-        Left = 85
-        Top = 86
-        Width = 512
-        Height = 217
+        Left = 63
+        Top = 80
+        Width = 884
+        Height = 516
         BevelInner = bvRaised
         BevelOuter = bvLowered
         Color = 15723503
         TabOrder = 0
-        object DBGrid1: TDBGrid
+        object dbgrd1: TDBGrid
           Left = 2
           Top = 2
-          Width = 508
-          Height = 213
+          Width = 880
+          Height = 512
           Align = alClient
           BorderStyle = bsNone
           Color = 15723503
@@ -89,7 +89,7 @@ object Fr_VIP: TFr_VIP
               FieldName = 'Name'
               Title.Alignment = taCenter
               Title.Caption = #20250#21592#22995#21517
-              Width = 52
+              Width = 84
               Visible = True
             end
             item
@@ -97,7 +97,7 @@ object Fr_VIP: TFr_VIP
               FieldName = 'Address'
               Title.Alignment = taCenter
               Title.Caption = #20303#12288#12288#22336
-              Width = 132
+              Width = 255
               Visible = True
             end
             item
@@ -105,7 +105,7 @@ object Fr_VIP: TFr_VIP
               FieldName = 'Tel'
               Title.Alignment = taCenter
               Title.Caption = #32852#31995#30005#35805
-              Width = 70
+              Width = 99
               Visible = True
             end
             item
@@ -129,23 +129,23 @@ object Fr_VIP: TFr_VIP
               FieldName = 'Remark'
               Title.Alignment = taCenter
               Title.Caption = #22791#12288#27880
-              Width = 70
+              Width = 251
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'UserName'
               Title.Alignment = taCenter
-              Title.Caption = #21150#21345#20154
-              Width = 45
+              Title.Caption = #21457#21345#21592
+              Width = 68
               Visible = True
             end>
         end
       end
       object Panel4: TPanel
-        Left = 85
-        Top = 303
-        Width = 512
+        Left = 63
+        Top = 596
+        Width = 884
         Height = 60
         BevelInner = bvRaised
         BevelOuter = bvLowered
@@ -166,14 +166,14 @@ object Fr_VIP: TFr_VIP
           Caption = #20250#21592#20303#22336':'
         end
         object Label4: TLabel
-          Left = 340
+          Left = 692
           Top = 11
           Width = 54
           Height = 12
           Caption = #32852#31995#30005#35805':'
         end
         object Label5: TLabel
-          Left = 340
+          Left = 692
           Top = 37
           Width = 54
           Height = 12
@@ -210,7 +210,7 @@ object Fr_VIP: TFr_VIP
         object RzEdit2: TRzEdit
           Left = 234
           Top = 8
-          Width = 97
+          Width = 447
           Height = 18
           AutoSize = False
           FrameHotColor = 14593668
@@ -237,7 +237,7 @@ object Fr_VIP: TFr_VIP
         object RzEdit5: TRzEdit
           Left = 234
           Top = 34
-          Width = 97
+          Width = 447
           Height = 18
           AutoSize = False
           FrameHotColor = 14593668
@@ -248,9 +248,9 @@ object Fr_VIP: TFr_VIP
           TabOrder = 3
         end
         object RzEdit3: TRzEdit
-          Left = 394
+          Left = 746
           Top = 8
-          Width = 97
+          Width = 119
           Height = 18
           AutoSize = False
           FrameHotColor = 14593668
@@ -261,9 +261,9 @@ object Fr_VIP: TFr_VIP
           TabOrder = 4
         end
         object RzComboBox1: TRzComboBox
-          Left = 394
+          Left = 746
           Top = 33
-          Width = 97
+          Width = 119
           Height = 20
           Style = csDropDownList
           Ctl3D = False
@@ -284,9 +284,9 @@ object Fr_VIP: TFr_VIP
         end
       end
       object Panel5: TPanel
-        Left = 85
-        Top = 363
-        Width = 512
+        Left = 63
+        Top = 656
+        Width = 884
         Height = 41
         BevelInner = bvRaised
         BevelOuter = bvLowered
@@ -304,7 +304,7 @@ object Fr_VIP: TFr_VIP
           OnClick = Button1Click
         end
         object Button2: TButton
-          Left = 94
+          Left = 168
           Top = 8
           Width = 75
           Height = 25
@@ -313,7 +313,7 @@ object Fr_VIP: TFr_VIP
           OnClick = Button2Click
         end
         object Button3: TButton
-          Left = 177
+          Left = 324
           Top = 8
           Width = 75
           Height = 25
@@ -322,7 +322,7 @@ object Fr_VIP: TFr_VIP
           OnClick = Button3Click
         end
         object Button4: TButton
-          Left = 259
+          Left = 481
           Top = 8
           Width = 75
           Height = 25
@@ -331,7 +331,7 @@ object Fr_VIP: TFr_VIP
           OnClick = Button4Click
         end
         object Button5: TButton
-          Left = 342
+          Left = 637
           Top = 8
           Width = 75
           Height = 25
@@ -340,7 +340,7 @@ object Fr_VIP: TFr_VIP
           OnClick = Button5Click
         end
         object Button6: TButton
-          Left = 425
+          Left = 793
           Top = 8
           Width = 75
           Height = 25

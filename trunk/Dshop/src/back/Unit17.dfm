@@ -1,11 +1,11 @@
 object Fr_GJTH: TFr_GJTH
-  Left = 207
-  Top = 105
+  Left = 218
+  Top = 39
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #36141#36827#36864#22238
-  ClientHeight = 453
-  ClientWidth = 688
+  ClientHeight = 741
+  ClientWidth = 1016
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -20,8 +20,8 @@ object Fr_GJTH: TFr_GJTH
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 688
-    Height = 453
+    Width = 1016
+    Height = 741
     Align = alClient
     BevelInner = bvLowered
     BorderWidth = 1
@@ -29,14 +29,14 @@ object Fr_GJTH: TFr_GJTH
     object Panel2: TPanel
       Left = 3
       Top = 3
-      Width = 682
-      Height = 447
+      Width = 1010
+      Height = 735
       Align = alClient
       Color = 15723503
       TabOrder = 0
       object Label9: TLabel
-        Left = 236
-        Top = 33
+        Left = 401
+        Top = 32
         Width = 210
         Height = 29
         Caption = #36141#12288#36827#12288#36864#12288#22238
@@ -48,16 +48,16 @@ object Fr_GJTH: TFr_GJTH
         ParentFont = False
       end
       object Panel5: TPanel
-        Left = 107
-        Top = 385
-        Width = 473
+        Left = 56
+        Top = 671
+        Width = 880
         Height = 40
         BevelInner = bvRaised
         BevelOuter = bvLowered
         Color = 15723503
         TabOrder = 0
         object Button1: TButton
-          Left = 134
+          Left = 158
           Top = 7
           Width = 75
           Height = 25
@@ -68,7 +68,7 @@ object Fr_GJTH: TFr_GJTH
           OnClick = Button1Click
         end
         object Button2: TButton
-          Left = 263
+          Left = 615
           Top = 7
           Width = 75
           Height = 25
@@ -78,9 +78,9 @@ object Fr_GJTH: TFr_GJTH
         end
       end
       object Panel4: TPanel
-        Left = 107
-        Top = 292
-        Width = 473
+        Left = 56
+        Top = 577
+        Width = 880
         Height = 93
         BevelInner = bvRaised
         BevelOuter = bvLowered
@@ -94,7 +94,7 @@ object Fr_GJTH: TFr_GJTH
           Caption = #37319#36141#21333#21495':'
         end
         object Label2: TLabel
-          Left = 188
+          Left = 260
           Top = 13
           Width = 54
           Height = 12
@@ -108,14 +108,14 @@ object Fr_GJTH: TFr_GJTH
           Caption = #21830#21697#26465#30721':'
         end
         object Label4: TLabel
-          Left = 164
+          Left = 260
           Top = 45
           Width = 54
           Height = 12
           Caption = #21830#21697#21517#31216':'
         end
         object Label5: TLabel
-          Left = 316
+          Left = 580
           Top = 45
           Width = 54
           Height = 12
@@ -129,14 +129,14 @@ object Fr_GJTH: TFr_GJTH
           Caption = #35745#37327#21333#20301':'
         end
         object Label7: TLabel
-          Left = 316
+          Left = 580
           Top = 69
           Width = 54
           Height = 12
           Caption = #36827#36135#21333#20215':'
         end
         object Label8: TLabel
-          Left = 164
+          Left = 260
           Top = 69
           Width = 54
           Height = 12
@@ -145,12 +145,12 @@ object Fr_GJTH: TFr_GJTH
         object Bevel1: TBevel
           Left = 3
           Top = 33
-          Width = 466
+          Width = 870
           Height = 3
           Style = bsRaised
         end
         object SpeedButton1: TSpeedButton
-          Left = 157
+          Left = 242
           Top = 10
           Width = 13
           Height = 18
@@ -167,7 +167,7 @@ object Fr_GJTH: TFr_GJTH
         object RzEdit1: TRzEdit
           Left = 66
           Top = 10
-          Width = 91
+          Width = 175
           Height = 18
           AutoSize = False
           FrameHotColor = 14593668
@@ -179,9 +179,9 @@ object Fr_GJTH: TFr_GJTH
           OnKeyPress = RzEdit1KeyPress
         end
         object RzEdit2: TRzEdit
-          Left = 242
+          Left = 314
           Top = 10
-          Width = 91
+          Width = 95
           Height = 18
           AutoSize = False
           FrameHotColor = 14593668
@@ -195,13 +195,14 @@ object Fr_GJTH: TFr_GJTH
         object RzEdit3: TRzEdit
           Left = 66
           Top = 42
-          Width = 91
+          Width = 183
           Height = 18
           AutoSize = False
           BiDiMode = bdLeftToRight
-          Color = clWhite
+          Color = clInfoBk
           Ctl3D = True
           DisabledColor = clWhite
+          FocusColor = clWhite
           FrameColor = clGray
           FrameHotColor = 14593668
           FrameVisible = True
@@ -213,11 +214,12 @@ object Fr_GJTH: TFr_GJTH
           TabOrder = 2
         end
         object RzEdit4: TRzEdit
-          Left = 218
+          Left = 314
           Top = 42
-          Width = 91
+          Width = 255
           Height = 18
           AutoSize = False
+          Color = clInfoBk
           Ctl3D = True
           DisabledColor = clWhite
           FrameColor = clGray
@@ -232,9 +234,10 @@ object Fr_GJTH: TFr_GJTH
         object RzEdit6: TRzEdit
           Left = 66
           Top = 66
-          Width = 91
+          Width = 183
           Height = 18
           AutoSize = False
+          Color = clInfoBk
           Ctl3D = True
           DisabledColor = clWhite
           FrameColor = clGray
@@ -247,11 +250,12 @@ object Fr_GJTH: TFr_GJTH
           TabOrder = 4
         end
         object RzEdit7: TRzEdit
-          Left = 218
+          Left = 314
           Top = 66
-          Width = 91
+          Width = 159
           Height = 18
           AutoSize = False
+          Color = clInfoBk
           Ctl3D = True
           DisabledColor = clWhite
           FrameColor = clGray
@@ -264,11 +268,12 @@ object Fr_GJTH: TFr_GJTH
           TabOrder = 5
         end
         object RzEdit5: TRzEdit
-          Left = 370
+          Left = 633
           Top = 42
-          Width = 91
+          Width = 241
           Height = 18
           AutoSize = False
+          Color = clInfoBk
           Ctl3D = True
           DisabledColor = clWhite
           FrameColor = clGray
@@ -281,11 +286,12 @@ object Fr_GJTH: TFr_GJTH
           TabOrder = 6
         end
         object RzEdit8: TRzEdit
-          Left = 370
+          Left = 634
           Top = 66
-          Width = 91
+          Width = 239
           Height = 18
           AutoSize = False
+          Color = clInfoBk
           Ctl3D = True
           DisabledColor = clWhite
           FrameColor = clGray
@@ -299,19 +305,19 @@ object Fr_GJTH: TFr_GJTH
         end
       end
       object Panel3: TPanel
-        Left = 107
-        Top = 72
-        Width = 473
-        Height = 220
+        Left = 56
+        Top = 64
+        Width = 880
+        Height = 512
         BevelInner = bvRaised
         BevelOuter = bvLowered
         Color = 15723503
         TabOrder = 2
-        object DBGrid1: TDBGrid
+        object dbgrd1: TDBGrid
           Left = 2
           Top = 2
-          Width = 469
-          Height = 216
+          Width = 876
+          Height = 508
           Align = alClient
           BorderStyle = bsNone
           Color = 15723503
@@ -340,6 +346,7 @@ object Fr_GJTH: TFr_GJTH
               FieldName = 'InvoiceID'
               Title.Alignment = taCenter
               Title.Caption = #36864#36135#21333#21495
+              Width = 83
               Visible = True
             end
             item
@@ -347,6 +354,7 @@ object Fr_GJTH: TFr_GJTH
               FieldName = 'PID'
               Title.Alignment = taCenter
               Title.Caption = #37319#36141#21333#21495
+              Width = 96
               Visible = True
             end
             item
@@ -354,7 +362,7 @@ object Fr_GJTH: TFr_GJTH
               FieldName = 'BarCode'
               Title.Alignment = taCenter
               Title.Caption = #21830#21697#26465#30721
-              Width = 80
+              Width = 116
               Visible = True
             end
             item
@@ -362,7 +370,7 @@ object Fr_GJTH: TFr_GJTH
               FieldName = 'GoodsName'
               Title.Alignment = taCenter
               Title.Caption = #21830#21697#21517#31216
-              Width = 120
+              Width = 200
               Visible = True
             end
             item
@@ -370,7 +378,7 @@ object Fr_GJTH: TFr_GJTH
               FieldName = 'Unit'
               Title.Alignment = taCenter
               Title.Caption = #21333#20301
-              Width = 30
+              Width = 60
               Visible = True
             end
             item
@@ -378,7 +386,7 @@ object Fr_GJTH: TFr_GJTH
               FieldName = 'UnitPrice'
               Title.Alignment = taCenter
               Title.Caption = #21333#20215
-              Width = 60
+              Width = 87
               Visible = True
             end
             item
@@ -386,7 +394,7 @@ object Fr_GJTH: TFr_GJTH
               FieldName = 'UNScalar'
               Title.Alignment = taCenter
               Title.Caption = #36864#36135#25968#37327
-              Width = 60
+              Width = 71
               Visible = True
             end
             item
@@ -394,7 +402,7 @@ object Fr_GJTH: TFr_GJTH
               FieldName = 'UNDate'
               Title.Alignment = taCenter
               Title.Caption = #36864#36135#26085#26399
-              Width = 55
+              Width = 88
               Visible = True
             end
             item
@@ -410,7 +418,6 @@ object Fr_GJTH: TFr_GJTH
     end
   end
   object ADOQuery1: TADOQuery
-    Active = True
     Connection = Fr_Pass.ADOConnection1
     CursorType = ctStatic
     Parameters = <>
@@ -425,7 +432,6 @@ object Fr_GJTH: TFr_GJTH
     Top = 11
   end
   object ADOQuery2: TADOQuery
-    Active = True
     Connection = Fr_Pass.ADOConnection1
     CursorType = ctStatic
     Parameters = <>

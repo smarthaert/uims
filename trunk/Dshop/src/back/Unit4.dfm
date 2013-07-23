@@ -1,11 +1,11 @@
 object Fr_Stock_Add: TFr_Stock_Add
-  Left = 199
-  Top = 127
+  Left = 379
+  Top = 165
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #21830#21697#20837#24211
-  ClientHeight = 394
-  ClientWidth = 341
+  ClientHeight = 399
+  ClientWidth = 601
   Color = clBtnFace
   Font.Charset = GB2312_CHARSET
   Font.Color = clWindowText
@@ -20,8 +20,8 @@ object Fr_Stock_Add: TFr_Stock_Add
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 341
-    Height = 394
+    Width = 601
+    Height = 399
     Align = alClient
     BevelInner = bvLowered
     BorderWidth = 1
@@ -29,15 +29,15 @@ object Fr_Stock_Add: TFr_Stock_Add
     object Panel2: TPanel
       Left = 3
       Top = 3
-      Width = 335
-      Height = 388
+      Width = 595
+      Height = 393
       Align = alClient
       Color = 15723503
       TabOrder = 0
       object Panel3: TPanel
-        Left = 51
+        Left = 120
         Top = 40
-        Width = 232
+        Width = 354
         Height = 250
         Align = alCustom
         BevelInner = bvRaised
@@ -124,7 +124,7 @@ object Fr_Stock_Add: TFr_Stock_Add
         object RzEdit1: TRzEdit
           Left = 75
           Top = 20
-          Width = 123
+          Width = 250
           Height = 18
           AutoSize = False
           DisabledColor = clWhite
@@ -141,7 +141,7 @@ object Fr_Stock_Add: TFr_Stock_Add
         object RzEdit2: TRzEdit
           Left = 75
           Top = 44
-          Width = 123
+          Width = 250
           Height = 18
           AutoSize = False
           DisabledColor = clWhite
@@ -250,9 +250,9 @@ object Fr_Stock_Add: TFr_Stock_Add
         end
       end
       object Panel4: TPanel
-        Left = 51
+        Left = 120
         Top = 290
-        Width = 232
+        Width = 354
         Height = 41
         Align = alCustom
         BevelInner = bvRaised
@@ -260,7 +260,7 @@ object Fr_Stock_Add: TFr_Stock_Add
         Color = 15723503
         TabOrder = 1
         object Button1: TButton
-          Left = 34
+          Left = 58
           Top = 8
           Width = 75
           Height = 25
@@ -269,7 +269,7 @@ object Fr_Stock_Add: TFr_Stock_Add
           OnClick = Button1Click
         end
         object Button2: TButton
-          Left = 122
+          Left = 218
           Top = 8
           Width = 75
           Height = 25

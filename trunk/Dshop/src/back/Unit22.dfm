@@ -1,11 +1,11 @@
 object Fr_VipMoney: TFr_VipMoney
-  Left = 617
-  Top = 262
+  Left = 456
+  Top = 202
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #30913#21345#20805#20540
-  ClientHeight = 286
-  ClientWidth = 554
+  ClientHeight = 335
+  ClientWidth = 644
   Color = clBtnFace
   Font.Charset = GB2312_CHARSET
   Font.Color = clWindowText
@@ -20,8 +20,8 @@ object Fr_VipMoney: TFr_VipMoney
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 554
-    Height = 286
+    Width = 644
+    Height = 335
     Align = alClient
     BevelInner = bvLowered
     BorderWidth = 1
@@ -29,13 +29,13 @@ object Fr_VipMoney: TFr_VipMoney
     object Panel2: TPanel
       Left = 3
       Top = 3
-      Width = 548
-      Height = 280
+      Width = 638
+      Height = 329
       Align = alClient
       Color = 15723503
       TabOrder = 0
       object Label1: TLabel
-        Left = 169
+        Left = 214
         Top = 43
         Width = 210
         Height = 29
@@ -48,9 +48,9 @@ object Fr_VipMoney: TFr_VipMoney
         ParentFont = False
       end
       object Panel4: TPanel
-        Left = 274
-        Top = 99
-        Width = 194
+        Left = 308
+        Top = 93
+        Width = 271
         Height = 120
         BevelInner = bvRaised
         BevelOuter = bvLowered
@@ -87,7 +87,7 @@ object Fr_VipMoney: TFr_VipMoney
         object RzEdit1: TRzEdit
           Left = 76
           Top = 14
-          Width = 97
+          Width = 181
           Height = 18
           AutoSize = False
           Enabled = False
@@ -101,7 +101,7 @@ object Fr_VipMoney: TFr_VipMoney
         object RzEdit2: TRzEdit
           Left = 76
           Top = 38
-          Width = 97
+          Width = 181
           Height = 18
           AutoSize = False
           Enabled = False
@@ -115,7 +115,7 @@ object Fr_VipMoney: TFr_VipMoney
         object RzEdit5: TRzEdit
           Left = 76
           Top = 88
-          Width = 97
+          Width = 181
           Height = 18
           AutoSize = False
           Enabled = False
@@ -129,7 +129,7 @@ object Fr_VipMoney: TFr_VipMoney
         object RzEdit3: TRzEdit
           Left = 76
           Top = 62
-          Width = 97
+          Width = 181
           Height = 18
           AutoSize = False
           Enabled = False
@@ -142,9 +142,9 @@ object Fr_VipMoney: TFr_VipMoney
         end
       end
       object Panel3: TPanel
-        Left = 80
-        Top = 99
-        Width = 194
+        Left = 58
+        Top = 93
+        Width = 250
         Height = 40
         BevelInner = bvRaised
         BevelOuter = bvLowered
@@ -160,7 +160,7 @@ object Fr_VipMoney: TFr_VipMoney
         object RzEdit4: TRzEdit
           Left = 76
           Top = 11
-          Width = 97
+          Width = 165
           Height = 18
           AutoSize = False
           Font.Charset = ANSI_CHARSET
@@ -179,9 +179,9 @@ object Fr_VipMoney: TFr_VipMoney
         end
       end
       object Panel5: TPanel
-        Left = 80
-        Top = 139
-        Width = 194
+        Left = 58
+        Top = 133
+        Width = 250
         Height = 40
         BevelInner = bvRaised
         BevelOuter = bvLowered
@@ -197,7 +197,7 @@ object Fr_VipMoney: TFr_VipMoney
         object RzEdit6: TRzEdit
           Left = 76
           Top = 11
-          Width = 97
+          Width = 165
           Height = 18
           AutoSize = False
           Enabled = False
@@ -210,9 +210,9 @@ object Fr_VipMoney: TFr_VipMoney
         end
       end
       object Panel6: TPanel
-        Left = 80
-        Top = 179
-        Width = 194
+        Left = 58
+        Top = 173
+        Width = 250
         Height = 40
         BevelInner = bvRaised
         BevelOuter = bvLowered
@@ -230,7 +230,7 @@ object Fr_VipMoney: TFr_VipMoney
           OnClick = Button1Click
         end
         object Button2: TButton
-          Left = 100
+          Left = 152
           Top = 7
           Width = 75
           Height = 25

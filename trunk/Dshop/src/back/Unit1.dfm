@@ -1,6 +1,6 @@
 object Fr_Pass: TFr_Pass
-  Left = 233
-  Top = 105
+  Left = 552
+  Top = 289
   BorderStyle = bsNone
   Caption = 'Fr_Pass'
   ClientHeight = 263

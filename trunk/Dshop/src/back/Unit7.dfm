@@ -1,11 +1,11 @@
 object Fr_Purchase: TFr_Purchase
-  Left = 207
-  Top = 114
+  Left = 274
+  Top = 33
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #26469#36135#30331#35760
-  ClientHeight = 454
-  ClientWidth = 688
+  ClientHeight = 741
+  ClientWidth = 1016
   Color = clBtnFace
   Font.Charset = GB2312_CHARSET
   Font.Color = clWindowText
@@ -20,8 +20,8 @@ object Fr_Purchase: TFr_Purchase
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 688
-    Height = 454
+    Width = 1016
+    Height = 741
     Align = alClient
     BevelInner = bvLowered
     BorderWidth = 1
@@ -29,16 +29,16 @@ object Fr_Purchase: TFr_Purchase
     object Panel2: TPanel
       Left = 3
       Top = 3
-      Width = 682
-      Height = 448
+      Width = 1010
+      Height = 735
       Align = alClient
       Color = 15723503
       TabOrder = 0
       object Label1: TLabel
-        Left = 236
-        Top = 43
-        Width = 210
-        Height = 29
+        Left = 400
+        Top = 40
+        Width = 208
+        Height = 32
         Caption = #26469#12288#36135#12288#30331#12288#35760
         Font.Charset = GB2312_CHARSET
         Font.Color = clWindowText
@@ -48,19 +48,19 @@ object Fr_Purchase: TFr_Purchase
         ParentFont = False
       end
       object Panel3: TPanel
-        Left = 85
-        Top = 86
-        Width = 512
-        Height = 217
+        Left = 63
+        Top = 77
+        Width = 884
+        Height = 516
         BevelInner = bvRaised
         BevelOuter = bvLowered
         Color = 15723503
         TabOrder = 0
-        object DBGrid1: TDBGrid
+        object dbgrd1: TDBGrid
           Left = 2
           Top = 2
-          Width = 508
-          Height = 213
+          Width = 880
+          Height = 512
           Align = alClient
           BorderStyle = bsNone
           Color = 15723503
@@ -83,7 +83,7 @@ object Fr_Purchase: TFr_Purchase
           TitleFont.Height = -12
           TitleFont.Name = #23435#20307
           TitleFont.Style = []
-          OnDblClick = DBGrid1DblClick
+          OnDblClick = dbgrd1DblClick
           Columns = <
             item
               Alignment = taCenter
@@ -108,7 +108,15 @@ object Fr_Purchase: TFr_Purchase
               FieldName = 'GoodsName'
               Title.Alignment = taCenter
               Title.Caption = #21830#21697#21517#31216
-              Width = 180
+              Width = 197
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'FeederName'
+              Title.Alignment = taCenter
+              Title.Caption = #20379#36135#21830
+              Width = 211
               Visible = True
             end
             item
@@ -136,14 +144,6 @@ object Fr_Purchase: TFr_Purchase
               Visible = True
             end
             item
-              Expanded = False
-              FieldName = 'FeederName'
-              Title.Alignment = taCenter
-              Title.Caption = #20379#36135#21830
-              Width = 120
-              Visible = True
-            end
-            item
               Alignment = taCenter
               Expanded = False
               FieldName = 'PurchaseDate'
@@ -163,8 +163,8 @@ object Fr_Purchase: TFr_Purchase
         end
       end
       object Panel4: TPanel
-        Left = 85
-        Top = 303
+        Left = 249
+        Top = 594
         Width = 512
         Height = 60
         BevelInner = bvRaised
@@ -301,8 +301,8 @@ object Fr_Purchase: TFr_Purchase
         end
       end
       object Panel5: TPanel
-        Left = 85
-        Top = 363
+        Left = 249
+        Top = 654
         Width = 512
         Height = 41
         BevelInner = bvRaised
@@ -367,8 +367,8 @@ object Fr_Purchase: TFr_Purchase
         end
       end
       object RzComboBox1: TRzComboBox
-        Left = 479
-        Top = 336
+        Left = 643
+        Top = 627
         Width = 97
         Height = 20
         Ctl3D = False

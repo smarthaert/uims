@@ -1,11 +1,11 @@
 object Fr_GJTH_1: TFr_GJTH_1
-  Left = 192
-  Top = 103
+  Left = 506
+  Top = 245
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #37319#36141#21333#21495#26597#35810
   ClientHeight = 453
-  ClientWidth = 697
+  ClientWidth = 992
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,7 +20,7 @@ object Fr_GJTH_1: TFr_GJTH_1
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 697
+    Width = 992
     Height = 453
     Align = alClient
     BevelInner = bvLowered
@@ -29,7 +29,7 @@ object Fr_GJTH_1: TFr_GJTH_1
     object Panel2: TPanel
       Left = 3
       Top = 3
-      Width = 691
+      Width = 986
       Height = 447
       Align = alClient
       Color = 15723503
@@ -37,7 +37,7 @@ object Fr_GJTH_1: TFr_GJTH_1
       object DBGrid1: TDBGrid
         Left = 1
         Top = 1
-        Width = 689
+        Width = 984
         Height = 445
         Align = alClient
         BorderStyle = bsNone
@@ -70,6 +70,7 @@ object Fr_GJTH_1: TFr_GJTH_1
             FieldName = 'InvoiceID'
             Title.Alignment = taCenter
             Title.Caption = #37319#36141#21333#21495
+            Width = 79
             Visible = True
           end
           item
@@ -77,7 +78,7 @@ object Fr_GJTH_1: TFr_GJTH_1
             FieldName = 'BarCode'
             Title.Alignment = taCenter
             Title.Caption = #21830#21697#26465#30721
-            Width = 85
+            Width = 104
             Visible = True
           end
           item
@@ -85,7 +86,7 @@ object Fr_GJTH_1: TFr_GJTH_1
             FieldName = 'GoodsName'
             Title.Alignment = taCenter
             Title.Caption = #21830#21697#21517#31216
-            Width = 160
+            Width = 218
             Visible = True
           end
           item
@@ -93,7 +94,7 @@ object Fr_GJTH_1: TFr_GJTH_1
             FieldName = 'FeederName'
             Title.Alignment = taCenter
             Title.Caption = #20379#36135#21830
-            Width = 80
+            Width = 261
             Visible = True
           end
           item
@@ -101,7 +102,7 @@ object Fr_GJTH_1: TFr_GJTH_1
             FieldName = 'PurchaseScalar'
             Title.Alignment = taCenter
             Title.Caption = #37319#36141#25968#37327
-            Width = 60
+            Width = 65
             Visible = True
           end
           item
@@ -109,7 +110,7 @@ object Fr_GJTH_1: TFr_GJTH_1
             FieldName = 'PurchasePrice'
             Title.Alignment = taCenter
             Title.Caption = #37319#36141#20215#26684
-            Width = 60
+            Width = 63
             Visible = True
           end
           item
@@ -117,7 +118,7 @@ object Fr_GJTH_1: TFr_GJTH_1
             FieldName = 'Unit'
             Title.Alignment = taCenter
             Title.Caption = #21333#20301
-            Width = 30
+            Width = 39
             Visible = True
           end
           item
@@ -125,7 +126,7 @@ object Fr_GJTH_1: TFr_GJTH_1
             FieldName = 'PurchaseDate'
             Title.Alignment = taCenter
             Title.Caption = #37319#36141#26085#26399
-            Width = 55
+            Width = 68
             Visible = True
           end
           item
@@ -133,7 +134,6 @@ object Fr_GJTH_1: TFr_GJTH_1
             FieldName = 'UserName'
             Title.Alignment = taCenter
             Title.Caption = #25805#20316#21592
-            Width = 50
             Visible = True
           end>
       end

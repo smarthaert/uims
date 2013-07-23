@@ -24,7 +24,6 @@ type
     Bevel1: TBevel;
     Panel3: TPanel;
     Label9: TLabel;
-    DBGrid1: TDBGrid;
     RzEdit1: TRzEdit;
     RzEdit2: TRzEdit;
     RzEdit3: TRzEdit;
@@ -39,6 +38,7 @@ type
     ADOQuery1: TADOQuery;
     DataSource1: TDataSource;
     ADOQuery2: TADOQuery;
+    dbgrd1: TDBGrid;
     procedure SpeedButton1Click(Sender: TObject);
     procedure RzEdit1KeyPress(Sender: TObject; var Key: Char);
     procedure RzEdit2KeyPress(Sender: TObject; var Key: Char);

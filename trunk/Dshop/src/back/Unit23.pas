@@ -16,9 +16,9 @@ type
     Button3: TButton;
     Label6: TLabel;
     Panel3: TPanel;
-    DBGrid1: TDBGrid;
     ADOQuery1: TADOQuery;
     DataSource1: TDataSource;
+    dbgrd1: TDBGrid;
     procedure Button3Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -53,7 +53,8 @@ end;
 procedure TFr_VipRecord.Button1Click(Sender: TObject);
 begin
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from Vip_3,Vip_1 Where Vip_3.VipID=Vip_1.VipID');
+  ADOQuery1.SQL.Add('Select Vip_1.ID as ID1,Vip_1.Name as Name1,Vip_1.Address as Address1,Vip_1.Tel as Tel1,Vip_1.Money as Money1,Vip_1.VipID as VipID1,Vip_1.Remark as Remark1,Vip_1.State as State1,Vip_1.UserName as UserName1,Vip_3.ID as ID3');
+  ADOQuery1.SQL.Add(',Vip_3.VipID as VipID3,Vip_3.Money as Money3,Vip_3.Date as Date3,Vip_3.UserName as UserName3 from Vip_3,Vip_1 Where Vip_3.VipID=Vip_1.VipID');
   ADOQuery1.Open;
 end;
 

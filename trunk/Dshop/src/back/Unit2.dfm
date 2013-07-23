@@ -1,10 +1,11 @@
 object Fr_Main: TFr_Main
-  Left = 427
-  Top = 229
+  Left = 404
+  Top = 31
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  ClientHeight = 525
-  ClientWidth = 790
+  Caption = #26102#20809#27700#26063
+  ClientHeight = 722
+  ClientWidth = 1016
   Color = clBtnFace
   Font.Charset = GB2312_CHARSET
   Font.Color = clWindowText
@@ -1477,7 +1478,7 @@ object Fr_Main: TFr_Main
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 790
+    Width = 1016
     Height = 49
     Align = alTop
     BevelInner = bvRaised
@@ -1487,7 +1488,7 @@ object Fr_Main: TFr_Main
     object Image1: TImage
       Left = 2
       Top = 2
-      Width = 786
+      Width = 1012
       Height = 45
       Align = alClient
       Picture.Data = {
@@ -4740,7 +4741,7 @@ object Fr_Main: TFr_Main
       Top = 10
       Width = 180
       Height = 29
-      Caption = #36229#24066#31649#29702#31995#32479
+      Caption = #32463#33829#31649#29702#31995#32479
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -29
@@ -4752,9 +4753,9 @@ object Fr_Main: TFr_Main
     object Label2: TLabel
       Left = 200
       Top = 20
-      Width = 52
+      Width = 41
       Height = 22
-      Caption = 'v 3.61'
+      Caption = 'v 1.0'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -19
@@ -4763,25 +4764,8 @@ object Fr_Main: TFr_Main
       ParentFont = False
       Transparent = True
     end
-    object Label3: TLabel
-      Left = 672
-      Top = 26
-      Width = 105
-      Height = 16
-      Cursor = crHandPoint
-      Caption = 'www.wl8848.com'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clBlue
-      Font.Height = -14
-      Font.Name = 'Arial'
-      Font.Style = [fsUnderline]
-      ParentFont = False
-      Transparent = True
-      Visible = False
-      OnClick = Label3Click
-    end
     object Label4: TLabel
-      Left = 349
+      Left = 685
       Top = 26
       Width = 49
       Height = 14
@@ -4795,11 +4779,11 @@ object Fr_Main: TFr_Main
       Transparent = True
     end
     object Label5: TLabel
-      Left = 399
+      Left = 735
       Top = 26
-      Width = 42
+      Width = 21
       Height = 14
-      Caption = #26446#29233#25991
+      Caption = '001'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -14

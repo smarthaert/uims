@@ -15,14 +15,14 @@ type
     Panel2: TPanel;
     Label1: TLabel;
     Panel3: TPanel;
-    DBGrid1: TDBGrid;
     Panel5: TPanel;
     Button1: TButton;
     Button2: TButton;
+    dbgrd1: TDBGrid;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure DBGrid1DblClick(Sender: TObject);
+    procedure dbgrd1DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -64,7 +64,7 @@ begin
   ADOQuery1.Open;
 end;
 
-procedure TFr_Stock.DBGrid1DblClick(Sender: TObject);
+procedure TFr_Stock.dbgrd1DblClick(Sender: TObject);
 begin
   Button1.Click;
 end;

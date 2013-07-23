@@ -1,6 +1,6 @@
 object Fr_KuCunYuJing: TFr_KuCunYuJing
-  Left = 248
-  Top = 104
+  Left = 524
+  Top = 188
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #24211#23384#39044#35686

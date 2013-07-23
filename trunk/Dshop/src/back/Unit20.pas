@@ -13,7 +13,6 @@ type
     Panel2: TPanel;
     Label1: TLabel;
     Panel3: TPanel;
-    DBGrid1: TDBGrid;
     Panel4: TPanel;
     Label2: TLabel;
     Label3: TLabel;
@@ -37,6 +36,7 @@ type
     ADOQuery1: TADOQuery;
     DataSource1: TDataSource;
     ADOQuery2: TADOQuery;
+    dbgrd1: TDBGrid;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);

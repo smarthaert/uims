@@ -1,11 +1,11 @@
 object Fr_Stock: TFr_Stock
-  Left = 197
-  Top = 94
+  Left = 209
+  Top = 41
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = #20837#21152#39564#25910
-  ClientHeight = 453
-  ClientWidth = 688
+  Caption = #20837#24211#39564#25910
+  ClientHeight = 741
+  ClientWidth = 1016
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,8 +20,8 @@ object Fr_Stock: TFr_Stock
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 688
-    Height = 453
+    Width = 1016
+    Height = 741
     Align = alClient
     BevelInner = bvLowered
     BorderWidth = 1
@@ -29,16 +29,16 @@ object Fr_Stock: TFr_Stock
     object Panel2: TPanel
       Left = 3
       Top = 3
-      Width = 682
-      Height = 447
+      Width = 1010
+      Height = 735
       Align = alClient
       Color = 15723503
       TabOrder = 0
       object Label1: TLabel
-        Left = 236
-        Top = 43
-        Width = 210
-        Height = 29
+        Left = 401
+        Top = 40
+        Width = 208
+        Height = 32
         Caption = #20837#12288#24211#12288#39564#12288#25910
         Font.Charset = GB2312_CHARSET
         Font.Color = clWindowText
@@ -48,19 +48,19 @@ object Fr_Stock: TFr_Stock
         ParentFont = False
       end
       object Panel3: TPanel
-        Left = 85
-        Top = 86
-        Width = 512
-        Height = 277
+        Left = 63
+        Top = 72
+        Width = 884
+        Height = 516
         BevelInner = bvRaised
         BevelOuter = bvLowered
         Color = 15723503
         TabOrder = 0
-        object DBGrid1: TDBGrid
+        object dbgrd1: TDBGrid
           Left = 2
           Top = 2
-          Width = 508
-          Height = 273
+          Width = 880
+          Height = 512
           Align = alClient
           BorderStyle = bsNone
           Color = 15723503
@@ -83,7 +83,7 @@ object Fr_Stock: TFr_Stock
           TitleFont.Height = -12
           TitleFont.Name = #23435#20307
           TitleFont.Style = []
-          OnDblClick = DBGrid1DblClick
+          OnDblClick = dbgrd1DblClick
           Columns = <
             item
               Alignment = taCenter
@@ -91,7 +91,7 @@ object Fr_Stock: TFr_Stock
               FieldName = 'InvoiceID'
               Title.Alignment = taCenter
               Title.Caption = #21333#12288#21495
-              Width = 80
+              Width = 88
               Visible = True
             end
             item
@@ -100,7 +100,7 @@ object Fr_Stock: TFr_Stock
               FieldName = 'BarCode'
               Title.Alignment = taCenter
               Title.Caption = #21830#21697#26465#30721
-              Width = 95
+              Width = 131
               Visible = True
             end
             item
@@ -108,7 +108,15 @@ object Fr_Stock: TFr_Stock
               FieldName = 'GoodsName'
               Title.Alignment = taCenter
               Title.Caption = #21830#21697#21517#31216
-              Width = 180
+              Width = 224
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'FeederName'
+              Title.Alignment = taCenter
+              Title.Caption = #20379#36135#21830
+              Width = 143
               Visible = True
             end
             item
@@ -136,14 +144,6 @@ object Fr_Stock: TFr_Stock
               Visible = True
             end
             item
-              Expanded = False
-              FieldName = 'FeederName'
-              Title.Alignment = taCenter
-              Title.Caption = #20379#36135#21830
-              Width = 120
-              Visible = True
-            end
-            item
               Alignment = taCenter
               Expanded = False
               FieldName = 'PurchaseDate'
@@ -163,16 +163,16 @@ object Fr_Stock: TFr_Stock
         end
       end
       object Panel5: TPanel
-        Left = 85
-        Top = 363
-        Width = 512
+        Left = 64
+        Top = 588
+        Width = 884
         Height = 41
         BevelInner = bvRaised
         BevelOuter = bvLowered
         Color = 15723503
         TabOrder = 1
         object Button1: TButton
-          Left = 161
+          Left = 279
           Top = 8
           Width = 75
           Height = 25
@@ -183,7 +183,7 @@ object Fr_Stock: TFr_Stock
           OnClick = Button1Click
         end
         object Button2: TButton
-          Left = 275
+          Left = 529
           Top = 8
           Width = 75
           Height = 25

@@ -13,7 +13,6 @@ type
     Panel2: TPanel;
     Label1: TLabel;
     Panel3: TPanel;
-    DBGrid1: TDBGrid;
     Panel4: TPanel;
     Label2: TLabel;
     RzEdit1: TRzEdit;
@@ -38,6 +37,7 @@ type
     ADOQuery2: TADOQuery;
     RzComboBox1: TRzComboBox;
     SpeedButton1: TSpeedButton;
+    dbgrd1: TDBGrid;
     procedure FormShow(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
@@ -49,7 +49,7 @@ type
     procedure RzEdit4KeyPress(Sender: TObject; var Key: Char);
     procedure RzEdit5KeyPress(Sender: TObject; var Key: Char);
     procedure Button4Click(Sender: TObject);
-    procedure DBGrid1DblClick(Sender: TObject);
+    procedure dbgrd1DblClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure RzEdit3DblClick(Sender: TObject);
     procedure RzComboBox1KeyPress(Sender: TObject; var Key: Char);
@@ -367,7 +367,7 @@ begin
   RzEdit1.SetFocus;
 end;
 
-procedure TFr_Purchase.DBGrid1DblClick(Sender: TObject);
+procedure TFr_Purchase.dbgrd1DblClick(Sender: TObject);
 begin
   Button4.Click;
 end;

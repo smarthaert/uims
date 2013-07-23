@@ -1,6 +1,6 @@
 object Fr_Card: TFr_Card
-  Left = 195
-  Top = 107
+  Left = 335
+  Top = 143
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #35831#21047#21345'...'
