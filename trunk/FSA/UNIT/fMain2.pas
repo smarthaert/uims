@@ -610,7 +610,7 @@ begin
           DrawLine(VMA[I], DEF_COLOR[I], C, R, High, Low)
         else
         begin
-          DrawLineStyle(MA[0], TColor($C6C300), C, R, High, Low, psDot);
+          DrawLineStyle(VMA[I], TColor($C6C300), C, R, High, Low, psDot);
         end;
     end;
   end;
@@ -1294,9 +1294,9 @@ begin
       GRID.Canvas.Font.Color := DEF_COLOR[5];
       P := StkDataFile.getData(Index);
       if P <> nil then
-        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'VOL: ' + FormatFloat('0.00', P.VOL) + '                 ')
+        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + 1, 'VOL: ' + FormatFloat('0.00', P.VOL) + '                 ')
       else
-        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'VOL: ' + '                 ');
+        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + 1, 'VOL: ' + '                 ');
     
     {
     //ªÊ÷∆PL≤ø∑÷
