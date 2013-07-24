@@ -121,6 +121,7 @@ object Fr_KuCunYuJing: TFr_KuCunYuJing
               FieldName = 'BarCode'
               Title.Alignment = taCenter
               Title.Caption = #21830#21697#26465#30721
+              Width = 77
               Visible = True
             end
             item
@@ -128,7 +129,7 @@ object Fr_KuCunYuJing: TFr_KuCunYuJing
               FieldName = 'GoodsName'
               Title.Alignment = taCenter
               Title.Caption = #21830#21697#21517#31216
-              Width = 155
+              Width = 186
               Visible = True
             end
             item

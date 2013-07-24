@@ -5,7 +5,7 @@ object Fr_KuCunPanDian_1: TFr_KuCunPanDian_1
   BorderStyle = bsSingle
   Caption = #24211#23384#30424#28857#8212#8212#27983#35272
   ClientHeight = 453
-  ClientWidth = 688
+  ClientWidth = 673
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,7 +20,7 @@ object Fr_KuCunPanDian_1: TFr_KuCunPanDian_1
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 688
+    Width = 673
     Height = 453
     Align = alClient
     BevelInner = bvLowered
@@ -29,7 +29,7 @@ object Fr_KuCunPanDian_1: TFr_KuCunPanDian_1
     object Panel2: TPanel
       Left = 3
       Top = 3
-      Width = 682
+      Width = 667
       Height = 447
       Align = alClient
       Color = 15723503
@@ -89,7 +89,7 @@ object Fr_KuCunPanDian_1: TFr_KuCunPanDian_1
               FieldName = 'BarCode'
               Title.Alignment = taCenter
               Title.Caption = #21830#21697#26465#30721
-              Width = 90
+              Width = 108
               Visible = True
             end
             item
@@ -171,7 +171,7 @@ object Fr_KuCunPanDian_1: TFr_KuCunPanDian_1
         end
       end
       object Panel4: TPanel
-        Left = 648
+        Left = 633
         Top = 1
         Width = 33
         Height = 445

@@ -1,11 +1,11 @@
 object Fr_ChuKuMingXi: TFr_ChuKuMingXi
-  Left = 262
-  Top = 122
+  Left = 220
+  Top = 49
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #20986#24211#26126#32454
-  ClientHeight = 454
-  ClientWidth = 688
+  ClientHeight = 741
+  ClientWidth = 1016
   Color = clBtnFace
   Font.Charset = GB2312_CHARSET
   Font.Color = clWindowText
@@ -21,8 +21,8 @@ object Fr_ChuKuMingXi: TFr_ChuKuMingXi
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 688
-    Height = 454
+    Width = 1016
+    Height = 741
     Align = alClient
     BevelInner = bvLowered
     BorderWidth = 1
@@ -30,16 +30,16 @@ object Fr_ChuKuMingXi: TFr_ChuKuMingXi
     object Panel2: TPanel
       Left = 3
       Top = 3
-      Width = 682
-      Height = 448
+      Width = 1010
+      Height = 735
       Align = alClient
       Color = 15723503
       TabOrder = 0
       object Label1: TLabel
-        Left = 236
-        Top = 43
-        Width = 210
-        Height = 29
+        Left = 400
+        Top = 40
+        Width = 208
+        Height = 32
         Caption = #20986#12288#24211#12288#26126#12288#32454
         Font.Charset = GB2312_CHARSET
         Font.Color = clWindowText
@@ -49,8 +49,8 @@ object Fr_ChuKuMingXi: TFr_ChuKuMingXi
         ParentFont = False
       end
       object Panel6: TPanel
-        Left = 337
-        Top = 377
+        Left = 501
+        Top = 635
         Width = 260
         Height = 42
         BevelInner = bvRaised
@@ -88,19 +88,19 @@ object Fr_ChuKuMingXi: TFr_ChuKuMingXi
         end
       end
       object Panel5: TPanel
-        Left = 85
-        Top = 86
-        Width = 512
-        Height = 244
+        Left = 63
+        Top = 72
+        Width = 884
+        Height = 516
         BevelInner = bvRaised
         BevelOuter = bvLowered
         Color = 15723503
         TabOrder = 1
-        object DBGrid1: TDBGrid
+        object dbgrd1: TDBGrid
           Left = 2
           Top = 2
-          Width = 508
-          Height = 240
+          Width = 880
+          Height = 512
           Align = alClient
           BorderStyle = bsNone
           Color = 15723503
@@ -122,14 +122,22 @@ object Fr_ChuKuMingXi: TFr_ChuKuMingXi
           TitleFont.Height = -12
           TitleFont.Name = #23435#20307
           TitleFont.Style = []
-          OnCellClick = DBGrid1CellClick
+          OnCellClick = dbgrd1CellClick
           Columns = <
+            item
+              Expanded = False
+              FieldName = 'BarCode'
+              Title.Alignment = taCenter
+              Title.Caption = #21830#21697#26465#30721
+              Width = 69
+              Visible = True
+            end
             item
               Expanded = False
               FieldName = 'GoodsName'
               Title.Alignment = taCenter
               Title.Caption = #21830#21697#21517#31216
-              Width = 130
+              Width = 168
               Visible = True
             end
             item
@@ -220,6 +228,7 @@ object Fr_ChuKuMingXi: TFr_ChuKuMingXi
               FieldName = 'Sell_Main.InvoiceID'
               Title.Alignment = taCenter
               Title.Caption = #21333#21495
+              Width = 106
               Visible = True
             end
             item
@@ -237,19 +246,12 @@ object Fr_ChuKuMingXi: TFr_ChuKuMingXi
               Title.Caption = #25972#21333#23454#25910
               Width = 60
               Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'BarCode'
-              Title.Alignment = taCenter
-              Title.Caption = #21830#21697#26465#30721
-              Visible = True
             end>
         end
       end
       object Panel3: TPanel
-        Left = 85
-        Top = 330
+        Left = 249
+        Top = 588
         Width = 252
         Height = 47
         BevelInner = bvRaised
@@ -292,8 +294,8 @@ object Fr_ChuKuMingXi: TFr_ChuKuMingXi
         end
       end
       object Panel4: TPanel
-        Left = 337
-        Top = 330
+        Left = 501
+        Top = 588
         Width = 260
         Height = 47
         BevelInner = bvRaised
@@ -319,18 +321,6 @@ object Fr_ChuKuMingXi: TFr_ChuKuMingXi
           Top = 21
           Width = 104
           Height = 20
-          CalendarColors.Days = clWindowText
-          CalendarColors.FillDays = clBtnShadow
-          CalendarColors.DaysOfWeek = clWindowText
-          CalendarColors.Lines = clBtnShadow
-          CalendarColors.SelectedDateBack = clHighlight
-          CalendarColors.SelectedDateFore = clHighlightText
-          CalendarColors.TodaysDateFrame = clMaroon
-          ClockFaceColors.Face = clBtnFace
-          ClockFaceColors.Hands = clWindowText
-          ClockFaceColors.Numbers = clWindowText
-          ClockFaceColors.HourTicks = clBtnShadow
-          ClockFaceColors.MinuteTicks = clWindowText
           EditType = etDate
           Format = 'yyyy-mm-dd'
           Alignment = taRightJustify
@@ -346,18 +336,6 @@ object Fr_ChuKuMingXi: TFr_ChuKuMingXi
           Top = 21
           Width = 104
           Height = 20
-          CalendarColors.Days = clWindowText
-          CalendarColors.FillDays = clBtnShadow
-          CalendarColors.DaysOfWeek = clWindowText
-          CalendarColors.Lines = clBtnShadow
-          CalendarColors.SelectedDateBack = clHighlight
-          CalendarColors.SelectedDateFore = clHighlightText
-          CalendarColors.TodaysDateFrame = clMaroon
-          ClockFaceColors.Face = clBtnFace
-          ClockFaceColors.Hands = clWindowText
-          ClockFaceColors.Numbers = clWindowText
-          ClockFaceColors.HourTicks = clBtnShadow
-          ClockFaceColors.MinuteTicks = clWindowText
           EditType = etDate
           Format = 'yyyy-mm-dd'
           Alignment = taRightJustify
@@ -370,8 +348,8 @@ object Fr_ChuKuMingXi: TFr_ChuKuMingXi
         end
       end
       object Panel7: TPanel
-        Left = 85
-        Top = 377
+        Left = 249
+        Top = 635
         Width = 252
         Height = 42
         BevelInner = bvRaised
@@ -408,10 +386,10 @@ object Fr_ChuKuMingXi: TFr_ChuKuMingXi
         end
       end
       object Panel8: TPanel
-        Left = 648
+        Left = 976
         Top = 1
         Width = 33
-        Height = 446
+        Height = 733
         Align = alRight
         BevelInner = bvRaised
         BevelOuter = bvLowered
