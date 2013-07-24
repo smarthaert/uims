@@ -35,7 +35,6 @@ type
     Label7: TLabel;
     RzDateTimeEdit1: TRzDateTimeEdit;
     RzDateTimeEdit2: TRzDateTimeEdit;
-    DBGrid1: TDBGrid;
     ADOQuery2: TADOQuery;
     Panel8: TPanel;
     QuickRep1: TQuickRep;
@@ -91,6 +90,7 @@ type
     QRLabel14: TQRLabel;
     QRLabel15: TQRLabel;
     QRLabel16: TQRLabel;
+    DBGrid1: TDBGrid;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);

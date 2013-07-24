@@ -1,11 +1,11 @@
 object Fr_MaoLiFenXi: TFr_MaoLiFenXi
-  Left = 262
-  Top = 108
+  Left = 231
+  Top = 38
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #27611#21033#20998#26512
-  ClientHeight = 453
-  ClientWidth = 688
+  ClientHeight = 741
+  ClientWidth = 1016
   Color = clBtnFace
   Font.Charset = GB2312_CHARSET
   Font.Color = clWindowText
@@ -21,8 +21,8 @@ object Fr_MaoLiFenXi: TFr_MaoLiFenXi
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 688
-    Height = 453
+    Width = 1016
+    Height = 741
     Align = alClient
     BevelInner = bvLowered
     BorderWidth = 1
@@ -30,13 +30,13 @@ object Fr_MaoLiFenXi: TFr_MaoLiFenXi
     object Panel2: TPanel
       Left = 3
       Top = 3
-      Width = 682
-      Height = 447
+      Width = 1010
+      Height = 735
       Align = alClient
       Color = 15723503
       TabOrder = 0
       object Label1: TLabel
-        Left = 236
+        Left = 380
         Top = 29
         Width = 210
         Height = 29
@@ -49,8 +49,8 @@ object Fr_MaoLiFenXi: TFr_MaoLiFenXi
         ParentFont = False
       end
       object Panel6: TPanel
-        Left = 408
-        Top = 331
+        Left = 520
+        Top = 628
         Width = 189
         Height = 72
         BevelInner = bvRaised
@@ -98,10 +98,10 @@ object Fr_MaoLiFenXi: TFr_MaoLiFenXi
         end
       end
       object Panel5: TPanel
-        Left = 85
-        Top = 72
-        Width = 512
-        Height = 212
+        Left = 45
+        Top = 65
+        Width = 884
+        Height = 516
         BevelInner = bvRaised
         BevelOuter = bvLowered
         Color = 15723503
@@ -109,8 +109,8 @@ object Fr_MaoLiFenXi: TFr_MaoLiFenXi
         object DBGrid1: TDBGrid
           Left = 2
           Top = 2
-          Width = 508
-          Height = 208
+          Width = 880
+          Height = 512
           Align = alClient
           BorderStyle = bsNone
           Color = 15723503
@@ -259,8 +259,8 @@ object Fr_MaoLiFenXi: TFr_MaoLiFenXi
         end
       end
       object Panel7: TPanel
-        Left = 85
-        Top = 331
+        Left = 197
+        Top = 628
         Width = 323
         Height = 72
         BevelInner = bvRaised
@@ -297,8 +297,8 @@ object Fr_MaoLiFenXi: TFr_MaoLiFenXi
         end
       end
       object Panel3: TPanel
-        Left = 85
-        Top = 284
+        Left = 197
+        Top = 581
         Width = 252
         Height = 47
         BevelInner = bvRaised
@@ -341,8 +341,8 @@ object Fr_MaoLiFenXi: TFr_MaoLiFenXi
         end
       end
       object Panel4: TPanel
-        Left = 337
-        Top = 284
+        Left = 449
+        Top = 581
         Width = 260
         Height = 47
         BevelInner = bvRaised
@@ -368,18 +368,6 @@ object Fr_MaoLiFenXi: TFr_MaoLiFenXi
           Top = 21
           Width = 104
           Height = 20
-          CalendarColors.Days = clWindowText
-          CalendarColors.FillDays = clBtnShadow
-          CalendarColors.DaysOfWeek = clWindowText
-          CalendarColors.Lines = clBtnShadow
-          CalendarColors.SelectedDateBack = clHighlight
-          CalendarColors.SelectedDateFore = clHighlightText
-          CalendarColors.TodaysDateFrame = clMaroon
-          ClockFaceColors.Face = clBtnFace
-          ClockFaceColors.Hands = clWindowText
-          ClockFaceColors.Numbers = clWindowText
-          ClockFaceColors.HourTicks = clBtnShadow
-          ClockFaceColors.MinuteTicks = clWindowText
           EditType = etDate
           Format = 'yyyy-mm-dd'
           Alignment = taRightJustify
@@ -395,18 +383,6 @@ object Fr_MaoLiFenXi: TFr_MaoLiFenXi
           Top = 21
           Width = 104
           Height = 20
-          CalendarColors.Days = clWindowText
-          CalendarColors.FillDays = clBtnShadow
-          CalendarColors.DaysOfWeek = clWindowText
-          CalendarColors.Lines = clBtnShadow
-          CalendarColors.SelectedDateBack = clHighlight
-          CalendarColors.SelectedDateFore = clHighlightText
-          CalendarColors.TodaysDateFrame = clMaroon
-          ClockFaceColors.Face = clBtnFace
-          ClockFaceColors.Hands = clWindowText
-          ClockFaceColors.Numbers = clWindowText
-          ClockFaceColors.HourTicks = clBtnShadow
-          ClockFaceColors.MinuteTicks = clWindowText
           EditType = etDate
           Format = 'yyyy-mm-dd'
           Alignment = taRightJustify
@@ -419,10 +395,10 @@ object Fr_MaoLiFenXi: TFr_MaoLiFenXi
         end
       end
       object Panel8: TPanel
-        Left = 648
+        Left = 976
         Top = 1
         Width = 33
-        Height = 445
+        Height = 733
         Align = alRight
         BevelInner = bvRaised
         BevelOuter = bvLowered

@@ -33,7 +33,6 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
-    DBGrid1: TDBGrid;
     Panel8: TPanel;
     QuickRep1: TQuickRep;
     DetailBand1: TQRBand;
@@ -82,12 +81,13 @@ type
     QRDBText7: TQRDBText;
     QRDBText8: TQRDBText;
     QRDBText9: TQRDBText;
+    dbgrd1: TDBGrid;
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure RzDateTimeEdit1KeyPress(Sender: TObject; var Key: Char);
     procedure RzDateTimeEdit2KeyPress(Sender: TObject; var Key: Char);
     procedure Button3Click(Sender: TObject);
-    procedure DBGrid1CellClick(Column: TColumn);
+    procedure dbgrd1CellClick(Column: TColumn);
     procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
@@ -105,6 +105,7 @@ uses Unit1;
 
 {$R *.dfm}
 
+{³ö¿âÃ÷Ï¸}
 procedure TFr_ChuKuMingXi.Button1Click(Sender: TObject);
 var
   Y,M,D:String;
@@ -207,7 +208,7 @@ begin
   Fr_ChuKuMingXi.Close;
 end;
 
-procedure TFr_ChuKuMingXi.DBGrid1CellClick(Column: TColumn);
+procedure TFr_ChuKuMingXi.dbgrd1CellClick(Column: TColumn);
 var
   i:Integer;
   c:Currency;
