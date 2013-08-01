@@ -67,6 +67,21 @@ type
     SpeedButton11: TSpeedButton;
     SpeedButton12: TSpeedButton;
     SpeedButton13: TSpeedButton;
+    N21: TMenuItem;
+    N27: TMenuItem;
+    N30: TMenuItem;
+    N31: TMenuItem;
+    N44: TMenuItem;
+    N45: TMenuItem;
+    N46: TMenuItem;
+    N47: TMenuItem;
+    btn1: TSpeedButton;
+    btn2: TSpeedButton;
+    btn3: TSpeedButton;
+    btn4: TSpeedButton;
+    btn5: TSpeedButton;
+    btn6: TSpeedButton;
+    btn7: TSpeedButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -87,8 +102,16 @@ type
     procedure SpeedButton10Click(Sender: TObject);
     procedure SpeedButton11Click(Sender: TObject);
     procedure SpeedButton12Click(Sender: TObject);
-    procedure SpeedButton13Click(Sender: TObject);
-    procedure N19Click(Sender: TObject);
+    procedure SpeedButton13Click(Sender: TObject);  
+    procedure SpeedButton14Click(Sender: TObject);
+    procedure SpeedButton15Click(Sender: TObject);
+    procedure SpeedButton16Click(Sender: TObject);
+    procedure SpeedButton17Click(Sender: TObject);   
+    procedure SpeedButton18Click(Sender: TObject);
+    procedure SpeedButton19Click(Sender: TObject);
+    procedure SpeedButton20Click(Sender: TObject);
+    procedure N19Click(Sender: TObject);       
+    procedure N20Click(Sender: TObject);
     procedure N22Click(Sender: TObject);
     procedure N24Click(Sender: TObject);
     procedure N16Click(Sender: TObject);
@@ -96,7 +119,11 @@ type
     procedure N15Click(Sender: TObject);
     procedure N26Click(Sender: TObject);
     procedure N29Click(Sender: TObject);
-    procedure N33Click(Sender: TObject);
+    procedure N33Click(Sender: TObject);  
+    procedure N27Click(Sender: TObject);
+    procedure N30Click(Sender: TObject);
+    procedure N31Click(Sender: TObject);
+    procedure N44Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -109,7 +136,7 @@ var
 implementation
 
 uses Unit1, Unit4, Unit5, Unit6, Unit7, Unit10, Unit9, Unit11, Unit12,
-  Unit13, Unit14, Unit16, Unit17, Unit19, Unit20, Unit23;
+  Unit13, Unit14, Unit16, Unit17, Unit19, Unit20, Unit23, Unit24;
 
 {$R *.dfm}
 
@@ -244,15 +271,64 @@ end;
 
 procedure TFr_Main.SpeedButton12Click(Sender: TObject);
 begin
-  N24.Click
+  N30.Click
 end;
 
 procedure TFr_Main.SpeedButton13Click(Sender: TObject);
 begin
-  N26.Click
+  N31.Click
 end;
 
+procedure TFr_Main.SpeedButton14Click(Sender: TObject);
+begin
+  N44.Click
+end;
+
+
+procedure TFr_Main.SpeedButton15Click(Sender: TObject);
+begin
+  N31.Click
+end;
+
+
+procedure TFr_Main.SpeedButton16Click(Sender: TObject);
+begin
+  N31.Click
+end;
+
+
+procedure TFr_Main.SpeedButton17Click(Sender: TObject);
+begin
+  N31.Click
+end;
+
+procedure TFr_Main.SpeedButton18Click(Sender: TObject);
+begin
+  N29.Click
+end;
+
+procedure TFr_Main.SpeedButton19Click(Sender: TObject);
+begin
+  N32.Click
+end;
+
+procedure TFr_Main.SpeedButton20Click(Sender: TObject);
+begin
+  N33.Click
+end;
+
+
 procedure TFr_Main.N19Click(Sender: TObject);
+begin
+  if Fr_ChuKuMingXi<>nil then
+    Fr_ChuKuMingXi.ShowModal
+  else begin
+    Fr_ChuKuMingXi:=TFr_ChuKuMingXi.Create(Application);
+    Fr_ChuKuMingXi.ShowModal;
+  end;
+end;
+
+procedure TFr_Main.N20Click(Sender: TObject);
 begin
   if Fr_ChuKuMingXi<>nil then
     Fr_ChuKuMingXi.ShowModal
@@ -341,5 +417,46 @@ begin
     Fr_VipRecord.ShowModal;
   end;
 end;
+
+procedure TFr_Main.N27Click(Sender: TObject);
+begin
+  if Fr_XianJinGuanLi<>nil then
+    Fr_XianJinGuanLi.ShowModal
+  else begin
+    Fr_XianJinGuanLi:=TFr_XianJinGuanLi.Create(Application);
+    Fr_XianJinGuanLi.ShowModal;
+  end;
+end;
+
+procedure TFr_Main.N30Click(Sender: TObject);
+begin
+  if Fr_VipRecord<>nil then
+    Fr_VipRecord.ShowModal
+  else begin
+    Fr_VipRecord:=TFr_VipRecord.Create(Application);
+    Fr_VipRecord.ShowModal;
+  end;
+end;
+
+procedure TFr_Main.N31Click(Sender: TObject);
+begin
+  if Fr_VipRecord<>nil then
+    Fr_VipRecord.ShowModal
+  else begin
+    Fr_VipRecord:=TFr_VipRecord.Create(Application);
+    Fr_VipRecord.ShowModal;
+  end;
+end;
+
+procedure TFr_Main.N44Click(Sender: TObject);
+begin
+  if Fr_VipRecord<>nil then
+    Fr_VipRecord.ShowModal
+  else begin
+    Fr_VipRecord:=TFr_VipRecord.Create(Application);
+    Fr_VipRecord.ShowModal;
+  end;
+end;
+
 
 end.

@@ -90,11 +90,11 @@ type
     QRLabel14: TQRLabel;
     QRLabel15: TQRLabel;
     QRLabel16: TQRLabel;
-    DBGrid1: TDBGrid;
+    dbgrd1: TDBGrid;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
-    procedure DBGrid1DblClick(Sender: TObject);
+    procedure dbgrd1DblClick(Sender: TObject);
     procedure Button4Click(Sender: TObject);
   private
     { Private declarations }
@@ -244,7 +244,7 @@ begin
   Fr_MaoLiFenXi.Close;
 end;
 
-procedure TFr_MaoLiFenXi.DBGrid1DblClick(Sender: TObject);
+procedure TFr_MaoLiFenXi.dbgrd1DblClick(Sender: TObject);
 //var
 //  i        : Integer;
 //  c1,c2,c3 : Currency;

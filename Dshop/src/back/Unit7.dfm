@@ -1,6 +1,6 @@
 object Fr_Purchase: TFr_Purchase
-  Left = 274
-  Top = 33
+  Left = 366
+  Top = 46
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #26469#36135#30331#35760
@@ -37,8 +37,8 @@ object Fr_Purchase: TFr_Purchase
       object Label1: TLabel
         Left = 400
         Top = 40
-        Width = 208
-        Height = 32
+        Width = 210
+        Height = 29
         Caption = #26469#12288#36135#12288#30331#12288#35760
         Font.Charset = GB2312_CHARSET
         Font.Color = clWindowText

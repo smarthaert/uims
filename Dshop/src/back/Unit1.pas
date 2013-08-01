@@ -127,7 +127,7 @@ begin
             'Persist Security Info=False;' +
             'User ID=root;' +
             'Password=root;' +
-            'Data Source=shop';
+            'Data Source=ashop';
   ADOQuery1.SQL.Clear;
   ADOQuery1.SQL.Add('Select * from ManaGer');
   Try

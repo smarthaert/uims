@@ -1,6 +1,6 @@
 object Fr_ChuKuMingXi: TFr_ChuKuMingXi
-  Left = 220
-  Top = 49
+  Left = 352
+  Top = 98
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #20986#24211#26126#32454
@@ -38,8 +38,8 @@ object Fr_ChuKuMingXi: TFr_ChuKuMingXi
       object Label1: TLabel
         Left = 400
         Top = 40
-        Width = 208
-        Height = 32
+        Width = 210
+        Height = 29
         Caption = #20986#12288#24211#12288#26126#12288#32454
         Font.Charset = GB2312_CHARSET
         Font.Color = clWindowText
@@ -476,7 +476,7 @@ object Fr_ChuKuMingXi: TFr_ChuKuMingXi
             ForceNewColumn = False
             ForceNewPage = False
             Size.Values = (
-              68.791666666666680000
+              68.791666666666670000
               1801.812500000000000000)
             PreCaluculateBandHeight = False
             KeepOnOnePage = False

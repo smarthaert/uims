@@ -1,6 +1,6 @@
 object Fr_S_Feeder: TFr_S_Feeder
-  Left = 375
-  Top = 225
+  Left = 460
+  Top = 341
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #20379#36135#21830#36873#25321
