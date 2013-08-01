@@ -25,12 +25,15 @@ uses
   Unit21 in 'Unit21.pas' {Fr_Card},
   Unit22 in 'Unit22.pas' {Fr_VipMoney},
   Unit19 in 'Unit19.pas' {Fr_Manager},
-  Unit23 in 'Unit23.pas' {Fr_VipRecord};
+  Unit23 in 'Unit23.pas' {Fr_VipRecord},
+  Unit24 in 'Unit24.pas' {Fr_XianJinGuanLi},
+  Unit25 in 'Unit25.pas' {Fr_BankCard};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.CreateForm(TFr_Pass, Fr_Pass);
+  Application.CreateForm(TFr_XianJinGuanLi, Fr_XianJinGuanLi);
   Application.Run;
 end.

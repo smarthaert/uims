@@ -12359,7 +12359,7 @@ object Fr_Pass: TFr_Pass
       'TOVCDBNUMERICFIELD=Edit')
     SkinStore = '(Good)'
     SkinFormtype = sfMainform
-    Version = '4.04.04.11'
+    Version = '5.40.07.15'
     MenuUpdate = True
     MenuMerge = False
     Left = 8
@@ -12650,12 +12650,11 @@ object Fr_Pass: TFr_Pass
   end
   object ADOConnection1: TADOConnection
     ConnectionString = 
-      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Se' +
-      'ttings\Administrator\'#26700#38754'\MyFile\NewShop\Data.mdb;Persist Security' +
-      ' Info=False'
+      'Provider=MSDASQL.1;Persist Security Info=False;User ID=root;Pass' +
+      'word=root;Data Source=ashop'
     LoginPrompt = False
     Mode = cmShareDenyNone
-    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Provider = 'MSDASQL.1'
     Left = 8
     Top = 40
   end

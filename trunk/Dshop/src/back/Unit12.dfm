@@ -1,6 +1,6 @@
 object Fr_MaoLiFenXi: TFr_MaoLiFenXi
-  Left = 231
-  Top = 38
+  Left = 553
+  Top = 151
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #27611#21033#20998#26512
@@ -106,7 +106,7 @@ object Fr_MaoLiFenXi: TFr_MaoLiFenXi
         BevelOuter = bvLowered
         Color = 15723503
         TabOrder = 1
-        object DBGrid1: TDBGrid
+        object dbgrd1: TDBGrid
           Left = 2
           Top = 2
           Width = 880
@@ -133,7 +133,7 @@ object Fr_MaoLiFenXi: TFr_MaoLiFenXi
           TitleFont.Height = -12
           TitleFont.Name = #23435#20307
           TitleFont.Style = []
-          OnDblClick = DBGrid1DblClick
+          OnDblClick = dbgrd1DblClick
           Columns = <
             item
               Expanded = False
