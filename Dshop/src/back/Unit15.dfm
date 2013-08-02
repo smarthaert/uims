@@ -1,6 +1,6 @@
 object Fr_KuCunPanDian_1: TFr_KuCunPanDian_1
-  Left = 215
-  Top = 113
+  Left = 587
+  Top = 175
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #24211#23384#30424#28857#8212#8212#27983#35272
