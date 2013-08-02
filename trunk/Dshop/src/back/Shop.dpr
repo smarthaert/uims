@@ -27,7 +27,8 @@ uses
   Unit19 in 'Unit19.pas' {Fr_Manager},
   Unit23 in 'Unit23.pas' {Fr_VipRecord},
   Unit24 in 'Unit24.pas' {Fr_XianJinGuanLi},
-  Unit25 in 'Unit25.pas' {Fr_BankCard};
+  Unit25 in 'Unit25.pas' {Fr_BankCard},
+  Unit26 in 'Unit26.pas' {Fr_YingShouYingFu};
 
 {$R *.res}
 
