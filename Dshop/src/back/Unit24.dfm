@@ -1,6 +1,6 @@
 object Fr_XianJinGuanLi: TFr_XianJinGuanLi
-  Left = 310
-  Top = 121
+  Left = 107
+  Top = 82
   Width = 1199
   Height = 695
   Caption = #29616#37329#31649#29702
@@ -139,6 +139,7 @@ object Fr_XianJinGuanLi: TFr_XianJinGuanLi
           Height = 25
           Caption = #25171#21360
           TabOrder = 3
+          OnClick = btn4Click
         end
         object edt9: TEdit
           Left = 120
