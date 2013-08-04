@@ -68,7 +68,7 @@ begin
     key:=#0;
     ADOQuery1.Close;
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('Select * from Manager Where UserID="'+Edit1.Text+'"');
+    ADOQuery1.SQL.Add('Select * from manager Where UserID="'+Edit1.Text+'"');
     Try
       ADOQuery1.Open;
     Except
@@ -93,6 +93,7 @@ var
   vIniFile: TIniFile;
   Reg:TRegistry;
 begin
+  {
   vIniFile:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.Ini');
   Reg:=TRegistry.Create;
   Reg.RootKey:=HKEY_CURRENT_USER;
@@ -107,9 +108,10 @@ begin
       Application.Terminate;
     end;
   end;
+  }
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from Manager Where UserName="'+Edit1.Text+'"');
+  ADOQuery1.SQL.Add('Select * from manager Where UserName="'+Edit1.Text+'"');
   ADOQuery1.Open;
   if (ADOQuery1.FieldByName('UserPass').AsString=MD5.MD5Print(MD5.MD5String(Edit2.Text)))and(ADOQuery1.RecordCount<>0) then
   begin
@@ -162,11 +164,12 @@ begin
             'Persist Security Info=False;' +
             'User ID=root;' +
             'Password=root;' +
-            'Data Source=shop';
+            'Data Source=ashop';
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from Manager');
+  ADOQuery1.SQL.Add('Select * from manager');
   ADOQuery1.Active:=True;
+  {
   //注册表中写当前日期
   Reg:=TRegistry.Create;
   Reg.RootKey:=HKEY_CURRENT_USER;
@@ -179,15 +182,15 @@ begin
       if messagedlg('确认初始化将清除销售、库存记录~~!',mtconfirmation,[mbyes,mbno],0)=mryes then
       begin
         ADOQuery1.SQL.Clear;
-        ADOQuery1.SQL.Add('Delete from Sell_Main');
+        ADOQuery1.SQL.Add('Delete from sell_main');
         ADOQuery1.ExecSQL;
 
         ADOQuery1.SQL.Clear;
-        ADOQuery1.SQL.Add('Delete from Sell_Minor');
+        ADOQuery1.SQL.Add('Delete from sell_minor');
         ADOQuery1.ExecSQL;
 
         ADOQuery1.SQL.Clear;
-        ADOQuery1.SQL.Add('Select * from Stock');
+        ADOQuery1.SQL.Add('Select * from stock');
         ADOQuery1.ExecSQL;
 
         Reg.WriteString('Date',FormatdateTime('yyyy-mm-dd', Now));
@@ -221,6 +224,7 @@ begin
       Application.Terminate;
     end;
   end;
+  }
 end;
 
 procedure TPass.PCID;

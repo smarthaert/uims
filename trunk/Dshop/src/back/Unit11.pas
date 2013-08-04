@@ -115,10 +115,10 @@ begin
   D:=FormatdateTime('dd', Now);
   if RadioButton1.Checked then begin
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('select * from Sell_Main,Sell_Minor '+
-                      'where Sell_Main.InvoiceID=Sell_Minor.InvoiceID '+
-                      'and Sell_Main.SellDate >=:A and Sell_Main.SellDate <=:B '+
-                      'and Sell_Main.Hang Order By Sell_Minor.InvoiceID');
+    ADOQuery1.SQL.Add('select * from sell_main,sell_minor '+
+                      'where sell_main.InvoiceID=sell_minor.InvoiceID '+
+                      'and sell_main.SellDate >=:A and sell_main.SellDate <=:B '+
+                      'and sell_main.Hang Order By sell_minor.InvoiceID');
     ADOQuery1.Parameters.ParamByName('A').Value:=Y+'-'+M+'-'+D+' 00:00:00';
     ADOQuery1.Parameters.ParamByName('B').Value:=Y+'-'+M+'-'+D+' 23:59:59';
     ADOQuery1.Open;
@@ -143,9 +143,9 @@ begin
 
   if RadioButton3.Checked then begin
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('select * from Sell_Main,Sell_Minor '+
-                      'where Sell_Main.InvoiceID=Sell_Minor.InvoiceID '+
-                      'and Sell_Main.Hang Order By Sell_Minor.InvoiceID');
+    ADOQuery1.SQL.Add('select * from sell_main,sell_minor '+
+                      'where sell_main.InvoiceID=sell_minor.InvoiceID '+
+                      'and sell_main.Hang Order By sell_minor.InvoiceID');
     ADOQuery1.Open;
     if ADOQuery1.RecordCount=0 then
       ShowMessage('请在前台销售商品后在此查询~~!');
@@ -154,10 +154,10 @@ begin
 
   if RadioButton4.Checked then begin
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('select * from Sell_Main,Sell_Minor '+
-                      'where Sell_Main.InvoiceID=Sell_Minor.InvoiceID '+
-                      'and Sell_Main.SellDate >=:A and Sell_Main.SellDate <=:B '+
-                      'and Sell_Main.Hang Order By Sell_Minor.InvoiceID');
+    ADOQuery1.SQL.Add('select * from sell_main,sell_minor '+
+                      'where sell_main.InvoiceID=sell_minor.InvoiceID '+
+                      'and sell_main.SellDate >=:A and sell_main.SellDate <=:B '+
+                      'and sell_main.Hang Order By sell_minor.InvoiceID');
     ADOQuery1.Parameters.ParamByName('A').Value:=RzDateTimeEdit1.Text+' 00:00:00';
     ADOQuery1.Parameters.ParamByName('B').Value:=RzDateTimeEdit2.Text+' 23:59:59';
     ADOQuery1.Open;

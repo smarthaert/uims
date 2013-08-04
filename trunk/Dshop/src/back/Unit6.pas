@@ -56,7 +56,7 @@ end;
 procedure TFr_Unit.FormShow(Sender: TObject);
 begin
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from Unit');
+  ADOQuery1.SQL.Add('Select * from unit');
   ADOQuery1.Open;
 
   RzEdit1.Text:='';

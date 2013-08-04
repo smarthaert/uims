@@ -110,7 +110,7 @@ end;
 procedure TFr_Feeder.FormShow(Sender: TObject);
 begin
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from Feeder');
+  ADOQuery1.SQL.Add('Select * from feeder');
   ADOQuery1.Open;
 
   Button5.Click;

@@ -58,7 +58,7 @@ end;
 procedure TFr_KuCunPanDian.FormShow(Sender: TObject);
 begin
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from Stock');
+  ADOQuery1.SQL.Add('Select * from stock');
   ADOQuery1.Open;
   Label2.Caption:=ADOQuery1.FieldByName('GoodsName').AsString;
   Label3.Caption:=ADOQuery1.FieldByName('StockScalar').AsString;
@@ -82,7 +82,7 @@ begin
   if key=#13 then begin
     //在库存中按条码查找商品
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('Select * from Stock where BarCode="'+RzEdit1.Text+'"');
+    ADOQuery1.SQL.Add('Select * from stock where BarCode="'+RzEdit1.Text+'"');
     ADOQuery1.Open;
     if ADOQuery1.RecordCount<>0 then begin
       Label2.Caption:=ADOQuery1.FieldByName('GoodsName').AsString;
@@ -91,7 +91,7 @@ begin
     end else begin
       //如果按条码查找没有则按拼音查找
       ADOQuery1.SQL.Clear;
-      ADOQuery1.SQL.Add('Select * from Stock where PYBrevity="'+RzEdit1.Text+'"');
+      ADOQuery1.SQL.Add('Select * from stock where PYBrevity="'+RzEdit1.Text+'"');
       ADOQuery1.Open;
       if ADOQuery1.RecordCount<>0 then begin
         Label2.Caption:=ADOQuery1.FieldByName('GoodsName').AsString;
@@ -103,7 +103,7 @@ begin
       end;
     end;
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('Select * from Stock');
+    ADOQuery1.SQL.Add('Select * from stock');
     ADOQuery1.Open;
   end;
 end;

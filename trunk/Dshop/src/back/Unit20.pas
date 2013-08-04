@@ -64,7 +64,7 @@ uses MD5, Unit1, Unit4, Unit9, Unit2, Unit21, Unit22;
 procedure TFr_VIP.FormShow(Sender: TObject);
 begin
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from Vip_1');
+  ADOQuery1.SQL.Add('Select * from vip_1');
   ADOQuery1.Open;
 end;
 
@@ -198,7 +198,7 @@ begin
     end;
 
     ADOQuery2.SQL.Clear;
-    ADOQuery2.SQL.Add('Select * from Vip_1 Where VipID="'+Copy(Fr_Card.RzEdit1.Text,1,15)+'"');
+    ADOQuery2.SQL.Add('Select * from vip_1 Where VipID="'+Copy(Fr_Card.RzEdit1.Text,1,15)+'"');
     ADOQuery2.Open;
     if ADOQuery2.RecordCount<>0 then begin
       ShowMessage('发卡失败,此卡已使用~~!');
@@ -210,7 +210,7 @@ begin
     if S<>'' then begin
       ADOQuery2.Close;
       ADOQuery2.SQL.Clear;
-      ADOQuery2.SQL.Add('Select * from Vip_4');
+      ADOQuery2.SQL.Add('Select * from vip_4');
       ADOQuery2.Open;
       ADOQuery2.Append;
       ADOQuery2.FieldByName('VipID').AsString:=S;

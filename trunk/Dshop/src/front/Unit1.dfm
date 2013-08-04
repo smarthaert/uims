@@ -1,6 +1,6 @@
 object Pass: TPass
-  Left = 196
-  Top = 107
+  Left = 553
+  Top = 335
   BorderStyle = bsNone
   Caption = 'Pass'
   ClientHeight = 157

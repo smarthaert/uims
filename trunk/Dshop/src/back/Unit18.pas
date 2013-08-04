@@ -41,7 +41,7 @@ uses Unit17;
 procedure TFr_GJTH_1.FormShow(Sender: TObject);
 begin
   Fr_GJTH.ADOQuery2.SQL.Clear;
-  Fr_GJTH.ADOQuery2.SQL.Add('Select * from Purchase Order By InvoiceID');
+  Fr_GJTH.ADOQuery2.SQL.Add('Select * from purchase Order By InvoiceID');
   Fr_GJTH.ADOQuery2.Open;
 end;
 

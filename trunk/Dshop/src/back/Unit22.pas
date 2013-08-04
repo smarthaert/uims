@@ -65,7 +65,7 @@ begin
     end;
 
     Fr_Vip.ADOQuery2.SQL.Clear;
-    Fr_Vip.ADOQuery2.SQL.Add('Select * from Vip_1 Where VipID="'+Copy(RzEdit4.Text,1,15)+'"');
+    Fr_Vip.ADOQuery2.SQL.Add('Select * from vip_1 Where VipID="'+Copy(RzEdit4.Text,1,15)+'"');
     Fr_Vip.ADOQuery2.Open;
     if Fr_Vip.ADOQuery2.RecordCount<>0 then begin
       RzEdit1.Text := Fr_Vip.ADOQuery2.FieldByName('Name').AsString    ;
@@ -124,7 +124,7 @@ begin
     Fr_Vip.ADOQuery2.Post;
     S:=Fr_Vip.ADOQuery2.FieldByName('Money').AsString;
     Fr_Vip.ADOQuery2.SQL.Clear;
-    Fr_Vip.ADOQuery2.SQL.Add('Select * from Vip_3');
+    Fr_Vip.ADOQuery2.SQL.Add('Select * from vip_3');
     Fr_Vip.ADOQuery2.Open;
     Fr_Vip.ADOQuery2.Append;
     Fr_Vip.ADOQuery2.FieldByName('VipID').AsString:=RzEdit4.Text;

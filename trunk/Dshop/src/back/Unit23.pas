@@ -46,7 +46,7 @@ procedure TFr_VipRecord.FormShow(Sender: TObject);
 begin
   ADOQuery1.SQL.Clear;
   ADOQuery1.SQL.Add('Select Vip_1.ID as ID1,Vip_1.Name as Name1,Vip_1.Address as Address1,Vip_1.Tel as Tel1,Vip_1.Money as Money1,Vip_1.VipID as VipID1,Vip_1.Remark as Remark1,Vip_1.State as State1,Vip_1.UserName as UserName1,Vip_3.ID as ID3');
-  ADOQuery1.SQL.Add(',Vip_3.VipID as VipID3,Vip_3.Money as Money3,Vip_3.Date as Date3,Vip_3.UserName as UserName3 from Vip_3,Vip_1 Where Vip_3.VipID=Vip_1.VipID');
+  ADOQuery1.SQL.Add(',vip_3.VipID as VipID3,vip_3.Money as Money3,vip_3.Date as Date3,vip_3.UserName as UserName3 from vip_3,vip_1 Where vip_3.VipID=vip_1.VipID');
   ADOQuery1.Open;
 end;
 

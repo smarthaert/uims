@@ -44,7 +44,7 @@ end;
 procedure TFr_KuCunYuJing.FormShow(Sender: TObject);
 begin
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from Stock where StockScalar<=StockBaseline');
+  ADOQuery1.SQL.Add('Select * from stock where StockScalar<=StockBaseline');
   ADOQuery1.Open;
 end;
 

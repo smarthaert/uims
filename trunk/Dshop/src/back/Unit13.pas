@@ -61,7 +61,7 @@ begin
   D:=FormatdateTime('dd', Now);
   if RadioButton1.Checked then begin
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('select * from Purchase '+
+    ADOQuery1.SQL.Add('select * from purchase '+
                       'where PurchaseDate >=:A and PurchaseDate <=:B');
     ADOQuery1.Parameters.ParamByName('A').Value:=Y+'-'+M+'-'+D+' 00:00:00';
     ADOQuery1.Parameters.ParamByName('B').Value:=Y+'-'+M+'-'+D+' 23:59:59';
@@ -72,7 +72,7 @@ begin
 
   if RadioButton2.Checked then begin
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('select * from Purchase '+
+    ADOQuery1.SQL.Add('select * from purchase '+
                       'where PurchaseDate >=:A and PurchaseDate <=:B');
     ADOQuery1.Parameters.ParamByName('A').Value:=Y+'-'+M+'-01'+' 00:00:00';
     ADOQuery1.Parameters.ParamByName('B').Value:=Y+'-'+M+'-'+Fr_ChuKuMingXi.MaxDate(Y,M)+' 23:59:59';
@@ -83,7 +83,7 @@ begin
 
   if RadioButton3.Checked then begin
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('select * from Purchase');
+    ADOQuery1.SQL.Add('select * from purchase');
     ADOQuery1.Open;
     if ADOQuery1.RecordCount=0 then
       ShowMessage('您没有商品进货记录~~!');
@@ -91,7 +91,7 @@ begin
 
   if RadioButton4.Checked then begin
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('select * from Purchase '+
+    ADOQuery1.SQL.Add('select * from purchase '+
                       'where PurchaseDate >=:A and PurchaseDate <=:B');
     ADOQuery1.Parameters.ParamByName('A').Value:=RzDateTimeEdit1.Text+' 00:00:00';
     ADOQuery1.Parameters.ParamByName('B').Value:=RzDateTimeEdit2.Text+' 23:59:59';

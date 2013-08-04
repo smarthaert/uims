@@ -1,6 +1,6 @@
 object RegKey: TRegKey
-  Left = 220
-  Top = 113
+  Left = 494
+  Top = 324
   BorderStyle = bsNone
   Caption = 'RegKey'
   ClientHeight = 188

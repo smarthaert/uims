@@ -81,7 +81,7 @@ begin
   RzEdit8.Text:='';
   if key=#13 then begin
     ADOQuery2.SQL.Clear;
-    ADOQuery2.SQL.Add('Select * from Purchase Where InvoiceID="'+RzEdit1.Text+'"');
+    ADOQuery2.SQL.Add('Select * from purchase Where InvoiceID="'+RzEdit1.Text+'"');
     ADOQuery2.Open;
     if ADOQuery2.RecordCount=0 then begin
       ShowMessage('无此单号,清注意核对~~!'+#10#10+'双击输入框进入浏览界面~~!');
@@ -158,7 +158,7 @@ begin
   begin
     UID:='U'+FormatdateTime('yymmdd', Now)+FormatFloat('0000',i);
     ADOQuery2.SQL.Clear;
-    ADOQuery2.SQL.Add('Select * from UNStock Where InvoiceID="'+UID+'"');
+    ADOQuery2.SQL.Add('Select * from unstock Where InvoiceID="'+UID+'"');
     ADOQuery2.Open;
     if ADOQuery2.RecordCount=0 then
     begin
@@ -180,7 +180,7 @@ begin
   ADOQuery1.Post;
   //核减采购表
   ADOQuery2.SQL.Clear;
-  ADOQuery2.SQL.Add('Select * from Purchase Where InvoiceID="'+RzEdit1.Text+'"');
+  ADOQuery2.SQL.Add('Select * from purchase Where InvoiceID="'+RzEdit1.Text+'"');
   ADOQuery2.Open;
   ADOQuery2.Edit;
   ADOQuery2.FieldByName('purchaseScalar').AsCurrency:=ADOQuery2.FieldByName('purchaseScalar').AsCurrency-StrToCurr(RzEdit2.Text);
@@ -188,7 +188,7 @@ begin
   ADOQuery2.Post;
   //核减库存
   ADOQuery2.SQL.Clear;
-  ADOQuery2.SQL.Add('Select * from Stock Where BarCode="'+RzEdit3.Text+'"');
+  ADOQuery2.SQL.Add('Select * from stock Where BarCode="'+RzEdit3.Text+'"');
   ADOQuery2.Open;
   ADOQuery2.Edit;
   ADOQuery2.FieldByName('STockScalar').AsCurrency:=ADOQuery2.FieldByName('STockScalar').AsCurrency-StrToCurr(RzEdit2.Text);
@@ -209,7 +209,7 @@ end;
 procedure TFr_GJTH.FormShow(Sender: TObject);
 begin
   ADOQuery1.SQL.Clear;
-  ADOQuery1.sql.Add('select * from UNStock where UNDate <=:A and UNDate >=:B');
+  ADOQuery1.sql.Add('select * from unstock where UNDate <=:A and UNDate >=:B');
   ADOQuery1.Parameters.ParamByName('A').Value:=formatdatetime('YYYY-MM-DD', Now)+' 23:59:59';
   ADOQuery1.Parameters.ParamByName('B').Value:=formatdatetime('YYYY-MM-DD', Now)+' 00:00:00';
   ADOQuery1.Open;
