@@ -28,7 +28,8 @@ uses
   Unit23 in 'Unit23.pas' {Fr_VipRecord},
   Unit24 in 'Unit24.pas' {Fr_XianJinGuanLi},
   Unit25 in 'Unit25.pas' {Fr_BankCard},
-  Unit26 in 'Unit26.pas' {Fr_YingShouYingFu};
+  Unit26 in 'Unit26.pas' {Fr_YingShouYingFu},
+  Unit27 in 'Unit27.pas' {Fr_DaYinJiCeShi};
 
 {$R *.res}
 
@@ -36,5 +37,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TFr_Pass, Fr_Pass);
   Application.CreateForm(TFr_XianJinGuanLi, Fr_XianJinGuanLi);
+  Application.CreateForm(TFr_DaYinJiCeShi, Fr_DaYinJiCeShi);
   Application.Run;
 end.

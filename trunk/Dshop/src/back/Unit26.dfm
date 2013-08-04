@@ -1,11 +1,11 @@
 object Fr_YingShouYingFu: TFr_YingShouYingFu
-  Left = 587
-  Top = 175
+  Left = 268
+  Top = 108
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #24212#25910#24212#20184
-  ClientHeight = 453
-  ClientWidth = 673
+  ClientHeight = 465
+  ClientWidth = 659
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,8 +21,8 @@ object Fr_YingShouYingFu: TFr_YingShouYingFu
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 673
-    Height = 453
+    Width = 659
+    Height = 465
     Align = alClient
     BevelInner = bvLowered
     BorderWidth = 1
@@ -30,8 +30,8 @@ object Fr_YingShouYingFu: TFr_YingShouYingFu
     object Panel2: TPanel
       Left = 3
       Top = 3
-      Width = 667
-      Height = 447
+      Width = 653
+      Height = 459
       Align = alClient
       Color = 15723503
       TabOrder = 0
@@ -172,10 +172,10 @@ object Fr_YingShouYingFu: TFr_YingShouYingFu
         end
       end
       object Panel4: TPanel
-        Left = 633
+        Left = 619
         Top = 1
         Width = 33
-        Height = 445
+        Height = 457
         Align = alRight
         BevelInner = bvRaised
         BevelOuter = bvLowered
@@ -191,8 +191,8 @@ object Fr_YingShouYingFu: TFr_YingShouYingFu
         object QuickRep1: TQuickRep
           Left = 8
           Top = 8
-          Width = 794
-          Height = 1123
+          Width = 911
+          Height = 529
           Frame.Color = clBlack
           Frame.DrawTop = False
           Frame.DrawBottom = False
@@ -215,12 +215,12 @@ object Fr_YingShouYingFu: TFr_YingShouYingFu
           Options = [FirstPageHeader, LastPageFooter]
           Page.Columns = 1
           Page.Orientation = poPortrait
-          Page.PaperSize = A4
+          Page.PaperSize = Custom
           Page.Values = (
             200.000000000000000000
-            2970.000000000000000000
+            1400.000000000000000000
             200.000000000000000000
-            2100.000000000000000000
+            2410.000000000000000000
             200.000000000000000000
             200.000000000000000000
             0.000000000000000000)
@@ -249,7 +249,7 @@ object Fr_YingShouYingFu: TFr_YingShouYingFu
           object DetailBand1: TQRBand
             Left = 76
             Top = 173
-            Width = 643
+            Width = 760
             Height = 26
             Frame.Color = clBlack
             Frame.DrawTop = False
@@ -262,14 +262,14 @@ object Fr_YingShouYingFu: TFr_YingShouYingFu
             ForceNewColumn = False
             ForceNewPage = False
             Size.Values = (
-              68.791666666666680000
-              1701.270833333333000000)
+              68.791666666666670000
+              2010.833333333333000000)
             PreCaluculateBandHeight = False
             KeepOnOnePage = False
             BandType = rbDetail
             object QRShape7: TQRShape
-              Left = 634
-              Top = -1
+              Left = 636
+              Top = 0
               Width = 9
               Height = 26
               Frame.Color = clBlack
@@ -278,9 +278,9 @@ object Fr_YingShouYingFu: TFr_YingShouYingFu
               Frame.DrawLeft = False
               Frame.DrawRight = False
               Size.Values = (
-                68.791666666666680000
-                1677.458333333333000000
-                -2.645833333333333000
+                68.791666666666670000
+                1682.750000000000000000
+                0.000000000000000000
                 23.812500000000000000)
               Shape = qrsVertLine
               VertAdjust = 0
@@ -563,7 +563,7 @@ object Fr_YingShouYingFu: TFr_YingShouYingFu
           object PageHeaderBand1: TQRBand
             Left = 76
             Top = 76
-            Width = 643
+            Width = 760
             Height = 97
             Frame.Color = clBlack
             Frame.DrawTop = False
@@ -577,7 +577,7 @@ object Fr_YingShouYingFu: TFr_YingShouYingFu
             ForceNewPage = False
             Size.Values = (
               256.645833333333400000
-              1701.270833333333000000)
+              2010.833333333333000000)
             PreCaluculateBandHeight = False
             KeepOnOnePage = False
             BandType = rbPageHeader
@@ -687,7 +687,7 @@ object Fr_YingShouYingFu: TFr_YingShouYingFu
             object QRSysData1: TQRSysData
               Left = 264
               Top = 48
-              Width = 115
+              Width = 67
               Height = 13
               Frame.Color = clBlack
               Frame.DrawTop = False
@@ -698,7 +698,7 @@ object Fr_YingShouYingFu: TFr_YingShouYingFu
                 34.395833333333340000
                 698.500000000000000000
                 127.000000000000000000
-                304.270833333333400000)
+                177.270833333333300000)
               Alignment = taLeftJustify
               AlignToBand = False
               AutoSize = True

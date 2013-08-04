@@ -63,6 +63,7 @@ type
     procedure btn7Click(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btn5Click(Sender: TObject);
+    procedure btn4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -126,6 +127,11 @@ begin
     ADOQuery1.SQL.Add('Select * from KJFL');
     ADOQuery1.Open;
   QuickRep1.Print;
+end;
+
+procedure TFr_XianJinGuanLi.btn4Click(Sender: TObject);
+begin
+QuickRep1.Preview;
 end;
 
 end.

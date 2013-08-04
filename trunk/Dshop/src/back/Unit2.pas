@@ -136,7 +136,8 @@ var
 implementation
 
 uses Unit1, Unit4, Unit5, Unit6, Unit7, Unit10, Unit9, Unit11, Unit12,
-  Unit13, Unit14, Unit16, Unit17, Unit19, Unit20, Unit23, Unit24, Unit26;
+  Unit13, Unit14, Unit16, Unit17, Unit19, Unit20, Unit23, Unit24, Unit26,
+  Unit27;
 
 {$R *.dfm}
 
@@ -440,11 +441,11 @@ end;
 
 procedure TFr_Main.N31Click(Sender: TObject);
 begin
-  if Fr_VipRecord<>nil then
-    Fr_VipRecord.ShowModal
+  if Fr_DaYinJiCeShi<>nil then
+    Fr_DaYinJiCeShi.ShowModal
   else begin
-    Fr_VipRecord:=TFr_VipRecord.Create(Application);
-    Fr_VipRecord.ShowModal;
+    Fr_DaYinJiCeShi:=TFr_DaYinJiCeShi.Create(Application);
+    Fr_DaYinJiCeShi.ShowModal;
   end;
 end;
 
