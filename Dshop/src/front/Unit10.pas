@@ -68,7 +68,7 @@ begin
   Main.Label26.Caption:=ADOQuery1.FieldByName('InvoiceID').AsString;
   Main.ADOQuery1.Close;
   Main.ADOQuery1.SQL.Clear;
-  Main.ADOQuery1.SQL.Add('Select * from Sell_Minor where InvoiceID="'+Main.Label26.Caption+'"');
+  Main.ADOQuery1.SQL.Add('Select * from sell_minor where InvoiceID="'+Main.Label26.Caption+'"');
   Main.ADOQuery1.Open;
   Main.QH1;
   Main.QH2;
@@ -98,7 +98,7 @@ procedure TQD.FormShow(Sender: TObject);
 begin
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from Sell_Main where Not(Hang)');
+  ADOQuery1.SQL.Add('Select * from sell_main where Not(Hang)');
   ADOQuery1.Active:=True;
 end;
 

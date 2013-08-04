@@ -128,16 +128,16 @@ begin
   D:=FormatdateTime('dd', Now);
   if RadioButton1.Checked then begin
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('select * from Sell_Main,Sell_Minor '+
-                      'where Sell_Main.InvoiceID=Sell_Minor.InvoiceID '+
-                      'and Sell_Main.SellDate >=:A and Sell_Main.SellDate <=:B '+
-                      'and Sell_Main.Hang Order By Sell_Minor.InvoiceID');
+    ADOQuery1.SQL.Add('select * from sell_main,sell_minor '+
+                      'where sell_main.InvoiceID=sell_minor.InvoiceID '+
+                      'and sell_main.SellDate >=:A and sell_main.SellDate <=:B '+
+                      'and sell_main.Hang Order By sell_minor.InvoiceID');
     ADOQuery1.Parameters.ParamByName('A').Value:=Y+'-'+M+'-'+D+' 00:00:00';
     ADOQuery1.Parameters.ParamByName('B').Value:=Y+'-'+M+'-'+D+' 23:59:59';
     ADOQuery1.Open;
 
     ADOQuery2.SQL.Clear;
-    ADOQuery2.SQL.Add('select * from Sell_Main where '+
+    ADOQuery2.SQL.Add('select * from sell_main where '+
                       'SellDate >=:A and SellDate <=:B and Hang');
     ADOQuery2.Parameters.ParamByName('A').Value:=Y+'-'+M+'-'+D+' 00:00:00';
     ADOQuery2.Parameters.ParamByName('B').Value:=Y+'-'+M+'-'+D+' 23:59:59';
@@ -150,16 +150,16 @@ begin
 
   if RadioButton2.Checked then begin
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('select * from Sell_Main,Sell_Minor '+
-                      'where Sell_Main.InvoiceID=Sell_Minor.InvoiceID '+
-                      'and Sell_Main.SellDate >=:A and Sell_Main.SellDate <=:B '+
-                      'and Sell_Main.Hang Order By Sell_Minor.InvoiceID');
+    ADOQuery1.SQL.Add('select * from sell_main,sell_minor '+
+                      'where sell_main.InvoiceID=sell_minor.InvoiceID '+
+                      'and sell_main.SellDate >=:A and sell_main.SellDate <=:B '+
+                      'and sell_main.Hang Order By sell_minor.InvoiceID');
     ADOQuery1.Parameters.ParamByName('A').Value:=Y+'-'+M+'-01'+' 00:00:00';
     ADOQuery1.Parameters.ParamByName('B').Value:=Y+'-'+M+'-'+Fr_ChuKuMingXi.MaxDate(Y,M)+' 23:59:59';
     ADOQuery1.Open;
 
     ADOQuery2.SQL.Clear;
-    ADOQuery2.SQL.Add('select * from Sell_Main where '+
+    ADOQuery2.SQL.Add('select * from sell_main where '+
                       'SellDate >=:A and SellDate <=:B and Hang');
     ADOQuery2.Parameters.ParamByName('A').Value:=Y+'-'+M+'-01'+' 00:00:00';
     ADOQuery2.Parameters.ParamByName('B').Value:=Y+'-'+M+'-'+Fr_ChuKuMingXi.MaxDate(Y,M)+' 23:59:59';
@@ -172,13 +172,13 @@ begin
 
   if RadioButton3.Checked then begin
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('select * from Sell_Main,Sell_Minor '+
-                      'where Sell_Main.InvoiceID=Sell_Minor.InvoiceID '+
-                      'and Sell_Main.Hang Order By Sell_Minor.InvoiceID');
+    ADOQuery1.SQL.Add('select * from sell_main,sell_minor '+
+                      'where sell_main.InvoiceID=sell_minor.InvoiceID '+
+                      'and sell_main.Hang Order By sell_minor.InvoiceID');
     ADOQuery1.Open;
 
     ADOQuery2.SQL.Clear;
-    ADOQuery2.SQL.Add('select * from Sell_Main where Hang');
+    ADOQuery2.SQL.Add('select * from sell_main where Hang');
     ADOQuery2.Open;
 
     if ADOQuery1.RecordCount=0 then
@@ -188,16 +188,16 @@ begin
 
   if RadioButton4.Checked then begin
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('select * from Sell_Main,Sell_Minor where '+
-                      'Sell_Main.InvoiceID=Sell_Minor.InvoiceID '+
-                      'and Sell_Main.SellDate >=:A and Sell_Main.SellDate <=:B '+
-                      'and Sell_Main.Hang Order By Sell_Minor.InvoiceID');
+    ADOQuery1.SQL.Add('select * from sell_main,sell_minor where '+
+                      'sell_main.InvoiceID=sell_minor.InvoiceID '+
+                      'and sell_main.SellDate >=:A and sell_main.SellDate <=:B '+
+                      'and sell_main.Hang Order By sell_minor.InvoiceID');
     ADOQuery1.Parameters.ParamByName('A').Value:=RzDateTimeEdit1.Text+' 00:00:00';
     ADOQuery1.Parameters.ParamByName('B').Value:=RzDateTimeEdit2.Text+' 23:59:59';
     ADOQuery1.Open;
 
     ADOQuery2.SQL.Clear;
-    ADOQuery2.SQL.Add('select * from Sell_Main Where '+
+    ADOQuery2.SQL.Add('select * from sell_main Where '+
                       'SellDate >=:A and SellDate <=:B and Hang');
     ADOQuery2.Parameters.ParamByName('A').Value:=RzDateTimeEdit1.Text+' 00:00:00';
     ADOQuery2.Parameters.ParamByName('B').Value:=RzDateTimeEdit2.Text+' 23:59:59';
@@ -269,7 +269,7 @@ begin
       s2:=ADOQuery1.FieldByName('Sell_Main.InvoiceID').AsString;
       ShowMessage('+');
       ADOQuery2.SQL.Clear;
-      ADOQuery2.SQL.Add('Select * from Sell_Main where InvoiceID="'+ADOQuery1.FieldByName('Sell_Main.InvoiceID').AsString+'"');
+      ADOQuery2.SQL.Add('Select * from sell_main where InvoiceID="'+ADOQuery1.FieldByName('sell_main.InvoiceID').AsString+'"');
       ADOQuery2.Open;
       c3:=c3+ADOQuery2.FieldByName('PU').AsCurrency;
     end;

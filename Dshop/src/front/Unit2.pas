@@ -131,6 +131,7 @@ var
   D1, Data, SID : String;
   i             : Integer;
 begin
+  {
   //建立INI文件关联
   vIniFile:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.Ini');
   //写是否为注册版本
@@ -150,6 +151,7 @@ begin
 //    RegKey:=TRegKey.Create(Application);
 //    RegKey.showmodal;
   end;
+  }
   Main.Width:=798;//恢复主窗口大小
   Main.Height:=571;//恢复主窗口大小
   //使主窗口位于屏幕正中央
@@ -166,13 +168,13 @@ begin
             'Persist Security Info=False;' +
             'User ID=root;' +
             'Password=root;' +
-            'Data Source=shop';
+            'Data Source=ashop';
   //初始单号
   for i:=1 to 9999 do
   begin
     SID:=FormatdateTime('yymmdd', Now)+FormatFloat('0000',i);
     ADOQuery2.SQL.Clear;
-    ADOQuery2.SQL.Add('Select * from Sell_Main Where InvoiceID="'+SID+'"');
+    ADOQuery2.SQL.Add('Select * from sell_main Where InvoiceID="'+SID+'"');
     ADOQuery2.Open;
     if ADOQuery2.RecordCount=0 then
     begin
@@ -182,7 +184,7 @@ begin
   //读取单号
   Label26.Caption:=SID;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from Sell_Minor Where InvoiceID="'+Label26.Caption+'"');
+  ADOQuery1.SQL.Add('Select * from sell_minor Where InvoiceID="'+Label26.Caption+'"');
   ADOQuery1.Open;
   QH2;
 end;
@@ -270,7 +272,7 @@ begin
 
   //查销售主库是否有此单号
   ADOQuery3.SQL.Clear;
-  ADOQuery3.SQL.Add('Select * from Sell_Main Where InvoiceID="'+Label26.Caption+'"');
+  ADOQuery3.SQL.Add('Select * from sell_main Where InvoiceID="'+Label26.Caption+'"');
   ADOQuery3.Open;
   if ADOQuery3.RecordCount=0 then begin
     ADOQuery3.Edit;
@@ -303,7 +305,7 @@ end;
 procedure TMain.QH2;
 begin
   ADOQuery2.SQL.Clear;
-  ADOQuery2.SQL.Add('Select SUM(Subtotal) from Sell_Minor Where InvoiceID="'+Label26.Caption+'"');
+  ADOQuery2.SQL.Add('Select SUM(Subtotal) from sell_minor Where InvoiceID="'+Label26.Caption+'"');
   ADOQuery2.Open;
   Label7.Caption := FormatFloat('0.00',ADOQuery2.Fields[0].AsCurrency)
 end;
@@ -360,7 +362,7 @@ begin
       begin
         SID:=FormatdateTime('yymmdd', Now)+FormatFloat('0000',i);
         ADOQuery2.SQL.Clear;
-        ADOQuery2.SQL.Add('Select * from Sell_Main Where InvoiceID="'+SID+'"');
+        ADOQuery2.SQL.Add('Select * from sell_main Where InvoiceID="'+SID+'"');
         ADOQuery2.Open;
         if ADOQuery2.RecordCount=0 then
         begin
@@ -370,7 +372,7 @@ begin
       //读取单号
       Label26.Caption:=SID;
       ADOQuery1.SQL.Clear;
-      ADOQuery1.SQL.Add('Select * from Sell_Minor Where InvoiceID="'+Label26.Caption+'"');
+      ADOQuery1.SQL.Add('Select * from sell_minor Where InvoiceID="'+Label26.Caption+'"');
       ADOQuery1.Open;
       QH2;
 
@@ -548,7 +550,7 @@ begin
     end;
     //在库存中按条码查找商品
     ADOQuery2.SQL.Clear;
-    ADOQuery2.SQL.Add('Select * from Stock Where BarCode="'+RzEdit4.Text+'"');
+    ADOQuery2.SQL.Add('Select * from stock Where BarCode="'+RzEdit4.Text+'"');
     ADOQuery2.Open;
     if ADOQuery2.RecordCount<>0 then begin
       WRecord;
@@ -557,7 +559,7 @@ begin
     end else begin
       //如果按条码查找没有则按拼音查找
       ADOQuery2.SQL.Clear;
-      ADOQuery2.SQL.Add('Select * from Stock Where PYBrevity="'+RzEdit4.Text+'"');
+      ADOQuery2.SQL.Add('Select * from stock Where PYBrevity="'+RzEdit4.Text+'"');
       ADOQuery2.Open;
       if ADOQuery2.RecordCount<>0 then begin
         if ADOQuery2.RecordCount>1 then begin

@@ -1,8 +1,8 @@
 object Main: TMain
-  Left = 224
-  Top = 75
-  Width = 804
-  Height = 597
+  Left = 278
+  Top = 123
+  Width = 1024
+  Height = 768
   ActiveControl = RzEdit4
   Caption = 'Main'
   Color = clBtnFace
@@ -22,7 +22,7 @@ object Main: TMain
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 796
+    Width = 1016
     Height = 25
     Align = alTop
     BevelInner = bvLowered
@@ -42,9 +42,9 @@ object Main: TMain
     object Label1: TLabel
       Left = 8
       Top = 7
-      Width = 216
+      Width = 108
       Height = 12
-      Caption = #32593#32852#31185#25216#36229#24066#31649#29702#31995#32479'('#21333#26426#29256')'#8212#8212#21069#21488
+      Caption = #23454#30719#27700#26063#19990#30028#26071#33328#29256
     end
     object RzFormShape1: TRzFormShape
       Left = 2
@@ -68,8 +68,8 @@ object Main: TMain
   object Panel2: TPanel
     Left = 0
     Top = 25
-    Width = 590
-    Height = 481
+    Width = 810
+    Height = 652
     Align = alClient
     BevelInner = bvLowered
     Color = clBlack
@@ -77,8 +77,8 @@ object Main: TMain
     object DBGrid1: TDBGrid
       Left = 2
       Top = 2
-      Width = 586
-      Height = 477
+      Width = 806
+      Height = 648
       TabStop = False
       Align = alClient
       BorderStyle = bsNone
@@ -109,7 +109,7 @@ object Main: TMain
           FieldName = 'BarCode'
           Title.Alignment = taCenter
           Title.Caption = #21830#21697#26465#30721
-          Width = 85
+          Width = 129
           Visible = True
         end
         item
@@ -117,7 +117,7 @@ object Main: TMain
           FieldName = 'GoodsName'
           Title.Alignment = taCenter
           Title.Caption = #21830#21697#21517#31216
-          Width = 130
+          Width = 257
           Visible = True
         end
         item
@@ -134,7 +134,7 @@ object Main: TMain
           FieldName = 'SellPrice'
           Title.Alignment = taCenter
           Title.Caption = #21333#20215
-          Width = 55
+          Width = 73
           Visible = True
         end
         item
@@ -167,15 +167,15 @@ object Main: TMain
           FieldName = 'Subtotal'
           Title.Alignment = taCenter
           Title.Caption = #23567#35745
-          Width = 55
+          Width = 104
           Visible = True
         end>
     end
   end
   object Panel3: TPanel
     Left = 0
-    Top = 506
-    Width = 796
+    Top = 677
+    Width = 1016
     Height = 64
     Align = alBottom
     BevelInner = bvLowered
@@ -395,10 +395,10 @@ object Main: TMain
     end
   end
   object Panel4: TPanel
-    Left = 590
+    Left = 810
     Top = 25
     Width = 206
-    Height = 481
+    Height = 652
     Align = alRight
     BevelInner = bvLowered
     Color = clBlack
@@ -693,18 +693,18 @@ object Main: TMain
     end
   end
   object Panel5: TPanel
-    Left = 19
-    Top = 270
-    Width = 242
-    Height = 213
+    Left = 75
+    Top = 557
+    Width = 100
+    Height = 100
     Color = clBlack
     TabOrder = 4
     Visible = False
     object QuickRep1: TQuickRep
       Left = 11
       Top = 12
-      Width = 220
-      Height = 190
+      Width = 907
+      Height = 529
       Frame.Color = clBlack
       Frame.DrawTop = False
       Frame.DrawBottom = False
@@ -731,9 +731,9 @@ object Main: TMain
       Page.PaperSize = Custom
       Page.Values = (
         0.000000000000000000
-        502.700000000000000000
+        1400.000000000000000000
         0.000000000000000000
-        582.000000000000000000
+        2400.000000000000000000
         31.000000000000000000
         31.000000000000000000
         0.000000000000000000)
@@ -763,7 +763,7 @@ object Main: TMain
       object DetailBand1: TQRBand
         Left = 12
         Top = 70
-        Width = 197
+        Width = 884
         Height = 15
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -777,12 +777,12 @@ object Main: TMain
         ForceNewPage = False
         Size.Values = (
           39.687500000000000000
-          521.229166666666700000)
+          2338.916666666667000000)
         PreCaluculateBandHeight = False
         KeepOnOnePage = False
         BandType = rbDetail
         object QRDBText1: TQRDBText
-          Left = 6
+          Left = 1
           Top = 3
           Width = 83
           Height = 13
@@ -792,8 +792,8 @@ object Main: TMain
           Frame.DrawLeft = False
           Frame.DrawRight = False
           Size.Values = (
-            34.395833333333330000
-            15.875000000000000000
+            34.395833333333340000
+            2.645833333333333000
             7.937500000000000000
             219.604166666666700000)
           Alignment = taLeftJustify
@@ -814,7 +814,7 @@ object Main: TMain
           FontSize = 9
         end
         object QRExpr1: TQRExpr
-          Left = 89
+          Left = 84
           Top = 2
           Width = 31
           Height = 16
@@ -824,10 +824,10 @@ object Main: TMain
           Frame.DrawLeft = False
           Frame.DrawRight = False
           Size.Values = (
-            42.333333333333330000
-            235.479166666666700000
+            42.333333333333340000
+            222.250000000000000000
             5.291666666666667000
-            82.020833333333320000)
+            82.020833333333340000)
           Alignment = taRightJustify
           AlignToBand = False
           AutoSize = False
@@ -846,7 +846,7 @@ object Main: TMain
           FontSize = 9
         end
         object QRExpr2: TQRExpr
-          Left = 120
+          Left = 115
           Top = 2
           Width = 31
           Height = 16
@@ -856,10 +856,10 @@ object Main: TMain
           Frame.DrawLeft = False
           Frame.DrawRight = False
           Size.Values = (
-            42.333333333333330000
-            317.500000000000000000
+            42.333333333333340000
+            304.270833333333400000
             5.291666666666667000
-            82.020833333333320000)
+            82.020833333333340000)
           Alignment = taRightJustify
           AlignToBand = False
           AutoSize = False
@@ -878,7 +878,7 @@ object Main: TMain
           FontSize = 9
         end
         object QRExpr3: TQRExpr
-          Left = 153
+          Left = 148
           Top = 2
           Width = 33
           Height = 16
@@ -888,8 +888,8 @@ object Main: TMain
           Frame.DrawLeft = False
           Frame.DrawRight = False
           Size.Values = (
-            42.333333333333330000
-            404.812500000000000000
+            42.333333333333340000
+            391.583333333333400000
             5.291666666666667000
             87.312500000000000000)
           Alignment = taRightJustify
@@ -910,7 +910,7 @@ object Main: TMain
           FontSize = 9
         end
         object QRShape6: TQRShape
-          Left = 187
+          Left = 185
           Top = 0
           Width = 2
           Height = 15
@@ -921,7 +921,7 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             39.687500000000000000
-            494.770833333333300000
+            489.479166666666600000
             0.000000000000000000
             5.291666666666667000)
           Pen.Style = psDot
@@ -929,7 +929,7 @@ object Main: TMain
           VertAdjust = 0
         end
         object QRShape5: TQRShape
-          Left = 151
+          Left = 149
           Top = 0
           Width = 2
           Height = 15
@@ -940,7 +940,7 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             39.687500000000000000
-            399.520833333333300000
+            394.229166666666700000
             0.000000000000000000
             5.291666666666667000)
           Pen.Style = psDot
@@ -948,7 +948,7 @@ object Main: TMain
           VertAdjust = 0
         end
         object QRShape4: TQRShape
-          Left = 120
+          Left = 118
           Top = 0
           Width = 2
           Height = 15
@@ -959,7 +959,7 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             39.687500000000000000
-            317.500000000000000000
+            312.208333333333400000
             0.000000000000000000
             5.291666666666667000)
           Pen.Style = psDot
@@ -970,7 +970,7 @@ object Main: TMain
       object PageHeaderBand1: TQRBand
         Left = 12
         Top = 0
-        Width = 197
+        Width = 884
         Height = 70
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -984,12 +984,12 @@ object Main: TMain
         ForceNewPage = False
         Size.Values = (
           185.208333333333300000
-          521.229166666666700000)
+          2338.916666666667000000)
         PreCaluculateBandHeight = False
         KeepOnOnePage = False
         BandType = rbPageHeader
         object QRLabel1: TQRLabel
-          Left = 6
+          Left = 349
           Top = 8
           Width = 185
           Height = 17
@@ -1000,14 +1000,14 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             44.979166666666670000
-            15.875000000000000000
+            923.395833333333400000
             21.166666666666670000
             489.479166666666700000)
           Alignment = taCenter
           AlignToBand = False
           AutoSize = False
           AutoStretch = False
-          Caption = #36196#23792#30334#19968#36229#24066
+          Caption = #23454#30719#27700#26063#19990#30028
           Color = clWhite
           Font.Charset = GB2312_CHARSET
           Font.Color = clWindowText
@@ -1020,7 +1020,7 @@ object Main: TMain
           FontSize = 11
         end
         object QRLabel2: TQRLabel
-          Left = 6
+          Left = 349
           Top = 32
           Width = 185
           Height = 17
@@ -1031,14 +1031,14 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             44.979166666666670000
-            15.875000000000000000
+            923.395833333333400000
             84.666666666666680000
             489.479166666666700000)
           Alignment = taCenter
           AlignToBand = False
           AutoSize = False
           AutoStretch = False
-          Caption = #30334#19968#28040#36153#12288#26102#23578#21697#20301
+          Caption = #24744#23478#20013#30340#28023#27915#19990#30028
           Color = clWhite
           Font.Charset = GB2312_CHARSET
           Font.Color = clWindowText
@@ -1051,7 +1051,7 @@ object Main: TMain
           FontSize = 11
         end
         object QRLabel3: TQRLabel
-          Left = 6
+          Left = 1
           Top = 56
           Width = 49
           Height = 13
@@ -1061,8 +1061,8 @@ object Main: TMain
           Frame.DrawLeft = False
           Frame.DrawRight = False
           Size.Values = (
-            34.395833333333330000
-            15.875000000000000000
+            34.395833333333340000
+            2.645833333333333000
             148.166666666666700000
             129.645833333333300000)
           Alignment = taLeftJustify
@@ -1082,7 +1082,7 @@ object Main: TMain
           FontSize = 9
         end
         object QRLabel4: TQRLabel
-          Left = 104
+          Left = 99
           Top = 56
           Width = 25
           Height = 13
@@ -1092,10 +1092,10 @@ object Main: TMain
           Frame.DrawLeft = False
           Frame.DrawRight = False
           Size.Values = (
-            34.395833333333330000
-            275.166666666666700000
+            34.395833333333340000
+            261.937500000000000000
             148.166666666666700000
-            66.145833333333330000)
+            66.145833333333340000)
           Alignment = taLeftJustify
           AlignToBand = False
           AutoSize = True
@@ -1113,7 +1113,7 @@ object Main: TMain
           FontSize = 9
         end
         object QRShape2: TQRShape
-          Left = 5
+          Left = 351
           Top = 24
           Width = 183
           Height = 5
@@ -1125,7 +1125,7 @@ object Main: TMain
           Frame.Style = psDashDot
           Size.Values = (
             13.229166666666670000
-            13.229166666666670000
+            928.687500000000000000
             63.500000000000000000
             484.187500000000000000)
           Pen.Style = psDot
@@ -1133,7 +1133,7 @@ object Main: TMain
           VertAdjust = 0
         end
         object QRShape1: TQRShape
-          Left = 4
+          Left = 350
           Top = 48
           Width = 183
           Height = 5
@@ -1145,7 +1145,7 @@ object Main: TMain
           Frame.Style = psDashDot
           Size.Values = (
             13.229166666666670000
-            10.583333333333330000
+            926.041666666666800000
             127.000000000000000000
             484.187500000000000000)
           Pen.Style = psDot
@@ -1153,7 +1153,7 @@ object Main: TMain
           VertAdjust = 0
         end
         object QRLabel5: TQRLabel
-          Left = 131
+          Left = 126
           Top = 56
           Width = 25
           Height = 13
@@ -1163,10 +1163,10 @@ object Main: TMain
           Frame.DrawLeft = False
           Frame.DrawRight = False
           Size.Values = (
-            34.395833333333330000
-            346.604166666666700000
+            34.395833333333340000
+            333.375000000000000000
             148.166666666666700000
-            66.145833333333330000)
+            66.145833333333340000)
           Alignment = taLeftJustify
           AlignToBand = False
           AutoSize = True
@@ -1184,7 +1184,7 @@ object Main: TMain
           FontSize = 9
         end
         object QRLabel6: TQRLabel
-          Left = 162
+          Left = 157
           Top = 56
           Width = 25
           Height = 13
@@ -1194,10 +1194,10 @@ object Main: TMain
           Frame.DrawLeft = False
           Frame.DrawRight = False
           Size.Values = (
-            34.395833333333330000
-            428.625000000000000000
+            34.395833333333340000
+            415.395833333333400000
             148.166666666666700000
-            66.145833333333330000)
+            66.145833333333340000)
           Alignment = taLeftJustify
           AlignToBand = False
           AutoSize = True
@@ -1217,7 +1217,7 @@ object Main: TMain
         object QRShape3: TQRShape
           Left = 4
           Top = 67
-          Width = 183
+          Width = 877
           Height = 5
           Frame.Color = clBlack
           Frame.DrawTop = False
@@ -1228,7 +1228,7 @@ object Main: TMain
             13.229166666666670000
             10.583333333333330000
             177.270833333333300000
-            484.187500000000000000)
+            2320.395833333333000000)
           Shape = qrsHorLine
           VertAdjust = 0
         end
@@ -1236,7 +1236,7 @@ object Main: TMain
       object SummaryBand1: TQRBand
         Left = 12
         Top = 85
-        Width = 197
+        Width = 884
         Height = 92
         Frame.Color = clBlack
         Frame.DrawTop = False
@@ -1250,12 +1250,12 @@ object Main: TMain
         ForceNewPage = False
         Size.Values = (
           243.416666666666700000
-          521.229166666666700000)
+          2338.916666666667000000)
         PreCaluculateBandHeight = False
         KeepOnOnePage = False
         BandType = rbSummary
         object QRLabel7: TQRLabel
-          Left = 7
+          Left = 120
           Top = 6
           Width = 67
           Height = 15
@@ -1266,7 +1266,7 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             39.687500000000000000
-            18.520833333333330000
+            317.500000000000000000
             15.875000000000000000
             177.270833333333300000)
           Alignment = taLeftJustify
@@ -1286,9 +1286,9 @@ object Main: TMain
           FontSize = 9
         end
         object QRShape7: TQRShape
-          Left = 4
+          Left = 1
           Top = -2
-          Width = 183
+          Width = 880
           Height = 5
           Frame.Color = clBlack
           Frame.DrawTop = False
@@ -1298,15 +1298,15 @@ object Main: TMain
           Frame.Style = psDashDot
           Size.Values = (
             13.229166666666670000
-            10.583333333333330000
+            2.645833333333333000
             -5.291666666666667000
-            484.187500000000000000)
+            2328.333333333333000000)
           Shape = qrsHorLine
           VertAdjust = 0
         end
         object QRLabel9: TQRLabel
-          Left = 7
-          Top = 19
+          Left = 258
+          Top = 3
           Width = 67
           Height = 15
           Frame.Color = clBlack
@@ -1316,8 +1316,8 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             39.687500000000000000
-            18.520833333333330000
-            50.270833333333330000
+            682.625000000000000000
+            7.937500000000000000
             177.270833333333300000)
           Alignment = taLeftJustify
           AlignToBand = False
@@ -1336,7 +1336,7 @@ object Main: TMain
           FontSize = 9
         end
         object QRLabel8: TQRLabel
-          Left = 95
+          Left = 1
           Top = 6
           Width = 67
           Height = 15
@@ -1347,7 +1347,7 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             39.687500000000000000
-            251.354166666666700000
+            2.645833333333333000
             15.875000000000000000
             177.270833333333300000)
           Alignment = taLeftJustify
@@ -1367,7 +1367,7 @@ object Main: TMain
           FontSize = 9
         end
         object QRLabel10: TQRLabel
-          Left = 95
+          Left = 1
           Top = 19
           Width = 67
           Height = 15
@@ -1378,7 +1378,7 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             39.687500000000000000
-            251.354166666666700000
+            2.645833333333333000
             50.270833333333330000
             177.270833333333300000)
           Alignment = taLeftJustify
@@ -1398,7 +1398,7 @@ object Main: TMain
           FontSize = 9
         end
         object QRLabel12: TQRLabel
-          Left = 7
+          Left = 2
           Top = 45
           Width = 103
           Height = 15
@@ -1409,9 +1409,9 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             39.687500000000000000
-            18.520833333333330000
+            5.291666666666667000
             119.062500000000000000
-            272.520833333333300000)
+            272.520833333333400000)
           Alignment = taLeftJustify
           AlignToBand = False
           AutoSize = True
@@ -1429,7 +1429,7 @@ object Main: TMain
           FontSize = 9
         end
         object QRLabel11: TQRLabel
-          Left = 7
+          Left = 2
           Top = 32
           Width = 169
           Height = 15
@@ -1440,9 +1440,9 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             39.687500000000000000
-            18.520833333333330000
-            84.666666666666670000
-            447.145833333333300000)
+            5.291666666666667000
+            84.666666666666680000
+            447.145833333333400000)
           Alignment = taLeftJustify
           AlignToBand = False
           AutoSize = True
@@ -1460,7 +1460,7 @@ object Main: TMain
           FontSize = 9
         end
         object QRLabel13: TQRLabel
-          Left = 7
+          Left = 1
           Top = 58
           Width = 186
           Height = 15
@@ -1471,7 +1471,7 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             39.687500000000000000
-            18.520833333333330000
+            2.645833333333333000
             153.458333333333300000
             492.125000000000000000)
           Alignment = taLeftJustify
@@ -1491,10 +1491,10 @@ object Main: TMain
           FontSize = 9
         end
         object QRShape8: TQRShape
-          Left = 4
+          Left = 1
           Top = 70
-          Width = 189
-          Height = 5
+          Width = 880
+          Height = 3
           Frame.Color = clBlack
           Frame.DrawTop = False
           Frame.DrawBottom = False
@@ -1502,16 +1502,16 @@ object Main: TMain
           Frame.DrawRight = False
           Frame.Style = psDashDot
           Size.Values = (
-            13.229166666666670000
-            10.583333333333330000
+            7.937500000000000000
+            2.645833333333333000
             185.208333333333300000
-            500.062500000000000000)
+            2328.333333333333000000)
           Pen.Style = psDot
           Shape = qrsHorLine
           VertAdjust = 0
         end
         object QRLabel14: TQRLabel
-          Left = 4
+          Left = 347
           Top = 75
           Width = 189
           Height = 15
@@ -1522,14 +1522,14 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             39.687500000000000000
-            10.583333333333330000
+            918.104166666666800000
             198.437500000000000000
             500.062500000000000000)
           Alignment = taCenter
           AlignToBand = False
           AutoSize = False
           AutoStretch = False
-          Caption = #20973#31080#19971#26085#20869#36864#25442#37096#20998#36135#12289#24403#26376#24320#21457#31080
+          Caption = #20973#27426#36814#20809#20020#23454#30719#27700#26063#19990#30028
           Color = clWhite
           Font.Charset = GB2312_CHARSET
           Font.Color = clWindowText

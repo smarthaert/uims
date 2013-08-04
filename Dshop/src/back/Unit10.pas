@@ -95,7 +95,7 @@ begin
   D:=FormatdateTime('dd', Now);
   //清空明星商品
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Delete from MXSP');
+  ADOQuery1.SQL.Add('Delete from mxsp');
   ADOQuery1.ExecSQL;
   //按日期查询主销售库数据
   ADOQuery1.SQL.Clear;
@@ -146,7 +146,7 @@ begin
   ADOQuery1.Open;
 
   ADOQuery2.SQL.Clear;
-  ADOQuery2.SQL.Add('Select * from MXSP');
+  ADOQuery2.SQL.Add('Select * from mxsp');
   ADOQuery2.Open;
   ADOQuery1.First;
   while not(ADOQuery1.Eof) do begin
@@ -194,13 +194,13 @@ begin
   while ADOQuery2.RecordCount<>0 do begin
     ADOQuery2.SQL.Clear;
     if i=0 then
-      //S:='Select Top 50 * from MXSP'
-      S:='Select * from MXSP limit 0,50'
+      //S:='Select Top 50 * from mxsp'
+      S:='Select * from mxsp limit 0,50'
     else
-      S:='Select * from MXSP limit 0,50';
+      S:='Select * from mxsp limit 0,50';
 
-      {S:='Select Top 50 * from MXSP Where (ID NOT IN (Select Top '+
-         CurrToStr(50*i)+' ID From MXSP))';}
+      {S:='Select Top 50 * from mxsp Where (ID NOT IN (Select Top '+
+         CurrToStr(50*i)+' ID From mxsp))';}
     ADOQuery2.SQL.Add(S);
     ADOQuery2.Open;
     if ADOQuery2.RecordCount<>0 then begin

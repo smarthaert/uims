@@ -104,7 +104,7 @@ begin
   s:='ÊÇ·ñ½«"';
   if messagedlg(s,mtconfirmation,[mbyes,mbno],0)=mryes then begin
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('Select * from KJFL');
+    ADOQuery1.SQL.Add('Select * from kjfl');
     ADOQuery1.Open;
     ADOQuery1.Edit;
     ADOQuery1.FieldByName('amount').AsString        := edt1.Text;
@@ -124,7 +124,7 @@ end;
 procedure TFr_XianJinGuanLi.btn5Click(Sender: TObject);
 begin
   ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('Select * from KJFL');
+    ADOQuery1.SQL.Add('Select * from kjfl');
     ADOQuery1.Open;
   QuickRep1.Print;
 end;

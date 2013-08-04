@@ -61,7 +61,7 @@ begin
   RzEdit4.Text:=Fr_Stock.ADOQuery1.FieldByName('PurchaseScalar').AsString;
 
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from Stock Where BarCode="'+RzEdit1.Text+'"');
+  ADOQuery1.SQL.Add('Select * from stock Where BarCode="'+RzEdit1.Text+'"');
   ADOQuery1.Open;
   if ADOQuery1.RecordCount<>0 then begin
     RzEdit5.Text:=ADOQuery1.FieldByName('SellPrice').AsString;
@@ -128,7 +128,7 @@ begin
   end;
   //填加库存
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from Stock Where BarCode="'+RzEdit1.Text+'"');
+  ADOQuery1.SQL.Add('Select * from stock Where BarCode="'+RzEdit1.Text+'"');
   ADOQuery1.Open;
   if ADOQuery1.RecordCount=0 then
   begin
@@ -183,7 +183,7 @@ begin
   //刷新数据
   Fr_Stock.ADOQuery1.Close;
   Fr_Stock.ADOQuery1.SQL.Clear;
-  Fr_Stock.ADOQuery1.SQL.Add('Select * From Purchase Where Not(EnterFiag)');
+  Fr_Stock.ADOQuery1.SQL.Add('Select * From purchase Where Not(EnterFiag)');
   Fr_Stock.ADOQuery1.Open;
   Fr_Stock_Add.Close;
 end;

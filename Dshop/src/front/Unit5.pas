@@ -155,7 +155,7 @@ begin
     Main.ADOQuery2.Edit;
     //查找商品
     Main.ADOQuery2.SQL.Clear;
-    Main.ADOQuery2.SQL.Add('Select * from Stock Where BarCode="'+Main.ADOQuery1.FieldByName('BarCode').AsString+'"');
+    Main.ADOQuery2.SQL.Add('Select * from stock Where BarCode="'+Main.ADOQuery1.FieldByName('BarCode').AsString+'"');
     Main.ADOQuery2.Open;
     //减少库存
     Main.ADOQuery2.Edit;
@@ -165,7 +165,7 @@ begin
   end;
   //更改销售标记
   Main.ADOQuery2.SQL.Clear;
-  Main.ADOQuery2.SQL.Add('Select * from Sell_Main Where InvoiceID="'+Main.Label26.Caption+'"');
+  Main.ADOQuery2.SQL.Add('Select * from sell_main Where InvoiceID="'+Main.Label26.Caption+'"');
   Main.ADOQuery2.Open;
   Main.ADOQuery2.Edit;
   Main.ADOQuery2.FieldByName('AR').AsString:=Main.Label7.Caption;
@@ -179,7 +179,7 @@ begin
   begin
     SID:=FormatdateTime('yymmdd', Now)+FormatFloat('0000',i);
     Main.ADOQuery2.SQL.Clear;
-    Main.ADOQuery2.SQL.Add('Select * from Sell_Main Where InvoiceID="'+SID+'"');
+    Main.ADOQuery2.SQL.Add('Select * from sell_main Where InvoiceID="'+SID+'"');
     Main.ADOQuery2.Open;
     if Main.ADOQuery2.RecordCount=0 then
       Break;
@@ -192,7 +192,7 @@ begin
   Main.ADOQuery1.Refresh;
   Main.ADOQuery1.Close;
   Main.ADOQuery1.SQL.Clear;
-  Main.ADOQuery1.SQL.Add('Select * from Sell_Minor Where InvoiceID="'+Main.Label26.Caption+'"');
+  Main.ADOQuery1.SQL.Add('Select * from sell_minor Where InvoiceID="'+Main.Label26.Caption+'"');
   Main.ADOQuery1.Open;
 end;
 

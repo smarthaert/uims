@@ -73,11 +73,11 @@ uses Unit1, Unit2, Unit8;
 procedure TFr_Purchase.FormShow(Sender: TObject);
 begin
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from Purchase Where Not(EnterFiag)');
+  ADOQuery1.SQL.Add('Select * from purchase Where Not(EnterFiag)');
   ADOQuery1.Open;
 
   ADOQuery2.SQL.Clear;
-  ADOQuery2.SQL.Add('Select * from Unit');
+  ADOQuery2.SQL.Add('Select * from unit');
   ADOQuery2.Open;
   RzComboBox1.Items.Clear;
   while not(ADOQuery2.Eof) do begin
@@ -168,7 +168,7 @@ begin
   begin
     PID:='P'+FormatdateTime('yymmdd', Now)+FormatFloat('0000',i);
     ADOQuery2.SQL.Clear;
-    ADOQuery2.SQL.Add('Select * from Purchase Where InvoiceID="'+PID+'"');
+    ADOQuery2.SQL.Add('Select * from purchase Where InvoiceID="'+PID+'"');
     ADOQuery2.Open;
     if ADOQuery2.RecordCount=0 then
     begin
@@ -198,7 +198,7 @@ begin
   if key=#13 then
   begin
     ADOQuery2.SQL.Clear;
-    ADOQuery2.SQL.Add('Select * from Purchase Where BarCode="'+RzEdit1.Text+'"');
+    ADOQuery2.SQL.Add('Select * from purchase Where BarCode="'+RzEdit1.Text+'"');
     ADOQuery2.Open;
     if ADOQuery2.RecordCount<>0 then
     begin
@@ -217,7 +217,7 @@ begin
     begin
       //≤È’“Ãı¬Îø‚
       ADOQuery2.SQL.Clear;
-      ADOQuery2.SQL.Add('Select * from BarCode Where BarCode="'+PBarCode(RzEdit1.Text)+'"');
+      ADOQuery2.SQL.Add('Select * from barcode Where BarCode="'+PBarCode(RzEdit1.Text)+'"');
       ADOQuery2.Open;
       if ADOQuery2.RecordCount<>0 then
       begin
@@ -274,7 +274,7 @@ begin
   if key=#13 then
   begin
     ADOQuery2.SQL.Clear;
-    ADOQuery2.SQL.Add('Select * from Feeder Where FeederID="'+RzEdit3.Text+'"');
+    ADOQuery2.SQL.Add('Select * from feeder Where FeederID="'+RzEdit3.Text+'"');
     ADOQuery2.Open;
     if ADOQuery2.RecordCount<>0 then
       RzEdit3.Text:=ADOQuery2.FieldByName('FeederName').AsString;

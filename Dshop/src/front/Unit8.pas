@@ -49,7 +49,7 @@ begin
 
 
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('Select * from Vip_1 Where VipID="'+Copy(RzEdit1.Text,1,15)+'"');
+    ADOQuery1.SQL.Add('Select * from vip_1 Where VipID="'+Copy(RzEdit1.Text,1,15)+'"');
     ADOQuery1.Open;
     if ADOQuery1.RecordCount<>0 then begin
       //ºÏ≤È”‡∂Ó
@@ -70,7 +70,7 @@ begin
       ADOQuery1.FieldByName('Money').AsCurrency:=ADOQuery1.FieldByName('Money').AsCurrency-StrToCurr(Gathering.RzEdit1.Text);
       ADOQuery1.Post;
       ADOQuery2.SQL.Clear;
-      ADOQuery2.SQL.Add('Select * from Vip_2');
+      ADOQuery2.SQL.Add('Select * from vip_2');
       ADOQuery2.Open;
       ADOQuery2.Append;
       ADOQuery2.FieldByName('VipID').AsString:=Copy(RzEdit1.Text,1,15);

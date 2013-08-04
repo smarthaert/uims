@@ -55,6 +55,7 @@ var
   vIniFile : TIniFile;
   s        : Integer;
 begin
+  {
   //算文件目录长度
   vIniFile:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.Ini');
   s:=Length(vIniFile.Readstring('System','Data Source',''));
@@ -73,7 +74,7 @@ begin
       Label2.Caption:=Label2.Caption+Copy(vIniFile.Readstring('System','Data Source',''),61,s-30);
     end;
   end;
-
+  }
 end;
 
 procedure TFr_DataLink.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -108,7 +109,7 @@ begin
             'Password=root;' +
             'Data Source=ashop';
   Fr_Pass.ADOQuery1.SQL.Clear;
-  Fr_Pass.ADOQuery1.SQL.Add('Select * from ManaGer');
+  Fr_Pass.ADOQuery1.SQL.Add('Select * from manager');
   Try
     begin
       Fr_Pass.ADOQuery1.Active:=True;

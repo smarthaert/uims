@@ -60,7 +60,7 @@ end;
 procedure TFr_Stock.FormShow(Sender: TObject);
 begin
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from Purchase Where Not(EnterFiag)');
+  ADOQuery1.SQL.Add('Select * from purchase Where Not(EnterFiag)');
   ADOQuery1.Open;
 end;
 

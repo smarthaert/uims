@@ -62,7 +62,7 @@ begin
   begin
     key:=#0;
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('Select * from ManaGer Where UserID="'+Edit1.Text+'"');
+    ADOQuery1.SQL.Add('Select * from manager Where UserID="'+Edit1.Text+'"');
     ADOQuery1.Open;
     if ADOQuery1.RecordCount<>0 then
       Edit1.Text:=ADOQuery1.FieldByName('UserName').AsString;
@@ -82,13 +82,13 @@ end;
 procedure TFr_Pass.BitBtn1Click(Sender: TObject);
 begin
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from ManaGer Where UserID="'+Edit1.Text+'"');
+  ADOQuery1.SQL.Add('Select * from manager Where UserID="'+Edit1.Text+'"');
   ADOQuery1.Open;
   if ADOQuery1.RecordCount<>0 then
     Edit1.Text:=ADOQuery1.FieldByName('UserName').AsString;
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from ManaGer Where UserName="'+Edit1.Text+'"');
+  ADOQuery1.SQL.Add('Select * from manager Where UserName="'+Edit1.Text+'"');
   ADOQuery1.Open;
   if (ADOQuery1.FieldByName('UserPass').AsString=MD5.MD5Print(MD5.MD5String(Edit2.Text)))and(ADOQuery1.RecordCount<>0) then
   begin
@@ -129,7 +129,7 @@ begin
             'Password=root;' +
             'Data Source=ashop';
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from ManaGer');
+  ADOQuery1.SQL.Add('Select * from manager');
   Try
     ADOQuery1.Active:=True;
   Except
