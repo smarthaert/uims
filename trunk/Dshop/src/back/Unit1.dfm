@@ -12651,7 +12651,7 @@ object Fr_Pass: TFr_Pass
   object ADOConnection1: TADOConnection
     ConnectionString = 
       'Provider=MSDASQL.1;Persist Security Info=False;User ID=root;Pass' +
-      'word=root;Data Source=ashop'
+      'word=zaqwsxcde123;Data Source=shop'
     LoginPrompt = False
     Mode = cmShareDenyNone
     Provider = 'MSDASQL.1'
@@ -12659,7 +12659,9 @@ object Fr_Pass: TFr_Pass
     Top = 40
   end
   object ADOQuery1: TADOQuery
-    Connection = ADOConnection1
+    ConnectionString = 
+      'Provider=MSDASQL.1;Persist Security Info=False;User ID=root;Pass' +
+      'word=zaqwsxcde123;Data Source=shop'
     Parameters = <>
     Left = 40
     Top = 40

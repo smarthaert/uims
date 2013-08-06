@@ -1,11 +1,11 @@
 object Fr_Stock: TFr_Stock
-  Left = 209
+  Left = 436
   Top = 41
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #20837#24211#39564#25910
   ClientHeight = 741
-  ClientWidth = 1016
+  ClientWidth = 789
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,7 +20,7 @@ object Fr_Stock: TFr_Stock
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1016
+    Width = 789
     Height = 741
     Align = alClient
     BevelInner = bvLowered
@@ -29,7 +29,7 @@ object Fr_Stock: TFr_Stock
     object Panel2: TPanel
       Left = 3
       Top = 3
-      Width = 1010
+      Width = 783
       Height = 735
       Align = alClient
       Color = 15723503
@@ -37,8 +37,8 @@ object Fr_Stock: TFr_Stock
       object Label1: TLabel
         Left = 401
         Top = 40
-        Width = 208
-        Height = 32
+        Width = 210
+        Height = 29
         Caption = #20837#12288#24211#12288#39564#12288#25910
         Font.Charset = GB2312_CHARSET
         Font.Color = clWindowText

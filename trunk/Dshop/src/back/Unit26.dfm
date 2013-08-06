@@ -262,7 +262,7 @@ object Fr_YingShouYingFu: TFr_YingShouYingFu
             ForceNewColumn = False
             ForceNewPage = False
             Size.Values = (
-              68.791666666666670000
+              68.791666666666680000
               2010.833333333333000000)
             PreCaluculateBandHeight = False
             KeepOnOnePage = False
@@ -278,7 +278,7 @@ object Fr_YingShouYingFu: TFr_YingShouYingFu
               Frame.DrawLeft = False
               Frame.DrawRight = False
               Size.Values = (
-                68.791666666666670000
+                68.791666666666680000
                 1682.750000000000000000
                 0.000000000000000000
                 23.812500000000000000)
@@ -1001,9 +1001,7 @@ object Fr_YingShouYingFu: TFr_YingShouYingFu
     Top = 11
   end
   object ADOQuery1: TADOQuery
-    ConnectionString = 
-      'Provider=MSDASQL.1;Persist Security Info=False;User ID=root;Pass' +
-      'word=root;Data Source=ashop'
+    Connection = Fr_Pass.ADOConnection1
     Parameters = <>
     Left = 75
     Top = 27

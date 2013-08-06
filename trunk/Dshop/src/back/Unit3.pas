@@ -106,8 +106,8 @@ begin
   Fr_Pass.ADOQuery1.ConnectionString:='Provider=MSDASQL.1;' +
             'Persist Security Info=False;' +
             'User ID=root;' +
-            'Password=root;' +
-            'Data Source=ashop';
+            'Password=zaqwsxcde123;' +
+            'Data Source=shop';
   Fr_Pass.ADOQuery1.SQL.Clear;
   Fr_Pass.ADOQuery1.SQL.Add('Select * from manager');
   Try

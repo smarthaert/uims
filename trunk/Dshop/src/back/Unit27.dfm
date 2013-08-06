@@ -695,9 +695,7 @@ object Fr_DaYinJiCeShi: TFr_DaYinJiCeShi
     end
   end
   object ADOQuery1: TADOQuery
-    ConnectionString = 
-      'Provider=MSDASQL.1;Persist Security Info=False;User ID=root;Pass' +
-      'word=root;Data Source=ashop'
+    Connection = Fr_Pass.ADOConnection1
     Parameters = <>
     Left = 40
     Top = 65535
