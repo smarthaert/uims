@@ -1,6 +1,6 @@
 object Fr_DataLink: TFr_DataLink
-  Left = 280
-  Top = 99
+  Left = 714
+  Top = 427
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #35774#32622#25968#25454#36830#25509

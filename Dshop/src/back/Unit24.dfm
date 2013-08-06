@@ -1,6 +1,6 @@
 object Fr_XianJinGuanLi: TFr_XianJinGuanLi
-  Left = 107
-  Top = 82
+  Left = 306
+  Top = 87
   Width = 1199
   Height = 695
   Caption = #29616#37329#31649#29702

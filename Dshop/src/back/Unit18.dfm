@@ -1,6 +1,6 @@
 object Fr_GJTH_1: TFr_GJTH_1
-  Left = 367
-  Top = 239
+  Left = 433
+  Top = 189
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #37319#36141#21333#21495#26597#35810

@@ -1,11 +1,11 @@
 object Fr_GJTH: TFr_GJTH
-  Left = 218
+  Left = 289
   Top = 39
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #36141#36827#36864#22238
   ClientHeight = 741
-  ClientWidth = 1016
+  ClientWidth = 945
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -20,7 +20,7 @@ object Fr_GJTH: TFr_GJTH
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1016
+    Width = 945
     Height = 741
     Align = alClient
     BevelInner = bvLowered
@@ -29,7 +29,7 @@ object Fr_GJTH: TFr_GJTH
     object Panel2: TPanel
       Left = 3
       Top = 3
-      Width = 1010
+      Width = 939
       Height = 735
       Align = alClient
       Color = 15723503
