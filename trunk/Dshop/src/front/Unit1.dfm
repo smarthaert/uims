@@ -147,6 +147,7 @@ object Pass: TPass
     TabOrder = 1
   end
   object ADOQuery1: TADOQuery
+    Connection = Main.ADOConnection1
     Parameters = <>
     Left = 8
     Top = 8

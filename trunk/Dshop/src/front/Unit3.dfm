@@ -1,5 +1,5 @@
 object RegKey: TRegKey
-  Left = 494
+  Left = 565
   Top = 324
   BorderStyle = bsNone
   Caption = 'RegKey'

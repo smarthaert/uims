@@ -1,6 +1,6 @@
 object QD: TQD
-  Left = 220
-  Top = 111
+  Left = 482
+  Top = 161
   BorderStyle = bsNone
   Caption = 'QD'
   ClientHeight = 362

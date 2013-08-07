@@ -1,6 +1,6 @@
 object Sele: TSele
-  Left = 287
-  Top = 164
+  Left = 484
+  Top = 237
   BorderStyle = bsNone
   Caption = 'Sele'
   ClientHeight = 281

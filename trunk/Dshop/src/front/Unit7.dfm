@@ -1,6 +1,6 @@
 object Pos_Setup: TPos_Setup
-  Left = 192
-  Top = 107
+  Left = 382
+  Top = 130
   BorderStyle = bsNone
   Caption = 'Pos_Setup'
   ClientHeight = 257

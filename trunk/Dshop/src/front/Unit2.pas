@@ -167,8 +167,8 @@ begin
   ADOConnection1.ConnectionString:='Provider=MSDASQL.1;' +
             'Persist Security Info=False;' +
             'User ID=root;' +
-            'Password=root;' +
-            'Data Source=ashop';
+            'Password=zaqwsxcde123;' +
+            'Data Source=shop';
   //≥ı ºµ•∫≈
   for i:=1 to 9999 do
   begin
