@@ -1,5 +1,6 @@
 http://aws.amazon.com/cn/
 sgsz.z.root@gmail.com
+sgsz.v.root@gmail.com
 ec2-54-250-180-188.ap-northeast-1.compute.amazonaws.com 54.250.177.126
 
 zaqwsxcde123

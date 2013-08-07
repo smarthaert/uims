@@ -1,6 +1,6 @@
 object MoLing: TMoLing
-  Left = 204
-  Top = 126
+  Left = 439
+  Top = 224
   BorderStyle = bsNone
   Caption = #32467#24080#25273#38646
   ClientHeight = 134

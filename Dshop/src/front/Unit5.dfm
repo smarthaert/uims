@@ -1,6 +1,6 @@
 object Gathering: TGathering
-  Left = 192
-  Top = 92
+  Left = 392
+  Top = 128
   BorderStyle = bsNone
   Caption = #32467#36134#25910#27454
   ClientHeight = 257
