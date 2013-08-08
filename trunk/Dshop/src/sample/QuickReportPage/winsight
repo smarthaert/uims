@@ -1,0 +1,1456 @@
+* WinSight message trace Mon Dec 22 2003 12:31:48 *
+001513:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001514:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (108,305) 
+001515:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001516:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (110,310) 
+001517:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001518:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (112,314) 
+001519:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001520:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (115,317) 
+001521:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001522:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (116,320) 
+001523:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001524:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (118,321) 
+001525:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001526:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (119,322) 
+001527:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001528:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (120,322) 
+001529:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001530:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (121,323) 
+001531:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001532:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (122,324) 
+001533:00050092 "Form1"  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001534:00080072 "Default IME"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001535:000A0050 {tooltips_cl}  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001536:003E0126 {tooltips_cl}  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001537:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001538:0008007E "Project1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001539:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012F0F4
+001540:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 320111BC
+001541:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc 53010892
+001542:000C0134 {TTreeView}  WM_ERASEBKGND Sent   hdc 0A0111B1
+001543:00080072 "Default IME"  WM_WINDOWPOSCHANGED Sent   (0,0)-(0,0)    NoSize,  NoMove,  NoRedraw,  NoActivate  Z-Order After hwnd 0005010Ch
+001544:000A0050 {tooltips_cl}  WM_WINDOWPOSCHANGED Sent   (0,0)-(0,0)    NoSize,  NoMove,  NoRedraw,  NoActivate  Z-Order After hwnd 00080072h
+001545:003E0126 {tooltips_cl}  WM_WINDOWPOSCHANGED Sent   (0,0)-(0,0)    NoSize,  NoMove,  NoRedraw,  NoActivate  Z-Order After hwnd 000A0050h
+001546:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (205,144)-(749,519)    NoSize,  NoMove  Z-Order After hwnd 003E0126h
+001547:0008007E "Project1"  WM_WINDOWPOSCHANGED Sent   (400,300)-(400,300)    NoSize,  NoMove,  NoActivate  Z-Order After hwnd 00050092h
+001548:00080072 "Default IME"  WM_ACTIVATEAPP Sent   Activate from  task 00000000
+001549:000A0050 {tooltips_cl}  WM_ACTIVATEAPP Sent   Activate from  task 00000000
+001550:003E0126 {tooltips_cl}  WM_ACTIVATEAPP Sent   Activate from  task 00000000
+001551:00050092 "Form1"  WM_ACTIVATEAPP Sent   Activate from  task 00000000
+001552:0008007E "Project1"  WM_ACTIVATEAPP Sent   Activate from  task 00000000
+001553:000D0132 {TPUtilWindo}  WM_ACTIVATEAPP Sent   Activate from  task 00000000
+001554:00040094 {TPUtilWindo}  WM_ACTIVATEAPP Sent   Activate from  task 00000000
+001555:00050092 "Form1"  WM_ACTIVATE Sent   Mouse  Activate from hwnd 00000000
+001556:000C0134 {TTreeView}  WM_SETFOCUS Sent   Focus from hwnd 00000000
+001557:00050092 "Form1"  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 00050092
+001558:00050092 "Form1"  WM_LBUTTONDOWN Dispatched   (122,324)  LButton
+001559:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (122,324)  LButton
+001560:00050092 "Form1"  WM_PAINT Dispatched   (0,0)-(536,305)
+001561:001300E6 {TMy}  WM_PAINT Dispatched   (0,0)-(117,93)
+001562:000C0134 {TTreeView}  WM_PAINT Dispatched   (0,0)-(213,165)
+001563:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (123,324)  LButton
+001564:00050092 "Form1"  WM_LBUTTONUP Dispatched   (123,324) 
+001565:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001566:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (123,324) 
+001567:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001568:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (123,323) 
+001569:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001570:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (123,321) 
+001571:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001572:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (123,317) 
+001573:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001574:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (124,312) 
+001575:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001576:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (125,296) 
+001577:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001578:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (126,274) 
+001579:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001580:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (127,252) 
+001581:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001582:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (130,232) 
+001583:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001584:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (133,218) 
+001585:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+001586:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (135,214) 
+001587:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Border  hwnd 000C0134
+001588:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Border  hwnd 000C0134
+001589:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001590:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001591:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (0,92) 
+001592:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001593:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001594:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (3,88) 
+001595:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001596:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001597:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (6,84) 
+001598:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001599:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001600:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (12,80) 
+001601:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001602:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001603:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (18,76) 
+001604:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001605:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001606:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (22,73) 
+001607:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001608:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001609:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (27,71) 
+001610:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001611:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001612:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (29,69) 
+001613:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001614:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001615:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (32,67) 
+001616:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001617:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001618:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (34,66) 
+001619:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001620:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001621:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (35,66) 
+001622:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001623:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001624:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (36,64) 
+001625:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001626:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001627:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (37,64) 
+001628:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001629:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001630:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (38,64) 
+001631:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001632:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001633:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (39,63) 
+001634:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001635:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001636:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (40,63) 
+001637:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001638:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001639:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (41,62) 
+001640:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001641:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001642:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (42,62) 
+001643:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001644:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001645:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (42,63) 
+001646:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001647:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001648:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (43,63) 
+001649:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001650:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001651:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (44,65) 
+001652:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001653:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001654:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,67) 
+001655:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001656:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001657:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,70) 
+001658:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001659:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001660:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (48,71) 
+001661:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001662:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001663:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,72) 
+001664:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001665:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001666:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (50,72) 
+001667:000C0134 {TTreeView}  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001668:00050092 "Form1"  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001669:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001670:00050092 "Form1"  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001671:000C0134 {TTreeView}  WM_LBUTTONDOWN Dispatched   (50,72)  LButton
+001672:000C0134 {TTreeView}  WM_PAINT Sent   (0,32)-(213,80)
+001673:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001674:00050092 "Form1"  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001675:000C0134 {TTreeView}  WM_LBUTTONUP Dispatched   (50,72) 
+001676:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001677:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001678:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (50,73) 
+001679:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001680:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001681:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,73) 
+001682:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001683:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001684:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,74) 
+001685:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001686:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001687:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,75) 
+001688:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001689:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001690:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,77) 
+001691:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001692:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001693:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,79) 
+001694:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001695:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001696:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,80) 
+001697:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001698:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001699:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,83) 
+001700:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001701:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001702:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,85) 
+001703:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001704:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001705:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,86) 
+001706:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001707:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001708:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,87) 
+001709:000C0134 {TTreeView}  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001710:00050092 "Form1"  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001711:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001712:00050092 "Form1"  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001713:000C0134 {TTreeView}  WM_LBUTTONDOWN Dispatched   (49,87)  LButton
+001714:000C0134 {TTreeView}  WM_PAINT Sent   (0,64)-(213,96)
+001715:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001716:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001717:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,86)  LButton
+001718:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001719:00050092 "Form1"  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001720:000C0134 {TTreeView}  WM_LBUTTONUP Dispatched   (49,86) 
+001721:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001722:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001723:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (48,85) 
+001724:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001725:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001726:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (48,83) 
+001727:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001728:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001729:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (48,79) 
+001730:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001731:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001732:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,74) 
+001733:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001734:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001735:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,68) 
+001736:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001737:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001738:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,63) 
+001739:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001740:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001741:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,59) 
+001742:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001743:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001744:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,57) 
+001745:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001746:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001747:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,55) 
+001748:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001749:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001750:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,53) 
+001751:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001752:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001753:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,52) 
+001754:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001755:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001756:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,51) 
+001757:000C0134 {TTreeView}  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001758:00050092 "Form1"  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001759:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001760:00050092 "Form1"  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001761:000C0134 {TTreeView}  WM_LBUTTONDOWN Dispatched   (45,51)  LButton
+001762:000C0134 {TTreeView}  WM_PAINT Sent   (0,48)-(213,96)
+001763:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001764:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001765:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,50)  LButton
+001766:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001767:00050092 "Form1"  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001768:000C0134 {TTreeView}  WM_LBUTTONUP Dispatched   (45,50) 
+001769:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001770:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001771:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,47) 
+001772:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001773:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001774:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (44,43) 
+001775:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001776:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001777:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (44,37) 
+001778:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001779:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001780:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (44,32) 
+001781:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001782:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001783:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,28) 
+001784:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001785:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001786:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,25) 
+001787:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001788:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001789:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,23) 
+001790:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001791:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001792:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,22) 
+001793:000C0134 {TTreeView}  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001794:00050092 "Form1"  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001795:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001796:00050092 "Form1"  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001797:000C0134 {TTreeView}  WM_LBUTTONDOWN Dispatched   (45,22)  LButton
+001798:000C0134 {TTreeView}  WM_PAINT Sent   (0,16)-(213,64)
+001799:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001800:00050092 "Form1"  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001801:000C0134 {TTreeView}  WM_LBUTTONUP Dispatched   (45,22) 
+001802:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001803:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001804:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,23) 
+001805:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001806:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001807:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,25) 
+001808:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001809:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001810:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,27) 
+001811:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001812:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001813:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,30) 
+001814:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001815:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001816:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,33) 
+001817:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001818:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001819:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,36) 
+001820:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001821:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001822:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,38) 
+001823:000C0134 {TTreeView}  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001824:00050092 "Form1"  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001825:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001826:00050092 "Form1"  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001827:000C0134 {TTreeView}  WM_LBUTTONDOWN Dispatched   (46,38)  LButton
+001828:000C0134 {TTreeView}  WM_PAINT Sent   (0,16)-(213,48)
+001829:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001830:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001831:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (47,38)  LButton
+001832:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001833:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001834:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,39)  LButton
+001835:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001836:00050092 "Form1"  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001837:000C0134 {TTreeView}  WM_LBUTTONUP Dispatched   (46,39) 
+001838:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001839:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001840:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,40) 
+001841:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001842:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001843:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,42) 
+001844:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001845:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001846:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,44) 
+001847:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001848:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001849:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,47) 
+001850:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001851:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001852:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,48) 
+001853:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001854:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001855:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,50) 
+001856:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001857:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001858:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,51) 
+001859:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001860:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001861:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,52) 
+001862:000C0134 {TTreeView}  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001863:00050092 "Form1"  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001864:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001865:00050092 "Form1"  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001866:000C0134 {TTreeView}  WM_LBUTTONDOWN Dispatched   (45,52)  LButton
+001867:000C0134 {TTreeView}  WM_PAINT Sent   (0,32)-(213,64)
+001868:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001869:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001870:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,53)  LButton
+001871:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001872:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001873:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,54)  LButton
+001874:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001875:00050092 "Form1"  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001876:000C0134 {TTreeView}  WM_LBUTTONUP Dispatched   (45,54) 
+001877:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001878:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001879:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,53) 
+001880:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001881:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001882:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,51) 
+001883:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001884:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001885:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,49) 
+001886:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001887:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001888:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (44,46) 
+001889:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001890:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001891:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,42) 
+001892:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001893:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001894:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,39) 
+001895:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001896:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001897:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,38) 
+001898:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001899:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001900:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,37) 
+001901:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001902:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001903:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,36) 
+001904:000C0134 {TTreeView}  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001905:00050092 "Form1"  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001906:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001907:00050092 "Form1"  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001908:000C0134 {TTreeView}  WM_LBUTTONDOWN Dispatched   (46,36)  LButton
+001909:000C0134 {TTreeView}  WM_PAINT Sent   (0,32)-(213,64)
+001910:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001911:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001912:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (47,34)  LButton
+001913:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001914:00050092 "Form1"  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001915:000C0134 {TTreeView}  WM_LBUTTONUP Dispatched   (47,34) 
+001916:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001917:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001918:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (48,34) 
+001919:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001920:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001921:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (48,35) 
+001922:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001923:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001924:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (48,36) 
+001925:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001926:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001927:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (48,35) 
+001928:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001929:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001930:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (48,34) 
+001931:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001932:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001933:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,31) 
+001934:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001935:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001936:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,28) 
+001937:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001938:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001939:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,25) 
+001940:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001941:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001942:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,22) 
+001943:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001944:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001945:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,20) 
+001946:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001947:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001948:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (48,20) 
+001949:000C0134 {TTreeView}  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001950:00050092 "Form1"  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001951:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001952:00050092 "Form1"  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001953:000C0134 {TTreeView}  WM_LBUTTONDOWN Dispatched   (48,20)  LButton
+001954:000C0134 {TTreeView}  WM_PAINT Sent   (0,16)-(213,48)
+001955:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001956:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001957:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,20)  LButton
+001958:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001959:00050092 "Form1"  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001960:000C0134 {TTreeView}  WM_LBUTTONUP Dispatched   (46,20) 
+001961:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001962:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001963:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (44,19) 
+001964:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001965:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001966:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (43,18) 
+001967:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001968:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001969:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (41,16) 
+001970:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001971:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001972:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (40,14) 
+001973:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001974:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001975:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (39,12) 
+001976:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001977:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001978:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (39,11) 
+001979:000C0134 {TTreeView}  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001980:00050092 "Form1"  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+001981:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001982:00050092 "Form1"  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+001983:000C0134 {TTreeView}  WM_LBUTTONDOWN Dispatched   (39,11)  LButton
+001984:000C0134 {TTreeView}  WM_PAINT Sent   (0,0)-(213,32)
+001985:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001986:00050092 "Form1"  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+001987:000C0134 {TTreeView}  WM_LBUTTONUP Dispatched   (39,11) 
+001988:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001989:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001990:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (39,12) 
+001991:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001992:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001993:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (40,14) 
+001994:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001995:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001996:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (41,17) 
+001997:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001998:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+001999:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (42,20) 
+002000:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002001:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002002:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (43,23) 
+002003:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002004:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002005:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (44,26) 
+002006:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002007:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002008:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (44,28) 
+002009:000C0134 {TTreeView}  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+002010:00050092 "Form1"  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+002011:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+002012:00050092 "Form1"  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+002013:000C0134 {TTreeView}  WM_LBUTTONDOWN Dispatched   (44,28)  LButton
+002014:000C0134 {TTreeView}  WM_PAINT Sent   (0,0)-(213,32)
+002015:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002016:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002017:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (44,29)  LButton
+002018:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+002019:00050092 "Form1"  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+002020:000C0134 {TTreeView}  WM_LBUTTONUP Dispatched   (44,29) 
+002021:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002022:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002023:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (44,30) 
+002024:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002025:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002026:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,31) 
+002027:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002028:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002029:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,32) 
+002030:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002031:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002032:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,34) 
+002033:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002034:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002035:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,36) 
+002036:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002037:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002038:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,38) 
+002039:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002040:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002041:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,40) 
+002042:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002043:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002044:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,42) 
+002045:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002046:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002047:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,43) 
+002048:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002049:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002050:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,44) 
+002051:000C0134 {TTreeView}  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+002052:00050092 "Form1"  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+002053:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+002054:00050092 "Form1"  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+002055:000C0134 {TTreeView}  WM_LBUTTONDOWN Dispatched   (46,44)  LButton
+002056:000C0134 {TTreeView}  WM_PAINT Sent   (0,16)-(213,48)
+002057:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002058:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002059:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,45)  LButton
+002060:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002061:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002062:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,47)  LButton
+002063:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+002064:00050092 "Form1"  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+002065:000C0134 {TTreeView}  WM_LBUTTONUP Dispatched   (45,47) 
+002066:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002067:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002068:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,48) 
+002069:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002070:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002071:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,50) 
+002072:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002073:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002074:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,52) 
+002075:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002076:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002077:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,54) 
+002078:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002079:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002080:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,55) 
+002081:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002082:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002083:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,58) 
+002084:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002085:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002086:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,61) 
+002087:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002088:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002089:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,63) 
+002090:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002091:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002092:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,64) 
+002093:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002094:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002095:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,66) 
+002096:000C0134 {TTreeView}  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+002097:00050092 "Form1"  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+002098:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+002099:00050092 "Form1"  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+002100:000C0134 {TTreeView}  WM_LBUTTONDOWN Dispatched   (45,66)  LButton
+002101:000C0134 {TTreeView}  WM_PAINT Sent   (0,32)-(213,80)
+002102:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002103:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002104:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,67)  LButton
+002105:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002106:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002107:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,68)  LButton
+002108:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+002109:00050092 "Form1"  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+002110:000C0134 {TTreeView}  WM_LBUTTONUP Dispatched   (45,68) 
+002111:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002112:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002113:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,69) 
+002114:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002115:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002116:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,70) 
+002117:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002118:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002119:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,71) 
+002120:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002121:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002122:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,72) 
+002123:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002124:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002125:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,74) 
+002126:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002127:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002128:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,76) 
+002129:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002130:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002131:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (47,79) 
+002132:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002133:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002134:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (48,81) 
+002135:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002136:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002137:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,82) 
+002138:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002139:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002140:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,83) 
+002141:000C0134 {TTreeView}  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+002142:00050092 "Form1"  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+002143:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+002144:00050092 "Form1"  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+002145:000C0134 {TTreeView}  WM_LBUTTONDOWN Dispatched   (49,83)  LButton
+002146:000C0134 {TTreeView}  WM_PAINT Sent   (0,64)-(213,96)
+002147:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002148:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002149:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (48,83)  LButton
+002150:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+002151:00050092 "Form1"  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+002152:000C0134 {TTreeView}  WM_LBUTTONUP Dispatched   (48,83) 
+002153:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002154:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002155:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (48,82) 
+002156:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002157:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002158:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (48,80) 
+002159:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002160:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002161:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (48,79) 
+002162:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002163:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002164:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,78) 
+002165:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002166:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002167:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,76) 
+002168:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002169:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002170:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,75) 
+002171:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002172:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002173:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (50,74) 
+002174:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002175:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002176:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (50,73) 
+002177:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002178:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002179:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (51,71) 
+002180:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002181:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002182:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (52,70) 
+002183:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002184:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002185:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (51,67) 
+002186:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002187:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002188:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (51,65) 
+002189:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002190:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002191:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (51,63) 
+002192:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002193:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002194:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (51,62) 
+002195:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002196:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002197:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (51,60) 
+002198:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002199:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002200:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (51,59) 
+002201:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002202:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002203:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (52,58) 
+002204:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002205:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002206:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (52,56) 
+002207:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002208:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002209:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (52,55) 
+002210:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002211:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002212:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (52,53) 
+002213:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002214:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002215:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (52,51) 
+002216:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002217:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002218:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (52,50) 
+002219:000C0134 {TTreeView}  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+002220:00050092 "Form1"  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+002221:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+002222:00050092 "Form1"  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+002223:000C0134 {TTreeView}  WM_LBUTTONDOWN Dispatched   (52,50)  LButton
+002224:000C0134 {TTreeView}  WM_PAINT Sent   (0,48)-(213,96)
+002225:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+002226:00050092 "Form1"  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+002227:000C0134 {TTreeView}  WM_LBUTTONUP Dispatched   (52,50) 
+002228:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002229:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002230:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (52,48) 
+002231:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002232:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002233:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (52,46) 
+002234:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002235:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002236:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (54,44) 
+002237:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002238:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002239:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (54,41) 
+002240:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002241:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002242:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (54,38) 
+002243:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002244:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002245:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (54,36) 
+002246:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002247:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002248:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (54,34) 
+002249:000C0134 {TTreeView}  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+002250:00050092 "Form1"  WM_MOUSEACTIVATE Sent   LButtonDown in Client  hwnd 00050092
+002251:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+002252:00050092 "Form1"  WM_SETCURSOR Sent   LButtonDown in Client  hwnd 000C0134
+002253:000C0134 {TTreeView}  WM_LBUTTONDOWN Dispatched   (54,34)  LButton
+002254:000C0134 {TTreeView}  WM_PAINT Sent   (0,32)-(213,64)
+002255:000C0134 {TTreeView}  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+002256:00050092 "Form1"  WM_SETCURSOR Sent   LButtonUp in Client  hwnd 000C0134
+002257:000C0134 {TTreeView}  WM_LBUTTONUP Dispatched   (54,34) 
+002258:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002259:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002260:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (53,32) 
+002261:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002262:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002263:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (52,32) 
+002264:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002265:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002266:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (52,31) 
+002267:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002268:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002269:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (51,31) 
+002270:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002271:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002272:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (50,30) 
+002273:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002274:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002275:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (49,30) 
+002276:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002277:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002278:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (48,29) 
+002279:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002280:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002281:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (47,28) 
+002282:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002283:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002284:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (47,27) 
+002285:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002286:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002287:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,27) 
+002288:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002289:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002290:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,26) 
+002291:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002292:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002293:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,24) 
+002294:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002295:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002296:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,24) 
+002297:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002298:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002299:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,24) 
+002300:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002301:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002302:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,24) 
+002303:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002304:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002305:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,24) 
+002306:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002307:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002308:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,24) 
+002309:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002310:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002311:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,24) 
+002312:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002313:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002314:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,24) 
+002315:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002316:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002317:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,24) 
+002318:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002319:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002320:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,24) 
+002321:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002322:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002323:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,24) 
+002324:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002325:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002326:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,24) 
+002327:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002328:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002329:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,24) 
+002330:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002331:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002332:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,24) 
+002333:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002334:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002335:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,24) 
+002336:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002337:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002338:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,24) 
+002339:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002340:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002341:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,24) 
+002342:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002343:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002344:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,24) 
+002345:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002346:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002347:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,24) 
+002348:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002349:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002350:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,24) 
+002351:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002352:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002353:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,24) 
+002354:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002355:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002356:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,24) 
+002357:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002358:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002359:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,24) 
+002360:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002361:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002362:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,24) 
+002363:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002364:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002365:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (46,24) 
+002366:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002367:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002368:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,24) 
+002369:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002370:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002371:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,23) 
+002372:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002373:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002374:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (45,21) 
+002375:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002376:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002377:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (42,18) 
+002378:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002379:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002380:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (38,14) 
+002381:000C0134 {TTreeView}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002382:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 000C0134
+002383:000C0134 {TTreeView}  WM_MOUSEMOVE Dispatched   (32,0) 
+002384:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+002385:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (154,96) 
+002386:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+002387:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (140,78) 
+002388:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 00050092
+002389:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (122,60) 
+002390:001300E6 {TMy}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 001300E6
+002391:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 001300E6
+002392:001300E6 {TMy}  WM_MOUSEMOVE Dispatched   (96,40) 
+002393:001300E6 {TMy}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 001300E6
+002394:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 001300E6
+002395:001300E6 {TMy}  WM_MOUSEMOVE Dispatched   (80,24) 
+002396:001300E6 {TMy}  WM_SETCURSOR Sent   MouseMove in Client  hwnd 001300E6
+002397:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Client  hwnd 001300E6
+002398:001300E6 {TMy}  WM_MOUSEMOVE Dispatched   (66,8) 
+002399:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Caption  hwnd 00050092
+002400:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Top  hwnd 00050092
+002401:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012F17C
+002402:00050092 "Form1"  WM_ACTIVATE Sent   Deactivate to hwnd 00000000
+002403:00080072 "Default IME"  WM_ACTIVATEAPP Sent   Deactivate to  task 00000780
+002404:000A0050 {tooltips_cl}  WM_ACTIVATEAPP Sent   Deactivate to  task 00000780
+002405:003E0126 {tooltips_cl}  WM_ACTIVATEAPP Sent   Deactivate to  task 00000780
+002406:00050092 "Form1"  WM_ACTIVATEAPP Sent   Deactivate to  task 00000780
+002407:0008007E "Project1"  WM_ACTIVATEAPP Sent   Deactivate to  task 00000780
+002408:000D0132 {TPUtilWindo}  WM_ACTIVATEAPP Sent   Deactivate to  task 00000780
+002409:00040094 {TPUtilWindo}  WM_ACTIVATEAPP Sent   Deactivate to  task 00000780
+002410:000C0134 {TTreeView}  WM_KILLFOCUS Sent   Focus to hwnd 00000000
+002411:000C0134 {TTreeView}  WM_PAINT Sent   (0,32)-(213,48)
+7)  TrackMax (812,612)  Internal (25820940,25820816)
+000958:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (87,398)-(631,773)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+000959:00050092 "Form1"  WM_MOVE Sent   (91,421) 
+000960:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65533)  LButton
+000961:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (87,404)-(631,779) 
+000962:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+000963:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+000964:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (87,404)-(631,779)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+000965:00050092 "Form1"  WM_MOVE Sent   (91,427) 
+000966:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65532)  LButton
+000967:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (87,409)-(631,784) 
+000968:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+000969:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+000970:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (87,409)-(631,784)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+000971:00050092 "Form1"  WM_MOVE Sent   (91,432) 
+000972:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65533)  LButton
+000973:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (87,415)-(631,790) 
+000974:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+000975:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+000976:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (87,415)-(631,790)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+000977:00050092 "Form1"  WM_MOVE Sent   (91,438) 
+000978:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65532)  LButton
+000979:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (87,420)-(631,795) 
+000980:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+000981:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+000982:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (87,420)-(631,795)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+000983:00050092 "Form1"  WM_MOVE Sent   (91,443) 
+000984:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65531)  LButton
+000985:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (87,424)-(631,799) 
+000986:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+000987:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+000988:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (87,424)-(631,799)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+000989:00050092 "Form1"  WM_MOVE Sent   (91,447) 
+000990:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (260,65529)  LButton
+000991:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (86,426)-(630,801) 
+000992:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+000993:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+000994:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (86,426)-(630,801)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+000995:00050092 "Form1"  WM_MOVE Sent   (90,449) 
+000996:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65528)  LButton
+000997:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (86,427)-(630,802) 
+000998:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+000999:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001000:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (86,427)-(630,802)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001001:00050092 "Form1"  WM_MOVE Sent   (90,450) 
+001002:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65528)  LButton
+001003:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (86,428)-(630,803) 
+001004:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001005:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001006:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (86,428)-(630,803)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001007:00050092 "Form1"  WM_MOVE Sent   (90,451) 
+001008:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65530)  LButton
+001009:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (86,431)-(630,806) 
+001010:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001011:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001012:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (86,431)-(630,806)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001013:00050092 "Form1"  WM_MOVE Sent   (90,454) 
+001014:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65532)  LButton
+001015:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (86,436)-(630,811) 
+001016:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001017:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001018:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (86,436)-(630,811)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001019:00050092 "Form1"  WM_MOVE Sent   (90,459) 
+001020:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65531)  LButton
+001021:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (86,440)-(630,815) 
+001022:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001023:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001024:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (86,440)-(630,815)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001025:00050092 "Form1"  WM_MOVE Sent   (90,463) 
+001026:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (260,65532)  LButton
+001027:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (85,445)-(629,820) 
+001028:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001029:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001030:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (85,445)-(629,820)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001031:00050092 "Form1"  WM_MOVE Sent   (89,468) 
+001032:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (260,65533)  LButton
+001033:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (84,451)-(628,826) 
+001034:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001035:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001036:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (84,451)-(628,826)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001037:00050092 "Form1"  WM_MOVE Sent   (88,474) 
+001038:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65533)  LButton
+001039:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (84,457)-(628,832) 
+001040:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001041:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001042:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (84,457)-(628,832)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001043:00050092 "Form1"  WM_MOVE Sent   (88,480) 
+001044:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (260,9)  LButton
+001045:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (83,475)-(627,850) 
+001046:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001047:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001048:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (83,475)-(627,850)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001049:00050092 "Form1"  WM_MOVE Sent   (87,498) 
+001050:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (260,5)  LButton
+001051:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (82,489)-(626,864) 
+001052:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001053:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001054:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (82,489)-(626,864)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001055:00050092 "Form1"  WM_MOVE Sent   (86,512) 
+001056:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,5)  LButton
+001057:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (82,503)-(626,878) 
+001058:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001059:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001060:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (82,503)-(626,878)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001061:00050092 "Form1"  WM_MOVE Sent   (86,526) 
+001062:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (260,65532)  LButton
+001063:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (81,508)-(625,883) 
+001064:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001065:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001066:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (81,508)-(625,883)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001067:00050092 "Form1"  WM_MOVE Sent   (85,531) 
+001068:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65531)  LButton
+001069:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (81,512)-(625,887) 
+001070:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001071:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001072:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (81,512)-(625,887)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001073:00050092 "Form1"  WM_MOVE Sent   (85,535) 
+001074:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (260,65530)  LButton
+001075:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (80,515)-(624,890) 
+001076:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001077:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001078:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (80,515)-(624,890)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001079:00050092 "Form1"  WM_MOVE Sent   (84,538) 
+001080:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65528)  LButton
+001081:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (80,516)-(624,891) 
+001082:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001083:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001084:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (80,516)-(624,891)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001085:00050092 "Form1"  WM_MOVE Sent   (84,539) 
+001086:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65528)  LButton
+001087:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (80,517)-(624,892) 
+001088:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001089:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001090:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (80,517)-(624,892)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001091:00050092 "Form1"  WM_MOVE Sent   (84,540) 
+001092:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65526)  LButton
+001093:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (80,516)-(624,891) 
+001094:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001095:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001096:00050092 "Form1"  WM_NCPAINT Sent   wp=F3040F71!
+001097:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001098:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 08010913
+001099:001300E6 {TMy}  WM_NCPAINT Sent   wp=F4040F71!
+001100:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc 2E011184
+001101:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (80,516)-(624,891)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001102:00050092 "Form1"  WM_MOVE Sent   (84,539) 
+001103:00050092 "Form1"  WM_PAINT Sent   (121,32)-(536,33)
+001104:001300E6 {TMy}  WM_PAINT Sent   (0,30)-(117,31)
+001105:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001106:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFE6D
+001107:001300E6 {TMy}  WM_USER+0xD0C Sent   wp=00000000  lp=0012E59C 
+001108:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFE6D
+001109:001300E6 {TMy}  WM_USER+0xD0C Sent   wp=00000000  lp=0012E2E0 
+001110:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFE6D
+001111:001300E6 {TMy}  WM_USER+0xD0C Sent   wp=00000000  lp=0012E59C 
+001112:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFE6D
+001113:001300E6 {TMy}  WM_USER+0xD0C Sent   wp=00000000  lp=0012E2E0 
+001114:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (262,65525)  LButton
+001115:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (81,514)-(625,889) 
+001116:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001117:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001118:00050092 "Form1"  WM_NCPAINT Sent   wp=1B040800!
+001119:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001120:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 08010913
+001121:001300E6 {TMy}  WM_NCPAINT Sent   wp=1C040800!
+001122:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc 2B0111C0
+001123:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (81,514)-(625,889)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001124:00050092 "Form1"  WM_MOVE Sent   (85,537) 
+001125:00050092 "Form1"  WM_PAINT Sent   (121,33)-(536,35)
+001126:001300E6 {TMy}  WM_PAINT Sent   (0,31)-(117,33)
+001127:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001128:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFE6D
+001129:001300E6 {TMy}  WM_USER+0xD0C Sent   wp=00000000  lp=0012E59C 
+001130:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFE6D
+001131:001300E6 {TMy}  WM_USER+0xD0C Sent   wp=00000000  lp=0012E2E0 
+001132:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFE6D
+001133:001300E6 {TMy}  WM_USER+0xD0C Sent   wp=00000000  lp=0012E59C 
+001134:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFE6D
+001135:001300E6 {TMy}  WM_USER+0xD0C Sent   wp=00000000  lp=0012E2E0 
+001136:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (262,65524)  LButton
+001137:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (82,511)-(626,886) 
+001138:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001139:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001140:00050092 "Form1"  WM_NCPAINT Sent   wp=8D040F3B!
+001141:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001142:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 08010913
+001143:001300E6 {TMy}  WM_NCPAINT Sent   wp=8E040F3B!
+001144:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc 2E011184
+001145:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (82,511)-(626,886)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001146:00050092 "Form1"  WM_MOVE Sent   (86,534) 
+001147:00050092 "Form1"  WM_PAINT Sent   (121,35)-(536,38)
+001148:001300E6 {TMy}  WM_PAINT Sent   (0,33)-(117,36)
+001149:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001150:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65524)  LButton
+001151:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (82,508)-(626,883) 
+001152:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001153:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001154:00050092 "Form1"  WM_NCPAINT Sent   wp=61040F63!
+001155:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001156:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 08010913
+001157:001300E6 {TMy}  WM_NCPAINT Sent   wp=62040F63!
+001158:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc 0A0111B1
+001159:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (82,508)-(626,883)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001160:00050092 "Form1"  WM_MOVE Sent   (86,531) 
+001161:00050092 "Form1"  WM_PAINT Sent   (121,38)-(536,41)
+001162:001300E6 {TMy}  WM_PAINT Sent   (0,36)-(117,39)
+001163:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001164:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (262,65524)  LButton
+001165:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (83,505)-(627,880) 
+001166:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001167:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001168:00050092 "Form1"  WM_NCPAINT Sent   wp=85040E5D!
+001169:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001170:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 08010913
+001171:001300E6 {TMy}  WM_NCPAINT Sent   wp=86040E5D!
+001172:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc 2E011184
+001173:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (83,505)-(627,880)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001174:00050092 "Form1"  WM_MOVE Sent   (87,528) 
+001175:00050092 "Form1"  WM_PAINT Sent   (121,41)-(536,44)
+001176:001300E6 {TMy}  WM_PAINT Sent   (0,39)-(117,42)
+001177:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001178:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65524)  LButton
+001179:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (83,502)-(627,877) 
+001180:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001181:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001182:00050092 "Form1"  WM_NCPAINT Sent   wp=06040F71!
+001183:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001184:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 2B0111C0
+001185:001300E6 {TMy}  WM_NCPAINT Sent   wp=07040F71!
+001186:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc CE01041A
+001187:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (83,502)-(627,877)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001188:00050092 "Form1"  WM_MOVE Sent   (87,525) 
+001189:00050092 "Form1"  WM_PAINT Sent   (121,44)-(536,47)
+001190:001300E6 {TMy}  WM_PAINT Sent   (0,42)-(117,45)
+001191:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001192:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65525)  LButton
+001193:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (83,500)-(627,875) 
+001194:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001195:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001196:00050092 "Form1"  WM_NCPAINT Sent   wp=92040F5F!
+001197:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001198:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 2B0111C0
+001199:001300E6 {TMy}  WM_NCPAINT Sent   wp=93040F5F!
+001200:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc 2E011184
+001201:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (83,500)-(627,875)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001202:00050092 "Form1"  WM_MOVE Sent   (87,523) 
+001203:00050092 "Form1"  WM_PAINT Sent   (121,47)-(536,49)
+001204:001300E6 {TMy}  WM_PAINT Sent   (0,45)-(117,47)
+001205:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001206:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65525)  LButton
+001207:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (83,498)-(627,873) 
+001208:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001209:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001210:00050092 "Form1"  WM_NCPAINT Sent   wp=80040F73!
+001211:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001212:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 2B0111C0
+001213:001300E6 {TMy}  WM_NCPAINT Sent   wp=81040F73!
+001214:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc CE01041A
+001215:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (83,498)-(627,873)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001216:00050092 "Form1"  WM_MOVE Sent   (87,521) 
+001217:00050092 "Form1"  WM_PAINT Sent   (121,49)-(536,51)
+001218:001300E6 {TMy}  WM_PAINT Sent   (0,47)-(117,49)
+001219:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001220:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65525)  LButton
+001221:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (83,496)-(627,871) 
+001222:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001223:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001224:00050092 "Form1"  WM_NCPAINT Sent   wp=78040F63!
+001225:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001226:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 2B0111C0
+001227:001300E6 {TMy}  WM_NCPAINT Sent   wp=79040F63!
+001228:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc 2E011184
+001229:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (83,496)-(627,871)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001230:00050092 "Form1"  WM_MOVE Sent   (87,519) 
+001231:00050092 "Form1"  WM_PAINT Sent   (121,51)-(536,53)
+001232:001300E6 {TMy}  WM_PAINT Sent   (0,49)-(117,51)
+001233:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001234:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (262,65524)  LButton
+001235:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (84,493)-(628,868) 
+001236:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001237:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001238:00050092 "Form1"  WM_NCPAINT Sent   wp=DD040F61!
+001239:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001240:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 2B0111C0
+001241:001300E6 {TMy}  WM_NCPAINT Sent   wp=DE040F61!
+001242:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc CE01041A
+001243:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (84,493)-(628,868)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001244:00050092 "Form1"  WM_MOVE Sent   (88,516) 
+001245:00050092 "Form1"  WM_PAINT Sent   (121,53)-(536,56)
+001246:001300E6 {TMy}  WM_PAINT Sent   (0,51)-(117,54)
+001247:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001248:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65524)  LButton
+001249:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (84,490)-(628,865) 
+001250:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001251:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001252:00050092 "Form1"  WM_NCPAINT Sent   wp=1A040F71!
+001253:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001254:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 2B0111C0
+001255:001300E6 {TMy}  WM_NCPAINT Sent   wp=1B040F71!
+001256:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc A4010F33
+001257:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (84,490)-(628,865)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001258:00050092 "Form1"  WM_MOVE Sent   (88,513) 
+001259:00050092 "Form1"  WM_PAINT Sent   (121,56)-(536,59)
+001260:001300E6 {TMy}  WM_PAINT Sent   (0,54)-(117,57)
+001261:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001262:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65524)  LButton
+001263:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (84,487)-(628,862) 
+001264:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001265:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001266:00050092 "Form1"  WM_NCPAINT Sent   wp=A9040F5F!
+001267:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001268:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 2B0111C0
+001269:001300E6 {TMy}  WM_NCPAINT Sent   wp=AA040F5F!
+001270:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc CE01041A
+001271:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (84,487)-(628,862)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001272:00050092 "Form1"  WM_MOVE Sent   (88,510) 
+001273:00050092 "Form1"  WM_PAINT Sent   (121,59)-(536,62)
+001274:001300E6 {TMy}  WM_PAINT Sent   (0,57)-(117,60)
+001275:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001276:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65524)  LButton
+001277:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (84,484)-(628,859) 
+001278:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001279:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001280:00050092 "Form1"  WM_NCPAINT Sent   wp=AC040F3B!
+001281:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001282:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 2B0111C0
+001283:001300E6 {TMy}  WM_NCPAINT Sent   wp=AD040F3B!
+001284:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc A4010F33
+001285:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (84,484)-(628,859)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001286:00050092 "Form1"  WM_MOVE Sent   (88,507) 
+001287:00050092 "Form1"  WM_PAINT Sent   (121,62)-(536,65)
+001288:001300E6 {TMy}  WM_PAINT Sent   (0,60)-(117,63)
+001289:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001290:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (262,65526)  LButton
+001291:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (85,483)-(629,858) 
+001292:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001293:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001294:00050092 "Form1"  WM_NCPAINT Sent   wp=A8040E5D!
+001295:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001296:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 2B0111C0
+001297:001300E6 {TMy}  WM_NCPAINT Sent   wp=A9040E5D!
+001298:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc CE01041A
+001299:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (85,483)-(629,858)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001300:00050092 "Form1"  WM_MOVE Sent   (89,506) 
+001301:00050092 "Form1"  WM_PAINT Sent   (121,65)-(536,66)
+001302:001300E6 {TMy}  WM_PAINT Sent   (0,63)-(117,64)
+001303:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001304:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65526)  LButton
+001305:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (85,482)-(629,857) 
+001306:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001307:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001308:00050092 "Form1"  WM_NCPAINT Sent   wp=31040F71!
+001309:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001310:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 320111BC
+001311:001300E6 {TMy}  WM_NCPAINT Sent   wp=32040F71!
+001312:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc CE01041A
+001313:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (85,482)-(629,857)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001314:00050092 "Form1"  WM_MOVE Sent   (89,505) 
+001315:00050092 "Form1"  WM_PAINT Sent   (121,66)-(536,67)
+001316:001300E6 {TMy}  WM_PAINT Sent   (0,64)-(117,65)
+001317:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001318:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65526)  LButton
+001319:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (85,481)-(629,856) 
+001320:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001321:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001322:00050092 "Form1"  WM_NCPAINT Sent   wp=49040800!
+001323:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001324:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 320111BC
+001325:001300E6 {TMy}  WM_NCPAINT Sent   wp=4A040800!
+001326:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc 38011093
+001327:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (85,481)-(629,856)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001328:00050092 "Form1"  WM_MOVE Sent   (89,504) 
+001329:00050092 "Form1"  WM_PAINT Sent   (121,67)-(536,68)
+001330:001300E6 {TMy}  WM_PAINT Sent   (0,65)-(117,66)
+001331:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001332:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65526)  LButton
+001333:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (85,480)-(629,855) 
+001334:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001335:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001336:00050092 "Form1"  WM_NCPAINT Sent   wp=FF040F61!
+001337:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001338:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 320111BC
+001339:001300E6 {TMy}  WM_NCPAINT Sent   wp=00040F61!
+001340:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc CE01041A
+001341:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (85,480)-(629,855)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001342:00050092 "Form1"  WM_MOVE Sent   (89,503) 
+001343:00050092 "Form1"  WM_PAINT Sent   (121,68)-(536,69)
+001344:001300E6 {TMy}  WM_PAINT Sent   (0,66)-(117,67)
+001345:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001346:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65526)  LButton
+001347:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (85,479)-(629,854) 
+001348:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001349:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001350:00050092 "Form1"  WM_NCPAINT Sent   wp=C5040F3B!
+001351:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001352:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 320111BC
+001353:001300E6 {TMy}  WM_NCPAINT Sent   wp=C6040F3B!
+001354:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc 38011093
+001355:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (85,479)-(629,854)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001356:00050092 "Form1"  WM_MOVE Sent   (89,502) 
+001357:00050092 "Form1"  WM_PAINT Sent   (121,69)-(536,70)
+001358:001300E6 {TMy}  WM_PAINT Sent   (0,67)-(117,68)
+001359:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001360:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65525)  LButton
+001361:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (85,477)-(629,852) 
+001362:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001363:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001364:00050092 "Form1"  WM_NCPAINT Sent   wp=C4040E5D!
+001365:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001366:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 320111BC
+001367:001300E6 {TMy}  WM_NCPAINT Sent   wp=C5040E5D!
+001368:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc CE01041A
+001369:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (85,477)-(629,852)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001370:00050092 "Form1"  WM_MOVE Sent   (89,500) 
+001371:00050092 "Form1"  WM_PAINT Sent   (121,70)-(536,72)
+001372:001300E6 {TMy}  WM_PAINT Sent   (0,68)-(117,70)
+001373:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001374:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65526)  LButton
+001375:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (85,476)-(629,851) 
+001376:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001377:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001378:00050092 "Form1"  WM_NCPAINT Sent   wp=48040F71!
+001379:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001380:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 320111BC
+001381:001300E6 {TMy}  WM_NCPAINT Sent   wp=49040F71!
+001382:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc 38011093
+001383:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (85,476)-(629,851)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001384:00050092 "Form1"  WM_MOVE Sent   (89,499) 
+001385:00050092 "Form1"  WM_PAINT Sent   (121,72)-(536,73)
+001386:001300E6 {TMy}  WM_PAINT Sent   (0,70)-(117,71)
+001387:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001388:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65526)  LButton
+001389:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (85,475)-(629,850) 
+001390:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001391:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001392:00050092 "Form1"  WM_NCPAINT Sent   wp=60040800!
+001393:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001394:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 320111BC
+001395:001300E6 {TMy}  WM_NCPAINT Sent   wp=61040800!
+001396:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc CE01041A
+001397:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (85,475)-(629,850)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001398:00050092 "Form1"  WM_MOVE Sent   (89,498) 
+001399:00050092 "Form1"  WM_PAINT Sent   (121,73)-(536,74)
+001400:001300E6 {TMy}  WM_PAINT Sent   (0,71)-(117,72)
+001401:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001402:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65526)  LButton
+001403:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (85,474)-(629,849) 
+001404:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001405:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001406:00050092 "Form1"  WM_NCPAINT Sent   wp=17040F61!
+001407:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001408:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 320111BC
+001409:001300E6 {TMy}  WM_NCPAINT Sent   wp=18040F61!
+001410:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc 38011093
+001411:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (85,474)-(629,849)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001412:00050092 "Form1"  WM_MOVE Sent   (89,497) 
+001413:00050092 "Form1"  WM_PAINT Sent   (121,74)-(536,75)
+001414:001300E6 {TMy}  WM_PAINT Sent   (0,72)-(117,73)
+001415:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001416:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65525)  LButton
+001417:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (85,472)-(629,847) 
+001418:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001419:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001420:00050092 "Form1"  WM_NCPAINT Sent   wp=DC040F3B!
+001421:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001422:00050092 "Form1"  WM_ERASEBKGND Sent   hdc 320111BC
+001423:001300E6 {TMy}  WM_NCPAINT Sent   wp=DD040F3B!
+001424:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc CE01041A
+001425:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (85,472)-(629,847)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001426:00050092 "Form1"  WM_MOVE Sent   (89,495) 
+001427:00050092 "Form1"  WM_PAINT Sent   (121,75)-(536,77)
+001428:001300E6 {TMy}  WM_PAINT Sent   (0,73)-(117,75)
+001429:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001430:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65526)  LButton
+001431:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (85,471)-(629,846) 
+001432:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001433:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001434:00050092 "Form1"  WM_NCPAINT Sent   wp=DB040E5D!
+001435:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001436:00050092 "Form1"  WM_ERASEBKGND Sent   hdc CE01041A
+001437:001300E6 {TMy}  WM_NCPAINT Sent   wp=DC040E5D!
+001438:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc 2E011184
+001439:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (85,471)-(629,846)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001440:00050092 "Form1"  WM_MOVE Sent   (89,494) 
+001441:00050092 "Form1"  WM_PAINT Sent   (121,77)-(536,78)
+001442:001300E6 {TMy}  WM_PAINT Sent   (0,75)-(117,76)
+001443:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001444:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (261,65526)  LButton
+001445:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (85,470)-(629,845) 
+001446:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001447:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001448:00050092 "Form1"  WM_NCPAINT Sent   wp=5F040F71!
+001449:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012E6BC
+001450:00050092 "Form1"  WM_ERASEBKGND Sent   hdc CE01041A
+001451:001300E6 {TMy}  WM_NCPAINT Sent   wp=60040F71!
+001452:001300E6 {TMy}  WM_ERASEBKGND Sent   hdc 53010892
+001453:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (85,470)-(629,845)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001454:00050092 "Form1"  WM_MOVE Sent   (89,493) 
+001455:00050092 "Form1"  WM_PAINT Sent   (121,78)-(536,79)
+001456:001300E6 {TMy}  WM_PAINT Sent   (0,76)-(117,77)
+001457:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 001300E6 (id:1300e6) NM_FFFFFFF4
+001458:00050092 "Form1"  WM_MOUSEMOVE Dispatched   (260,65527)  LButton
+001459:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (84,470)-(628,845) 
+001460:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001461:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001462:00050092 "Form1"  WM_WINDOWPOSCHANGED Sent   (84,470)-(628,845)    NoSize,  NoZOrder,  NoActivate,  NoOwnerZOrder  Z-Order Unchanged
+001463:00050092 "Form1"  WM_MOVE Sent   (88,493) 
+001464:00050092 "Form1"  WM_LBUTTONUP Dispatched   (261,65527) 
+001465:00050092 "Form1"  WM_MOVING Sent  WMSZ_0009 (84,470)-(628,845) 
+001466:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001467:00050092 "Form1"  WM_GETMINMAXINFO Sent   Maximize (-4,-4)-(804,604)  TrackMin (112,27)  TrackMax (812,612)  Internal (25820940,25820816)
+001468:00050092 "Form1"  WM_CAPTURECHANGED Sent  Capture to 00000000
+001469:00080072 "Default IME"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001470:000A0050 {tooltips_cl}  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001471:003E0126 {tooltips_cl}  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001472:00050092 "Form1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001473:0008007E "Project1"  WM_WINDOWPOSCHANGING Sent   (0,0)-(0,0)    Z-Order Top
+001474:00050092 "Form1"  WM_EXITSIZEMOVE Sent   wp=00000000  lp=00000000 
+001475:00050092 "Form1"  WM_NCHITTEST Sent   (349,484)
+001476:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Caption  hwnd 00050092
+001477:00050092 "Form1"  WM_NCMOUSEMOVE Dispatched   (349,484) in Caption
+001478:00050092 "Form1"  WM_NCHITTEST Sent   (349,484)
+001479:00050092 "Form1"  WM_NCHITTEST Sent   (348,483)
+001480:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Caption  hwnd 00050092
+001481:00050092 "Form1"  WM_NCMOUSEMOVE Dispatched   (348,483) in Caption
+001482:00050092 "Form1"  WM_NCHITTEST Sent   (348,483)
+001483:00050092 "Form1"  WM_NCHITTEST Sent   (345,481)
+001484:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Caption  hwnd 00050092
+001485:00050092 "Form1"  WM_NCMOUSEMOVE Dispatched   (345,481) in Caption
+001486:00050092 "Form1"  WM_NCHITTEST Sent   (345,481)
+001487:00050092 "Form1"  WM_NCHITTEST Sent   (340,478)
+001488:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Caption  hwnd 00050092
+001489:00050092 "Form1"  WM_NCMOUSEMOVE Dispatched   (340,478) in Caption
+001490:00050092 "Form1"  WM_NCHITTEST Sent   (340,478)
+001491:00050092 "Form1"  WM_NCHITTEST Sent   (334,474)
+001492:00050092 "Form1"  WM_SETCURSOR Sent   MouseMove in Caption  hwnd 00050092
+001493:00050092 "Form1"  WM_NCMOUSEMOVE Dispatched   (334,474) in Caption
+001494:00050092 "Form1"  WM_NCHITTEST Sent   (334,474)
+001495:00050092 "Form1"  WM_NCACTIVATE Sent   Deactivate to hwnd 00000000
+001496:00050092 "Form1"  WM_GETTEXT Sent   510 bytes at 0012F17C
+001497:00050092 "Form1"  WM_ACTIVATE Sent   Deactivate to hwnd 00000000
+001498:00080072 "Default IME"  WM_ACTIVATEAPP Sent   Deactivate to  task 00000780
+001499:000A0050 {tooltips_cl}  WM_ACTIVATEAPP Sent   Deactivate to  task 00000780
+001500:003E0126 {tooltips_cl}  WM_ACTIVATEAPP Sent   Deactivate to  task 00000780
+001501:00050092 "Form1"  WM_ACTIVATEAPP Sent   Deactivate to  task 00000780
+001502:0008007E "Project1"  WM_ACTIVATEAPP Sent   Deactivate to  task 00000780
+001503:000D0132 {TPUtilWindo}  WM_ACTIVATEAPP Sent   Deactivate to  task 00000780
+001504:00040094 {TPUtilWindo}  WM_ACTIVATEAPP Sent   Deactivate to  task 00000780
+001505:000C0134 {TTreeView}  WM_KILLFOCUS Sent   Focus to hwnd 00000000
+001506:00050092 "Form1"  WM_NOTIFY Sent From hwnd: 000C0134 (id:c0134) KillFocus
+001507:00080072 "Default IME"  WM_0x287 Sent   wp=00000018  lp=000C0134 
+001508:000C0134 {TTreeView}  WM_IME_SETCONTEXT Sent  Inactive,  ShowGuideLine, ShowCompositionWindow Candidate: 0,1,2,3
+001509:00080072 "Default IME"  WM_IME_SETCONTEXT Sent  Inactive,  ShowGuideLine, ShowCompositionWindow Candidate: 0,1,2,3
+001510:000C0134 {TTreeView}  WM_IME_NOTIFY Sent  CloseStatusWindow 
+001511:00080072 "Default IME"  WM_IME_NOTIFY Sent  CloseStatusWindow 
+001512:0008007E "Project1"  WM_USER+0xAC01 Dispatched   wp=00000000  lp=00000000 
