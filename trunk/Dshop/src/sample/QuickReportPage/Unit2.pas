@@ -12,18 +12,24 @@ type
     QRDBText1: TQRDBText;
     QRDBText2: TQRDBText;
     QRDBText3: TQRDBText;
-    ChildBand1: TQRChildBand;
-    QRLabel1: TQRLabel;
+    qrbnd2: TQRBand;
+    qrsysdt1: TQRSysData;
+    qrbnd3: TQRBand;
+    qrlbl3: TQRLabel;
+    qrlbl1: TQRLabel;
+    qrsysdt2: TQRSysData;
+    qrbnd1: TQRBand;
     procedure DetailBand1AfterPrint(Sender: TQRCustomBand;
       BandPrinted: Boolean);
     procedure DetailBand1BeforePrint(Sender: TQRCustomBand;
       var PrintBand: Boolean);
     procedure ChildBand1BeforePrint(Sender: TQRCustomBand;
       var PrintBand: Boolean);
+    procedure qrlbl1Print(sender: TObject; var Value: String);
   private
 
   public
-
+   FTotalPages:Integer;
   end;
 
 var
@@ -51,7 +57,7 @@ begin
   end else
   begin
     NewPage;
-    i:= 0;    
+    i:= 0;
   end;
 end;
 
@@ -62,6 +68,11 @@ begin
     PrintBand := True
   else
     PrintBand := False;
+end;
+
+procedure TqrTest.qrlbl1Print(sender: TObject; var Value: String);
+begin
+   Value := 'µÚ' + IntToStr(qrTest.QRPrinter.PageNumber) + 'Ò³ / ¹²' + IntToStr(FTotalPages)+ 'Ò³';
 end;
 
 end.

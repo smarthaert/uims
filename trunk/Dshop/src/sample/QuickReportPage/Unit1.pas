@@ -45,10 +45,19 @@ end;
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
+
+
   n := StrToInt(Edit1.Text);
   PrintCount := 0;
   i:= 0;
+  try
+  qrTest.Prepare;
+  qrTest.FTotalPages := qrTest.QRPRinter.PageCount;
+  finally
+  qrTest.QRPrinter.Cleanup;
+   end;  
   qrTest.Preview;
+
 end;
 
 end.
