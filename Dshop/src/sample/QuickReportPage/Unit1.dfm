@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 164
-  Top = 117
+  Left = 366
+  Top = 130
   Width = 544
   Height = 375
   Caption = 'Form1'
@@ -18,7 +18,6 @@ object Form1: TForm1
     Top = 0
     Width = 8
     Height = 348
-    Cursor = crHSplit
   end
   object DBGrid1: TDBGrid
     Left = 0
@@ -83,7 +82,6 @@ object Form1: TForm1
       Min = 1
       Position = 10
       TabOrder = 2
-      Wrap = False
     end
     object Button2: TButton
       Left = 8
