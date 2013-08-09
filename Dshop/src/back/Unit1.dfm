@@ -12659,9 +12659,7 @@ object Fr_Pass: TFr_Pass
     Top = 40
   end
   object ADOQuery1: TADOQuery
-    ConnectionString = 
-      'Provider=MSDASQL.1;Persist Security Info=False;User ID=root;Pass' +
-      'word=zaqwsxcde123;Data Source=shop'
+    Connection = ADOConnection1
     Parameters = <>
     Left = 40
     Top = 40

@@ -1,6 +1,6 @@
 object Pass: TPass
-  Left = 553
-  Top = 335
+  Left = 670
+  Top = 292
   BorderStyle = bsNone
   Caption = 'Pass'
   ClientHeight = 157
@@ -147,7 +147,9 @@ object Pass: TPass
     TabOrder = 1
   end
   object ADOQuery1: TADOQuery
-    Connection = Main.ADOConnection1
+    ConnectionString = 
+      'Provider=MSDASQL.1;Persist Security Info=False;User ID=root;Pass' +
+      'word=zaqwsxcde123;Data Source=shop'
     Parameters = <>
     Left = 8
     Top = 8

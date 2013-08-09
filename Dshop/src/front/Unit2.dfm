@@ -1,6 +1,6 @@
 object Main: TMain
-  Left = 278
-  Top = 123
+  Left = 417
+  Top = 78
   Width = 1024
   Height = 768
   ActiveControl = RzEdit4
@@ -1568,12 +1568,9 @@ object Main: TMain
     Top = 113
   end
   object ADOConnection1: TADOConnection
-    ConnectionString = 
-      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Se' +
-      'ttings\user\'#26700#38754'\NewShop\Data.mdb;Persist Security Info=False'
     LoginPrompt = False
     Mode = cmShareDenyNone
-    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Provider = 'MSDASQL.1'
     Left = 8
     Top = 49
   end
