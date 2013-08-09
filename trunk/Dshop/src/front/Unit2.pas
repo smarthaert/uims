@@ -235,7 +235,11 @@ begin
 end;
 
 procedure TMain.QH1;
+var
+  sum:Double;
 begin
+  
+  ADOQuery1.Refresh;
   //计算合计数
   //如果是赠品小计为零
   ADOQuery1.Edit;
@@ -245,10 +249,13 @@ begin
     Exit;
   end;
   //单条记录求合：小计=售价*数量*折扣/100
-  ADOQuery1.FieldByName('Subtotal').AsCurrency := ADOQuery1.FieldByName('SellPrice').AsCurrency*
+  sum := ADOQuery1.FieldByName('SellPrice').AsCurrency*
                                                   ADOQuery1.FieldByName('SellScalar').AsCurrency*
                                                   ADOQuery1.FieldByName('Agio').AsCurrency/100;
+  
+  ADOQuery1.FieldByName('Subtotal').AsCurrency := sum;
   ADOQuery1.Post;
+  ADOQuery1.Refresh;
 end;
 
 procedure TMain.WRecord;
