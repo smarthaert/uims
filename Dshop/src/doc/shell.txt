@@ -1,0 +1,84 @@
+﻿account default
+host smtp.gmail.com
+from sgsz.z.root@gmail.com
+tls on
+auth on
+port 587
+user sgsz.z.root@gmail.com
+password zaqwsxcde123
+logfile ~/.msmtp.log
+tls_certcheck off
+
+
+
+set pop_last=yes
+set pop_pass=zaqwsxcde123
+set pop_user=sgsz.z.root@gmail.com
+set pop_host=pops:
+set sendmail="/usr/bin/msmtp"
+
+
+
+msmtp --host=smtp.gmail.com --serverinfo
+
+
+发送邮件测试：
+echo 'test mutt+msmtp'|mutt -s 'test mutt+msmtp' sgsz.z.root@gmail.com -a attatch.file
+
+
+发送给多人，抄送，添加附件
+echo "hello" | mutt -s "title" 252578390@qq.com,zhenghong-xia@163.com -c 402714871@qq.com -a /tmp/ip.tmp
+
+
+发送邮件时设置邮件的文本类型为：html格式，邮件的等级为:重要
+address="zhenghongxia@anjuke.com"
+echo $content|mutt  -s "${subject}" -e 'set content_type="text/html"' -e 'send-hook . "my_hdr  X-Priority: 1"' $address
+
+
+
+
+
+#!/bin/bash
+#set time format
+date=`date -d "%m"date -d today +"%Y-%m-%d-%H-%M"`
+mkdir -p "/home/redmine/workplace/mysql/db-backup/everyday/"
+
+echo $date
+#定义数组
+db_array=(shop)
+
+#取数组无元素个数
+
+lenArray=${#db_array[@]}
+
+#循环列出数组元素
+
+i=0
+while [ $i -lt $lenArray ]
+do
+#执行备份
+mysqldump -uroot -proot --default-character-set=utf8 --opt --extended-insert=false --triggers -R --hex-blob -x ${db_array[$i]} > /home/redmine/workplace/mysql/db-backup/everyday/${db_array[$i]}-$date.sql;
+# echo ${db_array[$i]}
+let i++
+done
+
+#将所有SQL文件压缩到一个文件
+tar -cvzf db-backup/mysql-data-$date.tar.gz db-backup/everyday/*$date.sql
+#发送备份文件到邮箱
+echo "$date" | mutt -s "shop" 12442835@qq.com -a /home/redmine/workplace/mysql/db-backup/mysql-data-$date.tar.gz
+echo "$date 备份成功并发送到指定邮箱" >> /home/redmine/workplace/mysql/db-backup/backup.log
+exit
+
+
+
+删除BOM：
+
+:set nobomb
+
+
+crontab -l
+crontab -e
+# m h  dom mon dow   command
+每天凌晨03:00执行
+00 03 * * * /home/redmine/workplace/mysql/send-mysql-data.sh
+sudo service cron restart
