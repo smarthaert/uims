@@ -1,8 +1,8 @@
-object QD: TQD
+object QP: TQP
   Left = 697
   Top = 250
   BorderStyle = bsNone
-  Caption = 'QD'
+  Caption = 'QP'
   ClientHeight = 362
   ClientWidth = 492
   Color = clBlack
@@ -25,7 +25,7 @@ object QD: TQD
     Height = 47
     Align = alTop
     BevelInner = bvLowered
-    Caption = #21462#12288#12288#21333
+    Caption = #20135'  '#21697
     Color = clBlack
     Font.Charset = GB2312_CHARSET
     Font.Color = clWhite
@@ -68,42 +68,56 @@ object QD: TQD
         item
           Alignment = taCenter
           Expanded = False
-          FieldName = 'created_at'
+          FieldName = 'pid'
           Title.Alignment = taCenter
-          Title.Caption = #24314#21333#26085#26399
-          Width = 86
+          Title.Caption = #32534#21495
+          Width = 53
           Visible = True
         end
         item
           Alignment = taCenter
           Expanded = False
-          FieldName = 'slid'
+          FieldName = 'goodsname'
           Title.Alignment = taCenter
-          Title.Caption = #21333#12288#21495
-          Width = 83
+          Title.Caption = #21517#31216
+          Width = 103
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'custname'
-          Title.Caption = #23458#25143#22995#21517
-          Width = 60
+          FieldName = 'color'
+          Title.Caption = #39068#33394
+          Width = 49
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'custtel'
-          Title.Caption = #23458#25143#30005#35805
-          Width = 59
+          FieldName = 'size'
+          Title.Caption = #23610#23544
+          Width = 45
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'volume'
+          Title.Caption = #20307#31215
+          Width = 29
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'unit'
+          Title.Caption = #21333#20301
+          Width = 61
           Visible = True
         end
         item
           Alignment = taCenter
           Expanded = False
-          FieldName = 'uname'
+          FieldName = 'remark'
           Title.Alignment = taCenter
-          Title.Caption = #25805#20316#21592
-          Width = 80
+          Title.Caption = #22791#27880
+          Width = 47
           Visible = True
         end>
     end
@@ -137,7 +151,7 @@ object QD: TQD
       Top = 24
       Width = 134
       Height = 26
-      Caption = 'Enter('#22238#36710').'#21462#12288#21333
+      Caption = 'Enter('#22238#36710').'#30830#35748#36873#25321
       Flat = True
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
@@ -152,7 +166,7 @@ object QD: TQD
       Top = 7
       Width = 204
       Height = 12
-      Caption = #25353'"'#8593#12289#8595'"'#36873#25321#21830#21697#35760#24405';'#25353#22238#36710#30830#23450'.'
+      Caption = #25353'"'#8593#12289#8595'"'#36873#25321#20135#21697#35760#24405';'#25353#22238#36710#30830#23450'.'
     end
   end
   object DataSource1: TDataSource

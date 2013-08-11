@@ -1,0 +1,174 @@
+rails generate scaffold User \
+uid:string \
+loginname:string \
+uname:string \
+sex:string \
+age:integer \
+userpass:string \
+address:text \
+tel:string \
+salari:float \
+position:string \
+remark:text
+
+rails generate scaffold Customer \
+cid:string \
+loginname:string \
+cname:string \
+sex:string \
+address:string \
+tel:string \
+state:string \
+remark:text
+
+
+rails generate scaffold Feeder \
+fid:string \
+feedername:string \
+pingpai:string \
+linkman:string \
+address:string \
+zipcode:string \
+tel:string \
+fax:string \
+remark:text
+
+
+rails generate scaffold Unit \
+uname:string \
+remark:text
+
+
+rails generate scaffold Shipper \
+sid:string \
+sname:string \
+tel:string \
+address:string \
+custid:string \
+custname:string \
+custtel:string \
+remark:text
+
+
+rails generate scaffold Stock \
+pid:string \
+barcode:string \
+goodsname:string \
+size:string \
+color:string \
+volume:float \
+unit:string \
+inprice:float \
+pfprice:float \
+amount:integer \
+bundle:integer \
+discount:integer \
+stockbaseline:integer \
+remark:text
+
+
+rails generate scaffold Memberprice \
+pid:string \
+barcode:string \
+goodsname:string \
+size:string \
+color:string \
+volume:float \
+unit:string \
+custid:string \
+custname:string \
+custtel:string \
+startdate:date \
+enddate:date \
+hprice:float \
+remark:text
+
+rails destroy scaffold Selllogmain 
+rails generate scaffold Selllogmain \
+slid:string \
+custid:string \
+custstate:string \
+custname:string \
+custtel:string \
+custaddr:string \
+yingshou:float \
+shishou:float \
+sid:string \
+sname:string \
+stel:string \
+saddress:string \
+payment:string \
+status:boolean \
+uid:string \
+uname:string \
+remark:text
+
+
+rails destroy scaffold Selllogdetail 
+rails generate scaffold Selllogdetail \
+slid:string \
+pid:string \
+barcode:string \
+goodsname:string \
+size:string \
+color:string \
+volume:float \
+unit:string \
+inprice:float \
+pfprice:float \
+hprice:float \
+outprice:float \
+amount:integer \
+bundle:integer \
+discount:integer \
+repeat:string \
+subtotal:float \
+status:boolean
+
+
+
+rails generate scaffold Contactpayment \
+cpid:string \
+cpname:string \
+date:date \
+outmoney:float \
+inmoney:float \
+strike:float \
+remark:text
+
+
+
+rails generate scaffold Purchase \
+cpbh:string \
+cpmc:string \
+ys:string \
+sl:integer \
+js:integer \
+dj:float \
+yfbz:float \
+xj:float \
+tj:float \
+bz:string
+
+
+rails generate scaffold Buylog \
+uid:string \
+uname:string \
+utel:string \
+cpbh:string \
+cpmc:string \
+ys:string \
+sl:string \
+js:string \
+dj:string \
+yfbz:string \
+xj:string \
+tj:string \
+bz:string \
+remark:text
+
+
+
+
+
+insert into stocks (pid,goodsname,color,amount,bundle,inprice,volume) select cpbh as pid,cpmc as goodsname, ys as color, sum(sl) as amount, sum(js) as bundle, sum(dj) as inprice, tj as volume from purchases group by cpbh;
