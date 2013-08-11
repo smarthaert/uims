@@ -57,35 +57,15 @@ type
     Panel5: TPanel;
     QuickRep1: TQuickRep;
     DetailBand1: TQRBand;
-    QRDBText1: TQRDBText;
-    QRExpr1: TQRExpr;
-    QRExpr2: TQRExpr;
-    QRExpr3: TQRExpr;
     PageHeaderBand1: TQRBand;
     QRLabel1: TQRLabel;
     QRLabel2: TQRLabel;
-    QRLabel3: TQRLabel;
-    QRLabel4: TQRLabel;
-    QRShape2: TQRShape;
-    QRShape1: TQRShape;
-    QRLabel5: TQRLabel;
-    QRLabel6: TQRLabel;
     SummaryBand1: TQRBand;
     QRLabel7: TQRLabel;
-    QRShape7: TQRShape;
     QRLabel9: TQRLabel;
     QRLabel8: TQRLabel;
     QRLabel10: TQRLabel;
-    QRLabel12: TQRLabel;
-    QRLabel11: TQRLabel;
-    QRLabel13: TQRLabel;
-    QRShape8: TQRShape;
-    QRLabel14: TQRLabel;
     Label30: TLabel;
-    QRShape3: TQRShape;
-    QRShape6: TQRShape;
-    QRShape5: TQRShape;
-    QRShape4: TQRShape;
     ADOConnection1: TADOConnection;
     ADOQuery3: TADOQuery;
     RzEdit4: TRzEdit;
@@ -116,6 +96,45 @@ type
     edt8: TRzEdit;
     lbl10: TLabel;
     ADOQuery4: TADOQuery;
+    qrbndPageFooter1: TQRBand;
+    qrlbl1: TQRLabel;
+    qrlbl2: TQRLabel;
+    qrlbl3: TQRLabel;
+    qrlbl4: TQRLabel;
+    qrlbl5: TQRLabel;
+    qrlbl6: TQRLabel;
+    qrlbl7: TQRLabel;
+    qrlbl8: TQRLabel;
+    qrlbl9: TQRLabel;
+    qrlbl10: TQRLabel;
+    qrlbl11: TQRLabel;
+    qrsysdt1: TQRSysData;
+    qrdbtxtpid: TQRDBText;
+    qrdbtxtgoodsname: TQRDBText;
+    qrdbtxtcolor: TQRDBText;
+    qrdbtxtvolume: TQRDBText;
+    qrdbtxtamount: TQRDBText;
+    qrdbtxtunit: TQRDBText;
+    qrdbtxtbundle: TQRDBText;
+    qrdbtxtoutprice: TQRDBText;
+    qrdbtxtdiscount: TQRDBText;
+    qrdbtxtrepeat: TQRDBText;
+    qrdbtxt11: TQRDBText;
+    qrlbl13: TQRLabel;
+    qrlbl14: TQRLabel;
+    qrlbl15: TQRLabel;
+    qrlbl16: TQRLabel;
+    qrlbl17: TQRLabel;
+    qrlbl18: TQRLabel;
+    qrlbl19: TQRLabel;
+    qrlbl20: TQRLabel;
+    qrlbl21: TQRLabel;
+    qrlbl22: TQRLabel;
+    qrlbl12: TQRLabel;
+    qrlbl23: TQRLabel;
+    qrshp1: TQRShape;
+    qrshp2: TQRShape;
+    qrshp3: TQRShape;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton1Click(Sender: TObject);
@@ -133,6 +152,7 @@ type
     procedure RzEdit4KeyPress(Sender: TObject; var Key: Char);
     procedure edt1KeyPress(Sender: TObject; var Key: Char);
     procedure edt4KeyPress(Sender: TObject; var Key: Char);
+    procedure qrlbl12Print(sender: TObject; var Value: String);
   private
     { Private declarations }
   public
@@ -145,6 +165,7 @@ type
 
 var
   Main: TMain;
+  FTotalPages: Integer;
 
 implementation
 
@@ -281,14 +302,27 @@ begin
   vIniFile:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.Ini');
   QRLabel1.Caption:=viniFile.ReadString('System','Name','');
   QRLabel2.Caption:=viniFile.ReadString('System','La1','');
-  QRLabel13.Caption:='电话:'+viniFile.ReadString('System','TEL','');
-  QRLabel14.Caption:=viniFile.ReadString('System','La2','');
+                           
+  QRLabel10.Caption:='操作员:'+Label19.Caption;
   QRLabel7.Caption:='应收:'+Label14.Caption+'元';
   QRLabel8.Caption:='实收:'+Label15.Caption+'元';
   QRLabel9.Caption:='找零:'+Label16.Caption+'元';
-  QRLabel10.Caption:='收款:'+Label19.Caption;
-  QRLabel11.Caption:='日期:'+FormatDateTime('dddddd tt', Now);
-  QRLabel12.Caption:='单号:№'+Label26.Caption;
+
+  qrlbl13.Caption:='收件人:'+Main.edt1.Text;
+  qrlbl14.Caption:='电话:'+Main.edt2.Text;
+  qrlbl15.Caption:='收货地址:'+Main.edt3.Text;
+  qrlbl19.Caption:='付款方式:'+Main.cbb1.Text;
+
+
+  qrlbl16.Caption:='托运部:'+Main.edt4.Text;
+  qrlbl17.Caption:='电话:'+Main.edt5.Text;
+  qrlbl18.Caption:='托运部地址:'+Main.edt6.Text;
+
+  
+  qrlbl20.Caption:='日期:'+FormatDateTime('dddddd tt', Now);
+  qrlbl21.Caption:='单号:№'+Label26.Caption;     
+  qrlbl22.Caption:='订购电话:'+viniFile.ReadString('System','TEL','');   
+  qrlbl23.Caption:=viniFile.ReadString('System','La2','');
 end;
 
 {计算每个产品的小计金额}
@@ -784,6 +818,11 @@ begin
       end;
   if (key=#43) or (key=#45) then
     key:=#0;
+end;
+
+procedure TMain.qrlbl12Print(sender: TObject; var Value: String);
+begin
+Value := '第' + IntToStr(QuickRep1.QRPrinter.PageNumber) + '页 / 共' + IntToStr(FTotalPages)+ '页';
 end;
 
 end.

@@ -67,7 +67,7 @@ end;
 procedure TSele.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Main.RzEdit4.Text:='';
-  Main.RzEdit4.SetFocus;
+  Main.edt1.SetFocus;
 end;
 
 end.
