@@ -65,13 +65,30 @@ end;
 
 procedure TQD.SpeedButton2Click(Sender: TObject);
 begin
-  Main.Label26.Caption:=ADOQuery1.FieldByName('InvoiceID').AsString;
+  Main.Label26.Caption:=ADOQuery1.FieldByName('slid').AsString;
   Main.ADOQuery1.Close;
   Main.ADOQuery1.SQL.Clear;
-  Main.ADOQuery1.SQL.Add('Select * from sell_minor where InvoiceID="'+Main.Label26.Caption+'"');
+  Main.ADOQuery1.SQL.Add('Select * from selllogdetails where slid="'+Main.Label26.Caption+'"');
   Main.ADOQuery1.Open;
-  Main.QH1;
+  //Main.QH1;
   Main.QH2;
+  
+  {恢复客户，物流等信息}
+  Main.edt1.Text := ADOQuery1.FieldByName('custname').AsString;
+  Main.edt2.Text := ADOQuery1.FieldByName('custtel').AsString;
+  Main.edt3.Text := ADOQuery1.FieldByName('custaddr').AsString;
+  Main.edt7.Text := ADOQuery1.FieldByName('custid').AsString;
+  Main.edt8.Text := ADOQuery1.FieldByName('custstate').AsString;
+
+  
+  Main.edt4.Text := ADOQuery1.FieldByName('sname').AsString;
+  Main.edt5.Text := ADOQuery1.FieldByName('stel').AsString;
+  Main.edt6.Text := ADOQuery1.FieldByName('saddress').AsString;
+
+  
+  Main.cbb1.Text := ADOQuery1.FieldByName('payment').AsString;    
+  Main.mmo1.Text := ADOQuery1.FieldByName('remark').AsString;
+
   SpeedButton1.Click;
 end;
 
@@ -98,7 +115,7 @@ procedure TQD.FormShow(Sender: TObject);
 begin
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from sell_main where Not(Hang)');
+  ADOQuery1.SQL.Add('Select * from selllogmains where Not(status)');
   ADOQuery1.Active:=True;
 end;
 

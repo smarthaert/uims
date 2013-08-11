@@ -11,7 +11,10 @@ uses
   Unit8 in 'Unit8.pas' {Card},
   Unit10 in 'Unit10.pas' {QD},
   Unit7 in 'Unit7.pas' {Pos_Setup},
-  Unit6 in 'Unit6.pas' {MoLing};
+  Unit6 in 'Unit6.pas' {MoLing},
+  Unit9 in 'Unit9.pas' {QC}, 
+  Unit11 in 'Unit11.pas' {QS},
+  Unit12 in 'Unit12.pas' {QP};
 
 {$R *.res}
 

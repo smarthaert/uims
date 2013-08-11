@@ -1,11 +1,11 @@
 object Main: TMain
-  Left = 417
-  Top = 78
+  Left = 426
+  Top = 110
   Width = 1024
   Height = 768
   ActiveControl = RzEdit4
   Caption = 'Main'
-  Color = clBtnFace
+  Color = clBlack
   Font.Charset = GB2312_CHARSET
   Font.Color = clWhite
   Font.Height = -12
@@ -29,9 +29,9 @@ object Main: TMain
     Color = clBlack
     TabOrder = 0
     object SpeedButton1: TSpeedButton
-      Left = 736
+      Left = 912
       Top = 3
-      Width = 58
+      Width = 100
       Height = 19
       Caption = 'Esc.'#36864#20986
       Flat = True
@@ -54,122 +54,15 @@ object Main: TMain
       Align = alCustom
     end
     object SpeedButton2: TSpeedButton
-      Left = 656
+      Left = 832
       Top = 3
-      Width = 79
+      Width = 121
       Height = 19
       Caption = 'F12.'#31383#21475#23621#20013
       Flat = True
       ParentShowHint = False
       ShowHint = False
       OnClick = SpeedButton2Click
-    end
-  end
-  object Panel2: TPanel
-    Left = 0
-    Top = 25
-    Width = 810
-    Height = 652
-    Align = alClient
-    BevelInner = bvLowered
-    Color = clBlack
-    TabOrder = 1
-    object DBGrid1: TDBGrid
-      Left = 2
-      Top = 2
-      Width = 806
-      Height = 648
-      TabStop = False
-      Align = alClient
-      BorderStyle = bsNone
-      Color = clBlack
-      Ctl3D = False
-      DataSource = DataSource1
-      FixedColor = clBlack
-      Font.Charset = GB2312_CHARSET
-      Font.Color = clWhite
-      Font.Height = -12
-      Font.Name = #23435#20307
-      Font.Style = []
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
-      ParentCtl3D = False
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 0
-      TitleFont.Charset = GB2312_CHARSET
-      TitleFont.Color = clWhite
-      TitleFont.Height = -12
-      TitleFont.Name = #23435#20307
-      TitleFont.Style = []
-      OnKeyUp = DBGrid1KeyUp
-      OnMouseUp = DBGrid1MouseUp
-      Columns = <
-        item
-          Expanded = False
-          FieldName = 'BarCode'
-          Title.Alignment = taCenter
-          Title.Caption = #21830#21697#26465#30721
-          Width = 129
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'GoodsName'
-          Title.Alignment = taCenter
-          Title.Caption = #21830#21697#21517#31216
-          Width = 257
-          Visible = True
-        end
-        item
-          Alignment = taCenter
-          Expanded = False
-          FieldName = 'Unit'
-          Title.Alignment = taCenter
-          Title.Caption = #21333#20301
-          Width = 55
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'SellPrice'
-          Title.Alignment = taCenter
-          Title.Caption = #21333#20215
-          Width = 73
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'SellScalar'
-          Title.Alignment = taCenter
-          Title.Caption = #25968#37327
-          Width = 55
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'Agio'
-          Title.Alignment = taCenter
-          Title.Caption = #25240#25187
-          Width = 55
-          Visible = True
-        end
-        item
-          Alignment = taCenter
-          Expanded = False
-          FieldName = 'Gift'
-          Title.Alignment = taCenter
-          Title.Caption = #36192#21697
-          Width = 55
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'Subtotal'
-          Title.Alignment = taCenter
-          Title.Caption = #23567#35745
-          Width = 104
-          Visible = True
-        end>
     end
   end
   object Panel3: TPanel
@@ -182,13 +75,13 @@ object Main: TMain
     Color = clBlack
     Ctl3D = False
     ParentCtl3D = False
-    TabOrder = 2
+    TabOrder = 1
     object Label2: TLabel
       Left = 15
       Top = 10
-      Width = 168
+      Width = 96
       Height = 16
-      Caption = 'F1.'#21830#21697#26465#30721'/'#25340#38899#31616#30721':'
+      Caption = 'F1.'#21830#21697#26465#30721':'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -16
@@ -197,7 +90,7 @@ object Main: TMain
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 223
+      Left = 269
       Top = 38
       Width = 48
       Height = 12
@@ -223,7 +116,7 @@ object Main: TMain
       ParentFont = False
     end
     object Label6: TLabel
-      Left = 339
+      Left = 556
       Top = 22
       Width = 66
       Height = 21
@@ -236,7 +129,7 @@ object Main: TMain
       ParentFont = False
     end
     object Label7: TLabel
-      Left = 387
+      Left = 604
       Top = 15
       Width = 111
       Height = 33
@@ -251,7 +144,7 @@ object Main: TMain
       ParentFont = False
     end
     object Label8: TLabel
-      Left = 499
+      Left = 716
       Top = 22
       Width = 22
       Height = 21
@@ -264,7 +157,7 @@ object Main: TMain
       ParentFont = False
     end
     object Bevel1: TBevel
-      Left = 327
+      Left = 516
       Top = 4
       Width = 2
       Height = 56
@@ -285,7 +178,7 @@ object Main: TMain
       ParentFont = False
     end
     object Bevel2: TBevel
-      Left = 532
+      Left = 749
       Top = 4
       Width = 2
       Height = 56
@@ -293,7 +186,7 @@ object Main: TMain
       Style = bsRaised
     end
     object Label25: TLabel
-      Left = 543
+      Left = 760
       Top = 22
       Width = 77
       Height = 21
@@ -306,7 +199,7 @@ object Main: TMain
       ParentFont = False
     end
     object Label26: TLabel
-      Left = 624
+      Left = 841
       Top = 15
       Width = 160
       Height = 33
@@ -339,7 +232,7 @@ object Main: TMain
     object RzEdit2: TRzEdit
       Left = 167
       Top = 35
-      Width = 42
+      Width = 90
       Height = 20
       Text = '5'
       Alignment = taRightJustify
@@ -354,9 +247,9 @@ object Main: TMain
       OnKeyPress = RzEdit2KeyPress
     end
     object RzEdit3: TRzEdit
-      Left = 272
+      Left = 318
       Top = 35
-      Width = 42
+      Width = 67
       Height = 20
       Text = '1'
       Alignment = taRightJustify
@@ -371,9 +264,9 @@ object Main: TMain
       OnKeyPress = RzEdit3KeyPress
     end
     object RzEdit4: TRzEdit
-      Left = 184
+      Left = 119
       Top = 7
-      Width = 129
+      Width = 267
       Height = 22
       AutoSize = False
       Color = clBlack
@@ -395,9 +288,9 @@ object Main: TMain
     end
   end
   object Panel4: TPanel
-    Left = 810
+    Left = 804
     Top = 25
-    Width = 206
+    Width = 212
     Height = 652
     Align = alRight
     BevelInner = bvLowered
@@ -408,7 +301,7 @@ object Main: TMain
     Font.Name = #23435#20307
     Font.Style = []
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 2
     object Label5: TLabel
       Left = 9
       Top = 379
@@ -698,7 +591,7 @@ object Main: TMain
     Width = 100
     Height = 100
     Color = clBlack
-    TabOrder = 4
+    TabOrder = 3
     Visible = False
     object QuickRep1: TQuickRep
       Left = 11
@@ -1544,6 +1437,448 @@ object Main: TMain
       end
     end
   end
+  object grp1: TGroupBox
+    Left = 0
+    Top = 24
+    Width = 800
+    Height = 82
+    Caption = #23458#25143
+    Color = clBlack
+    ParentColor = False
+    TabOrder = 4
+    object lbl1: TLabel
+      Left = 25
+      Top = 17
+      Width = 30
+      Height = 12
+      Caption = #22995#21517':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object lbl2: TLabel
+      Left = 177
+      Top = 17
+      Width = 30
+      Height = 12
+      Caption = #30005#35805':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object lbl3: TLabel
+      Left = 25
+      Top = 49
+      Width = 30
+      Height = 12
+      Caption = #22320#22336':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object lbl9: TLabel
+      Left = 353
+      Top = 17
+      Width = 54
+      Height = 12
+      Caption = #20250#21592#32534#21495':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object lbl10: TLabel
+      Left = 521
+      Top = 17
+      Width = 30
+      Height = 12
+      Caption = #22320#21306':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object edt1: TRzEdit
+      Left = 63
+      Top = 14
+      Width = 100
+      Height = 20
+      Color = clBlack
+      Ctl3D = True
+      DisabledColor = clBlack
+      FrameColor = clWhite
+      FrameHotColor = 14593668
+      FrameHotTrack = True
+      FrameVisible = True
+      ParentCtl3D = False
+      TabOrder = 0
+      OnKeyPress = edt1KeyPress
+    end
+    object edt2: TRzEdit
+      Left = 209
+      Top = 14
+      Width = 130
+      Height = 20
+      Alignment = taRightJustify
+      Color = clBlack
+      Ctl3D = True
+      DisabledColor = clBlack
+      FrameColor = clWhite
+      FrameHotColor = 14593668
+      FrameHotTrack = True
+      FrameVisible = True
+      ParentCtl3D = False
+      TabOrder = 1
+    end
+    object edt3: TRzEdit
+      Left = 63
+      Top = 46
+      Width = 708
+      Height = 20
+      Color = clBlack
+      Ctl3D = True
+      DisabledColor = clBlack
+      FrameColor = clWhite
+      FrameHotColor = 14593668
+      FrameHotTrack = True
+      FrameVisible = True
+      ParentCtl3D = False
+      TabOrder = 2
+    end
+    object edt7: TRzEdit
+      Left = 409
+      Top = 14
+      Width = 100
+      Height = 20
+      Color = clBlack
+      Ctl3D = True
+      DisabledColor = clBlack
+      FrameColor = clWhite
+      FrameHotColor = 14593668
+      FrameHotTrack = True
+      FrameVisible = True
+      ParentCtl3D = False
+      TabOrder = 3
+      OnKeyPress = edt1KeyPress
+    end
+    object edt8: TRzEdit
+      Left = 553
+      Top = 14
+      Width = 100
+      Height = 20
+      Color = clBlack
+      Ctl3D = True
+      DisabledColor = clBlack
+      FrameColor = clWhite
+      FrameHotColor = 14593668
+      FrameHotTrack = True
+      FrameVisible = True
+      ParentCtl3D = False
+      TabOrder = 4
+      OnKeyPress = edt1KeyPress
+    end
+  end
+  object grp2: TGroupBox
+    Left = 0
+    Top = 106
+    Width = 800
+    Height = 425
+    Caption = #35746#21333
+    Color = clBlack
+    ParentColor = False
+    TabOrder = 5
+    object DBGrid1: TDBGrid
+      Left = 2
+      Top = 14
+      Width = 796
+      Height = 409
+      TabStop = False
+      Align = alClient
+      BorderStyle = bsNone
+      Color = clBlack
+      Ctl3D = False
+      DataSource = DataSource1
+      FixedColor = clBlack
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+      ParentCtl3D = False
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 0
+      TitleFont.Charset = GB2312_CHARSET
+      TitleFont.Color = clWhite
+      TitleFont.Height = -12
+      TitleFont.Name = #23435#20307
+      TitleFont.Style = []
+      OnKeyUp = DBGrid1KeyUp
+      OnMouseUp = DBGrid1MouseUp
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'pid'
+          Title.Alignment = taCenter
+          Title.Caption = #21830#21697#32534#21495
+          Width = 85
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'goodsname'
+          Title.Alignment = taCenter
+          Title.Caption = #21830#21697#21517#31216
+          Width = 92
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'color'
+          Title.Caption = #39068#33394
+          Width = 45
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'volume'
+          Title.Caption = #20307#31215
+          Width = 38
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'amount'
+          Title.Caption = #25968#37327
+          Width = 45
+          Visible = True
+        end
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'unit'
+          Title.Alignment = taCenter
+          Title.Caption = #21333#20301
+          Width = 55
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'bundle'
+          Title.Caption = #20214#25968
+          Width = 40
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'outprice'
+          Title.Caption = #21333#20215
+          Width = 54
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'discount'
+          Title.Alignment = taCenter
+          Title.Caption = #25240#25187
+          Width = 55
+          Visible = True
+        end
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'repeat'
+          Title.Alignment = taCenter
+          Title.Caption = #34917#20214
+          Width = 55
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'subtotal'
+          Title.Alignment = taCenter
+          Title.Caption = #23567#35745
+          Width = 74
+          Visible = True
+        end>
+    end
+  end
+  object grp3: TGroupBox
+    Left = 0
+    Top = 531
+    Width = 800
+    Height = 81
+    Caption = #25176#36816#37096
+    Color = clBlack
+    ParentColor = False
+    TabOrder = 6
+    object lbl4: TLabel
+      Left = 24
+      Top = 17
+      Width = 30
+      Height = 12
+      Caption = #21517#31216':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object lbl5: TLabel
+      Left = 176
+      Top = 17
+      Width = 30
+      Height = 12
+      Caption = #30005#35805':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object lbl6: TLabel
+      Left = 24
+      Top = 49
+      Width = 30
+      Height = 12
+      Caption = #22320#22336':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object edt4: TRzEdit
+      Left = 62
+      Top = 14
+      Width = 100
+      Height = 20
+      Color = clBlack
+      Ctl3D = True
+      DisabledColor = clBlack
+      FrameColor = clWhite
+      FrameHotColor = 14593668
+      FrameHotTrack = True
+      FrameVisible = True
+      ParentCtl3D = False
+      TabOrder = 0
+      OnKeyPress = edt4KeyPress
+    end
+    object edt5: TRzEdit
+      Left = 208
+      Top = 14
+      Width = 130
+      Height = 20
+      Alignment = taRightJustify
+      Color = clBlack
+      Ctl3D = True
+      DisabledColor = clBlack
+      FrameColor = clWhite
+      FrameHotColor = 14593668
+      FrameHotTrack = True
+      FrameVisible = True
+      ParentCtl3D = False
+      TabOrder = 1
+    end
+    object edt6: TRzEdit
+      Left = 62
+      Top = 46
+      Width = 708
+      Height = 20
+      Color = clBlack
+      Ctl3D = True
+      DisabledColor = clBlack
+      FrameColor = clWhite
+      FrameHotColor = 14593668
+      FrameHotTrack = True
+      FrameVisible = True
+      ParentCtl3D = False
+      TabOrder = 2
+    end
+  end
+  object grp4: TGroupBox
+    Left = 0
+    Top = 612
+    Width = 800
+    Height = 65
+    Caption = #20184#27454
+    Color = clBlack
+    ParentColor = False
+    TabOrder = 7
+    object lbl7: TLabel
+      Left = 24
+      Top = 19
+      Width = 54
+      Height = 12
+      Caption = #20184#27454#26041#24335':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object bvl1: TBevel
+      Left = 386
+      Top = 4
+      Width = 2
+      Height = 56
+      Shape = bsLeftLine
+      Style = bsRaised
+    end
+    object lbl8: TLabel
+      Left = 400
+      Top = 19
+      Width = 30
+      Height = 12
+      Caption = #22791#27880':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object cbb1: TComboBox
+      Left = 80
+      Top = 16
+      Width = 161
+      Height = 20
+      Color = clBlack
+      ItemHeight = 12
+      TabOrder = 0
+      Items.Strings = (
+        #29616#37329
+        #36716#36134
+        #25176#36816#37096#20195#25910
+        #36170#27424)
+    end
+    object mmo1: TMemo
+      Left = 442
+      Top = 11
+      Width = 361
+      Height = 49
+      Color = clBlack
+      TabOrder = 1
+    end
+  end
   object DataSource1: TDataSource
     DataSet = ADOQuery1
     Left = 40
@@ -1579,5 +1914,11 @@ object Main: TMain
     Parameters = <>
     Left = 8
     Top = 145
+  end
+  object ADOQuery4: TADOQuery
+    Connection = ADOConnection1
+    Parameters = <>
+    Left = 8
+    Top = 178
   end
 end

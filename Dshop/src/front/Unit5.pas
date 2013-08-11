@@ -91,6 +91,8 @@ begin
   end;
 end;
 
+
+{结账操作}
 procedure TGathering.jz;
 var
   vIniFile: TIniFile;
@@ -155,11 +157,11 @@ begin
     Main.ADOQuery2.Edit;
     //查找商品
     Main.ADOQuery2.SQL.Clear;
-    Main.ADOQuery2.SQL.Add('Select * from stock Where BarCode="'+Main.ADOQuery1.FieldByName('BarCode').AsString+'"');
+    Main.ADOQuery2.SQL.Add('Select * from stocks Where pid="'+Main.ADOQuery1.FieldByName('pid').AsString+'"');
     Main.ADOQuery2.Open;
     //减少库存
     Main.ADOQuery2.Edit;
-    Main.ADOQuery2.FieldByName('StockScalar').AsCurrency:=Main.ADOQuery2.FieldByName('StockScalar').AsCurrency-Main.ADOQuery1.FieldByName('SellScalar').AsCurrency;
+    Main.ADOQuery2.FieldByName('amount').AsCurrency:=Main.ADOQuery2.FieldByName('amount').AsCurrency-Main.ADOQuery1.FieldByName('amount').AsCurrency;
     Main.ADOQuery2.Post;
     Main.ADOQuery1.Next;
   end;
