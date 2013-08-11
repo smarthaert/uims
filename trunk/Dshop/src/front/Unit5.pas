@@ -138,7 +138,19 @@ begin
     begin
       Main.QuickRep1.Height:=200+Main.DetailBand1.Height*Main.ADOQuery1.RecordCount;
       Main.QuickRep1.Page.LeftMargin:=vIniFile.ReadInteger('System','P0',0);
-      Main.QuickRep1.Print;
+
+      try
+        Main.QuickRep1.Prepare;
+        FTotalPages := Main.QuickRep1.QRPrinter.PageCount;
+      finally
+        Main.QuickRep1.QRPrinter.Cleanup;
+      end;   
+
+
+      //Main.QuickRep1.Print;
+      Main.QuickRep1.Preview;
+      exit;
+      
     end;
   end;
   //保存是否打印小票信息
@@ -167,21 +179,34 @@ begin
   end;
   //更改销售标记
   Main.ADOQuery2.SQL.Clear;
-  Main.ADOQuery2.SQL.Add('Select * from sell_main Where InvoiceID="'+Main.Label26.Caption+'"');
+  Main.ADOQuery2.SQL.Add('Select * from selllogmains Where slid="'+Main.Label26.Caption+'"');
   Main.ADOQuery2.Open;
   Main.ADOQuery2.Edit;
-  Main.ADOQuery2.FieldByName('AR').AsString:=Main.Label7.Caption;
-  Main.ADOQuery2.FieldByName('PU').AsString:=Label2.Caption;
-  Main.ADOQuery2.FieldByName('Hang').AsString:='1';
-  if StrToCurr(Main.Label7.Caption)-StrToCurr(Label2.Caption)<>0 then
-    Main.ADOQuery2.FieldByName('Remark').AsCurrency:=StrToCurr(Main.Label7.Caption)-StrToCurr(Label2.Caption);
+  Main.ADOQuery2.FieldByName('yingshou').AsString:=Main.Label7.Caption;
+  Main.ADOQuery2.FieldByName('shishou').AsString:=Label2.Caption;
+  Main.ADOQuery2.FieldByName('status').AsString:='1';
   Main.ADOQuery2.Post;
+  //根据支付方式记帐
+  Main.ADOQuery2.SQL.Clear;
+  Main.ADOQuery2.SQL.Add('Select * from contactpayments Where not(1)');
+  Main.ADOQuery2.Open;
+  Main.ADOQuery2.Append;
+  Main.ADOQuery2.FieldByName('custid').AsString:=Main.edt7.Text;
+  Main.ADOQuery2.FieldByName('custname').AsString:=Main.edt1.Text;
+  Main.ADOQuery2.FieldByName('outmoney').AsString:=Main.Label7.Caption;
+  if StrToCurr(Main.Label7.Caption)-StrToCurr(Label2.Caption)<>0 then
+    Main.ADOQuery2.FieldByName('strike').AsCurrency:=StrToCurr(Main.Label7.Caption)-StrToCurr(Label2.Caption);
+  Main.ADOQuery2.FieldByName('method').AsString:=Main.cbb1.Text;
+  Main.ADOQuery2.Post;
+
+
+
   //查找最小单号
   for i:=1 to 9999 do
   begin
     SID:=FormatdateTime('yymmdd', Now)+FormatFloat('0000',i);
     Main.ADOQuery2.SQL.Clear;
-    Main.ADOQuery2.SQL.Add('Select * from sell_main Where InvoiceID="'+SID+'"');
+    Main.ADOQuery2.SQL.Add('Select * from selllogmains Where slid="'+SID+'"');
     Main.ADOQuery2.Open;
     if Main.ADOQuery2.RecordCount=0 then
       Break;
@@ -190,11 +215,26 @@ begin
   //重新计算主窗口商品价格
   Main.QH2;
 
+  {清空数据项}
+  Main.edt1.Text := '';
+  Main.edt2.Text := '';
+  Main.edt3.Text := '';
+  Main.edt7.Text := '';
+  Main.edt8.Text := '';
+
+  Main.edt4.Text := '';
+  Main.edt5.Text := '';
+  Main.edt6.Text := '';
+
+  Main.cbb1.Text := '';
+  Main.mmo1.Text := '';
+
+
   //刷新销售列表
   Main.ADOQuery1.Refresh;
   Main.ADOQuery1.Close;
   Main.ADOQuery1.SQL.Clear;
-  Main.ADOQuery1.SQL.Add('Select * from sell_minor Where InvoiceID="'+Main.Label26.Caption+'"');
+  Main.ADOQuery1.SQL.Add('Select * from selllogdetails Where slid="'+Main.Label26.Caption+'"');
   Main.ADOQuery1.Open;
 end;
 

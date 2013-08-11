@@ -1,6 +1,6 @@
 object Pos_Setup: TPos_Setup
-  Left = 382
-  Top = 130
+  Left = 640
+  Top = 260
   BorderStyle = bsNone
   Caption = 'Pos_Setup'
   ClientHeight = 257
@@ -146,7 +146,7 @@ object Pos_Setup: TPos_Setup
       Top = 56
       Width = 161
       Height = 20
-      Text = #36196#23792#30334#19968#36229#24066
+      Text = #23454#30719#27700#26063#19990#30028
       Color = clBlack
       Ctl3D = True
       DisabledColor = clBlack
@@ -170,7 +170,7 @@ object Pos_Setup: TPos_Setup
       Top = 80
       Width = 161
       Height = 20
-      Text = #30334#19968#28040#36153#12288#26102#23578#21697#21619
+      Text = #23454#30719#27700#26063' '#24744#23478#20013#30340#28023#27915#19990#30028
       Color = clBlack
       Ctl3D = True
       DisabledColor = clBlack
@@ -194,7 +194,7 @@ object Pos_Setup: TPos_Setup
       Top = 104
       Width = 161
       Height = 20
-      Text = #27426#36814#24744#21040#36196#23792#26469
+      Text = #25105#20204#26399#24453#24744#19979#27425#20809#20020
       Color = clBlack
       Ctl3D = True
       DisabledColor = clBlack
@@ -218,7 +218,7 @@ object Pos_Setup: TPos_Setup
       Top = 128
       Width = 161
       Height = 20
-      Text = '0476-8250400'
+      Text = '0551-123456'
       Color = clBlack
       Ctl3D = True
       DisabledColor = clBlack
