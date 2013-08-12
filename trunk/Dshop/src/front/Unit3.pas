@@ -42,9 +42,9 @@ procedure TRegKey.FormCreate(Sender: TObject);
 var
   vIniFile: TIniFile;
 begin
-  vIniFile:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.Ini');
-  Edit1.Text:=vIniFile.Readstring('System','PCID','');
-  Edit2.Text:=vIniFile.Readstring('System','Key','');
+  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'Config.Ini');
+  Edit1.Text := vIniFile.Readstring('System', 'PCID', '');
+  Edit2.Text := vIniFile.Readstring('System', 'Key', '');
 
 end;
 
@@ -52,18 +52,18 @@ procedure TRegKey.SpeedButton1Click(Sender: TObject);
 var
   vIniFile: TIniFile;
 begin
-  vIniFile:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.Ini');
-  vIniFile.WriteString('System','Key',UpperCase(Edit2.Text));
-  if Edit2.Text<>'' then
-    showmessage('感谢您注册本产品。请重新启动本软件~~!'+#13#13+'如果您输入的注册码正确的话，窗口左上角将显示已注册~~!');
+  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'Config.Ini');
+  vIniFile.WriteString('System', 'Key', UpperCase(Edit2.Text));
+  if Edit2.Text <> '' then
+    showmessage('感谢您注册本产品。请重新启动本软件~~!' + #13#13 + '如果您输入的注册码正确的话，窗口左上角将显示已注册~~!');
   SpeedButton2.Click;
 end;
 
 procedure TRegKey.Edit2KeyPress(Sender: TObject; var Key: Char);
 begin
-  if key=#13 then
+  if key = #13 then
   begin
-    key:=#0;
+    key := #0;
     SpeedButton1.Click;
   end;
 end;
@@ -77,7 +77,7 @@ procedure TRegKey.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   case key of
-    VK_ESCAPE:SpeedButton2.Click;
+    VK_ESCAPE: SpeedButton2.Click;
   end;
 end;
 

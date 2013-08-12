@@ -48,170 +48,202 @@ procedure TGathering.FormCreate(Sender: TObject);
 var
   vIniFile: TIniFile;
 begin
-  vIniFile:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.Ini');
-  Label2.Caption:=Main.Label7.Caption;
-  CheckBox1.Checked:=vIniFile.ReadBool('System','PB',True);
+  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'Config.Ini');
+  Label2.Caption := Main.Label7.Caption;
+  CheckBox1.Checked := vIniFile.ReadBool('System', 'PB', True);
 end;
 
 procedure TGathering.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   case key of
-    VK_ESCAPE:Gathering.Close;
-    VK_F1: begin
-      if CheckBox1.Checked then begin
-        CheckBox1.Checked:=False;
-        RzEdit1.SetFocus;
-      end else begin
-        CheckBox1.Checked:=True;
-        RzEdit1.SetFocus;
+    VK_ESCAPE: Gathering.Close;
+    VK_F1:
+      begin
+        if CheckBox1.Checked then
+        begin
+          CheckBox1.Checked := False;
+          RzEdit1.SetFocus;
+        end
+        else
+        begin
+          CheckBox1.Checked := True;
+          RzEdit1.SetFocus;
+        end;
       end;
-    end;
-    VK_F2: begin
-      if MoLing<>nil then begin
-        MoLing.RzEdit1.Text:=Label2.Caption;
-        MoLing.RzEdit1.SelectAll;
-        MoLing.ShowModal;
-      end else begin
-        MoLing:=TMoLing.Create(Application);
-        MoLing.RzEdit1.Text:=Label2.Caption;
-        MoLing.RzEdit1.SelectAll;
-        MoLing.ShowModal;
+    VK_F2:
+      begin
+        if MoLing <> nil then
+        begin
+          MoLing.RzEdit1.Text := Label2.Caption;
+          MoLing.RzEdit1.SelectAll;
+          MoLing.ShowModal;
+        end
+        else
+        begin
+          MoLing := TMoLing.Create(Application);
+          MoLing.RzEdit1.Text := Label2.Caption;
+          MoLing.RzEdit1.SelectAll;
+          MoLing.ShowModal;
+        end;
       end;
-    end;
-    VK_F3: begin
-      RzEdit1.Text:=Label2.Caption;
-      if Card<>nil then
-        Card.ShowModal
-      else begin
-        Card:=TCard.Create(Application);
-        Card.ShowModal;
+    VK_F3:
+      begin
+        RzEdit1.Text := Label2.Caption;
+        if Card <> nil then
+          Card.ShowModal
+        else
+        begin
+          Card := TCard.Create(Application);
+          Card.ShowModal;
+        end;
       end;
-    end;
   end;
 end;
 
 
 {结账操作}
+
 procedure TGathering.jz;
 var
   vIniFile: TIniFile;
-  SID: String;
+  SID: string;
   i: Integer;
 begin
-  vIniFile:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.Ini');
+  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'Config.Ini');
   //输入数据检查
   try
-  begin
-    StrToCurr(RzEdit1.Text);
-  end;
-  Except
-  begin
-    ShowMessage('输入非法字符~~!');
-    RzEdit1.Text:='';
-    RzEdit1.SetFocus;
-    Exit;
-  end;
+    begin
+      StrToCurr(RzEdit1.Text);
+    end;
+  except
+    begin
+      ShowMessage('输入非法字符~~!');
+      RzEdit1.Text := '';
+      RzEdit1.SetFocus;
+      Exit;
+    end;
   end;
   //检查输入金额是否小于应付款
-  if StrToCurr(RzEdit1.Text)-StrToCurr(Label2.Caption)<0 then
+  if StrToCurr(RzEdit1.Text) - StrToCurr(Label2.Caption) < 0 then
   begin
     ShowMessage('输入金额不能小于应收款~~!');
-    RzEdit1.Text:='';
+    RzEdit1.Text := '';
     RzEdit1.SetFocus;
     Exit;
   end;
   //计算找零
-  Label7.Caption:=FormatFloat('0.00',StrToCurr(RzEdit1.Text)-StrToCurr(Label2.Caption));
+  Label7.Caption := FormatFloat('0.00', StrToCurr(RzEdit1.Text) - StrToCurr(Label2.Caption));
   //结束输入
-  RzEdit1.ReadOnly:=True;
+  RzEdit1.ReadOnly := True;
   //显示提示语
-  Label9.Visible:=True;
+  Label9.Visible := True;
   //写主窗口记录
-  Main.Label14.Caption:=FormatFloat('0.00',StrToCurr(Label2.Caption));
-  Main.Label15.Caption:=FormatFloat('0.00',StrToCurr(RzEdit1.Text));
-  Main.Label16.Caption:=FormatFloat('0.00',StrToCurr(Label7.Caption));
+  Main.Label14.Caption := FormatFloat('0.00', StrToCurr(Label2.Caption));
+  Main.Label15.Caption := FormatFloat('0.00', StrToCurr(RzEdit1.Text));
+  Main.Label16.Caption := FormatFloat('0.00', StrToCurr(Label7.Caption));
   //打印小票
   if CheckBox1.Checked then
   begin
-    if messagedlg('确认打印吗？',mtconfirmation,[mbyes,mbno],0)=mryes then
+    if messagedlg('确认打印吗？', mtconfirmation, [mbyes, mbno], 0) = mryes then
     begin
-      Main.QuickRep1.Height:=200+Main.DetailBand1.Height*Main.ADOQuery1.RecordCount;
-      Main.QuickRep1.Page.LeftMargin:=vIniFile.ReadInteger('System','P0',0);
+      Main.QuickRep1.Height := 200 + Main.DetailBand1.Height * Main.ADOQuery1.RecordCount;
+      Main.QuickRep1.Page.LeftMargin := vIniFile.ReadInteger('System', 'P0', 0);
 
       try
         Main.QuickRep1.Prepare;
         FTotalPages := Main.QuickRep1.QRPrinter.PageCount;
       finally
         Main.QuickRep1.QRPrinter.Cleanup;
-      end;   
+      end;
 
 
       //Main.QuickRep1.Print;
       Main.QuickRep1.Preview;
-      exit;
-      
     end;
   end;
   //保存是否打印小票信息
   if CheckBox1.Checked then
   begin
-    vIniFile.WriteBool('System','PB',True);
+    vIniFile.WriteBool('System', 'PB', True);
   end
   else
   begin
-    vIniFile.WriteBool('System','PB',False);
+    vIniFile.WriteBool('System', 'PB', False);
   end;
   //写销售记录
+  Main.ADOQuery1.Refresh;
   Main.ADOQuery1.First;
-  while not(Main.ADOQuery1.Eof) do
+  while not (Main.ADOQuery1.Eof) do
   begin
     Main.ADOQuery2.Edit;
     //查找商品
     Main.ADOQuery2.SQL.Clear;
-    Main.ADOQuery2.SQL.Add('Select * from stocks Where pid="'+Main.ADOQuery1.FieldByName('pid').AsString+'"');
+    Main.ADOQuery2.SQL.Add('Select * from stocks Where pid="' + Main.ADOQuery1.FieldByName('pid').AsString + '"');
     Main.ADOQuery2.Open;
     //减少库存
     Main.ADOQuery2.Edit;
-    Main.ADOQuery2.FieldByName('amount').AsCurrency:=Main.ADOQuery2.FieldByName('amount').AsCurrency-Main.ADOQuery1.FieldByName('amount').AsCurrency;
+    Main.ADOQuery2.FieldByName('amount').AsCurrency := Main.ADOQuery2.FieldByName('amount').AsCurrency - Main.ADOQuery1.FieldByName('amount').AsCurrency;
+
+    {
+    UpdateTimeStr := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
+    if Main.ADOQuery2.FieldByName('created_at').AsString = '' then
+      Main.ADOQuery2.FieldByName('created_at').AsString := UpdateTimeStr;
+    Main.ADOQuery2.FieldByName('updated_at').AsString := UpdateTimeStr;
+    }
+    
     Main.ADOQuery2.Post;
     Main.ADOQuery1.Next;
   end;
   //更改销售标记
   Main.ADOQuery2.SQL.Clear;
-  Main.ADOQuery2.SQL.Add('Select * from selllogmains Where slid="'+Main.Label26.Caption+'"');
+  Main.ADOQuery2.SQL.Add('Select * from selllogmains Where slid="' + Main.Label26.Caption + '"');
   Main.ADOQuery2.Open;
   Main.ADOQuery2.Edit;
-  Main.ADOQuery2.FieldByName('yingshou').AsString:=Main.Label7.Caption;
-  Main.ADOQuery2.FieldByName('shishou').AsString:=Label2.Caption;
-  Main.ADOQuery2.FieldByName('status').AsString:='1';
+  Main.ADOQuery2.FieldByName('yingshou').AsString := Main.Label7.Caption;
+  Main.ADOQuery2.FieldByName('shishou').AsString := Label2.Caption;
+  Main.ADOQuery2.FieldByName('status').AsString := '1';        
+  Main.ADOQuery2.FieldByName('remark').AsString := Main.mmo1.Lines.GetText;
+
+  UpdateTimeStr := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
+  if Main.ADOQuery2.FieldByName('created_at').AsString = '' then
+    Main.ADOQuery2.FieldByName('created_at').AsString := UpdateTimeStr;
+  Main.ADOQuery2.FieldByName('updated_at').AsString := UpdateTimeStr;
+
   Main.ADOQuery2.Post;
   //根据支付方式记帐
   Main.ADOQuery2.SQL.Clear;
   Main.ADOQuery2.SQL.Add('Select * from contactpayments Where not(1)');
   Main.ADOQuery2.Open;
   Main.ADOQuery2.Append;
-  Main.ADOQuery2.FieldByName('custid').AsString:=Main.edt7.Text;
-  Main.ADOQuery2.FieldByName('custname').AsString:=Main.edt1.Text;
-  Main.ADOQuery2.FieldByName('outmoney').AsString:=Main.Label7.Caption;
-  if StrToCurr(Main.Label7.Caption)-StrToCurr(Label2.Caption)<>0 then
-    Main.ADOQuery2.FieldByName('strike').AsCurrency:=StrToCurr(Main.Label7.Caption)-StrToCurr(Label2.Caption);
-  Main.ADOQuery2.FieldByName('method').AsString:=Main.cbb1.Text;
+  Main.ADOQuery2.FieldByName('custid').AsString := Main.edt7.Text;
+  Main.ADOQuery2.FieldByName('custname').AsString := Main.edt1.Text;
+  Main.ADOQuery2.FieldByName('inmoney').AsString := Label2.Caption;
+  Main.ADOQuery2.FieldByName('outmoney').AsString := Main.Label7.Caption;
+  if StrToCurr(Main.Label7.Caption) - StrToCurr(Label2.Caption) <> 0 then
+    Main.ADOQuery2.FieldByName('strike').AsCurrency := StrToCurr(Main.Label7.Caption) - StrToCurr(Label2.Caption);
+  Main.ADOQuery2.FieldByName('method').AsString := Main.cbb1.Text;
+  Main.ADOQuery2.FieldByName('remark').AsString := Main.mmo1.Lines.GetText;
+
+  UpdateTimeStr := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
+  if Main.ADOQuery2.FieldByName('created_at').AsString = '' then
+    Main.ADOQuery2.FieldByName('created_at').AsString := UpdateTimeStr;
+  Main.ADOQuery2.FieldByName('updated_at').AsString := UpdateTimeStr;
   Main.ADOQuery2.Post;
 
 
 
   //查找最小单号
-  for i:=1 to 9999 do
+  for i := 1 to 9999 do
   begin
-    SID:=FormatdateTime('yymmdd', Now)+FormatFloat('0000',i);
+    SID := FormatdateTime('yymmdd', Now) + FormatFloat('0000', i);
     Main.ADOQuery2.SQL.Clear;
-    Main.ADOQuery2.SQL.Add('Select * from selllogmains Where slid="'+SID+'"');
+    Main.ADOQuery2.SQL.Add('Select * from selllogmains Where slid="' + SID + '"');
     Main.ADOQuery2.Open;
-    if Main.ADOQuery2.RecordCount=0 then
+    if Main.ADOQuery2.RecordCount = 0 then
       Break;
   end;
-  Main.Label26.Caption:=SID;
+  Main.Label26.Caption := SID;
   //重新计算主窗口商品价格
   Main.QH2;
 
@@ -234,7 +266,7 @@ begin
   Main.ADOQuery1.Refresh;
   Main.ADOQuery1.Close;
   Main.ADOQuery1.SQL.Clear;
-  Main.ADOQuery1.SQL.Add('Select * from selllogdetails Where slid="'+Main.Label26.Caption+'"');
+  Main.ADOQuery1.SQL.Add('Select * from selllogdetails Where slid="' + Main.Label26.Caption + '"');
   Main.ADOQuery1.Open;
 end;
 
@@ -244,14 +276,15 @@ procedure TGathering.RzEdit1KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 
 begin
-  if key=13 then
+  if key = 13 then
   begin
-    count:=count+key;
+    count := count + key;
     if RzEdit1.ReadOnly then
       Gathering.Close;
-    if Not(RzEdit1.ReadOnly) then
+    if not (RzEdit1.ReadOnly) then
       JZ;
   end;
 end;
 
 end.
+

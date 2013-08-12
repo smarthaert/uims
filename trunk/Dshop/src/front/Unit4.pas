@@ -44,29 +44,32 @@ procedure TSele.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   case key of
-    VK_UP: begin
-      DBGrid1.SetFocus;
-    end;
+    VK_UP:
+      begin
+        DBGrid1.SetFocus;
+      end;
 
-    VK_DOWN: begin
-      DBGrid1.SetFocus;
-    end;
-    VK_ESCAPE:Sele.Close;
-    VK_SPACE :SpeedButton1.Click;
+    VK_DOWN:
+      begin
+        DBGrid1.SetFocus;
+      end;
+    VK_ESCAPE: Sele.Close;
+    VK_SPACE: SpeedButton1.Click;
   end;
 end;
 
 procedure TSele.DBGrid1KeyPress(Sender: TObject; var Key: Char);
 begin
-  if key=#13 then begin
-    key:=#0;
+  if key = #13 then
+  begin
+    key := #0;
     SpeedButton1.Click;
   end;
 end;
 
 procedure TSele.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Main.RzEdit4.Text:='';
+  Main.RzEdit4.Text := '';
   Main.edt1.SetFocus;
 end;
 

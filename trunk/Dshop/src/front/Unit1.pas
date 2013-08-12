@@ -28,7 +28,7 @@ type
     { Private declarations }
   public
     procedure PCID;
-    function Key(ID: String): String;
+    function Key(ID: string): string;
     { Public declarations }
   end;
 
@@ -41,14 +41,14 @@ uses MD5, Unit2, Unit3;
 
 {$R *.dfm}
 type
-  TCPUID  = array[1..4] of Longint;
+  TCPUID = array[1..4] of Longint;
 
-function GetCPUID : TCPUID; assembler; register;
-asm 
+function GetCPUID: TCPUID; assembler; register;
+asm
   PUSH    EBX         //Save affected register
-  PUSH    EDI 
+  PUSH    EDI
   MOV     EDI,EAX     //@Resukt
-  MOV     EAX,1 
+  MOV     EAX,1
   DW      $A20F       //CPUID Command
   STOSD               //CPUID[1]
   MOV     EAX,EBX
@@ -62,38 +62,40 @@ asm
 end;
 
 {根据登录名获取用户名}
+
 procedure TPass.Edit1KeyPress(Sender: TObject; var Key: Char);
 begin
-  if key=#13 then
+  if key = #13 then
   begin
-    key:=#0;
+    key := #0;
     ADOQuery1.Close;
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('Select * from users Where uid="'+Edit1.Text+'"');
-    Try
+    ADOQuery1.SQL.Add('Select * from users Where uid="' + Edit1.Text + '"');
+    try
       ADOQuery1.Open;
-    Except
+    except
       Abort;
     end;
-    if ADOQuery1.RecordCount<>0 then
-      Edit1.Text:=ADOQuery1.FieldByName('uname').AsString;
+    if ADOQuery1.RecordCount <> 0 then
+      Edit1.Text := ADOQuery1.FieldByName('uname').AsString;
     Edit2.SetFocus;
   end;
 end;
 
 procedure TPass.Edit2KeyPress(Sender: TObject; var Key: Char);
 begin
-  if key=#13 then
+  if key = #13 then
   begin
     SpeedButton1.Click;
   end;
 end;
 
 {验证用户名和口令}
+
 procedure TPass.SpeedButton1Click(Sender: TObject);
 var
   vIniFile: TIniFile;
-  Reg:TRegistry;
+  Reg: TRegistry;
 begin
   {
   vIniFile:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.Ini');
@@ -113,22 +115,22 @@ begin
   }
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from users Where uname="'+Edit1.Text+'"');
+  ADOQuery1.SQL.Add('Select * from users Where uname="' + Edit1.Text + '"');
   ADOQuery1.Open;
-  if (ADOQuery1.FieldByName('userpass').AsString=MD5.MD5Print(MD5.MD5String(Edit2.Text)))and(ADOQuery1.RecordCount<>0) then
+  if (ADOQuery1.FieldByName('userpass').AsString = MD5.MD5Print(MD5.MD5String(Edit2.Text))) and (ADOQuery1.RecordCount <> 0) then
   begin
     Main.Show;
-    Main.Caption:=Edit1.Text;
+    Main.Caption := Edit1.Text;
     //填入操作员姓名
-    Main.Label19.Caption:=Main.Caption;
+    Main.Label19.Caption := Main.Caption;
     //填入登记时间
-    Main.Label21.Caption:=FormatDateTime('tt', Now);
+    Main.Label21.Caption := FormatDateTime('tt', Now);
     Pass.Hide;
   end
   else
   begin
     showmessage('用户名或密码错误请重新输入~~!');
-    Edit2.Text:='';
+    Edit2.Text := '';
     Edit2.SetFocus;
   end;
 end;
@@ -142,21 +144,22 @@ procedure TPass.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   case key of
-    VK_ESCAPE:SpeedButton2.Click;
+    VK_ESCAPE: SpeedButton2.Click;
   end;
 end;
 
 {登录验证页面}
+
 procedure TPass.FormCreate(Sender: TObject);
 var
-  vIniFile : TIniFile;
-  Reg      : TRegistry;
-  Data,ds     : String;
+  vIniFile: TIniFile;
+  Reg: TRegistry;
+  Data, ds: string;
 begin
   {建立数据连接}
   //建立INI文件关联
-  vIniFile:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.Ini');
-  ds := vIniFile.Readstring('System','Data Source','shop');
+  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'Config.Ini');
+  ds := vIniFile.Readstring('System', 'Data Source', 'shop');
   //写机器ID码
   //PCID;
   //联接数据库
@@ -166,16 +169,16 @@ begin
   Data:=Data+'Persist Security Info=False';
   ADOQuery1.ConnectionString:=Data;
   }
-  ADOQuery1.ConnectionString:='Provider=MSDASQL.1;' +
-            'Persist Security Info=False;' +
-            'User ID=root;' +
-            'Password=zaqwsxcde123;' +
-            'Data Source='+ds;//shop';
+  ADOQuery1.ConnectionString := 'Provider=MSDASQL.1;' +
+    'Persist Security Info=False;' +
+    'User ID=root;' +
+    'Password=zaqwsxcde123;' +
+    'Data Source=' + ds; //shop';
 
   {查询系统用户}
   ADOQuery1.SQL.Clear;
   ADOQuery1.SQL.Add('Select * from users');
-  ADOQuery1.Active:=True;
+  ADOQuery1.Active := True;
   {
   //注册表中写当前日期
   Reg:=TRegistry.Create;
@@ -240,9 +243,10 @@ begin
 
 end;
 
-function TPass.Key(ID: String): String;
+function TPass.Key(ID: string): string;
 begin
 
 end;
 
 end.
+

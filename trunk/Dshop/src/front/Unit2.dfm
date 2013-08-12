@@ -1,8 +1,8 @@
 object Main: TMain
-  Left = 385
-  Top = 74
+  Left = 412
+  Top = 40
   Width = 1045
-  Height = 936
+  Height = 837
   ActiveControl = RzEdit4
   Caption = 'Main'
   Color = clBlack
@@ -74,7 +74,7 @@ object Main: TMain
   end
   object Panel3: TPanel
     Left = 0
-    Top = 845
+    Top = 746
     Width = 1037
     Height = 64
     Align = alBottom
@@ -298,7 +298,7 @@ object Main: TMain
     Left = 795
     Top = 40
     Width = 242
-    Height = 805
+    Height = 706
     Align = alRight
     BevelInner = bvLowered
     Color = clBlack
@@ -762,19 +762,12 @@ object Main: TMain
       Height = 409
       TabStop = False
       Align = alClient
-      BorderStyle = bsNone
       Color = clBlack
       Ctl3D = False
       DataSource = DataSource1
       FixedColor = clBlack
-      Font.Charset = GB2312_CHARSET
-      Font.Color = clWhite
-      Font.Height = -12
-      Font.Name = #23435#20307
-      Font.Style = []
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
       ParentCtl3D = False
-      ParentFont = False
       ReadOnly = True
       TabOrder = 0
       TitleFont.Charset = GB2312_CHARSET
@@ -1035,10 +1028,10 @@ object Main: TMain
     end
   end
   object Panel5: TPanel
-    Left = 11
-    Top = 221
-    Width = 862
-    Height = 572
+    Left = 27
+    Top = 93
+    Width = 950
+    Height = 684
     Color = clBlack
     TabOrder = 3
     Visible = False
@@ -1073,9 +1066,9 @@ object Main: TMain
       Page.PaperSize = Custom
       Page.Values = (
         0.000000000000000000
-        1579.562500000000000000
+        1580.000000000000000000
         0.000000000000000000
-        2399.770833333333000000
+        2400.000000000000000000
         31.000000000000000000
         31.000000000000000000
         0.000000000000000000)
@@ -1108,10 +1101,11 @@ object Main: TMain
         Width = 884
         Height = 20
         Frame.Color = clBlack
-        Frame.DrawTop = False
-        Frame.DrawBottom = False
-        Frame.DrawLeft = False
-        Frame.DrawRight = False
+        Frame.DrawTop = True
+        Frame.DrawBottom = True
+        Frame.DrawLeft = True
+        Frame.DrawRight = True
+        Frame.Style = psDot
         AlignToBottom = False
         Color = clWhite
         TransparentBand = False
@@ -1331,34 +1325,8 @@ object Main: TMain
           WordWrap = True
           FontSize = 10
         end
-        object qrdbtxtdiscount: TQRDBText
-          Left = 627
-          Top = 1
-          Width = 50
-          Height = 17
-          Frame.Color = clBlack
-          Frame.DrawTop = False
-          Frame.DrawBottom = False
-          Frame.DrawLeft = False
-          Frame.DrawRight = False
-          Size.Values = (
-            44.979166666666670000
-            1658.937500000000000000
-            2.645833333333333000
-            132.291666666666700000)
-          Alignment = taLeftJustify
-          AlignToBand = False
-          AutoSize = True
-          AutoStretch = False
-          Color = clWhite
-          DataSet = ADOQuery1
-          DataField = 'discount'
-          Transparent = False
-          WordWrap = True
-          FontSize = 10
-        end
         object qrdbtxtrepeat: TQRDBText
-          Left = 681
+          Left = 627
           Top = 1
           Width = 37
           Height = 17
@@ -1369,7 +1337,7 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             44.979166666666670000
-            1801.812500000000000000
+            1658.937500000000000000
             2.645833333333333000
             97.895833333333340000)
           Alignment = taLeftJustify
@@ -1384,7 +1352,7 @@ object Main: TMain
           FontSize = 10
         end
         object qrdbtxt11: TQRDBText
-          Left = 734
+          Left = 680
           Top = 1
           Width = 55
           Height = 17
@@ -1395,7 +1363,7 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             44.979166666666670000
-            1942.041666666667000000
+            1799.166666666667000000
             2.645833333333333000
             145.520833333333300000)
           Alignment = taLeftJustify
@@ -1740,39 +1708,8 @@ object Main: TMain
           WordWrap = True
           FontSize = 9
         end
-        object qrlbl9: TQRLabel
-          Left = 626
-          Top = 54
-          Width = 25
-          Height = 30
-          Frame.Color = clBlack
-          Frame.DrawTop = False
-          Frame.DrawBottom = False
-          Frame.DrawLeft = False
-          Frame.DrawRight = False
-          Size.Values = (
-            79.375000000000000000
-            1656.291666666667000000
-            142.875000000000000000
-            66.145833333333340000)
-          Alignment = taLeftJustify
-          AlignToBand = False
-          AutoSize = True
-          AutoStretch = False
-          Caption = #25240#25187
-          Color = clWhite
-          Font.Charset = GB2312_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = #20223#23435'_GB2312'
-          Font.Style = []
-          ParentFont = False
-          Transparent = False
-          WordWrap = True
-          FontSize = 9
-        end
         object qrlbl10: TQRLabel
-          Left = 680
+          Left = 627
           Top = 54
           Width = 25
           Height = 30
@@ -1783,7 +1720,7 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             79.375000000000000000
-            1799.166666666667000000
+            1658.937500000000000000
             142.875000000000000000
             66.145833333333340000)
           Alignment = taLeftJustify
@@ -1803,7 +1740,7 @@ object Main: TMain
           FontSize = 9
         end
         object qrlbl11: TQRLabel
-          Left = 734
+          Left = 681
           Top = 54
           Width = 25
           Height = 30
@@ -1814,7 +1751,7 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             79.375000000000000000
-            1942.041666666667000000
+            1801.812500000000000000
             142.875000000000000000
             66.145833333333340000)
           Alignment = taLeftJustify
@@ -1834,7 +1771,7 @@ object Main: TMain
           FontSize = 9
         end
         object qrsysdt1: TQRSysData
-          Left = 824
+          Left = 771
           Top = 56
           Width = 78
           Height = 17
@@ -1845,7 +1782,7 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             44.979166666666670000
-            2180.166666666667000000
+            2039.937500000000000000
             148.166666666666700000
             206.375000000000000000)
           Alignment = taLeftJustify
@@ -1856,30 +1793,12 @@ object Main: TMain
           Transparent = False
           FontSize = 10
         end
-        object qrshp1: TQRShape
-          Left = 15
-          Top = 69
-          Width = 800
-          Height = 1
-          Frame.Color = clBlack
-          Frame.DrawTop = False
-          Frame.DrawBottom = False
-          Frame.DrawLeft = False
-          Frame.DrawRight = False
-          Size.Values = (
-            2.645833333333333000
-            39.687500000000000000
-            182.562500000000000000
-            2116.666666666667000000)
-          Shape = qrsRectangle
-          VertAdjust = 0
-        end
       end
       object SummaryBand1: TQRBand
         Left = 12
         Top = 90
         Width = 884
-        Height = 92
+        Height = 85
         Frame.Color = clBlack
         Frame.DrawTop = False
         Frame.DrawBottom = False
@@ -1891,14 +1810,14 @@ object Main: TMain
         ForceNewColumn = False
         ForceNewPage = False
         Size.Values = (
-          243.416666666666700000
+          224.895833333333300000
           2338.916666666667000000)
         PreCaluculateBandHeight = False
         KeepOnOnePage = False
         BandType = rbSummary
         object QRLabel7: TQRLabel
           Left = 131
-          Top = 6
+          Top = 24
           Width = 67
           Height = 15
           Frame.Color = clBlack
@@ -1909,7 +1828,7 @@ object Main: TMain
           Size.Values = (
             39.687500000000000000
             346.604166666666700000
-            15.875000000000000000
+            63.500000000000000000
             177.270833333333300000)
           Alignment = taLeftJustify
           AlignToBand = False
@@ -1929,7 +1848,7 @@ object Main: TMain
         end
         object QRLabel9: TQRLabel
           Left = 458
-          Top = 6
+          Top = 24
           Width = 67
           Height = 15
           Frame.Color = clBlack
@@ -1940,7 +1859,7 @@ object Main: TMain
           Size.Values = (
             39.687500000000000000
             1211.791666666667000000
-            15.875000000000000000
+            63.500000000000000000
             177.270833333333300000)
           Alignment = taLeftJustify
           AlignToBand = False
@@ -1960,7 +1879,7 @@ object Main: TMain
         end
         object QRLabel8: TQRLabel
           Left = 284
-          Top = 6
+          Top = 24
           Width = 67
           Height = 15
           Frame.Color = clBlack
@@ -1971,7 +1890,7 @@ object Main: TMain
           Size.Values = (
             39.687500000000000000
             751.416666666666800000
-            15.875000000000000000
+            63.500000000000000000
             177.270833333333300000)
           Alignment = taLeftJustify
           AlignToBand = False
@@ -1991,7 +1910,7 @@ object Main: TMain
         end
         object QRLabel10: TQRLabel
           Left = 17
-          Top = 6
+          Top = 24
           Width = 79
           Height = 15
           Frame.Color = clBlack
@@ -2002,7 +1921,7 @@ object Main: TMain
           Size.Values = (
             39.687500000000000000
             44.979166666666670000
-            15.875000000000000000
+            63.500000000000000000
             209.020833333333300000)
           Alignment = taLeftJustify
           AlignToBand = False
@@ -2022,7 +1941,7 @@ object Main: TMain
         end
         object qrlbl13: TQRLabel
           Left = 17
-          Top = 28
+          Top = 46
           Width = 67
           Height = 15
           Frame.Color = clBlack
@@ -2033,7 +1952,7 @@ object Main: TMain
           Size.Values = (
             39.687500000000000000
             44.979166666666670000
-            74.083333333333340000
+            121.708333333333300000
             177.270833333333300000)
           Alignment = taLeftJustify
           AlignToBand = False
@@ -2053,7 +1972,7 @@ object Main: TMain
         end
         object qrlbl14: TQRLabel
           Left = 131
-          Top = 28
+          Top = 46
           Width = 103
           Height = 15
           Frame.Color = clBlack
@@ -2064,7 +1983,7 @@ object Main: TMain
           Size.Values = (
             39.687500000000000000
             346.604166666666700000
-            74.083333333333340000
+            121.708333333333300000
             272.520833333333400000)
           Alignment = taLeftJustify
           AlignToBand = False
@@ -2084,7 +2003,7 @@ object Main: TMain
         end
         object qrlbl15: TQRLabel
           Left = 284
-          Top = 28
+          Top = 46
           Width = 145
           Height = 15
           Frame.Color = clBlack
@@ -2095,7 +2014,7 @@ object Main: TMain
           Size.Values = (
             39.687500000000000000
             751.416666666666800000
-            74.083333333333340000
+            121.708333333333300000
             383.645833333333400000)
           Alignment = taLeftJustify
           AlignToBand = False
@@ -2115,7 +2034,7 @@ object Main: TMain
         end
         object qrlbl16: TQRLabel
           Left = 17
-          Top = 51
+          Top = 69
           Width = 97
           Height = 15
           Frame.Color = clBlack
@@ -2126,7 +2045,7 @@ object Main: TMain
           Size.Values = (
             39.687500000000000000
             44.979166666666670000
-            134.937500000000000000
+            182.562500000000000000
             256.645833333333400000)
           Alignment = taLeftJustify
           AlignToBand = False
@@ -2146,7 +2065,7 @@ object Main: TMain
         end
         object qrlbl17: TQRLabel
           Left = 131
-          Top = 51
+          Top = 69
           Width = 103
           Height = 15
           Frame.Color = clBlack
@@ -2157,7 +2076,7 @@ object Main: TMain
           Size.Values = (
             39.687500000000000000
             346.604166666666700000
-            134.937500000000000000
+            182.562500000000000000
             272.520833333333400000)
           Alignment = taLeftJustify
           AlignToBand = False
@@ -2177,7 +2096,7 @@ object Main: TMain
         end
         object qrlbl18: TQRLabel
           Left = 284
-          Top = 51
+          Top = 69
           Width = 139
           Height = 15
           Frame.Color = clBlack
@@ -2188,7 +2107,7 @@ object Main: TMain
           Size.Values = (
             39.687500000000000000
             751.416666666666800000
-            134.937500000000000000
+            182.562500000000000000
             367.770833333333400000)
           Alignment = taLeftJustify
           AlignToBand = False
@@ -2208,7 +2127,7 @@ object Main: TMain
         end
         object qrlbl19: TQRLabel
           Left = 458
-          Top = 28
+          Top = 46
           Width = 121
           Height = 15
           Frame.Color = clBlack
@@ -2219,7 +2138,7 @@ object Main: TMain
           Size.Values = (
             39.687500000000000000
             1211.791666666667000000
-            74.083333333333340000
+            121.708333333333300000
             320.145833333333400000)
           Alignment = taLeftJustify
           AlignToBand = False
@@ -2239,8 +2158,8 @@ object Main: TMain
         end
         object qrshp2: TQRShape
           Left = 15
-          Top = 3
-          Width = 593
+          Top = 1
+          Width = 650
           Height = 1
           Frame.Color = clBlack
           Frame.DrawTop = False
@@ -2250,15 +2169,41 @@ object Main: TMain
           Size.Values = (
             2.645833333333333000
             39.687500000000000000
-            7.937500000000000000
-            1568.979166666667000000)
+            2.645833333333333000
+            1719.791666666667000000)
           Shape = qrsRectangle
           VertAdjust = 0
+        end
+        object qrxpr1: TQRExpr
+          Left = 360
+          Top = 3
+          Width = 157
+          Height = 17
+          Frame.Color = clBlack
+          Frame.DrawTop = False
+          Frame.DrawBottom = False
+          Frame.DrawLeft = False
+          Frame.DrawRight = False
+          Size.Values = (
+            44.979166666666670000
+            952.500000000000000000
+            7.937500000000000000
+            415.395833333333400000)
+          Alignment = taLeftJustify
+          AlignToBand = False
+          AutoSize = True
+          AutoStretch = False
+          Color = clWhite
+          ResetAfterPrint = False
+          Transparent = False
+          WordWrap = True
+          Expression = 'SUM(ADOQuery1.fields[7])'
+          FontSize = 10
         end
       end
       object qrbndPageFooter1: TQRBand
         Left = 12
-        Top = 182
+        Top = 175
         Width = 884
         Height = 30
         Frame.Color = clBlack
@@ -2309,7 +2254,7 @@ object Main: TMain
           FontSize = 10
         end
         object qrlbl21: TQRLabel
-          Left = 241
+          Left = 259
           Top = 7
           Width = 113
           Height = 17
@@ -2320,7 +2265,7 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             44.979166666666670000
-            637.645833333333400000
+            685.270833333333400000
             18.520833333333330000
             298.979166666666700000)
           Alignment = taLeftJustify
@@ -2340,7 +2285,7 @@ object Main: TMain
           FontSize = 10
         end
         object qrlbl22: TQRLabel
-          Left = 385
+          Left = 397
           Top = 7
           Width = 134
           Height = 17
@@ -2351,7 +2296,7 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             44.979166666666670000
-            1018.645833333333000000
+            1050.395833333333000000
             18.520833333333330000
             354.541666666666700000)
           Alignment = taLeftJustify
@@ -2371,7 +2316,7 @@ object Main: TMain
           FontSize = 10
         end
         object qrlbl12: TQRLabel
-          Left = 681
+          Left = 700
           Top = 7
           Width = 92
           Height = 17
@@ -2382,7 +2327,7 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             44.979166666666670000
-            1801.812500000000000000
+            1852.083333333333000000
             18.520833333333330000
             243.416666666666700000)
           Alignment = taLeftJustify
@@ -2403,7 +2348,7 @@ object Main: TMain
           FontSize = 10
         end
         object qrlbl23: TQRLabel
-          Left = 542
+          Left = 555
           Top = 5
           Width = 121
           Height = 28
@@ -2414,7 +2359,7 @@ object Main: TMain
           Frame.DrawRight = False
           Size.Values = (
             74.083333333333340000
-            1434.041666666667000000
+            1468.437500000000000000
             13.229166666666670000
             320.145833333333400000)
           Alignment = taLeftJustify
