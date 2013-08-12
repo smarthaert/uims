@@ -36,16 +36,17 @@ uses Unit5;
 procedure TMoLing.RzEdit1KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if key=13 then begin
+  if key = 13 then
+  begin
     try
       StrToCurr(RzEdit1.Text);
-    Except
+    except
       ShowMessage('输入的实收金额类型非法~~!');
-      RzEdit1.Text:='';
+      RzEdit1.Text := '';
       RzEdit1.SetFocus;
       Exit;
     end;
-    Gathering.Label2.Caption:=FormatFloat('0.00',StrToCurr(RzEdit1.Text));
+    Gathering.Label2.Caption := FormatFloat('0.00', StrToCurr(RzEdit1.Text));
     Gathering.RzEdit1.SetFocus;
     Moling.Close;
   end;
@@ -55,7 +56,7 @@ procedure TMoLing.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   case key of
-    VK_ESCAPE:MoLing.Close;
+    VK_ESCAPE: MoLing.Close;
   end;
 end;
 

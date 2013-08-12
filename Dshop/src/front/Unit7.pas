@@ -48,32 +48,35 @@ end;
 
 procedure TPos_Setup.Label2Click(Sender: TObject);
 begin
-  if OpenDialog1.Execute then begin
-  end else begin
+  if OpenDialog1.Execute then
+  begin
+  end
+  else
+  begin
   end;
-  
+
 end;
 
 procedure TPos_Setup.SpeedButton1Click(Sender: TObject);
 var
-  vIniFile : TIniFile;
+  vIniFile: TIniFile;
 begin
-  vIniFile:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.Ini');
-  vIniFile.WriteString('System','Name',RzEdit1.Text);
-  vIniFile.WriteString('System','La1' ,RzEdit2.Text);
-  vIniFile.WriteString('System','La2' ,RzEdit3.Text);
-  vIniFile.WriteString('System','Tel' ,RzEdit4.Text);
+  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'Config.Ini');
+  vIniFile.WriteString('System', 'Name', RzEdit1.Text);
+  vIniFile.WriteString('System', 'La1', RzEdit2.Text);
+  vIniFile.WriteString('System', 'La2', RzEdit3.Text);
+  vIniFile.WriteString('System', 'Tel', RzEdit4.Text);
 end;
 
 procedure TPos_Setup.FormActivate(Sender: TObject);
 var
-  vIniFile : TIniFile;
+  vIniFile: TIniFile;
 begin
-  vIniFile:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.Ini');
-  RzEdit1.Text:=vIniFile.ReadString('System','Name','');
-  RzEdit2.Text:=vIniFile.ReadString('System','La1' ,'');
-  RzEdit3.Text:=vIniFile.ReadString('System','La2' ,'');
-  RzEdit4.Text:=vIniFile.ReadString('System','Tel' ,'');
+  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'Config.Ini');
+  RzEdit1.Text := vIniFile.ReadString('System', 'Name', '');
+  RzEdit2.Text := vIniFile.ReadString('System', 'La1', '');
+  RzEdit3.Text := vIniFile.ReadString('System', 'La2', '');
+  RzEdit4.Text := vIniFile.ReadString('System', 'Tel', '');
 end;
 
 end.

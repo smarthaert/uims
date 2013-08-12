@@ -48,18 +48,18 @@ procedure TQS.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   case key of
-    VK_ESCAPE:SpeedButton1.Click;
-    VK_SPACE :SpeedButton2.Click;
+    VK_ESCAPE: SpeedButton1.Click;
+    VK_SPACE: SpeedButton2.Click;
 
     VK_UP:
-    begin
-      DBGrid1.SetFocus;
-    end;
+      begin
+        DBGrid1.SetFocus;
+      end;
 
     VK_DOWN:
-    begin
-      DBGrid1.SetFocus;
-    end;
+      begin
+        DBGrid1.SetFocus;
+      end;
   end;
 end;
 
@@ -75,7 +75,7 @@ end;
 procedure TQS.c1;
 begin
   //如果没有客户数据则退出
-  if ADOQuery1.RecordCount<1 then
+  if ADOQuery1.RecordCount < 1 then
   begin
     ShowMessage('没有找到托运部信息~~!');
     QS.Close;
@@ -84,9 +84,9 @@ end;
 
 procedure TQS.DBGrid1KeyPress(Sender: TObject; var Key: Char);
 begin
-  if key=#13 then
+  if key = #13 then
   begin
-    key:=#0;
+    key := #0;
     SpeedButton2.Click;
   end;
 end;
@@ -95,8 +95,8 @@ procedure TQS.FormShow(Sender: TObject);
 begin
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from shippers where custid = "'+Main.edt7.Text+'"');
-  ADOQuery1.Active:=True;
+  ADOQuery1.SQL.Add('Select * from shippers where custid = "' + Main.edt7.Text + '"');
+  ADOQuery1.Active := True;
 end;
 
 end.
