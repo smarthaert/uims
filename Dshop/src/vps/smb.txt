@@ -1,0 +1,43 @@
+http://forum.ubuntu.org.cn/viewtopic.php?t=20852
+
+
+sudo apt-get install samba
+sudo apt-get install smbfs
+
+security = user
+username map = /etc/samba/smbusers
+
+
+[workplace]
+comment = workplace
+path = /home/ubuntu/workplace
+public = yes
+writable = yes
+valid users = kylin
+create mask = 0700
+directory mask = 0700
+force user = nobody
+force group = nogroup
+available = yes
+browseable = yes
+
+
+workgroup = WORKGROUP
+display charset = UTF-8
+unix charset = UTF-8
+dos charset = GBK
+#dos charset = cp936
+
+
+sudo useradd kylin
+
+vim /etc/samba/smbusers
+kylin= "network username kylin"
+
+sudo smbpasswd -a kylin
+
+testparm
+
+
+service smbd restart
+net use Y: \\112.124.22.249\workplace "kylin" /user:"kylin"
