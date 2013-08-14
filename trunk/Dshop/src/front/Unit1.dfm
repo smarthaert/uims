@@ -2,7 +2,7 @@ object Pass: TPass
   Left = 703
   Top = 305
   BorderStyle = bsNone
-  Caption = 'Pass'
+  Caption = 'g wo '
   ClientHeight = 157
   ClientWidth = 250
   Color = clBtnFace
