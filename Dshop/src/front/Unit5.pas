@@ -158,8 +158,8 @@ begin
       end;
 
 
-      //Main.QuickRep1.Print;
-      Main.QuickRep1.Preview;
+      Main.QuickRep1.Print;
+      //Main.QuickRep1.Preview;
     end;
   end;
   //保存是否打印小票信息
