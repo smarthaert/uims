@@ -234,6 +234,33 @@ begin
       Application.Terminate;
     end;
   end;
+
+
+  sample e.g.
+  ------------------------------------------------------------------------------
+  try
+    ADOConnectionDM.ADOConnection2.BeginTrans;
+    adoq.SQL.Add('select * from tabbar');
+    adoq.open;
+    c1:='0';
+    while not adoq.Eof do
+    begin
+        adoq1.SQL.Add('insert into dbo.tabbar(barcode,scantime,userid,lip) values ('''+adoq.Fields[0].AsString+''','''+adoq.Fields[1].AsString+''','''+adoq.Fields[2].AsString+''','''+adoq.Fields[3].AsString+''')');
+        adoq.Next;
+        c1:='1';
+    end;
+    adoq1.ExecSQL;
+    adoq.Close;
+    adoq.SQL.Clear;
+    adoq.SQL.Add('delete from tabbar');
+    adoq.ExecSQL;
+    b1:=true;
+    ADOConnectionDM.ADOConnection2.CommitTrans;
+    except
+      ADOConnectionDM.ADOConnection2.RollbackTrans;
+      b1:=false;
+    end;
+
   }
 end;
 

@@ -1,10 +1,10 @@
 object Gathering: TGathering
-  Left = 392
-  Top = 128
+  Left = 596
+  Top = 318
   BorderStyle = bsNone
   Caption = #32467#36134#25910#27454
   ClientHeight = 257
-  ClientWidth = 418
+  ClientWidth = 463
   Color = clBtnFace
   Font.Charset = GB2312_CHARSET
   Font.Color = clWhite
@@ -21,7 +21,7 @@ object Gathering: TGathering
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 418
+    Width = 463
     Height = 41
     Align = alTop
     BevelInner = bvLowered
@@ -37,21 +37,21 @@ object Gathering: TGathering
     object RzFormShape1: TRzFormShape
       Left = 2
       Top = 2
-      Width = 414
+      Width = 459
       Height = 37
     end
   end
   object Panel2: TPanel
     Left = 0
     Top = 41
-    Width = 418
+    Width = 463
     Height = 216
     Align = alTop
     BevelInner = bvLowered
     Color = clBlack
     TabOrder = 1
     object Label1: TLabel
-      Left = 38
+      Left = 19
       Top = 41
       Width = 105
       Height = 29
@@ -64,9 +64,9 @@ object Gathering: TGathering
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 136
+      Left = 128
       Top = 17
-      Width = 211
+      Width = 275
       Height = 65
       Alignment = taRightJustify
       AutoSize = False
@@ -79,7 +79,7 @@ object Gathering: TGathering
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 350
+      Left = 406
       Top = 41
       Width = 30
       Height = 29
@@ -92,7 +92,7 @@ object Gathering: TGathering
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 38
+      Left = 19
       Top = 145
       Width = 105
       Height = 29
@@ -105,7 +105,7 @@ object Gathering: TGathering
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 350
+      Left = 406
       Top = 153
       Width = 30
       Height = 29
@@ -118,7 +118,7 @@ object Gathering: TGathering
       ParentFont = False
     end
     object Label6: TLabel
-      Left = 38
+      Left = 19
       Top = 97
       Width = 105
       Height = 29
@@ -131,9 +131,9 @@ object Gathering: TGathering
       ParentFont = False
     end
     object Label7: TLabel
-      Left = 136
+      Left = 128
       Top = 73
-      Width = 211
+      Width = 275
       Height = 65
       Alignment = taRightJustify
       AutoSize = False
@@ -146,7 +146,7 @@ object Gathering: TGathering
       ParentFont = False
     end
     object Label8: TLabel
-      Left = 350
+      Left = 406
       Top = 97
       Width = 30
       Height = 29
@@ -185,9 +185,9 @@ object Gathering: TGathering
       ParentFont = False
     end
     object RzEdit1: TRzEdit
-      Left = 142
+      Left = 128
       Top = 139
-      Width = 209
+      Width = 279
       Height = 41
       Alignment = taRightJustify
       Color = clBlack

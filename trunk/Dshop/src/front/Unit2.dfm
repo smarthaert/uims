@@ -1,8 +1,8 @@
 object Main: TMain
-  Left = 257
-  Top = 20
+  Left = 413
+  Top = 47
   Width = 1045
-  Height = 837
+  Height = 810
   ActiveControl = RzEdit4
   Caption = 'Main'
   Color = clBlack
@@ -74,7 +74,7 @@ object Main: TMain
   end
   object Panel3: TPanel
     Left = 0
-    Top = 746
+    Top = 719
     Width = 1037
     Height = 64
     Align = alBottom
@@ -110,7 +110,7 @@ object Main: TMain
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 119
+      Left = 118
       Top = 38
       Width = 48
       Height = 12
@@ -164,7 +164,7 @@ object Main: TMain
       ParentFont = False
     end
     object Bevel1: TBevel
-      Left = 516
+      Left = 527
       Top = 4
       Width = 2
       Height = 56
@@ -218,6 +218,19 @@ object Main: TMain
       Font.Style = []
       ParentFont = False
     end
+    object Label31: TLabel
+      Left = 393
+      Top = 38
+      Width = 54
+      Height = 12
+      Caption = 'F10.'#20214#25968':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
     object RzEdit1: TRzEdit
       Left = 64
       Top = 35
@@ -237,7 +250,7 @@ object Main: TMain
       OnKeyPress = RzEdit1KeyPress
     end
     object RzEdit2: TRzEdit
-      Left = 167
+      Left = 168
       Top = 35
       Width = 90
       Height = 20
@@ -254,7 +267,7 @@ object Main: TMain
       OnKeyPress = RzEdit2KeyPress
     end
     object RzEdit3: TRzEdit
-      Left = 318
+      Left = 320
       Top = 35
       Width = 67
       Height = 20
@@ -293,12 +306,29 @@ object Main: TMain
       TabOrder = 3
       OnKeyPress = RzEdit4KeyPress
     end
+    object RzEdit5: TRzEdit
+      Left = 448
+      Top = 35
+      Width = 67
+      Height = 20
+      Text = '1'
+      Alignment = taRightJustify
+      Color = clBlack
+      Ctl3D = True
+      FrameColor = clWhite
+      FrameHotColor = 14593668
+      FrameHotTrack = True
+      FrameVisible = True
+      ParentCtl3D = False
+      TabOrder = 4
+      OnKeyPress = RzEdit5KeyPress
+    end
   end
   object Panel4: TPanel
     Left = 795
     Top = 40
     Width = 242
-    Height = 706
+    Height = 679
     Align = alRight
     BevelInner = bvLowered
     Color = clBlack
@@ -1030,8 +1060,8 @@ object Main: TMain
   object Panel5: TPanel
     Left = 27
     Top = 93
-    Width = 950
-    Height = 684
+    Width = 33
+    Height = 33
     Color = clBlack
     TabOrder = 3
     Visible = False
@@ -2553,7 +2583,6 @@ object Main: TMain
   end
   object ADOQuery1: TADOQuery
     Connection = ADOConnection1
-    CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
       'Select * from Sell_Minor')
@@ -2562,7 +2591,6 @@ object Main: TMain
   end
   object ADOQuery2: TADOQuery
     Connection = ADOConnection1
-    CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
       'select * from Stock')

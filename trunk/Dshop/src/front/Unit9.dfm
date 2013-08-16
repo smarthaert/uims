@@ -174,7 +174,6 @@ object QC: TQC
   end
   object ADOQuery1: TADOQuery
     Connection = Main.ADOConnection1
-    CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
       'Select * from Sell_Main where Not(Hang)')

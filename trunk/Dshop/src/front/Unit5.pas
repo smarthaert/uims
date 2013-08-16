@@ -158,8 +158,8 @@ begin
       end;
 
 
-      Main.QuickRep1.Print;
-      //Main.QuickRep1.Preview;
+      //Main.QuickRep1.Print;
+      Main.QuickRep1.Preview;
     end;
   end;
   //保存是否打印小票信息
@@ -185,14 +185,15 @@ begin
     Main.ADOQuery2.Edit;
     Main.ADOQuery2.FieldByName('amount').AsCurrency := Main.ADOQuery2.FieldByName('amount').AsCurrency - Main.ADOQuery1.FieldByName('amount').AsCurrency;
 
-    {
+
     UpdateTimeStr := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
     if Main.ADOQuery2.FieldByName('created_at').AsString = '' then
       Main.ADOQuery2.FieldByName('created_at').AsString := UpdateTimeStr;
     Main.ADOQuery2.FieldByName('updated_at').AsString := UpdateTimeStr;
-    }
-    
+
+
     Main.ADOQuery2.Post;
+    Main.ADOQuery2.Refresh;
     Main.ADOQuery1.Next;
   end;
   //更改销售标记
@@ -202,15 +203,18 @@ begin
   Main.ADOQuery2.Edit;
   Main.ADOQuery2.FieldByName('yingshou').AsString := Main.Label7.Caption;
   Main.ADOQuery2.FieldByName('shishou').AsString := Label2.Caption;
-  Main.ADOQuery2.FieldByName('status').AsString := '1';        
+  Main.ADOQuery2.FieldByName('status').AsString := '1';
   Main.ADOQuery2.FieldByName('remark').AsString := Main.mmo1.Lines.GetText;
+
 
   UpdateTimeStr := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
   if Main.ADOQuery2.FieldByName('created_at').AsString = '' then
     Main.ADOQuery2.FieldByName('created_at').AsString := UpdateTimeStr;
   Main.ADOQuery2.FieldByName('updated_at').AsString := UpdateTimeStr;
 
+
   Main.ADOQuery2.Post;
+  Main.ADOQuery2.Refresh;
   //根据支付方式记帐
   Main.ADOQuery2.SQL.Clear;
   Main.ADOQuery2.SQL.Add('Select * from contactpayments Where not(1)');
@@ -225,12 +229,15 @@ begin
   Main.ADOQuery2.FieldByName('method').AsString := Main.cbb1.Text;
   Main.ADOQuery2.FieldByName('remark').AsString := Main.mmo1.Lines.GetText;
 
+
   UpdateTimeStr := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
   if Main.ADOQuery2.FieldByName('created_at').AsString = '' then
     Main.ADOQuery2.FieldByName('created_at').AsString := UpdateTimeStr;
   Main.ADOQuery2.FieldByName('updated_at').AsString := UpdateTimeStr;
-  Main.ADOQuery2.Post;
 
+
+  Main.ADOQuery2.Post;
+  Main.ADOQuery2.Refresh;
 
 
   //查找最小单号
@@ -287,4 +294,3 @@ begin
 end;
 
 end.
-
