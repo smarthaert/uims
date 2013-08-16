@@ -1,6 +1,6 @@
 object Card: TCard
-  Left = 276
-  Top = 112
+  Left = 501
+  Top = 204
   BorderStyle = bsNone
   Caption = #30913#21345#32467#31639
   ClientHeight = 134

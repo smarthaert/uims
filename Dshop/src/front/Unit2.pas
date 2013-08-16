@@ -135,6 +135,8 @@ type
     qrsysdt1: TQRSysData;
     qrlbl1: TQRLabel;
     qrlbl2: TQRLabel;
+    RzEdit5: TRzEdit;
+    Label31: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton1Click(Sender: TObject);
@@ -144,6 +146,7 @@ type
       Shift: TShiftState);
     procedure RzEdit1KeyPress(Sender: TObject; var Key: Char);
     procedure RzEdit3KeyPress(Sender: TObject; var Key: Char);
+    procedure RzEdit5KeyPress(Sender: TObject; var Key: Char);
     procedure RzEdit2KeyPress(Sender: TObject; var Key: Char);
     procedure DBGrid1MouseUp(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -189,11 +192,14 @@ begin
     ADOQuery1.Edit;
     ADOQuery1.FieldByName('outprice').AsString := ADOQuery4.FieldByName('hprice').AsString;
 
+
     UpdateTimeStr := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
     if ADOQuery1.FieldByName('created_at').AsString = '' then
       ADOQuery1.FieldByName('created_at').AsString := UpdateTimeStr;
     ADOQuery1.FieldByName('updated_at').AsString := UpdateTimeStr;
+    
     ADOQuery1.Post;
+    ADOQuery1.Refresh;
   end;
 end;
 
@@ -254,6 +260,7 @@ begin
     'Data Source=' + ds; //shop';
   {生成初始单号}
   //初始单号
+  {
   for i := 1 to 9999 do
   begin
     SID := FormatdateTime('yymmdd', Now) + FormatFloat('0000', i);
@@ -265,14 +272,20 @@ begin
       Break;
     end;
   end;
+  }
+  ADOQuery2.SQL.Clear;
+  ADOQuery2.SQL.Add('select substr(max(slid),7) as id from selllogmains');
+  ADOQuery2.Open;
+  SID := FormatdateTime('yymmdd', Now) + ADOQuery2.FieldByName('id').AsString;
+
   //读取单号
   Label26.Caption := SID;
   ADOQuery1.SQL.Clear;
   ADOQuery1.SQL.Add('Select * from selllogdetails Where slid="' + Label26.Caption + '" order by pid');
   ADOQuery1.Open;
-  QH2;      
-        {格式化小数显示}
-        TFloatField(DBGrid1.DataSource.DataSet.FieldByName('volume')).DisplayFormat := '0.00';
+  QH2;
+  {格式化小数显示}
+  TFloatField(DBGrid1.DataSource.DataSet.FieldByName('volume')).DisplayFormat := '0.00';
 
 end;
 
@@ -362,6 +375,7 @@ begin
   if ADOQuery1.FieldByName('created_at').AsString = '' then
     ADOQuery1.FieldByName('created_at').AsString := UpdateTimeStr;
   ADOQuery1.FieldByName('updated_at').AsString := UpdateTimeStr;
+  
 
   ADOQuery1.Post;
   ADOQuery1.Refresh;
@@ -416,12 +430,15 @@ begin
     ADOQuery3.FieldByName('uname').AsString := Label19.Caption;
     ADOQuery3.FieldByName('remark').AsString := mmo1.Lines.GetText;
 
+
     UpdateTimeStr := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
     if ADOQuery3.FieldByName('created_at').AsString = '' then
       ADOQuery3.FieldByName('created_at').AsString := UpdateTimeStr;
     ADOQuery3.FieldByName('updated_at').AsString := UpdateTimeStr;
 
+
     ADOQuery3.Post;
+    ADOQuery3.Refresh;
   end;
 
   //填扫描记录
@@ -446,10 +463,12 @@ begin
 
   ADOQuery1.FieldByName('status').AsInteger := 0;
 
+
   UpdateTimeStr := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
   if ADOQuery1.FieldByName('created_at').AsString = '' then
     ADOQuery1.FieldByName('created_at').AsString := UpdateTimeStr;
   ADOQuery1.FieldByName('updated_at').AsString := UpdateTimeStr;
+
 
   ADOQuery1.Post;
   ADOQuery1.Refresh;
@@ -556,8 +575,14 @@ begin
           {ADOQuery3.FieldByName('uid').AsInteger := 0;}
           ADOQuery3.FieldByName('uname').AsString := Label19.Caption;
           ADOQuery3.FieldByName('remark').AsString := mmo1.Lines.GetText;
-          ADOQuery3.FieldByName('created_at').AsString := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
-          {ADOQuery3.FieldByName('updated_at').AsString := FormatdateTime('yy-mm-dd hh:MM:ss', Now);}
+
+
+          UpdateTimeStr := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
+          if ADOQuery3.FieldByName('created_at').AsString = '' then
+            ADOQuery3.FieldByName('created_at').AsString := UpdateTimeStr;
+          ADOQuery3.FieldByName('updated_at').AsString := UpdateTimeStr;
+
+
           ADOQuery3.Post;
           ADOQuery3.Refresh;
         end;
@@ -597,7 +622,7 @@ begin
         ADOQuery1.SQL.Add('Select * from selllogdetails Where slid="' + Label26.Caption + '" order by pid');
         ADOQuery1.Open;
         QH2;
-        
+
         {格式化小数显示}
         TFloatField(DBGrid1.DataSource.DataSet.FieldByName('volume')).DisplayFormat := '0.00';
 
@@ -624,6 +649,8 @@ begin
           Pos_Setup.ShowModal;
         end;
       end;
+
+    VK_F10: RzEdit5.SetFocus;
 
     VK_UP:
       begin
@@ -696,6 +723,7 @@ begin
       ADOQuery1.Edit;
       ADOQuery1.FieldByName('discount').AsString := RzEdit1.Text;
       ADOQuery1.Post;
+      ADOQuery1.Refresh;
       QH1;
       QH2;
     end;
@@ -727,16 +755,58 @@ begin
       ADOQuery1.Edit;
       ADOQuery1.FieldByName('amount').AsString := RzEdit3.Text;
 
+
       UpdateTimeStr := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
       if ADOQuery1.FieldByName('created_at').AsString = '' then
         ADOQuery1.FieldByName('created_at').AsString := UpdateTimeStr;
       ADOQuery1.FieldByName('updated_at').AsString := UpdateTimeStr;
 
+
       ADOQuery1.Post;
+      ADOQuery1.Refresh;
       QH1;
       QH2;
     end;
     RzEdit3.Text := '1';
+    RzEdit4.SetFocus;
+  end;
+end;
+
+
+procedure TMain.RzEdit5KeyPress(Sender: TObject; var Key: Char);
+begin
+  if key = #13 then
+  begin
+    key := #0;
+    if ADOQuery1.RecordCount > 0 then
+    begin
+      //输入数据检查
+      try
+        StrToCurr(RzEdit5.Text);
+        if StrToCurr(RzEdit5.Text) < 0 then
+        begin
+          ShowMessage('商品件数不能小于零~~!');
+          RzEdit5.Text := '1';
+          Exit;
+        end;
+      except
+        ShowMessage('输入非法字符~~!');
+        Exit;
+      end;
+      ADOQuery1.Edit;
+      ADOQuery1.FieldByName('bundle').AsString := RzEdit5.Text;
+
+      UpdateTimeStr := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
+      if ADOQuery1.FieldByName('created_at').AsString = '' then
+        ADOQuery1.FieldByName('created_at').AsString := UpdateTimeStr;
+      ADOQuery1.FieldByName('updated_at').AsString := UpdateTimeStr;
+      
+      ADOQuery1.Post;
+      ADOQuery1.Refresh;
+      QH1;
+      QH2;
+    end;
+    RzEdit5.Text := '1';
     RzEdit4.SetFocus;
   end;
 end;
@@ -764,12 +834,15 @@ begin
       ADOQuery1.Edit;
       ADOQuery1.FieldByName('outprice').AsString := RzEdit2.Text;
 
+
       UpdateTimeStr := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
       if ADOQuery1.FieldByName('created_at').AsString = '' then
         ADOQuery1.FieldByName('created_at').AsString := UpdateTimeStr;
       ADOQuery1.FieldByName('updated_at').AsString := UpdateTimeStr;
 
+
       ADOQuery1.Post;
+      ADOQuery1.Refresh;
       QH1;
       QH2;
     end;

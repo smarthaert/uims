@@ -74,6 +74,7 @@ begin
       ADOQuery1.Edit;
       ADOQuery1.FieldByName('Money').AsCurrency := ADOQuery1.FieldByName('Money').AsCurrency - StrToCurr(Gathering.RzEdit1.Text);
       ADOQuery1.Post;
+      ADOQuery1.Refresh;
       ADOQuery2.SQL.Clear;
       ADOQuery2.SQL.Add('Select * from vip_2');
       ADOQuery2.Open;
@@ -83,6 +84,7 @@ begin
       ADOQuery2.FieldByName('UserName').AsString := Main.Label19.Caption;
       ADOQuery2.FieldByName('Money').AsString := Gathering.RzEdit1.Text;
       ADOQuery2.Post;
+      ADOQuery2.Refresh;
       Gathering.JZ;
       Card.Close;
     end

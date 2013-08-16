@@ -1,6 +1,6 @@
 object RegKey: TRegKey
-  Left = 565
-  Top = 324
+  Left = 697
+  Top = 296
   BorderStyle = bsNone
   Caption = 'RegKey'
   ClientHeight = 188
@@ -114,9 +114,9 @@ object RegKey: TRegKey
     object Label3: TLabel
       Left = 47
       Top = 12
-      Width = 156
+      Width = 48
       Height = 12
-      Caption = #27880#20876#20107#39033#35831#32852#31995#36196#23792#32593#32852#31185#25216
+      Caption = #27880#20876#20107#39033
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -12
@@ -127,9 +127,9 @@ object RegKey: TRegKey
     object Label4: TLabel
       Left = 35
       Top = 28
-      Width = 180
+      Width = 144
       Height = 12
-      Caption = 'Tel:0476-8250400'#12288'013337157735'
+      Caption = 'Tel:XXXXXXXXXXXXXXXXXXXX'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -12
