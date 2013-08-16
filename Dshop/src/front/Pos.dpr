@@ -14,7 +14,9 @@ uses
   Unit6 in 'Unit6.pas' {MoLing},
   Unit9 in 'Unit9.pas' {QC},
   Unit11 in 'Unit11.pas' {QS},
-  Unit12 in 'Unit12.pas' {QP};
+  Unit12 in 'Unit12.pas' {QP},
+  Unit13 in 'Unit13.pas' {QO},    
+  Unit14 in 'Unit14.pas' {QR};
 
 {$R *.res}
 
@@ -23,6 +25,7 @@ begin
   Application.Title := '';
   Application.CreateForm(TPass, Pass);
   Application.CreateForm(TMain, Main);
+  Application.CreateForm(TQO, QO);
   Application.Run;
 end.
 

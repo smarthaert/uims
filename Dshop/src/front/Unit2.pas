@@ -173,7 +173,7 @@ var
 
 implementation
 
-uses Unit1, Unit3, Unit4, Unit5, Unit10, Unit9, Unit11, Unit12, Unit7;
+uses Unit1, Unit3, Unit4, Unit5, Unit10, Unit9, Unit11, Unit12, Unit13, Unit14, Unit7;
 
 {$R *.dfm}
 
@@ -273,19 +273,24 @@ begin
     end;
   end;
   }
+  SID := FormatdateTime('yymmdd', Now);
   ADOQuery2.SQL.Clear;
-  ADOQuery2.SQL.Add('select substr(max(slid),7) as id from selllogmains');
+  ADOQuery2.SQL.Add('select lpad(cast(substr(max(slid),7) as signed) + 1,4,"0") as id from selllogmains where DATE_FORMAT(created_at,"%y%m%d")="'+SID+'"');
   ADOQuery2.Open;
-  SID := FormatdateTime('yymmdd', Now) + ADOQuery2.FieldByName('id').AsString;
+  SID := SID + ADOQuery2.FieldByName('id').AsString;
 
   //读取单号
   Label26.Caption := SID;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from selllogdetails Where slid="' + Label26.Caption + '" order by pid');
+  //ADOQuery1.SQL.Add('Select * from selllogdetails Where slid="' + Label26.Caption + '" order by pid');
+  ADOQuery1.SQL.Add('select pid,goodsname,color,FORMAT(volume,2) as volume,FORMAT(amount,0) as amount,unit,FORMAT(bundle,0) as bundle,FORMAT(outprice,0) as outprice,discount,additional,FORMAT((amount*outprice),0) as subtotal, ');
+  ADOQuery1.SQL.Add('inprice, pfprice, hprice from selllogdetails where slid = "' + Label26.Caption + '" union select "合计" as pid, "" as goodsname, "" as color,FORMAT(sum(volume),2) ');
+  ADOQuery1.SQL.Add('as volume,FORMAT(sum(amount),0) as amount,"" as unit,FORMAT(sum(bundle),0) as bundle,FORMAT(sum(outprice),0) as outprice,"" as discount,"" ');
+  ADOQuery1.SQL.Add('as additional,FORMAT(sum(amount*outprice),0) as subtotal, inprice, pfprice, hprice  from selllogdetails where slid = "' + Label26.Caption + '"');
   ADOQuery1.Open;
   QH2;
   {格式化小数显示}
-  TFloatField(DBGrid1.DataSource.DataSet.FieldByName('volume')).DisplayFormat := '0.00';
+  //TFloatField(DBGrid1.DataSource.DataSet.FieldByName('volume')).DisplayFormat := '0.00';
 
 end;
 
@@ -359,7 +364,7 @@ begin
   //计算合计数
   //如果是赠品小计为零
   ADOQuery1.Edit;
-  if ADOQuery1.FieldByName('repeat').AsString = '补件' then
+  if ADOQuery1.FieldByName('additional').AsString = '补件' then
   begin
     ADOQuery1.FieldByName('subtotal').AsCurrency := 0;
     ADOQuery1.Post;
@@ -459,7 +464,7 @@ begin
   ADOQuery1.FieldByName('amount').AsInteger := StrToInt(RzEdit3.Text);
   ADOQuery1.FieldByName('bundle').AsInteger := 0;
   ADOQuery1.FieldByName('discount').AsInteger := StrToInt(RzEdit1.Text);
-  ADOQuery1.FieldByName('repeat').AsString := '-';
+  ADOQuery1.FieldByName('additional').AsString := '-';
 
   ADOQuery1.FieldByName('status').AsInteger := 0;
 
@@ -486,7 +491,8 @@ end;
 procedure TMain.QH2;
 begin
   ADOQuery2.SQL.Clear;
-  ADOQuery2.SQL.Add('Select sum(outprice*amount) from selllogdetails Where slid="' + Label26.Caption + '"');
+  ADOQuery2.SQL.Add('Select sum(subtotal) from selllogdetails Where slid="' + Label26.Caption + '" order by pid');
+
   ADOQuery2.Open;
   Label7.Caption := FormatFloat('0.00', ADOQuery2.Fields[0].AsCurrency)
 end;
@@ -527,12 +533,12 @@ begin
 
     VK_F5:
       begin
-        if ADOQuery1.FieldByName('repeat').AsString = '-' then
+        if ADOQuery1.FieldByName('additional').AsString = '-' then
         begin
           if ADOQuery1.RecordCount > 0 then
           begin
             ADOQuery1.Edit;
-            ADOQuery1.FieldByName('repeat').AsString := '补发';
+            ADOQuery1.FieldByName('additional').AsString := '补发';
           end;
           QH1;
           QH2;
@@ -542,7 +548,7 @@ begin
           if ADOQuery1.RecordCount > 0 then
           begin
             ADOQuery1.Edit;
-            ADOQuery1.FieldByName('repeat').AsString := '-';
+            ADOQuery1.FieldByName('additional').AsString := '-';
           end;
           QH1;
           QH2;
@@ -619,7 +625,11 @@ begin
         //读取单号
         Label26.Caption := SID;
         ADOQuery1.SQL.Clear;
-        ADOQuery1.SQL.Add('Select * from selllogdetails Where slid="' + Label26.Caption + '" order by pid');
+        ADOQuery1.SQL.Add('select pid,goodsname,color,FORMAT(volume,2) as volume,FORMAT(amount,0) as amount,unit,FORMAT(bundle,0) as bundle,FORMAT(outprice,0) as outprice,discount,additional,FORMAT((amount*outprice),0) as subtotal, ');
+        ADOQuery1.SQL.Add('inprice, pfprice, hprice from selllogdetails where slid = "' + Label26.Caption + '" union select "合计" as pid, "" as goodsname, "" as color,FORMAT(sum(volume),2) ');
+        ADOQuery1.SQL.Add('as volume,FORMAT(sum(amount),0) as amount,"" as unit,FORMAT(sum(bundle),0) as bundle,FORMAT(sum(outprice),0) as outprice,"" as discount,"" ');
+        ADOQuery1.SQL.Add('as additional,FORMAT(sum(amount*outprice),0) as subtotal,inprice, pfprice, hprice  from selllogdetails where slid = "' + Label26.Caption + '"');
+  
         ADOQuery1.Open;
         QH2;
 
@@ -651,6 +661,28 @@ begin
       end;
 
     VK_F10: RzEdit5.SetFocus;
+
+    VK_F11:
+      begin
+        if QO <> nil then
+          QO.ShowModal
+        else
+        begin
+          QO := TQO.Create(Application);
+          QO.ShowModal;
+        end;
+      end;
+
+    VK_F12:
+      begin
+        if QR <> nil then
+          QR.ShowModal
+        else
+        begin
+          QR := TQR.Create(Application);
+          QR.ShowModal;
+        end;
+      end;
 
     VK_UP:
       begin

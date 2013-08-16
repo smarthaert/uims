@@ -1,6 +1,6 @@
 object Main: TMain
-  Left = 413
-  Top = 47
+  Left = 258
+  Top = 110
   Width = 1045
   Height = 810
   ActiveControl = RzEdit4
@@ -832,6 +832,7 @@ object Main: TMain
           Visible = True
         end
         item
+          Alignment = taRightJustify
           Expanded = False
           FieldName = 'volume'
           Title.Caption = #20307#31215
@@ -839,6 +840,7 @@ object Main: TMain
           Visible = True
         end
         item
+          Alignment = taRightJustify
           Expanded = False
           FieldName = 'amount'
           Title.Caption = #25968#37327
@@ -855,6 +857,7 @@ object Main: TMain
           Visible = True
         end
         item
+          Alignment = taRightJustify
           Expanded = False
           FieldName = 'bundle'
           Title.Caption = #20214#25968
@@ -862,6 +865,7 @@ object Main: TMain
           Visible = True
         end
         item
+          Alignment = taRightJustify
           Expanded = False
           FieldName = 'outprice'
           Title.Caption = #21333#20215
@@ -869,6 +873,7 @@ object Main: TMain
           Visible = True
         end
         item
+          Alignment = taRightJustify
           Expanded = False
           FieldName = 'discount'
           Title.Alignment = taCenter
@@ -877,15 +882,15 @@ object Main: TMain
           Visible = True
         end
         item
-          Alignment = taCenter
           Expanded = False
-          FieldName = 'repeat'
+          FieldName = 'additional'
           Title.Alignment = taCenter
           Title.Caption = #34917#20214
           Width = 55
           Visible = True
         end
         item
+          Alignment = taRightJustify
           Expanded = False
           FieldName = 'subtotal'
           Title.Alignment = taCenter
@@ -1406,7 +1411,7 @@ object Main: TMain
         object qrdbtxtrepeat: TQRDBText
           Left = 627
           Top = 1
-          Width = 43
+          Width = 71
           Height = 17
           Frame.Color = clBlack
           Frame.DrawTop = False
@@ -1417,14 +1422,14 @@ object Main: TMain
             44.979166666666670000
             1658.937500000000000000
             2.645833333333333000
-            113.770833333333300000)
+            187.854166666666700000)
           Alignment = taLeftJustify
           AlignToBand = False
           AutoSize = True
           AutoStretch = False
           Color = clWhite
           DataSet = ADOQuery1
-          DataField = 'repeat'
+          DataField = 'additional'
           Font.Charset = GB2312_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
