@@ -54,6 +54,7 @@ object Card: TCard
       Font.Name = 'Arial'
       Font.Style = []
       FrameColor = clWhite
+      FrameStyle = fsBump
       FrameVisible = True
       ParentCtl3D = False
       ParentFont = False

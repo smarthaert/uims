@@ -121,7 +121,7 @@ outprice:float \
 amount:integer \
 bundle:integer \
 discount:integer \
-repeat:string \
+additional:string \
 subtotal:float \
 status:boolean
 

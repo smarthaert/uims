@@ -93,9 +93,6 @@ end;
 {验证用户名和口令}
 
 procedure TPass.SpeedButton1Click(Sender: TObject);
-var
-  vIniFile: TIniFile;
-  Reg: TRegistry;
 begin
   {
   vIniFile:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.Ini');
@@ -124,7 +121,8 @@ begin
     //填入操作员姓名
     Main.Label19.Caption := Main.Caption;
     //填入登记时间
-    Main.Label21.Caption := FormatDateTime('tt', Now);
+    //Main.Label21.Caption := FormatDateTime('tt', Now);
+    Main.GetLoginTime;
     Pass.Hide;
   end
   else
@@ -153,8 +151,7 @@ end;
 procedure TPass.FormCreate(Sender: TObject);
 var
   vIniFile: TIniFile;
-  Reg: TRegistry;
-  Data, ds: string;
+  ds: string;
 begin
   {建立数据连接}
   //建立INI文件关联

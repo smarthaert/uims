@@ -1,10 +1,10 @@
 object Pos_Setup: TPos_Setup
-  Left = 640
-  Top = 260
+  Left = 701
+  Top = 280
   BorderStyle = bsNone
   Caption = 'Pos_Setup'
-  ClientHeight = 257
-  ClientWidth = 282
+  ClientHeight = 273
+  ClientWidth = 392
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -14,12 +14,13 @@ object Pos_Setup: TPos_Setup
   OldCreateOrder = False
   Position = poDesktopCenter
   OnActivate = FormActivate
+  OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 12
   object Panel2: TPanel
     Left = 0
     Top = 41
-    Width = 282
+    Width = 392
     Height = 216
     Align = alTop
     BevelInner = bvLowered
@@ -112,7 +113,7 @@ object Pos_Setup: TPos_Setup
       ParentFont = False
     end
     object SpeedButton1: TSpeedButton
-      Left = 44
+      Left = 99
       Top = 169
       Width = 81
       Height = 22
@@ -127,7 +128,7 @@ object Pos_Setup: TPos_Setup
       OnClick = SpeedButton1Click
     end
     object SpeedButton2: TSpeedButton
-      Left = 156
+      Left = 211
       Top = 169
       Width = 81
       Height = 22
@@ -144,9 +145,9 @@ object Pos_Setup: TPos_Setup
     object RzEdit1: TRzEdit
       Left = 88
       Top = 56
-      Width = 161
+      Width = 273
       Height = 20
-      Text = #23454#30719#27700#26063#19990#30028
+      Text = #23454#24191#27700#26063#19990#30028
       Color = clBlack
       Ctl3D = True
       DisabledColor = clBlack
@@ -158,9 +159,10 @@ object Pos_Setup: TPos_Setup
       FrameColor = clWhite
       FrameHotColor = 14593668
       FrameHotTrack = True
+      FrameStyle = fsBump
       FrameVisible = True
       ImeName = #20013#25991' ('#31616#20307') - '#20116#31508#21152#21152
-      MaxLength = 20
+      MaxLength = 50
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 0
@@ -168,9 +170,9 @@ object Pos_Setup: TPos_Setup
     object RzEdit2: TRzEdit
       Left = 88
       Top = 80
-      Width = 161
+      Width = 273
       Height = 20
-      Text = #23454#30719#27700#26063' '#24744#23478#20013#30340#28023#27915#19990#30028
+      Text = #23454#24191#27700#26063#19990#30028#65292#24744#23478#20013#30340#28023#27915#19990#30028
       Color = clBlack
       Ctl3D = True
       DisabledColor = clBlack
@@ -182,9 +184,10 @@ object Pos_Setup: TPos_Setup
       FrameColor = clWhite
       FrameHotColor = 14593668
       FrameHotTrack = True
+      FrameStyle = fsBump
       FrameVisible = True
       ImeName = #20013#25991' ('#31616#20307') - '#20116#31508#21152#21152
-      MaxLength = 20
+      MaxLength = 50
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 1
@@ -192,7 +195,7 @@ object Pos_Setup: TPos_Setup
     object RzEdit3: TRzEdit
       Left = 88
       Top = 104
-      Width = 161
+      Width = 273
       Height = 20
       Text = #25105#20204#26399#24453#24744#19979#27425#20809#20020
       Color = clBlack
@@ -206,9 +209,10 @@ object Pos_Setup: TPos_Setup
       FrameColor = clWhite
       FrameHotColor = 14593668
       FrameHotTrack = True
+      FrameStyle = fsBump
       FrameVisible = True
       ImeName = #20013#25991' ('#31616#20307') - '#20116#31508#21152#21152
-      MaxLength = 20
+      MaxLength = 50
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 2
@@ -216,7 +220,7 @@ object Pos_Setup: TPos_Setup
     object RzEdit4: TRzEdit
       Left = 88
       Top = 128
-      Width = 161
+      Width = 273
       Height = 20
       Text = '0551-123456'
       Color = clBlack
@@ -230,6 +234,7 @@ object Pos_Setup: TPos_Setup
       FrameColor = clWhite
       FrameHotColor = 14593668
       FrameHotTrack = True
+      FrameStyle = fsBump
       FrameVisible = True
       ImeName = #20013#25991' ('#31616#20307') - '#20116#31508#21152#21152
       MaxLength = 15
@@ -241,7 +246,7 @@ object Pos_Setup: TPos_Setup
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 282
+    Width = 392
     Height = 41
     Align = alTop
     BevelInner = bvLowered
@@ -257,7 +262,7 @@ object Pos_Setup: TPos_Setup
     object RzFormShape1: TRzFormShape
       Left = 2
       Top = 2
-      Width = 278
+      Width = 388
       Height = 37
     end
   end
