@@ -1,6 +1,6 @@
 object Gathering: TGathering
-  Left = 596
-  Top = 318
+  Left = 553
+  Top = 297
   BorderStyle = bsNone
   Caption = #32467#36134#25910#27454
   ClientHeight = 257
@@ -51,7 +51,7 @@ object Gathering: TGathering
     Color = clBlack
     TabOrder = 1
     object Label1: TLabel
-      Left = 19
+      Left = 23
       Top = 41
       Width = 105
       Height = 29
@@ -64,7 +64,7 @@ object Gathering: TGathering
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 128
+      Left = 132
       Top = 17
       Width = 275
       Height = 65
@@ -79,7 +79,7 @@ object Gathering: TGathering
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 406
+      Left = 410
       Top = 41
       Width = 30
       Height = 29
@@ -92,11 +92,11 @@ object Gathering: TGathering
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 19
+      Left = 23
       Top = 145
       Width = 105
       Height = 29
-      Caption = #23454#12288#25910':'
+      Caption = #25910'  '#21040':'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -29
@@ -105,7 +105,7 @@ object Gathering: TGathering
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 406
+      Left = 410
       Top = 153
       Width = 30
       Height = 29
@@ -118,7 +118,7 @@ object Gathering: TGathering
       ParentFont = False
     end
     object Label6: TLabel
-      Left = 19
+      Left = 23
       Top = 97
       Width = 105
       Height = 29
@@ -131,7 +131,7 @@ object Gathering: TGathering
       ParentFont = False
     end
     object Label7: TLabel
-      Left = 128
+      Left = 132
       Top = 73
       Width = 275
       Height = 65
@@ -146,7 +146,7 @@ object Gathering: TGathering
       ParentFont = False
     end
     object Label8: TLabel
-      Left = 406
+      Left = 410
       Top = 97
       Width = 30
       Height = 29
@@ -159,7 +159,7 @@ object Gathering: TGathering
       ParentFont = False
     end
     object Label9: TLabel
-      Left = 150
+      Left = 177
       Top = 194
       Width = 162
       Height = 12
@@ -172,7 +172,7 @@ object Gathering: TGathering
       ParentFont = False
     end
     object Label10: TLabel
-      Left = 326
+      Left = 353
       Top = 194
       Width = 66
       Height = 12
@@ -183,9 +183,10 @@ object Gathering: TGathering
       Font.Name = #23435#20307
       Font.Style = []
       ParentFont = False
+      Visible = False
     end
     object RzEdit1: TRzEdit
-      Left = 128
+      Left = 132
       Top = 139
       Width = 279
       Height = 41
@@ -199,6 +200,7 @@ object Gathering: TGathering
       Font.Name = 'Arial'
       Font.Style = []
       FrameColor = clWhite
+      FrameStyle = fsBump
       FrameVisible = True
       ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
       ParentCtl3D = False
@@ -207,7 +209,7 @@ object Gathering: TGathering
       OnKeyDown = RzEdit1KeyDown
     end
     object CheckBox1: TCheckBox
-      Left = 25
+      Left = 52
       Top = 192
       Width = 113
       Height = 17

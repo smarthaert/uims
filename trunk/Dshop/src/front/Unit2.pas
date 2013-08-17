@@ -49,7 +49,6 @@ type
     Label23: TLabel;
     Label24: TLabel;
     Label27: TLabel;
-    Label22: TLabel;
     Label25: TLabel;
     Label26: TLabel;
     Label28: TLabel;
@@ -88,7 +87,6 @@ type
     edt6: TRzEdit;
     lbl7: TLabel;
     cbb1: TComboBox;
-    bvl1: TBevel;
     lbl8: TLabel;
     mmo1: TMemo;
     lbl9: TLabel;
@@ -119,7 +117,6 @@ type
     qrlbl22: TQRLabel;
     qrlbl12: TQRLabel;
     qrlbl23: TQRLabel;
-    qrxpr1: TQRExpr;
     qrbndtitleColumnHeaderBand1: TQRBand;
     qrbndtitleTitleBand1: TQRBand;
     qrlbl9: TQRLabel;
@@ -132,11 +129,15 @@ type
     qrlbl30: TQRLabel;
     qrlbl31: TQRLabel;
     qrlbl32: TQRLabel;
-    qrsysdt1: TQRSysData;
-    qrlbl1: TQRLabel;
     qrlbl2: TQRLabel;
     RzEdit5: TRzEdit;
     Label31: TLabel;
+    ADOQuerySQL: TADOQuery;
+    QRLabel3: TQRLabel;
+    qrdbtxtrow: TQRDBText;
+    Label32: TLabel;
+    Label22: TLabel;
+    Label33: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton1Click(Sender: TObject);
@@ -156,12 +157,17 @@ type
     procedure edt1KeyPress(Sender: TObject; var Key: Char);
     procedure edt4KeyPress(Sender: TObject; var Key: Char);
     procedure qrlbl12Print(sender: TObject; var Value: string);
+    procedure edt8KeyPress(Sender: TObject; var Key: Char);
+    procedure edt2KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
     procedure QH1;
     procedure WRecord;
     procedure QH2;
+    procedure ListRefresh;
+    procedure GetOrderId;
+    procedure GetLoginTime;
     procedure calcPrice();
     { Public declarations }
   end;
@@ -173,7 +179,7 @@ var
 
 implementation
 
-uses Unit1, Unit3, Unit4, Unit5, Unit10, Unit9, Unit11, Unit12, Unit13, Unit14, Unit7;
+uses Unit1, Unit3, Unit5, Unit7, Unit9, Unit10, Unit11, Unit12, Unit13, Unit14, Unit15, Unit16;
 
 {$R *.dfm}
 
@@ -197,7 +203,7 @@ begin
     if ADOQuery1.FieldByName('created_at').AsString = '' then
       ADOQuery1.FieldByName('created_at').AsString := UpdateTimeStr;
     ADOQuery1.FieldByName('updated_at').AsString := UpdateTimeStr;
-    
+
     ADOQuery1.Post;
     ADOQuery1.Refresh;
   end;
@@ -209,9 +215,9 @@ end;
 procedure TMain.FormCreate(Sender: TObject);
 var
   vIniFile: TIniFile;
-  Reg: TRegistry;
-  D1, Data, SID, ds: string;
-  i: Integer;
+  //Reg: TRegistry;
+  ds: string;
+  //i: Integer;
 begin
   //建立INI文件关联
   vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'Config.Ini');
@@ -273,24 +279,77 @@ begin
     end;
   end;
   }
-  SID := FormatdateTime('yymmdd', Now);
-  ADOQuery2.SQL.Clear;
-  ADOQuery2.SQL.Add('select lpad(cast(substr(max(slid),7) as signed) + 1,4,"0") as id from selllogmains where DATE_FORMAT(created_at,"%y%m%d")="'+SID+'"');
-  ADOQuery2.Open;
-  SID := SID + ADOQuery2.FieldByName('id').AsString;
 
-  //读取单号
-  Label26.Caption := SID;
+
+  GetOrderId;
+
+
+  {
   ADOQuery1.SQL.Clear;
   //ADOQuery1.SQL.Add('Select * from selllogdetails Where slid="' + Label26.Caption + '" order by pid');
-  ADOQuery1.SQL.Add('select pid,goodsname,color,FORMAT(volume,2) as volume,FORMAT(amount,0) as amount,unit,FORMAT(bundle,0) as bundle,FORMAT(outprice,0) as outprice,discount,additional,FORMAT((amount*outprice),0) as subtotal, ');
+  ADOQuery1.SQL.Add('select pid,goodsname,color,FORMAT(volume,2) as volume,FORMAT(amount,0) as amount,unit,FORMAT(bundle,0) as bundle,FORMAT(outprice,0) as outprice,discount,additional,FORMAT((subtotal),0) as subtotal, ');
   ADOQuery1.SQL.Add('inprice, pfprice, hprice from selllogdetails where slid = "' + Label26.Caption + '" union select "合计" as pid, "" as goodsname, "" as color,FORMAT(sum(volume),2) ');
   ADOQuery1.SQL.Add('as volume,FORMAT(sum(amount),0) as amount,"" as unit,FORMAT(sum(bundle),0) as bundle,FORMAT(sum(outprice),0) as outprice,"" as discount,"" ');
-  ADOQuery1.SQL.Add('as additional,FORMAT(sum(amount*outprice),0) as subtotal, inprice, pfprice, hprice  from selllogdetails where slid = "' + Label26.Caption + '"');
+  ADOQuery1.SQL.Add('as additional,FORMAT(sum(subtotal),0) as subtotal, inprice, pfprice, hprice  from selllogdetails where slid = "' + Label26.Caption + '"');
   ADOQuery1.Open;
+  }
+  ListRefresh;
   QH2;
   {格式化小数显示}
   //TFloatField(DBGrid1.DataSource.DataSet.FieldByName('volume')).DisplayFormat := '0.00';
+
+end;
+
+{获取单号}
+
+procedure TMain.GetOrderId;
+begin
+  {每日最大单号9999}
+
+  ADOQuery2.SQL.Clear;
+  ADOQuery2.SQL.Add('select concat("C",DATE_FORMAT(now(),"%y%m%d"),lpad(cast(substr(if(max(slid) is null,"0000",max(slid)),8) as signed) + 1,4,"0")) as id from selllogmains where DATE_FORMAT(created_at,"%y%m%d")=DATE_FORMAT(now(),"%y%m%d")');
+  ADOQuery2.Open;
+
+  //读取单号
+  Label26.Caption := ADOQuery2.FieldByName('id').AsString;
+end;
+
+procedure TMain.GetLoginTime;
+begin
+
+  ADOQuery2.SQL.Clear;
+  ADOQuery2.SQL.Add('select now() as now');
+  ADOQuery2.Open;
+
+  //读取单号
+  Label21.Caption := ADOQuery2.FieldByName('now').AsString;
+end;
+
+
+{刷新列表}
+
+procedure TMain.ListRefresh;
+var
+  bookmark: Pointer;
+begin
+  {记录当前处理的行位置，以便于刷新数据后恢复当前的位置}
+  bookmark := ADOQuery1.GetBookmark;
+
+
+  ADOQuery1.SQL.Clear;
+
+  //ADOQuery1.SQL.Add('Select * from selllogdetails Where slid="' + Label26.Caption + '" order by pid');
+  ADOQuery1.SQL.Add('(select (@row := @row + 1) as row,id, pid,goodsname,color,FORMAT(volume,2) as volume,FORMAT(amount,0) as amount,unit,FORMAT(bundle,0) as bundle,FORMAT(outprice,0) as outprice,discount,additional,FORMAT((subtotal),0) as subtotal, ');
+  ADOQuery1.SQL.Add('slid, barcode, size, inprice, pfprice, hprice from selllogdetails, (SELECT @row := 0) r where slid = "' + Label26.Caption + '" order by id) union (select "合计" as row, "" as id, "" as pid, "" as goodsname, "" as color,FORMAT(sum(volume*amount),2) ');
+  ADOQuery1.SQL.Add('as volume,FORMAT(sum(amount),0) as amount,"" as unit,FORMAT(sum(bundle),0) as bundle,"" as outprice,"" as discount,"" ');
+  ADOQuery1.SQL.Add('as additional,FORMAT(sum(subtotal),0) as subtotal, "" as slid, "" as barcode, "" as size, "" as inprice, "" as pfprice, "" as hprice  from selllogdetails where slid = "' + Label26.Caption + '")');
+
+  ADOQuery1.Open;
+  if ADOQuery1.RecordCount > 1 then
+    ADOQuery1.GotoBookmark(bookmark);
+
+  ADOQuery1.FreeBookmark(bookmark);
+
 
 end;
 
@@ -361,6 +420,7 @@ end;
 
 procedure TMain.QH1;
 begin
+  {
   //计算合计数
   //如果是赠品小计为零
   ADOQuery1.Edit;
@@ -380,16 +440,25 @@ begin
   if ADOQuery1.FieldByName('created_at').AsString = '' then
     ADOQuery1.FieldByName('created_at').AsString := UpdateTimeStr;
   ADOQuery1.FieldByName('updated_at').AsString := UpdateTimeStr;
-  
+
 
   ADOQuery1.Post;
   ADOQuery1.Refresh;
+  }
+  ADOQuerySQL.SQL.Clear;
+  ADOQuerySQL.SQL.Add('update selllogdetails set subtotal=(if(additional="-",(outprice*amount*discount/100),0)),updated_at=now() where slid = "' + Label26.Caption + '"');
+  ADOQuerySQL.ExecSQL;
+
+  {刷新列表}
+  ListRefresh;
 end;
 
-{填充列表数据}
+{订单中产品新增}
 
 procedure TMain.WRecord;
 begin
+
+  {
   //数据检查
   try
     StrToCurr(RzEdit1.Text);
@@ -402,22 +471,27 @@ begin
   except
     RzEdit3.Text := '1';
   end;
+  }
 
   //初始折扣和数量
   RzEdit1.Text := '100';
   RzEdit3.Text := '1';
 
+
+
+  {跟新产品选择信息，有记录就更新，无记录就插入}
   //查销售主库是否有此单号
   ADOQuery3.SQL.Clear;
   ADOQuery3.SQL.Add('Select * from selllogmains Where slid="' + Label26.Caption + '"');
   ADOQuery3.Open;
   if ADOQuery3.RecordCount = 0 then
   begin
+    {
     ADOQuery3.Edit;
     ADOQuery3.Append;
-    {保存销售记录}
+    //保存销售记录
     ADOQuery3.FieldByName('slid').AsString := Label26.Caption;
-    {ADOQuery3.FieldByName('custid').AsString := ADOQuery1.FieldByName('pid').AsString; }
+    //ADOQuery3.FieldByName('custid').AsString := ADOQuery1.FieldByName('pid').AsString;
     ADOQuery3.FieldByName('custname').AsString := edt1.Text;
     ADOQuery3.FieldByName('custtel').AsString := edt2.Text;
     ADOQuery3.FieldByName('custaddr').AsString := edt3.Text;
@@ -425,13 +499,13 @@ begin
     ADOQuery3.FieldByName('custstate').AsString := edt8.Text;
     ADOQuery3.FieldByName('yingshou').AsFloat := 0;
     ADOQuery3.FieldByName('shishou').AsFloat := 0;
-    {ADOQuery3.FieldByName('sid').AsString := edt4.Text;}
+    //ADOQuery3.FieldByName('sid').AsString := edt4.Text;
     ADOQuery3.FieldByName('sname').AsString := edt4.Text;
     ADOQuery3.FieldByName('saddress').AsString := edt5.Text;
     ADOQuery3.FieldByName('stel').AsString := edt6.Text;
     ADOQuery3.FieldByName('payment').AsString := cbb1.Text;
     ADOQuery3.FieldByName('status').AsInteger := 0;
-    {ADOQuery3.FieldByName('uid').AsInteger := 0;}
+    //ADOQuery3.FieldByName('uid').AsInteger := 0;
     ADOQuery3.FieldByName('uname').AsString := Label19.Caption;
     ADOQuery3.FieldByName('remark').AsString := mmo1.Lines.GetText;
 
@@ -444,8 +518,15 @@ begin
 
     ADOQuery3.Post;
     ADOQuery3.Refresh;
+    }
+    ADOQuerySQL.SQL.Clear;
+    ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,custtel,custaddr,sname,stel,saddress,payment,status,uname,cdate,remark,created_at,updated_at) values("' + Label26.Caption + '","' + edt7.Text + '","' + edt8.Text + '","' + edt1.Text + '","' + edt2.Text + '","' + edt3.Text + '","' + edt4.Text + '","' + edt5.Text + '","' + edt6.Text + '","' + cbb1.Text + '","0","' + Label19.Caption + '",now(),"' + mmo1.Lines.GetText + '",now(),now())');
+    ADOQuerySQL.ExecSQL;
+
   end;
 
+
+  {
   //填扫描记录
   ADOQuery1.Edit;
   ADOQuery1.Append;
@@ -477,6 +558,11 @@ begin
 
   ADOQuery1.Post;
   ADOQuery1.Refresh;
+  }
+
+  ADOQuerySQL.SQL.Clear;
+  ADOQuerySQL.SQL.Add('insert into selllogdetails(slid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,bundle,discount,additional,cdate,status,created_at,updated_at) values("' + Label26.Caption + '","' + ADOQuery2.FieldByName('pid').AsString + '","' + ADOQuery2.FieldByName('barcode').AsString + '","' + ADOQuery2.FieldByName('goodsname').AsString + '","' + ADOQuery2.FieldByName('size').AsString + '","' + ADOQuery2.FieldByName('color').AsString + '","' + ADOQuery2.FieldByName('volume').AsString + '","' + ADOQuery2.FieldByName('unit').AsString + '","' + ADOQuery2.FieldByName('inprice').AsString + '","' + ADOQuery2.FieldByName('pfprice').AsString + '","' + ADOQuery2.FieldByName('pfprice').AsString + '","' + ADOQuery2.FieldByName('pfprice').AsString + '","' + RzEdit3.Text + '","0","' + RzEdit1.Text + '","-",now(),"0",now(),now()) on duplicate key update amount=amount+1,updated_at=now()');
+  ADOQuerySQL.ExecSQL;
 
   calcPrice();
 
@@ -491,7 +577,7 @@ end;
 procedure TMain.QH2;
 begin
   ADOQuery2.SQL.Clear;
-  ADOQuery2.SQL.Add('Select sum(subtotal) from selllogdetails Where slid="' + Label26.Caption + '" order by pid');
+  ADOQuery2.SQL.Add('Select sum(subtotal) from selllogdetails Where slid="' + Label26.Caption + '"');
 
   ADOQuery2.Open;
   Label7.Caption := FormatFloat('0.00', ADOQuery2.Fields[0].AsCurrency)
@@ -501,9 +587,6 @@ end;
 
 procedure TMain.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
-var
-  SID: string;
-  i: Integer;
 begin
   case key of
     VK_ESCAPE: SpeedButton1.Click;
@@ -525,11 +608,11 @@ begin
 
     VK_F1: RzEdit4.SetFocus;
 
-    VK_F2: RzEdit1.SetFocus;
+    VK_F2: RzEdit3.SetFocus;
 
-    VK_F3: RzEdit2.SetFocus;
+    VK_F3: RzEdit5.SetFocus;
 
-    VK_F4: RzEdit3.SetFocus;
+    VK_F4: RzEdit2.SetFocus;
 
     VK_F5:
       begin
@@ -560,25 +643,26 @@ begin
         {保存扩展信息}
          //查销售主库是否有此单号
 
+        {
         ADOQuery3.Open;
         if ADOQuery3.RecordCount = 1 then
         begin
           ADOQuery3.Edit;
-          {保存销售记录}
+          //保存销售记录
           ADOQuery3.FieldByName('slid').AsString := Label26.Caption;
-          {ADOQuery3.FieldByName('custid').AsString := ADOQuery1.FieldByName('pid').AsString; }
+          //ADOQuery3.FieldByName('custid').AsString := ADOQuery1.FieldByName('pid').AsString;
           ADOQuery3.FieldByName('custname').AsString := edt1.Text;
           ADOQuery3.FieldByName('custtel').AsString := edt2.Text;
           ADOQuery3.FieldByName('custaddr').AsString := edt3.Text;
           ADOQuery3.FieldByName('yingshou').AsFloat := 0;
           ADOQuery3.FieldByName('shishou').AsFloat := 0;
-          {ADOQuery3.FieldByName('sid').AsString := edt4.Text;}
+          //ADOQuery3.FieldByName('sid').AsString := edt4.Text;
           ADOQuery3.FieldByName('sname').AsString := edt4.Text;
           ADOQuery3.FieldByName('saddress').AsString := edt5.Text;
           ADOQuery3.FieldByName('stel').AsString := edt6.Text;
           ADOQuery3.FieldByName('payment').AsString := cbb1.Text;
           ADOQuery3.FieldByName('status').AsInteger := 0;
-          {ADOQuery3.FieldByName('uid').AsInteger := 0;}
+          //ADOQuery3.FieldByName('uid').AsInteger := 0;
           ADOQuery3.FieldByName('uname').AsString := Label19.Caption;
           ADOQuery3.FieldByName('remark').AsString := mmo1.Lines.GetText;
 
@@ -591,7 +675,13 @@ begin
 
           ADOQuery3.Post;
           ADOQuery3.Refresh;
+
         end;
+        }
+
+        ADOQuerySQL.SQL.Clear;
+        ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sname,stel,saddress,payment,status,uname,cdate,remark,created_at,updated_at) values("' + Label26.Caption + '","","' + edt8.Text + '","' + edt1.Text + '","' + edt2.Text + '","' + edt3.Text + '","0","0","' + edt4.Text + '","' + edt6.Text + '","' + edt5.Text + '","' + cbb1.Text + '","0","' + Label19.Caption + '",now(),"' + mmo1.Lines.GetText + '",now(),now()) on duplicate key update custstate="' + edt8.Text + '",custname="' + edt1.Text + '",custtel="' + edt2.Text + '",custaddr="' + edt3.Text + '",sname="' + edt4.Text + '",stel="' + edt6.Text + '",saddress="' + edt5.Text + '",payment="' + cbb1.Text + '",uname="' + Label19.Caption + '",remark="' + mmo1.Lines.GetText + '",updated_at=now()');
+        ADOQuerySQL.ExecSQL;
 
         {清空数据项}
         edt1.Text := '';
@@ -608,34 +698,24 @@ begin
         mmo1.Text := '';
 
 
-
         {更换单号}
-        //初始单号
-        for i := 1 to 9999 do
-        begin
-          SID := FormatdateTime('yymmdd', Now) + FormatFloat('0000', i);
-          ADOQuery2.SQL.Clear;
-          ADOQuery2.SQL.Add('Select * from selllogmains Where slid="' + SID + '"');
-          ADOQuery2.Open;
-          if ADOQuery2.RecordCount = 0 then
-          begin
-            Break;
-          end;
-        end;
-        //读取单号
-        Label26.Caption := SID;
+        GetOrderId;
+
+        {
         ADOQuery1.SQL.Clear;
-        ADOQuery1.SQL.Add('select pid,goodsname,color,FORMAT(volume,2) as volume,FORMAT(amount,0) as amount,unit,FORMAT(bundle,0) as bundle,FORMAT(outprice,0) as outprice,discount,additional,FORMAT((amount*outprice),0) as subtotal, ');
+        ADOQuery1.SQL.Add('select pid,goodsname,color,FORMAT(volume,2) as volume,FORMAT(amount,0) as amount,unit,FORMAT(bundle,0) as bundle,FORMAT(outprice,0) as outprice,discount,additional,FORMAT((subtotal),0) as subtotal, ');
         ADOQuery1.SQL.Add('inprice, pfprice, hprice from selllogdetails where slid = "' + Label26.Caption + '" union select "合计" as pid, "" as goodsname, "" as color,FORMAT(sum(volume),2) ');
         ADOQuery1.SQL.Add('as volume,FORMAT(sum(amount),0) as amount,"" as unit,FORMAT(sum(bundle),0) as bundle,FORMAT(sum(outprice),0) as outprice,"" as discount,"" ');
-        ADOQuery1.SQL.Add('as additional,FORMAT(sum(amount*outprice),0) as subtotal,inprice, pfprice, hprice  from selllogdetails where slid = "' + Label26.Caption + '"');
-  
+        ADOQuery1.SQL.Add('as additional,FORMAT(sum(subtotal),0) as subtotal,inprice, pfprice, hprice  from selllogdetails where slid = "' + Label26.Caption + '"');
+
         ADOQuery1.Open;
+        }
+        ListRefresh;
         QH2;
 
         {格式化小数显示}
-        TFloatField(DBGrid1.DataSource.DataSet.FieldByName('volume')).DisplayFormat := '0.00';
-
+        //TFloatField(DBGrid1.DataSource.DataSet.FieldByName('volume')).DisplayFormat := '0.00';
+        RzEdit4.SetFocus;
       end;
 
     VK_F7:
@@ -646,6 +726,18 @@ begin
         begin
           QD := TQD.Create(Application);
           QD.ShowModal;
+          RzEdit4.SetFocus;
+        end;
+      end;
+
+    VK_F8:
+      begin
+        if QR <> nil then
+          QR.ShowModal
+        else
+        begin
+          QR := TQR.Create(Application);
+          QR.ShowModal;
         end;
       end;
 
@@ -660,7 +752,7 @@ begin
         end;
       end;
 
-    VK_F10: RzEdit5.SetFocus;
+    VK_F10: RzEdit1.SetFocus;
 
     VK_F11:
       begin
@@ -673,16 +765,9 @@ begin
         end;
       end;
 
-    VK_F12:
-      begin
-        if QR <> nil then
-          QR.ShowModal
-        else
-        begin
-          QR := TQR.Create(Application);
-          QR.ShowModal;
-        end;
-      end;
+    VK_F12: SpeedButton2.Click;
+
+
 
     VK_UP:
       begin
@@ -698,11 +783,32 @@ begin
       begin
         if ADOQuery1.RecordCount > 0 then
         begin
-          if messagedlg('确认删除"' + ADOQuery1.FieldByName('goodsname').AsString + '"吗?', mtconfirmation, [mbyes, mbno], 0) = mryes then
+
+
+          if ADOQuery1.FieldByName('pid').AsString = '' then
           begin
-            ADOQuery1.Delete;
-            QH2;
+            if messagedlg('清空当前订单中的所有商品吗?', mtconfirmation, [mbyes, mbno], 0) = mryes then
+            begin
+              ADOQuerySQL.SQL.Clear;
+              ADOQuerySQL.SQL.Add('delete from selllogdetails where slid="' + Label26.Caption + '"');
+              ADOQuerySQL.ExecSQL;
+            end
+            else
+              Exit;
+          end
+          else
+          begin
+            if messagedlg('确认删除"' + ADOQuery1.FieldByName('goodsname').AsString + '"吗?', mtconfirmation, [mbyes, mbno], 0) = mryes then
+            begin
+              //ADOQuery1.Delete;
+              ADOQuerySQL.SQL.Clear;
+              ADOQuerySQL.SQL.Add('delete from selllogdetails where slid="' + Label26.Caption + '" and pid="' + ADOQuery1.FieldByName('pid').AsString + '"');
+              ADOQuerySQL.ExecSQL;
+            end;
           end;
+
+          QH1;
+          QH2;
         end
         else
         begin
@@ -712,24 +818,76 @@ begin
 
     VK_ADD:
       begin
-        ADOQuery1.Edit;
-        ADOQuery1.FieldByName('amount').AsCurrency := ADOQuery1.FieldByName('amount').AsCurrency + 1;
-        QH1;
-        QH2;
+        if ADOQuery1.RecordCount > 0 then
+        begin
+          //ADOQuery1.Edit;
+          //ADOQuery1.FieldByName('amount').AsCurrency := ADOQuery1.FieldByName('amount').AsCurrency + 1;
+          {如果选择的是合计行，则增加所有的行产品数量}
+
+
+          if ADOQuery1.FieldByName('pid').AsString = '' then
+          begin
+            if messagedlg('增加当前订单中所有产品数量吗?', mtconfirmation, [mbyes, mbno], 0) = mryes then
+            begin
+              ADOQuerySQL.SQL.Clear;
+              ADOQuerySQL.SQL.Add('update selllogdetails set amount=(amount+1),updated_at=now()  where slid="' + Label26.Caption + '"');
+              ADOQuerySQL.ExecSQL;
+            end
+            else
+              Exit;
+          end
+          else
+          begin
+            ADOQuerySQL.SQL.Clear;
+            ADOQuerySQL.SQL.Add('update selllogdetails set amount=(amount+1),updated_at=now()  where slid="' + Label26.Caption + '" and pid="' + ADOQuery1.FieldByName('pid').AsString + '"');
+            ADOQuerySQL.ExecSQL;
+          end;
+
+          QH1;
+          QH2;
+        end;
+
       end;
 
     VK_SUBTRACT:
       begin
-        if ADOQuery1.FieldByName('amount').AsCurrency > 1 then
+        if ADOQuery1.RecordCount > 0 then
         begin
-          ADOQuery1.Edit;
-          ADOQuery1.FieldByName('amount').AsCurrency := ADOQuery1.FieldByName('amount').AsCurrency - 1;
+          //ADOQuery1.Edit;
+          //ADOQuery1.FieldByName('amount').AsCurrency := ADOQuery1.FieldByName('amount').AsCurrency - 1;
+
+
+
+          if ADOQuery1.FieldByName('pid').AsString = '' then
+          begin
+            if messagedlg('减少当前订单中所有产品数量吗?', mtconfirmation, [mbyes, mbno], 0) = mryes then
+            begin
+              ADOQuerySQL.SQL.Clear;
+              ADOQuerySQL.SQL.Add('update selllogdetails set amount=(if(amount>1,amount-1,amount)),updated_at=now()  where slid="' + Label26.Caption + '"');
+              ADOQuerySQL.ExecSQL;
+            end
+            else
+              Exit;
+          end
+          else
+          begin
+            if ADOQuery1.FieldByName('amount').AsCurrency > 1 then
+            begin
+              ADOQuerySQL.SQL.Clear;
+              ADOQuerySQL.SQL.Add('update selllogdetails set amount=(amount-1),updated_at=now()  where slid="' + Label26.Caption + '" and pid="' + ADOQuery1.FieldByName('pid').AsString + '"');
+              ADOQuerySQL.ExecSQL;
+            end;
+          end;
+
           QH1;
           QH2;
         end;
       end;
+
   end;
 end;
+
+{修改折扣信息}
 
 procedure TMain.RzEdit1KeyPress(Sender: TObject; var Key: Char);
 begin
@@ -752,10 +910,17 @@ begin
         RzEdit1.Text := '100';
         Exit;
       end;
+      {
       ADOQuery1.Edit;
       ADOQuery1.FieldByName('discount').AsString := RzEdit1.Text;
       ADOQuery1.Post;
       ADOQuery1.Refresh;
+      }
+
+      ADOQuerySQL.SQL.Clear;
+      ADOQuerySQL.SQL.Add('update selllogdetails set discount="' + RzEdit1.Text + '",updated_at=now() where slid = "' + Label26.Caption + '" and pid="' + ADOQuery1.FieldByName('pid').AsString + '"');
+      ADOQuerySQL.ExecSQL;
+
       QH1;
       QH2;
     end;
@@ -763,6 +928,8 @@ begin
     RzEdit4.SetFocus;
   end;
 end;
+
+{修改数量}
 
 procedure TMain.RzEdit3KeyPress(Sender: TObject; var Key: Char);
 begin
@@ -784,6 +951,7 @@ begin
         ShowMessage('输入非法字符~~!');
         Exit;
       end;
+      {
       ADOQuery1.Edit;
       ADOQuery1.FieldByName('amount').AsString := RzEdit3.Text;
 
@@ -796,6 +964,12 @@ begin
 
       ADOQuery1.Post;
       ADOQuery1.Refresh;
+      }
+
+      ADOQuerySQL.SQL.Clear;
+      ADOQuerySQL.SQL.Add('update selllogdetails set amount="' + RzEdit3.Text + '",updated_at=now() where slid = "' + Label26.Caption + '" and pid="' + ADOQuery1.FieldByName('pid').AsString + '"');
+      ADOQuerySQL.ExecSQL;
+
       QH1;
       QH2;
     end;
@@ -804,6 +978,8 @@ begin
   end;
 end;
 
+
+{修改件数}
 
 procedure TMain.RzEdit5KeyPress(Sender: TObject; var Key: Char);
 begin
@@ -825,6 +1001,7 @@ begin
         ShowMessage('输入非法字符~~!');
         Exit;
       end;
+      {
       ADOQuery1.Edit;
       ADOQuery1.FieldByName('bundle').AsString := RzEdit5.Text;
 
@@ -832,9 +1009,15 @@ begin
       if ADOQuery1.FieldByName('created_at').AsString = '' then
         ADOQuery1.FieldByName('created_at').AsString := UpdateTimeStr;
       ADOQuery1.FieldByName('updated_at').AsString := UpdateTimeStr;
-      
+
       ADOQuery1.Post;
       ADOQuery1.Refresh;
+      }
+
+      ADOQuerySQL.SQL.Clear;
+      ADOQuerySQL.SQL.Add('update selllogdetails set bundle="' + RzEdit5.Text + '",updated_at=now() where slid = "' + Label26.Caption + '" and pid="' + ADOQuery1.FieldByName('pid').AsString + '"');
+      ADOQuerySQL.ExecSQL;
+
       QH1;
       QH2;
     end;
@@ -842,6 +1025,8 @@ begin
     RzEdit4.SetFocus;
   end;
 end;
+
+{修改单价}
 
 procedure TMain.RzEdit2KeyPress(Sender: TObject; var Key: Char);
 begin
@@ -863,6 +1048,8 @@ begin
         ShowMessage('输入非法字符~~!');
         Exit;
       end;
+
+      {
       ADOQuery1.Edit;
       ADOQuery1.FieldByName('outprice').AsString := RzEdit2.Text;
 
@@ -875,6 +1062,12 @@ begin
 
       ADOQuery1.Post;
       ADOQuery1.Refresh;
+      }
+
+      ADOQuerySQL.SQL.Clear;
+      ADOQuerySQL.SQL.Add('update selllogdetails set outprice="' + RzEdit2.Text + '",updated_at=now() where slid = "' + Label26.Caption + '" and pid="' + ADOQuery1.FieldByName('pid').AsString + '"');
+      ADOQuerySQL.ExecSQL;
+
       QH1;
       QH2;
     end;
@@ -883,21 +1076,24 @@ begin
 end;
 
 
+{上下移动列表行时更新数据}
 
 procedure TMain.DBGrid1MouseUp(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
   RzEdit1.Text := ADOQuery1.FieldByName('discount').AsString;
-  RzEdit2.Text := ADOQuery1.FieldByName('pfprice').AsString;
+  RzEdit2.Text := ADOQuery1.FieldByName('outprice').AsString;
   RzEdit3.Text := ADOQuery1.FieldByName('amount').AsString;
+  RzEdit5.Text := ADOQuery1.FieldByName('bundle').AsString;
 end;
 
 procedure TMain.DBGrid1KeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   RzEdit1.Text := ADOQuery1.FieldByName('discount').AsString;
-  RzEdit2.Text := ADOQuery1.FieldByName('pfprice').AsString;
+  RzEdit2.Text := ADOQuery1.FieldByName('outprice').AsString;
   RzEdit3.Text := ADOQuery1.FieldByName('amount').AsString;
+  RzEdit5.Text := ADOQuery1.FieldByName('bundle').AsString;
 end;
 
 {根据条码找商品}
@@ -909,6 +1105,14 @@ begin
     //当输入为空则结账
     if (RzEdit4.Text = '') and (ADOQuery1.RecordCount > 0) then
     begin
+
+      if cbb1.Text = '' then
+      begin
+        ShowMessage('请选择支付方式~~!');
+        cbb1.SetFocus;
+        Exit;
+      end;
+
       Gathering := TGathering.create(application);
       Gathering.showmodal;
       Exit;
@@ -981,10 +1185,12 @@ begin
     begin
       QC := TQC.Create(Application);
       QC.ShowModal;
+      RzEdit4.SetFocus;
     end;
   end;
   if (key = #43) or (key = #45) then
     key := #0;
+
 end;
 
 {根据客户编号查询客户偏好托运部}
@@ -1019,4 +1225,37 @@ begin
   Value := '第' + IntToStr(QuickRep1.QRPrinter.PageNumber) + '页 / 共' + IntToStr(FTotalPages) + '页';
 end;
 
+procedure TMain.edt8KeyPress(Sender: TObject; var Key: Char);
+begin
+  if key = #13 then
+  begin
+    if QC_S <> nil then
+      QC_S.ShowModal
+    else
+    begin
+      QC_S := TQC_S.Create(Application);
+      QC_S.ShowModal;
+    end;
+  end;
+  if (key = #43) or (key = #45) then
+    key := #0;
+end;
+
+procedure TMain.edt2KeyPress(Sender: TObject; var Key: Char);
+begin
+  if key = #13 then
+  begin
+    if QC_T <> nil then
+      QC_T.ShowModal
+    else
+    begin
+      QC_T := TQC_T.Create(Application);
+      QC_T.ShowModal;
+    end;
+  end;
+  if (key = #43) or (key = #45) then
+    key := #0;
+end;
+
 end.
+

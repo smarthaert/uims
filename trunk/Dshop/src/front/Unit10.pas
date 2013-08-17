@@ -66,16 +66,19 @@ end;
 procedure TQD.SpeedButton2Click(Sender: TObject);
 begin
   Main.Label26.Caption := ADOQuery1.FieldByName('slid').AsString;
+  {
   Main.ADOQuery1.Close;
   Main.ADOQuery1.SQL.Clear;
-  
-  Main.ADOQuery1.SQL.Add('select pid,goodsname,color,FORMAT(volume,2) as volume,FORMAT(amount,0) as amount,unit,FORMAT(bundle,0) as bundle,FORMAT(outprice,0) as outprice,discount,additional,FORMAT((amount*outprice),0) as subtotal, ');
+
+  Main.ADOQuery1.SQL.Add('select pid,goodsname,color,FORMAT(volume,2) as volume,FORMAT(amount,0) as amount,unit,FORMAT(bundle,0) as bundle,FORMAT(outprice,0) as outprice,discount,additional,FORMAT((subtotal),0) as subtotal, ');
   Main.ADOQuery1.SQL.Add('inprice, pfprice, hprice from selllogdetails where slid = "' + Main.Label26.Caption + '" union select "合计" as pid, "" as goodsname, "" as color,FORMAT(sum(volume),2) ');
   Main.ADOQuery1.SQL.Add('as volume,FORMAT(sum(amount),0) as amount,"" as unit,FORMAT(sum(bundle),0) as bundle,FORMAT(sum(outprice),0) as outprice,"" as discount,"" ');
-  Main.ADOQuery1.SQL.Add('as additional,FORMAT(sum(amount*outprice),0) as subtotal,inprice, pfprice, hprice  from selllogdetails where slid = "' + Main.Label26.Caption + '"');
-  
+  Main.ADOQuery1.SQL.Add('as additional,FORMAT(sum(subtotal),0) as subtotal,inprice, pfprice, hprice  from selllogdetails where slid = "' + Main.Label26.Caption + '"');
+
   Main.ADOQuery1.Open;
-  //Main.QH1;
+  }
+
+  Main.QH1;
   Main.QH2;
 
   {恢复客户，物流等信息}
