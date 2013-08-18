@@ -1,0 +1,2 @@
+
+insert into stocks (pid,goodsname,color,amount,bundle,inprice,volume) select cpbh as pid,cpmc as goodsname, ys as color, sum(sl) as amount, sum(js) as bundle, sum(dj) as inprice, tj as volume from purchases group by cpbh;

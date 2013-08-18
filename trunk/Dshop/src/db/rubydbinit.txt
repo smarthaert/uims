@@ -1,44 +1,61 @@
+rake db:drop
+rake db:create
+
+
+#rake db:reset
+
+
+rails destroy scaffold User
 rails generate scaffold User \
-uid:string \
+uid:string:uniq \
 loginname:string \
 uname:string \
 sex:string \
 age:integer \
 userpass:string \
 address:text \
-tel:string \
-salari:float \
+tel:string:uniq \
+'salari:decimal{10,2}' \
 position:string \
+cdate:date \
 remark:text
 
+rails destroy scaffold Customer
 rails generate scaffold Customer \
-cid:string \
+cid:string:uniq \
 loginname:string \
 cname:string \
 sex:string \
 address:string \
-tel:string \
+email:string \
+qq:string \
+tel:string:uniq \
 state:string \
+cdate:date \
 remark:text
 
-
+rails destroy scaffold Feeder
 rails generate scaffold Feeder \
-fid:string \
-feedername:string \
-pingpai:string \
+fid:string:uniq \
+feedername:string:uniq \
+brand:string \
 linkman:string \
 address:string \
+email:string:uniq \
+qq:string:uniq \
 zipcode:string \
-tel:string \
-fax:string \
+tel:string:uniq \
+fax:string:uniq \
+cdate:date \
 remark:text
 
-
+rails destroy scaffold Unit
 rails generate scaffold Unit \
-uname:string \
+uname:string:uniq \
+cdate:date \
 remark:text
 
-
+rails destroy scaffold Shipper
 rails generate scaffold Shipper \
 sid:string \
 sname:string \
@@ -47,60 +64,63 @@ address:string \
 custid:string \
 custname:string \
 custtel:string \
+cdate:date \
 remark:text
 
-
+rails destroy scaffold Stock
 rails generate scaffold Stock \
-pid:string \
-barcode:string \
-goodsname:string \
+pid:string:uniq \
+barcode:string:uniq \
+goodsname:string:uniq \
 size:string \
 color:string \
-volume:float \
+'volume:decimal{10,2}' \
 unit:string \
-inprice:float \
-pfprice:float \
+'inprice:decimal{10,2}' \
+'pfprice:decimal{10,2}' \
 amount:integer \
 bundle:integer \
 discount:integer \
-stockbaseline:integer \
+baseline:integer \
 remark:text
 
-
+rails destroy scaffold Memberprice
 rails generate scaffold Memberprice \
 pid:string \
 barcode:string \
 goodsname:string \
 size:string \
 color:string \
-volume:float \
+'volume:decimal{10,2}' \
 unit:string \
 custid:string \
 custname:string \
 custtel:string \
 startdate:date \
 enddate:date \
-hprice:float \
+'hprice:decimal{10,2}' \
+cdate:date \
 remark:text
 
-rails destroy scaffold Selllogmain 
+rails destroy scaffold Selllogmain
 rails generate scaffold Selllogmain \
-slid:string \
+slid:string:uniq \
 custid:string \
 custstate:string \
 custname:string \
 custtel:string \
 custaddr:string \
-yingshou:float \
-shishou:float \
+'yingshou:decimal{10,2}' \
+'shishou:decimal{10,2}' \
 sid:string \
 sname:string \
 stel:string \
 saddress:string \
 payment:string \
-status:boolean \
+status:integer \
 uid:string \
 uname:string \
+cdate:date \
 remark:text
 
 
@@ -112,45 +132,50 @@ barcode:string \
 goodsname:string \
 size:string \
 color:string \
-volume:float \
+'volume:decimal{10,2}' \
 unit:string \
-inprice:float \
-pfprice:float \
-hprice:float \
-outprice:float \
+'inprice:decimal{10,2}' \
+'pfprice:decimal{10,2}' \
+'hprice:decimal{10,2}' \
+'outprice:decimal{10,2}' \
 amount:integer \
 bundle:integer \
 discount:integer \
 additional:string \
-subtotal:float \
-status:boolean
+'subtotal:decimal{10,2}' \
+status:integer \
+cdate:date \
+remark:text
 
-
-
+rails destroy scaffold Contactpayment
 rails generate scaffold Contactpayment \
-cpid:string \
-cpname:string \
+custid:string \
+custname:string \
 date:date \
-outmoney:float \
-inmoney:float \
-strike:float \
+'outmoney:decimal{10,2}' \
+'inmoney:decimal{10,2}' \
+'strike:decimal{10,2}' \
+method:string \
+cdate:date \
 remark:text
 
 
-
+rails destroy scaffold Purchase
 rails generate scaffold Purchase \
 cpbh:string \
 cpmc:string \
 ys:string \
 sl:integer \
 js:integer \
-dj:float \
-yfbz:float \
-xj:float \
-tj:float \
-bz:string
+'dj:decimal{10,2}' \
+'yfbz:decimal{10,2}' \
+'xj:decimal{10,2}' \
+'tj:decimal{10,2}' \
+bz:string \
+cdate:date \
+remark:text
 
-
+rails destroy scaffold Buylog
 rails generate scaffold Buylog \
 uid:string \
 uname:string \
@@ -160,15 +185,14 @@ cpmc:string \
 ys:string \
 sl:string \
 js:string \
-dj:string \
-yfbz:string \
-xj:string \
-tj:string \
+'dj:decimal{10,2}' \
+'yfbz:decimal{10,2}' \
+'xj:decimal{10,2}' \
+'tj:decimal{10,2}' \
 bz:string \
+cdate:date \
 remark:text
 
 
+rake db:migrate
 
-
-
-insert into stocks (pid,goodsname,color,amount,bundle,inprice,volume) select cpbh as pid,cpmc as goodsname, ys as color, sum(sl) as amount, sum(js) as bundle, sum(dj) as inprice, tj as volume from purchases group by cpbh;
