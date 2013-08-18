@@ -307,7 +307,7 @@ begin
   {每日最大单号9999}
 
   ADOQuery2.SQL.Clear;
-  ADOQuery2.SQL.Add('select concat("C",DATE_FORMAT(now(),"%y%m%d"),lpad(cast(substr(if(max(slid) is null,"0000",max(slid)),8) as signed) + 1,4,"0")) as id from selllogmains where DATE_FORMAT(created_at,"%y%m%d")=DATE_FORMAT(now(),"%y%m%d")');
+  ADOQuery2.SQL.Add('select concat("C",DATE_FORMAT(now(),"%y%m%d"),lpad(cast(substr(if(max(slid) is null,"0000",max(slid)),8) as signed) + 1,4,"0")) as id from selllogmains where DATE_FORMAT(created_at,"%y%m%d")=DATE_FORMAT(now(),"%y%m%d") and slid like "C%"');
   ADOQuery2.Open;
 
   //读取单号

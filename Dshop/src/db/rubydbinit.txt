@@ -5,6 +5,7 @@ rake db:create
 #rake db:reset
 
 
+#雇员表
 rails destroy scaffold User
 rails generate scaffold User \
 uid:string:uniq \
@@ -20,6 +21,7 @@ position:string \
 cdate:date \
 remark:text
 
+#客户表
 rails destroy scaffold Customer
 rails generate scaffold Customer \
 cid:string:uniq \
@@ -34,6 +36,7 @@ state:string \
 cdate:date \
 remark:text
 
+#供应商表
 rails destroy scaffold Feeder
 rails generate scaffold Feeder \
 fid:string:uniq \
@@ -49,12 +52,14 @@ fax:string:uniq \
 cdate:date \
 remark:text
 
+#计量单位表
 rails destroy scaffold Unit
 rails generate scaffold Unit \
 uname:string:uniq \
 cdate:date \
 remark:text
 
+#客户偏好托运部信息表
 rails destroy scaffold Shipper
 rails generate scaffold Shipper \
 sid:string \
@@ -67,11 +72,12 @@ custtel:string \
 cdate:date \
 remark:text
 
+#库存表，直接反映现有库存信息
 rails destroy scaffold Stock
 rails generate scaffold Stock \
 pid:string:uniq \
 barcode:string:uniq \
-goodsname:string:uniq \
+goodsname:string \
 size:string \
 color:string \
 'volume:decimal{10,2}' \
@@ -84,6 +90,7 @@ discount:integer \
 baseline:integer \
 remark:text
 
+#会员优惠价配置表，特殊会员给予特殊价格
 rails destroy scaffold Memberprice
 rails generate scaffold Memberprice \
 pid:string \
@@ -102,6 +109,7 @@ enddate:date \
 cdate:date \
 remark:text
 
+#产品出库记录主表，主键CXXXXXX，数据来源于订单记录表
 rails destroy scaffold Selllogmain
 rails generate scaffold Selllogmain \
 slid:string:uniq \
@@ -120,10 +128,13 @@ payment:string \
 status:integer \
 uid:string \
 uname:string \
+preid:string \
+nextid:string \
+type:string \
 cdate:date \
 remark:text
 
-
+#产品出库明细表，数据来源于订单记录表
 rails destroy scaffold Selllogdetail 
 rails generate scaffold Selllogdetail \
 slid:string \
@@ -147,6 +158,105 @@ status:integer \
 cdate:date \
 remark:text
 
+#产品售后记录主表，主键TXXXXXX，数据来源于出库记录表
+rails destroy scaffold Aftersellmain
+rails generate scaffold Aftersellmain \
+tid:string:uniq \
+custid:string \
+custstate:string \
+custname:string \
+custtel:string \
+custaddr:string \
+'yingshou:decimal{10,2}' \
+'shishou:decimal{10,2}' \
+sid:string \
+sname:string \
+stel:string \
+saddress:string \
+payment:string \
+status:integer \
+uid:string \
+uname:string \
+preid:string \
+nextid:string \
+type:string \
+cdate:date \
+remark:text
+
+#产品售后记录明细表，数据来源于出库记录表
+rails destroy scaffold Afterselldetail 
+rails generate scaffold Afterselldetail \
+tid:string \
+pid:string \
+barcode:string \
+goodsname:string \
+size:string \
+color:string \
+'volume:decimal{10,2}' \
+unit:string \
+'inprice:decimal{10,2}' \
+'pfprice:decimal{10,2}' \
+'hprice:decimal{10,2}' \
+'outprice:decimal{10,2}' \
+amount:integer \
+bundle:integer \
+discount:integer \
+additional:string \
+'subtotal:decimal{10,2}' \
+status:integer \
+cdate:date \
+remark:text
+
+#订单记录主表，主键OXXXXXX
+rails destroy scaffold Ordermain
+rails generate scaffold Ordermain \
+oid:string:uniq \
+custid:string \
+custstate:string \
+custname:string \
+custtel:string \
+custaddr:string \
+'yingshou:decimal{10,2}' \
+'shishou:decimal{10,2}' \
+sid:string \
+sname:string \
+stel:string \
+saddress:string \
+payment:string \
+status:integer \
+uid:string \
+uname:string \
+preid:string \
+nextid:string \
+type:string \
+cdate:date \
+remark:text
+
+#订单记录明细表
+rails destroy scaffold Orderdetail 
+rails generate scaffold Orderdetail \
+oid:string \
+pid:string \
+barcode:string \
+goodsname:string \
+size:string \
+color:string \
+'volume:decimal{10,2}' \
+unit:string \
+'inprice:decimal{10,2}' \
+'pfprice:decimal{10,2}' \
+'hprice:decimal{10,2}' \
+'outprice:decimal{10,2}' \
+amount:integer \
+bundle:integer \
+discount:integer \
+additional:string \
+'subtotal:decimal{10,2}' \
+status:integer \
+cdate:date \
+remark:text
+
+#与客户往来帐务表
 rails destroy scaffold Contactpayment
 rails generate scaffold Contactpayment \
 custid:string \
@@ -159,7 +269,7 @@ method:string \
 cdate:date \
 remark:text
 
-
+#采购表，数据来源于供应商提供的采购单。直接导入后加工为库存
 rails destroy scaffold Purchase
 rails generate scaffold Purchase \
 cpbh:string \
@@ -175,6 +285,7 @@ bz:string \
 cdate:date \
 remark:text
 
+#历史采购记录表，数据来源于采购表。
 rails destroy scaffold Buylog
 rails generate scaffold Buylog \
 uid:string \
@@ -196,3 +307,4 @@ remark:text
 
 rake db:migrate
 
+#手动增加Selllogdetail表的联合主键slid和pid
