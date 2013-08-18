@@ -179,7 +179,6 @@ uid:string \
 uname:string \
 preid:string \
 nextid:string \
-type:string \
 cdate:date \
 remark:text
 
@@ -202,6 +201,7 @@ amount:integer \
 bundle:integer \
 discount:integer \
 additional:string \
+type:string \
 'subtotal:decimal{10,2}' \
 status:integer \
 cdate:date \
@@ -308,3 +308,4 @@ remark:text
 rake db:migrate
 
 #手动增加Selllogdetail表的联合主键slid和pid
+#Afterselldetail tid pid type

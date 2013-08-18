@@ -265,7 +265,7 @@ begin
   }
 
   Main.ADOQuerySQL.SQL.Clear;
-  Main.ADOQuerySQL.SQL.Add('update selllogmains set yingshou="' + Main.Label7.Caption + '", shishou="' + Label2.Caption + '", status="1", remark="' + Main.mmo1.Lines.GetText + '", updated_at=now() where slid="' + Main.Label26.Caption + '"');
+  Main.ADOQuerySQL.SQL.Add('update selllogmains set yingshou="' + Main.Label7.Caption + '", shishou="' + Label2.Caption + '", status="1", type="已销售", remark="' + Main.mmo1.Lines.GetText + '", updated_at=now() where slid="' + Main.Label26.Caption + '"');
   Main.ADOQuerySQL.ExecSQL;
 
   //根据支付方式记帐
@@ -363,4 +363,3 @@ begin
 end;
 
 end.
-
