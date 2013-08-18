@@ -179,7 +179,8 @@ var
 
 implementation
 
-uses Unit1, Unit3, Unit5, Unit7, Unit9, Unit10, Unit11, Unit12, Unit13, Unit14, Unit15, Unit16;
+uses Unit1, Unit3, Unit5, Unit7, Unit9, Unit10, Unit11, Unit12, Unit13, Unit14, Unit15, Unit16,
+  Unit4;
 
 {$R *.dfm}
 
@@ -246,9 +247,10 @@ begin
   {缩放并定位窗口}
 
   {
-  Main.Width:=798;//恢复主窗口大小
-  Main.Height:=571;//恢复主窗口大小
+  Main.Width:=1045;//恢复主窗口大小
+  Main.Height:=810;//恢复主窗口大小
   }
+
   //使主窗口位于屏幕正中央
   Main.Top := (GetSystemMetrics(SM_CySCREEN) - Main.Height) div 2 - 13;
   Main.Left := (GetSystemMetrics(SM_CxSCREEN) - Main.Width) div 2;
@@ -620,8 +622,9 @@ begin
         begin
           if ADOQuery1.RecordCount > 0 then
           begin
-            ADOQuery1.Edit;
-            ADOQuery1.FieldByName('additional').AsString := '补发';
+            ADOQuerySQL.SQL.Clear;
+            ADOQuerySQL.SQL.Add('update selllogdetails set additional="补发",updated_at=now()  where slid="' + Label26.Caption + '" and pid="' + ADOQuery1.FieldByName('pid').AsString + '"');
+            ADOQuerySQL.ExecSQL;
           end;
           QH1;
           QH2;
@@ -630,8 +633,9 @@ begin
         begin
           if ADOQuery1.RecordCount > 0 then
           begin
-            ADOQuery1.Edit;
-            ADOQuery1.FieldByName('additional').AsString := '-';
+            ADOQuerySQL.SQL.Clear;
+            ADOQuerySQL.SQL.Add('update selllogdetails set additional="-",updated_at=now()  where slid="' + Label26.Caption + '" and pid="' + ADOQuery1.FieldByName('pid').AsString + '"');
+            ADOQuerySQL.ExecSQL;
           end;
           QH1;
           QH2;
@@ -732,12 +736,12 @@ begin
 
     VK_F8:
       begin
-        if QR <> nil then
-          QR.ShowModal
+        if Main_T <> nil then
+          Main_T.ShowModal
         else
         begin
-          QR := TQR.Create(Application);
-          QR.ShowModal;
+          Main_T := TMain_T.Create(Application);
+          Main_T.ShowModal;
         end;
       end;
 
