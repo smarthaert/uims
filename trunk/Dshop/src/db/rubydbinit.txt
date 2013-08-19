@@ -4,6 +4,15 @@ rake db:create
 
 #rake db:reset
 
+#访问控制表,用来识别机器和机器的访问权限
+rails destroy scaffold Fwlist
+rails generate scaffold Fwlist \
+uid:string\
+rid:string:uniq \
+result:string\
+cdate:date \
+remark:text
+
 
 #雇员表
 rails destroy scaffold User
@@ -132,6 +141,7 @@ preid:string \
 nextid:string \
 type:string \
 cdate:date \
+printdate:date \
 remark:text
 
 #产品出库明细表，数据来源于订单记录表

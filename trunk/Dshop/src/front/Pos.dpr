@@ -11,6 +11,7 @@ uses
   Unit8 in 'Unit8.pas' {Card},
   Unit10 in 'Unit10.pas' {QD},
   Unit18 in 'Unit18.pas' {QHDF7},
+  Unit19 in 'Unit19.pas' {QHD_P},
   Unit17 in 'Unit17.pas' {QHD},
   Unit7 in 'Unit7.pas' {Pos_Setup},
   Unit6 in 'Unit6.pas' {MoLing},

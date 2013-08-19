@@ -1,6 +1,6 @@
 object Main_T: TMain_T
-  Left = 207
-  Top = 140
+  Left = 271
+  Top = 36
   Width = 1045
   Height = 810
   ActiveControl = edt1
@@ -351,11 +351,13 @@ object Main_T: TMain_T
       FrameStyle = fsBump
       ItemHeight = 12
       TabOrder = 5
+      Text = #32500#20462
       OnKeyPress = RzComboBox1KeyPress
       Items.Strings = (
-        #36864#36135
         #32500#20462
-        #34917#21457)
+        #36864#36135
+        #34917#21457
+        '')
     end
   end
   object Panel4: TPanel

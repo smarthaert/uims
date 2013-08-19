@@ -161,7 +161,8 @@ type
     procedure edt2KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
-  public
+  public                    
+    reprint: Boolean;
     procedure QH1;
     procedure WRecord;
     procedure QH2;
@@ -175,12 +176,12 @@ type
 var
   Main: TMain;
   FTotalPages: Integer;
-  UpdateTimeStr: string;
+  UpdateTimeStr: string;  
 
 implementation
 
 uses Unit1, Unit3, Unit5, Unit7, Unit9, Unit10, Unit11, Unit12, Unit13, Unit14, Unit15, Unit16,
-  Unit4;
+  Unit4, Unit19;
 
 {$R *.dfm}
 
@@ -888,6 +889,17 @@ begin
         end;
       end;
 
+    VK_HOME:
+      begin
+        if QHD_P <> nil then
+          QHD_P.ShowModal
+        else
+        begin
+          QHD_P := TQHD_P.Create(Application);
+          QHD_P.ShowModal;
+        end;
+      end;
+
   end;
 end;
 
@@ -1262,4 +1274,3 @@ begin
 end;
 
 end.
-

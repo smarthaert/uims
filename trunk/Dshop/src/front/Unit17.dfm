@@ -1,6 +1,6 @@
 object QHD: TQHD
-  Left = 494
-  Top = 312
+  Left = 552
+  Top = 301
   BorderStyle = bsNone
   Caption = 'QHD'
   ClientHeight = 362
