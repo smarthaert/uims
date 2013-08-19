@@ -201,7 +201,7 @@ begin
   //补打凭证时不修改销售数据
   if Main.reprint then
     Main.reprint := False
-  else
+  else    //交易数据处理
   begin
 
     //记录新客户信息
@@ -235,6 +235,19 @@ begin
     Main.ADOQuerySQL.SQL.Clear;
     Main.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,cdate,remark,created_at,updated_at) values("' + Main.edt7.Text + '","' + Main.edt1.Text + '","' + Main.Label7.Caption + '","' + Label2.Caption + '","' + CurrToStr(StrToCurr(Main.Label7.Caption) - StrToCurr(Label2.Caption)) + '","' + Main.cbb1.Text + '",now(),"' + Main.mmo1.Lines.GetText + '",now(),now())');
     Main.ADOQuerySQL.ExecSQL;
+
+    //如果是在线渠道过来的订单 source /preid
+    //跟新实际发货数量，一边日后到货提醒
+    //前提是控制好实际发货数量不能超过订单数量
+    Main.ADOQuerySQL.SQL.Clear;
+    Main.ADOQuerySQL.SQL.Add('update selllogmains a,ordermains b,orderdetails c,selllogdetails d set c.ramount=d.amount,c.rbundle=d.bundle,c.additional=d.additional,c.updated_at=now() where a.slid="' + Main.Label26.Caption + '" and a.preid=b.oid and b.oid=c.oid and d.slid=a.slid and d.pid=c.pid');
+    Main.ADOQuerySQL.ExecSQL;
+
+    //更新订单状态
+    Main.ADOQuerySQL.SQL.Clear;
+    Main.ADOQuerySQL.SQL.Add('update ordermains set type="已发货", updated_at=now() where nextid="' + Main.Label26.Caption + '"');
+    Main.ADOQuerySQL.ExecSQL;
+    
   end;
 
 
