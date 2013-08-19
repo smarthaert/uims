@@ -198,120 +198,49 @@ begin
     vIniFile.WriteBool('System', 'PB', False);
   end;
 
-
-  //记录新客户信息
-  Main.ADOQuerySQL.SQL.Clear;
-  Main.ADOQuerySQL.SQL.Add('insert into customers(cid,loginname,cname,sex,address,tel,state,cdate,remark,created_at,updated_at) values("","","' + Main.edt1.Text + '","","' + Main.edt3.Text + '","' + Main.edt2.Text + '","' + Main.edt8.Text + '",now(),"",now(),now()) on duplicate key update updated_at=now()');
-  Main.ADOQuerySQL.ExecSQL;
-
-  //记录新托运部信息
-  Main.ADOQuerySQL.SQL.Clear;
-  Main.ADOQuerySQL.SQL.Add('insert into shippers(sid,sname,tel,address,custid,custname,custtel,cdate,remark,created_at,updated_at) values("","' + Main.edt4.Text + '","' + Main.edt5.Text + '","' + Main.edt6.Text + '","","' + Main.edt1.Text + '","' + Main.edt2.Text + '",now(),"",now(),now()) on duplicate key update updated_at=now()');
-  Main.ADOQuerySQL.ExecSQL;
-
-
-  //写销售记录
-  Main.ADOQuery1.First;
-  while not (Main.ADOQuery1.Eof) do
+  //补打凭证时不修改销售数据
+  if Main.reprint then
+    Main.reprint := False
+  else
   begin
-    {
-    Main.ADOQuery2.Edit;
-    //查找商品
-    Main.ADOQuery2.SQL.Clear;
-    Main.ADOQuery2.SQL.Add('Select * from stocks Where pid="' + Main.ADOQuery1.FieldByName('pid').AsString + '"');
-    Main.ADOQuery2.Open;
-    //减少库存
-    Main.ADOQuery2.Edit;
-    Main.ADOQuery2.FieldByName('amount').AsCurrency := Main.ADOQuery2.FieldByName('amount').AsCurrency - Main.ADOQuery1.FieldByName('amount').AsCurrency;
 
-
-    UpdateTimeStr := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
-    if Main.ADOQuery2.FieldByName('created_at').AsString = '' then
-      Main.ADOQuery2.FieldByName('created_at').AsString := UpdateTimeStr;
-    Main.ADOQuery2.FieldByName('updated_at').AsString := UpdateTimeStr;
-
-
-    Main.ADOQuery2.Post;
-    Main.ADOQuery2.Refresh;
-    }
-
+    //记录新客户信息
     Main.ADOQuerySQL.SQL.Clear;
-    Main.ADOQuerySQL.SQL.Add('update stocks set amount=amount-' + Main.ADOQuery1.FieldByName('amount').AsString + ', updated_at=now() where pid="' + Main.ADOQuery1.FieldByName('pid').AsString + '"');
+    Main.ADOQuerySQL.SQL.Add('insert into customers(cid,loginname,cname,sex,address,tel,state,cdate,remark,created_at,updated_at) values("","","' + Main.edt1.Text + '","","' + Main.edt3.Text + '","' + Main.edt2.Text + '","' + Main.edt8.Text + '",now(),"",now(),now()) on duplicate key update updated_at=now()');
     Main.ADOQuerySQL.ExecSQL;
 
-    Main.ADOQuery1.Next;
+    //记录新托运部信息
+    Main.ADOQuerySQL.SQL.Clear;
+    Main.ADOQuerySQL.SQL.Add('insert into shippers(sid,sname,tel,address,custid,custname,custtel,cdate,remark,created_at,updated_at) values("","' + Main.edt4.Text + '","' + Main.edt5.Text + '","' + Main.edt6.Text + '","","' + Main.edt1.Text + '","' + Main.edt2.Text + '",now(),"",now(),now()) on duplicate key update updated_at=now()');
+    Main.ADOQuerySQL.ExecSQL;
+
+
+    //写销售记录
+    Main.ADOQuery1.First;
+    while not (Main.ADOQuery1.Eof) do
+    begin
+      Main.ADOQuerySQL.SQL.Clear;
+      Main.ADOQuerySQL.SQL.Add('update stocks set amount=amount-' + Main.ADOQuery1.FieldByName('amount').AsString + ', updated_at=now() where pid="' + Main.ADOQuery1.FieldByName('pid').AsString + '"');
+      Main.ADOQuerySQL.ExecSQL;
+
+      Main.ADOQuery1.Next;
+    end;
+
+    //更改销售标记
+    Main.ADOQuerySQL.SQL.Clear;
+    Main.ADOQuerySQL.SQL.Add('update selllogmains set yingshou="' + Main.Label7.Caption + '", shishou="' + Label2.Caption + '", status="1", type="已销售", remark="' + Main.mmo1.Lines.GetText + '", updated_at=now() where slid="' + Main.Label26.Caption + '"');
+    Main.ADOQuerySQL.ExecSQL;
+
+    //根据支付方式记帐
+    Main.ADOQuerySQL.SQL.Clear;
+    Main.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,cdate,remark,created_at,updated_at) values("' + Main.edt7.Text + '","' + Main.edt1.Text + '","' + Main.Label7.Caption + '","' + Label2.Caption + '","' + CurrToStr(StrToCurr(Main.Label7.Caption) - StrToCurr(Label2.Caption)) + '","' + Main.cbb1.Text + '",now(),"' + Main.mmo1.Lines.GetText + '",now(),now())');
+    Main.ADOQuerySQL.ExecSQL;
   end;
 
-  //更改销售标记
-  {
-  Main.ADOQuery2.SQL.Clear;
-  Main.ADOQuery2.SQL.Add('Select * from selllogmains Where slid="' + Main.Label26.Caption + '"');
-  Main.ADOQuery2.Open;
-  Main.ADOQuery2.Edit;
-  Main.ADOQuery2.FieldByName('yingshou').AsString := Main.Label7.Caption;
-  Main.ADOQuery2.FieldByName('shishou').AsString := Label2.Caption;
-  Main.ADOQuery2.FieldByName('status').AsString := '1';
-  Main.ADOQuery2.FieldByName('remark').AsString := Main.mmo1.Lines.GetText;
-
-
-  UpdateTimeStr := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
-  if Main.ADOQuery2.FieldByName('created_at').AsString = '' then
-    Main.ADOQuery2.FieldByName('created_at').AsString := UpdateTimeStr;
-  Main.ADOQuery2.FieldByName('updated_at').AsString := UpdateTimeStr;
-
-
-  Main.ADOQuery2.Post;
-  Main.ADOQuery2.Refresh;
-  }
-
-  Main.ADOQuerySQL.SQL.Clear;
-  Main.ADOQuerySQL.SQL.Add('update selllogmains set yingshou="' + Main.Label7.Caption + '", shishou="' + Label2.Caption + '", status="1", type="已销售", remark="' + Main.mmo1.Lines.GetText + '", updated_at=now() where slid="' + Main.Label26.Caption + '"');
-  Main.ADOQuerySQL.ExecSQL;
-
-  //根据支付方式记帐
-  {
-  Main.ADOQuery2.SQL.Clear;
-  Main.ADOQuery2.SQL.Add('Select * from contactpayments Where not(1)');
-  Main.ADOQuery2.Open;
-  Main.ADOQuery2.Append;
-  Main.ADOQuery2.FieldByName('custid').AsString := Main.edt7.Text;
-  Main.ADOQuery2.FieldByName('custname').AsString := Main.edt1.Text;
-  Main.ADOQuery2.FieldByName('inmoney').AsString := Label2.Caption;
-  Main.ADOQuery2.FieldByName('outmoney').AsString := Main.Label7.Caption;
-  if StrToCurr(Main.Label7.Caption) - StrToCurr(Label2.Caption) <> 0 then
-    Main.ADOQuery2.FieldByName('strike').AsCurrency := StrToCurr(Main.Label7.Caption) - StrToCurr(Label2.Caption);
-  Main.ADOQuery2.FieldByName('method').AsString := Main.cbb1.Text;
-  Main.ADOQuery2.FieldByName('remark').AsString := Main.mmo1.Lines.GetText;
-
-
-  UpdateTimeStr := FormatdateTime('yyyy-mm-dd hh:mm:ss', Now);
-  if Main.ADOQuery2.FieldByName('created_at').AsString = '' then
-    Main.ADOQuery2.FieldByName('created_at').AsString := UpdateTimeStr;
-  Main.ADOQuery2.FieldByName('updated_at').AsString := UpdateTimeStr;
-
-
-  Main.ADOQuery2.Post;
-  Main.ADOQuery2.Refresh;
-  }
-  Main.ADOQuerySQL.SQL.Clear;
-  Main.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,cdate,remark,created_at,updated_at) values("' + Main.edt7.Text + '","' + Main.edt1.Text + '","' + Main.Label7.Caption + '","' + Label2.Caption + '","' + CurrToStr(StrToCurr(Main.Label7.Caption) - StrToCurr(Label2.Caption)) + '","' + Main.cbb1.Text + '",now(),"' + Main.mmo1.Lines.GetText + '",now(),now())');
-  Main.ADOQuerySQL.ExecSQL;
 
 
   //查找最小单号
   Main.GetOrderId;
-  {
-  for i := 1 to 9999 do
-  begin
-    SID := FormatdateTime('yymmdd', Now) + FormatFloat('0000', i);
-    Main.ADOQuery2.SQL.Clear;
-    Main.ADOQuery2.SQL.Add('Select * from selllogmains Where slid="' + SID + '"');
-    Main.ADOQuery2.Open;
-    if Main.ADOQuery2.RecordCount = 0 then
-      Break;
-  end;
-  Main.Label26.Caption := SID;
-  }
 
   //重新计算主窗口商品价格
   Main.QH2;
@@ -332,18 +261,6 @@ begin
 
 
   //刷新销售列表
-  {
-  Main.ADOQuery1.Refresh;
-  Main.ADOQuery1.Close;
-  Main.ADOQuery1.SQL.Clear;
-  //Main.ADOQuery1.SQL.Add('Select * from selllogdetails Where slid="' + Main.Label26.Caption + '"');
-  Main.ADOQuery1.SQL.Add('select pid,goodsname,color,FORMAT(volume,2) as volume,FORMAT(amount,0) as amount,unit,FORMAT(bundle,0) as bundle,FORMAT(outprice,0) as outprice,discount,additional,FORMAT((subtotal),0) as subtotal, ');
-  Main.ADOQuery1.SQL.Add('inprice, pfprice, hprice from selllogdetails where slid = "' + Main.Label26.Caption + '" union select "合计" as pid, "" as goodsname, "" as color,FORMAT(sum(volume),2) ');
-  Main.ADOQuery1.SQL.Add('as volume,FORMAT(sum(amount),0) as amount,"" as unit,FORMAT(sum(bundle),0) as bundle,FORMAT(sum(outprice),0) as outprice,"" as discount,"" ');
-  Main.ADOQuery1.SQL.Add('as additional,FORMAT(sum(subtotal),0) as subtotal,inprice, pfprice, hprice  from selllogdetails where slid = "' + Main.Label26.Caption + '"');
-
-  Main.ADOQuery1.Open;
-  }
   Main.ListRefresh;
 end;
 
@@ -363,3 +280,4 @@ begin
 end;
 
 end.
+

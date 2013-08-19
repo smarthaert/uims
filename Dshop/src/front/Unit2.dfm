@@ -1,6 +1,6 @@
 object Main: TMain
   Left = 281
-  Top = 146
+  Top = 60
   Width = 1045
   Height = 810
   ActiveControl = edt1
