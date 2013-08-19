@@ -611,13 +611,13 @@ begin
 
     VK_F1: RzEdit4.SetFocus;
 
-    VK_F2: RzEdit3.SetFocus;
+    VK_F2: RzEdit3.SetFocus;     //数量
 
-    VK_F3: RzEdit5.SetFocus;
+    VK_F3: RzEdit5.SetFocus;     //件数
 
-    VK_F4: RzEdit2.SetFocus;
+    VK_F4: RzEdit2.SetFocus;     //单价
 
-    VK_F5:
+    VK_F5:                       //补发
       begin
         if ADOQuery1.FieldByName('additional').AsString = '-' then
         begin
@@ -642,7 +642,7 @@ begin
           QH2;
         end;
       end;
-    VK_F6:
+    VK_F6:   //保存未完成出库单
       begin
 
         {保存扩展信息}
@@ -723,7 +723,7 @@ begin
         RzEdit4.SetFocus;
       end;
 
-    VK_F7:
+    VK_F7:    //取未完成出库单
       begin
         if QD <> nil then
           QD.ShowModal
@@ -735,7 +735,7 @@ begin
         end;
       end;
 
-    VK_F8:
+    VK_F8:    //退货，售后
       begin
         if Main_T <> nil then
           Main_T.ShowModal
@@ -746,7 +746,7 @@ begin
         end;
       end;
 
-    VK_F9:
+    VK_F9:    //设置
       begin
         if Pos_Setup <> nil then
           Pos_Setup.ShowModal
@@ -757,9 +757,9 @@ begin
         end;
       end;
 
-    VK_F10: RzEdit1.SetFocus;
+    VK_F10: RzEdit1.SetFocus;       //折扣
 
-    VK_F11:
+    VK_F11:    //取客户订单进行处理，已经放入selllogmain中的订单信息不删除。
       begin
         if QO <> nil then
           QO.ShowModal

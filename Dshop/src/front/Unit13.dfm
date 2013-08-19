@@ -25,7 +25,7 @@ object QO: TQO
     Height = 47
     Align = alTop
     BevelInner = bvLowered
-    Caption = #23450#12288#12288#21333
+    Caption = #24453#22788#29702#23458#25143#35746#21333
     Color = clBlack
     Font.Charset = GB2312_CHARSET
     Font.Color = clWhite
@@ -167,5 +167,11 @@ object QO: TQO
       'Select * from Sell_Main where Not(Hang)')
     Left = 8
     Top = 8
+  end
+  object ADOQuerySQL: TADOQuery
+    Connection = Main.ADOConnection1
+    Parameters = <>
+    Left = 24
+    Top = 103
   end
 end

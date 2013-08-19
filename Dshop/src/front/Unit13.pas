@@ -17,6 +17,7 @@ type
     ADOQuery1: TADOQuery;
     SpeedButton2: TSpeedButton;
     Label1: TLabel;
+    ADOQuerySQL: TADOQuery;
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -67,21 +68,26 @@ end;
 
 procedure TQO.SpeedButton2Click(Sender: TObject);
 begin
-  Main.Label26.Caption := ADOQuery1.FieldByName('slid').AsString;
-  {
-  Main.ADOQuery1.Close;
-  Main.ADOQuery1.SQL.Clear;
+  //将订单信息从Ordermain表复制到selllogmain表进行处理
 
-  Main.ADOQuery1.SQL.Add('select pid,goodsname,color,FORMAT(volume,2) as volume,FORMAT(amount,0) as amount,unit,FORMAT(bundle,0) as bundle,FORMAT(outprice,0) as outprice,discount,additional,FORMAT((subtotal),0) as subtotal, ');
-  Main.ADOQuery1.SQL.Add('inprice, pfprice, hprice from selllogdetails where slid = "' + Main.Label26.Caption + '" union select "合计" as pid, "" as goodsname, "" as color,FORMAT(sum(volume),2) ');
-  Main.ADOQuery1.SQL.Add('as volume,FORMAT(sum(amount),0) as amount,"" as unit,FORMAT(sum(bundle),0) as bundle,FORMAT(sum(outprice),0) as outprice,"" as discount,"" ');
-  Main.ADOQuery1.SQL.Add('as additional,FORMAT(sum(subtotal),0) as subtotal,inprice, pfprice, hprice  from selllogdetails where slid = "' + Main.Label26.Caption + '"');
+  {复制记录}
+  //主表
+  ADOQuerySQL.SQL.Clear;
+  ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,status,uid,uname,preid,nextid,type,cdate,remark,created_at,updated_at) select "' + Main.Label26.Caption + '" as slid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,"0" as status,uid,uname,"' + ADOQuery1.FieldByName('oid').AsString + '" as preid,nextid,type,now() as cdate,remark,now() as created_at,now() as updated_at from ordermains where oid="' + ADOQuery1.FieldByName('oid').AsString + '"');
+  ADOQuerySQL.ExecSQL;
 
-  Main.ADOQuery1.Open;
-  }
+  //明细表
+  ADOQuerySQL.SQL.Clear;
+  ADOQuerySQL.SQL.Add('insert into selllogdetails(slid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,bundle,discount,additional,subtotal,status,cdate,remark,created_at,updated_at) select "' + Main.Label26.Caption + '" as slid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,bundle,discount,additional,subtotal,"0" as status,now() as cdate,remark,now() as created_at,now() as updated_at from orderdetails where oid="' + ADOQuery1.FieldByName('oid').AsString + '"');
+  ADOQuerySQL.ExecSQL;
 
-  Main.QH1;
-  Main.QH2;
+  
+  //主表
+  ADOQuerySQL.SQL.Clear;
+  ADOQuerySQL.SQL.Add('update ordermains set type="出库中",nextid="' + Main.Label26.Caption + '" where oid="' + ADOQuery1.FieldByName('oid').AsString + '"');
+  ADOQuerySQL.ExecSQL;
+
+
 
   {恢复客户，物流等信息}
   Main.edt1.Text := ADOQuery1.FieldByName('custname').AsString;
@@ -98,6 +104,9 @@ begin
 
   Main.cbb1.Text := ADOQuery1.FieldByName('payment').AsString;
   Main.mmo1.Text := ADOQuery1.FieldByName('remark').AsString;
+
+  Main.QH1;
+  Main.QH2;
 
   SpeedButton1.Click;
 end;
@@ -127,7 +136,7 @@ procedure TQO.FormShow(Sender: TObject);
 begin
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from selllogmains where Not(status)');
+  ADOQuery1.SQL.Add('Select * from ordermains where Not(status)');
   ADOQuery1.Active := True;
 end;
 

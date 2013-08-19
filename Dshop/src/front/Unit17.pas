@@ -73,10 +73,6 @@ begin
 
 
 
-  //主表
-  ADOQuerySQL.SQL.Clear;
-  ADOQuerySQL.SQL.Add('update selllogmains set type="售后中",nextid="' + Main_T.Label26.Caption + '" where slid="' + ADOQuery1.FieldByName('slid').AsString + '"');
-  ADOQuerySQL.ExecSQL;
 
 
   {复制记录}
@@ -88,6 +84,11 @@ begin
   //明细表
   ADOQuerySQL.SQL.Clear;
   ADOQuerySQL.SQL.Add('insert into afterselldetails(tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,bundle,discount,additional,subtotal,status,cdate,remark,created_at,updated_at) select "' + Main_T.Label26.Caption + '" as tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,bundle,discount,additional,subtotal,"0" as status,now() as cdate,remark,now() as created_at,now() as updated_at from selllogdetails where slid="' + ADOQuery1.FieldByName('slid').AsString + '"');
+  ADOQuerySQL.ExecSQL;
+
+  //主表
+  ADOQuerySQL.SQL.Clear;
+  ADOQuerySQL.SQL.Add('update selllogmains set type="售后中",nextid="' + Main_T.Label26.Caption + '" where slid="' + ADOQuery1.FieldByName('slid').AsString + '"');
   ADOQuerySQL.ExecSQL;
 
 
