@@ -71,6 +71,7 @@ begin
   Main.edt3.Text := DBGrid1.DataSource.DataSet.FieldByName('address').AsString;
   Main.edt7.Text := DBGrid1.DataSource.DataSet.FieldByName('cid').AsString;
   Main.edt8.Text := DBGrid1.DataSource.DataSet.FieldByName('state').AsString;
+  Main.RzEdit7.Text := DBGrid1.DataSource.DataSet.FieldByName('shopname').AsString;
   SpeedButton1.Click;
 end;
 

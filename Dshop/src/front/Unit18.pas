@@ -77,6 +77,7 @@ begin
   Main_T.edt3.Text := ADOQuery1.FieldByName('custaddr').AsString;
   Main_T.edt7.Text := ADOQuery1.FieldByName('custid').AsString;
   Main_T.edt8.Text := ADOQuery1.FieldByName('custstate').AsString;
+  Main_T.RzEdit7.Text := ADOQuery1.FieldByName('shopname').AsString;
 
 
   Main_T.edt4.Text := ADOQuery1.FieldByName('sname').AsString;

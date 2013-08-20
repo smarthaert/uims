@@ -79,7 +79,7 @@ begin
 
     //备份当前环境 与调用F6快捷键功能相同
     Main.ADOQuerySQL.SQL.Clear;
-    Main.ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sname,stel,saddress,payment,status,uname,cdate,remark,created_at,updated_at) values("' + Main.Label26.Caption + '","","' + Main.edt8.Text + '","' + Main.edt1.Text + '","' + Main.edt2.Text + '","' + Main.edt3.Text + '","0","0","' + Main.edt4.Text + '","' + Main.edt6.Text + '","' + Main.edt5.Text + '","' + Main.cbb1.Text + '","0","' + Main.Label19.Caption + '",now(),"' + Main.mmo1.Lines.GetText + '",now(),now()) on duplicate key update custstate="' + Main.edt8.Text + '",custname="' + Main.edt1.Text + '",custtel="' + Main.edt2.Text + '",custaddr="' + Main.edt3.Text + '",sname="' + Main.edt4.Text + '",stel="' + Main.edt6.Text + '",saddress="' + Main.edt5.Text + '",payment="' + Main.cbb1.Text + '",uname="' + Main.Label19.Caption + '",remark="' + Main.mmo1.Lines.GetText + '",updated_at=now()');
+    Main.ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,sname,stel,saddress,payment,status,uname,cdate,remark,created_at,updated_at) values("' + Main.Label26.Caption + '","","' + Main.edt8.Text + '","' + Main.edt1.Text + '","' + Main.RzEdit7.Text + '","' + Main.edt2.Text + '","' + Main.edt3.Text + '","0","0","' + Main.edt4.Text + '","' + Main.edt6.Text + '","' + Main.edt5.Text + '","' + Main.cbb1.Text + '","0","' + Main.Label19.Caption + '",now(),"' + Main.mmo1.Lines.GetText + '",now(),now()) on duplicate key update custstate="' + Main.edt8.Text + '",custname="' + Main.edt1.Text + '",shopname="' + Main.RzEdit7.Text + '",custtel="' + Main.edt2.Text + '",custaddr="' + Main.edt3.Text + '",sname="' + Main.edt4.Text + '",stel="' + Main.edt6.Text + '",saddress="' + Main.edt5.Text + '",payment="' + Main.cbb1.Text + '",uname="' + Main.Label19.Caption + '",remark="' + Main.mmo1.Lines.GetText + '",updated_at=now()');
     Main.ADOQuerySQL.ExecSQL;
 
     {清空数据项}
@@ -88,6 +88,7 @@ begin
     Main.edt3.Text := '';
     Main.edt7.Text := '';
     Main.edt8.Text := '';
+    Main.RzEdit7.Text := '';
 
     Main.edt4.Text := '';
     Main.edt5.Text := '';
@@ -111,6 +112,7 @@ begin
     Main.edt3.Text := ADOQuery1.FieldByName('custaddr').AsString;
     Main.edt7.Text := ADOQuery1.FieldByName('custid').AsString;
     Main.edt8.Text := ADOQuery1.FieldByName('custstate').AsString;
+    Main.RzEdit7.Text := ADOQuery1.FieldByName('shopname').AsString;
 
 
     Main.edt4.Text := ADOQuery1.FieldByName('sname').AsString;
@@ -201,3 +203,4 @@ begin
 end;
 
 end.
+

@@ -137,6 +137,8 @@ type
     Label33: TLabel;
     ADOQuery2: TADOQuery;
     RzComboBox1: TRzComboBox;
+    lbl11: TLabel;
+    RzEdit7: TRzEdit;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -364,7 +366,7 @@ begin
   begin
 
     ADOQuerySQL.SQL.Clear;
-    ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,custtel,custaddr,sname,stel,saddress,payment,status,uname,cdate,remark,created_at,updated_at) values("' + Label26.Caption + '","' + edt7.Text + '","' + edt8.Text + '","' + edt1.Text + '","' + edt2.Text + '","' + edt3.Text + '","' + edt4.Text + '","' + edt5.Text + '","' + edt6.Text + '","' + cbb1.Text + '","0","' + Label19.Caption + '",now(),"' + mmo1.Lines.GetText + '",now(),now())');
+    ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,sname,stel,saddress,payment,status,uname,cdate,remark,created_at,updated_at) values("' + Label26.Caption + '","' + edt7.Text + '","' + edt8.Text + '","' + edt1.Text + '","' + RzEdit7.Text + '","' + edt2.Text + '","' + edt3.Text + '","' + edt4.Text + '","' + edt5.Text + '","' + edt6.Text + '","' + cbb1.Text + '","0","' + Label19.Caption + '",now(),"' + mmo1.Lines.GetText + '",now(),now())');
     ADOQuerySQL.ExecSQL;
 
   end;
@@ -429,7 +431,7 @@ begin
       begin
 
         ADOQuerySQL.SQL.Clear;
-        ADOQuerySQL.SQL.Add('insert into aftersellmains(tid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sname,stel,saddress,payment,status,uname,cdate,remark,created_at,updated_at) values("' + Label26.Caption + '","","' + edt8.Text + '","' + edt1.Text + '","' + edt2.Text + '","' + edt3.Text + '","0","0","' + edt4.Text + '","' + edt6.Text + '","' + edt5.Text + '","' + cbb1.Text + '","0","' + Label19.Caption + '",now(),"' + mmo1.Lines.GetText + '",now(),now()) on duplicate key update custstate="' + edt8.Text + '",custname="' + edt1.Text + '",custtel="' + edt2.Text + '",custaddr="' + edt3.Text + '",sname="' + edt4.Text + '",stel="' + edt6.Text + '",saddress="' + edt5.Text + '",payment="' + cbb1.Text + '",uname="' + Label19.Caption + '",remark="' + mmo1.Lines.GetText + '",updated_at=now()');
+        ADOQuerySQL.SQL.Add('insert into aftersellmains(tid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,sname,stel,saddress,payment,status,uname,cdate,remark,created_at,updated_at) values("' + Label26.Caption + '","","' + edt8.Text + '","' + edt1.Text + '","' + RzEdit7.Text + '","' + edt2.Text + '","' + edt3.Text + '","0","0","' + edt4.Text + '","' + edt6.Text + '","' + edt5.Text + '","' + cbb1.Text + '","0","' + Label19.Caption + '",now(),"' + mmo1.Lines.GetText + '",now(),now()) on duplicate key update custstate="' + edt8.Text + '",custname="' + edt1.Text + '",shopname="' + RzEdit7.Text + '",custtel="' + edt2.Text + '",custaddr="' + edt3.Text + '",sname="' + edt4.Text + '",stel="' + edt6.Text + '",saddress="' + edt5.Text + '",payment="' + cbb1.Text + '",uname="' + Label19.Caption + '",remark="' + mmo1.Lines.GetText + '",updated_at=now()');
         ADOQuerySQL.ExecSQL;
 
         {清空数据项}
@@ -438,6 +440,7 @@ begin
         edt3.Text := '';
         edt7.Text := '';
         edt8.Text := '';
+        RzEdit7.Text := '';
 
         edt4.Text := '';
         edt5.Text := '';

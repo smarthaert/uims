@@ -1,10 +1,9 @@
 object Main: TMain
-  Left = 394
-  Top = 48
+  Left = 276
+  Top = 169
   Width = 1045
   Height = 810
   ActiveControl = edt1
-  Caption = 'Main'
   Color = clBlack
   Font.Charset = GB2312_CHARSET
   Font.Color = clWhite
@@ -172,7 +171,7 @@ object Main: TMain
       Style = bsRaised
     end
     object Label17: TLabel
-      Left = 416
+      Left = 350
       Top = 38
       Width = 54
       Height = 12
@@ -236,7 +235,7 @@ object Main: TMain
       Top = 38
       Width = 42
       Height = 12
-      Caption = 'F5'#34917#38190':'
+      Caption = 'F5'#34917#20214':'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -12
@@ -245,11 +244,10 @@ object Main: TMain
       ParentFont = False
     end
     object RzEdit1: TRzEdit
-      Left = 472
+      Left = 406
       Top = 35
       Width = 34
       Height = 20
-      Text = '100'
       Alignment = taRightJustify
       Color = clBlack
       Ctl3D = True
@@ -268,7 +266,6 @@ object Main: TMain
       Top = 35
       Width = 50
       Height = 20
-      Text = '123456'
       Alignment = taRightJustify
       Color = clBlack
       Ctl3D = True
@@ -286,7 +283,6 @@ object Main: TMain
       Top = 35
       Width = 40
       Height = 20
-      Text = '1234'
       Alignment = taRightJustify
       Color = clBlack
       Ctl3D = True
@@ -328,7 +324,6 @@ object Main: TMain
       Top = 35
       Width = 40
       Height = 20
-      Text = '1234'
       Alignment = taRightJustify
       Color = clBlack
       Ctl3D = True
@@ -341,18 +336,14 @@ object Main: TMain
       TabOrder = 2
       OnKeyPress = RzEdit5KeyPress
     end
-    object RzComboBox1: TRzComboBox
-      Left = 349
-      Top = 35
-      Width = 60
-      Height = 20
-      Color = clBlack
-      ItemHeight = 12
+    object rzchckbx1: TRzCheckBox
+      Left = 301
+      Top = 10
+      Width = 55
+      Height = 15
+      Caption = #32500#20462#24211
+      State = cbUnchecked
       TabOrder = 5
-      OnKeyPress = RzComboBox1KeyPress
-      Items.Strings = (
-        #34917#20214
-        #36192#21697)
     end
   end
   object Panel4: TPanel
@@ -691,7 +682,7 @@ object Main: TMain
       ParentFont = False
     end
     object lbl2: TLabel
-      Left = 177
+      Left = 133
       Top = 17
       Width = 30
       Height = 12
@@ -717,7 +708,7 @@ object Main: TMain
       ParentFont = False
     end
     object lbl9: TLabel
-      Left = 353
+      Left = 274
       Top = 17
       Width = 54
       Height = 12
@@ -730,7 +721,7 @@ object Main: TMain
       ParentFont = False
     end
     object lbl10: TLabel
-      Left = 521
+      Left = 409
       Top = 17
       Width = 30
       Height = 12
@@ -742,11 +733,25 @@ object Main: TMain
       Font.Style = []
       ParentFont = False
     end
+    object lbl11: TLabel
+      Left = 521
+      Top = 17
+      Width = 54
+      Height = 12
+      Caption = #24215#38138#21517#31216':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
     object edt1: TRzEdit
-      Left = 63
-      Top = 14
-      Width = 100
+      Left = 57
+      Top = 13
+      Width = 66
       Height = 20
+      Alignment = taRightJustify
       Color = clBlack
       Ctl3D = True
       DisabledColor = clBlack
@@ -760,9 +765,9 @@ object Main: TMain
       OnKeyPress = edt1KeyPress
     end
     object edt2: TRzEdit
-      Left = 209
-      Top = 14
-      Width = 130
+      Left = 164
+      Top = 13
+      Width = 95
       Height = 20
       Alignment = taRightJustify
       Color = clBlack
@@ -778,7 +783,7 @@ object Main: TMain
       OnKeyPress = edt2KeyPress
     end
     object edt3: TRzEdit
-      Left = 63
+      Left = 57
       Top = 46
       Width = 708
       Height = 20
@@ -794,9 +799,9 @@ object Main: TMain
       TabOrder = 4
     end
     object edt7: TRzEdit
-      Left = 409
-      Top = 14
-      Width = 100
+      Left = 329
+      Top = 13
+      Width = 65
       Height = 20
       Color = clBlack
       Ctl3D = True
@@ -810,10 +815,11 @@ object Main: TMain
       TabOrder = 2
     end
     object edt8: TRzEdit
-      Left = 553
-      Top = 14
-      Width = 100
+      Left = 441
+      Top = 13
+      Width = 65
       Height = 20
+      Alignment = taRightJustify
       Color = clBlack
       Ctl3D = True
       DisabledColor = clBlack
@@ -824,6 +830,24 @@ object Main: TMain
       FrameVisible = True
       ParentCtl3D = False
       TabOrder = 3
+      OnKeyPress = edt8KeyPress
+    end
+    object RzEdit7: TRzEdit
+      Left = 576
+      Top = 13
+      Width = 189
+      Height = 20
+      Alignment = taRightJustify
+      Color = clBlack
+      Ctl3D = True
+      DisabledColor = clBlack
+      FrameColor = clWhite
+      FrameHotColor = 14593668
+      FrameHotTrack = True
+      FrameStyle = fsBump
+      FrameVisible = True
+      ParentCtl3D = False
+      TabOrder = 5
       OnKeyPress = edt8KeyPress
     end
   end
@@ -1129,8 +1153,8 @@ object Main: TMain
     end
   end
   object Panel5: TPanel
-    Left = 27
-    Top = 93
+    Left = 107
+    Top = 213
     Width = 33
     Height = 33
     Color = clBlack
@@ -2608,8 +2632,8 @@ object Main: TMain
   end
   object DataSource1: TDataSource
     DataSet = ADOQuery1
-    Left = 40
-    Top = 81
+    Left = 56
+    Top = 185
   end
   object ADOQuery1: TADOQuery
     Connection = ADOConnection1
@@ -2618,7 +2642,7 @@ object Main: TMain
     SQL.Strings = (
       'Select * from Sell_Minor')
     Left = 8
-    Top = 81
+    Top = 177
   end
   object ADOQuery2: TADOQuery
     Connection = ADOConnection1
@@ -2626,31 +2650,31 @@ object Main: TMain
     SQL.Strings = (
       'select * from Stock')
     Left = 8
-    Top = 113
+    Top = 217
   end
   object ADOConnection1: TADOConnection
     LoginPrompt = False
     Mode = cmShareDenyNone
     Provider = 'MSDASQL.1'
-    Left = 8
-    Top = 49
+    Left = 48
+    Top = 249
   end
   object ADOQuery3: TADOQuery
     Connection = ADOConnection1
     Parameters = <>
     Left = 8
-    Top = 145
+    Top = 257
   end
   object ADOQuery4: TADOQuery
     Connection = ADOConnection1
     Parameters = <>
     Left = 8
-    Top = 178
+    Top = 298
   end
   object ADOQuerySQL: TADOQuery
     Connection = ADOConnection1
     Parameters = <>
     Left = 8
-    Top = 213
+    Top = 333
   end
 end

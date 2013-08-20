@@ -92,14 +92,14 @@ end;
 procedure TQP.FormShow(Sender: TObject);
 begin
 
-  if (Main.RzComboBox1.Text = '') or (Main.RzComboBox1.Text = 'ÔùÆ·') then
+  if not (Main.rzchckbx1.Checked) then
   begin
     ADOQuery1.Close;
     ADOQuery1.SQL.Clear;
     ADOQuery1.SQL.Add('Select * from stocks where goodsname like "%' + Main.RzEdit4.Text + '%" order by goodsname,color,size');
     ADOQuery1.Active := True;
   end
-  else if Main.RzComboBox1.Text = '²¹¼þ' then
+  else
   begin
     ADOQuery1.Close;
     ADOQuery1.SQL.Clear;
