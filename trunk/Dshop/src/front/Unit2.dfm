@@ -1,6 +1,6 @@
 object Main: TMain
-  Left = 281
-  Top = 60
+  Left = 394
+  Top = 48
   Width = 1045
   Height = 810
   ActiveControl = edt1
@@ -172,7 +172,7 @@ object Main: TMain
       Style = bsRaised
     end
     object Label17: TLabel
-      Left = 353
+      Left = 416
       Top = 38
       Width = 54
       Height = 12
@@ -236,7 +236,7 @@ object Main: TMain
       Top = 38
       Width = 42
       Height = 12
-      Caption = 'F5'#34917#21457':'
+      Caption = 'F5'#34917#38190':'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -12
@@ -245,7 +245,7 @@ object Main: TMain
       ParentFont = False
     end
     object RzEdit1: TRzEdit
-      Left = 409
+      Left = 472
       Top = 35
       Width = 34
       Height = 20
@@ -340,6 +340,19 @@ object Main: TMain
       ParentCtl3D = False
       TabOrder = 2
       OnKeyPress = RzEdit5KeyPress
+    end
+    object RzComboBox1: TRzComboBox
+      Left = 349
+      Top = 35
+      Width = 60
+      Height = 20
+      Color = clBlack
+      ItemHeight = 12
+      TabOrder = 5
+      OnKeyPress = RzComboBox1KeyPress
+      Items.Strings = (
+        #34917#20214
+        #36192#21697)
     end
   end
   object Panel4: TPanel

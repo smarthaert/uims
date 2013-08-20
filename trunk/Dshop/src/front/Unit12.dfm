@@ -106,6 +106,13 @@ object QP: TQP
         end
         item
           Expanded = False
+          FieldName = 'amount'
+          Title.Caption = #25968#37327
+          Width = 36
+          Visible = True
+        end
+        item
+          Expanded = False
           FieldName = 'unit'
           Title.Caption = #21333#20301
           Width = 61

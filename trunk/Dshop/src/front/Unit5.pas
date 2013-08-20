@@ -201,7 +201,7 @@ begin
   //补打凭证时不修改销售数据
   if Main.reprint then
     Main.reprint := False
-  else    //交易数据处理
+  else //交易数据处理
   begin
 
     //记录新客户信息
@@ -247,7 +247,9 @@ begin
     Main.ADOQuerySQL.SQL.Clear;
     Main.ADOQuerySQL.SQL.Add('update ordermains set type="已发货", updated_at=now() where nextid="' + Main.Label26.Caption + '"');
     Main.ADOQuerySQL.ExecSQL;
-    
+
+    //维修库存状态更新
+
   end;
 
 
