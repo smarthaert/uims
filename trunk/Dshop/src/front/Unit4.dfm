@@ -1,6 +1,6 @@
 object Main_T: TMain_T
-  Left = 271
-  Top = 36
+  Left = 238
+  Top = 174
   Width = 1045
   Height = 810
   ActiveControl = edt1
@@ -696,7 +696,7 @@ object Main_T: TMain_T
       ParentFont = False
     end
     object lbl2: TLabel
-      Left = 177
+      Left = 138
       Top = 17
       Width = 30
       Height = 12
@@ -722,7 +722,7 @@ object Main_T: TMain_T
       ParentFont = False
     end
     object lbl9: TLabel
-      Left = 353
+      Left = 277
       Top = 17
       Width = 54
       Height = 12
@@ -735,7 +735,7 @@ object Main_T: TMain_T
       ParentFont = False
     end
     object lbl10: TLabel
-      Left = 521
+      Left = 413
       Top = 17
       Width = 30
       Height = 12
@@ -747,10 +747,23 @@ object Main_T: TMain_T
       Font.Style = []
       ParentFont = False
     end
+    object lbl11: TLabel
+      Left = 525
+      Top = 17
+      Width = 54
+      Height = 12
+      Caption = #24215#38138#21517#31216':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
     object edt1: TRzEdit
       Left = 63
       Top = 14
-      Width = 100
+      Width = 65
       Height = 20
       Color = clBlack
       Ctl3D = True
@@ -765,9 +778,9 @@ object Main_T: TMain_T
       OnKeyPress = edt1KeyPress
     end
     object edt2: TRzEdit
-      Left = 209
+      Left = 170
       Top = 14
-      Width = 130
+      Width = 95
       Height = 20
       Alignment = taRightJustify
       Color = clBlack
@@ -799,9 +812,9 @@ object Main_T: TMain_T
       TabOrder = 4
     end
     object edt7: TRzEdit
-      Left = 409
+      Left = 333
       Top = 14
-      Width = 100
+      Width = 65
       Height = 20
       Color = clBlack
       Ctl3D = True
@@ -815,9 +828,9 @@ object Main_T: TMain_T
       TabOrder = 2
     end
     object edt8: TRzEdit
-      Left = 553
+      Left = 445
       Top = 14
-      Width = 100
+      Width = 65
       Height = 20
       Color = clBlack
       Ctl3D = True
@@ -829,6 +842,23 @@ object Main_T: TMain_T
       FrameVisible = True
       ParentCtl3D = False
       TabOrder = 3
+      OnKeyPress = edt8KeyPress
+    end
+    object RzEdit7: TRzEdit
+      Left = 582
+      Top = 14
+      Width = 189
+      Height = 20
+      Color = clBlack
+      Ctl3D = True
+      DisabledColor = clBlack
+      FrameColor = clWhite
+      FrameHotColor = 14593668
+      FrameHotTrack = True
+      FrameStyle = fsBump
+      FrameVisible = True
+      ParentCtl3D = False
+      TabOrder = 5
       OnKeyPress = edt8KeyPress
     end
   end

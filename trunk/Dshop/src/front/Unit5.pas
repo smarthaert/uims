@@ -206,7 +206,7 @@ begin
 
     //记录新客户信息
     Main.ADOQuerySQL.SQL.Clear;
-    Main.ADOQuerySQL.SQL.Add('insert into customers(cid,loginname,cname,sex,address,tel,state,cdate,remark,created_at,updated_at) values("","","' + Main.edt1.Text + '","","' + Main.edt3.Text + '","' + Main.edt2.Text + '","' + Main.edt8.Text + '",now(),"",now(),now()) on duplicate key update updated_at=now()');
+    Main.ADOQuerySQL.SQL.Add('insert into customers(cid,loginname,cname,shopname,sex,address,tel,state,cdate,remark,created_at,updated_at) values("","","' + Main.edt1.Text + '","' + Main.RzEdit7.Text + '","","' + Main.edt3.Text + '","' + Main.edt2.Text + '","' + Main.edt8.Text + '",now(),"",now(),now()) on duplicate key update updated_at=now()');
     Main.ADOQuerySQL.ExecSQL;
 
     //记录新托运部信息
@@ -266,6 +266,7 @@ begin
   Main.edt3.Text := '';
   Main.edt7.Text := '';
   Main.edt8.Text := '';
+  Main.RzEdit7.Text := '';
 
   Main.edt4.Text := '';
   Main.edt5.Text := '';

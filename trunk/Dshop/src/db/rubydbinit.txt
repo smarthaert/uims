@@ -36,6 +36,7 @@ rails generate scaffold Customer \
 cid:string:uniq \
 loginname:string \
 cname:string \
+shopname:string \
 sex:string \
 address:string \
 email:string \
@@ -125,6 +126,7 @@ slid:string:uniq \
 custid:string \
 custstate:string \
 custname:string \
+shopname:string \
 custtel:string \
 custaddr:string \
 'yingshou:decimal{10,2}' \
@@ -175,6 +177,7 @@ tid:string:uniq \
 custid:string \
 custstate:string \
 custname:string \
+shopname:string \
 custtel:string \
 custaddr:string \
 'yingshou:decimal{10,2}' \
@@ -208,7 +211,9 @@ unit:string \
 'hprice:decimal{10,2}' \
 'outprice:decimal{10,2}' \
 amount:integer \
+ramount:integer \
 bundle:integer \
+rbundle:integer \
 discount:integer \
 additional:string \
 type:string \
@@ -224,6 +229,7 @@ oid:string:uniq \
 custid:string \
 custstate:string \
 custname:string \
+shopname:string \
 custtel:string \
 custaddr:string \
 'yingshou:decimal{10,2}' \

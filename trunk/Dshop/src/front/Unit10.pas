@@ -87,6 +87,7 @@ begin
   Main.edt3.Text := ADOQuery1.FieldByName('custaddr').AsString;
   Main.edt7.Text := ADOQuery1.FieldByName('custid').AsString;
   Main.edt8.Text := ADOQuery1.FieldByName('custstate').AsString;
+  Main.RzEdit7.Text := ADOQuery1.FieldByName('shopname').AsString;
 
 
   Main.edt4.Text := ADOQuery1.FieldByName('sname').AsString;
@@ -128,3 +129,4 @@ begin
 end;
 
 end.
+
