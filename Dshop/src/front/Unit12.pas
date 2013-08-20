@@ -65,7 +65,7 @@ end;
 
 procedure TQP.SpeedButton2Click(Sender: TObject);
 begin
-  {恢复客户}
+  {恢复产品编号}
   Main.RzEdit4.Text := DBGrid1.DataSource.DataSet.FieldByName('pid').AsString;
   SpeedButton1.Click;
 end;
@@ -91,12 +91,24 @@ end;
 
 procedure TQP.FormShow(Sender: TObject);
 begin
-  ADOQuery1.Close;
-  ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from stocks where goodsname like "%' + Main.RzEdit4.Text + '%" order by goodsname,color,size');
-  ADOQuery1.Active := True;
-  {格式化小数显示}
-  TFloatField(DBGrid1.DataSource.DataSet.FieldByName('volume')).DisplayFormat := '0.00';
+
+  if (Main.RzComboBox1.Text = '') or (Main.RzComboBox1.Text = '赠品') then
+  begin
+    ADOQuery1.Close;
+    ADOQuery1.SQL.Clear;
+    ADOQuery1.SQL.Add('Select * from stocks where goodsname like "%' + Main.RzEdit4.Text + '%" order by goodsname,color,size');
+    ADOQuery1.Active := True;
+  end
+  else if Main.RzComboBox1.Text = '补件' then
+  begin
+    ADOQuery1.Close;
+    ADOQuery1.SQL.Clear;
+    ADOQuery1.SQL.Add('select d.pid,barcode,d.goodsname,d.size,d.color,d.volume,d.unit,d.inprice,d.pfprice,d.amount,d.bundle,d.discount,d.remark from aftersellmains m, afterselldetails d where not(d.status) and d.type="维修" and m.tid=m.tid and m.custtel="' + Main.edt2.Text + '"');
+    ADOQuery1.Active := True;
+    {格式化小数显示}
+    //TFloatField(DBGrid1.DataSource.DataSet.FieldByName('volume')).DisplayFormat := '0.00';
+  end;
 end;
 
 end.
+

@@ -1,2 +1,11 @@
 
+#采购记录追加现有库存
 insert into stocks (pid,goodsname,color,amount,bundle,inprice,volume) select cpbh as pid,cpmc as goodsname, ys as color, sum(sl) as amount, sum(js) as bundle, sum(dj) as inprice, tj as volume from purchases group by cpbh;
+
+
+#维修库存
+select pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,amount,bundle,discount,remark from afterselldetails where not(status) and type="维修";
+
+#根据客户电话查询维修库存
+select d.pid,barcode,d.goodsname,d.size,d.color,d.volume,d.unit,d.inprice,d.pfprice,d.amount,d.bundle,d.discount,d.remark from aftersellmains m, afterselldetails d where not(d.status) and d.type="维修" and m.tid=m.tid and m.custtel="130000";
+

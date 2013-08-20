@@ -81,7 +81,7 @@ begin
   ADOQuerySQL.SQL.Add('insert into selllogdetails(slid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,bundle,discount,additional,subtotal,status,cdate,remark,created_at,updated_at) select "' + Main.Label26.Caption + '" as slid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,bundle,discount,additional,subtotal,"0" as status,now() as cdate,remark,now() as created_at,now() as updated_at from orderdetails where oid="' + ADOQuery1.FieldByName('oid').AsString + '"');
   ADOQuerySQL.ExecSQL;
 
-  
+
   //主表
   ADOQuerySQL.SQL.Clear;
   ADOQuerySQL.SQL.Add('update ordermains set type="出库中",nextid="' + Main.Label26.Caption + '" where oid="' + ADOQuery1.FieldByName('oid').AsString + '"');

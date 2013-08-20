@@ -123,7 +123,7 @@ begin
 
 
     //冻结窗口，禁止修改相关数据。或者直接打印
-    
+
 
     SpeedButton1.Click;
 
@@ -201,4 +201,3 @@ begin
 end;
 
 end.
-
