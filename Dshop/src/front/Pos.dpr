@@ -20,7 +20,8 @@ uses
   Unit16 in 'Unit16.pas' {QC_T},
   Unit11 in 'Unit11.pas' {QS},
   Unit12 in 'Unit12.pas' {QP},
-  Unit20 in 'Unit20.pas' {QPT},
+  Unit20 in 'Unit20.pas' {QPT}, 
+  Unit21 in 'Unit21.pas' {QPC},
   Unit13 in 'Unit13.pas' {QO},
   Unit14 in 'Unit14.pas' {QR};
 

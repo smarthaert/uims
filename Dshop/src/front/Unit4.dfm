@@ -1,6 +1,6 @@
 object Main_T: TMain_T
-  Left = 331
-  Top = 49
+  Left = 343
+  Top = 24
   Width = 1045
   Height = 810
   ActiveControl = edt1
@@ -111,11 +111,11 @@ object Main_T: TMain_T
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 200
+      Left = 198
       Top = 38
       Width = 48
       Height = 12
-      Caption = 'F4.'#21333#20215':'
+      Caption = 'F4.'#36864#36135':'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -12
@@ -173,11 +173,11 @@ object Main_T: TMain_T
       Style = bsRaised
     end
     object Label17: TLabel
-      Left = 423
+      Left = 300
       Top = 38
-      Width = 54
+      Width = 36
       Height = 12
-      Caption = 'F10.'#25240#25187':'
+      Caption = 'F10.-:'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -12
@@ -220,7 +220,7 @@ object Main_T: TMain_T
       ParentFont = False
     end
     object Label31: TLabel
-      Left = 107
+      Left = 105
       Top = 38
       Width = 48
       Height = 12
@@ -233,11 +233,11 @@ object Main_T: TMain_T
       ParentFont = False
     end
     object Label32: TLabel
-      Left = 304
+      Left = 248
       Top = 38
-      Width = 42
+      Width = 48
       Height = 12
-      Caption = 'F5'#34917#21457':'
+      Caption = 'F5.'#21806#21518':'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -12
@@ -246,8 +246,8 @@ object Main_T: TMain_T
       ParentFont = False
     end
     object RzEdit1: TRzEdit
-      Left = 479
-      Top = 35
+      Left = 455
+      Top = 11
       Width = 34
       Height = 20
       Text = '100'
@@ -262,11 +262,12 @@ object Main_T: TMain_T
       FrameVisible = True
       ParentCtl3D = False
       TabOrder = 4
+      Visible = False
       OnKeyPress = RzEdit1KeyPress
     end
     object RzEdit2: TRzEdit
-      Left = 249
-      Top = 35
+      Left = 327
+      Top = 11
       Width = 50
       Height = 20
       Text = '123456'
@@ -280,6 +281,7 @@ object Main_T: TMain_T
       FrameVisible = True
       ParentCtl3D = False
       TabOrder = 3
+      Visible = False
       OnKeyPress = RzEdit2KeyPress
     end
     object RzEdit3: TRzEdit
@@ -325,7 +327,7 @@ object Main_T: TMain_T
       OnKeyPress = RzEdit4KeyPress
     end
     object RzEdit5: TRzEdit
-      Left = 155
+      Left = 153
       Top = 35
       Width = 40
       Height = 20
@@ -342,22 +344,21 @@ object Main_T: TMain_T
       TabOrder = 2
       OnKeyPress = RzEdit5KeyPress
     end
-    object RzComboBox1: TRzComboBox
-      Left = 345
-      Top = 35
-      Width = 73
+    object ComboBox1: TComboBox
+      Left = 384
+      Top = 11
+      Width = 65
       Height = 20
       Color = clBlack
-      FrameStyle = fsBump
       ItemHeight = 12
       TabOrder = 5
       Text = #32500#20462
-      OnKeyPress = RzComboBox1KeyPress
+      Visible = False
+      OnKeyPress = ComboBox1KeyPress
       Items.Strings = (
         #32500#20462
         #36864#36135
-        #34917#21457
-        '')
+        '-')
     end
   end
   object Panel4: TPanel

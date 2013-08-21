@@ -86,8 +86,10 @@ begin
 
   //Ã÷Ï¸±í
   ADOQuerySQL.SQL.Clear;
-  ADOQuerySQL.SQL.Add('insert into afterselldetails(tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,ramount,bundle,rbundle,discount,additional,subtotal,status,cdate,remark,created_at,updated_at) select "' + Main_T.Label26.Caption +
-    '" as tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,amount,bundle,bundle,discount,additional,subtotal,"0" as status,now() as cdate,remark,now() as created_at,now() as updated_at from selllogdetails where slid="' +
+  ADOQuerySQL.SQL.Add('insert into afterselldetails(tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,');
+  ADOQuerySQL.SQL.Add('ramount,bundle,rbundle,discount,additional,subtotal,status,type,cdate,remark,created_at,updated_at) select "' + Main_T.Label26.Caption +
+    '" as tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,amount,bundle,bundle,discount,' +
+    'additional,subtotal,"0" as status,"-" as type,now() as cdate,remark,now() as created_at,now() as updated_at from selllogdetails where slid="' +
     ADOQuery1.FieldByName('slid').AsString + '"');
   ADOQuerySQL.ExecSQL;
 
