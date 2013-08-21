@@ -3,8 +3,10 @@ unit Unit18;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, ADODB, Buttons, Grids, DBGrids, ExtCtrls, INIFiles, StdCtrls;
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms,
+  Dialogs, DB, ADODB, Buttons, Grids, DBGrids, ExtCtrls,
+  INIFiles, StdCtrls;
 
 type
   TQHDF7 = class(TForm)
@@ -22,7 +24,8 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure SpeedButton2Click(Sender: TObject);
-    procedure DBGrid1KeyPress(Sender: TObject; var Key: Char);
+    procedure DBGrid1KeyPress(Sender: TObject; var Key:
+      Char);
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
@@ -46,7 +49,8 @@ begin
   QHDF7.Close;
 end;
 
-procedure TQHDF7.FormKeyDown(Sender: TObject; var Key: Word;
+procedure TQHDF7.FormKeyDown(Sender: TObject; var Key:
+  Word;
   Shift: TShiftState);
 begin
   case key of
@@ -69,24 +73,36 @@ end;
 
 procedure TQHDF7.SpeedButton2Click(Sender: TObject);
 begin
-  Main_T.Label26.Caption := ADOQuery1.FieldByName('tid').AsString;
+  Main_T.Label26.Caption :=
+    ADOQuery1.FieldByName('tid').AsString;
 
   {恢复客户，物流等信息}
-  Main_T.edt1.Text := ADOQuery1.FieldByName('custname').AsString;
-  Main_T.edt2.Text := ADOQuery1.FieldByName('custtel').AsString;
-  Main_T.edt3.Text := ADOQuery1.FieldByName('custaddr').AsString;
-  Main_T.edt7.Text := ADOQuery1.FieldByName('custid').AsString;
-  Main_T.edt8.Text := ADOQuery1.FieldByName('custstate').AsString;
-  Main_T.RzEdit7.Text := ADOQuery1.FieldByName('shopname').AsString;
+  Main_T.edt1.Text :=
+    ADOQuery1.FieldByName('custname').AsString;
+  Main_T.edt2.Text :=
+    ADOQuery1.FieldByName('custtel').AsString;
+  Main_T.edt3.Text :=
+    ADOQuery1.FieldByName('custaddr').AsString;
+  Main_T.edt7.Text :=
+    ADOQuery1.FieldByName('custid').AsString;
+  Main_T.edt8.Text :=
+    ADOQuery1.FieldByName('custstate').AsString;
+  Main_T.RzEdit7.Text :=
+    ADOQuery1.FieldByName('shopname').AsString;
 
 
-  Main_T.edt4.Text := ADOQuery1.FieldByName('sname').AsString;
-  Main_T.edt5.Text := ADOQuery1.FieldByName('stel').AsString;
-  Main_T.edt6.Text := ADOQuery1.FieldByName('saddress').AsString;
+  Main_T.edt4.Text :=
+    ADOQuery1.FieldByName('sname').AsString;
+  Main_T.edt5.Text :=
+    ADOQuery1.FieldByName('stel').AsString;
+  Main_T.edt6.Text :=
+    ADOQuery1.FieldByName('saddress').AsString;
 
 
-  Main_T.cbb1.Text := ADOQuery1.FieldByName('payment').AsString;
-  Main_T.mmo1.Text := ADOQuery1.FieldByName('remark').AsString;
+  Main_T.cbb1.Text :=
+    ADOQuery1.FieldByName('payment').AsString;
+  Main_T.mmo1.Text :=
+    ADOQuery1.FieldByName('remark').AsString;
 
   Main_T.QH1;
   Main_T.QH2;
@@ -104,7 +120,8 @@ begin
   end
 end;
 
-procedure TQHDF7.DBGrid1KeyPress(Sender: TObject; var Key: Char);
+procedure TQHDF7.DBGrid1KeyPress(Sender: TObject; var Key:
+  Char);
 begin
   if key = #13 then
   begin

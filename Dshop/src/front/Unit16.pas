@@ -3,8 +3,10 @@ unit Unit16;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, ADODB, Buttons, Grids, DBGrids, ExtCtrls, INIFiles, StdCtrls;
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms,
+  Dialogs, DB, ADODB, Buttons, Grids, DBGrids, ExtCtrls,
+  INIFiles, StdCtrls;
 
 type
   TQC_T = class(TForm)
@@ -21,7 +23,8 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure SpeedButton2Click(Sender: TObject);
-    procedure DBGrid1KeyPress(Sender: TObject; var Key: Char);
+    procedure DBGrid1KeyPress(Sender: TObject; var Key:
+      Char);
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
@@ -66,12 +69,18 @@ end;
 procedure TQC_T.SpeedButton2Click(Sender: TObject);
 begin
   {»Ö¸´¿Í»§}
-  Main.edt1.Text := DBGrid1.DataSource.DataSet.FieldByName('cname').AsString;
-  Main.edt2.Text := DBGrid1.DataSource.DataSet.FieldByName('tel').AsString;
-  Main.edt3.Text := DBGrid1.DataSource.DataSet.FieldByName('address').AsString;
-  Main.edt7.Text := DBGrid1.DataSource.DataSet.FieldByName('cid').AsString;
-  Main.edt8.Text := DBGrid1.DataSource.DataSet.FieldByName('state').AsString;
-  Main.RzEdit7.Text := DBGrid1.DataSource.DataSet.FieldByName('shopname').AsString;
+  Main.edt1.Text :=
+    DBGrid1.DataSource.DataSet.FieldByName('cname').AsString;
+  Main.edt2.Text :=
+    DBGrid1.DataSource.DataSet.FieldByName('tel').AsString;
+  Main.edt3.Text :=
+    DBGrid1.DataSource.DataSet.FieldByName('address').AsString;
+  Main.edt7.Text :=
+    DBGrid1.DataSource.DataSet.FieldByName('cid').AsString;
+  Main.edt8.Text :=
+    DBGrid1.DataSource.DataSet.FieldByName('state').AsString;
+  Main.RzEdit7.Text :=
+    DBGrid1.DataSource.DataSet.FieldByName('shopname').AsString;
   SpeedButton1.Click;
 end;
 
@@ -85,7 +94,8 @@ begin
   end
 end;
 
-procedure TQC_T.DBGrid1KeyPress(Sender: TObject; var Key: Char);
+procedure TQC_T.DBGrid1KeyPress(Sender: TObject; var Key:
+  Char);
 begin
   if key = #13 then
   begin
@@ -98,7 +108,8 @@ procedure TQC_T.FormShow(Sender: TObject);
 begin
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from customers where tel like "%' + Main.edt2.Text + '%"');
+  ADOQuery1.SQL.Add('Select * from customers where tel like "%' + Main.edt2.Text
+    + '%"');
   ADOQuery1.Active := True;
 end;
 

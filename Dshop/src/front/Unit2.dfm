@@ -1,6 +1,6 @@
 object Main: TMain
-  Left = 276
-  Top = 169
+  Left = 346
+  Top = 57
   Width = 1045
   Height = 810
   ActiveControl = edt1
@@ -171,7 +171,7 @@ object Main: TMain
       Style = bsRaised
     end
     object Label17: TLabel
-      Left = 350
+      Left = 355
       Top = 38
       Width = 54
       Height = 12
@@ -235,7 +235,7 @@ object Main: TMain
       Top = 38
       Width = 42
       Height = 12
-      Caption = 'F5'#34917#20214':'
+      Caption = 'F5.'#36192#21697
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -12
@@ -244,7 +244,7 @@ object Main: TMain
       ParentFont = False
     end
     object RzEdit1: TRzEdit
-      Left = 406
+      Left = 411
       Top = 35
       Width = 34
       Height = 20
@@ -344,6 +344,7 @@ object Main: TMain
       Caption = #32500#20462#24211
       State = cbUnchecked
       TabOrder = 5
+      WordWrap = True
     end
   end
   object Panel4: TPanel
@@ -363,7 +364,7 @@ object Main: TMain
     TabOrder = 1
     object Label5: TLabel
       Left = 9
-      Top = 379
+      Top = 530
       Width = 90
       Height = 19
       Caption = #19978#21333#24212#20184':'
@@ -376,7 +377,7 @@ object Main: TMain
     end
     object Label9: TLabel
       Left = 9
-      Top = 411
+      Top = 562
       Width = 90
       Height = 19
       Caption = #19978#21333#23454#20184':'
@@ -389,7 +390,7 @@ object Main: TMain
     end
     object Label10: TLabel
       Left = 9
-      Top = 443
+      Top = 594
       Width = 90
       Height = 19
       Caption = #19978#21333#25214#38646':'
@@ -402,7 +403,7 @@ object Main: TMain
     end
     object Label11: TLabel
       Left = 177
-      Top = 379
+      Top = 530
       Width = 20
       Height = 19
       Caption = #20803
@@ -415,7 +416,7 @@ object Main: TMain
     end
     object Label12: TLabel
       Left = 177
-      Top = 411
+      Top = 562
       Width = 20
       Height = 19
       Caption = #20803
@@ -428,7 +429,7 @@ object Main: TMain
     end
     object Label13: TLabel
       Left = 177
-      Top = 443
+      Top = 594
       Width = 20
       Height = 19
       Caption = #20803
@@ -441,7 +442,7 @@ object Main: TMain
     end
     object Label14: TLabel
       Left = 96
-      Top = 379
+      Top = 530
       Width = 80
       Height = 19
       Alignment = taRightJustify
@@ -456,7 +457,7 @@ object Main: TMain
     end
     object Label15: TLabel
       Left = 96
-      Top = 411
+      Top = 562
       Width = 80
       Height = 19
       Alignment = taRightJustify
@@ -471,7 +472,7 @@ object Main: TMain
     end
     object Label16: TLabel
       Left = 96
-      Top = 443
+      Top = 594
       Width = 80
       Height = 19
       Alignment = taRightJustify
@@ -486,7 +487,7 @@ object Main: TMain
     end
     object Bevel3: TBevel
       Left = 3
-      Top = 360
+      Top = 511
       Width = 242
       Height = 2
       Shape = bsBottomLine
@@ -554,7 +555,7 @@ object Main: TMain
     end
     object Label23: TLabel
       Left = 42
-      Top = 174
+      Top = 325
       Width = 154
       Height = 14
       Caption = #25353'"'#65291#12289#65293'"'#35843#25972#21830#21697#25968#37327
@@ -567,7 +568,7 @@ object Main: TMain
     end
     object Label24: TLabel
       Left = 42
-      Top = 150
+      Top = 301
       Width = 154
       Height = 14
       Caption = #25353'"'#8593#12289#8595'"'#36873#25321#32534#36753#35760#24405
@@ -580,7 +581,7 @@ object Main: TMain
     end
     object Label27: TLabel
       Left = 42
-      Top = 273
+      Top = 424
       Width = 154
       Height = 14
       Caption = 'Space('#31354#26684#38190').'#32467#36134#25910#27454
@@ -593,7 +594,7 @@ object Main: TMain
     end
     object Label28: TLabel
       Left = 42
-      Top = 297
+      Top = 448
       Width = 154
       Height = 14
       Caption = 'F6 .'#25346#21333#12288#12288#12288'F7. '#21462#21333
@@ -606,7 +607,7 @@ object Main: TMain
     end
     object Label29: TLabel
       Left = 42
-      Top = 248
+      Top = 399
       Width = 154
       Height = 14
       Caption = 'Delete. '#21024#38500#24050#24405#20837#21830#21697
@@ -619,10 +620,10 @@ object Main: TMain
     end
     object Label30: TLabel
       Left = 42
-      Top = 322
-      Width = 154
+      Top = 473
+      Width = 56
       Height = 14
-      Caption = 'F8 .'#36864#36135#12288'F9 .'#21069#21488#35774#32622
+      Caption = 'F8 .'#36864#36135
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -14
@@ -632,7 +633,7 @@ object Main: TMain
     end
     object Label22: TLabel
       Left = 70
-      Top = 199
+      Top = 350
       Width = 126
       Height = 14
       Caption = #36873#25321'"'#21512#35745'"'#34892#26102#35843#25972
@@ -645,13 +646,47 @@ object Main: TMain
     end
     object Label33: TLabel
       Left = 70
-      Top = 224
+      Top = 375
       Width = 126
       Height = 14
       Caption = #35746#21333#20013#25152#26377#21830#21697#25968#37327
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -14
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object bvl1: TBevel
+      Left = 0
+      Top = 288
+      Width = 242
+      Height = 2
+      Shape = bsBottomLine
+      Style = bsRaised
+    end
+    object lbl12: TLabel
+      Left = 20
+      Top = 153
+      Width = 90
+      Height = 12
+      Caption = 'F11.'#24453#22788#29702#35746#21333':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object lbl13: TLabel
+      Left = 26
+      Top = 177
+      Width = 84
+      Height = 12
+      Caption = 'F7.'#25346#36215#20986#24211#21333':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
       Font.Name = #23435#20307
       Font.Style = []
       ParentFont = False

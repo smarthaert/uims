@@ -150,6 +150,7 @@ remark:text
 rails destroy scaffold Selllogdetail 
 rails generate scaffold Selllogdetail \
 slid:string \
+store:string \
 pid:string \
 barcode:string \
 goodsname:string \

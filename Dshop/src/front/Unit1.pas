@@ -3,8 +3,10 @@ unit Unit1;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, RzForms, INIFiles, DB, ADODB, Buttons, Registry;
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, RzForms, INIFiles, DB,
+  ADODB, Buttons, Registry;
 
 type
   TPass = class(TForm)
@@ -17,8 +19,10 @@ type
     ADOQuery1: TADOQuery;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
-    procedure Edit1KeyPress(Sender: TObject; var Key: Char);
-    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit1KeyPress(Sender: TObject; var Key:
+      Char);
+    procedure Edit2KeyPress(Sender: TObject; var Key:
+      Char);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
@@ -63,26 +67,30 @@ end;
 
 {根据登录名获取用户名}
 
-procedure TPass.Edit1KeyPress(Sender: TObject; var Key: Char);
+procedure TPass.Edit1KeyPress(Sender: TObject; var Key:
+  Char);
 begin
   if key = #13 then
   begin
     key := #0;
     ADOQuery1.Close;
     ADOQuery1.SQL.Clear;
-    ADOQuery1.SQL.Add('Select * from users Where uid="' + Edit1.Text + '"');
+    ADOQuery1.SQL.Add('Select * from users Where uid="' +
+      Edit1.Text + '"');
     try
       ADOQuery1.Open;
     except
       Abort;
     end;
     if ADOQuery1.RecordCount <> 0 then
-      Edit1.Text := ADOQuery1.FieldByName('uname').AsString;
+      Edit1.Text :=
+        ADOQuery1.FieldByName('uname').AsString;
     Edit2.SetFocus;
   end;
 end;
 
-procedure TPass.Edit2KeyPress(Sender: TObject; var Key: Char);
+procedure TPass.Edit2KeyPress(Sender: TObject; var Key:
+  Char);
 begin
   if key = #13 then
   begin
@@ -112,9 +120,12 @@ begin
   }
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from users Where uname="' + Edit1.Text + '"');
+  ADOQuery1.SQL.Add('Select * from users Where uname="' +
+    Edit1.Text + '"');
   ADOQuery1.Open;
-  if (ADOQuery1.FieldByName('userpass').AsString = MD5.MD5Print(MD5.MD5String(Edit2.Text))) and (ADOQuery1.RecordCount <> 0) then
+  if (ADOQuery1.FieldByName('userpass').AsString =
+    MD5.MD5Print(MD5.MD5String(Edit2.Text))) and
+    (ADOQuery1.RecordCount <> 0) then
   begin
     Main.Show;
     Main.Caption := Edit1.Text;
@@ -155,8 +166,11 @@ var
 begin
   {建立数据连接}
   //建立INI文件关联
-  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'Config.Ini');
-  ds := vIniFile.Readstring('System', 'Data Source', 'shop');
+  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0))
+    +
+    'Config.Ini');
+  ds := vIniFile.Readstring('System', 'Data Source',
+    'shop');
   //写机器ID码
   //PCID;
   //联接数据库

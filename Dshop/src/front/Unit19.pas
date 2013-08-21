@@ -3,8 +3,10 @@ unit Unit19;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, ADODB, Buttons, Grids, DBGrids, ExtCtrls, INIFiles, StdCtrls;
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms,
+  Dialogs, DB, ADODB, Buttons, Grids, DBGrids, ExtCtrls,
+  INIFiles, StdCtrls;
 
 type
   TQHD_P = class(TForm)
@@ -25,9 +27,11 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure SpeedButton2Click(Sender: TObject);
-    procedure DBGrid1KeyPress(Sender: TObject; var Key: Char);
+    procedure DBGrid1KeyPress(Sender: TObject; var Key:
+      Char);
     procedure FormShow(Sender: TObject);
-    procedure Edit1KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit1KeyPress(Sender: TObject; var Key:
+      Char);
   private
     { Private declarations }
   public
@@ -50,7 +54,8 @@ begin
   QHD_P.Close;
 end;
 
-procedure TQHD_P.FormKeyDown(Sender: TObject; var Key: Word;
+procedure TQHD_P.FormKeyDown(Sender: TObject; var Key:
+  Word;
   Shift: TShiftState);
 begin
   case key of
@@ -74,12 +79,34 @@ end;
 procedure TQHD_P.SpeedButton2Click(Sender: TObject);
 begin
   //补充打印
-  if messagedlg('确认打印吗？', mtconfirmation, [mbyes, mbno], 0) = mryes then
+  if messagedlg('确认打印吗？', mtconfirmation, [mbyes,
+    mbno], 0) = mryes then
   begin
 
     //备份当前环境 与调用F6快捷键功能相同
     Main.ADOQuerySQL.SQL.Clear;
-    Main.ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,sname,stel,saddress,payment,status,uname,cdate,remark,created_at,updated_at) values("' + Main.Label26.Caption + '","","' + Main.edt8.Text + '","' + Main.edt1.Text + '","' + Main.RzEdit7.Text + '","' + Main.edt2.Text + '","' + Main.edt3.Text + '","0","0","' + Main.edt4.Text + '","' + Main.edt6.Text + '","' + Main.edt5.Text + '","' + Main.cbb1.Text + '","0","' + Main.Label19.Caption + '",now(),"' + Main.mmo1.Lines.GetText + '",now(),now()) on duplicate key update custstate="' + Main.edt8.Text + '",custname="' + Main.edt1.Text + '",shopname="' + Main.RzEdit7.Text + '",custtel="' + Main.edt2.Text + '",custaddr="' + Main.edt3.Text + '",sname="' + Main.edt4.Text + '",stel="' + Main.edt6.Text + '",saddress="' + Main.edt5.Text + '",payment="' + Main.cbb1.Text + '",uname="' + Main.Label19.Caption + '",remark="' + Main.mmo1.Lines.GetText + '",updated_at=now()');
+    Main.ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,sname,stel,saddress,payment,status,uname,cdate,remark,created_at,updated_at) values("' + Main.Label26.Caption + '","","' + Main.edt8.Text + '","'
+      + Main.edt1.Text +
+      '","' + Main.RzEdit7.Text + '","' + Main.edt2.Text +
+      '","' + Main.edt3.Text +
+      '","0","0","' + Main.edt4.Text + '","' +
+      Main.edt6.Text + '","' +
+      Main.edt5.Text + '","' + Main.cbb1.Text + '","0","' +
+      Main.Label19.Caption +
+      '",now(),"' + Main.mmo1.Lines.GetText +
+      '",now(),now()) on duplicate key update custstate="' +
+      Main.edt8.Text +
+      '",custname="' + Main.edt1.Text + '",shopname="' +
+      Main.RzEdit7.Text +
+      '",custtel="' + Main.edt2.Text + '",custaddr="' +
+      Main.edt3.Text +
+      '",sname="' + Main.edt4.Text + '",stel="' +
+      Main.edt6.Text + '",saddress="'
+      + Main.edt5.Text + '",payment="' + Main.cbb1.Text +
+      '",uname="' +
+      Main.Label19.Caption + '",remark="' +
+      Main.mmo1.Lines.GetText +
+      '",updated_at=now()');
     Main.ADOQuerySQL.ExecSQL;
 
     {清空数据项}
@@ -99,7 +126,8 @@ begin
 
 
     //恢复历史单据信息
-    Main.Label26.Caption := ADOQuery1.FieldByName('slid').AsString;
+    Main.Label26.Caption :=
+      ADOQuery1.FieldByName('slid').AsString;
     Main.QH1;
     Main.QH2;
 
@@ -107,21 +135,32 @@ begin
     Main.reprint := True;
 
     {恢复客户，物流等信息}
-    Main.edt1.Text := ADOQuery1.FieldByName('custname').AsString;
-    Main.edt2.Text := ADOQuery1.FieldByName('custtel').AsString;
-    Main.edt3.Text := ADOQuery1.FieldByName('custaddr').AsString;
-    Main.edt7.Text := ADOQuery1.FieldByName('custid').AsString;
-    Main.edt8.Text := ADOQuery1.FieldByName('custstate').AsString;
-    Main.RzEdit7.Text := ADOQuery1.FieldByName('shopname').AsString;
+    Main.edt1.Text :=
+      ADOQuery1.FieldByName('custname').AsString;
+    Main.edt2.Text :=
+      ADOQuery1.FieldByName('custtel').AsString;
+    Main.edt3.Text :=
+      ADOQuery1.FieldByName('custaddr').AsString;
+    Main.edt7.Text :=
+      ADOQuery1.FieldByName('custid').AsString;
+    Main.edt8.Text :=
+      ADOQuery1.FieldByName('custstate').AsString;
+    Main.RzEdit7.Text :=
+      ADOQuery1.FieldByName('shopname').AsString;
 
 
-    Main.edt4.Text := ADOQuery1.FieldByName('sname').AsString;
-    Main.edt5.Text := ADOQuery1.FieldByName('stel').AsString;
-    Main.edt6.Text := ADOQuery1.FieldByName('saddress').AsString;
+    Main.edt4.Text :=
+      ADOQuery1.FieldByName('sname').AsString;
+    Main.edt5.Text :=
+      ADOQuery1.FieldByName('stel').AsString;
+    Main.edt6.Text :=
+      ADOQuery1.FieldByName('saddress').AsString;
 
 
-    Main.cbb1.Text := ADOQuery1.FieldByName('payment').AsString;
-    Main.mmo1.Text := ADOQuery1.FieldByName('remark').AsString;
+    Main.cbb1.Text :=
+      ADOQuery1.FieldByName('payment').AsString;
+    Main.mmo1.Text :=
+      ADOQuery1.FieldByName('remark').AsString;
 
 
     //冻结窗口，禁止修改相关数据。或者直接打印
@@ -166,7 +205,8 @@ begin
   end
 end;
 
-procedure TQHD_P.DBGrid1KeyPress(Sender: TObject; var Key: Char);
+procedure TQHD_P.DBGrid1KeyPress(Sender: TObject; var Key:
+  Char);
 begin
   if key = #13 then
   begin
@@ -186,7 +226,8 @@ begin
   ADOQuery1.Active := True;
 end;
 
-procedure TQHD_P.Edit1KeyPress(Sender: TObject; var Key: Char);
+procedure TQHD_P.Edit1KeyPress(Sender: TObject; var Key:
+  Char);
 begin
   if key = #13 then
   begin
@@ -195,7 +236,7 @@ begin
     ADOQuery1.Close;
     ADOQuery1.SQL.Clear;
     //默认只能补打当天的单子
-    ADOQuery1.SQL.Add('select * from selllogmains where DATE_FORMAT(cdate,"%y%m%d")=DATE_FORMAT(now(),"%y%m%d") and status and slid like "%' + Edit1.Text + '"');
+    ADOQuery1.SQL.Add('select * from selllogmains where DATE_FORMAT(cdate,"%y%m%d")=DATE_FORMAT(now(),"%y%m%d") and status and slid like "%' + Edit1.Text + '%"');
     ADOQuery1.Active := True;
   end;
 
@@ -203,4 +244,3 @@ begin
 end;
 
 end.
-

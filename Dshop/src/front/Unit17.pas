@@ -3,8 +3,10 @@ unit Unit17;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, ADODB, Buttons, Grids, DBGrids, ExtCtrls, INIFiles, StdCtrls;
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms,
+  Dialogs, DB, ADODB, Buttons, Grids, DBGrids, ExtCtrls,
+  INIFiles, StdCtrls;
 
 type
   TQHD = class(TForm)
@@ -22,7 +24,8 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure SpeedButton2Click(Sender: TObject);
-    procedure DBGrid1KeyPress(Sender: TObject; var Key: Char);
+    procedure DBGrid1KeyPress(Sender: TObject; var Key:
+      Char);
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
@@ -71,43 +74,58 @@ procedure TQHD.SpeedButton2Click(Sender: TObject);
 begin
   //Main_T.Label26.Caption := ADOQuery1.FieldByName('slid').AsString;
 
-
-
-
-
   {复制记录}
   //主表
   ADOQuerySQL.SQL.Clear;
-  ADOQuerySQL.SQL.Add('insert into aftersellmains(tid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,status,uid,uname,preid,nextid,type,cdate,remark,created_at,updated_at) select "' + Main_T.Label26.Caption + '" as tid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,"0" as status,uid,uname,"' + ADOQuery1.FieldByName('slid').AsString + '" as preid,nextid,type,now() as cdate,remark,now() as created_at,now() as updated_at from selllogmains where slid="' + ADOQuery1.FieldByName('slid').AsString + '"');
+  ADOQuerySQL.SQL.Add('insert into aftersellmains(tid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,status,uid,uname,preid,nextid,type,cdate,remark,created_at,updated_at) select "' + Main_T.Label26.Caption +
+    '" as tid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,"0" as status,uid,uname,"' +
+    ADOQuery1.FieldByName('slid').AsString +
+    '" as preid,nextid,type,now() as cdate,remark,now() as created_at,now() as updated_at from selllogmains where slid="' +
+    ADOQuery1.FieldByName('slid').AsString + '"');
   ADOQuerySQL.ExecSQL;
 
   //明细表
   ADOQuerySQL.SQL.Clear;
-  ADOQuerySQL.SQL.Add('insert into afterselldetails(tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,bundle,discount,additional,subtotal,status,cdate,remark,created_at,updated_at) select "' + Main_T.Label26.Caption + '" as tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,bundle,discount,additional,subtotal,"0" as status,now() as cdate,remark,now() as created_at,now() as updated_at from selllogdetails where slid="' + ADOQuery1.FieldByName('slid').AsString + '"');
+  ADOQuerySQL.SQL.Add('insert into afterselldetails(tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,ramount,bundle,rbundle,discount,additional,subtotal,status,cdate,remark,created_at,updated_at) select "' + Main_T.Label26.Caption +
+    '" as tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,amount,bundle,bundle,discount,additional,subtotal,"0" as status,now() as cdate,remark,now() as created_at,now() as updated_at from selllogdetails where slid="' +
+    ADOQuery1.FieldByName('slid').AsString + '"');
   ADOQuerySQL.ExecSQL;
 
   //主表
   ADOQuerySQL.SQL.Clear;
-  ADOQuerySQL.SQL.Add('update selllogmains set type="售后中",nextid="' + Main_T.Label26.Caption + '" where slid="' + ADOQuery1.FieldByName('slid').AsString + '"');
+  ADOQuerySQL.SQL.Add('update selllogmains set type="售后中",nextid="' +
+    Main_T.Label26.Caption + '" where slid="' +
+    ADOQuery1.FieldByName('slid').AsString + '"');
   ADOQuerySQL.ExecSQL;
 
 
   {恢复客户，物流等信息}
-  Main_T.edt1.Text := ADOQuery1.FieldByName('custname').AsString;
-  Main_T.edt2.Text := ADOQuery1.FieldByName('custtel').AsString;
-  Main_T.edt3.Text := ADOQuery1.FieldByName('custaddr').AsString;
-  Main_T.edt7.Text := ADOQuery1.FieldByName('custid').AsString;
-  Main_T.edt8.Text := ADOQuery1.FieldByName('custstate').AsString;
-  Main_T.RzEdit7.Text := ADOQuery1.FieldByName('shopname').AsString;
+  Main_T.edt1.Text :=
+    ADOQuery1.FieldByName('custname').AsString;
+  Main_T.edt2.Text :=
+    ADOQuery1.FieldByName('custtel').AsString;
+  Main_T.edt3.Text :=
+    ADOQuery1.FieldByName('custaddr').AsString;
+  Main_T.edt7.Text :=
+    ADOQuery1.FieldByName('custid').AsString;
+  Main_T.edt8.Text :=
+    ADOQuery1.FieldByName('custstate').AsString;
+  Main_T.RzEdit7.Text :=
+    ADOQuery1.FieldByName('shopname').AsString;
 
 
-  Main_T.edt4.Text := ADOQuery1.FieldByName('sname').AsString;
-  Main_T.edt5.Text := ADOQuery1.FieldByName('stel').AsString;
-  Main_T.edt6.Text := ADOQuery1.FieldByName('saddress').AsString;
+  Main_T.edt4.Text :=
+    ADOQuery1.FieldByName('sname').AsString;
+  Main_T.edt5.Text :=
+    ADOQuery1.FieldByName('stel').AsString;
+  Main_T.edt6.Text :=
+    ADOQuery1.FieldByName('saddress').AsString;
 
 
-  Main_T.cbb1.Text := ADOQuery1.FieldByName('payment').AsString;
-  Main_T.mmo1.Text := ADOQuery1.FieldByName('remark').AsString;
+  Main_T.cbb1.Text :=
+    ADOQuery1.FieldByName('payment').AsString;
+  Main_T.mmo1.Text :=
+    ADOQuery1.FieldByName('remark').AsString;
 
   Main_T.QH1;
   Main_T.QH2;
@@ -125,7 +143,8 @@ begin
   end
 end;
 
-procedure TQHD.DBGrid1KeyPress(Sender: TObject; var Key: Char);
+procedure TQHD.DBGrid1KeyPress(Sender: TObject; var Key:
+  Char);
 begin
   if key = #13 then
   begin
@@ -140,7 +159,8 @@ procedure TQHD.FormShow(Sender: TObject);
 begin
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('select * from selllogmains where custname like "%' + Main_T.edt1.Text + '" and type="已销售"');
+  ADOQuery1.SQL.Add('select * from selllogmains where custname like "%' +
+    Main_T.edt1.Text + '%" and type="已销售"');
   ADOQuery1.Active := True;
 end;
 

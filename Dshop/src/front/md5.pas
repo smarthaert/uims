@@ -56,8 +56,10 @@ type
   end;
 
 procedure MD5Init(var Context: MD5Context);
-procedure MD5Update(var Context: MD5Context; Input: pChar; Length: longword);
-procedure MD5Final(var Context: MD5Context; var Digest: MD5Digest);
+procedure MD5Update(var Context: MD5Context; Input: pChar;
+  Length: longword);
+procedure MD5Final(var Context: MD5Context; var Digest:
+  MD5Digest);
 
 function MD5String(M: string): MD5Digest;
 function MD5File(N: string): MD5Digest;
@@ -106,28 +108,32 @@ begin
   x := (x shl n) or (x shr (32 - n));
 end;
 
-procedure FF(var a: DWORD; b, c, d, x: DWORD; s: BYTE; ac: DWORD);
+procedure FF(var a: DWORD; b, c, d, x: DWORD; s: BYTE; ac:
+  DWORD);
 begin
   inc(a, F(b, c, d) + x + ac);
   rot(a, s);
   inc(a, b);
 end;
 
-procedure GG(var a: DWORD; b, c, d, x: DWORD; s: BYTE; ac: DWORD);
+procedure GG(var a: DWORD; b, c, d, x: DWORD; s: BYTE; ac:
+  DWORD);
 begin
   inc(a, G(b, c, d) + x + ac);
   rot(a, s);
   inc(a, b);
 end;
 
-procedure HH(var a: DWORD; b, c, d, x: DWORD; s: BYTE; ac: DWORD);
+procedure HH(var a: DWORD; b, c, d, x: DWORD; s: BYTE; ac:
+  DWORD);
 begin
   inc(a, H(b, c, d) + x + ac);
   rot(a, s);
   inc(a, b);
 end;
 
-procedure II(var a: DWORD; b, c, d, x: DWORD; s: BYTE; ac: DWORD);
+procedure II(var a: DWORD; b, c, d, x: DWORD; s: BYTE; ac:
+  DWORD);
 begin
   inc(a, I(b, c, d) + x + ac);
   rot(a, s);
@@ -286,7 +292,8 @@ end;
 
 // Update given Context to include Length bytes of Input
 
-procedure MD5Update(var Context: MD5Context; Input: pChar; Length: longword);
+procedure MD5Update(var Context: MD5Context; Input: pChar;
+  Length: longword);
 var
   Index: longword;
   PartLen: longword;
@@ -315,12 +322,14 @@ begin
   end
   else
     I := 0;
-  CopyMemory(@Context.Buffer[Index], @Input[I], Length - I);
+  CopyMemory(@Context.Buffer[Index], @Input[I], Length -
+    I);
 end;
 
 // Finalize given Context, create Digest and zeroize Context
 
-procedure MD5Final(var Context: MD5Context; var Digest: MD5Digest);
+procedure MD5Final(var Context: MD5Context; var Digest:
+  MD5Digest);
 var
   Bits: MD5CBits;
   Index: longword;
@@ -361,17 +370,23 @@ var
   Context: MD5Context;
 begin
   MD5Init(Context);
-  FileHandle := CreateFile(pChar(N), GENERIC_READ, FILE_SHARE_READ or FILE_SHARE_WRITE,
-    nil, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL or FILE_FLAG_SEQUENTIAL_SCAN, 0);
+  FileHandle := CreateFile(pChar(N), GENERIC_READ,
+    FILE_SHARE_READ or
+    FILE_SHARE_WRITE,
+    nil, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL or
+    FILE_FLAG_SEQUENTIAL_SCAN, 0);
   if FileHandle <> INVALID_HANDLE_VALUE then
   try
-    MapHandle := CreateFileMapping(FileHandle, nil, PAGE_READONLY, 0, 0, nil);
+    MapHandle := CreateFileMapping(FileHandle, nil,
+      PAGE_READONLY, 0, 0, nil);
     if MapHandle <> 0 then
     try
-      ViewPointer := MapViewOfFile(MapHandle, FILE_MAP_READ, 0, 0, 0);
+      ViewPointer := MapViewOfFile(MapHandle,
+        FILE_MAP_READ, 0, 0, 0);
       if ViewPointer <> nil then
       try
-        MD5Update(Context, ViewPointer, GetFileSize(FileHandle, nil));
+        MD5Update(Context, ViewPointer,
+          GetFileSize(FileHandle, nil));
       finally
         UnmapViewOfFile(ViewPointer);
       end;
@@ -391,11 +406,14 @@ var
   I: byte;
 const
   Digits: array[0..15] of char =
-  ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f');
+  ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a',
+    'b', 'c', 'd', 'e',
+    'f');
 begin
   Result := '';
   for I := 0 to 15 do
-    Result := Result + Digits[(D[I] shr 4) and $0F] + Digits[D[I] and $0F];
+    Result := Result + Digits[(D[I] shr 4) and $0F] +
+      Digits[D[I] and $0F];
 end;
 
 // -----------------------------------------------------------------------------------------------

@@ -3,8 +3,10 @@ unit Unit11;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, ADODB, Buttons, Grids, DBGrids, ExtCtrls, INIFiles, StdCtrls;
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms,
+  Dialogs, DB, ADODB, Buttons, Grids, DBGrids, ExtCtrls,
+  INIFiles, StdCtrls;
 
 type
   TQS = class(TForm)
@@ -21,7 +23,8 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure SpeedButton2Click(Sender: TObject);
-    procedure DBGrid1KeyPress(Sender: TObject; var Key: Char);
+    procedure DBGrid1KeyPress(Sender: TObject; var Key:
+      Char);
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
@@ -66,9 +69,12 @@ end;
 procedure TQS.SpeedButton2Click(Sender: TObject);
 begin
   {»Ö¸´¿Í»§}
-  Main.edt4.Text := DBGrid1.DataSource.DataSet.FieldByName('sname').AsString;
-  Main.edt5.Text := DBGrid1.DataSource.DataSet.FieldByName('tel').AsString;
-  Main.edt6.Text := DBGrid1.DataSource.DataSet.FieldByName('address').AsString;
+  Main.edt4.Text :=
+    DBGrid1.DataSource.DataSet.FieldByName('sname').AsString;
+  Main.edt5.Text :=
+    DBGrid1.DataSource.DataSet.FieldByName('tel').AsString;
+  Main.edt6.Text :=
+    DBGrid1.DataSource.DataSet.FieldByName('address').AsString;
   SpeedButton1.Click;
 end;
 
@@ -82,7 +88,8 @@ begin
   end
 end;
 
-procedure TQS.DBGrid1KeyPress(Sender: TObject; var Key: Char);
+procedure TQS.DBGrid1KeyPress(Sender: TObject; var Key:
+  Char);
 begin
   if key = #13 then
   begin
@@ -95,7 +102,8 @@ procedure TQS.FormShow(Sender: TObject);
 begin
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from shippers where custid = "' + Main.edt7.Text + '"');
+  ADOQuery1.SQL.Add('Select * from shippers where custid = "' + Main.edt7.Text +
+    '"');
   ADOQuery1.Active := True;
 end;
 
