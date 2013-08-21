@@ -327,5 +327,5 @@ remark:text
 
 rake db:migrate
 
-#手动增加Selllogdetail表的联合主键slid和pid
-#Afterselldetail tid pid type
+#手动增加Selllogdetail表的联合主键slid和pid,additional
+#Afterselldetail tid pid type,
