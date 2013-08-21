@@ -1,6 +1,6 @@
 object Main_T: TMain_T
-  Left = 238
-  Top = 174
+  Left = 331
+  Top = 49
   Width = 1045
   Height = 810
   ActiveControl = edt1
@@ -939,7 +939,7 @@ object Main_T: TMain_T
         item
           Alignment = taRightJustify
           Expanded = False
-          FieldName = 'amount'
+          FieldName = 'ramount'
           Title.Caption = #25968#37327
           Width = 45
           Visible = True
@@ -956,7 +956,7 @@ object Main_T: TMain_T
         item
           Alignment = taRightJustify
           Expanded = False
-          FieldName = 'bundle'
+          FieldName = 'rbundle'
           Title.Caption = #20214#25968
           Width = 40
           Visible = True
@@ -966,7 +966,7 @@ object Main_T: TMain_T
           Expanded = False
           FieldName = 'outprice'
           Title.Caption = #21333#20215
-          Width = 54
+          Width = 37
           Visible = True
         end
         item
@@ -975,7 +975,7 @@ object Main_T: TMain_T
           FieldName = 'discount'
           Title.Alignment = taCenter
           Title.Caption = #25240#25187
-          Width = 55
+          Width = 44
           Visible = True
         end
         item
@@ -992,13 +992,14 @@ object Main_T: TMain_T
           FieldName = 'subtotal'
           Title.Alignment = taCenter
           Title.Caption = #23567#35745
-          Width = 74
+          Width = 68
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'type'
           Title.Caption = #21806#21518
+          Width = 45
           Visible = True
         end>
     end

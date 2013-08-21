@@ -3,7 +3,8 @@ unit Unit3;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms,
   Dialogs, StdCtrls, Buttons, ExtCtrls, RzForms, INIFiles;
 
 type
@@ -21,7 +22,8 @@ type
     Label4: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
-    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit2KeyPress(Sender: TObject; var Key:
+      Char);
     procedure SpeedButton2Click(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -42,7 +44,9 @@ procedure TRegKey.FormCreate(Sender: TObject);
 var
   vIniFile: TIniFile;
 begin
-  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'Config.Ini');
+  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0))
+    +
+    'Config.Ini');
   Edit1.Text := vIniFile.Readstring('System', 'PCID', '');
   Edit2.Text := vIniFile.Readstring('System', 'Key', '');
 
@@ -52,14 +56,20 @@ procedure TRegKey.SpeedButton1Click(Sender: TObject);
 var
   vIniFile: TIniFile;
 begin
-  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'Config.Ini');
-  vIniFile.WriteString('System', 'Key', UpperCase(Edit2.Text));
+  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0))
+    +
+    'Config.Ini');
+  vIniFile.WriteString('System', 'Key',
+    UpperCase(Edit2.Text));
   if Edit2.Text <> '' then
-    showmessage('感谢您注册本产品。请重新启动本软件~~!' + #13#13 + '如果您输入的注册码正确的话，窗口左上角将显示已注册~~!');
+    showmessage('感谢您注册本产品。请重新启动本软件~~!' +
+      #13#13 +
+      '如果您输入的注册码正确的话，窗口左上角将显示已注册~~!');
   SpeedButton2.Click;
 end;
 
-procedure TRegKey.Edit2KeyPress(Sender: TObject; var Key: Char);
+procedure TRegKey.Edit2KeyPress(Sender: TObject; var Key:
+  Char);
 begin
   if key = #13 then
   begin
@@ -73,7 +83,8 @@ begin
   RegKey.Close;
 end;
 
-procedure TRegKey.FormKeyDown(Sender: TObject; var Key: Word;
+procedure TRegKey.FormKeyDown(Sender: TObject; var Key:
+  Word;
   Shift: TShiftState);
 begin
   case key of

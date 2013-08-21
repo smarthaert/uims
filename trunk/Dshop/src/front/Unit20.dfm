@@ -1,8 +1,8 @@
-object QP: TQP
+object QPT: TQPT
   Left = 697
   Top = 250
   BorderStyle = bsNone
-  Caption = 'QP'
+  Caption = 'QPT'
   ClientHeight = 362
   ClientWidth = 492
   Color = clBlack
@@ -25,7 +25,7 @@ object QP: TQP
     Height = 47
     Align = alTop
     BevelInner = bvLowered
-    Caption = #37319#36141#20135#21697#24211
+    Caption = #32500#20462#20135#21697#24211
     Color = clBlack
     Font.Charset = GB2312_CHARSET
     Font.Color = clWhite
@@ -65,6 +65,13 @@ object QP: TQP
       TitleFont.Style = []
       OnKeyPress = DBGrid1KeyPress
       Columns = <
+        item
+          Expanded = False
+          FieldName = 'tid'
+          Title.Caption = #21333#21495
+          Width = 35
+          Visible = True
+        end
         item
           Alignment = taCenter
           Expanded = False
@@ -106,7 +113,7 @@ object QP: TQP
         end
         item
           Expanded = False
-          FieldName = 'amount'
+          FieldName = 'ramount'
           Title.Caption = #25968#37327
           Width = 36
           Visible = True
@@ -188,5 +195,11 @@ object QP: TQP
       'Select * from Sell_Main where Not(Hang)')
     Left = 8
     Top = 8
+  end
+  object ADOQuerySQL: TADOQuery
+    Connection = Main.ADOConnection1
+    Parameters = <>
+    Left = 16
+    Top = 103
   end
 end

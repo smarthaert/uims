@@ -3,8 +3,10 @@ unit Unit7;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Buttons, StdCtrls, Mask, RzEdit, ExtCtrls, RzForms, INIFiles;
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms,
+  Dialogs, Buttons, StdCtrls, Mask, RzEdit, ExtCtrls,
+  RzForms, INIFiles;
 
 type
   TPos_Setup = class(TForm)
@@ -65,7 +67,9 @@ procedure TPos_Setup.SpeedButton1Click(Sender: TObject);
 var
   vIniFile: TIniFile;
 begin
-  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'Config.Ini');
+  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0))
+    +
+    'Config.Ini');
   vIniFile.WriteString('System', 'Name', RzEdit1.Text);
   vIniFile.WriteString('System', 'La1', RzEdit2.Text);
   vIniFile.WriteString('System', 'La2', RzEdit3.Text);
@@ -78,15 +82,19 @@ procedure TPos_Setup.FormActivate(Sender: TObject);
 var
   vIniFile: TIniFile;
 begin
-  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'Config.Ini');
-  RzEdit1.Text := vIniFile.ReadString('System', 'Name', '');
+  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0))
+    +
+    'Config.Ini');
+  RzEdit1.Text := vIniFile.ReadString('System', 'Name',
+    '');
   RzEdit2.Text := vIniFile.ReadString('System', 'La1', '');
   RzEdit3.Text := vIniFile.ReadString('System', 'La2', '');
   RzEdit4.Text := vIniFile.ReadString('System', 'Tel', '');
   Pos_Setup.SetFocus;
 end;
 
-procedure TPos_Setup.FormKeyDown(Sender: TObject; var Key: Word;
+procedure TPos_Setup.FormKeyDown(Sender: TObject; var Key:
+  Word;
   Shift: TShiftState);
 begin
   case key of

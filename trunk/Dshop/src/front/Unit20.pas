@@ -1,4 +1,4 @@
-unit Unit12;
+unit Unit20;
 
 interface
 
@@ -9,7 +9,7 @@ uses
   INIFiles, StdCtrls;
 
 type
-  TQP = class(TForm)
+  TQPT = class(TForm)
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
@@ -19,6 +19,7 @@ type
     ADOQuery1: TADOQuery;
     SpeedButton2: TSpeedButton;
     Label1: TLabel;
+    ADOQuerySQL: TADOQuery;
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -34,7 +35,7 @@ type
   end;
 
 var
-  QP: TQP;
+  QPT: TQPT;
 
 implementation
 
@@ -42,12 +43,12 @@ uses Unit2;
 
 {$R *.dfm}
 
-procedure TQP.SpeedButton1Click(Sender: TObject);
+procedure TQPT.SpeedButton1Click(Sender: TObject);
 begin
-  QP.Close;
+  QPT.Close;
 end;
 
-procedure TQP.FormKeyDown(Sender: TObject; var Key: Word;
+procedure TQPT.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   case key of
@@ -66,25 +67,32 @@ begin
   end;
 end;
 
-procedure TQP.SpeedButton2Click(Sender: TObject);
+procedure TQPT.SpeedButton2Click(Sender: TObject);
 begin
   {恢复产品编号}
   Main.RzEdit4.Text :=
     DBGrid1.DataSource.DataSet.FieldByName('pid').AsString;
+
+    {
+  //选择产品后，建立当前订单和出库单之间的前后关系
+  ADOQuerySQL.SQL.Clear;
+  ADOQuerySQL.SQL.Add('update selllogmains set preid="' + ADOQuery1.FieldByName('tid').AsString + '"');
+  ADOQuerySQL.ExecSQL;
+  }
   SpeedButton1.Click;
 end;
 
-procedure TQP.c1;
+procedure TQPT.c1;
 begin
   //如果没有客户数据则退出
   if ADOQuery1.RecordCount < 1 then
   begin
     ShowMessage('没有找到托运部信息~~!');
-    QP.Close;
+    QPT.Close;
   end
 end;
 
-procedure TQP.DBGrid1KeyPress(Sender: TObject; var Key:
+procedure TQPT.DBGrid1KeyPress(Sender: TObject; var Key:
   Char);
 begin
   if key = #13 then
@@ -94,15 +102,16 @@ begin
   end;
 end;
 
-procedure TQP.FormShow(Sender: TObject);
+procedure TQPT.FormShow(Sender: TObject);
 begin
-
+  
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from stocks where goodsname like "%' +
-    Main.RzEdit4.Text +
-    '%" order by goodsname,color,size');
+  ADOQuery1.SQL.Add('select d.tid,d.pid,barcode,d.goodsname,d.size,d.color,d.volume,d.unit,d.inprice,d.pfprice,d.amount,');
+  ADOQuery1.SQL.Add('d.ramount,d.bundle,d.discount,d.remark from aftersellmains m, afterselldetails d where not(d.status) and d.type="维修" and d.ramount>0 and m.tid=m.tid and m.custtel="' + Main.edt2.Text + '"');
   ADOQuery1.Active := True;
+  {格式化小数显示}
+  //TFloatField(DBGrid1.DataSource.DataSet.FieldByName('volume')).DisplayFormat := '0.00';
 end;
 
 end.

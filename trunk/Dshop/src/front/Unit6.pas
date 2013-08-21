@@ -3,7 +3,8 @@ unit Unit6;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms,
   Dialogs, ExtCtrls, RzForms, StdCtrls, Mask, RzEdit;
 
 type
@@ -14,7 +15,8 @@ type
     RzEdit1: TRzEdit;
     Panel1: TPanel;
     RzFormShape1: TRzFormShape;
-    procedure RzEdit1KeyDown(Sender: TObject; var Key: Word;
+    procedure RzEdit1KeyDown(Sender: TObject; var Key:
+      Word;
       Shift: TShiftState);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -33,7 +35,8 @@ uses Unit5;
 
 {$R *.dfm}
 
-procedure TMoLing.RzEdit1KeyDown(Sender: TObject; var Key: Word;
+procedure TMoLing.RzEdit1KeyDown(Sender: TObject; var Key:
+  Word;
   Shift: TShiftState);
 begin
   if key = 13 then
@@ -46,13 +49,15 @@ begin
       RzEdit1.SetFocus;
       Exit;
     end;
-    Gathering.Label2.Caption := FormatFloat('0.00', StrToCurr(RzEdit1.Text));
+    Gathering.Label2.Caption := FormatFloat('0.00',
+      StrToCurr(RzEdit1.Text));
     Gathering.RzEdit1.SetFocus;
     Moling.Close;
   end;
 end;
 
-procedure TMoLing.FormKeyDown(Sender: TObject; var Key: Word;
+procedure TMoLing.FormKeyDown(Sender: TObject; var Key:
+  Word;
   Shift: TShiftState);
 begin
   case key of
