@@ -54,7 +54,6 @@ begin
       Exit;
     end;
 
-
     ADOQuery1.SQL.Clear;
     ADOQuery1.SQL.Add('Select * from vip_1 Where VipID="' +
       Copy(RzEdit1.Text,
@@ -141,3 +140,4 @@ begin
 end;
 
 end.
+

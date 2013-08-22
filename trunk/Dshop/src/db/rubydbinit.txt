@@ -163,7 +163,9 @@ unit:string \
 'hprice:decimal{10,2}' \
 'outprice:decimal{10,2}' \
 amount:integer \
+camount:integer \
 bundle:integer \
+cbundle:integer \
 discount:integer \
 additional:string \
 'subtotal:decimal{10,2}' \
@@ -183,6 +185,8 @@ custtel:string \
 custaddr:string \
 'yingshou:decimal{10,2}' \
 'shishou:decimal{10,2}' \
+'yingtui:decimal{10,2}' \
+'shitui:decimal{10,2}' \
 sid:string \
 sname:string \
 stel:string \
@@ -328,4 +332,4 @@ remark:text
 rake db:migrate
 
 #手动增加Selllogdetail表的联合主键slid和pid,additional
-#Afterselldetail tid pid type,
+#Afterselldetail tid pid additional type,

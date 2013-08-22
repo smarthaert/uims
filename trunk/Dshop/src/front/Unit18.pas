@@ -90,14 +90,12 @@ begin
   Main_T.RzEdit7.Text :=
     ADOQuery1.FieldByName('shopname').AsString;
 
-
   Main_T.edt4.Text :=
     ADOQuery1.FieldByName('sname').AsString;
   Main_T.edt5.Text :=
     ADOQuery1.FieldByName('stel').AsString;
   Main_T.edt6.Text :=
     ADOQuery1.FieldByName('saddress').AsString;
-
 
   Main_T.cbb1.Text :=
     ADOQuery1.FieldByName('payment').AsString;
@@ -141,3 +139,4 @@ begin
 end;
 
 end.
+

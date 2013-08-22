@@ -49,13 +49,11 @@ type
     RzEdit1: TRzEdit;
     RzEdit2: TRzEdit;
     RzEdit3: TRzEdit;
-    Label23: TLabel;
     Label24: TLabel;
     Label27: TLabel;
     Label25: TLabel;
     Label26: TLabel;
     Label28: TLabel;
-    Label29: TLabel;
     Panel5: TPanel;
     QuickRep1: TQuickRep;
     DetailBand1: TQRBand;
@@ -136,12 +134,14 @@ type
     QRLabel3: TQRLabel;
     qrdbtxtrow: TQRDBText;
     Label32: TLabel;
-    Label22: TLabel;
-    Label33: TLabel;
     ADOQuery2: TADOQuery;
     lbl11: TLabel;
     RzEdit7: TRzEdit;
     ComboBox1: TComboBox;
+    bvl1: TBevel;
+    lbl12: TLabel;
+    Bevel5: TBevel;
+    Label34: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -176,6 +176,7 @@ type
   private
     { Private declarations }
   public
+    reprint: Boolean;
     procedure QH1;
     procedure WRecord;
     procedure QH2;
@@ -195,11 +196,9 @@ implementation
 uses Unit1, Unit2, Unit3, Unit5, Unit7, Unit9, Unit10,
   Unit11, Unit12, Unit13,
   Unit14, Unit15, Unit16,
-  Unit17, Unit18, Unit21;
+  Unit17, Unit18, Unit21, Unit22, Unit23, Unit24;
 
 {$R *.dfm}
-
-
 
 {初始化下单页面}
 
@@ -208,7 +207,6 @@ begin
   {
   Main_T.Width:=1045;//恢复主窗口大小
   Main_T.Height:=810;//恢复主窗口大小
-
 
 //使主窗口位于屏幕正中央
   Main_T.Top := (GetSystemMetrics(SM_CySCREEN) - 810) div 2 - 13;
@@ -247,7 +245,6 @@ begin
   Label21.Caption := ADOQuery2.FieldByName('now').AsString;
 end;
 
-
 {刷新列表}
 
 procedure TMain_T.ListRefresh;
@@ -256,7 +253,6 @@ var
 begin
   {记录当前处理的行位置，以便于刷新数据后恢复当前的位置}
   bookmark := ADOQuery1.GetBookmark;
-
 
   ADOQuery1.SQL.Clear;
 
@@ -269,21 +265,24 @@ begin
 
   ADOQuery1.Open;
   if ADOQuery1.RecordCount > 1 then
-    ADOQuery1.GotoBookmark(bookmark);
+  begin
+    try
+      ADOQuery1.GotoBookmark(bookmark);
+    except
+      
+    end;  
+
+  end;
 
   ADOQuery1.FreeBookmark(bookmark);
 
-
 end;
-
 
 procedure TMain_T.SpeedButton1Click(Sender: TObject);
 begin
   Main.Show;
   Main_T.Close;
 end;
-
-
 
 procedure TMain_T.SpeedButton2Click(Sender: TObject);
 begin
@@ -328,11 +327,9 @@ begin
   qrlbl15.Caption := '收货地址:' + Main_T.edt3.Text;
   qrlbl19.Caption := '付款方式:' + Main_T.cbb1.Text;
 
-
   qrlbl16.Caption := '托运部:' + Main_T.edt4.Text;
   qrlbl17.Caption := '电话:' + Main_T.edt5.Text;
   qrlbl18.Caption := '托运部地址:' + Main_T.edt6.Text;
-
 
   qrlbl20.Caption := '日期:' + FormatDateTime('dddddd tt',
     Now);
@@ -380,8 +377,6 @@ begin
   RzEdit1.Text := '100';
   RzEdit3.Text := '1';
 
-
-
   {跟新产品选择信息，有记录就更新，无记录就插入}
   //查销售主库是否有此单号
   ADOQuerySQL.SQL.Clear;
@@ -412,7 +407,6 @@ begin
 
   QH1;
   QH2;
-
 
 end;
 
@@ -455,74 +449,244 @@ begin
 
     VK_F1: RzEdit4.SetFocus; //增加商品
 
-    VK_F2: RzEdit3.SetFocus; //修改数量
-
-    VK_F3: RzEdit5.SetFocus; //修改件数
-
-    VK_F4: //RzEdit2.SetFocus; //修改单价
-    begin
-      if ADOQuery1.FieldByName('pid').AsString = '' then
+    VK_F2: //RzEdit3.SetFocus; //拆分
       begin
-        if
-          messagedlg('设置当前订单中的所有商品售后属性吗?',
-          mtconfirmation,
-          [mbyes, mbno], 0) = mryes then
+        {拆分}
+        //弹出框提示用户拆分出几条
+        if ADOQuery1.FieldByName('ramount').AsInteger = 1
+          then
         begin
-          ADOQuerySQL.SQL.Clear;
-          ADOQuerySQL.SQL.Add('update afterselldetails set type="退货",updated_at=now() where tid="' +
-            Label26.Caption +
-            '"');
-          ADOQuerySQL.ExecSQL;
+          ShowMessage('数量大于1时才能拆分哦，请重新选择～～');
+          Exit;
+        end;
+
+        if CF <> nil then
+          CF.ShowModal
+        else
+        begin
+          CF := TCF.Create(Application);
+          CF.ShowModal;
+          RzEdit4.SetFocus;
+        end;
+      end;
+
+    VK_F3: //RzEdit5.SetFocus;
+      begin
+        {合并}
+        //弹出列表，提示用户与哪条合并
+        if QHB <> nil then
+          QHB.ShowModal
+        else
+        begin
+          QHB := TQHB.Create(Application);
+          QHB.ShowModal;
+          RzEdit4.SetFocus;
+        end;
+      end;
+
+    VK_F4: //RzEdit2.SetFocus; //退货
+      begin
+        if ADOQuery1.FieldByName('pid').AsString = '' then
+        begin
+          if
+            messagedlg('设置当前订单中的所有商品售后属性吗?',
+            mtconfirmation,
+            [mbyes, mbno], 0) = mryes then
+          begin
+            //首先汇总出数据插入数据表中
+            ADOQuerySQL.SQL.Clear;
+            ADOQuerySQL.SQL.Add('insert into afterselldetails(tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,ramount,');
+            ADOQuerySQL.SQL.Add('bundle,rbundle,discount,additional,subtotal,status,type,cdate,remark,created_at,updated_at) select tid,pid,barcode,goodsname,');
+            ADOQuerySQL.SQL.Add('size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,sum(ramount) as ramount,bundle,rbundle,discount,additional,');
+            ADOQuerySQL.SQL.Add('subtotal,status,"all" as type,now() as cdate,remark,now() as created_at,now() as updated_at from afterselldetails ');
+            ADOQuerySQL.SQL.Add('where tid="' +
+              Label26.Caption + '" group by pid,additional');
+            ADOQuerySQL.ExecSQL;
+
+            //删除原有的没有汇总的数据
+            ADOQuerySQL.SQL.Clear;
+            ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' + Label26.Caption + '" and type<>"all"');
+            ADOQuerySQL.ExecSQL;
+
+            //更新汇总时使用的临时标记位
+            ADOQuerySQL.SQL.Clear;
+            ADOQuerySQL.SQL.Add('update afterselldetails set type="退货" where tid="' + Label26.Caption + '"');
+            ADOQuerySQL.ExecSQL;
+
+          end
+          else
+            Exit;
         end
         else
-          Exit;
-      end
-      else
-      begin
-        ADOQuerySQL.SQL.Clear;
-        ADOQuerySQL.SQL.Add('update afterselldetails set type="退货",updated_at=now() where tid="' + Label26.Caption
-          +
-          '" and pid="' +
-          ADOQuery1.FieldByName('pid').AsString + '" and type="' +
-          ADOQuery1.FieldByName('type').AsString + '"');
-        ADOQuerySQL.ExecSQL;
+        begin
+
+          if ADOQuery1.FieldByName('type').AsString <>
+            '退货' then
+          begin
+            //如果已经有退货这一条记录就合并
+            ADOQuery2.SQL.Clear;
+            ADOQuery2.SQL.Add('select * from afterselldetails where tid="' + Label26.Caption + '" and pid="' +
+              ADOQuery1.FieldByName('pid').AsString +
+              '" and additional="' +
+              ADOQuery1.FieldByName('additional').AsString
+                +
+              '" and type="退货"');
+            ADOQuery2.Open;
+
+            if ADOQuery2.RecordCount > 0 then
+            begin //有重复记录
+              //执行合并
+              //先累加数字
+              ADOQuerySQL.SQL.Clear;
+              ADOQuerySQL.SQL.Add('update afterselldetails ad,(select tid,pid,ramount,type from afterselldetails where tid="' + Label26.Caption + '" and pid="' +
+                ADOQuery1.FieldByName('pid').AsString +
+                '"');
+              ADOQuerySQL.SQL.Add(' and additional="' +
+                ADOQuery1.FieldByName('additional').AsString
+                  +
+                '" and type="' +
+                ADOQuery1.FieldByName('type').AsString +
+                '") t set ad.ramount=(ad.ramount+t.ramount),updated_at=now() where t.tid=ad.tid and t.pid=ad.pid and ad.type="退货"');
+              ADOQuerySQL.ExecSQL;
+
+              //删除记录
+              ADOQuerySQL.SQL.Clear;
+              ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' + Label26.Caption + '" and pid="' +
+                ADOQuery1.FieldByName('pid').AsString +
+                '" and additional="' +
+                ADOQuery1.FieldByName('additional').AsString
+                  +
+                '" and type="' +
+                ADOQuery1.FieldByName('type').AsString +
+                '"');
+              ADOQuerySQL.ExecSQL;
+
+            end
+            else //无重复记录
+            begin
+              //直接更新
+              ADOQuerySQL.SQL.Clear;
+              ADOQuerySQL.SQL.Add('update afterselldetails set type="退货",updated_at=now() where tid="' + Label26.Caption
+                +
+                '" and pid="' +
+                ADOQuery1.FieldByName('pid').AsString +
+                '" and additional="' +
+                ADOQuery1.FieldByName('additional').AsString
+                  +
+                '" and type="' +
+                ADOQuery1.FieldByName('type').AsString +
+                '"');
+              ADOQuerySQL.ExecSQL;
+            end;
+
+          end;
+
+        end;
+        QH1;
+        QH2;
       end;
-      QH1;
-      QH2;
-    end;
 
     VK_F5: //ComboBox1.SetFocus;
-    //售后操作类型，退货/换货/维修/补发/
-    begin
-      if ADOQuery1.FieldByName('pid').AsString = '' then
+      //售后操作类型，退货/换货/维修/补发/
       begin
-        if
-          messagedlg('设置当前订单中的所有商品售后属性吗?',
-          mtconfirmation,
-          [mbyes, mbno], 0) = mryes then
+        if ADOQuery1.FieldByName('pid').AsString = '' then
         begin
-          ADOQuerySQL.SQL.Clear;
-          ADOQuerySQL.SQL.Add('update afterselldetails set type="维修",updated_at=now() where tid="' +
-            Label26.Caption +
-            '"');
-          ADOQuerySQL.ExecSQL;
+          if
+            messagedlg('设置当前订单中的所有商品售后属性吗?',
+            mtconfirmation,
+            [mbyes, mbno], 0) = mryes then
+          begin
+            //首先汇总出数据插入数据表中
+            ADOQuerySQL.SQL.Clear;
+            ADOQuerySQL.SQL.Add('insert into afterselldetails(tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,ramount,');
+            ADOQuerySQL.SQL.Add('bundle,rbundle,discount,additional,subtotal,status,type,cdate,remark,created_at,updated_at) select tid,pid,barcode,goodsname,');
+            ADOQuerySQL.SQL.Add('size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,sum(ramount) as ramount,bundle,rbundle,discount,additional,');
+            ADOQuerySQL.SQL.Add('subtotal,status,"all" as type,now() as cdate,remark,now() as created_at,now() as updated_at from afterselldetails ');
+            ADOQuerySQL.SQL.Add('where tid="' +
+              Label26.Caption + '" group by pid,additional');
+            ADOQuerySQL.ExecSQL;
+
+            //删除原有的没有汇总的数据
+            ADOQuerySQL.SQL.Clear;
+            ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' + Label26.Caption + '" and type<>"all"');
+            ADOQuerySQL.ExecSQL;
+
+            //更新汇总时使用的临时标记位
+            ADOQuerySQL.SQL.Clear;
+            ADOQuerySQL.SQL.Add('update afterselldetails set type="维修" where tid="' + Label26.Caption + '"');
+            ADOQuerySQL.ExecSQL;
+
+          end
+          else
+            Exit;
         end
         else
-          Exit;
-      end
-      else
-      begin
-        ADOQuerySQL.SQL.Clear;
-        ADOQuerySQL.SQL.Add('update afterselldetails set type="维修",updated_at=now() where tid="' + Label26.Caption
-          +
-          '" and pid="' +
-          ADOQuery1.FieldByName('pid').AsString + '" and type="' +
-          ADOQuery1.FieldByName('type').AsString + '"');
-        ADOQuerySQL.ExecSQL;
+        begin
+
+          if ADOQuery1.FieldByName('type').AsString <>
+            '维修' then
+          begin
+            //如果已经有维修这一条记录就合并
+            ADOQuery2.SQL.Clear;
+            ADOQuery2.SQL.Add('select * from afterselldetails where tid="' + Label26.Caption + '" and pid="' +
+              ADOQuery1.FieldByName('pid').AsString +
+              '" and additional="' +
+              ADOQuery1.FieldByName('additional').AsString
+                +
+              '" and type="维修"');
+            ADOQuery2.Open;
+
+            if ADOQuery2.RecordCount > 0 then
+            begin //有重复记录
+              //执行合并
+              //先累加数字
+              ADOQuerySQL.SQL.Clear;
+              ADOQuerySQL.SQL.Add('update afterselldetails ad,(select tid,pid,ramount,type from afterselldetails where tid="' + Label26.Caption + '" and pid="' +
+                ADOQuery1.FieldByName('pid').AsString +
+                '"');
+              ADOQuerySQL.SQL.Add(' and additional="' +
+                ADOQuery1.FieldByName('additional').AsString
+                  +
+                '" and type="' +
+                ADOQuery1.FieldByName('type').AsString +
+                '") t set ad.ramount=(ad.ramount+t.ramount),updated_at=now() where t.tid=ad.tid and t.pid=ad.pid and ad.type="维修"');
+              ADOQuerySQL.ExecSQL;
+
+              //删除记录
+              ADOQuerySQL.SQL.Clear;
+              ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' + Label26.Caption + '" and pid="' +
+                ADOQuery1.FieldByName('pid').AsString +
+                '" and additional="' +
+                ADOQuery1.FieldByName('additional').AsString
+                  +
+                '" and type="' +
+                ADOQuery1.FieldByName('type').AsString +
+                '"');
+              ADOQuerySQL.ExecSQL;
+
+            end
+            else //无重复记录
+            begin
+              //直接更新
+              ADOQuerySQL.SQL.Clear;
+              ADOQuerySQL.SQL.Add('update afterselldetails set type="维修",updated_at=now() where tid="' + Label26.Caption
+                +
+                '" and pid="' +
+                ADOQuery1.FieldByName('pid').AsString +
+                '" and additional="' +
+                ADOQuery1.FieldByName('additional').AsString
+                  +
+                '" and type="' +
+                ADOQuery1.FieldByName('type').AsString +
+                '"');
+              ADOQuerySQL.ExecSQL;
+            end;
+
+          end;
+        end;
+        QH1;
+        QH2;
       end;
-      QH1;
-      QH2;
-    end;
 
     VK_F6: //将当前未完成退货订单挂起 set status=0
       begin
@@ -563,7 +727,6 @@ begin
 
         cbb1.Text := '';
         mmo1.Text := '';
-
 
         {更换单号}
         GetOrderId;
@@ -631,36 +794,104 @@ begin
       end;
 
     VK_F10: //RzEdit1.SetFocus;
-    begin
-      if ADOQuery1.FieldByName('pid').AsString = '' then
       begin
-        if
-          messagedlg('设置当前订单中的所有商品售后属性吗?',
-          mtconfirmation,
-          [mbyes, mbno], 0) = mryes then
+        if ADOQuery1.FieldByName('pid').AsString = '' then
         begin
-          ADOQuerySQL.SQL.Clear;
-          ADOQuerySQL.SQL.Add('update afterselldetails set type="-",updated_at=now() where tid="' +
-            Label26.Caption +
-            '"');
-          ADOQuerySQL.ExecSQL;
+          if
+            messagedlg('设置当前订单中的所有商品售后属性吗?',
+            mtconfirmation,
+            [mbyes, mbno], 0) = mryes then
+          begin
+            //首先汇总出数据插入数据表中
+            ADOQuerySQL.SQL.Clear;
+            ADOQuerySQL.SQL.Add('insert into afterselldetails(tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,ramount,');
+            ADOQuerySQL.SQL.Add('bundle,rbundle,discount,additional,subtotal,status,type,cdate,remark,created_at,updated_at) select tid,pid,barcode,goodsname,');
+            ADOQuerySQL.SQL.Add('size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,sum(ramount) as ramount,bundle,rbundle,discount,additional,');
+            ADOQuerySQL.SQL.Add('subtotal,status,"all" as type,now() as cdate,remark,now() as created_at,now() as updated_at from afterselldetails ');
+            ADOQuerySQL.SQL.Add('where tid="' +
+              Label26.Caption + '" group by pid,additional');
+            ADOQuerySQL.ExecSQL;
+
+            //删除原有的没有汇总的数据
+            ADOQuerySQL.SQL.Clear;
+            ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' + Label26.Caption + '" and type<>"all"');
+            ADOQuerySQL.ExecSQL;
+
+            //更新汇总时使用的临时标记位
+            ADOQuerySQL.SQL.Clear;
+            ADOQuerySQL.SQL.Add('update afterselldetails set type="-" where tid="' + Label26.Caption + '"');
+            ADOQuerySQL.ExecSQL;
+          end
+          else
+            Exit;
         end
         else
-          Exit;
-      end
-      else
-      begin
-        ADOQuerySQL.SQL.Clear;
-        ADOQuerySQL.SQL.Add('update afterselldetails set type="-",updated_at=now() where tid="' + Label26.Caption
-          +
-          '" and pid="' +
-          ADOQuery1.FieldByName('pid').AsString + '" and type="' +
-          ADOQuery1.FieldByName('type').AsString + '"');
-        ADOQuerySQL.ExecSQL;
+        begin
+
+          if ADOQuery1.FieldByName('type').AsString <>
+            '-' then
+          begin
+            //如果已经有维修这一条记录就合并
+            ADOQuery2.SQL.Clear;
+            ADOQuery2.SQL.Add('select * from afterselldetails where tid="' + Label26.Caption + '" and pid="' +
+              ADOQuery1.FieldByName('pid').AsString +
+              '" and additional="' +
+              ADOQuery1.FieldByName('additional').AsString
+                +
+              '" and type="-"');
+            ADOQuery2.Open;
+
+            if ADOQuery2.RecordCount > 0 then
+            begin //有重复记录
+              //执行合并
+              //先累加数字
+              ADOQuerySQL.SQL.Clear;
+              ADOQuerySQL.SQL.Add('update afterselldetails ad,(select tid,pid,ramount,type from afterselldetails where tid="' + Label26.Caption + '" and pid="' +
+                ADOQuery1.FieldByName('pid').AsString +
+                '"');
+              ADOQuerySQL.SQL.Add(' and additional="' +
+                ADOQuery1.FieldByName('additional').AsString
+                  +
+                '" and type="' +
+                ADOQuery1.FieldByName('type').AsString +
+                '") t set ad.ramount=(ad.ramount+t.ramount),updated_at=now() where t.tid=ad.tid and t.pid=ad.pid and ad.type="-"');
+              ADOQuerySQL.ExecSQL;
+
+              //删除记录
+              ADOQuerySQL.SQL.Clear;
+              ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' + Label26.Caption + '" and pid="' +
+                ADOQuery1.FieldByName('pid').AsString +
+                '" and additional="' +
+                ADOQuery1.FieldByName('additional').AsString
+                  +
+                '" and type="' +
+                ADOQuery1.FieldByName('type').AsString +
+                '"');
+              ADOQuerySQL.ExecSQL;
+
+            end
+            else //无重复记录
+            begin
+              //直接更新
+              ADOQuerySQL.SQL.Clear;
+              ADOQuerySQL.SQL.Add('update afterselldetails set type="-",updated_at=now() where tid="' + Label26.Caption
+                +
+                '" and pid="' +
+                ADOQuery1.FieldByName('pid').AsString +
+                '" and additional="' +
+                ADOQuery1.FieldByName('additional').AsString
+                  +
+                '" and type="' +
+                ADOQuery1.FieldByName('type').AsString +
+                '"');
+              ADOQuerySQL.ExecSQL;
+            end;
+
+          end;
+        end;
+        QH1;
+        QH2;
       end;
-      QH1;
-      QH2;
-    end;
 
     VK_F11:
       begin
@@ -684,7 +915,7 @@ begin
       begin
         DBGrid1.SetFocus;
       end;
-
+    {
     VK_DELETE: //删除产品项目
       begin
         if ADOQuery1.RecordCount > 0 then
@@ -765,10 +996,9 @@ begin
             end
             else
             begin
-              {
+
               slid :=
                 ADOQuery2.FieldByName('slid').AsString;
-
 
               ADOQuery2.SQL.Clear;
               ADOQuery2.SQL.Add('select * from selllogdetails where slid="' +
@@ -776,7 +1006,6 @@ begin
                 ADOQuery1.FieldByName('pid').AsString +
                 '"');
               ADOQuery2.Open;
-              }
 
               //一类产品的数量不能超过原始订单中的产品数量
               if ADOQuery1.FieldByName('ramount').AsInteger
@@ -843,7 +1072,7 @@ begin
           QH2;
         end;
       end;
-
+      }
   end;
 end;
 
@@ -915,7 +1144,8 @@ begin
       ADOQuerySQL.SQL.Add('update afterselldetails set amount="' + RzEdit3.Text +
         '",updated_at=now() where tid = "' + Label26.Caption
         + '" and pid="' +
-        ADOQuery1.FieldByName('pid').AsString + '" and type="' +
+        ADOQuery1.FieldByName('pid').AsString +
+        '" and type="' +
         ADOQuery1.FieldByName('type').AsString + '"');
       ADOQuerySQL.ExecSQL;
 
@@ -926,7 +1156,6 @@ begin
     RzEdit4.SetFocus;
   end;
 end;
-
 
 {修改件数}
 
@@ -956,7 +1185,8 @@ begin
       ADOQuerySQL.SQL.Add('update afterselldetails set bundle="' + RzEdit5.Text +
         '",updated_at=now() where tid = "' + Label26.Caption
         + '" and pid="' +
-        ADOQuery1.FieldByName('pid').AsString + '" and type="' +
+        ADOQuery1.FieldByName('pid').AsString +
+        '" and type="' +
         ADOQuery1.FieldByName('type').AsString + '"');
       ADOQuerySQL.ExecSQL;
 
@@ -1006,7 +1236,6 @@ begin
   end;
 end;
 
-
 {上下移动列表行时更新数据}
 
 procedure TMain_T.DBGrid1MouseUp(Sender: TObject; Button:
@@ -1044,7 +1273,7 @@ procedure TMain_T.RzEdit4KeyPress(Sender: TObject; var Key:
 begin
   if key = #13 then
   begin
-    //当输入为空则结账
+    //当输入为@则结账
     if (RzEdit4.Text = '@') and (ADOQuery1.RecordCount > 0)
       then
     begin
@@ -1056,63 +1285,15 @@ begin
         Exit;
       end;
 
-      Gathering := TGathering.create(application);
-      Gathering.showmodal;
+      SHQR := TSHQR.create(application);
+      SHQR.showmodal;
       Exit;
     end;
-
-    //这里只允许选择该客户订单中还有余数的产品
-    //提供客户选择产品的功能
-    if QPC <> nil then
-      QPC.ShowModal
-    else
-    begin
-      QPC := TQPC.Create(Application);
-      QPC.ShowModal;
-    end;
-
-
-
-
-    {
-    //流程要求先输入客户名称
-    //检查货物数量
-    if edt1.Text = '' then
-    begin
-      ShowMessage('请先输入客户信息再开始下单~~!');
-      edt1.SetFocus;
-      Exit;
-    end;
-
-    //提供客户选择产品的功能
-    if QP <> nil then
-      QP.ShowModal
-    else
-    begin
-      QP := TQP.Create(Application);
-      QP.ShowModal;
-    end;
-
-
-    //在库存中按条码查找商品
-    ADOQuerySQL.SQL.Clear;
-    ADOQuerySQL.SQL.Add('Select * from stocks Where pid="'
-      + RzEdit4.Text +
-      '"');
-    ADOQuerySQL.ExecSQL;
-    if ADOQuerySQL.RecordCount <> 0 then
-    begin
-      WRecord;
-      RzEdit4.Text := '';
-      RzEdit4.SetFocus;
-    end;
-    }
 
   end;
   if (key = #43) or (key = #45) then
     key := #0;
 end;
-
 
 {根据客户姓名模糊查询该客户的历史订单}
 
@@ -1220,7 +1401,6 @@ begin
   Main_T.Width := 1045; //恢复主窗口大小
   Main_T.Height := 810; //恢复主窗口大小
 
-
   //使主窗口位于屏幕正中央
   Main_T.Top := (GetSystemMetrics(SM_CySCREEN) -
     Main_T.Height) div 2 - 13;
@@ -1285,3 +1465,4 @@ begin
 end;
 
 end.
+

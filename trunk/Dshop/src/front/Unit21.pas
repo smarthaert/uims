@@ -69,13 +69,14 @@ end;
 
 procedure TQPC.SpeedButton2Click(Sender: TObject);
 begin
-  
+
   //将选择的产品数量增加1
   ADOQuerySQL.SQL.Clear;
   ADOQuerySQL.SQL.Add('insert into afterselldetails(tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,');
   ADOQuerySQL.SQL.Add('ramount,bundle,rbundle,discount,additional,subtotal,status,type,cdate,remark,created_at,updated_at) select tid,pid,barcode,');
   ADOQuerySQL.SQL.Add('goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,"1" as ramount,bundle,rbundle,discount,additional,');
-  ADOQuerySQL.SQL.Add('subtotal,status,"-" as type,now() as cdate,remark,now() as created_at,now() as updated_at from afterselldetails where tid="' + Main_T.Label26.Caption + '" and pid="' + ADOQuery1.FieldByName('pid').AsString + '"');
+  ADOQuerySQL.SQL.Add('subtotal,status,"-" as type,now() as cdate,remark,now() as created_at,now() as updated_at from afterselldetails where tid="' + Main_T.Label26.Caption + '" and pid="' +
+    ADOQuery1.FieldByName('pid').AsString + '"');
   ADOQuerySQL.ExecSQL;
 
   Main_T.QH1;
@@ -115,4 +116,3 @@ begin
 end;
 
 end.
-

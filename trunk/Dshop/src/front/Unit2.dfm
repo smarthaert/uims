@@ -668,9 +668,9 @@ object Main: TMain
     object lbl12: TLabel
       Left = 20
       Top = 153
-      Width = 90
+      Width = 102
       Height = 12
-      Caption = 'F11.'#24453#22788#29702#35746#21333':'
+      Caption = 'F11.'#24453#22788#29702#30340#35746#21333':'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -12
@@ -681,9 +681,9 @@ object Main: TMain
     object lbl13: TLabel
       Left = 26
       Top = 177
-      Width = 84
+      Width = 96
       Height = 12
-      Caption = 'F7.'#25346#36215#20986#24211#21333':'
+      Caption = 'F7.'#25346#36215#30340#20986#24211#21333':'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -12

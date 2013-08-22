@@ -124,7 +124,6 @@ begin
     Main.cbb1.Text := '';
     Main.mmo1.Text := '';
 
-
     //恢复历史单据信息
     Main.Label26.Caption :=
       ADOQuery1.FieldByName('slid').AsString;
@@ -148,7 +147,6 @@ begin
     Main.RzEdit7.Text :=
       ADOQuery1.FieldByName('shopname').AsString;
 
-
     Main.edt4.Text :=
       ADOQuery1.FieldByName('sname').AsString;
     Main.edt5.Text :=
@@ -156,15 +154,12 @@ begin
     Main.edt6.Text :=
       ADOQuery1.FieldByName('saddress').AsString;
 
-
     Main.cbb1.Text :=
       ADOQuery1.FieldByName('payment').AsString;
     Main.mmo1.Text :=
       ADOQuery1.FieldByName('remark').AsString;
 
-
     //冻结窗口，禁止修改相关数据。或者直接打印
-
 
     SpeedButton1.Click;
 
@@ -239,7 +234,6 @@ begin
     ADOQuery1.SQL.Add('select * from selllogmains where DATE_FORMAT(cdate,"%y%m%d")=DATE_FORMAT(now(),"%y%m%d") and status and slid like "%' + Edit1.Text + '%"');
     ADOQuery1.Active := True;
   end;
-
 
 end;
 
