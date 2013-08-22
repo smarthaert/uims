@@ -101,13 +101,11 @@ begin
   Main.RzEdit7.Text :=
     ADOQuery1.FieldByName('shopname').AsString;
 
-
   Main.edt4.Text :=
     ADOQuery1.FieldByName('sname').AsString;
   Main.edt5.Text := ADOQuery1.FieldByName('stel').AsString;
   Main.edt6.Text :=
     ADOQuery1.FieldByName('saddress').AsString;
-
 
   Main.cbb1.Text :=
     ADOQuery1.FieldByName('payment').AsString;

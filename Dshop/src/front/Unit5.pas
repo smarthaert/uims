@@ -116,7 +116,6 @@ begin
   end;
 end;
 
-
 {结账操作}
 
 procedure TGathering.jz;
@@ -147,7 +146,6 @@ begin
     Main.RzEdit4.SetFocus;
     Exit;
   end;
-
 
   //如果使用现金支付，检查输入金额是否小于应付款
   if Main.cbb1.Text = '现金' then
@@ -198,7 +196,6 @@ begin
         Main.QuickRep1.QRPrinter.Cleanup;
       end;
 
-
       Main.QuickRep1.Print;
       //Main.QuickRep1.Preview;
     end;
@@ -235,7 +232,6 @@ begin
       Main.edt1.Text + '","' + Main.edt2.Text +
       '",now(),"",now(),now()) on duplicate key update updated_at=now()');
     Main.ADOQuerySQL.ExecSQL;
-
 
     //写销售记录
     Main.ADOQuery1.First;
@@ -277,7 +273,7 @@ begin
     //跟新实际发货数量，一边日后到货提醒
     //前提是控制好实际发货数量不能超过订单数量
     Main.ADOQuerySQL.SQL.Clear;
-    Main.ADOQuerySQL.SQL.Add('update selllogmains a,ordermains b,orderdetails c,selllogdetails d set c.ramount=d.amount,c.rbundle=d.bundle,c.additional=d.additional,c.updated_at=now() where a.slid="' + Main.Label26.Caption +
+    Main.ADOQuerySQL.SQL.Add('update selllogmains a,ordermains b,orderdetails c,selllogdetails d set c.ramount=d.amount,c.rbundle=d.bundle,c.additional=d.additional,c.updated_at=now(),d.camount=d.amount,d.cbundle=d.bundle,d.updated_at=now() where a.slid="' + Main.Label26.Caption +
       '" and a.preid=b.oid and b.oid=c.oid and d.slid=a.slid and d.pid=c.pid');
     Main.ADOQuerySQL.ExecSQL;
 
@@ -289,8 +285,6 @@ begin
     //维修库存状态更新
 
   end;
-
-
 
   //查找最小单号
   Main.GetOrderId;
@@ -313,12 +307,9 @@ begin
   Main.cbb1.Text := '';
   Main.mmo1.Text := '';
 
-
   //刷新销售列表
   Main.ListRefresh;
 end;
-
-
 
 procedure TGathering.RzEdit1KeyDown(Sender: TObject; var
   Key: Word;
@@ -335,3 +326,4 @@ begin
 end;
 
 end.
+

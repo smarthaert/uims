@@ -1,6 +1,6 @@
 object Main_T: TMain_T
-  Left = 343
-  Top = 24
+  Left = 240
+  Top = 51
   Width = 1045
   Height = 810
   ActiveControl = edt1
@@ -20,6 +20,27 @@ object Main_T: TMain_T
   OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 12
+  object bvl1: TBevel
+    Left = -1
+    Top = 286
+    Width = 242
+    Height = 2
+    Shape = bsBottomLine
+    Style = bsRaised
+  end
+  object lbl12: TLabel
+    Left = 42
+    Top = 299
+    Width = 154
+    Height = 14
+    Caption = #25353'"'#8593#12289#8595'"'#36873#25321#32534#36753#35760#24405
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clWhite
+    Font.Height = -14
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+  end
   object Panel1: TPanel
     Left = 0
     Top = 0
@@ -102,7 +123,7 @@ object Main_T: TMain_T
       Top = 38
       Width = 48
       Height = 12
-      Caption = 'F2.'#25968#37327':'
+      Caption = 'F2.'#25286#20998':'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -12
@@ -111,7 +132,7 @@ object Main_T: TMain_T
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 198
+      Left = 157
       Top = 38
       Width = 48
       Height = 12
@@ -220,11 +241,11 @@ object Main_T: TMain_T
       ParentFont = False
     end
     object Label31: TLabel
-      Left = 105
+      Left = 85
       Top = 38
       Width = 48
       Height = 12
-      Caption = 'F3.'#20214#25968':'
+      Caption = 'F3.'#21512#24182':'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -12
@@ -233,11 +254,11 @@ object Main_T: TMain_T
       ParentFont = False
     end
     object Label32: TLabel
-      Left = 248
+      Left = 228
       Top = 38
       Width = 48
       Height = 12
-      Caption = 'F5.'#21806#21518':'
+      Caption = 'F5.'#32500#20462':'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -12
@@ -285,7 +306,7 @@ object Main_T: TMain_T
       OnKeyPress = RzEdit2KeyPress
     end
     object RzEdit3: TRzEdit
-      Left = 61
+      Left = 349
       Top = 35
       Width = 40
       Height = 20
@@ -300,6 +321,7 @@ object Main_T: TMain_T
       FrameVisible = True
       ParentCtl3D = False
       TabOrder = 1
+      Visible = False
       OnKeyPress = RzEdit3KeyPress
     end
     object RzEdit4: TRzEdit
@@ -327,7 +349,7 @@ object Main_T: TMain_T
       OnKeyPress = RzEdit4KeyPress
     end
     object RzEdit5: TRzEdit
-      Left = 153
+      Left = 401
       Top = 35
       Width = 40
       Height = 20
@@ -342,6 +364,7 @@ object Main_T: TMain_T
       FrameVisible = True
       ParentCtl3D = False
       TabOrder = 2
+      Visible = False
       OnKeyPress = RzEdit5KeyPress
     end
     object ComboBox1: TComboBox
@@ -378,10 +401,10 @@ object Main_T: TMain_T
     TabOrder = 1
     object Label5: TLabel
       Left = 9
-      Top = 379
+      Top = 530
       Width = 90
       Height = 19
-      Caption = #19978#21333#24212#20184':'
+      Caption = #19978#21333#24212#36864':'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -19
@@ -391,10 +414,10 @@ object Main_T: TMain_T
     end
     object Label9: TLabel
       Left = 9
-      Top = 411
+      Top = 562
       Width = 90
       Height = 19
-      Caption = #19978#21333#23454#20184':'
+      Caption = #19978#21333#20184#27454':'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -19
@@ -404,7 +427,7 @@ object Main_T: TMain_T
     end
     object Label10: TLabel
       Left = 9
-      Top = 443
+      Top = 594
       Width = 90
       Height = 19
       Caption = #19978#21333#25214#38646':'
@@ -417,7 +440,7 @@ object Main_T: TMain_T
     end
     object Label11: TLabel
       Left = 177
-      Top = 379
+      Top = 530
       Width = 20
       Height = 19
       Caption = #20803
@@ -430,7 +453,7 @@ object Main_T: TMain_T
     end
     object Label12: TLabel
       Left = 177
-      Top = 411
+      Top = 562
       Width = 20
       Height = 19
       Caption = #20803
@@ -443,7 +466,7 @@ object Main_T: TMain_T
     end
     object Label13: TLabel
       Left = 177
-      Top = 443
+      Top = 594
       Width = 20
       Height = 19
       Caption = #20803
@@ -456,7 +479,7 @@ object Main_T: TMain_T
     end
     object Label14: TLabel
       Left = 96
-      Top = 379
+      Top = 530
       Width = 80
       Height = 19
       Alignment = taRightJustify
@@ -471,7 +494,7 @@ object Main_T: TMain_T
     end
     object Label15: TLabel
       Left = 96
-      Top = 411
+      Top = 562
       Width = 80
       Height = 19
       Alignment = taRightJustify
@@ -486,7 +509,7 @@ object Main_T: TMain_T
     end
     object Label16: TLabel
       Left = 96
-      Top = 443
+      Top = 594
       Width = 80
       Height = 19
       Alignment = taRightJustify
@@ -501,7 +524,7 @@ object Main_T: TMain_T
     end
     object Bevel3: TBevel
       Left = 3
-      Top = 360
+      Top = 511
       Width = 242
       Height = 2
       Shape = bsBottomLine
@@ -561,28 +584,15 @@ object Main_T: TMain_T
     end
     object Bevel4: TBevel
       Left = -1
-      Top = 137
+      Top = 289
       Width = 242
       Height = 2
       Shape = bsBottomLine
       Style = bsRaised
     end
-    object Label23: TLabel
-      Left = 42
-      Top = 174
-      Width = 154
-      Height = 14
-      Caption = #25353'"'#65291#12289#65293'"'#35843#25972#21830#21697#25968#37327
-      Font.Charset = GB2312_CHARSET
-      Font.Color = clWhite
-      Font.Height = -14
-      Font.Name = #23435#20307
-      Font.Style = []
-      ParentFont = False
-    end
     object Label24: TLabel
       Left = 42
-      Top = 150
+      Top = 302
       Width = 154
       Height = 14
       Caption = #25353'"'#8593#12289#8595'"'#36873#25321#32534#36753#35760#24405
@@ -595,10 +605,10 @@ object Main_T: TMain_T
     end
     object Label27: TLabel
       Left = 42
-      Top = 273
+      Top = 327
       Width = 154
       Height = 14
-      Caption = 'Space('#31354#26684#38190').'#32467#36134#25910#27454
+      Caption = 'Space('#31354#26684#38190').'#32467#36134#20184#27454
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -14
@@ -608,7 +618,7 @@ object Main_T: TMain_T
     end
     object Label28: TLabel
       Left = 42
-      Top = 297
+      Top = 351
       Width = 154
       Height = 14
       Caption = 'F6 .'#25346#21333#12288#12288#12288'F7. '#21462#21333
@@ -619,25 +629,12 @@ object Main_T: TMain_T
       Font.Style = []
       ParentFont = False
     end
-    object Label29: TLabel
-      Left = 42
-      Top = 248
-      Width = 154
-      Height = 14
-      Caption = 'Delete. '#21024#38500#24050#24405#20837#21830#21697
-      Font.Charset = GB2312_CHARSET
-      Font.Color = clWhite
-      Font.Height = -14
-      Font.Name = #23435#20307
-      Font.Style = []
-      ParentFont = False
-    end
     object Label30: TLabel
       Left = 42
-      Top = 322
-      Width = 154
+      Top = 376
+      Width = 84
       Height = 14
-      Caption = 'F8 .'#36864#36135#12288'F9 .'#21069#21488#35774#32622
+      Caption = 'F8 .'#21462#28040#36864#36135
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -14
@@ -645,28 +642,23 @@ object Main_T: TMain_T
       Font.Style = []
       ParentFont = False
     end
-    object Label22: TLabel
-      Left = 70
-      Top = 199
-      Width = 126
-      Height = 14
-      Caption = #36873#25321'"'#21512#35745'"'#34892#26102#35843#25972
-      Font.Charset = GB2312_CHARSET
-      Font.Color = clWhite
-      Font.Height = -14
-      Font.Name = #23435#20307
-      Font.Style = []
-      ParentFont = False
+    object Bevel5: TBevel
+      Left = 0
+      Top = 131
+      Width = 242
+      Height = 2
+      Shape = bsBottomLine
+      Style = bsRaised
     end
-    object Label33: TLabel
-      Left = 70
-      Top = 224
-      Width = 126
-      Height = 14
-      Caption = #35746#21333#20013#25152#26377#21830#21697#25968#37327
+    object Label34: TLabel
+      Left = 24
+      Top = 160
+      Width = 102
+      Height = 12
+      Caption = 'F7.'#25346#36215#30340#21806#21518#21333#65306
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
-      Font.Height = -14
+      Font.Height = -12
       Font.Name = #23435#20307
       Font.Style = []
       ParentFont = False

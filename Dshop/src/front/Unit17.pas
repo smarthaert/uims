@@ -88,7 +88,7 @@ begin
   ADOQuerySQL.SQL.Clear;
   ADOQuerySQL.SQL.Add('insert into afterselldetails(tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,');
   ADOQuerySQL.SQL.Add('ramount,bundle,rbundle,discount,additional,subtotal,status,type,cdate,remark,created_at,updated_at) select "' + Main_T.Label26.Caption +
-    '" as tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,amount,bundle,bundle,discount,' +
+    '" as tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,camount,camount,cbundle,cbundle,discount,' +
     'additional,subtotal,"0" as status,"-" as type,now() as cdate,remark,now() as created_at,now() as updated_at from selllogdetails where slid="' +
     ADOQuery1.FieldByName('slid').AsString + '"');
   ADOQuerySQL.ExecSQL;
@@ -99,7 +99,6 @@ begin
     Main_T.Label26.Caption + '" where slid="' +
     ADOQuery1.FieldByName('slid').AsString + '"');
   ADOQuerySQL.ExecSQL;
-
 
   {恢复客户，物流等信息}
   Main_T.edt1.Text :=
@@ -115,14 +114,12 @@ begin
   Main_T.RzEdit7.Text :=
     ADOQuery1.FieldByName('shopname').AsString;
 
-
   Main_T.edt4.Text :=
     ADOQuery1.FieldByName('sname').AsString;
   Main_T.edt5.Text :=
     ADOQuery1.FieldByName('stel').AsString;
   Main_T.edt6.Text :=
     ADOQuery1.FieldByName('saddress').AsString;
-
 
   Main_T.cbb1.Text :=
     ADOQuery1.FieldByName('payment').AsString;
@@ -167,3 +164,4 @@ begin
 end;
 
 end.
+

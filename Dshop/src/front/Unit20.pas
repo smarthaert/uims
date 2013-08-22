@@ -73,12 +73,12 @@ begin
   Main.RzEdit4.Text :=
     DBGrid1.DataSource.DataSet.FieldByName('pid').AsString;
 
-    {
-  //选择产品后，建立当前订单和出库单之间的前后关系
-  ADOQuerySQL.SQL.Clear;
-  ADOQuerySQL.SQL.Add('update selllogmains set preid="' + ADOQuery1.FieldByName('tid').AsString + '"');
-  ADOQuerySQL.ExecSQL;
-  }
+  {
+//选择产品后，建立当前订单和出库单之间的前后关系
+ADOQuerySQL.SQL.Clear;
+ADOQuerySQL.SQL.Add('update selllogmains set preid="' + ADOQuery1.FieldByName('tid').AsString + '"');
+ADOQuerySQL.ExecSQL;
+}
   SpeedButton1.Click;
 end;
 
@@ -104,7 +104,7 @@ end;
 
 procedure TQPT.FormShow(Sender: TObject);
 begin
-  
+
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
   ADOQuery1.SQL.Add('select d.tid,d.pid,barcode,d.goodsname,d.size,d.color,d.volume,d.unit,d.inprice,d.pfprice,d.amount,');
@@ -115,4 +115,3 @@ begin
 end;
 
 end.
-
