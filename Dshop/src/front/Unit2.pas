@@ -183,6 +183,7 @@ type
     { Private declarations }
   public
     reprint: Boolean;
+    qsrc: string;
     procedure QH1;
     procedure WRecord;
     procedure QH2;
@@ -472,7 +473,8 @@ begin
   //查销售主库是否有此单号
   //todo:应该使用insert into on duplicat update 语句确保所有字段在每次修改时都更新，或者在最后提交订单时再更新
   ADOQuery3.SQL.Clear;
-  ADOQuery3.SQL.Add('Select * from selllogmains Where slid="' + Label26.Caption +
+  ADOQuery3.SQL.Add('Select * from selllogmains Where slid="' + Label26.Caption
+    +
     '"');
   ADOQuery3.Open;
   if ADOQuery3.RecordCount = 0 then
@@ -513,8 +515,8 @@ begin
       '","补件","' + ADOQuery2.FieldByName('type').AsString
       +
       '",now(),"0",now(),now()) on duplicate key update amount=amount+1,type="' +
-        ADOQuery2.FieldByName('type').AsString +
-        '", updated_at=now()');
+      ADOQuery2.FieldByName('type').AsString +
+      '", updated_at=now()');
     ADOQuerySQL.ExecSQL;
   end
   else
@@ -1084,7 +1086,8 @@ begin
       end;
 
       ADOQuerySQL.SQL.Clear;
-      ADOQuerySQL.SQL.Add('update selllogdetails set discount="' + RzEdit1.Text +
+      ADOQuerySQL.SQL.Add('update selllogdetails set discount="' + RzEdit1.Text
+        +
         '",updated_at=now() where slid = "' +
         Label26.Caption + '" and pid="' +
         ADOQuery1.FieldByName('pid').AsString +
@@ -1219,7 +1222,8 @@ begin
       end;
 
       ADOQuerySQL.SQL.Clear;
-      ADOQuerySQL.SQL.Add('update selllogdetails set outprice="' + RzEdit2.Text +
+      ADOQuerySQL.SQL.Add('update selllogdetails set outprice="' + RzEdit2.Text
+        +
         '",updated_at=now() where slid = "' +
         Label26.Caption + '" and pid="' +
         ADOQuery1.FieldByName('pid').AsString +
@@ -1389,6 +1393,7 @@ procedure TMain.edt1KeyPress(Sender: TObject; var Key:
 begin
   if key = #13 then
   begin
+    qsrc := 'cname';
     if QC <> nil then
       QC.ShowModal
     else
@@ -1447,12 +1452,13 @@ procedure TMain.edt8KeyPress(Sender: TObject; var Key:
 begin
   if key = #13 then
   begin
-    if QC_S <> nil then
-      QC_S.ShowModal
+    qsrc := 'state';
+    if QC <> nil then
+      QC.ShowModal
     else
     begin
-      QC_S := TQC_S.Create(Application);
-      QC_S.ShowModal;
+      QC := TQC.Create(Application);
+      QC.ShowModal;
     end;
   end;
   if (key = #43) or (key = #45) then
@@ -1464,12 +1470,15 @@ procedure TMain.edt2KeyPress(Sender: TObject; var Key:
 begin
   if key = #13 then
   begin
-    if QC_T <> nil then
-      QC_T.ShowModal
+
+    qsrc := 'tel';
+
+    if QC <> nil then
+      QC.ShowModal
     else
     begin
-      QC_T := TQC_T.Create(Application);
-      QC_T.ShowModal;
+      QC := TQC.Create(Application);
+      QC.ShowModal;
     end;
   end;
   if (key = #43) or (key = #45) then

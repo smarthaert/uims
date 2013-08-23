@@ -156,6 +156,7 @@ end;
 
 {查询销售记录表}
 //默认保修日期为100天
+
 procedure TQHD.FormShow(Sender: TObject);
 begin
   if Main_T.qsrc = 'custname' then
@@ -181,3 +182,4 @@ begin
 end;
 
 end.
+

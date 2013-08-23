@@ -224,9 +224,9 @@ begin
       Main.edt3.Text + '","'
       + Main.edt2.Text + '","' + Main.edt8.Text +
       '",now(),"",now(),now()) on duplicate key update cname="' +
-        Main.edt1.Text + '",shopname="' + Main.RzEdit7.Text +
-        '",address="' + Main.edt3.Text + '",state="' +
-        Main.edt8.Text + '",updated_at=now()');
+      Main.edt1.Text + '",shopname="' + Main.RzEdit7.Text +
+      '",address="' + Main.edt3.Text + '",state="' +
+      Main.edt8.Text + '",updated_at=now()');
     Main.ADOQuerySQL.ExecSQL;
 
     //记录新托运部信息
@@ -235,10 +235,10 @@ begin
       Main.edt6.Text + '","","' +
       Main.edt1.Text + '","' + Main.edt2.Text +
       '",now(),"",now(),now()) on duplicate key update sname="' +
-        Main.edt4.Text + '",tel="' + Main.edt5.Text +
-        '",address="' + Main.edt6.Text + '",custname="' +
-        Main.edt1.Text + '",custtel="' + Main.edt2.Text +
-        '",cdate=now(),updated_at=now()');
+      Main.edt4.Text + '",tel="' + Main.edt5.Text +
+      '",address="' + Main.edt6.Text + '",custname="' +
+      Main.edt1.Text + '",custtel="' + Main.edt2.Text +
+      '",cdate=now(),updated_at=now()');
     Main.ADOQuerySQL.ExecSQL;
 
     //写销售记录，分别更新各自库存
@@ -297,10 +297,10 @@ begin
     //修改成交数据
     //补件不计入本次销售，也不计算盈亏
     Main.ADOQuerySQL.SQL.Clear;
-    Main.ADOQuerySQL.SQL.Add('update selllogmains sm,selllogdetails sd set sd.camount=sd.amount,sd.cbundle=sd.bundle,sd.updated_at=now() where sm.slid="' + Main.Label26.Caption + '" and sd.slid=sm.slid and sd.additional<>"补件"');
+    Main.ADOQuerySQL.SQL.Add('update selllogmains sm,selllogdetails sd set sd.camount=sd.amount,sd.cbundle=sd.bundle,sd.updated_at=now() where sm.slid="' + Main.Label26.Caption +
+      '" and sd.slid=sm.slid and sd.additional<>"补件"');
     Main.ADOQuerySQL.ExecSQL;
 
-    
     //如果是在线渠道过来的订单 source /preid
     //跟新实际发货数量，一边日后到货提醒
     //前提是控制好实际发货数量不能超过订单数量
@@ -315,7 +315,6 @@ begin
     Main.ADOQuerySQL.ExecSQL;
 
     //维修库存状态更新
-    
 
   end;
 
@@ -370,4 +369,3 @@ begin
 end;
 
 end.
-

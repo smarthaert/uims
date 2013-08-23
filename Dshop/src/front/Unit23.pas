@@ -88,7 +88,8 @@ begin
 
   //删除第二次选择的记录
   ADOQuerySQL.SQL.Clear;
-  ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' + Main_T.Label26.Caption + '" and pid="' +
+  ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' +
+    Main_T.Label26.Caption + '" and pid="' +
     Main_T.ADOQuery1.FieldByName('pid').AsString +
     '" and additional="' +
     ADOQuery1.FieldByName('additional').AsString +

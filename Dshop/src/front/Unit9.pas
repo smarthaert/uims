@@ -106,11 +106,43 @@ end;
 
 procedure TQC.FormShow(Sender: TObject);
 begin
-  ADOQuery1.Close;
-  ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from customers where cname like "%' +
-    Main.edt1.Text + '%"');
-  ADOQuery1.Active := True;
+
+  if Main.qsrc = 'cname' then
+  begin
+    ADOQuery1.Close;
+    ADOQuery1.SQL.Clear;
+    ADOQuery1.SQL.Add('Select * from customers where cname like "%' +
+      Main.edt1.Text + '%"');
+    ADOQuery1.Active := True;
+  end
+  else if Main.qsrc = 'tel' then
+  begin
+    ADOQuery1.Close;
+    ADOQuery1.SQL.Clear;
+    ADOQuery1.SQL.Add('Select * from customers where tel="'
+      +
+      Main.edt2.Text + '"');
+    ADOQuery1.Active := True;
+  end
+  else if Main.qsrc = 'state' then
+  begin
+    ADOQuery1.Close;
+    ADOQuery1.SQL.Clear;
+    ADOQuery1.SQL.Add('Select * from customers where state="' +
+      Main.edt8.Text + '"');
+    ADOQuery1.Active := True;
+  end
+  else if Main.qsrc = 'cid' then
+  begin
+    ADOQuery1.Close;
+    ADOQuery1.SQL.Clear;
+    ADOQuery1.SQL.Add('Select * from customers where cid="'
+      +
+      Main.edt7.Text + '"');
+    ADOQuery1.Active := True;
+  end;
+
 end;
 
 end.
+
