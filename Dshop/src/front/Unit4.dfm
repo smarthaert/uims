@@ -1,6 +1,6 @@
 object Main_T: TMain_T
-  Left = 240
-  Top = 51
+  Left = 276
+  Top = 37
   Width = 1045
   Height = 810
   ActiveControl = edt1
@@ -110,7 +110,7 @@ object Main_T: TMain_T
       Top = 10
       Width = 96
       Height = 16
-      Caption = 'F1.'#21830#21697#26465#30721':'
+      Caption = 'F1.'#32467#24080#20184#27454':'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -16
@@ -1599,6 +1599,32 @@ object Main_T: TMain_T
           WordWrap = True
           FontSize = 10
         end
+        object qrdbtxttype: TQRDBText
+          Left = 759
+          Top = 0
+          Width = 26
+          Height = 17
+          Frame.Color = clBlack
+          Frame.DrawTop = False
+          Frame.DrawBottom = False
+          Frame.DrawLeft = False
+          Frame.DrawRight = False
+          Size.Values = (
+            44.979166666666670000
+            2008.187500000000000000
+            0.000000000000000000
+            68.791666666666680000)
+          Alignment = taLeftJustify
+          AlignToBand = False
+          AutoSize = True
+          AutoStretch = False
+          Color = clWhite
+          DataSet = ADOQuery1
+          DataField = 'type'
+          Transparent = False
+          WordWrap = True
+          FontSize = 10
+        end
       end
       object PageHeaderBand1: TQRBand
         Left = 38
@@ -1726,7 +1752,7 @@ object Main_T: TMain_T
           AlignToBand = False
           AutoSize = True
           AutoStretch = False
-          Caption = #24212#25910':999.99'
+          Caption = #24212#20184':999.99'
           Color = clWhite
           Font.Charset = GB2312_CHARSET
           Font.Color = clWindowText
@@ -1788,7 +1814,7 @@ object Main_T: TMain_T
           AlignToBand = False
           AutoSize = True
           AutoStretch = False
-          Caption = #23454#25910':999.99'
+          Caption = #20184#27454':999.99'
           Color = clWhite
           Font.Charset = GB2312_CHARSET
           Font.Color = clWindowText
@@ -2585,6 +2611,31 @@ object Main_T: TMain_T
           WordWrap = True
           FontSize = 10
         end
+        object QRLabel4: TQRLabel
+          Left = 758
+          Top = 0
+          Width = 33
+          Height = 17
+          Frame.Color = clBlack
+          Frame.DrawTop = False
+          Frame.DrawBottom = False
+          Frame.DrawLeft = False
+          Frame.DrawRight = False
+          Size.Values = (
+            44.979166666666670000
+            2005.541666666667000000
+            0.000000000000000000
+            87.312500000000000000)
+          Alignment = taLeftJustify
+          AlignToBand = False
+          AutoSize = True
+          AutoStretch = False
+          Caption = #21806#21518
+          Color = clWhite
+          Transparent = False
+          WordWrap = True
+          FontSize = 10
+        end
       end
       object qrbndtitleTitleBand1: TQRBand
         Left = 38
@@ -2626,7 +2677,7 @@ object Main_T: TMain_T
           AlignToBand = False
           AutoSize = True
           AutoStretch = False
-          Caption = #20135#21697#20986#24211#21333
+          Caption = #20135#21697#21806#21518#21333
           Color = clWhite
           Font.Charset = GB2312_CHARSET
           Font.Color = clWindowText

@@ -126,6 +126,12 @@ object QPT: TQPT
           Visible = True
         end
         item
+          Expanded = False
+          FieldName = 'additional'
+          Title.Caption = #34917#20214
+          Visible = True
+        end
+        item
           Alignment = taCenter
           Expanded = False
           FieldName = 'remark'

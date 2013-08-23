@@ -142,6 +142,8 @@ type
     lbl12: TLabel;
     Bevel5: TBevel;
     Label34: TLabel;
+    QRLabel4: TQRLabel;
+    qrdbtxttype: TQRDBText;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -177,6 +179,7 @@ type
     { Private declarations }
   public
     reprint: Boolean;
+    qsrc: string;
     procedure QH1;
     procedure WRecord;
     procedure QH2;
@@ -261,7 +264,7 @@ begin
   ADOQuery1.SQL.Add('tid, barcode, size, inprice, pfprice,hprice,type from afterselldetails, (SELECT @row := 0) r where tid="' + Label26.Caption +
     '" and ramount>0 order by id) union (select "合计" as row, "" as id, "" as pid, "" as goodsname, "" as color,FORMAT(sum(volume*amount),2) ');
   ADOQuery1.SQL.Add('as volume,FORMAT(sum(amount),0) as amount,FORMAT(sum(ramount),0) as ramount,"" as unit,FORMAT(sum(bundle),0) as bundle,FORMAT(sum(rbundle),0) as rbundle,"" as outprice,"" as discount,"" ');
-  ADOQuery1.SQL.Add('as additional,-FORMAT(sum(subtotal),0) as subtotal, "" as tid, "" as barcode, "" as size, "" as inprice, "" as pfprice, "" as hprice, "" as type  from afterselldetails where tid = "' + Label26.Caption + '" and type="退货" and ramount>0)');
+  ADOQuery1.SQL.Add('as additional,FORMAT(sum(subtotal),0) as subtotal, "" as tid, "" as barcode, "" as size, "" as inprice, "" as pfprice, "" as hprice, "" as type  from afterselldetails where tid = "' + Label26.Caption + '" and type="退货" and ramount>0)');
 
   ADOQuery1.Open;
   if ADOQuery1.RecordCount > 1 then
@@ -269,8 +272,8 @@ begin
     try
       ADOQuery1.GotoBookmark(bookmark);
     except
-      
-    end;  
+
+    end;
 
   end;
 
@@ -318,8 +321,8 @@ begin
     '');
 
   QRLabel10.Caption := '操作员:' + Label19.Caption;
-  QRLabel7.Caption := '应收:' + Label14.Caption + '元';
-  QRLabel8.Caption := '实收:' + Label15.Caption + '元';
+  QRLabel7.Caption := '应退:' + Label14.Caption + '元';
+  QRLabel8.Caption := '付款:' + Label15.Caption + '元';
   QRLabel9.Caption := '找零:' + Label16.Caption + '元';
 
   qrlbl13.Caption := '收件人:' + Main_T.edt1.Text;
@@ -401,10 +404,6 @@ begin
 
   end;
 
-  //ADOQuerySQL.SQL.Clear;
-  //ADOQuerySQL.SQL.Add('insert into selllogdetails(slid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,bundle,discount,additional,cdate,status,created_at,updated_at) values("' + Label26.Caption + '","' + ADOQuery2.FieldByName('pid').AsString + '","' + ADOQuery2.FieldByName('barcode').AsString + '","' + ADOQuery2.FieldByName('goodsname').AsString + '","' + ADOQuery2.FieldByName('size').AsString + '","' + ADOQuery2.FieldByName('color').AsString + '","' + ADOQuery2.FieldByName('volume').AsString + '","' + ADOQuery2.FieldByName('unit').AsString + '","' + ADOQuery2.FieldByName('inprice').AsString + '","' + ADOQuery2.FieldByName('pfprice').AsString + '","' + ADOQuery2.FieldByName('pfprice').AsString + '","' + ADOQuery2.FieldByName('pfprice').AsString + '","' + RzEdit3.Text + '","0","' + RzEdit1.Text + '","-",now(),"0",now(),now()) on duplicate key update amount=amount+1,updated_at=now()');
-  //ADOQuerySQL.ExecSQL;
-
   QH1;
   QH2;
 
@@ -415,7 +414,7 @@ end;
 procedure TMain_T.QH2;
 begin
   ADOQuery2.SQL.Clear;
-  ADOQuery2.SQL.Add('Select -sum(subtotal) from afterselldetails Where tid="' +
+  ADOQuery2.SQL.Add('Select sum(subtotal) from afterselldetails Where tid="' +
     Label26.Caption + '" and type="退货"');
   ADOQuery2.Open;
 
@@ -493,6 +492,7 @@ begin
             mtconfirmation,
             [mbyes, mbno], 0) = mryes then
           begin
+            //additional为"补件的不需要合并，因为拆分出来的"
             //首先汇总出数据插入数据表中
             ADOQuerySQL.SQL.Clear;
             ADOQuerySQL.SQL.Add('insert into afterselldetails(tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,ramount,');
@@ -500,17 +500,19 @@ begin
             ADOQuerySQL.SQL.Add('size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,sum(ramount) as ramount,bundle,rbundle,discount,additional,');
             ADOQuerySQL.SQL.Add('subtotal,status,"all" as type,now() as cdate,remark,now() as created_at,now() as updated_at from afterselldetails ');
             ADOQuerySQL.SQL.Add('where tid="' +
-              Label26.Caption + '" group by pid,additional');
+              Label26.Caption +
+              '" and additional<>"补件" group by pid,additional,type');
             ADOQuerySQL.ExecSQL;
 
             //删除原有的没有汇总的数据
             ADOQuerySQL.SQL.Clear;
-            ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' + Label26.Caption + '" and type<>"all"');
+            ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' + Label26.Caption +
+              '" and additional<>"补件" and type<>"all"');
             ADOQuerySQL.ExecSQL;
 
             //更新汇总时使用的临时标记位
             ADOQuerySQL.SQL.Clear;
-            ADOQuerySQL.SQL.Add('update afterselldetails set type="退货" where tid="' + Label26.Caption + '"');
+            ADOQuerySQL.SQL.Add('update afterselldetails set type="退货" where tid="' + Label26.Caption + '" and type="all"');
             ADOQuerySQL.ExecSQL;
 
           end
@@ -519,6 +521,13 @@ begin
         end
         else
         begin
+
+          if ADOQuery1.FieldByName('additional').AsString =
+            '补件' then
+          begin
+            ShowMessage('补件商品请在原始订单中进行退货~~!');
+            Exit;
+          end;
 
           if ADOQuery1.FieldByName('type').AsString <>
             '退货' then
@@ -529,7 +538,7 @@ begin
               ADOQuery1.FieldByName('pid').AsString +
               '" and additional="' +
               ADOQuery1.FieldByName('additional').AsString
-                +
+              +
               '" and type="退货"');
             ADOQuery2.Open;
 
@@ -543,7 +552,7 @@ begin
                 '"');
               ADOQuerySQL.SQL.Add(' and additional="' +
                 ADOQuery1.FieldByName('additional').AsString
-                  +
+                +
                 '" and type="' +
                 ADOQuery1.FieldByName('type').AsString +
                 '") t set ad.ramount=(ad.ramount+t.ramount),updated_at=now() where t.tid=ad.tid and t.pid=ad.pid and ad.type="退货"');
@@ -555,7 +564,7 @@ begin
                 ADOQuery1.FieldByName('pid').AsString +
                 '" and additional="' +
                 ADOQuery1.FieldByName('additional').AsString
-                  +
+                +
                 '" and type="' +
                 ADOQuery1.FieldByName('type').AsString +
                 '"');
@@ -572,7 +581,7 @@ begin
                 ADOQuery1.FieldByName('pid').AsString +
                 '" and additional="' +
                 ADOQuery1.FieldByName('additional').AsString
-                  +
+                +
                 '" and type="' +
                 ADOQuery1.FieldByName('type').AsString +
                 '"');
@@ -603,7 +612,8 @@ begin
             ADOQuerySQL.SQL.Add('size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,sum(ramount) as ramount,bundle,rbundle,discount,additional,');
             ADOQuerySQL.SQL.Add('subtotal,status,"all" as type,now() as cdate,remark,now() as created_at,now() as updated_at from afterselldetails ');
             ADOQuerySQL.SQL.Add('where tid="' +
-              Label26.Caption + '" group by pid,additional');
+              Label26.Caption +
+              '" group by pid,additional');
             ADOQuerySQL.ExecSQL;
 
             //删除原有的没有汇总的数据
@@ -632,7 +642,7 @@ begin
               ADOQuery1.FieldByName('pid').AsString +
               '" and additional="' +
               ADOQuery1.FieldByName('additional').AsString
-                +
+              +
               '" and type="维修"');
             ADOQuery2.Open;
 
@@ -646,7 +656,7 @@ begin
                 '"');
               ADOQuerySQL.SQL.Add(' and additional="' +
                 ADOQuery1.FieldByName('additional').AsString
-                  +
+                +
                 '" and type="' +
                 ADOQuery1.FieldByName('type').AsString +
                 '") t set ad.ramount=(ad.ramount+t.ramount),updated_at=now() where t.tid=ad.tid and t.pid=ad.pid and ad.type="维修"');
@@ -658,7 +668,7 @@ begin
                 ADOQuery1.FieldByName('pid').AsString +
                 '" and additional="' +
                 ADOQuery1.FieldByName('additional').AsString
-                  +
+                +
                 '" and type="' +
                 ADOQuery1.FieldByName('type').AsString +
                 '"');
@@ -675,7 +685,7 @@ begin
                 ADOQuery1.FieldByName('pid').AsString +
                 '" and additional="' +
                 ADOQuery1.FieldByName('additional').AsString
-                  +
+                +
                 '" and type="' +
                 ADOQuery1.FieldByName('type').AsString +
                 '"');
@@ -809,7 +819,8 @@ begin
             ADOQuerySQL.SQL.Add('size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,sum(ramount) as ramount,bundle,rbundle,discount,additional,');
             ADOQuerySQL.SQL.Add('subtotal,status,"all" as type,now() as cdate,remark,now() as created_at,now() as updated_at from afterselldetails ');
             ADOQuerySQL.SQL.Add('where tid="' +
-              Label26.Caption + '" group by pid,additional');
+              Label26.Caption +
+              '" group by pid,additional');
             ADOQuerySQL.ExecSQL;
 
             //删除原有的没有汇总的数据
@@ -837,7 +848,7 @@ begin
               ADOQuery1.FieldByName('pid').AsString +
               '" and additional="' +
               ADOQuery1.FieldByName('additional').AsString
-                +
+              +
               '" and type="-"');
             ADOQuery2.Open;
 
@@ -851,7 +862,7 @@ begin
                 '"');
               ADOQuerySQL.SQL.Add(' and additional="' +
                 ADOQuery1.FieldByName('additional').AsString
-                  +
+                +
                 '" and type="' +
                 ADOQuery1.FieldByName('type').AsString +
                 '") t set ad.ramount=(ad.ramount+t.ramount),updated_at=now() where t.tid=ad.tid and t.pid=ad.pid and ad.type="-"');
@@ -863,7 +874,7 @@ begin
                 ADOQuery1.FieldByName('pid').AsString +
                 '" and additional="' +
                 ADOQuery1.FieldByName('additional').AsString
-                  +
+                +
                 '" and type="' +
                 ADOQuery1.FieldByName('type').AsString +
                 '"');
@@ -880,7 +891,7 @@ begin
                 ADOQuery1.FieldByName('pid').AsString +
                 '" and additional="' +
                 ADOQuery1.FieldByName('additional').AsString
-                  +
+                +
                 '" and type="' +
                 ADOQuery1.FieldByName('type').AsString +
                 '"');
@@ -892,7 +903,7 @@ begin
         QH1;
         QH2;
       end;
-
+    {
     VK_F11:
       begin
         if QO <> nil then
@@ -903,6 +914,7 @@ begin
           QO.ShowModal;
         end;
       end;
+      }
 
     VK_F12: SpeedButton2.Click;
 
@@ -1274,7 +1286,7 @@ begin
   if key = #13 then
   begin
     //当输入为@则结账
-    if (RzEdit4.Text = '@') and (ADOQuery1.RecordCount > 0)
+    if (RzEdit4.Text = '') and (ADOQuery1.RecordCount > 0)
       then
     begin
 
@@ -1290,6 +1302,23 @@ begin
       Exit;
     end;
 
+    //根据客户名和客户提供的产品编号，查询所属原始订单
+    if edt1.Text = '' then
+    begin
+      ShowMessage('必须提供客户名称和产品编号才能查询原始订单。');
+      Exit;
+    end;
+
+    qsrc := 'pid';
+    if QHD <> nil then
+      QHD.ShowModal
+    else
+    begin
+      QHD := TQHD.Create(Application);
+      QHD.ShowModal;
+      //RzEdit4.SetFocus;
+    end;
+
   end;
   if (key = #43) or (key = #45) then
     key := #0;
@@ -1302,6 +1331,7 @@ procedure TMain_T.edt1KeyPress(Sender: TObject; var Key:
 begin
   if key = #13 then
   begin
+    qsrc := 'custname';
     if QHD <> nil then
       QHD.ShowModal
     else

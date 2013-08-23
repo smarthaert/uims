@@ -168,6 +168,7 @@ bundle:integer \
 cbundle:integer \
 discount:integer \
 additional:string \
+type:string \
 'subtotal:decimal{10,2}' \
 status:integer \
 cdate:date \
@@ -285,7 +286,6 @@ rails destroy scaffold Contactpayment
 rails generate scaffold Contactpayment \
 custid:string \
 custname:string \
-date:date \
 'outmoney:decimal{10,2}' \
 'inmoney:decimal{10,2}' \
 'strike:decimal{10,2}' \

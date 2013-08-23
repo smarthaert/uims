@@ -14,6 +14,7 @@ object Gathering: TGathering
   KeyPreview = True
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnActivate = FormActivate
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   PixelsPerInch = 96

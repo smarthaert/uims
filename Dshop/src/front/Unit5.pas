@@ -31,6 +31,7 @@ type
     procedure RzEdit1KeyDown(Sender: TObject; var Key:
       Word;
       Shift: TShiftState);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -222,7 +223,10 @@ begin
     Main.ADOQuerySQL.SQL.Add('insert into customers(cid,loginname,cname,shopname,sex,address,tel,state,cdate,remark,created_at,updated_at) values("","","' + Main.edt1.Text + '","' + Main.RzEdit7.Text + '","","' +
       Main.edt3.Text + '","'
       + Main.edt2.Text + '","' + Main.edt8.Text +
-      '",now(),"",now(),now()) on duplicate key update updated_at=now()');
+      '",now(),"",now(),now()) on duplicate key update cname="' +
+        Main.edt1.Text + '",shopname="' + Main.RzEdit7.Text +
+        '",address="' + Main.edt3.Text + '",state="' +
+        Main.edt8.Text + '",updated_at=now()');
     Main.ADOQuerySQL.ExecSQL;
 
     //记录新托运部信息
@@ -230,20 +234,41 @@ begin
     Main.ADOQuerySQL.SQL.Add('insert into shippers(sid,sname,tel,address,custid,custname,custtel,cdate,remark,created_at,updated_at) values("","' + Main.edt4.Text + '","' + Main.edt5.Text + '","' +
       Main.edt6.Text + '","","' +
       Main.edt1.Text + '","' + Main.edt2.Text +
-      '",now(),"",now(),now()) on duplicate key update updated_at=now()');
+      '",now(),"",now(),now()) on duplicate key update sname="' +
+        Main.edt4.Text + '",tel="' + Main.edt5.Text +
+        '",address="' + Main.edt6.Text + '",custname="' +
+        Main.edt1.Text + '",custtel="' + Main.edt2.Text +
+        '",cdate=now(),updated_at=now()');
     Main.ADOQuerySQL.ExecSQL;
 
-    //写销售记录
+    //写销售记录，分别更新各自库存
     Main.ADOQuery1.First;
     while not (Main.ADOQuery1.Eof) do
     begin
-      Main.ADOQuerySQL.SQL.Clear;
-      Main.ADOQuerySQL.SQL.Add('update stocks set amount=amount-' +
-        Main.ADOQuery1.FieldByName('amount').AsString +
-        ', updated_at=now() where pid="' +
-        Main.ADOQuery1.FieldByName('pid').AsString + '"');
-      Main.ADOQuerySQL.ExecSQL;
+      if Main.ADOQuery1.FieldByName('additional').AsString
+        =
+        '-' then
+      begin
+        Main.ADOQuerySQL.SQL.Clear;
+        Main.ADOQuerySQL.SQL.Add('update stocks set amount=amount-' +
+          Main.ADOQuery1.FieldByName('amount').AsString +
+          ', updated_at=now() where pid="' +
+          Main.ADOQuery1.FieldByName('pid').AsString +
+          '"');
+        Main.ADOQuerySQL.ExecSQL;
+      end
+      else if
+        Main.ADOQuery1.FieldByName('additional').AsString =
+        '赠品' then
+      begin
 
+      end
+      else if
+        Main.ADOQuery1.FieldByName('additional').AsString =
+        '补件' then
+      begin
+
+      end;
       Main.ADOQuery1.Next;
     end;
 
@@ -252,7 +277,7 @@ begin
     Main.ADOQuerySQL.SQL.Add('update selllogmains set yingshou="' +
       Main.Label7.Caption + '", shishou="' + Label2.Caption
       +
-      '", status="1", type="已销售", remark="' +
+      '", status="1", type="已出库", remark="' +
       Main.mmo1.Lines.GetText +
       '", updated_at=now() where slid="' +
       Main.Label26.Caption + '"');
@@ -269,11 +294,18 @@ begin
       Main.mmo1.Lines.GetText + '",now(),now())');
     Main.ADOQuerySQL.ExecSQL;
 
+    //修改成交数据
+    //补件不计入本次销售，也不计算盈亏
+    Main.ADOQuerySQL.SQL.Clear;
+    Main.ADOQuerySQL.SQL.Add('update selllogmains sm,selllogdetails sd set sd.camount=sd.amount,sd.cbundle=sd.bundle,sd.updated_at=now() where sm.slid="' + Main.Label26.Caption + '" and sd.slid=sm.slid and sd.additional<>"补件"');
+    Main.ADOQuerySQL.ExecSQL;
+
+    
     //如果是在线渠道过来的订单 source /preid
     //跟新实际发货数量，一边日后到货提醒
     //前提是控制好实际发货数量不能超过订单数量
     Main.ADOQuerySQL.SQL.Clear;
-    Main.ADOQuerySQL.SQL.Add('update selllogmains a,ordermains b,orderdetails c,selllogdetails d set c.ramount=d.amount,c.rbundle=d.bundle,c.additional=d.additional,c.updated_at=now(),d.camount=d.amount,d.cbundle=d.bundle,d.updated_at=now() where a.slid="' + Main.Label26.Caption +
+    Main.ADOQuerySQL.SQL.Add('update selllogmains a,ordermains b,orderdetails c,selllogdetails d set c.ramount=d.amount,c.rbundle=d.bundle,c.additional=d.additional,c.updated_at=now() where a.slid="' + Main.Label26.Caption +
       '" and a.preid=b.oid and b.oid=c.oid and d.slid=a.slid and d.pid=c.pid');
     Main.ADOQuerySQL.ExecSQL;
 
@@ -283,6 +315,7 @@ begin
     Main.ADOQuerySQL.ExecSQL;
 
     //维修库存状态更新
+    
 
   end;
 
@@ -309,6 +342,8 @@ begin
 
   //刷新销售列表
   Main.ListRefresh;
+  //关闭结算窗口
+  Gathering.Close;
 end;
 
 procedure TGathering.RzEdit1KeyDown(Sender: TObject; var
@@ -318,10 +353,19 @@ begin
   if key = 13 then
   begin
     count := count + key;
-    if RzEdit1.ReadOnly then
+    if RzEdit1.ReadOnly and (Main.cbb1.Text = '现金') then
       Gathering.Close;
-    if not (RzEdit1.ReadOnly) then
+    if not (RzEdit1.ReadOnly) or (Main.cbb1.Text <> '现金')
+      then
       JZ;
+  end;
+end;
+
+procedure TGathering.FormActivate(Sender: TObject);
+begin
+  if Main.cbb1.Text <> '现金' then
+  begin
+    RzEdit1.ReadOnly := True;
   end;
 end;
 

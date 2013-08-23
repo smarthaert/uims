@@ -82,8 +82,8 @@ begin
     ADOQuery1.FieldByName('type').AsString +
     '") t set ad.ramount=(ad.ramount+t.ramount),updated_at=now() where t.tid=ad.tid and t.pid=ad.pid and ad.type="' +
     Main_T.ADOQuery1.FieldByName('type').AsString +
-      '" and additional="' +
-      ADOQuery1.FieldByName('additional').AsString + '"');
+    '" and additional="' +
+    ADOQuery1.FieldByName('additional').AsString + '"');
   ADOQuerySQL.ExecSQL;
 
   //删除第二次选择的记录
@@ -91,9 +91,9 @@ begin
   ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' + Main_T.Label26.Caption + '" and pid="' +
     Main_T.ADOQuery1.FieldByName('pid').AsString +
     '" and additional="' +
-      ADOQuery1.FieldByName('additional').AsString +
+    ADOQuery1.FieldByName('additional').AsString +
     '" and type="' + ADOQuery1.FieldByName('type').AsString
-      +
+    +
     '"');
   ADOQuerySQL.ExecSQL;
 
@@ -136,12 +136,11 @@ begin
     '" and ramount>0 and pid="' +
     Main_T.ADOQuery1.FieldByName('pid').AsString +
     '" and additional="' +
-      Main_T.ADOQuery1.FieldByName('additional').AsString +
-      '" and type<>"' +
+    Main_T.ADOQuery1.FieldByName('additional').AsString +
+    '" and type<>"' +
     Main_T.ADOQuery1.FieldByName('type').AsString +
     '" order by id');
   ADOQuery1.Active := True;
 end;
 
 end.
-
