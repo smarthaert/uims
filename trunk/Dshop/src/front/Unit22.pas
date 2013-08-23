@@ -58,7 +58,7 @@ begin
   CheckBox1.Checked := vIniFile.ReadBool('System', 'PB',
     True);
 
-  {根据支付方式填写周到金额}
+  {根据支付方式填写收到金额}
   if Main_T.cbb1.Text <> '现金' then
   begin
     RzEdit1.Text := Label2.Caption;
@@ -161,8 +161,7 @@ begin
 
     //计算找零
     Label7.Caption := FormatFloat('0.00',
-      StrToCurr(RzEdit1.Text) -
-      StrToCurr(Label2.Caption));
+      StrToCurr(RzEdit1.Text) - StrToCurr(Label2.Caption));
   end;
 
   //结束输入
@@ -218,37 +217,21 @@ begin
   else //交易数据处理
   begin
 
-    {
-    //写销售记录
-    Main_T.ADOQuery1.First;
-    while not (Main_T.ADOQuery1.Eof) do
-    begin
-      Main_T.ADOQuerySQL.SQL.Clear;
-      Main_T.ADOQuerySQL.SQL.Add('update stocks set amount=amount-' +
-        Main_T.ADOQuery1.FieldByName('amount').AsString +
-        ', updated_at=now() where pid="' +
-        Main_T.ADOQuery1.FieldByName('pid').AsString + '"');
-      Main_T.ADOQuerySQL.ExecSQL;
-
-      Main_T.ADOQuery1.Next;
-    end;
-    }
-
     //更改售后标记
     Main_T.ADOQuerySQL.SQL.Clear;
     Main_T.ADOQuerySQL.SQL.Add('update aftersellmains set yingtui="' +
-      Label7.Caption + '", shitui="' + Label2.Caption
+      Label2.Caption + '", shitui="' + Label2.Caption
       +
-      '", status="1", type="已销售", updated_at=now() where slid="' +
-      Main_T.ADOQuery2.FieldByName('slid').AsString + '"');
+      '", status="1", type="已处理", updated_at=now() where tid="' +
+      Main_T.Label26.Caption + '"');
     Main_T.ADOQuerySQL.ExecSQL;
 
     //根据支付方式记帐
     Main_T.ADOQuerySQL.SQL.Clear;
-    Main_T.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,cdate,remark,created_at,updated_at) values("' + Main_T.edt7.Text + '","' + Main_T.edt1.Text + '","","","'
-      +
-      CurrToStr(StrToCurr(Main_T.Label7.Caption) -
-      StrToCurr(Label2.Caption)) + '","' + Main_T.cbb1.Text
+    Main_T.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,cdate,remark,created_at,updated_at) values("' + Main_T.edt7.Text + '","' + Main_T.edt1.Text +
+      '","","","-'
+      + CurrToStr(StrToCurr(Label2.Caption)) + '","' +
+      Main_T.cbb1.Text
       +
       '",now(),"' +
       Main_T.mmo1.Lines.GetText + '",now(),now())');
@@ -256,15 +239,20 @@ begin
 
     //更新selllogdetails中客户实际拥有的产品数量，
     Main_T.ADOQuerySQL.SQL.Clear;
-    Main_T.ADOQuerySQL.SQL.Add('update (select a.ramount, a.tid, a.pid, a.type, a.goodsname, a.preid,b.slid, b.additional,');
-    Main_T.ADOQuerySQL.SQL.Add(' b.camount from (select sum(af.ramount) as ramount, af.tid, af.pid, af.type, af.goodsname, am.preid');
-    Main_T.ADOQuerySQL.SQL.Add(' from afterselldetails af,aftersellmains am where af.tid="' + Main_T.Label26.Caption +
-      '" and af.tid=am.tid group by tid,pid,type) a,');
-    Main_T.ADOQuerySQL.SQL.Add('(select sd.slid, sd.pid, sd.additional, sd.camount from selllogdetails sd,aftersellmains am where sd.slid=am.preid and am.tid="' + Main_T.Label26.Caption + '" and additional<>"补件"');
-    Main_T.ADOQuerySQL.SQL.Add('  group by slid,pid,additional) t, selllogdetails sd set sd.camount=(sd.camount-t.ramount),sd.updated_at=now() where t.slid=sd.slid and t.pid=sd.pid and t.additional=sd.additional');
+    Main_T.ADOQuerySQL.SQL.Add('update (select a.ramount, a.tid, a.pid, a.type, a.goodsname, a.preid,b.slid, b.additional,b.camount from (select sum(ad.ramount)');
+    Main_T.ADOQuerySQL.SQL.Add(' as ramount, ad.tid, ad.pid, ad.additional, ad.type, ad.goodsname, am.preid from afterselldetails ad,aftersellmains am where ');
+    Main_T.ADOQuerySQL.SQL.Add('ad.tid="' +
+      Main_T.Label26.Caption +
+      '" and ad.tid=am.tid and ad.type="退货" group by tid,pid,additional) a,(select sd.slid, sd.pid, sd.additional,');
+    Main_T.ADOQuerySQL.SQL.Add(' sd.camount from selllogdetails sd,aftersellmains am where sd.slid=am.preid and am.tid="' + Main_T.Label26.Caption + '" and additional<>"补件" ');
+    Main_T.ADOQuerySQL.SQL.Add('group by slid,pid,additional) b where a.preid=b.slid and a.pid=b.pid and a.additional=b.additional) t, selllogdetails sd ');
+    Main_T.ADOQuerySQL.SQL.Add('set sd.camount=(sd.camount-t.ramount),sd.updated_at=now() where t.slid=sd.slid and t.pid=sd.pid and t.additional=sd.additional');
     Main_T.ADOQuerySQL.ExecSQL;
 
-    //维修库存状态更新
+    //更新selllogmain中状态为已售后
+    Main_T.ADOQuerySQL.SQL.Clear;
+    Main_T.ADOQuerySQL.SQL.Add('update selllogmains sm,aftersellmains am set sm.type="已售后" where sm.slid=am.preid and am.tid="' + Main_T.Label26.Caption + '"');
+    Main_T.ADOQuerySQL.ExecSQL;
 
   end;
 
@@ -291,6 +279,8 @@ begin
 
   //刷新销售列表
   Main_T.ListRefresh;
+  //关闭结算窗口
+  SHQR.Close;
 end;
 
 procedure TSHQR.RzEdit1KeyDown(Sender: TObject; var
@@ -308,4 +298,3 @@ begin
 end;
 
 end.
-

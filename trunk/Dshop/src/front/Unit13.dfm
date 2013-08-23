@@ -25,7 +25,7 @@ object QO: TQO
     Height = 47
     Align = alTop
     BevelInner = bvLowered
-    Caption = #24453#22788#29702#23458#25143#35746#21333
+    Caption = #24453#22788#29702#23458#25143#24050#25903#20184#35746#21333
     Color = clBlack
     Font.Charset = GB2312_CHARSET
     Font.Color = clWhite
@@ -77,7 +77,7 @@ object QO: TQO
         item
           Alignment = taCenter
           Expanded = False
-          FieldName = 'slid'
+          FieldName = 'oid'
           Title.Alignment = taCenter
           Title.Caption = #21333#12288#21495
           Width = 83

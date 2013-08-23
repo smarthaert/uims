@@ -75,16 +75,16 @@ begin
   //Main_T.Label26.Caption := ADOQuery1.FieldByName('slid').AsString;
 
   {复制记录}
-  //主表
+  //主表 设置售后单的来源是出库单，设置初始状态为   售后中，初始状态为 0
   ADOQuerySQL.SQL.Clear;
   ADOQuerySQL.SQL.Add('insert into aftersellmains(tid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,status,uid,uname,preid,nextid,type,cdate,remark,created_at,updated_at) select "' + Main_T.Label26.Caption +
     '" as tid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,"0" as status,uid,uname,"' +
     ADOQuery1.FieldByName('slid').AsString +
-    '" as preid,nextid,type,now() as cdate,remark,now() as created_at,now() as updated_at from selllogmains where slid="' +
+    '" as preid,nextid,"处理中" as type,now() as cdate,remark,now() as created_at,now() as updated_at from selllogmains where slid="' +
     ADOQuery1.FieldByName('slid').AsString + '"');
   ADOQuerySQL.ExecSQL;
 
-  //明细表
+  //明细表 复制销售记录，设置售后编号，初始状态为0，初始类型为-（无需售后）
   ADOQuerySQL.SQL.Clear;
   ADOQuerySQL.SQL.Add('insert into afterselldetails(tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,');
   ADOQuerySQL.SQL.Add('ramount,bundle,rbundle,discount,additional,subtotal,status,type,cdate,remark,created_at,updated_at) select "' + Main_T.Label26.Caption +
@@ -129,6 +129,8 @@ begin
   Main_T.QH1;
   Main_T.QH2;
 
+  Main_T.RzEdit4.Text := '';
+
   SpeedButton1.Click;
 end;
 
@@ -153,15 +155,29 @@ begin
 end;
 
 {查询销售记录表}
-
+//默认保修日期为100天
 procedure TQHD.FormShow(Sender: TObject);
 begin
-  ADOQuery1.Close;
-  ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('select * from selllogmains where custname like "%' +
-    Main_T.edt1.Text + '%" and type="已销售"');
-  ADOQuery1.Active := True;
+  if Main_T.qsrc = 'custname' then
+  begin
+    ADOQuery1.Close;
+    ADOQuery1.SQL.Clear;
+    ADOQuery1.SQL.Add('select sm.* from selllogdetails sd,selllogmains sm where sd.additional<>"补件" and');
+    ADOQuery1.SQL.Add(' sd.camount>0 and sd.slid=sm.slid and sm.type<>"售后中" and sm.created_at between date_add(now(),interval -100 day) and now() and sm.custname like "%' +
+      Main_T.edt1.Text + '%" group by sm.slid');
+    ADOQuery1.Active := True;
+  end
+  else if Main_T.qsrc = 'pid' then
+  begin
+    ADOQuery1.Close;
+    ADOQuery1.SQL.Clear;
+    ADOQuery1.SQL.Add('select sm.* from selllogdetails sd,selllogmains sm where sd.pid="' + Main_T.RzEdit4.Text +
+      '" and sd.additional<>"补件" and');
+    ADOQuery1.SQL.Add(' sd.camount>0 and sd.slid=sm.slid and sm.type<>"售后中" and sm.created_at between date_add(now(),interval -100 day) and now() and sm.custname like "%' +
+      Main_T.edt1.Text + '%" group by sm.slid');
+    ADOQuery1.Active := True;
+  end;
+
 end;
 
 end.
-

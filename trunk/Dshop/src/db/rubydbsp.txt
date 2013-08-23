@@ -17,3 +17,21 @@ update selllogdetails sd, aftersellmains am, afterselldetails ad set sd.amount=i
 
 #取消从维修库存增加产品进行出库
 update selllogdetails sd, aftersellmains am, afterselldetails ad set sd.amount=if(ad.ramount<ad.amount,(sd.amount-1),sd.amount), ad.ramount=if(ad.ramount<ad.amount,(ad.ramount+1),ad.ramount),sd.updated_at=now() where sd.slid="' + Label26.Caption + '" and sd.pid="' + ADOQuery1.FieldByName('pid').AsString + '" and not(ad.status) and ad.type="维修" and ad.tid=am.tid and am.custtel="' + edt2.Text + '" and sd.pid=ad.pid;
+
+
+
+
+
+
+
+ordermains										selllogmains					aftersellmain
+status  type								  status  type					status  type		
+0				提交								
+0				支付
+0				出库中：F11选走	 ->	 0		 备货中			
+1				已发货：出库后	 <-  1     已出库			 ->	  0     处理中
+														 1		 售后中	     
+														 1		 已售后			 <-   1			已处理
+
+	
+	
