@@ -74,7 +74,8 @@ begin
 
     //减少原有记录数
     ADOQuerySQL.SQL.Clear;
-    ADOQuerySQL.SQL.Add('update afterselldetails set ramount=(ramount-"' + RzEdit1.Text + '") where tid="' +
+    ADOQuerySQL.SQL.Add('update afterselldetails set ramount=(ramount-"' +
+      RzEdit1.Text + '") where tid="' +
       Main_T.ADOQuery1.FieldByName('tid').AsString +
       '" and ');
     ADOQuerySQL.SQL.Add('pid="' +

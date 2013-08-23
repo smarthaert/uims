@@ -506,7 +506,8 @@ begin
 
             //删除原有的没有汇总的数据
             ADOQuerySQL.SQL.Clear;
-            ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' + Label26.Caption +
+            ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' +
+              Label26.Caption +
               '" and additional<>"补件" and type<>"all"');
             ADOQuerySQL.ExecSQL;
 
@@ -534,7 +535,8 @@ begin
           begin
             //如果已经有退货这一条记录就合并
             ADOQuery2.SQL.Clear;
-            ADOQuery2.SQL.Add('select * from afterselldetails where tid="' + Label26.Caption + '" and pid="' +
+            ADOQuery2.SQL.Add('select * from afterselldetails where tid="' +
+              Label26.Caption + '" and pid="' +
               ADOQuery1.FieldByName('pid').AsString +
               '" and additional="' +
               ADOQuery1.FieldByName('additional').AsString
@@ -560,7 +562,8 @@ begin
 
               //删除记录
               ADOQuerySQL.SQL.Clear;
-              ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' + Label26.Caption + '" and pid="' +
+              ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' +
+                Label26.Caption + '" and pid="' +
                 ADOQuery1.FieldByName('pid').AsString +
                 '" and additional="' +
                 ADOQuery1.FieldByName('additional').AsString
@@ -618,7 +621,8 @@ begin
 
             //删除原有的没有汇总的数据
             ADOQuerySQL.SQL.Clear;
-            ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' + Label26.Caption + '" and type<>"all"');
+            ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' +
+              Label26.Caption + '" and type<>"all"');
             ADOQuerySQL.ExecSQL;
 
             //更新汇总时使用的临时标记位
@@ -638,7 +642,8 @@ begin
           begin
             //如果已经有维修这一条记录就合并
             ADOQuery2.SQL.Clear;
-            ADOQuery2.SQL.Add('select * from afterselldetails where tid="' + Label26.Caption + '" and pid="' +
+            ADOQuery2.SQL.Add('select * from afterselldetails where tid="' +
+              Label26.Caption + '" and pid="' +
               ADOQuery1.FieldByName('pid').AsString +
               '" and additional="' +
               ADOQuery1.FieldByName('additional').AsString
@@ -664,7 +669,8 @@ begin
 
               //删除记录
               ADOQuerySQL.SQL.Clear;
-              ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' + Label26.Caption + '" and pid="' +
+              ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' +
+                Label26.Caption + '" and pid="' +
                 ADOQuery1.FieldByName('pid').AsString +
                 '" and additional="' +
                 ADOQuery1.FieldByName('additional').AsString
@@ -825,7 +831,8 @@ begin
 
             //删除原有的没有汇总的数据
             ADOQuerySQL.SQL.Clear;
-            ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' + Label26.Caption + '" and type<>"all"');
+            ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' +
+              Label26.Caption + '" and type<>"all"');
             ADOQuerySQL.ExecSQL;
 
             //更新汇总时使用的临时标记位
@@ -844,7 +851,8 @@ begin
           begin
             //如果已经有维修这一条记录就合并
             ADOQuery2.SQL.Clear;
-            ADOQuery2.SQL.Add('select * from afterselldetails where tid="' + Label26.Caption + '" and pid="' +
+            ADOQuery2.SQL.Add('select * from afterselldetails where tid="' +
+              Label26.Caption + '" and pid="' +
               ADOQuery1.FieldByName('pid').AsString +
               '" and additional="' +
               ADOQuery1.FieldByName('additional').AsString
@@ -870,7 +878,8 @@ begin
 
               //删除记录
               ADOQuerySQL.SQL.Clear;
-              ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' + Label26.Caption + '" and pid="' +
+              ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' +
+                Label26.Caption + '" and pid="' +
                 ADOQuery1.FieldByName('pid').AsString +
                 '" and additional="' +
                 ADOQuery1.FieldByName('additional').AsString
@@ -1153,7 +1162,8 @@ begin
       end;
 
       ADOQuerySQL.SQL.Clear;
-      ADOQuerySQL.SQL.Add('update afterselldetails set amount="' + RzEdit3.Text +
+      ADOQuerySQL.SQL.Add('update afterselldetails set amount="' + RzEdit3.Text
+        +
         '",updated_at=now() where tid = "' + Label26.Caption
         + '" and pid="' +
         ADOQuery1.FieldByName('pid').AsString +
@@ -1194,7 +1204,8 @@ begin
       end;
 
       ADOQuerySQL.SQL.Clear;
-      ADOQuerySQL.SQL.Add('update afterselldetails set bundle="' + RzEdit5.Text +
+      ADOQuerySQL.SQL.Add('update afterselldetails set bundle="' + RzEdit5.Text
+        +
         '",updated_at=now() where tid = "' + Label26.Caption
         + '" and pid="' +
         ADOQuery1.FieldByName('pid').AsString +
