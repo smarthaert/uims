@@ -40,7 +40,7 @@ var
 
 implementation
 
-uses Unit4;
+uses Unit4, Unit2;
 
 {$R *.dfm}
 
@@ -73,30 +73,37 @@ end;
 procedure TQHB.SpeedButton2Click(Sender: TObject);
 begin
   //Main_T.Label26.Caption := ADOQuery1.FieldByName('slid').AsString;
+  Main.ADOConnection1.BeginTrans;
+  try
 
-  {合并两条记录,保留第一条记录}
-  ADOQuerySQL.SQL.Clear;
-  ADOQuerySQL.SQL.Add('update afterselldetails ad,(select tid,pid,ramount,type from afterselldetails where tid="' + Main_T.Label26.Caption + '" and pid="' +
-    ADOQuery1.FieldByName('pid').AsString + '"');
-  ADOQuerySQL.SQL.Add(' and type="' +
-    ADOQuery1.FieldByName('type').AsString +
-    '") t set ad.ramount=(ad.ramount+t.ramount),updated_at=now() where t.tid=ad.tid and t.pid=ad.pid and ad.type="' +
-    Main_T.ADOQuery1.FieldByName('type').AsString +
-    '" and additional="' +
-    ADOQuery1.FieldByName('additional').AsString + '"');
-  ADOQuerySQL.ExecSQL;
+    {合并两条记录,保留第一条记录}
+    ADOQuerySQL.SQL.Clear;
+    ADOQuerySQL.SQL.Add('update afterselldetails ad,(select tid,pid,ramount,type from afterselldetails where tid="' + Main_T.Label26.Caption + '" and pid="' +
+      ADOQuery1.FieldByName('pid').AsString + '"');
+    ADOQuerySQL.SQL.Add(' and type="' +
+      ADOQuery1.FieldByName('type').AsString +
+      '") t set ad.ramount=(ad.ramount+t.ramount),updated_at=now() where t.tid=ad.tid and t.pid=ad.pid and ad.type="' +
+      Main_T.ADOQuery1.FieldByName('type').AsString +
+      '" and additional="' +
+      ADOQuery1.FieldByName('additional').AsString + '"');
+    ADOQuerySQL.ExecSQL;
 
-  //删除第二次选择的记录
-  ADOQuerySQL.SQL.Clear;
-  ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' +
-    Main_T.Label26.Caption + '" and pid="' +
-    Main_T.ADOQuery1.FieldByName('pid').AsString +
-    '" and additional="' +
-    ADOQuery1.FieldByName('additional').AsString +
-    '" and type="' + ADOQuery1.FieldByName('type').AsString
-    +
-    '"');
-  ADOQuerySQL.ExecSQL;
+    //删除第二次选择的记录
+    ADOQuerySQL.SQL.Clear;
+    ADOQuerySQL.SQL.Add('delete from afterselldetails where tid="' +
+      Main_T.Label26.Caption + '" and pid="' +
+      Main_T.ADOQuery1.FieldByName('pid').AsString +
+      '" and additional="' +
+      ADOQuery1.FieldByName('additional').AsString +
+      '" and type="' + ADOQuery1.FieldByName('type').AsString
+      +
+      '"');
+    ADOQuerySQL.ExecSQL;
+
+    Main.ADOConnection1.CommitTrans;
+  except
+    Main.ADOConnection1.RollbackTrans;
+  end;
 
   Main_T.QH1;
   Main_T.QH2;

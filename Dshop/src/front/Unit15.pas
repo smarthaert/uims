@@ -5,112 +5,102 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics,
   Controls, Forms,
-  Dialogs, DB, ADODB, Buttons, Grids, DBGrids, ExtCtrls,
-  INIFiles, StdCtrls;
+  Dialogs, ExtCtrls, RzForms, StdCtrls, Mask, RzEdit, DB,
+  ADODB;
 
 type
-  TQC_S = class(TForm)
-    Panel1: TPanel;
+  TCDKEY = class(TForm)
     Panel2: TPanel;
-    Panel3: TPanel;
-    DBGrid1: TDBGrid;
-    SpeedButton1: TSpeedButton;
-    DataSource1: TDataSource;
+    Label4: TLabel;
+    RzEdit1: TRzEdit;
+    Panel1: TPanel;
+    RzFormShape1: TRzFormShape;
     ADOQuery1: TADOQuery;
-    SpeedButton2: TSpeedButton;
-    Label1: TLabel;
-    procedure SpeedButton1Click(Sender: TObject);
+    ADOQuerySQL: TADOQuery;
+    procedure RzEdit1KeyDown(Sender: TObject; var Key:
+      Word;
+      Shift: TShiftState);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure SpeedButton2Click(Sender: TObject);
-    procedure DBGrid1KeyPress(Sender: TObject; var Key:
-      Char);
-    procedure FormShow(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
-    procedure c1;
+    function MyMD5(S: string): string;
     { Public declarations }
   end;
 
 var
-  QC_S: TQC_S;
+  CDKEY: TCDKEY;
 
 implementation
 
-uses Unit2;
+uses MD5, Unit1;
 
 {$R *.dfm}
 
-procedure TQC_S.SpeedButton1Click(Sender: TObject);
+procedure TCDKEY.RzEdit1KeyDown(Sender: TObject; var Key:
+  Word;
+  Shift: TShiftState);
 begin
-  QC_S.Close;
+  if key = 13 then
+  begin
+
+    //
+    ADOQuery1.Close;
+    ADOQuery1.SQL.Clear;
+    ADOQuery1.SQL.Add('select * from mauths where cdkey="' + RzEdit1.Text +
+      '"');
+    ADOQuery1.Open;
+    if (ADOQuery1.RecordCount = 1) and (ADOQuery1.FieldByName('mid').AsString =
+      '') then
+    begin
+      ADOQuerySQL.SQL.Clear;
+      ADOQuerySQL.SQL.Add('update mauths set result="已授权",mid="' + Pass.mid +
+        '",cdate=now(),updated_at=now() where cdkey="' + RzEdit1.Text + '"');
+      ADOQuerySQL.ExecSQL;
+
+      Pass.authret := True;
+      CDKEY.Close;
+
+    end
+    else
+    begin //授权失败
+      ShowMessage('授权失败，请检查您的授权码重新输入或联系管理员～～');
+      RzEdit1.SetFocus;
+    end;
+
+  end;
 end;
 
-procedure TQC_S.FormKeyDown(Sender: TObject; var Key: Word;
+procedure TCDKEY.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   case key of
-    VK_ESCAPE: SpeedButton1.Click;
-    VK_SPACE: SpeedButton2.Click;
-
-    VK_UP:
+    VK_ESCAPE:
       begin
-        DBGrid1.SetFocus;
-      end;
-
-    VK_DOWN:
-      begin
-        DBGrid1.SetFocus;
+        Pass.authret := False;
+        CDKEY.Close;
       end;
   end;
 end;
 
-procedure TQC_S.SpeedButton2Click(Sender: TObject);
+function TCDKEY.MyMD5(S: string): string;
+var
+  i, P: Integer;
+  M: string;
 begin
-  {恢复客户}
-  Main.edt1.Text :=
-    DBGrid1.DataSource.DataSet.FieldByName('cname').AsString;
-  Main.edt2.Text :=
-    DBGrid1.DataSource.DataSet.FieldByName('tel').AsString;
-  Main.edt3.Text :=
-    DBGrid1.DataSource.DataSet.FieldByName('address').AsString;
-  Main.edt7.Text :=
-    DBGrid1.DataSource.DataSet.FieldByName('cid').AsString;
-  Main.edt8.Text :=
-    DBGrid1.DataSource.DataSet.FieldByName('state').AsString;
-  Main.RzEdit7.Text :=
-    DBGrid1.DataSource.DataSet.FieldByName('shopname').AsString;
-  SpeedButton1.Click;
+  P := 0;
+  M := MD5.MD5Print(MD5.MD5String(S));
+  for i := 1 to Length(M) do
+    P := P + Word(M[i]) * Word(M[i]) * i;
+  Result := S + IntToStr(P);
 end;
 
-procedure TQC_S.c1;
+procedure TCDKEY.FormActivate(Sender: TObject);
 begin
-  //如果没有客户数据则退出
-  if ADOQuery1.RecordCount < 1 then
-  begin
-    ShowMessage('没有找到客户信息~~!');
-    QC_S.Close;
-  end
-end;
-
-procedure TQC_S.DBGrid1KeyPress(Sender: TObject; var Key:
-  Char);
-begin
-  if key = #13 then
-  begin
-    key := #0;
-    SpeedButton2.Click;
-  end;
-end;
-
-procedure TQC_S.FormShow(Sender: TObject);
-begin
-  ADOQuery1.Close;
-  ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from customers where state like "%' +
-    Main.edt8.Text + '%"');
-  ADOQuery1.Active := True;
+  RzEdit1.Text := '';
+  RzEdit1.SetFocus;
 end;
 
 end.

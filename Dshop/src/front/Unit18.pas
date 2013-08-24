@@ -102,6 +102,11 @@ begin
   Main_T.mmo1.Text :=
     ADOQuery1.FieldByName('remark').AsString;
 
+  Main_T.cbb2.Text :=
+    ADOQuery1.FieldByName('tpayment').AsString;
+  Main_T.mmo2.Text :=
+    ADOQuery1.FieldByName('tremark').AsString;
+
   Main_T.QH1;
   Main_T.QH2;
 

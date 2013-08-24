@@ -31,8 +31,9 @@ type
   private
     { Private declarations }
   public
-    procedure PCID;
-    function Key(ID: string): string;
+    authret: Boolean;
+    mid: string;
+    uid: string;
     { Public declarations }
   end;
 
@@ -41,7 +42,7 @@ var
 
 implementation
 
-uses MD5, Unit2, Unit3;
+uses MD5, Unit2, Unit3, Unit15;
 
 {$R *.dfm}
 type
@@ -83,8 +84,13 @@ begin
       Abort;
     end;
     if ADOQuery1.RecordCount <> 0 then
+    begin
+
+      uid := Edit1.Text;
       Edit1.Text :=
         ADOQuery1.FieldByName('uname').AsString;
+    end;
+
     Edit2.SetFocus;
   end;
 end;
@@ -118,10 +124,43 @@ begin
     end;
   end;
   }
+
+  //检查该机器是否被授权
+  //首次使用时，result为未授权
+  //要求用户输入合法的授权码后对机器进行授权，设置result为已授权
+  //合法的授权码必须和cdkey相同，mid来自GetCPUID
+  mid := Inttostr(GetCPUID()[1]) + Inttostr(GetCPUID()[2]) +
+    Inttostr(GetCPUID()[3]);
+
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from users Where uname="' +
-    Edit1.Text + '"');
+  ADOQuery1.SQL.Add('select * from mauths where mid="' + mid + '"');
+  ADOQuery1.Open;
+  if (ADOQuery1.RecordCount = 0) or (ADOQuery1.FieldByName('result').AsString =
+    '未授权') then
+  begin
+
+    if CDKEY <> nil then
+      CDKEY.ShowModal
+    else
+    begin
+      CDKEY := TCDKEY.Create(Application);
+      CDKEY.ShowModal;
+    end;
+
+    if not (authret) then
+    begin
+      showmessage('未经授权的机器，请联系管理员~~!');
+      Pass.Close;
+      Exit;
+    end;
+
+  end;
+
+  ADOQuery1.Close;
+  ADOQuery1.SQL.Clear;
+  ADOQuery1.SQL.Add('select * from users Where uid="' +
+    uid + '"');
   ADOQuery1.Open;
   if (ADOQuery1.FieldByName('userpass').AsString =
     MD5.MD5Print(MD5.MD5String(Edit2.Text))) and
@@ -129,6 +168,7 @@ begin
   begin
     Main.Show;
     Main.Caption := Edit1.Text;
+    Main.uid := uid;
     //填入操作员姓名
     Main.Label19.Caption := Main.Caption;
     //填入登记时间
@@ -272,17 +312,6 @@ begin
     end;
 
   }
-end;
-
-procedure TPass.PCID;
-
-begin
-
-end;
-
-function TPass.Key(ID: string): string;
-begin
-
 end;
 
 end.

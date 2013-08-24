@@ -122,6 +122,8 @@ end;
 procedure TGathering.jz;
 var
   vIniFile: TIniFile;
+  vaamount: string;
+  vavolume: string;
 begin
   vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0))
     +
@@ -143,6 +145,14 @@ begin
   if Main.cbb1.Text = '' then
   begin
     ShowMessage('请选择支付方式~~!');
+    Gathering.Close;
+    Main.RzEdit4.SetFocus;
+    Exit;
+  end
+  else if (Main.cbb1.Text <> '现金') and (Main.cbb1.Text <> '转账') and
+    (Main.cbb1.Text <> '托运部代收') and (Main.cbb1.Text <> '记账') then
+  begin
+    ShowMessage('支付方式无效，请选择正确的支付方式~~!');
     Gathering.Close;
     Main.RzEdit4.SetFocus;
     Exit;
@@ -218,103 +228,189 @@ begin
   else //交易数据处理
   begin
 
-    //记录新客户信息
-    Main.ADOQuerySQL.SQL.Clear;
-    Main.ADOQuerySQL.SQL.Add('insert into customers(cid,loginname,cname,shopname,sex,address,tel,state,cdate,remark,created_at,updated_at) values("","","' + Main.edt1.Text + '","' + Main.RzEdit7.Text + '","","' +
-      Main.edt3.Text + '","'
-      + Main.edt2.Text + '","' + Main.edt8.Text +
-      '",now(),"",now(),now()) on duplicate key update cname="' +
-      Main.edt1.Text + '",shopname="' + Main.RzEdit7.Text +
-      '",address="' + Main.edt3.Text + '",state="' +
-      Main.edt8.Text + '",updated_at=now()');
-    Main.ADOQuerySQL.ExecSQL;
+    Main.ADOConnection1.BeginTrans;
+    try
 
-    //记录新托运部信息
-    Main.ADOQuerySQL.SQL.Clear;
-    Main.ADOQuerySQL.SQL.Add('insert into shippers(sid,sname,tel,address,custid,custname,custtel,cdate,remark,created_at,updated_at) values("","' + Main.edt4.Text + '","' + Main.edt5.Text + '","' +
-      Main.edt6.Text + '","","' +
-      Main.edt1.Text + '","' + Main.edt2.Text +
-      '",now(),"",now(),now()) on duplicate key update sname="' +
-      Main.edt4.Text + '",tel="' + Main.edt5.Text +
-      '",address="' + Main.edt6.Text + '",custname="' +
-      Main.edt1.Text + '",custtel="' + Main.edt2.Text +
-      '",cdate=now(),updated_at=now()');
-    Main.ADOQuerySQL.ExecSQL;
+      //记录新客户信息
+      Main.ADOQuerySQL.SQL.Clear;
+      Main.ADOQuerySQL.SQL.Add('insert into customers(cid,loginname,cname,shopname,sex,address,tel,state,cdate,remark,created_at,updated_at) values("","","' + Main.edt1.Text + '","' + Main.RzEdit7.Text + '","","' +
+        Main.edt3.Text + '","'
+        + Main.edt2.Text + '","' + Main.edt8.Text +
+        '",now(),"",now(),now()) on duplicate key update cname="' +
+        Main.edt1.Text + '",shopname="' + Main.RzEdit7.Text +
+        '",address="' + Main.edt3.Text + '",state="' +
+        Main.edt8.Text + '",updated_at=now()');
+      Main.ADOQuerySQL.ExecSQL;
 
-    //写销售记录，分别更新各自库存
-    Main.ADOQuery1.First;
-    while not (Main.ADOQuery1.Eof) do
-    begin
-      if Main.ADOQuery1.FieldByName('additional').AsString
-        =
-        '-' then
+      //记录新托运部信息
+      Main.ADOQuerySQL.SQL.Clear;
+      Main.ADOQuerySQL.SQL.Add('insert into shippers(sid,sname,tel,address,custid,custname,custtel,cdate,remark,created_at,updated_at) values("","' + Main.edt4.Text + '","' + Main.edt5.Text + '","' +
+        Main.edt6.Text + '","","' +
+        Main.edt1.Text + '","' + Main.edt2.Text +
+        '",now(),"",now(),now()) on duplicate key update sname="' +
+        Main.edt4.Text + '",tel="' + Main.edt5.Text +
+        '",address="' + Main.edt6.Text + '",custname="' +
+        Main.edt1.Text + '",custtel="' + Main.edt2.Text +
+        '",cdate=now(),updated_at=now()');
+      Main.ADOQuerySQL.ExecSQL;
+
+      //写销售记录，分别更新各自库存
+      Main.ADOQuery1.First;
+      while not (Main.ADOQuery1.Eof) do
+      begin
+        if Main.ADOQuery1.FieldByName('additional').AsString
+          =
+          '-' then
+        begin
+          Main.ADOQuerySQL.SQL.Clear;
+          Main.ADOQuerySQL.SQL.Add('update stocks set amount=amount-' +
+            Main.ADOQuery1.FieldByName('amount').AsString +
+            ', updated_at=now() where pid="' +
+            Main.ADOQuery1.FieldByName('pid').AsString +
+            '"');
+          Main.ADOQuerySQL.ExecSQL;
+        end
+        else if
+          Main.ADOQuery1.FieldByName('additional').AsString =
+          '赠品' then
+        begin
+
+        end
+        else if
+          Main.ADOQuery1.FieldByName('additional').AsString =
+          '补件' then
+        begin
+
+        end
+        else if
+          Main.ADOQuery1.FieldByName('additional').AsString =
+          '' then //合计行
+        begin
+          vaamount := Main.ADOQuery1.FieldByName('amount').AsString;
+          vavolume := Main.ADOQuery1.FieldByName('volume').AsString;
+        end;
+        Main.ADOQuery1.Next;
+      end;
+
+      //更新销售主表，包括修改的客户，托运部信息，合计的订单产品数量，体积，金额信息
+      Main.ADOQuerySQL.SQL.Clear;
+      Main.ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,aamount,avolume,sname,stel,saddress,payment,status,type,uname,cdate,pdate,remark,created_at,updated_at) values("' + Main.Label26.Caption + '","","' + Main.edt8.Text + '","' +
+        Main.edt1.Text + '","' +
+        Main.RzEdit7.Text + '","' + Main.edt2.Text + '","' +
+        Main.edt3.Text + '","' +
+        Main.Label7.Caption + '","' + Label2.Caption
+        +
+        '","' + vaamount + '","' + vavolume + '","' +
+        Main.edt4.Text + '","' + Main.edt5.Text + '","' + Main.edt6.Text
+        + '","' + Main.cbb1.Text +
+        '","1","已出库","' + Main.Label19.Caption + '",now(),now(),"' +
+        Main.mmo1.Lines.GetText +
+        '",now(),now()) on duplicate key update custstate="' +
+        Main.edt8.Text +
+        '",custname="' + Main.edt1.Text + '",shopname="' +
+        Main.RzEdit7.Text +
+        '",custtel="' + Main.edt2.Text + '",custaddr="' +
+        Main.edt3.Text + '",sname="' +
+        Main.edt4.Text + '",stel="' + Main.edt5.Text +
+        '",saddress="' + Main.edt6.Text +
+        '",payment="' + Main.cbb1.Text + '",uname="' +
+        Main.Label19.Caption + '",remark="'
+        + Main.mmo1.Lines.GetText + '", yingshou="' +
+        Main.Label7.Caption + '", shishou="' + Label2.Caption
+        +
+        '",aamount="' + vaamount + '",avolume="' + vavolume +
+          '", status="1", type="已出库",pdate=now(),updated_at=now()');
+      Main.ADOQuerySQL.ExecSQL;
+
+      {
+      //更改销售标记
+      Main.ADOQuerySQL.SQL.Clear;
+      Main.ADOQuerySQL.SQL.Add('update selllogmains set yingshou="' +
+        Main.Label7.Caption + '", shishou="' + Label2.Caption
+        +
+        '", status="1", type="已出库", remark="' +
+        Main.mmo1.Lines.GetText +
+        '", updated_at=now() where slid="' +
+        Main.Label26.Caption + '"');
+      Main.ADOQuerySQL.ExecSQL;
+      }
+
+      //根据支付方式记帐
+
+      if Main.cbb1.Text = '现金' then
       begin
         Main.ADOQuerySQL.SQL.Clear;
-        Main.ADOQuerySQL.SQL.Add('update stocks set amount=amount-' +
-          Main.ADOQuery1.FieldByName('amount').AsString +
-          ', updated_at=now() where pid="' +
-          Main.ADOQuery1.FieldByName('pid').AsString +
-          '"');
+        Main.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,proof,cdate,remark,created_at,updated_at) values("' + Main.edt7.Text + '","' + Main.edt1.Text + '","' +
+          Main.Label7.Caption + '","'
+          + Label2.Caption + '","' +
+          CurrToStr(StrToCurr(Main.Label7.Caption) -
+          StrToCurr(Label2.Caption)) + '","' + Main.cbb1.Text +
+          '","",now(),"' +
+          Main.mmo1.Lines.GetText + '",now(),now())');
         Main.ADOQuerySQL.ExecSQL;
       end
-      else if
-        Main.ADOQuery1.FieldByName('additional').AsString =
-        '赠品' then
+      else if Main.cbb1.Text = '转账' then
       begin
-
+        Main.ADOQuerySQL.SQL.Clear;
+        Main.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,proof,cdate,remark,created_at,updated_at) values("' + Main.edt7.Text + '","' + Main.edt1.Text + '","' +
+          Main.Label7.Caption + '","'
+          + Label2.Caption + '","' +
+          CurrToStr(StrToCurr(Main.Label7.Caption) -
+          StrToCurr(Label2.Caption)) + '","' + Main.cbb1.Text +
+          '","",now(),"' +
+          Main.mmo1.Lines.GetText + '",now(),now())');
+        Main.ADOQuerySQL.ExecSQL;
       end
-      else if
-        Main.ADOQuery1.FieldByName('additional').AsString =
-        '补件' then
+      else if Main.cbb1.Text = '托运部代收' then
       begin
-
+        Main.ADOQuerySQL.SQL.Clear;
+        Main.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,proof,cdate,remark,created_at,updated_at) values("' + Main.edt7.Text + '","' + Main.edt1.Text + '","' +
+          Main.Label7.Caption + '","'
+          + Label2.Caption + '","' +
+          CurrToStr(StrToCurr(Main.Label7.Caption) -
+          StrToCurr(Label2.Caption)) + '","' + Main.cbb1.Text +
+          '","",now(),"' +
+          Main.mmo1.Lines.GetText + '",now(),now())');
+        Main.ADOQuerySQL.ExecSQL;
+      end
+      else if Main.cbb1.Text = '记账' then
+      begin
+        Main.ADOQuerySQL.SQL.Clear;
+        Main.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,proof,cdate,remark,created_at,updated_at) values("' + Main.edt7.Text + '","' + Main.edt1.Text + '","' +
+          Main.Label7.Caption + '","0","' +
+          CurrToStr(StrToCurr(Main.Label7.Caption) -
+          StrToCurr(Label2.Caption)) + '","' + Main.cbb1.Text +
+          '","",now(),"' +
+          Main.mmo1.Lines.GetText + '",now(),now())');
+        Main.ADOQuerySQL.ExecSQL;
       end;
-      Main.ADOQuery1.Next;
+
+      //修改成交数据
+      //补件不计入本次销售，也不计算盈亏
+      Main.ADOQuerySQL.SQL.Clear;
+      Main.ADOQuerySQL.SQL.Add('update selllogmains sm,selllogdetails sd set sd.camount=sd.amount,sd.cbundle=sd.bundle,sd.updated_at=now() where sm.slid="' + Main.Label26.Caption +
+        '" and sd.slid=sm.slid and sd.additional<>"补件"');
+      Main.ADOQuerySQL.ExecSQL;
+
+      //如果是在线渠道过来的订单 source /preid
+      //跟新实际发货数量，一边日后到货提醒
+      //前提是控制好实际发货数量不能超过订单数量
+      Main.ADOQuerySQL.SQL.Clear;
+      Main.ADOQuerySQL.SQL.Add('update selllogmains a,ordermains b,orderdetails c,selllogdetails d set c.ramount=d.amount,c.rbundle=d.bundle,c.additional=d.additional,c.updated_at=now() where a.slid="' + Main.Label26.Caption +
+        '" and a.preid=b.oid and b.oid=c.oid and d.slid=a.slid and d.pid=c.pid');
+      Main.ADOQuerySQL.ExecSQL;
+
+      //更新订单状态
+      Main.ADOQuerySQL.SQL.Clear;
+      Main.ADOQuerySQL.SQL.Add('update ordermains set type="已发货",status="1", updated_at=now() where nextid="' + Main.Label26.Caption + '"');
+      Main.ADOQuerySQL.ExecSQL;
+
+      //维修库存状态更新
+      Main.ADOConnection1.CommitTrans;
+
+    except
+      Main.ADOConnection1.RollbackTrans;
     end;
-
-    //更改销售标记
-    Main.ADOQuerySQL.SQL.Clear;
-    Main.ADOQuerySQL.SQL.Add('update selllogmains set yingshou="' +
-      Main.Label7.Caption + '", shishou="' + Label2.Caption
-      +
-      '", status="1", type="已出库", remark="' +
-      Main.mmo1.Lines.GetText +
-      '", updated_at=now() where slid="' +
-      Main.Label26.Caption + '"');
-    Main.ADOQuerySQL.ExecSQL;
-
-    //根据支付方式记帐
-    Main.ADOQuerySQL.SQL.Clear;
-    Main.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,cdate,remark,created_at,updated_at) values("' + Main.edt7.Text + '","' + Main.edt1.Text + '","' +
-      Main.Label7.Caption + '","'
-      + Label2.Caption + '","' +
-      CurrToStr(StrToCurr(Main.Label7.Caption) -
-      StrToCurr(Label2.Caption)) + '","' + Main.cbb1.Text +
-      '",now(),"' +
-      Main.mmo1.Lines.GetText + '",now(),now())');
-    Main.ADOQuerySQL.ExecSQL;
-
-    //修改成交数据
-    //补件不计入本次销售，也不计算盈亏
-    Main.ADOQuerySQL.SQL.Clear;
-    Main.ADOQuerySQL.SQL.Add('update selllogmains sm,selllogdetails sd set sd.camount=sd.amount,sd.cbundle=sd.bundle,sd.updated_at=now() where sm.slid="' + Main.Label26.Caption +
-      '" and sd.slid=sm.slid and sd.additional<>"补件"');
-    Main.ADOQuerySQL.ExecSQL;
-
-    //如果是在线渠道过来的订单 source /preid
-    //跟新实际发货数量，一边日后到货提醒
-    //前提是控制好实际发货数量不能超过订单数量
-    Main.ADOQuerySQL.SQL.Clear;
-    Main.ADOQuerySQL.SQL.Add('update selllogmains a,ordermains b,orderdetails c,selllogdetails d set c.ramount=d.amount,c.rbundle=d.bundle,c.additional=d.additional,c.updated_at=now() where a.slid="' + Main.Label26.Caption +
-      '" and a.preid=b.oid and b.oid=c.oid and d.slid=a.slid and d.pid=c.pid');
-    Main.ADOQuerySQL.ExecSQL;
-
-    //更新订单状态
-    Main.ADOQuerySQL.SQL.Clear;
-    Main.ADOQuerySQL.SQL.Add('update ordermains set type="已发货", updated_at=now() where nextid="' + Main.Label26.Caption + '"');
-    Main.ADOQuerySQL.ExecSQL;
-
-    //维修库存状态更新
 
   end;
 
@@ -369,3 +465,4 @@ begin
 end;
 
 end.
+

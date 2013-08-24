@@ -1,6 +1,6 @@
 object Main: TMain
-  Left = 346
-  Top = 57
+  Left = 240
+  Top = 91
   Width = 1045
   Height = 810
   ActiveControl = edt1
@@ -41,23 +41,18 @@ object Main: TMain
     object Label1: TLabel
       Left = 8
       Top = 7
-      Width = 435
+      Width = 596
       Height = 27
-      Caption = #9733#9733#9733#23454#24191#27700#26063#19990#30028#26071#33328#29256#9733#9733#9733
+      Caption = #9733#9733#9733#23454#24191#27700#26063#19990#30028#26071#33328#29256' - '#20135#21697#20986#24211#9733#9733#9733
+      Color = clBlack
       Font.Charset = GB2312_CHARSET
-      Font.Color = clWhite
+      Font.Color = clLime
       Font.Height = -27
       Font.Name = #20223#23435'_GB2312'
       Font.Style = [fsBold]
+      ParentColor = False
       ParentFont = False
       Transparent = True
-    end
-    object RzFormShape1: TRzFormShape
-      Left = 2
-      Top = 2
-      Width = 791
-      Height = 40
-      Align = alCustom
     end
     object SpeedButton2: TSpeedButton
       Left = 795
@@ -1140,7 +1135,7 @@ object Main: TMain
       Height = 12
       Caption = #20184#27454#26041#24335':'
       Font.Charset = GB2312_CHARSET
-      Font.Color = clWhite
+      Font.Color = clLime
       Font.Height = -12
       Font.Name = #23435#20307
       Font.Style = []
@@ -1153,7 +1148,7 @@ object Main: TMain
       Height = 12
       Caption = #22791#27880':'
       Font.Charset = GB2312_CHARSET
-      Font.Color = clWhite
+      Font.Color = clLime
       Font.Height = -12
       Font.Name = #23435#20307
       Font.Style = []
@@ -1167,14 +1162,20 @@ object Main: TMain
       BevelEdges = [beBottom]
       Color = clBlack
       Ctl3D = False
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clLime
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
       ItemHeight = 12
       ParentCtl3D = False
+      ParentFont = False
       TabOrder = 0
       Items.Strings = (
         #29616#37329
         #36716#36134
         #25176#36816#37096#20195#25910
-        #36170#27424)
+        #35760#36134)
     end
     object mmo1: TMemo
       Left = 442
@@ -1183,7 +1184,13 @@ object Main: TMain
       Height = 49
       Color = clBlack
       Ctl3D = True
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clLime
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
       ParentCtl3D = False
+      ParentFont = False
       TabOrder = 1
     end
   end

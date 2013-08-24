@@ -1,8 +1,8 @@
-object QC_T: TQC_T
-  Left = 697
-  Top = 250
+object QHD_PT: TQHD_PT
+  Left = 552
+  Top = 301
   BorderStyle = bsNone
-  Caption = 'QC_T'
+  Caption = 'QHD_PT'
   ClientHeight = 362
   ClientWidth = 492
   Color = clBlack
@@ -22,10 +22,9 @@ object QC_T: TQC_T
     Left = 0
     Top = 0
     Width = 492
-    Height = 47
+    Height = 80
     Align = alTop
     BevelInner = bvLowered
-    Caption = #23458'    '#25143
     Color = clBlack
     Font.Charset = GB2312_CHARSET
     Font.Color = clWhite
@@ -34,12 +33,48 @@ object QC_T: TQC_T
     Font.Style = []
     ParentFont = False
     TabOrder = 0
+    object Label2: TLabel
+      Left = 156
+      Top = 10
+      Width = 180
+      Height = 29
+      Caption = #21806#21518#21333#25454#34917#25171
+    end
+    object Label3: TLabel
+      Left = 132
+      Top = 54
+      Width = 36
+      Height = 12
+      Caption = #21333#21495#65306
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = #20223#23435'_GB2312'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Edit1: TEdit
+      Left = 169
+      Top = 50
+      Width = 193
+      Height = 18
+      Ctl3D = False
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = #20223#23435'_GB2312'
+      Font.Style = []
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 0
+      OnKeyPress = Edit1KeyPress
+    end
   end
   object Panel2: TPanel
     Left = 0
-    Top = 47
+    Top = 80
     Width = 492
-    Height = 258
+    Height = 225
     Align = alClient
     BevelInner = bvLowered
     Color = clBlack
@@ -48,7 +83,7 @@ object QC_T: TQC_T
       Left = 2
       Top = 2
       Width = 488
-      Height = 254
+      Height = 221
       TabStop = False
       Align = alClient
       Color = clBlack
@@ -68,54 +103,42 @@ object QC_T: TQC_T
         item
           Alignment = taCenter
           Expanded = False
-          FieldName = 'cid'
+          FieldName = 'created_at'
           Title.Alignment = taCenter
-          Title.Caption = #32534#21495
+          Title.Caption = #24314#21333#26085#26399
           Width = 86
           Visible = True
         end
         item
           Alignment = taCenter
           Expanded = False
-          FieldName = 'cname'
+          FieldName = 'slid'
           Title.Alignment = taCenter
-          Title.Caption = #22995#21517
+          Title.Caption = #21333#12288#21495
           Width = 83
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'sex'
-          Title.Caption = #24615#21035
+          FieldName = 'custname'
+          Title.Caption = #23458#25143#22995#21517
           Width = 60
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'address'
-          Title.Caption = #22320#22336
+          FieldName = 'custtel'
+          Title.Caption = #23458#25143#30005#35805
           Width = 59
           Visible = True
         end
         item
           Alignment = taCenter
           Expanded = False
-          FieldName = 'tel'
+          FieldName = 'uname'
           Title.Alignment = taCenter
-          Title.Caption = #30005#35805
+          Title.Caption = #25805#20316#21592
           Width = 80
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'state'
-          Title.Caption = #22320#21306
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'remark'
-          Title.Caption = #22791#27880
           Visible = True
         end>
     end
@@ -149,7 +172,7 @@ object QC_T: TQC_T
       Top = 24
       Width = 134
       Height = 26
-      Caption = 'Enter('#22238#36710').'#30830#35748#36873#25321
+      Caption = 'Enter('#22238#36710').'#21462#12288#21333
       Flat = True
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
@@ -164,7 +187,7 @@ object QC_T: TQC_T
       Top = 7
       Width = 204
       Height = 12
-      Caption = #25353'"'#8593#12289#8595'"'#36873#25321#23458#25143#35760#24405';'#25353#22238#36710#30830#23450'.'
+      Caption = #25353'"'#8593#12289#8595'"'#36873#25321#21830#21697#35760#24405';'#25353#22238#36710#30830#23450'.'
     end
   end
   object DataSource1: TDataSource
@@ -179,5 +202,11 @@ object QC_T: TQC_T
       'Select * from Sell_Main where Not(Hang)')
     Left = 8
     Top = 8
+  end
+  object ADOQuerySQL: TADOQuery
+    Connection = Main.ADOConnection1
+    Parameters = <>
+    Left = 16
+    Top = 111
   end
 end

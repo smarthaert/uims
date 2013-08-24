@@ -35,7 +35,7 @@ var
 
 implementation
 
-uses Unit4;
+uses Unit4, Unit2;
 
 {$R *.dfm}
 
@@ -53,39 +53,47 @@ begin
       Exit;
     end;
 
-    //根据拆分数插入记录
-    ADOQuerySQL.SQL.Clear;
-    ADOQuerySQL.SQL.Add('insert into afterselldetails(tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,');
-    ADOQuerySQL.SQL.Add('ramount,bundle,rbundle,discount,additional,subtotal,status,type,cdate,remark,created_at,updated_at) select tid,pid,barcode,');
-    ADOQuerySQL.SQL.Add('goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,"' + RzEdit1.Text +
-      '" as ramount,bundle,rbundle,discount,additional,');
-    ADOQuerySQL.SQL.Add('subtotal,status,"' + ComboBox1.Text
-      + '" as type,cdate,remark,created_at,now() as updated_at from afterselldetails where tid="' +
-      Main_T.ADOQuery1.FieldByName('tid').AsString +
-      '" and ');
-    ADOQuerySQL.SQL.Add('pid="' +
-      Main_T.ADOQuery1.FieldByName('pid').AsString +
-      '" and ');
-    ADOQuerySQL.SQL.Add('additional="' +
-      Main_T.ADOQuery1.FieldByName('additional').AsString +
-      '" and type="' +
-      Main_T.ADOQuery1.FieldByName('type').AsString + '"');
-    ADOQuerySQL.ExecSQL;
+    Main.ADOConnection1.BeginTrans;
+    try
 
-    //减少原有记录数
-    ADOQuerySQL.SQL.Clear;
-    ADOQuerySQL.SQL.Add('update afterselldetails set ramount=(ramount-"' +
-      RzEdit1.Text + '") where tid="' +
-      Main_T.ADOQuery1.FieldByName('tid').AsString +
-      '" and ');
-    ADOQuerySQL.SQL.Add('pid="' +
-      Main_T.ADOQuery1.FieldByName('pid').AsString +
-      '" and ');
-    ADOQuerySQL.SQL.Add('additional="' +
-      Main_T.ADOQuery1.FieldByName('additional').AsString +
-      '" and type="' +
-      Main_T.ADOQuery1.FieldByName('type').AsString + '"');
-    ADOQuerySQL.ExecSQL;
+      //根据拆分数插入记录
+      ADOQuerySQL.SQL.Clear;
+      ADOQuerySQL.SQL.Add('insert into afterselldetails(tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,');
+      ADOQuerySQL.SQL.Add('ramount,bundle,rbundle,discount,additional,subtotal,status,type,cdate,remark,created_at,updated_at) select tid,pid,barcode,');
+      ADOQuerySQL.SQL.Add('goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,"' + RzEdit1.Text +
+        '" as ramount,bundle,rbundle,discount,additional,');
+      ADOQuerySQL.SQL.Add('subtotal,status,"' + ComboBox1.Text
+        + '" as type,cdate,remark,created_at,now() as updated_at from afterselldetails where tid="' +
+        Main_T.ADOQuery1.FieldByName('tid').AsString +
+        '" and ');
+      ADOQuerySQL.SQL.Add('pid="' +
+        Main_T.ADOQuery1.FieldByName('pid').AsString +
+        '" and ');
+      ADOQuerySQL.SQL.Add('additional="' +
+        Main_T.ADOQuery1.FieldByName('additional').AsString +
+        '" and type="' +
+        Main_T.ADOQuery1.FieldByName('type').AsString + '"');
+      ADOQuerySQL.ExecSQL;
+
+      //减少原有记录数
+      ADOQuerySQL.SQL.Clear;
+      ADOQuerySQL.SQL.Add('update afterselldetails set ramount=(ramount-"' +
+        RzEdit1.Text + '") where tid="' +
+        Main_T.ADOQuery1.FieldByName('tid').AsString +
+        '" and ');
+      ADOQuerySQL.SQL.Add('pid="' +
+        Main_T.ADOQuery1.FieldByName('pid').AsString +
+        '" and ');
+      ADOQuerySQL.SQL.Add('additional="' +
+        Main_T.ADOQuery1.FieldByName('additional').AsString +
+        '" and type="' +
+        Main_T.ADOQuery1.FieldByName('type').AsString + '"');
+      ADOQuerySQL.ExecSQL;
+
+      Main.ADOConnection1.CommitTrans;
+    except
+      Main.ADOConnection1.RollbackTrans;
+    end;
 
     Main_T.QH1;
     Main_T.QH2;

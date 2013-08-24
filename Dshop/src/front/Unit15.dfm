@@ -1,31 +1,75 @@
-object QC_S: TQC_S
-  Left = 697
-  Top = 250
+object CDKEY: TCDKEY
+  Left = 503
+  Top = 314
   BorderStyle = bsNone
-  Caption = 'QC_S'
-  ClientHeight = 362
-  ClientWidth = 492
-  Color = clBlack
-  Font.Charset = GB2312_CHARSET
-  Font.Color = clWhite
-  Font.Height = -12
-  Font.Name = #23435#20307
+  Caption = #30913#21345#32467#31639
+  ClientHeight = 134
+  ClientWidth = 418
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnActivate = FormActivate
   OnKeyDown = FormKeyDown
-  OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 12
+  TextHeight = 13
+  object Panel2: TPanel
+    Left = 0
+    Top = 41
+    Width = 418
+    Height = 93
+    Align = alClient
+    BevelInner = bvLowered
+    Color = clBlack
+    TabOrder = 0
+    object Label4: TLabel
+      Left = 43
+      Top = 31
+      Width = 90
+      Height = 29
+      Caption = 'CDKEY:'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWhite
+      Font.Height = -29
+      Font.Name = #20223#23435'_GB2312'
+      Font.Style = []
+      ParentFont = False
+    end
+    object RzEdit1: TRzEdit
+      Left = 147
+      Top = 25
+      Width = 227
+      Height = 41
+      Color = clBlack
+      Ctl3D = True
+      DisabledColor = clBlack
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -29
+      Font.Name = 'Arial'
+      Font.Style = []
+      FrameColor = clWhite
+      FrameStyle = fsBump
+      FrameVisible = True
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 0
+      OnKeyDown = RzEdit1KeyDown
+    end
+  end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 492
-    Height = 47
+    Width = 418
+    Height = 41
     Align = alTop
     BevelInner = bvLowered
-    Caption = #23458'    '#25143
+    Caption = #35775' '#38382' '#25480' '#26435' '#30721
     Color = clBlack
     Font.Charset = GB2312_CHARSET
     Font.Color = clWhite
@@ -33,151 +77,24 @@ object QC_S: TQC_S
     Font.Name = #20223#23435'_GB2312'
     Font.Style = []
     ParentFont = False
-    TabOrder = 0
-  end
-  object Panel2: TPanel
-    Left = 0
-    Top = 47
-    Width = 492
-    Height = 258
-    Align = alClient
-    BevelInner = bvLowered
-    Color = clBlack
     TabOrder = 1
-    object DBGrid1: TDBGrid
+    object RzFormShape1: TRzFormShape
       Left = 2
       Top = 2
-      Width = 488
-      Height = 254
-      TabStop = False
-      Align = alClient
-      Color = clBlack
-      Ctl3D = False
-      DataSource = DataSource1
-      FixedColor = clBlack
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
-      ParentCtl3D = False
-      TabOrder = 0
-      TitleFont.Charset = GB2312_CHARSET
-      TitleFont.Color = clWhite
-      TitleFont.Height = -12
-      TitleFont.Name = #23435#20307
-      TitleFont.Style = []
-      OnKeyPress = DBGrid1KeyPress
-      Columns = <
-        item
-          Alignment = taCenter
-          Expanded = False
-          FieldName = 'cid'
-          Title.Alignment = taCenter
-          Title.Caption = #32534#21495
-          Width = 86
-          Visible = True
-        end
-        item
-          Alignment = taCenter
-          Expanded = False
-          FieldName = 'cname'
-          Title.Alignment = taCenter
-          Title.Caption = #22995#21517
-          Width = 83
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'sex'
-          Title.Caption = #24615#21035
-          Width = 60
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'address'
-          Title.Caption = #22320#22336
-          Width = 59
-          Visible = True
-        end
-        item
-          Alignment = taCenter
-          Expanded = False
-          FieldName = 'tel'
-          Title.Alignment = taCenter
-          Title.Caption = #30005#35805
-          Width = 80
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'state'
-          Title.Caption = #22320#21306
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'remark'
-          Title.Caption = #22791#27880
-          Visible = True
-        end>
+      Width = 414
+      Height = 37
     end
-  end
-  object Panel3: TPanel
-    Left = 0
-    Top = 305
-    Width = 492
-    Height = 57
-    Align = alBottom
-    BevelInner = bvLowered
-    Color = clBlack
-    TabOrder = 2
-    object SpeedButton1: TSpeedButton
-      Left = 135
-      Top = 24
-      Width = 76
-      Height = 26
-      Caption = 'Esc.'#36820#12288#22238
-      Flat = True
-      Font.Charset = GB2312_CHARSET
-      Font.Color = clWhite
-      Font.Height = -12
-      Font.Name = #23435#20307
-      Font.Style = []
-      ParentFont = False
-      OnClick = SpeedButton1Click
-    end
-    object SpeedButton2: TSpeedButton
-      Left = 223
-      Top = 24
-      Width = 134
-      Height = 26
-      Caption = 'Enter('#22238#36710').'#30830#35748#36873#25321
-      Flat = True
-      Font.Charset = GB2312_CHARSET
-      Font.Color = clWhite
-      Font.Height = -12
-      Font.Name = #23435#20307
-      Font.Style = []
-      ParentFont = False
-      OnClick = SpeedButton2Click
-    end
-    object Label1: TLabel
-      Left = 140
-      Top = 7
-      Width = 204
-      Height = 12
-      Caption = #25353'"'#8593#12289#8595'"'#36873#25321#23458#25143#35760#24405';'#25353#22238#36710#30830#23450'.'
-    end
-  end
-  object DataSource1: TDataSource
-    DataSet = ADOQuery1
-    Left = 40
-    Top = 8
   end
   object ADOQuery1: TADOQuery
     Connection = Main.ADOConnection1
     Parameters = <>
-    SQL.Strings = (
-      'Select * from Sell_Main where Not(Hang)')
     Left = 8
     Top = 8
+  end
+  object ADOQuerySQL: TADOQuery
+    Connection = Main.ADOConnection1
+    Parameters = <>
+    Left = 8
+    Top = 40
   end
 end

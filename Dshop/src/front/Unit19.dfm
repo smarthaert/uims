@@ -34,11 +34,11 @@ object QHD_P: TQHD_P
     ParentFont = False
     TabOrder = 0
     object Label2: TLabel
-      Left = 186
+      Left = 156
       Top = 10
-      Width = 120
+      Width = 180
       Height = 29
-      Caption = #21333#25454#34917#25171
+      Caption = #20986#24211#21333#25454#34917#25171
     end
     object Label3: TLabel
       Left = 132
@@ -57,7 +57,7 @@ object QHD_P: TQHD_P
       Left = 169
       Top = 50
       Width = 193
-      Height = 20
+      Height = 18
       Ctl3D = False
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite

@@ -101,8 +101,8 @@ begin
       '",custtel="' + Main.edt2.Text + '",custaddr="' +
       Main.edt3.Text +
       '",sname="' + Main.edt4.Text + '",stel="' +
-      Main.edt6.Text + '",saddress="'
-      + Main.edt5.Text + '",payment="' + Main.cbb1.Text +
+      Main.edt5.Text + '",saddress="'
+      + Main.edt6.Text + '",payment="' + Main.cbb1.Text +
       '",uname="' +
       Main.Label19.Caption + '",remark="' +
       Main.mmo1.Lines.GetText +

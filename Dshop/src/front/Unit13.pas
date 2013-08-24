@@ -72,31 +72,36 @@ end;
 procedure TQO.SpeedButton2Click(Sender: TObject);
 begin
   //将订单信息从Ordermain表复制到selllogmain表进行处理
+  Main.ADOConnection1.BeginTrans;
+  try
+    {复制记录}
+    //主表 设置状态为0 设置来源单号为订单号，设置出库单号
+    ADOQuerySQL.SQL.Clear;
+    ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,status,uid,uname,preid,nextid,type,cdate,remark,created_at,updated_at) select "' + Main.Label26.Caption +
+      '" as slid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,"0" as status,uid,uname,"' +
+      ADOQuery1.FieldByName('oid').AsString +
+      '" as preid,nextid,"备货中"type,now() as cdate,remark,now() as created_at,now() as updated_at from ordermains where oid="' +
+      ADOQuery1.FieldByName('oid').AsString + '"');
+    ADOQuerySQL.ExecSQL;
 
-  {复制记录}
-  //主表 设置状态为0 设置来源单号为订单号，设置出库单号
-  ADOQuerySQL.SQL.Clear;
-  ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,status,uid,uname,preid,nextid,type,cdate,remark,created_at,updated_at) select "' + Main.Label26.Caption +
-    '" as slid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,"0" as status,uid,uname,"' +
-    ADOQuery1.FieldByName('oid').AsString +
-    '" as preid,nextid,"备货中"type,now() as cdate,remark,now() as created_at,now() as updated_at from ordermains where oid="' +
-    ADOQuery1.FieldByName('oid').AsString + '"');
-  ADOQuerySQL.ExecSQL;
+    //明细表  初始状态为0单号为出库单号
+    ADOQuerySQL.SQL.Clear;
+    ADOQuerySQL.SQL.Add('insert into selllogdetails(slid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,bundle,discount,additional,subtotal,status,cdate,remark,created_at,updated_at) select "' + Main.Label26.Caption +
+      '" as slid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,bundle,discount,additional,subtotal,"0" as status,now() as cdate,remark,now() as created_at,now() as updated_at from orderdetails where oid="' +
+      ADOQuery1.FieldByName('oid').AsString + '"');
+    ADOQuerySQL.ExecSQL;
 
-  //明细表  初始状态为0单号为出库单号
-  ADOQuerySQL.SQL.Clear;
-  ADOQuerySQL.SQL.Add('insert into selllogdetails(slid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,bundle,discount,additional,subtotal,status,cdate,remark,created_at,updated_at) select "' + Main.Label26.Caption +
-    '" as slid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,bundle,discount,additional,subtotal,"0" as status,now() as cdate,remark,now() as created_at,now() as updated_at from orderdetails where oid="' +
-    ADOQuery1.FieldByName('oid').AsString + '"');
-  ADOQuerySQL.ExecSQL;
-
-  //主表 设置订单的后续是该出库单，同时修改状态为出库中，避免其重复处理该订单
-  ADOQuerySQL.SQL.Clear;
-  ADOQuerySQL.SQL.Add('update ordermains set type="出库中",nextid="' +
-    Main.Label26.Caption + '" where oid="' +
-    ADOQuery1.FieldByName('oid').AsString
-    + '"');
-  ADOQuerySQL.ExecSQL;
+    //主表 设置订单的后续是该出库单，同时修改状态为出库中，避免其重复处理该订单
+    ADOQuerySQL.SQL.Clear;
+    ADOQuerySQL.SQL.Add('update ordermains set type="出库中",nextid="' +
+      Main.Label26.Caption + '" where oid="' +
+      ADOQuery1.FieldByName('oid').AsString
+      + '"');
+    ADOQuerySQL.ExecSQL;
+    Main.ADOConnection1.CommitTrans;
+  except
+    Main.ADOConnection1.RollbackTrans;
+  end;
 
   {恢复客户，物流等信息}
   Main.edt1.Text :=
