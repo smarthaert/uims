@@ -1,9 +1,8 @@
 object Main_T: TMain_T
-  Left = 276
-  Top = 37
+  Left = 219
+  Top = 189
   Width = 1045
   Height = 810
-  ActiveControl = edt1
   Caption = 'Main_T'
   Color = clBlack
   Font.Charset = GB2312_CHARSET
@@ -21,25 +20,12 @@ object Main_T: TMain_T
   PixelsPerInch = 96
   TextHeight = 12
   object bvl1: TBevel
-    Left = -1
-    Top = 286
-    Width = 242
+    Left = 0
+    Top = 576
+    Width = 790
     Height = 2
     Shape = bsBottomLine
     Style = bsRaised
-  end
-  object lbl12: TLabel
-    Left = 42
-    Top = 299
-    Width = 154
-    Height = 14
-    Caption = #25353'"'#8593#12289#8595'"'#36873#25321#32534#36753#35760#24405
-    Font.Charset = GB2312_CHARSET
-    Font.Color = clWhite
-    Font.Height = -14
-    Font.Name = #23435#20307
-    Font.Style = []
-    ParentFont = False
   end
   object Panel1: TPanel
     Left = 0
@@ -68,19 +54,12 @@ object Main_T: TMain_T
       Height = 27
       Caption = #9733#9733#9733#23454#24191#27700#26063#19990#30028#26071#33328#29256' - '#20135#21697#21806#21518#9733#9733#9733
       Font.Charset = GB2312_CHARSET
-      Font.Color = clWhite
+      Font.Color = clYellow
       Font.Height = -27
       Font.Name = #20223#23435'_GB2312'
       Font.Style = [fsBold]
       ParentFont = False
       Transparent = True
-    end
-    object RzFormShape1: TRzFormShape
-      Left = 2
-      Top = 2
-      Width = 791
-      Height = 40
-      Align = alCustom
     end
     object SpeedButton2: TSpeedButton
       Left = 795
@@ -668,7 +647,7 @@ object Main_T: TMain_T
     Left = 8
     Top = 41
     Width = 780
-    Height = 82
+    Height = 75
     Caption = #23458#25143
     Color = clBlack
     Ctl3D = False
@@ -775,6 +754,7 @@ object Main_T: TMain_T
       Top = 14
       Width = 95
       Height = 20
+      Text = '123'
       Alignment = taRightJustify
       Color = clBlack
       Ctl3D = True
@@ -793,9 +773,9 @@ object Main_T: TMain_T
       Top = 46
       Width = 708
       Height = 20
-      Color = clBlack
       Ctl3D = True
       DisabledColor = clBlack
+      Enabled = False
       FrameColor = clWhite
       FrameHotColor = 14593668
       FrameHotTrack = True
@@ -857,9 +837,9 @@ object Main_T: TMain_T
   end
   object grp2: TGroupBox
     Left = 8
-    Top = 125
+    Top = 118
     Width = 780
-    Height = 425
+    Height = 300
     Caption = #35746#21333
     Color = clBlack
     Ctl3D = False
@@ -870,7 +850,7 @@ object Main_T: TMain_T
       Left = 1
       Top = 13
       Width = 778
-      Height = 411
+      Height = 286
       TabStop = False
       Align = alClient
       BorderStyle = bsNone
@@ -999,9 +979,9 @@ object Main_T: TMain_T
   end
   object grp3: TGroupBox
     Left = 8
-    Top = 553
+    Top = 423
     Width = 780
-    Height = 81
+    Height = 75
     Caption = #25176#36816#37096
     Color = clBlack
     Ctl3D = False
@@ -1100,9 +1080,9 @@ object Main_T: TMain_T
   end
   object grp4: TGroupBox
     Left = 8
-    Top = 637
+    Top = 503
     Width = 780
-    Height = 65
+    Height = 70
     Caption = #20184#27454
     Color = clBlack
     Ctl3D = False
@@ -1123,7 +1103,7 @@ object Main_T: TMain_T
       ParentFont = False
     end
     object lbl8: TLabel
-      Left = 400
+      Left = 403
       Top = 19
       Width = 30
       Height = 12
@@ -1137,7 +1117,7 @@ object Main_T: TMain_T
     end
     object cbb1: TComboBox
       Left = 80
-      Top = 16
+      Top = 19
       Width = 161
       Height = 20
       BevelEdges = [beBottom]
@@ -1153,8 +1133,8 @@ object Main_T: TMain_T
         #36170#27424)
     end
     object mmo1: TMemo
-      Left = 442
-      Top = 11
+      Left = 438
+      Top = 19
       Width = 330
       Height = 49
       Color = clBlack
@@ -2690,6 +2670,82 @@ object Main_T: TMain_T
           FontSize = 20
         end
       end
+    end
+  end
+  object grp5: TGroupBox
+    Left = 6
+    Top = 578
+    Width = 780
+    Height = 120
+    Caption = #21806#21518#32467#31639
+    Ctl3D = False
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clYellow
+    Font.Height = -12
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentCtl3D = False
+    ParentFont = False
+    TabOrder = 8
+    object Label22: TLabel
+      Left = 26
+      Top = 32
+      Width = 54
+      Height = 12
+      Caption = #36864#27454#26041#24335':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clYellow
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label23: TLabel
+      Left = 405
+      Top = 32
+      Width = 30
+      Height = 12
+      Caption = #22791#27880':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clYellow
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object cbb2: TComboBox
+      Left = 82
+      Top = 32
+      Width = 161
+      Height = 20
+      Color = clBlack
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clYellow
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ItemHeight = 12
+      ParentFont = False
+      TabOrder = 0
+      Items.Strings = (
+        #29616#37329
+        #35760#36134)
+    end
+    object mmo2: TMemo
+      Left = 440
+      Top = 32
+      Width = 330
+      Height = 49
+      Color = clBlack
+      Ctl3D = True
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clYellow
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 1
     end
   end
   object DataSource1: TDataSource

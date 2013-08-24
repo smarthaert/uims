@@ -40,7 +40,7 @@ var
 
 implementation
 
-uses Unit4;
+uses Unit4, Unit2;
 
 {$R *.dfm}
 
@@ -74,31 +74,39 @@ procedure TQHD.SpeedButton2Click(Sender: TObject);
 begin
   //Main_T.Label26.Caption := ADOQuery1.FieldByName('slid').AsString;
 
-  {复制记录}
-  //主表 设置售后单的来源是出库单，设置初始状态为   售后中，初始状态为 0
-  ADOQuerySQL.SQL.Clear;
-  ADOQuerySQL.SQL.Add('insert into aftersellmains(tid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,status,uid,uname,preid,nextid,type,cdate,remark,created_at,updated_at) select "' + Main_T.Label26.Caption +
-    '" as tid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,"0" as status,uid,uname,"' +
-    ADOQuery1.FieldByName('slid').AsString +
-    '" as preid,nextid,"处理中" as type,now() as cdate,remark,now() as created_at,now() as updated_at from selllogmains where slid="' +
-    ADOQuery1.FieldByName('slid').AsString + '"');
-  ADOQuerySQL.ExecSQL;
+  Main.ADOConnection1.BeginTrans;
+  try
 
-  //明细表 复制销售记录，设置售后编号，初始状态为0，初始类型为-（无需售后）
-  ADOQuerySQL.SQL.Clear;
-  ADOQuerySQL.SQL.Add('insert into afterselldetails(tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,');
-  ADOQuerySQL.SQL.Add('ramount,bundle,rbundle,discount,additional,subtotal,status,type,cdate,remark,created_at,updated_at) select "' + Main_T.Label26.Caption +
-    '" as tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,camount,camount,cbundle,cbundle,discount,' +
-    'additional,subtotal,"0" as status,"-" as type,now() as cdate,remark,now() as created_at,now() as updated_at from selllogdetails where slid="' +
-    ADOQuery1.FieldByName('slid').AsString + '"');
-  ADOQuerySQL.ExecSQL;
+    {复制记录}
+    //主表 设置售后单的来源是出库单，设置初始状态为   售后中，初始状态为 0
+    ADOQuerySQL.SQL.Clear;
+    ADOQuerySQL.SQL.Add('insert into aftersellmains(tid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,status,uid,uname,preid,nextid,type,cdate,remark,created_at,updated_at) select "' + Main_T.Label26.Caption +
+      '" as tid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,"0" as status,uid,uname,"' +
+      ADOQuery1.FieldByName('slid').AsString +
+      '" as preid,nextid,"处理中" as type,now() as cdate,remark,now() as created_at,now() as updated_at from selllogmains where slid="' +
+      ADOQuery1.FieldByName('slid').AsString + '"');
+    ADOQuerySQL.ExecSQL;
 
-  //主表
-  ADOQuerySQL.SQL.Clear;
-  ADOQuerySQL.SQL.Add('update selllogmains set type="售后中",nextid="' +
-    Main_T.Label26.Caption + '" where slid="' +
-    ADOQuery1.FieldByName('slid').AsString + '"');
-  ADOQuerySQL.ExecSQL;
+    //明细表 复制销售记录，设置售后编号，初始状态为0，初始类型为-（无需售后）
+    ADOQuerySQL.SQL.Clear;
+    ADOQuerySQL.SQL.Add('insert into afterselldetails(tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,');
+    ADOQuerySQL.SQL.Add('ramount,bundle,rbundle,discount,additional,subtotal,status,type,cdate,remark,created_at,updated_at) select "' + Main_T.Label26.Caption +
+      '" as tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,camount,camount,cbundle,cbundle,discount,' +
+      'additional,subtotal,"0" as status,"-" as type,now() as cdate,remark,now() as created_at,now() as updated_at from selllogdetails where slid="' +
+      ADOQuery1.FieldByName('slid').AsString + '"');
+    ADOQuerySQL.ExecSQL;
+
+    //主表
+    ADOQuerySQL.SQL.Clear;
+    ADOQuerySQL.SQL.Add('update selllogmains set type="售后中",nextid="' +
+      Main_T.Label26.Caption + '" where slid="' +
+      ADOQuery1.FieldByName('slid').AsString + '"');
+    ADOQuerySQL.ExecSQL;
+
+    Main.ADOConnection1.CommitTrans;
+  except
+    Main.ADOConnection1.RollbackTrans;
+  end;
 
   {恢复客户，物流等信息}
   Main_T.edt1.Text :=
@@ -130,6 +138,8 @@ begin
   Main_T.QH2;
 
   Main_T.RzEdit4.Text := '';
+
+  Main_T.hasorder := True;
 
   SpeedButton1.Click;
 end;
@@ -182,4 +192,3 @@ begin
 end;
 
 end.
-

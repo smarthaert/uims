@@ -19,14 +19,14 @@ uses
   Unit7 in 'Unit7.pas' {Pos_Setup},
   Unit6 in 'Unit6.pas' {MoLing},
   Unit9 in 'Unit9.pas' {QC},
-  Unit15 in 'Unit15.pas' {QC_A},
-  Unit16 in 'Unit16.pas' {QC_T},
   Unit11 in 'Unit11.pas' {QS},
   Unit12 in 'Unit12.pas' {QP},
   Unit20 in 'Unit20.pas' {QPT},
   Unit21 in 'Unit21.pas' {QPC},
   Unit13 in 'Unit13.pas' {QO},
-  Unit14 in 'Unit14.pas' {QR};
+  Unit14 in 'Unit14.pas' {QR},
+  Unit15 in 'Unit15.pas' {CDKEY},
+  Unit16 in 'Unit16.pas' {QHD_PT};
 
 {$R *.res}
 
@@ -36,6 +36,7 @@ begin
   Application.CreateForm(TPass, Pass);
   Application.CreateForm(TMain, Main);
   Application.CreateForm(TQO, QO);
+  Application.CreateForm(TQHD_PT, QHD_PT);
   Application.Run;
 end.
 

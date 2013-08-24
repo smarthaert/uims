@@ -5,11 +5,13 @@ rake db:create
 #rake db:reset
 
 #访问控制表,用来识别机器和机器的访问权限
-rails destroy scaffold Fwlist
-rails generate scaffold Fwlist \
-uid:string\
-rid:string:uniq \
-result:string\
+rails destroy scaffold Mauth
+rails generate scaffold Mauth \
+uid:string \
+rid:string \
+mid:string:uniq \
+cdkey:string:uniq \
+result:string \
 cdate:date \
 remark:text
 
@@ -90,11 +92,11 @@ barcode:string:uniq \
 goodsname:string \
 size:string \
 color:string \
+amount:integer \
 'volume:decimal{10,2}' \
 unit:string \
 'inprice:decimal{10,2}' \
 'pfprice:decimal{10,2}' \
-amount:integer \
 bundle:integer \
 discount:integer \
 baseline:integer \
@@ -131,6 +133,8 @@ custtel:string \
 custaddr:string \
 'yingshou:decimal{10,2}' \
 'shishou:decimal{10,2}' \
+aamount:integer \
+'avolume:decimal{10,2}' \
 sid:string \
 sname:string \
 stel:string \
@@ -143,6 +147,7 @@ preid:string \
 nextid:string \
 type:string \
 cdate:date \
+pcdate:date \
 printdate:date \
 remark:text
 
@@ -172,6 +177,7 @@ type:string \
 'subtotal:decimal{10,2}' \
 status:integer \
 cdate:date \
+pdate:date \
 remark:text
 
 #产品售后记录主表，主键TXXXXXX，数据来源于出库记录表
@@ -193,12 +199,17 @@ sname:string \
 stel:string \
 saddress:string \
 payment:string \
+tpayment:string \
 status:integer \
 uid:string \
+tuid:string \
 uname:string \
+tuname:string \
 preid:string \
 nextid:string \
 cdate:date \
+pcdate:date \
+tremark:text \
 remark:text
 
 #产品售后记录明细表，数据来源于出库记录表
@@ -290,6 +301,7 @@ custname:string \
 'inmoney:decimal{10,2}' \
 'strike:decimal{10,2}' \
 method:string \
+proof:string \
 cdate:date \
 remark:text
 
