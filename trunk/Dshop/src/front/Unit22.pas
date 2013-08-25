@@ -259,6 +259,7 @@ begin
       Main_T.ADOQuerySQL.SQL.Add('update aftersellmains set yingtui="' +
         Label2.Caption + '", shitui="' + Label2.Caption
         +
+        '",fukuan="' + RzEdit1.Text + '",zhaohui="' + Label7.Caption +
         '", status="1", type="已处理", tpayment="' + Main_T.cbb2.Text +
         '",tuid="' + Main_T.Labeluid.Caption + '",tuname="' +
         Main_T.Label19.Caption +
@@ -352,10 +353,25 @@ begin
   if key = 13 then
   begin
     count := count + key;
-    if RzEdit1.ReadOnly then
-      SHQR.Close;
-    if not (RzEdit1.ReadOnly) then
+
+    Main_T.ADOQuery2.SQL.Clear;
+    Main_T.ADOQuery2.SQL.Add('select * from aftersellmains where tid="' +
+      Main_T.Label26.Caption
+      + '"');
+    Main_T.ADOQuery2.Open;
+    if (Main_T.ADOQuery2.RecordCount = 1) and
+      (Main_T.ADOQuery2.FieldByName('pdate').AsString <> '') then
+    begin
       JZ;
+      Exit;
+    end;
+
+    if RzEdit1.ReadOnly and (Main_T.cbb2.Text = '现金') then
+      Gathering.Close;
+    if not (RzEdit1.ReadOnly) or (Main_T.cbb2.Text <> '现金')
+      then
+      JZ;
+
   end;
 end;
 
@@ -369,7 +385,9 @@ begin
   if (Main_T.ADOQuery2.RecordCount = 1) and
     (Main_T.ADOQuery2.FieldByName('pdate').AsString <> '') then
   begin
-    //RzEdit1.ReadOnly := True;
+    Label2.Caption := Main_T.ADOQuery2.FieldByName('yingtui').AsString;
+    RzEdit1.Text := Main_T.ADOQuery2.FieldByName('fukuan').AsString;
+    RzEdit1.ReadOnly := True;
   end;
 end;
 

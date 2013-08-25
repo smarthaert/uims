@@ -166,11 +166,11 @@ object Main: TMain
       Style = bsRaised
     end
     object Label17: TLabel
-      Left = 355
+      Left = 303
       Top = 38
-      Width = 54
+      Width = 48
       Height = 12
-      Caption = 'F10.'#25240#25187':'
+      Caption = 'F5.'#25240#25187':'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -12
@@ -226,11 +226,11 @@ object Main: TMain
       ParentFont = False
     end
     object Label32: TLabel
-      Left = 307
+      Left = 397
       Top = 38
-      Width = 42
+      Width = 48
       Height = 12
-      Caption = 'F5.'#36192#21697
+      Caption = 'F10.'#36192#21697
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -12
@@ -239,7 +239,7 @@ object Main: TMain
       ParentFont = False
     end
     object RzEdit1: TRzEdit
-      Left = 411
+      Left = 359
       Top = 35
       Width = 34
       Height = 20

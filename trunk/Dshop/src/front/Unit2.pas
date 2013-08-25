@@ -633,7 +633,9 @@ begin
 
     VK_F4: RzEdit2.SetFocus; //单价
 
-    VK_F5: //赠品
+    VK_F5: RzEdit1.SetFocus; //折扣
+
+    VK_F6: //保存未完成出库单
       begin
         ADOQuery2.SQL.Clear;
         ADOQuery2.SQL.Add('select * from selllogmains where slid="' +
@@ -643,68 +645,43 @@ begin
         if (ADOQuery2.RecordCount = 1) and
           (ADOQuery2.FieldByName('pdate').AsString <> '') then
         begin
-          Exit;
-        end;
-
-        if ADOQuery1.FieldByName('additional').AsString =
-          '-' then
-        begin
-          if ADOQuery1.RecordCount > 1 then
+          if messagedlg('确认放弃补打该订单吗?',
+            mtconfirmation, [mbyes,
+            mbno], 0) <> mryes then
           begin
-            ADOQuerySQL.SQL.Clear;
-            ADOQuerySQL.SQL.Add('update selllogdetails set additional="赠品",updated_at=now()  where slid="' + Label26.Caption + '" and pid="' +
-              ADOQuery1.FieldByName('pid').AsString +
-              '"');
-            ADOQuerySQL.ExecSQL;
+            Exit;
           end;
-          QH1;
-          QH2;
         end
-        else if ADOQuery1.FieldByName('additional').AsString
-          = '赠品' then
+        else
         begin
-          if ADOQuery1.RecordCount > 1 then
-          begin
-            ADOQuerySQL.SQL.Clear;
-            ADOQuerySQL.SQL.Add('update selllogdetails set additional="-",updated_at=now()  where slid="' + Label26.Caption + '" and pid="' +
-              ADOQuery1.FieldByName('pid').AsString +
-              '"');
-            ADOQuerySQL.ExecSQL;
-          end;
-          QH1;
-          QH2;
-        end;
-      end;
-
-    VK_F6: //保存未完成出库单
-      begin
-
-        {保存扩展信息}
+          {保存扩展信息}
          //查销售主库是否有此单号
 
-        ADOQuerySQL.SQL.Clear;
-        ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,status,uid,uname,cdate,remark,created_at,updated_at) values("' + Label26.Caption + '","","' + edt8.Text + '","' +
-          edt1.Text + '","' +
-          RzEdit7.Text + '","' + edt2.Text + '","' +
-          edt3.Text + '","0","0","' + Labelsid.Caption + '","' +
-          edt4.Text + '","' + edt5.Text + '","' + edt6.Text
-          + '","' + cbb1.Text +
-          '","0","' + Labeluid.Caption + '","' + Label19.Caption + '",now(),"' +
-          mmo1.Lines.GetText +
-          '",now(),now()) on duplicate key update custstate="' +
-          edt8.Text +
-          '",custname="' + edt1.Text + '",shopname="' +
-          RzEdit7.Text +
-          '",custtel="' + edt2.Text + '",custaddr="' +
-          edt3.Text + '",sid="' +
-          Labelsid.Caption + '",sname="' +
-          edt4.Text + '",stel="' + edt5.Text +
-          '",saddress="' + edt6.Text +
-          '",payment="' + cbb1.Text + '",uid="' +
-          Labeluid.Caption + '",uname="' +
-          Label19.Caption + '",remark="'
-          + mmo1.Lines.GetText + '",updated_at=now()');
-        ADOQuerySQL.ExecSQL;
+          ADOQuerySQL.SQL.Clear;
+          ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,shoukuan,zhaoling,sid,sname,stel,saddress,payment,status,uid,uname,cdate,remark,created_at,updated_at) values("' + Label26.Caption + '","","' + edt8.Text + '","' +
+            edt1.Text + '","' +
+            RzEdit7.Text + '","' + edt2.Text + '","' +
+            edt3.Text + '","0","0","0","0","' + Labelsid.Caption + '","' +
+            edt4.Text + '","' + edt5.Text + '","' + edt6.Text
+            + '","' + cbb1.Text +
+            '","0","' + Labeluid.Caption + '","' + Label19.Caption + '",now(),"'
+            +
+            mmo1.Lines.GetText +
+            '",now(),now()) on duplicate key update custstate="' +
+            edt8.Text +
+            '",custname="' + edt1.Text + '",shopname="' +
+            RzEdit7.Text +
+            '",custtel="' + edt2.Text + '",custaddr="' +
+            edt3.Text + '",sid="' +
+            Labelsid.Caption + '",sname="' +
+            edt4.Text + '",stel="' + edt5.Text +
+            '",saddress="' + edt6.Text +
+            '",payment="' + cbb1.Text + '",uid="' +
+            Labeluid.Caption + '",uname="' +
+            Label19.Caption + '",remark="'
+            + mmo1.Lines.GetText + '",updated_at=now()');
+          ADOQuerySQL.ExecSQL;
+        end;
 
         {清空数据项}
         edt1.Text := '';
@@ -767,7 +744,49 @@ begin
         end;
       end;
     }
-    VK_F10: RzEdit1.SetFocus; //折扣
+
+    VK_F10: //赠品
+      begin
+        ADOQuery2.SQL.Clear;
+        ADOQuery2.SQL.Add('select * from selllogmains where slid="' +
+          Label26.Caption
+          + '"');
+        ADOQuery2.Open;
+        if (ADOQuery2.RecordCount = 1) and
+          (ADOQuery2.FieldByName('pdate').AsString <> '') then
+        begin
+          Exit;
+        end;
+
+        if ADOQuery1.FieldByName('additional').AsString =
+          '-' then
+        begin
+          if ADOQuery1.RecordCount > 1 then
+          begin
+            ADOQuerySQL.SQL.Clear;
+            ADOQuerySQL.SQL.Add('update selllogdetails set additional="赠品",updated_at=now()  where slid="' + Label26.Caption + '" and pid="' +
+              ADOQuery1.FieldByName('pid').AsString +
+              '"');
+            ADOQuerySQL.ExecSQL;
+          end;
+          QH1;
+          QH2;
+        end
+        else if ADOQuery1.FieldByName('additional').AsString
+          = '赠品' then
+        begin
+          if ADOQuery1.RecordCount > 1 then
+          begin
+            ADOQuerySQL.SQL.Clear;
+            ADOQuerySQL.SQL.Add('update selllogdetails set additional="-",updated_at=now()  where slid="' + Label26.Caption + '" and pid="' +
+              ADOQuery1.FieldByName('pid').AsString +
+              '"');
+            ADOQuerySQL.ExecSQL;
+          end;
+          QH1;
+          QH2;
+        end;
+      end;
 
     VK_F11: //取客户订单进行处理，已经放入selllogmain中的订单信息不删除。
       begin
@@ -1199,10 +1218,19 @@ begin
       Exit;
     end;
 
-    if (ADOQuery1.RecordCount > 1) and
-      (ADOQuery1.FieldByName('additional').AsString <>
-      '补件')
-      then
+    //处理选中合计行的情况
+    if (ADOQuery1.RecordCount > 1) and (ADOQuery1.FieldByName('pid').AsString =
+      '') then
+    begin
+      ADOQuerySQL.SQL.Clear;
+      ADOQuerySQL.SQL.Add('update selllogdetails set discount="' + RzEdit1.Text
+        +
+        '",updated_at=now() where slid = "' +
+        Label26.Caption + '" and additional="-"');
+      ADOQuerySQL.ExecSQL;
+
+    end
+    else if ADOQuery1.RecordCount > 1 then
     begin
       //输入数据检查
       try
@@ -1219,20 +1247,22 @@ begin
         Exit;
       end;
 
-      ADOQuerySQL.SQL.Clear;
-      ADOQuerySQL.SQL.Add('update selllogdetails set discount="' + RzEdit1.Text
-        +
-        '",updated_at=now() where slid = "' +
-        Label26.Caption + '" and pid="' +
-        ADOQuery1.FieldByName('pid').AsString +
-        '" and additional="' +
-        ADOQuery1.FieldByName('additional').AsString +
-        '"');
-      ADOQuerySQL.ExecSQL;
-
-      QH1;
-      QH2;
+      if ADOQuery1.FieldByName('additional').AsString = '-' then
+      begin
+        ADOQuerySQL.SQL.Clear;
+        ADOQuerySQL.SQL.Add('update selllogdetails set discount="' + RzEdit1.Text
+          +
+          '",updated_at=now() where slid = "' +
+          Label26.Caption + '" and pid="' +
+          ADOQuery1.FieldByName('pid').AsString +
+          '" and additional="' +
+          ADOQuery1.FieldByName('additional').AsString +
+          '"');
+        ADOQuerySQL.ExecSQL;
+      end;
     end;
+    QH1;
+    QH2;
     RzEdit1.Text := '100';
     RzEdit4.SetFocus;
   end;
@@ -1800,4 +1830,3 @@ begin
 end;
 
 end.
-

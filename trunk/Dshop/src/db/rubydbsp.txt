@@ -34,4 +34,3 @@ status  type								  status  type					status  type
 														 1		 已售后			 <-   1			已处理
 
 	
-	

@@ -77,8 +77,8 @@ begin
     {复制记录}
     //主表 设置状态为0 设置来源单号为订单号，设置出库单号
     ADOQuerySQL.SQL.Clear;
-    ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,status,uid,uname,preid,nextid,type,cdate,remark,created_at,updated_at) select "' + Main.Label26.Caption +
-      '" as slid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,"0" as status,uid,uname,"' +
+    ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,shoukuan,zhaoling,sid,sname,stel,saddress,payment,status,uid,uname,preid,nextid,type,cdate,remark,created_at,updated_at) select "' + Main.Label26.Caption +
+      '" as slid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,"" as shoukuan,"" as zhaoling,sid,sname,stel,saddress,payment,"0" as status,uid,uname,"' +
       ADOQuery1.FieldByName('oid').AsString +
       '" as preid,nextid,"备货中"type,now() as cdate,remark,now() as created_at,now() as updated_at from ordermains where oid="' +
       ADOQuery1.FieldByName('oid').AsString + '"');

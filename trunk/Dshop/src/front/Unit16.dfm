@@ -104,7 +104,7 @@ object QHD_PT: TQHD_PT
         item
           Alignment = taCenter
           Expanded = False
-          FieldName = 'cdate'
+          FieldName = 'created_at'
           Title.Alignment = taCenter
           Title.Caption = #24314#21333#26085#26399
           Width = 86
