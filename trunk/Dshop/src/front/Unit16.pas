@@ -125,6 +125,11 @@ begin
 
     //设置补打标机
     Main_T.reprint := True;
+    Main_T.uid := Main_T.Labeluid.Caption;
+    Main_T.name := Main_T.Label19.Caption;
+
+    Main_T.Labeluid.Caption := ADOQuery1.FieldByName('uid').AsString;
+    Main_T.Label19.Caption := ADOQuery1.FieldByName('uname').AsString;
 
     Main_T.Label26.Caption :=
       ADOQuery1.FieldByName('tid').AsString;
@@ -144,6 +149,8 @@ begin
       ADOQuery1.FieldByName('custstate').AsString;
     Main_T.RzEdit7.Text :=
       ADOQuery1.FieldByName('shopname').AsString;
+
+    Main_T.Labelsid.Caption := ADOQuery1.FieldByName('sid').AsString;
 
     Main_T.edt4.Text :=
       ADOQuery1.FieldByName('sname').AsString;

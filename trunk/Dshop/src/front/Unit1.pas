@@ -83,12 +83,17 @@ begin
     except
       Abort;
     end;
-    if ADOQuery1.RecordCount <> 0 then
+    if ADOQuery1.RecordCount = 1 then
     begin
 
       uid := Edit1.Text;
       Edit1.Text :=
         ADOQuery1.FieldByName('uname').AsString;
+    end
+    else if ADOQuery1.RecordCount > 1 then
+    begin
+      ShowMessage('系统错误【用户】，请联系管理员～');
+      Exit;
     end;
 
     Edit2.SetFocus;
@@ -136,8 +141,9 @@ begin
   ADOQuery1.SQL.Clear;
   ADOQuery1.SQL.Add('select * from mauths where mid="' + mid + '"');
   ADOQuery1.Open;
-  if (ADOQuery1.RecordCount = 0) or (ADOQuery1.FieldByName('result').AsString =
-    '未授权') then
+  if (ADOQuery1.RecordCount = 0) or ((ADOQuery1.RecordCount = 1) and
+    (ADOQuery1.FieldByName('result').AsString =
+    '未授权')) then
   begin
 
     if CDKEY <> nil then
@@ -155,6 +161,11 @@ begin
       Exit;
     end;
 
+  end
+  else if ADOQuery1.RecordCount > 1 then
+  begin
+    ShowMessage('系统错误【授权】，请联系管理员～');
+    Exit;
   end;
 
   ADOQuery1.Close;
@@ -162,13 +173,19 @@ begin
   ADOQuery1.SQL.Add('select * from users Where uid="' +
     uid + '"');
   ADOQuery1.Open;
-  if (ADOQuery1.FieldByName('userpass').AsString =
+  if ADOQuery1.RecordCount > 1 then
+  begin
+    ShowMessage('系统错误【用户】，请联系管理员～');
+    Exit;
+  end
+  else if (ADOQuery1.FieldByName('userpass').AsString =
     MD5.MD5Print(MD5.MD5String(Edit2.Text))) and
-    (ADOQuery1.RecordCount <> 0) then
+    (ADOQuery1.RecordCount = 1) then
   begin
     Main.Show;
     Main.Caption := Edit1.Text;
-    Main.uid := uid;
+    //Main.uid := uid;
+    Main.Labeluid.Caption := uid;
     //填入操作员姓名
     Main.Label19.Caption := Main.Caption;
     //填入登记时间
@@ -315,4 +332,3 @@ begin
 end;
 
 end.
-

@@ -64,10 +64,15 @@ begin
       CDKEY.Close;
 
     end
-    else
+    else if ADOQuery1.RecordCount = 0 then
     begin //授权失败
       ShowMessage('授权失败，请检查您的授权码重新输入或联系管理员～～');
       RzEdit1.SetFocus;
+    end
+    else if ADOQuery1.RecordCount > 1 then
+    begin
+      ShowMessage('系统错误【授权码】，请联系系统管理员～～');
+      Exit;
     end;
 
   end;

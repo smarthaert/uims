@@ -74,6 +74,13 @@ procedure TQHD.SpeedButton2Click(Sender: TObject);
 begin
   //Main_T.Label26.Caption := ADOQuery1.FieldByName('slid').AsString;
 
+  if Main_T.ADOQuery1.RecordCount > 1 then
+  begin
+    //目前一张退货单上不允许同时操作两张不一样的出库单
+    ShowMessage('当前已经有正在操作的售后单，不能增加新的退货单了。');
+    Exit;
+  end;
+
   Main.ADOConnection1.BeginTrans;
   try
 
@@ -139,8 +146,6 @@ begin
 
   Main_T.RzEdit4.Text := '';
 
-  Main_T.hasorder := True;
-
   SpeedButton1.Click;
 end;
 
@@ -192,3 +197,4 @@ begin
 end;
 
 end.
+

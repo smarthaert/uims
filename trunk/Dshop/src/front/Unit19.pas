@@ -85,13 +85,15 @@ begin
 
     //备份当前环境 与调用F6快捷键功能相同
     Main.ADOQuerySQL.SQL.Clear;
-    Main.ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,sname,stel,saddress,payment,status,uname,cdate,remark,created_at,updated_at) values("' + Main.Label26.Caption + '","","' + Main.edt8.Text + '","'
+    Main.ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,status,uid,uname,cdate,remark,created_at,updated_at) values("' + Main.Label26.Caption + '","","' + Main.edt8.Text + '","'
       + Main.edt1.Text +
       '","' + Main.RzEdit7.Text + '","' + Main.edt2.Text +
       '","' + Main.edt3.Text +
-      '","0","0","' + Main.edt4.Text + '","' +
+      '","0","0","' +
+      Main.Labelsid.Caption + '","' + Main.edt4.Text + '","' +
       Main.edt6.Text + '","' +
       Main.edt5.Text + '","' + Main.cbb1.Text + '","0","' +
+      Main.Labeluid.Caption + '","' +
       Main.Label19.Caption +
       '",now(),"' + Main.mmo1.Lines.GetText +
       '",now(),now()) on duplicate key update custstate="' +
@@ -100,10 +102,12 @@ begin
       Main.RzEdit7.Text +
       '",custtel="' + Main.edt2.Text + '",custaddr="' +
       Main.edt3.Text +
-      '",sname="' + Main.edt4.Text + '",stel="' +
+      '",sid="' +
+      Main.Labelsid.Caption + '",sname="' + Main.edt4.Text + '",stel="' +
       Main.edt5.Text + '",saddress="'
       + Main.edt6.Text + '",payment="' + Main.cbb1.Text +
-      '",uname="' +
+      '",uid="' +
+      Main.Labeluid.Caption + '",uname="' +
       Main.Label19.Caption + '",remark="' +
       Main.mmo1.Lines.GetText +
       '",updated_at=now()');
@@ -117,6 +121,7 @@ begin
     Main.edt8.Text := '';
     Main.RzEdit7.Text := '';
 
+    Main.Labelsid.Caption := '';
     Main.edt4.Text := '';
     Main.edt5.Text := '';
     Main.edt6.Text := '';
@@ -133,6 +138,12 @@ begin
     //设置补打标机
     Main.reprint := True;
 
+    Main.uid := Main.Labeluid.Caption;
+    Main.name := Main.Label19.Caption;
+
+    Main.Labeluid.Caption := ADOQuery1.FieldByName('uid').AsString;
+    Main.Label19.Caption := ADOQuery1.FieldByName('uname').AsString;
+
     {恢复客户，物流等信息}
     Main.edt1.Text :=
       ADOQuery1.FieldByName('custname').AsString;
@@ -147,6 +158,7 @@ begin
     Main.RzEdit7.Text :=
       ADOQuery1.FieldByName('shopname').AsString;
 
+    Main.Labelsid.Caption := ADOQuery1.FieldByName('sid').AsString;
     Main.edt4.Text :=
       ADOQuery1.FieldByName('sname').AsString;
     Main.edt5.Text :=
