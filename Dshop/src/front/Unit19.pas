@@ -87,11 +87,11 @@ begin
     if main.ADOQuery1.RecordCount > 1 then
     begin
       Main.ADOQuerySQL.SQL.Clear;
-      Main.ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,status,uid,uname,cdate,remark,created_at,updated_at) values("' + Main.Label26.Caption + '","","' + Main.edt8.Text + '","'
+      Main.ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,shoukuan,zhaoling,sid,sname,stel,saddress,payment,status,uid,uname,cdate,remark,created_at,updated_at) values("' + Main.Label26.Caption + '","","' + Main.edt8.Text + '","'
         + Main.edt1.Text +
         '","' + Main.RzEdit7.Text + '","' + Main.edt2.Text +
         '","' + Main.edt3.Text +
-        '","0","0","' +
+        '","0","0","0","0","' +
         Main.Labelsid.Caption + '","' + Main.edt4.Text + '","' +
         Main.edt6.Text + '","' +
         Main.edt5.Text + '","' + Main.cbb1.Text + '","0","' +
@@ -252,7 +252,7 @@ begin
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
   //默认只能补打当天的单子
-  ADOQuery1.SQL.Add('select * from selllogmains where DATE_FORMAT(cdate,"%y%m%d")=DATE_FORMAT(now(),"%y%m%d") and status');
+  ADOQuery1.SQL.Add('select * from selllogmains where DATE_FORMAT(cdate,"%y%m%d")=DATE_FORMAT(now(),"%y%m%d") and status order by created_at desc');
   ADOQuery1.Active := True;
 end;
 

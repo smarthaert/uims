@@ -87,8 +87,8 @@ begin
     {复制记录}
     //主表 设置售后单的来源是出库单，设置初始状态为   售后中，初始状态为 0
     ADOQuerySQL.SQL.Clear;
-    ADOQuerySQL.SQL.Add('insert into aftersellmains(tid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,status,uid,uname,preid,nextid,type,cdate,remark,created_at,updated_at) select "' + Main_T.Label26.Caption +
-      '" as tid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,"0" as status,uid,uname,"' +
+    ADOQuerySQL.SQL.Add('insert into aftersellmains(tid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,shoukuan,zhaoling,sid,sname,stel,saddress,payment,status,uid,uname,preid,nextid,type,cdate,remark,created_at,updated_at) select "' + Main_T.Label26.Caption +
+      '" as tid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,shoukuan,zhaoling,sid,sname,stel,saddress,payment,"0" as status,uid,uname,"' +
       ADOQuery1.FieldByName('slid').AsString +
       '" as preid,nextid,"处理中" as type,now() as cdate,remark,now() as created_at,now() as updated_at from selllogmains where slid="' +
       ADOQuery1.FieldByName('slid').AsString + '"');

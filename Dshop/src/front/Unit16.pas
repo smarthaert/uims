@@ -87,10 +87,10 @@ begin
     if Main_T.ADOQuery1.RecordCount > 1 then
     begin
       Main_T.ADOQuerySQL.SQL.Clear;
-      Main_T.ADOQuerySQL.SQL.Add('insert into aftersellmains(tid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,sname,stel,saddress,payment,status,uname,cdate,remark,created_at,updated_at) values("' + Main_T.Label26.Caption + '","","' + Main_T.edt8.Text + '","' +
+      Main_T.ADOQuerySQL.SQL.Add('insert into aftersellmains(tid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,shoukuan,zhaoling,sname,stel,saddress,payment,status,uname,cdate,remark,created_at,updated_at) values("' + Main_T.Label26.Caption + '","","' + Main_T.edt8.Text + '","' +
         Main_T.edt1.Text + '","' +
         Main_T.RzEdit7.Text + '","' + Main_T.edt2.Text + '","' +
-        Main_T.edt3.Text + '","0","0","' +
+        Main_T.edt3.Text + '","0","0","0","0","' +
         Main_T.edt4.Text + '","' + Main_T.edt6.Text + '","' + Main_T.edt5.Text
         + '","' + Main_T.cbb1.Text +
         '","0","' + Main_T.Label19.Caption + '",now(),"' +
@@ -225,7 +225,7 @@ begin
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
   //默认只能补打当天的单子
-  ADOQuery1.SQL.Add('select * from aftersellmains where DATE_FORMAT(cdate,"%y%m%d")=DATE_FORMAT(now(),"%y%m%d") and status');
+  ADOQuery1.SQL.Add('select * from aftersellmains where DATE_FORMAT(cdate,"%y%m%d")=DATE_FORMAT(now(),"%y%m%d") and status order by created_at desc');
   ADOQuery1.Active := True;
 end;
 

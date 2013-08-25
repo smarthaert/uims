@@ -133,6 +133,8 @@ custtel:string \
 custaddr:string \
 'yingshou:decimal{10,2}' \
 'shishou:decimal{10,2}' \
+'shoukuan:decimal{10,2}' \
+'zhaoling:decimal{10,2}' \
 aamount:integer \
 'avolume:decimal{10,2}' \
 sid:string \
@@ -164,6 +166,8 @@ color:string \
 unit:string \
 'inprice:decimal{10,2}' \
 'pfprice:decimal{10,2}' \
+'shoukuan:decimal{10,2}' \
+'zhaoling:decimal{10,2}' \
 'hprice:decimal{10,2}' \
 'outprice:decimal{10,2}' \
 amount:integer \
@@ -191,8 +195,12 @@ custtel:string \
 custaddr:string \
 'yingshou:decimal{10,2}' \
 'shishou:decimal{10,2}' \
+'shoukuan:decimal{10,2}' \
+'zhaoling:decimal{10,2}' \
 'yingtui:decimal{10,2}' \
 'shitui:decimal{10,2}' \
+'fukuan:decimal{10,2}' \
+'zhaohui:decimal{10,2}' \
 sid:string \
 sname:string \
 stel:string \

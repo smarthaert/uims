@@ -340,13 +340,14 @@ begin
 
       //更新销售主表，包括修改的客户，托运部信息，合计的订单产品数量，体积，金额信息
       Main.ADOQuerySQL.SQL.Clear;
-      Main.ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,aamount,avolume,sid,sname,stel,saddress,payment,status,type,uid,uname,cdate,pdate,remark,created_at,updated_at) values("' + Main.Label26.Caption + '","","' + Main.edt8.Text + '","' +
+      Main.ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,shoukuan,zhaoling,aamount,avolume,sid,sname,stel,saddress,payment,status,type,uid,uname,cdate,pdate,remark,created_at,updated_at) values("' + Main.Label26.Caption + '","","' + Main.edt8.Text + '","' +
         Main.edt1.Text + '","' +
         Main.RzEdit7.Text + '","' + Main.edt2.Text + '","' +
         Main.edt3.Text + '","' +
         Main.Label7.Caption + '","' + Label2.Caption
         +
-        '","' + vaamount + '","' + vavolume + '","' + Main.Labelsid.Caption +
+        '","' + RzEdit1.Text + '","' + Label7.Caption + '","' + vaamount + '","'
+        + vavolume + '","' + Main.Labelsid.Caption +
         '","' +
         Main.edt4.Text + '","' + Main.edt5.Text + '","' + Main.edt6.Text
         + '","' + Main.cbb1.Text +
@@ -368,6 +369,7 @@ begin
         + Main.mmo1.Lines.GetText + '", yingshou="' +
         Main.Label7.Caption + '", shishou="' + Label2.Caption
         +
+        '",shoukuan="' + RzEdit1.Text + '",zhaoling="' + Label7.Caption +
         '",aamount="' + vaamount + '",avolume="' + vavolume +
         '", status="1", type="已出库",pdate=now(),updated_at=now()');
       Main.ADOQuerySQL.ExecSQL;
@@ -498,6 +500,19 @@ begin
   if key = 13 then
   begin
     count := count + key;
+
+    Main.ADOQuery2.SQL.Clear;
+    Main.ADOQuery2.SQL.Add('select * from selllogmains where slid="' +
+      Main.Label26.Caption
+      + '"');
+    Main.ADOQuery2.Open;
+    if (Main.ADOQuery2.RecordCount = 1) and
+      (Main.ADOQuery2.FieldByName('pdate').AsString <> '') then
+    begin
+      JZ;
+      Exit;
+    end;
+
     if RzEdit1.ReadOnly and (Main.cbb1.Text = '现金') then
       Gathering.Close;
     if not (RzEdit1.ReadOnly) or (Main.cbb1.Text <> '现金')
@@ -521,7 +536,10 @@ begin
   if (Main.ADOQuery2.RecordCount = 1) and
     (Main.ADOQuery2.FieldByName('pdate').AsString <> '') then
   begin
-    RzEdit1.ReadOnly := True;
+    Label2.Caption := Main.ADOQuery2.FieldByName('yingshou').AsString;
+    RzEdit1.Text := Main.ADOQuery2.FieldByName('shoukuan').AsString;
+
+    RzEdit1.Enabled := True;
   end;
 end;
 
