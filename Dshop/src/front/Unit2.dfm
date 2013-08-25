@@ -1,6 +1,6 @@
 object Main: TMain
-  Left = 240
-  Top = 91
+  Left = 232
+  Top = 123
   Width = 1045
   Height = 810
   ActiveControl = edt1
@@ -686,6 +686,14 @@ object Main: TMain
       Font.Style = []
       ParentFont = False
     end
+    object Labeluid: TLabel
+      Left = 160
+      Top = 64
+      Width = 56
+      Height = 14
+      Caption = 'Labeluid'
+      Visible = False
+    end
   end
   object grp1: TGroupBox
     Left = 8
@@ -736,6 +744,7 @@ object Main: TMain
       Font.Name = #23435#20307
       Font.Style = []
       ParentFont = False
+      Visible = False
     end
     object lbl9: TLabel
       Left = 274
@@ -827,6 +836,7 @@ object Main: TMain
       FrameVisible = True
       ParentCtl3D = False
       TabOrder = 4
+      Visible = False
     end
     object edt7: TRzEdit
       Left = 329
@@ -1065,6 +1075,14 @@ object Main: TMain
       Font.Name = #23435#20307
       Font.Style = []
       ParentFont = False
+    end
+    object Labelsid: TLabel
+      Left = 384
+      Top = 16
+      Width = 48
+      Height = 12
+      Caption = 'Labelsid'
+      Visible = False
     end
     object edt4: TRzEdit
       Left = 62

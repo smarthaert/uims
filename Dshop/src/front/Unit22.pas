@@ -59,7 +59,7 @@ begin
     True);
 
   {根据支付方式填写收到金额}
-  if Main_T.cbb1.Text <> '现金' then
+  if Main_T.cbb2.Text <> '现金' then
   begin
     RzEdit1.Text := Label2.Caption;
   end;
@@ -139,14 +139,14 @@ begin
     end;
   end;
 
-  if Main_T.cbb1.Text = '' then
+  if Main_T.cbb2.Text = '' then
   begin
     ShowMessage('请选择支付方式~~!');
     SHQR.Close;
     Main_T.RzEdit4.SetFocus;
     Exit;
   end
-  else if (Main.cbb1.Text <> '现金') and (Main.cbb1.Text <> '记账') then
+  else if (Main_T.cbb2.Text <> '现金') and (Main_T.cbb2.Text <> '记账') then
   begin
     ShowMessage('支付方式无效，请选择正确的退款支付方式~~!');
     Gathering.Close;
@@ -155,7 +155,7 @@ begin
   end;
 
   //如果使用现金支付，检查输入金额是否小于应付款
-  if Main_T.cbb1.Text = '现金' then
+  if Main_T.cbb2.Text = '现金' then
   begin
     if StrToCurr(RzEdit1.Text) - StrToCurr(Label2.Caption)
       < 0 then
@@ -220,7 +220,12 @@ begin
 
   //补打凭证时不修改销售数据
   if Main_T.reprint then
-    Main_T.reprint := False
+  begin
+    Main_T.Labeluid.Caption := Main_T.uid;
+    Main_T.Label19.Caption := Main_T.uname;
+
+    Main_T.reprint := False;
+  end
   else //交易数据处理
   begin
     Main.ADOConnection1.BeginTrans;
@@ -231,35 +236,36 @@ begin
         Label2.Caption + '", shitui="' + Label2.Caption
         +
         '", status="1", type="已处理", tpayment="' + Main_T.cbb2.Text +
-          '",tuid="' + Main.uid + '",tuname="' + Main_T.Label19.Caption +
-          '",pdate=now(),tremark="' + Main_T.mmo2.Text +
-          '", pdate=now(),updated_at=now() where tid="' +
+        '",tuid="' + Main_T.Labeluid.Caption + '",tuname="' +
+        Main_T.Label19.Caption +
+        '",pdate=now(),tremark="' + Main_T.mmo2.Text +
+        '", pdate=now(),updated_at=now() where tid="' +
         Main_T.Label26.Caption + '"');
       Main_T.ADOQuerySQL.ExecSQL;
 
       //根据支付方式记帐
-      if Main.cbb1.Text = '现金' then
+      if Main_T.cbb2.Text = '现金' then
       begin
         Main_T.ADOQuerySQL.SQL.Clear;
-        Main_T.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,cdate,remark,created_at,updated_at) values("' + Main_T.edt7.Text + '","' + Main_T.edt1.Text +
+        Main_T.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,proof,ticketid,cdate,remark,created_at,updated_at) values("' + Main_T.edt7.Text + '","' + Main_T.edt1.Text +
           '","","","-'
           + CurrToStr(StrToCurr(Label2.Caption)) + '","' +
-          Main_T.cbb1.Text
+          Main_T.cbb2.Text
           +
-          '",now(),"' +
-          Main_T.mmo1.Lines.GetText + '",now(),now())');
+          '","","' + Main_T.Label26.Caption + '",now(),"' +
+          Main_T.mmo2.Lines.GetText + '",now(),now())');
         Main_T.ADOQuerySQL.ExecSQL;
       end
-      else if Main.cbb1.Text = '记账' then
+      else if Main_T.cbb2.Text = '记账' then
       begin
         Main_T.ADOQuerySQL.SQL.Clear;
-        Main_T.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,cdate,remark,created_at,updated_at) values("' + Main_T.edt7.Text + '","' + Main_T.edt1.Text +
+        Main_T.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,proof,ticketid,cdate,remark,created_at,updated_at) values("' + Main_T.edt7.Text + '","' + Main_T.edt1.Text +
           '","","","-'
           + CurrToStr(StrToCurr(Label2.Caption)) + '","' +
-          Main_T.cbb1.Text
+          Main_T.cbb2.Text
           +
-          '",now(),"' +
-          Main_T.mmo1.Lines.GetText + '",now(),now())');
+          '","","' + Main_T.Label26.Caption + '",now(),"' +
+          Main_T.mmo2.Lines.GetText + '",now(),now())');
         Main_T.ADOQuerySQL.ExecSQL;
       end;
 
@@ -306,6 +312,8 @@ begin
 
   Main_T.cbb1.Text := '';
   Main_T.mmo1.Text := '';
+  Main_T.cbb2.Text := '';
+  Main_T.mmo2.Text := '';
 
   //刷新销售列表
   Main_T.ListRefresh;
@@ -328,4 +336,3 @@ begin
 end;
 
 end.
-

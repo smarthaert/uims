@@ -59,7 +59,7 @@ begin
       Copy(RzEdit1.Text,
       1, 15) + '"');
     ADOQuery1.Open;
-    if ADOQuery1.RecordCount <> 0 then
+    if ADOQuery1.RecordCount = 1 then
     begin
       //检查余额
       if ADOQuery1.FieldByName('Money').AsCurrency -
@@ -104,10 +104,15 @@ begin
       Gathering.JZ;
       Card.Close;
     end
-    else
+    else if ADOQuery1.RecordCount = 0 then
     begin
       ShowMessage('此卡尚未启用~~!');
       Card.Close;
+    end
+    else if ADOQuery1.RecordCount > 1 then
+    begin
+      ShowMessage('系统错误【磁卡】，请联系系统管理员~~!');
+      Exit;
     end;
 
   end;

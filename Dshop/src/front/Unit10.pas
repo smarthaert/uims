@@ -99,6 +99,8 @@ begin
   Main.RzEdit7.Text :=
     ADOQuery1.FieldByName('shopname').AsString;
 
+  Main.Labelsid.Caption :=
+    ADOQuery1.FieldByName('sid').AsString;
   Main.edt4.Text :=
     ADOQuery1.FieldByName('sname').AsString;
   Main.edt5.Text := ADOQuery1.FieldByName('stel').AsString;

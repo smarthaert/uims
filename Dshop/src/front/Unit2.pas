@@ -147,6 +147,8 @@ type
     bvl1: TBevel;
     lbl12: TLabel;
     lbl13: TLabel;
+    Labeluid: TLabel;
+    Labelsid: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action:
       TCloseAction);
@@ -185,6 +187,7 @@ type
     qsrc: string;
 
     uid: string;
+    uname: string;
     cid: string;
     sid: string;
 
@@ -239,6 +242,11 @@ begin
 
     ADOQuery1.Post;
     ADOQuery1.Refresh;
+  end
+  else if ADOQuery4.RecordCount > 1 then
+  begin
+    ShowMessage('系统错误【会员价】，请联系管理员～');
+    Exit;
   end;
 end;
 
@@ -486,13 +494,14 @@ begin
     begin
 
       ADOQuerySQL.SQL.Clear;
-      ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,sname,stel,saddress,payment,status,type,uid,uname,cdate,remark,created_at,updated_at) values("' + Label26.Caption + '","' + edt7.Text + '","' + edt8.Text
+      ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,sid,sname,stel,saddress,payment,status,type,uid,uname,cdate,remark,created_at,updated_at) values("' + Label26.Caption + '","' + edt7.Text + '","' + edt8.Text
         +
         '","' + edt1.Text +
         '","' + RzEdit7.Text + '","' + edt2.Text + '","' + edt3.Text + '","' +
+        Labelsid.Caption + '","' +
         edt4.Text + '","' +
         edt5.Text + '","' + edt6.Text + '","' + cbb1.Text +
-        '","0","备货中","' + uid + '","' +
+        '","0","备货中","' + Labeluid.Caption + '","' +
         Label19.Caption + '",now(),"' + mmo1.Lines.GetText +
         '",now(),now())');
       ADOQuerySQL.ExecSQL;
@@ -601,12 +610,12 @@ begin
 
     VK_F4: RzEdit2.SetFocus; //单价
 
-    VK_F5: //补发
+    VK_F5: //赠品
       begin
         if ADOQuery1.FieldByName('additional').AsString =
           '-' then
         begin
-          if ADOQuery1.RecordCount > 0 then
+          if ADOQuery1.RecordCount > 1 then
           begin
             ADOQuerySQL.SQL.Clear;
             ADOQuerySQL.SQL.Add('update selllogdetails set additional="赠品",updated_at=now()  where slid="' + Label26.Caption + '" and pid="' +
@@ -620,7 +629,7 @@ begin
         else if ADOQuery1.FieldByName('additional').AsString
           = '赠品' then
         begin
-          if ADOQuery1.RecordCount > 0 then
+          if ADOQuery1.RecordCount > 1 then
           begin
             ADOQuerySQL.SQL.Clear;
             ADOQuerySQL.SQL.Add('update selllogdetails set additional="-",updated_at=now()  where slid="' + Label26.Caption + '" and pid="' +
@@ -640,23 +649,25 @@ begin
          //查销售主库是否有此单号
 
         ADOQuerySQL.SQL.Clear;
-        ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,sname,stel,saddress,payment,status,uname,cdate,remark,created_at,updated_at) values("' + Label26.Caption + '","","' + edt8.Text + '","' +
+        ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,status,uid,uname,cdate,remark,created_at,updated_at) values("' + Label26.Caption + '","","' + edt8.Text + '","' +
           edt1.Text + '","' +
           RzEdit7.Text + '","' + edt2.Text + '","' +
-          edt3.Text + '","0","0","' +
+          edt3.Text + '","0","0","' + Labelsid.Caption + '","' +
           edt4.Text + '","' + edt5.Text + '","' + edt6.Text
           + '","' + cbb1.Text +
-          '","0","' + Label19.Caption + '",now(),"' +
+          '","0","' + Labeluid.Caption + '","' + Label19.Caption + '",now(),"' +
           mmo1.Lines.GetText +
           '",now(),now()) on duplicate key update custstate="' +
           edt8.Text +
           '",custname="' + edt1.Text + '",shopname="' +
           RzEdit7.Text +
           '",custtel="' + edt2.Text + '",custaddr="' +
-          edt3.Text + '",sname="' +
+          edt3.Text + '",sid="' +
+          Labelsid.Caption + '",sname="' +
           edt4.Text + '",stel="' + edt5.Text +
           '",saddress="' + edt6.Text +
-          '",payment="' + cbb1.Text + '",uname="' +
+          '",payment="' + cbb1.Text + '",uid="' +
+          Labeluid.Caption + '",uname="' +
           Label19.Caption + '",remark="'
           + mmo1.Lines.GetText + '",updated_at=now()');
         ADOQuerySQL.ExecSQL;
@@ -669,6 +680,7 @@ begin
         edt8.Text := '';
         RzEdit7.Text := '';
 
+        Labelsid.Caption := '';
         edt4.Text := '';
         edt5.Text := '';
         edt6.Text := '';
@@ -748,7 +760,7 @@ begin
 
     VK_DELETE:
       begin
-        if ADOQuery1.RecordCount > 0 then
+        if ADOQuery1.RecordCount > 1 then
         begin
 
           if ADOQuery1.FieldByName('additional').AsString =
@@ -876,7 +888,7 @@ begin
 
     VK_ADD:
       begin
-        if ADOQuery1.RecordCount > 0 then
+        if ADOQuery1.RecordCount > 1 then
         begin
           //ADOQuery1.Edit;
           //ADOQuery1.FieldByName('amount').AsCurrency := ADOQuery1.FieldByName('amount').AsCurrency + 1;
@@ -973,7 +985,7 @@ begin
 
     VK_SUBTRACT:
       begin
-        if ADOQuery1.RecordCount > 0 then
+        if ADOQuery1.RecordCount > 1 then
         begin
           //ADOQuery1.Edit;
           //ADOQuery1.FieldByName('amount').AsCurrency := ADOQuery1.FieldByName('amount').AsCurrency - 1;
@@ -1104,7 +1116,7 @@ begin
   if key = #13 then
   begin
     key := #0;
-    if (ADOQuery1.RecordCount > 0) and
+    if (ADOQuery1.RecordCount > 1) and
       (ADOQuery1.FieldByName('additional').AsString <>
       '补件')
       then
@@ -1151,7 +1163,7 @@ begin
   if key = #13 then
   begin
     key := #0;
-    if (ADOQuery1.RecordCount > 0) and
+    if (ADOQuery1.RecordCount > 1) and
       (ADOQuery1.FieldByName('additional').AsString <>
       '补件')
       then
@@ -1196,7 +1208,7 @@ begin
   if key = #13 then
   begin
     key := #0;
-    if (ADOQuery1.RecordCount > 0) and
+    if (ADOQuery1.RecordCount > 1) and
       (ADOQuery1.FieldByName('additional').AsString <>
       '补件')
       then
@@ -1241,7 +1253,7 @@ begin
   if key = #13 then
   begin
     key := #0;
-    if (ADOQuery1.RecordCount > 0) and
+    if (ADOQuery1.RecordCount > 1) and
       (ADOQuery1.FieldByName('additional').AsString <>
       '补件')
       then
@@ -1316,7 +1328,7 @@ begin
     begin
 
       //当输入为空则结账
-      if (RzEdit4.Text = '') and (ADOQuery1.RecordCount > 0)
+      if (RzEdit4.Text = '') and (ADOQuery1.RecordCount > 1)
         then
       begin
 
@@ -1330,7 +1342,9 @@ begin
         Gathering := TGathering.create(application);
         Gathering.showmodal;
         Exit;
-      end;
+      end
+      else if RzEdit4.Text = '' then   //不允许直接查询所有产品列表，必须提供pid
+        Exit;
 
       {流程要求先输入客户名称}
       //检查货物数量
@@ -1364,6 +1378,13 @@ begin
         WRecord;
         RzEdit4.Text := '';
         RzEdit4.SetFocus;
+      end
+      else if ADOQuery2.RecordCount = 0 then
+        ShowMessage('找不到产品:' + RzEdit4.Text + ',请联系管理员～~')
+      else if ADOQuery2.RecordCount > 1 then
+      begin
+        ShowMessage('系统错误【产品】,请联系管理员～~');
+        Exit;
       end;
     end
     else //选择维修库中产品
@@ -1394,7 +1415,7 @@ begin
       ADOQuery2.SQL.Clear;
       ADOQuery2.SQL.Add('select d.tid, "' +
         QPT.ADOQuery1.FieldByName('tid').AsString +
-        '" as store, d.pid,barcode,d.goodsname,d.size,d.color,d.volume,d.unit,d.inprice,d.pfprice,d.amount,d.bundle,d.discount,d.type,d.remark from aftersellmains m, afterselldetails d where not(d.status) and d.type="维修" and m.tid=m.tid and m.custtel="' +
+        '" as store, d.pid,barcode,d.goodsname,d.size,d.color,d.volume,d.unit,d.inprice,d.pfprice,d.amount,d.bundle,d.discount,d.type,d.remark from aftersellmains m, afterselldetails d where not(d.status) and d.type="维修" and m.tid=d.tid and m.custtel="' +
         edt2.Text + '" and d.additional="' +
         QPT.ADOQuery1.FieldByName('additional').AsString +
         '" and d.pid="' + RzEdit4.Text +
@@ -1417,6 +1438,13 @@ begin
 
         RzEdit4.Text := '';
         RzEdit4.SetFocus;
+      end
+      else if ADOQuery2.RecordCount = 0 then
+        ShowMessage('找不到产品:' + RzEdit4.Text + '～~')
+      else if ADOQuery2.RecordCount > 1 then
+      begin
+        ShowMessage('系统错误【产品】,请联系管理员～~');
+        Exit;
       end;
     end;
 

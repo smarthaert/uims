@@ -224,7 +224,12 @@ begin
 
   //补打凭证时不修改销售数据
   if Main.reprint then
-    Main.reprint := False
+  begin
+    Main.Labeluid.Caption := Main.uid;
+    Main.Label19.Caption := Main.uname;
+
+    Main.reprint := False;
+  end
   else //交易数据处理
   begin
 
@@ -294,32 +299,36 @@ begin
 
       //更新销售主表，包括修改的客户，托运部信息，合计的订单产品数量，体积，金额信息
       Main.ADOQuerySQL.SQL.Clear;
-      Main.ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,aamount,avolume,sname,stel,saddress,payment,status,type,uname,cdate,pdate,remark,created_at,updated_at) values("' + Main.Label26.Caption + '","","' + Main.edt8.Text + '","' +
+      Main.ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,aamount,avolume,sid,sname,stel,saddress,payment,status,type,uid,uname,cdate,pdate,remark,created_at,updated_at) values("' + Main.Label26.Caption + '","","' + Main.edt8.Text + '","' +
         Main.edt1.Text + '","' +
         Main.RzEdit7.Text + '","' + Main.edt2.Text + '","' +
         Main.edt3.Text + '","' +
         Main.Label7.Caption + '","' + Label2.Caption
         +
-        '","' + vaamount + '","' + vavolume + '","' +
+        '","' + vaamount + '","' + vavolume + '","' + Main.Labelsid.Caption +
+        '","' +
         Main.edt4.Text + '","' + Main.edt5.Text + '","' + Main.edt6.Text
         + '","' + Main.cbb1.Text +
-        '","1","已出库","' + Main.Label19.Caption + '",now(),now(),"' +
+        '","1","已出库","' + Main.Labeluid.Caption + '","' + Main.Label19.Caption
+        + '",now(),now(),"' +
         Main.mmo1.Lines.GetText +
         '",now(),now()) on duplicate key update custstate="' +
         Main.edt8.Text +
         '",custname="' + Main.edt1.Text + '",shopname="' +
         Main.RzEdit7.Text +
         '",custtel="' + Main.edt2.Text + '",custaddr="' +
-        Main.edt3.Text + '",sname="' +
+        Main.edt3.Text + '",sid="' +
+        Main.Labelsid.Caption + '",sname="' +
         Main.edt4.Text + '",stel="' + Main.edt5.Text +
         '",saddress="' + Main.edt6.Text +
-        '",payment="' + Main.cbb1.Text + '",uname="' +
+        '",payment="' + Main.cbb1.Text + '",uid="' +
+        Main.Labeluid.Caption + '",uname="' +
         Main.Label19.Caption + '",remark="'
         + Main.mmo1.Lines.GetText + '", yingshou="' +
         Main.Label7.Caption + '", shishou="' + Label2.Caption
         +
         '",aamount="' + vaamount + '",avolume="' + vavolume +
-          '", status="1", type="已出库",pdate=now(),updated_at=now()');
+        '", status="1", type="已出库",pdate=now(),updated_at=now()');
       Main.ADOQuerySQL.ExecSQL;
 
       {
@@ -340,47 +349,47 @@ begin
       if Main.cbb1.Text = '现金' then
       begin
         Main.ADOQuerySQL.SQL.Clear;
-        Main.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,proof,cdate,remark,created_at,updated_at) values("' + Main.edt7.Text + '","' + Main.edt1.Text + '","' +
+        Main.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,proof,ticketid,cdate,remark,created_at,updated_at) values("' + Main.edt7.Text + '","' + Main.edt1.Text + '","' +
           Main.Label7.Caption + '","'
           + Label2.Caption + '","' +
           CurrToStr(StrToCurr(Main.Label7.Caption) -
           StrToCurr(Label2.Caption)) + '","' + Main.cbb1.Text +
-          '","",now(),"' +
+          '","","' + Main.Label26.Caption + '",now(),"' +
           Main.mmo1.Lines.GetText + '",now(),now())');
         Main.ADOQuerySQL.ExecSQL;
       end
       else if Main.cbb1.Text = '转账' then
       begin
         Main.ADOQuerySQL.SQL.Clear;
-        Main.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,proof,cdate,remark,created_at,updated_at) values("' + Main.edt7.Text + '","' + Main.edt1.Text + '","' +
+        Main.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,proof,ticketid,cdate,remark,created_at,updated_at) values("' + Main.edt7.Text + '","' + Main.edt1.Text + '","' +
           Main.Label7.Caption + '","'
           + Label2.Caption + '","' +
           CurrToStr(StrToCurr(Main.Label7.Caption) -
           StrToCurr(Label2.Caption)) + '","' + Main.cbb1.Text +
-          '","",now(),"' +
+          '","","' + Main.Label26.Caption + '",now(),"' +
           Main.mmo1.Lines.GetText + '",now(),now())');
         Main.ADOQuerySQL.ExecSQL;
       end
       else if Main.cbb1.Text = '托运部代收' then
       begin
         Main.ADOQuerySQL.SQL.Clear;
-        Main.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,proof,cdate,remark,created_at,updated_at) values("' + Main.edt7.Text + '","' + Main.edt1.Text + '","' +
+        Main.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,proof,ticketid,cdate,remark,created_at,updated_at) values("' + Main.edt7.Text + '","' + Main.edt1.Text + '","' +
           Main.Label7.Caption + '","'
           + Label2.Caption + '","' +
           CurrToStr(StrToCurr(Main.Label7.Caption) -
           StrToCurr(Label2.Caption)) + '","' + Main.cbb1.Text +
-          '","",now(),"' +
+          '","","' + Main.Label26.Caption + '",now(),"' +
           Main.mmo1.Lines.GetText + '",now(),now())');
         Main.ADOQuerySQL.ExecSQL;
       end
       else if Main.cbb1.Text = '记账' then
       begin
         Main.ADOQuerySQL.SQL.Clear;
-        Main.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,proof,cdate,remark,created_at,updated_at) values("' + Main.edt7.Text + '","' + Main.edt1.Text + '","' +
+        Main.ADOQuerySQL.SQL.Add('insert into contactpayments(custid,custname,outmoney,inmoney,strike,method,proof,ticketid,cdate,remark,created_at,updated_at) values("' + Main.edt7.Text + '","' + Main.edt1.Text + '","' +
           Main.Label7.Caption + '","0","' +
           CurrToStr(StrToCurr(Main.Label7.Caption) -
           StrToCurr(Label2.Caption)) + '","' + Main.cbb1.Text +
-          '","",now(),"' +
+          '","","' + Main.Label26.Caption + '",now(),"' +
           Main.mmo1.Lines.GetText + '",now(),now())');
         Main.ADOQuerySQL.ExecSQL;
       end;
@@ -465,4 +474,3 @@ begin
 end;
 
 end.
-

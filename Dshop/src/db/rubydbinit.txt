@@ -302,6 +302,7 @@ custname:string \
 'strike:decimal{10,2}' \
 method:string \
 proof:string \
+ticketid:string:uniq \
 cdate:date \
 remark:text
 

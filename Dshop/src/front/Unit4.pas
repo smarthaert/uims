@@ -147,6 +147,8 @@ type
     Label23: TLabel;
     mmo2: TMemo;
     bvl1: TBevel;
+    Labelsid: TLabel;
+    Labeluid: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -181,9 +183,10 @@ type
   private
     { Private declarations }
   public
+    uid: string;
+    uname: string;
     reprint: Boolean;
     qsrc: string;
-    hasorder: Boolean;
     procedure QH1;
     procedure WRecord;
     procedure QH2;
@@ -287,8 +290,16 @@ end;
 
 procedure TMain_T.SpeedButton1Click(Sender: TObject);
 begin
-  Main.Show;
-  Main_T.Close;
+
+  if
+    messagedlg('确认退出产品售后页面吗?',
+    mtconfirmation,
+    [mbyes, mbno], 0) = mryes then
+  begin
+    Main.Show;
+    Main_T.Close;
+  end;
+
 end;
 
 procedure TMain_T.SpeedButton2Click(Sender: TObject);
@@ -394,14 +405,14 @@ begin
   begin
 
     ADOQuerySQL.SQL.Clear;
-    ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,sname,stel,saddress,payment,status,uname,cdate,remark,created_at,updated_at) values("' + Label26.Caption + '","' + edt7.Text + '","' + edt8.Text
+    ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,sid,sname,stel,saddress,payment,status,uid,uname,cdate,remark,created_at,updated_at) values("' + Label26.Caption + '","' + edt7.Text + '","' + edt8.Text
       +
       '","' + edt1.Text +
       '","' + RzEdit7.Text + '","' + edt2.Text + '","' +
-      edt3.Text + '","' +
+      edt3.Text + '","' + Labelsid.Caption + '","' +
       edt4.Text + '","' + edt5.Text + '","' + edt6.Text +
       '","' + cbb1.Text +
-      '","0","' + Label19.Caption + '",now(),"' +
+      '","0","' + Labeluid.Caption + '","' + Label19.Caption + '",now(),"' +
       mmo1.Lines.GetText +
       '",now(),now())');
     ADOQuerySQL.ExecSQL;
@@ -770,7 +781,8 @@ begin
 
         ADOQuerySQL.SQL.Clear;
         ADOQuerySQL.SQL.Add('update aftersellmains set tpayment="' + cbb2.Text +
-          '",tuid="' + Main.uid + '",tuname="' + Label19.Caption + '",tremark="' +
+          '",tuid="' + Labeluid.Caption + '",tuname="' + Label19.Caption +
+          '",tremark="' +
           mmo2.Text + '",updated_at=now() where tid="' + Label26.Caption + '"');
         ADOQuerySQL.ExecSQL;
 
@@ -788,14 +800,14 @@ begin
 
         cbb1.Text := '';
         mmo1.Text := '';
+        cbb2.Text := '';
+        mmo2.Text := '';
 
         {更换单号}
         GetOrderId;
 
         ListRefresh;
         QH2;
-
-        hasorder := False;
 
         RzEdit4.SetFocus;
       end;
@@ -815,7 +827,7 @@ begin
     VK_F8: //取消退货订单
       begin
 
-        if hasorder then
+        if ADOQuery1.RecordCount > 1 then
         begin
 
           ADOQuery2.SQL.Clear;
@@ -862,6 +874,22 @@ begin
               end;
             end;
           end;
+          {清空数据项}
+          edt1.Text := '';
+          edt2.Text := '';
+          edt3.Text := '';
+          edt7.Text := '';
+          edt8.Text := '';
+          RzEdit7.Text := '';
+
+          edt4.Text := '';
+          edt5.Text := '';
+          edt6.Text := '';
+
+          cbb1.Text := '';
+          mmo1.Text := '';
+          cbb2.Text := '';
+          mmo2.Text := '';
 
           QH1;
           QH2;
@@ -1190,7 +1218,7 @@ begin
   if key = #13 then
   begin
     key := #0;
-    if ADOQuery1.RecordCount > 0 then
+    if ADOQuery1.RecordCount > 1 then
     begin
       //输入数据检查
       try
@@ -1230,7 +1258,7 @@ begin
   if key = #13 then
   begin
     key := #0;
-    if ADOQuery1.RecordCount > 0 then
+    if ADOQuery1.RecordCount > 1 then
     begin
       //输入数据检查
       try
@@ -1272,7 +1300,7 @@ begin
   if key = #13 then
   begin
     key := #0;
-    if ADOQuery1.RecordCount > 0 then
+    if ADOQuery1.RecordCount > 1 then
     begin
       //输入数据检查
       try
@@ -1314,7 +1342,7 @@ begin
   if key = #13 then
   begin
     key := #0;
-    if ADOQuery1.RecordCount > 0 then
+    if ADOQuery1.RecordCount > 1 then
     begin
       //输入数据检查
       try
@@ -1382,7 +1410,7 @@ begin
   if key = #13 then
   begin
     //当输入为@则结账
-    if (RzEdit4.Text = '') and (ADOQuery1.RecordCount > 0)
+    if (RzEdit4.Text = '') and (ADOQuery1.RecordCount > 1)
       then
     begin
 
@@ -1537,6 +1565,8 @@ begin
   Main_T.Left := (GetSystemMetrics(SM_CxSCREEN) -
     Main_T.Width) div 2;
 
+  Labeluid.Caption := Main.Labeluid.Caption;
+
 end;
 
 procedure TMain_T.ComboBox1KeyPress(Sender: TObject; var
@@ -1595,3 +1625,4 @@ begin
 end;
 
 end.
+

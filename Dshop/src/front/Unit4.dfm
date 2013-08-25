@@ -642,6 +642,14 @@ object Main_T: TMain_T
       Font.Style = []
       ParentFont = False
     end
+    object Labeluid: TLabel
+      Left = 136
+      Top = 24
+      Width = 56
+      Height = 14
+      Caption = 'Labeluid'
+      Visible = False
+    end
   end
   object grp1: TGroupBox
     Left = 8
@@ -692,6 +700,7 @@ object Main_T: TMain_T
       Font.Name = #23435#20307
       Font.Style = []
       ParentFont = False
+      Visible = False
     end
     object lbl9: TLabel
       Left = 277
@@ -773,9 +782,9 @@ object Main_T: TMain_T
       Top = 46
       Width = 708
       Height = 20
+      Color = clBlack
       Ctl3D = True
       DisabledColor = clBlack
-      Enabled = False
       FrameColor = clWhite
       FrameHotColor = 14593668
       FrameHotTrack = True
@@ -783,6 +792,7 @@ object Main_T: TMain_T
       FrameVisible = True
       ParentCtl3D = False
       TabOrder = 4
+      Visible = False
     end
     object edt7: TRzEdit
       Left = 333
@@ -1026,6 +1036,14 @@ object Main_T: TMain_T
       Font.Name = #23435#20307
       Font.Style = []
       ParentFont = False
+    end
+    object Labelsid: TLabel
+      Left = 368
+      Top = 16
+      Width = 48
+      Height = 12
+      Caption = 'Labelsid'
+      Visible = False
     end
     object edt4: TRzEdit
       Left = 62
