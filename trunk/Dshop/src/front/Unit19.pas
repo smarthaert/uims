@@ -79,39 +79,42 @@ end;
 procedure TQHD_P.SpeedButton2Click(Sender: TObject);
 begin
   //补充打印
-  if messagedlg('确认打印吗？', mtconfirmation, [mbyes,
+  if messagedlg('确认选择该订单补打吗？', mtconfirmation, [mbyes,
     mbno], 0) = mryes then
   begin
 
     //备份当前环境 与调用F6快捷键功能相同
-    Main.ADOQuerySQL.SQL.Clear;
-    Main.ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,status,uid,uname,cdate,remark,created_at,updated_at) values("' + Main.Label26.Caption + '","","' + Main.edt8.Text + '","'
-      + Main.edt1.Text +
-      '","' + Main.RzEdit7.Text + '","' + Main.edt2.Text +
-      '","' + Main.edt3.Text +
-      '","0","0","' +
-      Main.Labelsid.Caption + '","' + Main.edt4.Text + '","' +
-      Main.edt6.Text + '","' +
-      Main.edt5.Text + '","' + Main.cbb1.Text + '","0","' +
-      Main.Labeluid.Caption + '","' +
-      Main.Label19.Caption +
-      '",now(),"' + Main.mmo1.Lines.GetText +
-      '",now(),now()) on duplicate key update custstate="' +
-      Main.edt8.Text +
-      '",custname="' + Main.edt1.Text + '",shopname="' +
-      Main.RzEdit7.Text +
-      '",custtel="' + Main.edt2.Text + '",custaddr="' +
-      Main.edt3.Text +
-      '",sid="' +
-      Main.Labelsid.Caption + '",sname="' + Main.edt4.Text + '",stel="' +
-      Main.edt5.Text + '",saddress="'
-      + Main.edt6.Text + '",payment="' + Main.cbb1.Text +
-      '",uid="' +
-      Main.Labeluid.Caption + '",uname="' +
-      Main.Label19.Caption + '",remark="' +
-      Main.mmo1.Lines.GetText +
-      '",updated_at=now()');
-    Main.ADOQuerySQL.ExecSQL;
+    if main.ADOQuery1.RecordCount > 1 then
+    begin
+      Main.ADOQuerySQL.SQL.Clear;
+      Main.ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,sid,sname,stel,saddress,payment,status,uid,uname,cdate,remark,created_at,updated_at) values("' + Main.Label26.Caption + '","","' + Main.edt8.Text + '","'
+        + Main.edt1.Text +
+        '","' + Main.RzEdit7.Text + '","' + Main.edt2.Text +
+        '","' + Main.edt3.Text +
+        '","0","0","' +
+        Main.Labelsid.Caption + '","' + Main.edt4.Text + '","' +
+        Main.edt6.Text + '","' +
+        Main.edt5.Text + '","' + Main.cbb1.Text + '","0","' +
+        Main.Labeluid.Caption + '","' +
+        Main.Label19.Caption +
+        '",now(),"' + Main.mmo1.Lines.GetText +
+        '",now(),now()) on duplicate key update custstate="' +
+        Main.edt8.Text +
+        '",custname="' + Main.edt1.Text + '",shopname="' +
+        Main.RzEdit7.Text +
+        '",custtel="' + Main.edt2.Text + '",custaddr="' +
+        Main.edt3.Text +
+        '",sid="' +
+        Main.Labelsid.Caption + '",sname="' + Main.edt4.Text + '",stel="' +
+        Main.edt5.Text + '",saddress="'
+        + Main.edt6.Text + '",payment="' + Main.cbb1.Text +
+        '",uid="' +
+        Main.Labeluid.Caption + '",uname="' +
+        Main.Label19.Caption + '",remark="' +
+        Main.mmo1.Lines.GetText +
+        '",updated_at=now()');
+      Main.ADOQuerySQL.ExecSQL;
+    end;
 
     {清空数据项}
     Main.edt1.Text := '';
@@ -136,10 +139,9 @@ begin
     Main.QH2;
 
     //设置补打标机
-    Main.reprint := True;
 
     Main.uid := Main.Labeluid.Caption;
-    Main.name := Main.Label19.Caption;
+    Main.uname := Main.Label19.Caption;
 
     Main.Labeluid.Caption := ADOQuery1.FieldByName('uid').AsString;
     Main.Label19.Caption := ADOQuery1.FieldByName('uname').AsString;
@@ -172,6 +174,27 @@ begin
       ADOQuery1.FieldByName('remark').AsString;
 
     //冻结窗口，禁止修改相关数据。或者直接打印
+
+    Main.edt1.Enabled := False;
+    Main.edt2.Enabled := False;
+    Main.edt3.Enabled := False;
+    Main.edt7.Enabled := False;
+    Main.edt8.Enabled := False;
+    Main.RzEdit7.Enabled := False;
+
+    Main.edt4.Enabled := False;
+    Main.edt5.Enabled := False;
+    Main.edt6.Enabled := False;
+
+    Main.cbb1.Enabled := False;
+    Main.mmo1.Enabled := False;
+
+    Main.RzEdit1.Enabled := False;
+    Main.RzEdit2.Enabled := False;
+    Main.RzEdit3.Enabled := False;
+    Main.RzEdit5.Enabled := False;
+
+    Main.rzchckbx1.Enabled := False;
 
     SpeedButton1.Click;
 

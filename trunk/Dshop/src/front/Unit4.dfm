@@ -791,7 +791,7 @@ object Main_T: TMain_T
       FrameStyle = fsBump
       FrameVisible = True
       ParentCtl3D = False
-      TabOrder = 4
+      TabOrder = 5
       Visible = False
     end
     object edt7: TRzEdit
@@ -841,7 +841,7 @@ object Main_T: TMain_T
       FrameStyle = fsBump
       FrameVisible = True
       ParentCtl3D = False
-      TabOrder = 5
+      TabOrder = 4
       OnKeyPress = edt8KeyPress
     end
   end
@@ -1379,10 +1379,10 @@ object Main_T: TMain_T
           WordWrap = True
           FontSize = 10
         end
-        object qrdbtxtamount: TQRDBText
+        object qrdbtxtramount: TQRDBText
           Left = 443
           Top = 1
-          Width = 43
+          Width = 50
           Height = 17
           Frame.Color = clBlack
           Frame.DrawTop = False
@@ -1393,14 +1393,14 @@ object Main_T: TMain_T
             44.979166666666670000
             1172.104166666667000000
             2.645833333333333000
-            113.770833333333300000)
+            132.291666666666700000)
           Alignment = taLeftJustify
           AlignToBand = False
           AutoSize = True
           AutoStretch = False
           Color = clWhite
           DataSet = ADOQuery1
-          DataField = 'amount'
+          DataField = 'ramount'
           Font.Charset = GB2312_CHARSET
           Font.Color = clWindowText
           Font.Height = -13

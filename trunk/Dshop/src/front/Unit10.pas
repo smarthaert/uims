@@ -85,6 +85,42 @@ begin
   Main.QH1;
   Main.QH2;
 
+  Main.ADOQuery2.SQL.Clear;
+  Main.ADOQuery2.SQL.Add('select * from selllogmains where slid="' +
+    Main.Label26.Caption
+    + '"');
+  Main.ADOQuery2.Open;
+  if (Main.ADOQuery2.RecordCount = 1) and
+    (Main.ADOQuery2.FieldByName('pdate').AsString <> '') then
+  begin
+    //处理单据补打
+
+    Main.uid := Main.Labeluid.Caption;
+    Main.uname := Main.Label19.Caption;
+
+    Main.edt1.Enabled := False;
+    Main.edt2.Enabled := False;
+    Main.edt3.Enabled := False;
+    Main.edt7.Enabled := False;
+    Main.edt8.Enabled := False;
+    Main.RzEdit7.Enabled := False;
+
+    Main.edt4.Enabled := False;
+    Main.edt5.Enabled := False;
+    Main.edt6.Enabled := False;
+
+    Main.cbb1.Enabled := False;
+    Main.mmo1.Enabled := False;
+
+    Main.RzEdit1.Enabled := False;
+    Main.RzEdit2.Enabled := False;
+    Main.RzEdit3.Enabled := False;
+    Main.RzEdit5.Enabled := False;
+
+    Main.rzchckbx1.Enabled := False;
+
+  end;
+
   {恢复客户，物流等信息}
   Main.edt1.Text :=
     ADOQuery1.FieldByName('custname').AsString;

@@ -96,7 +96,7 @@ type
     qrdbtxtgoodsname: TQRDBText;
     qrdbtxtcolor: TQRDBText;
     qrdbtxtvolume: TQRDBText;
-    qrdbtxtamount: TQRDBText;
+    qrdbtxtramount: TQRDBText;
     qrdbtxtunit: TQRDBText;
     qrdbtxtbundle: TQRDBText;
     qrdbtxtoutprice: TQRDBText;
@@ -185,7 +185,8 @@ type
   public
     uid: string;
     uname: string;
-    reprint: Boolean;
+    FTotalPages: Integer;
+    //reprint: Boolean;
     qsrc: string;
     procedure QH1;
     procedure WRecord;
@@ -198,7 +199,6 @@ type
 
 var
   Main_T: TMain_T;
-  FTotalPages: Integer;
   source: string;
 
 implementation
@@ -338,7 +338,7 @@ begin
   QRLabel10.Caption := '操作员:' + Label19.Caption;
   QRLabel7.Caption := '应退:' + Label14.Caption + '元';
   QRLabel8.Caption := '付款:' + Label15.Caption + '元';
-  QRLabel9.Caption := '找零:' + Label16.Caption + '元';
+  QRLabel9.Caption := '找回:' + Label16.Caption + '元';
 
   qrlbl13.Caption := '收件人:' + Main_T.edt1.Text;
   qrlbl14.Caption := '电话:' + Main_T.edt2.Text;
@@ -465,6 +465,18 @@ begin
 
     VK_F2: //RzEdit3.SetFocus; //拆分
       begin
+
+        ADOQuery2.SQL.Clear;
+        ADOQuery2.SQL.Add('select * from aftersellmains where tid="' +
+          Label26.Caption
+          + '"');
+        ADOQuery2.Open;
+        if (ADOQuery2.RecordCount = 1) and
+          (ADOQuery2.FieldByName('pdate').AsString <> '') then
+        begin
+          Exit;
+        end;
+
         {拆分}
         //弹出框提示用户拆分出几条
         if ADOQuery1.FieldByName('ramount').AsInteger = 1
@@ -486,6 +498,18 @@ begin
 
     VK_F3: //RzEdit5.SetFocus;
       begin
+
+        ADOQuery2.SQL.Clear;
+        ADOQuery2.SQL.Add('select * from aftersellmains where tid="' +
+          Label26.Caption
+          + '"');
+        ADOQuery2.Open;
+        if (ADOQuery2.RecordCount = 1) and
+          (ADOQuery2.FieldByName('pdate').AsString <> '') then
+        begin
+          Exit;
+        end;
+
         {合并}
         //弹出列表，提示用户与哪条合并
         if QHB <> nil then
@@ -500,6 +524,18 @@ begin
 
     VK_F4: //RzEdit2.SetFocus; //退货
       begin
+
+        ADOQuery2.SQL.Clear;
+        ADOQuery2.SQL.Add('select * from aftersellmains where tid="' +
+          Label26.Caption
+          + '"');
+        ADOQuery2.Open;
+        if (ADOQuery2.RecordCount = 1) and
+          (ADOQuery2.FieldByName('pdate').AsString <> '') then
+        begin
+          Exit;
+        end;
+
         if ADOQuery1.FieldByName('pid').AsString = '' then
         begin
           if
@@ -632,6 +668,18 @@ begin
     VK_F5: //ComboBox1.SetFocus;
       //售后操作类型，退货/换货/维修/补发/
       begin
+
+        ADOQuery2.SQL.Clear;
+        ADOQuery2.SQL.Add('select * from aftersellmains where tid="' +
+          Label26.Caption
+          + '"');
+        ADOQuery2.Open;
+        if (ADOQuery2.RecordCount = 1) and
+          (ADOQuery2.FieldByName('pdate').AsString <> '') then
+        begin
+          Exit;
+        end;
+
         if ADOQuery1.FieldByName('pid').AsString = '' then
         begin
           if
@@ -827,6 +875,17 @@ begin
     VK_F8: //取消退货订单
       begin
 
+        ADOQuery2.SQL.Clear;
+        ADOQuery2.SQL.Add('select * from aftersellmains where tid="' +
+          Label26.Caption
+          + '"');
+        ADOQuery2.Open;
+        if (ADOQuery2.RecordCount = 1) and
+          (ADOQuery2.FieldByName('pdate').AsString <> '') then
+        begin
+          Exit;
+        end;
+
         if ADOQuery1.RecordCount > 1 then
         begin
 
@@ -898,6 +957,18 @@ begin
 
     VK_F10: //RzEdit1.SetFocus;
       begin
+
+        ADOQuery2.SQL.Clear;
+        ADOQuery2.SQL.Add('select * from aftersellmains where tid="' +
+          Label26.Caption
+          + '"');
+        ADOQuery2.Open;
+        if (ADOQuery2.RecordCount = 1) and
+          (ADOQuery2.FieldByName('pdate').AsString <> '') then
+        begin
+          Exit;
+        end;
+
         if ADOQuery1.FieldByName('pid').AsString = '' then
         begin
           if
@@ -1409,6 +1480,23 @@ procedure TMain_T.RzEdit4KeyPress(Sender: TObject; var Key:
 begin
   if key = #13 then
   begin
+
+    ADOQuery2.SQL.Clear;
+    ADOQuery2.SQL.Add('select * from aftersellmains where tid="' +
+      Label26.Caption
+      + '"');
+    ADOQuery2.Open;
+    if ADOQuery2.RecordCount = 1 then
+    begin
+      //处理单据补打
+      if ADOQuery2.FieldByName('pdate').AsString <> '' then
+      begin
+        SHQR := TSHQR.create(application);
+        SHQR.showmodal;
+        Exit;
+      end;
+    end;
+
     //当输入为@则结账
     if (RzEdit4.Text = '') and (ADOQuery1.RecordCount > 1)
       then
@@ -1566,6 +1654,8 @@ begin
     Main_T.Width) div 2;
 
   Labeluid.Caption := Main.Labeluid.Caption;
+  Label19.Caption := Main.Label19.Caption;
+  Label21.Caption := Main.Label21.Caption;
 
 end;
 

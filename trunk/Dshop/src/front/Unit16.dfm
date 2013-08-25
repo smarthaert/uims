@@ -57,8 +57,9 @@ object QHD_PT: TQHD_PT
       Left = 169
       Top = 50
       Width = 193
-      Height = 18
-      Ctl3D = False
+      Height = 20
+      Color = clBlack
+      Ctl3D = True
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -12
@@ -103,7 +104,7 @@ object QHD_PT: TQHD_PT
         item
           Alignment = taCenter
           Expanded = False
-          FieldName = 'created_at'
+          FieldName = 'cdate'
           Title.Alignment = taCenter
           Title.Caption = #24314#21333#26085#26399
           Width = 86
@@ -112,7 +113,7 @@ object QHD_PT: TQHD_PT
         item
           Alignment = taCenter
           Expanded = False
-          FieldName = 'slid'
+          FieldName = 'tid'
           Title.Alignment = taCenter
           Title.Caption = #21333#12288#21495
           Width = 83
