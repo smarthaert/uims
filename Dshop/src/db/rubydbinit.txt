@@ -147,8 +147,7 @@ preid:string \
 nextid:string \
 type:string \
 cdate:date \
-pcdate:date \
-printdate:date \
+pdate:date \
 remark:text
 
 #产品出库明细表，数据来源于订单记录表
@@ -208,7 +207,7 @@ tuname:string \
 preid:string \
 nextid:string \
 cdate:date \
-pcdate:date \
+pdate:date \
 tremark:text \
 remark:text
 

@@ -79,32 +79,35 @@ end;
 procedure TQHD_PT.SpeedButton2Click(Sender: TObject);
 begin
   //补充打印
-  if messagedlg('确认打印吗？', mtconfirmation, [mbyes,
+  if messagedlg('确认选择该订单补打吗？', mtconfirmation, [mbyes,
     mbno], 0) = mryes then
   begin
 
     //备份当前环境 与调用F6快捷键功能相同
-    Main_T.ADOQuerySQL.SQL.Clear;
-    Main_T.ADOQuerySQL.SQL.Add('insert into aftersellmains(tid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,sname,stel,saddress,payment,status,uname,cdate,remark,created_at,updated_at) values("' + Main_T.Label26.Caption + '","","' + Main_T.edt8.Text + '","' +
-      Main_T.edt1.Text + '","' +
-      Main_T.RzEdit7.Text + '","' + Main_T.edt2.Text + '","' +
-      Main_T.edt3.Text + '","0","0","' +
-      Main_T.edt4.Text + '","' + Main_T.edt6.Text + '","' + Main_T.edt5.Text
-      + '","' + Main_T.cbb1.Text +
-      '","0","' + Main_T.Label19.Caption + '",now(),"' +
-      Main_T.mmo1.Lines.GetText +
-      '",now(),now()) on duplicate key update custstate="' +
-      Main_T.edt8.Text +
-      '",custname="' + Main_T.edt1.Text + '",shopname="' +
-      Main_T.RzEdit7.Text +
-      '",custtel="' + Main_T.edt2.Text + '",custaddr="' +
-      Main_T.edt3.Text + '",sname="' +
-      Main_T.edt4.Text + '",stel="' + Main_T.edt6.Text +
-      '",saddress="' + Main_T.edt5.Text +
-      '",payment="' + Main_T.cbb1.Text + '",uname="' +
-      Main_T.Label19.Caption + '",remark="'
-      + Main_T.mmo1.Lines.GetText + '",updated_at=now()');
-    Main_T.ADOQuerySQL.ExecSQL;
+    if Main_T.ADOQuery1.RecordCount > 1 then
+    begin
+      Main_T.ADOQuerySQL.SQL.Clear;
+      Main_T.ADOQuerySQL.SQL.Add('insert into aftersellmains(tid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,sname,stel,saddress,payment,status,uname,cdate,remark,created_at,updated_at) values("' + Main_T.Label26.Caption + '","","' + Main_T.edt8.Text + '","' +
+        Main_T.edt1.Text + '","' +
+        Main_T.RzEdit7.Text + '","' + Main_T.edt2.Text + '","' +
+        Main_T.edt3.Text + '","0","0","' +
+        Main_T.edt4.Text + '","' + Main_T.edt6.Text + '","' + Main_T.edt5.Text
+        + '","' + Main_T.cbb1.Text +
+        '","0","' + Main_T.Label19.Caption + '",now(),"' +
+        Main_T.mmo1.Lines.GetText +
+        '",now(),now()) on duplicate key update custstate="' +
+        Main_T.edt8.Text +
+        '",custname="' + Main_T.edt1.Text + '",shopname="' +
+        Main_T.RzEdit7.Text +
+        '",custtel="' + Main_T.edt2.Text + '",custaddr="' +
+        Main_T.edt3.Text + '",sname="' +
+        Main_T.edt4.Text + '",stel="' + Main_T.edt6.Text +
+        '",saddress="' + Main_T.edt5.Text +
+        '",payment="' + Main_T.cbb1.Text + '",uname="' +
+        Main_T.Label19.Caption + '",remark="'
+        + Main_T.mmo1.Lines.GetText + '",updated_at=now()');
+      Main_T.ADOQuerySQL.ExecSQL;
+    end;
 
     {清空数据项}
     Main_T.edt1.Text := '';
@@ -124,9 +127,8 @@ begin
     //恢复历史单据信息
 
     //设置补打标机
-    Main_T.reprint := True;
     Main_T.uid := Main_T.Labeluid.Caption;
-    Main_T.name := Main_T.Label19.Caption;
+    Main_T.uname := Main_T.Label19.Caption;
 
     Main_T.Labeluid.Caption := ADOQuery1.FieldByName('uid').AsString;
     Main_T.Label19.Caption := ADOQuery1.FieldByName('uname').AsString;
@@ -164,7 +166,29 @@ begin
     Main_T.mmo1.Text :=
       ADOQuery1.FieldByName('remark').AsString;
 
+    Main_T.cbb2.Text :=
+      ADOQuery1.FieldByName('tpayment').AsString;
+    Main_T.mmo2.Text :=
+      ADOQuery1.FieldByName('tremark').AsString;
+
     //冻结窗口，禁止修改相关数据。或者直接打印
+
+    Main_T.edt1.Enabled := False;
+    Main_T.edt2.Enabled := False;
+    Main_T.edt3.Enabled := False;
+    Main_T.edt7.Enabled := False;
+    Main_T.edt8.Enabled := False;
+    Main_T.RzEdit7.Enabled := False;
+
+    Main_T.edt4.Enabled := False;
+    Main_T.edt5.Enabled := False;
+    Main_T.edt6.Enabled := False;
+
+    Main_T.cbb1.Enabled := False;
+    Main_T.mmo1.Enabled := False;
+
+    Main_T.cbb2.Enabled := False;
+    Main_T.mmo2.Enabled := False;
 
     SpeedButton1.Click;
 
@@ -201,7 +225,7 @@ begin
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
   //默认只能补打当天的单子
-  ADOQuery1.SQL.Add('select * from selllogmains where DATE_FORMAT(cdate,"%y%m%d")=DATE_FORMAT(now(),"%y%m%d") and status');
+  ADOQuery1.SQL.Add('select * from aftersellmains where DATE_FORMAT(cdate,"%y%m%d")=DATE_FORMAT(now(),"%y%m%d") and status');
   ADOQuery1.Active := True;
 end;
 
@@ -215,7 +239,7 @@ begin
     ADOQuery1.Close;
     ADOQuery1.SQL.Clear;
     //默认只能补打当天的单子
-    ADOQuery1.SQL.Add('select * from selllogmains where DATE_FORMAT(cdate,"%y%m%d")=DATE_FORMAT(now(),"%y%m%d") and status and slid like "%' + Edit1.Text + '%"');
+    ADOQuery1.SQL.Add('select * from aftersellmains where DATE_FORMAT(cdate,"%y%m%d")=DATE_FORMAT(now(),"%y%m%d") and status and tid like "%' + Edit1.Text + '%"');
     ADOQuery1.Active := True;
   end;
 

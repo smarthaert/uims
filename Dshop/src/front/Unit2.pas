@@ -9,7 +9,7 @@ uses
   ADODB, INIFiles,
   RzForms, RzStatus, Mask, RzEdit, QRCtrls, QuickRpt,
   Registry, DBTables,
-  RzCmboBx, RzButton, RzRadChk;
+  RzCmboBx, RzButton, RzRadChk, RzLstBox;
 
 type
   TMain = class(TForm)
@@ -149,6 +149,28 @@ type
     lbl13: TLabel;
     Labeluid: TLabel;
     Labelsid: TLabel;
+    Panel2: TPanel;
+    QuickRepExpress: TQuickRep;
+    qrbndPageHeaderBand2: TQRBand;
+    qrbndTitleBand1: TQRBand;
+    qrbndPageFooterBand1: TQRBand;
+    QRLabelsname: TQRLabel;
+    QRLabelsorgname: TQRLabel;
+    QRLabelsaddr: TQRLabel;
+    QRLabelticketid: TQRLabel;
+    QRLabelstel: TQRLabel;
+    QRLabelsign: TQRLabel;
+    QRLabelrname: TQRLabel;
+    QRLabelrorgname: TQRLabel;
+    QRLabelraddr: TQRLabel;
+    QRLabelrtel: TQRLabel;
+    QRLabelFooter: TQRLabel;
+    QRLabelHeader: TQRLabel;
+    QRLabelOname: TQRLabel;
+    QRLabelsarea: TQRLabel;
+    QRLabelrarea: TQRLabel;
+    QRLabeldate: TQRLabel;
+    qrshp1: TQRShape;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action:
       TCloseAction);
@@ -180,16 +202,18 @@ type
     procedure edt2KeyPress(Sender: TObject; var Key: Char);
     procedure RzComboBox1KeyPress(Sender: TObject; var Key:
       Char);
+    procedure QuickRepExpressStartPage(Sender: TCustomQuickRep);
   private
     { Private declarations }
   public
-    reprint: Boolean;
+    //reprint: Boolean;
     qsrc: string;
 
     uid: string;
     uname: string;
     cid: string;
     sid: string;
+    FTotalPages: Integer;
 
     procedure QH1;
     procedure WRecord;
@@ -203,7 +227,6 @@ type
 
 var
   Main: TMain;
-  FTotalPages: Integer;
   UpdateTimeStr: string;
 
 implementation
@@ -342,7 +365,7 @@ begin
   ADOQuery2.SQL.Add('select now() as now');
   ADOQuery2.Open;
 
-  //读取单号
+  //读取登录时间，采用服务器时间
   Label21.Caption := ADOQuery2.FieldByName('now').AsString;
 end;
 
@@ -612,6 +635,17 @@ begin
 
     VK_F5: //赠品
       begin
+        ADOQuery2.SQL.Clear;
+        ADOQuery2.SQL.Add('select * from selllogmains where slid="' +
+          Label26.Caption
+          + '"');
+        ADOQuery2.Open;
+        if (ADOQuery2.RecordCount = 1) and
+          (ADOQuery2.FieldByName('pdate').AsString <> '') then
+        begin
+          Exit;
+        end;
+
         if ADOQuery1.FieldByName('additional').AsString =
           '-' then
         begin
@@ -760,6 +794,18 @@ begin
 
     VK_DELETE:
       begin
+
+        ADOQuery2.SQL.Clear;
+        ADOQuery2.SQL.Add('select * from selllogmains where slid="' +
+          Label26.Caption
+          + '"');
+        ADOQuery2.Open;
+        if (ADOQuery2.RecordCount = 1) and
+          (ADOQuery2.FieldByName('pdate').AsString <> '') then
+        begin
+          Exit;
+        end;
+
         if ADOQuery1.RecordCount > 1 then
         begin
 
@@ -785,7 +831,8 @@ begin
                   ADOQuery1.FieldByName('additional').AsString
                   + '" and am.custtel="' +
                   edt2.Text +
-                  '" and sd.pid=ad.pid and ad.type="出库单占用" and ad.tid="' +
+                  //'" and sd.pid=ad.pid and ad.type="出库单占用" and ad.tid="' +
+                  '" and sd.pid=ad.pid and ad.type="维修" and ad.tid="' +
                   ADOQuery1.FieldByName('store').AsString +
                   '"');
                 ADOQuerySQL.ExecSQL;
@@ -833,7 +880,8 @@ begin
                         ADOQuery1.FieldByName('additional').AsString
                         + '" and am.custtel="' +
                         edt2.Text +
-                        '" and sd.pid=ad.pid and ad.type="出库单占用" and ad.tid="' +
+                        //'" and sd.pid=ad.pid and ad.type="出库单占用" and ad.tid="' +
+                        '" and sd.pid=ad.pid and ad.type="维修" and ad.tid="' +
                         ADOQuery1.FieldByName('store').AsString
                         +
                         '"');
@@ -888,6 +936,17 @@ begin
 
     VK_ADD:
       begin
+        ADOQuery2.SQL.Clear;
+        ADOQuery2.SQL.Add('select * from selllogmains where slid="' +
+          Label26.Caption
+          + '"');
+        ADOQuery2.Open;
+        if (ADOQuery2.RecordCount = 1) and
+          (ADOQuery2.FieldByName('pdate').AsString <> '') then
+        begin
+          Exit;
+        end;
+
         if ADOQuery1.RecordCount > 1 then
         begin
           //ADOQuery1.Edit;
@@ -985,6 +1044,18 @@ begin
 
     VK_SUBTRACT:
       begin
+
+        ADOQuery2.SQL.Clear;
+        ADOQuery2.SQL.Add('select * from selllogmains where slid="' +
+          Label26.Caption
+          + '"');
+        ADOQuery2.Open;
+        if (ADOQuery2.RecordCount = 1) and
+          (ADOQuery2.FieldByName('pdate').AsString <> '') then
+        begin
+          Exit;
+        end;
+
         if ADOQuery1.RecordCount > 1 then
         begin
           //ADOQuery1.Edit;
@@ -1116,6 +1187,18 @@ begin
   if key = #13 then
   begin
     key := #0;
+
+    ADOQuery2.SQL.Clear;
+    ADOQuery2.SQL.Add('select * from selllogmains where slid="' +
+      Label26.Caption
+      + '"');
+    ADOQuery2.Open;
+    if (ADOQuery2.RecordCount = 1) and
+      (ADOQuery2.FieldByName('pdate').AsString <> '') then
+    begin
+      Exit;
+    end;
+
     if (ADOQuery1.RecordCount > 1) and
       (ADOQuery1.FieldByName('additional').AsString <>
       '补件')
@@ -1163,6 +1246,18 @@ begin
   if key = #13 then
   begin
     key := #0;
+
+    ADOQuery2.SQL.Clear;
+    ADOQuery2.SQL.Add('select * from selllogmains where slid="' +
+      Label26.Caption
+      + '"');
+    ADOQuery2.Open;
+    if (ADOQuery2.RecordCount = 1) and
+      (ADOQuery2.FieldByName('pdate').AsString <> '') then
+    begin
+      Exit;
+    end;
+
     if (ADOQuery1.RecordCount > 1) and
       (ADOQuery1.FieldByName('additional').AsString <>
       '补件')
@@ -1208,6 +1303,18 @@ begin
   if key = #13 then
   begin
     key := #0;
+
+    ADOQuery2.SQL.Clear;
+    ADOQuery2.SQL.Add('select * from selllogmains where slid="' +
+      Label26.Caption
+      + '"');
+    ADOQuery2.Open;
+    if (ADOQuery2.RecordCount = 1) and
+      (ADOQuery2.FieldByName('pdate').AsString <> '') then
+    begin
+      Exit;
+    end;
+
     if (ADOQuery1.RecordCount > 1) and
       (ADOQuery1.FieldByName('additional').AsString <>
       '补件')
@@ -1253,6 +1360,18 @@ begin
   if key = #13 then
   begin
     key := #0;
+
+    ADOQuery2.SQL.Clear;
+    ADOQuery2.SQL.Add('select * from selllogmains where slid="' +
+      Label26.Caption
+      + '"');
+    ADOQuery2.Open;
+    if (ADOQuery2.RecordCount = 1) and
+      (ADOQuery2.FieldByName('pdate').AsString <> '') then
+    begin
+      Exit;
+    end;
+
     if (ADOQuery1.RecordCount > 1) and
       (ADOQuery1.FieldByName('additional').AsString <>
       '补件')
@@ -1324,6 +1443,21 @@ begin
   if key = #13 then
   begin
 
+    ADOQuery2.SQL.Clear;
+    ADOQuery2.SQL.Add('select * from selllogmains where slid="' + Label26.Caption
+      + '"');
+    ADOQuery2.Open;
+    if ADOQuery2.RecordCount = 1 then
+    begin
+      //处理单据补打
+      if ADOQuery2.FieldByName('pdate').AsString <> '' then
+      begin
+        Gathering := TGathering.create(application);
+        Gathering.showmodal;
+        Exit;
+      end;
+    end;
+
     if not (rzchckbx1.Checked) then
     begin
 
@@ -1343,7 +1477,7 @@ begin
         Gathering.showmodal;
         Exit;
       end
-      else if RzEdit4.Text = '' then   //不允许直接查询所有产品列表，必须提供pid
+      else if RzEdit4.Text = '' then //不允许直接查询所有产品列表，必须提供pid
         Exit;
 
       {流程要求先输入客户名称}
@@ -1628,6 +1762,41 @@ begin
   end;
   if (key = #43) or (key = #45) then
     key := #0;
+end;
+
+procedure TMain.QuickRepExpressStartPage(Sender: TCustomQuickRep);
+var
+  vIniFile: TIniFile;
+begin
+  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'Config.Ini');
+  QRLabelOname.Caption := viniFile.ReadString('System', 'Name', '');
+  QRLabelHeader.Caption := viniFile.ReadString('System', 'La1', '');
+  QRLabelFooter.Caption := viniFile.ReadString('System', 'La2', '');
+
+  //为快递单报表准备数据
+  QRLabelsname.Caption := '寄件人姓名：' + Label19.Caption;
+  QRLabelsorgname.Caption := '单位名称：' + viniFile.ReadString('System', 'SON',
+    '');
+  QRLabelsaddr.Caption := '寄件地址：' + viniFile.ReadString('System', 'SA',
+    '');
+  QRLabelticketid.Caption := '单号：' + Label26.Caption;
+  QRLabelstel.Caption := '手机：' + viniFile.ReadString('System', 'Tel', '');
+  QRLabelsarea.Caption := '始发地：' + viniFile.ReadString('System', 'SAA', '');
+
+  QRLabelrname.Caption := '收件人姓名：' + edt1.Text;
+  QRLabelrorgname.Caption := '单位名称：' + RzEdit7.Text;
+  QRLabelraddr.Caption := '收件地址：' + edt3.Text;
+  QRLabelrtel.Caption := '手机：' + edt2.Text;
+  QRLabelrarea.Caption := '目的地：' + edt8.Text;
+
+  QRLabelsign.Caption := '寄件人姓名：' + Label19.Caption;
+  ADOQuery2.SQL.Clear;
+  ADOQuery2.SQL.Add('select now() as now');
+  ADOQuery2.Open;
+
+  //读取时间
+  QRLabeldate.Caption := ADOQuery2.FieldByName('now').AsString;
+
 end;
 
 end.

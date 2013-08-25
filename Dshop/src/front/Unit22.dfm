@@ -14,6 +14,7 @@ object SHQR: TSHQR
   KeyPreview = True
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnActivate = FormActivate
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   PixelsPerInch = 96
@@ -122,7 +123,7 @@ object SHQR: TSHQR
       Top = 97
       Width = 105
       Height = 29
-      Caption = #25214#12288#38646':'
+      Caption = #25214#12288#22238':'
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -29

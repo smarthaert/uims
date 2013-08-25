@@ -73,8 +73,41 @@ end;
 
 procedure TQHDF7.SpeedButton2Click(Sender: TObject);
 begin
+
   Main_T.Label26.Caption :=
     ADOQuery1.FieldByName('tid').AsString;
+
+  Main_T.ADOQuery2.SQL.Clear;
+  Main_T.ADOQuery2.SQL.Add('select * from aftersellmains where tid="' +
+    Main_T.Label26.Caption
+    + '"');
+  Main_T.ADOQuery2.Open;
+  if (Main_T.ADOQuery2.RecordCount = 1) and
+    (Main_T.ADOQuery2.FieldByName('pdate').AsString <> '') then
+  begin
+    //处理单据补打
+
+    Main_T.uid := Main_T.Labeluid.Caption;
+    Main_T.uname := Main_T.Label19.Caption;
+
+    Main_T.edt1.Enabled := False;
+    Main_T.edt2.Enabled := False;
+    Main_T.edt3.Enabled := False;
+    Main_T.edt7.Enabled := False;
+    Main_T.edt8.Enabled := False;
+    Main_T.RzEdit7.Enabled := False;
+
+    Main_T.edt4.Enabled := False;
+    Main_T.edt5.Enabled := False;
+    Main_T.edt6.Enabled := False;
+
+    Main_T.cbb1.Enabled := False;
+    Main_T.mmo1.Enabled := False;
+
+    Main_T.cbb2.Enabled := False;
+    Main_T.mmo2.Enabled := False;
+
+  end;
 
   {恢复客户，物流等信息}
   Main_T.edt1.Text :=

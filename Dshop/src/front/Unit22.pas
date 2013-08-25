@@ -31,6 +31,7 @@ type
     procedure RzEdit1KeyDown(Sender: TObject; var Key:
       Word;
       Shift: TShiftState);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -197,8 +198,7 @@ begin
 
       try
         Main_T.QuickRep1.Prepare;
-        FTotalPages :=
-          Main_T.QuickRep1.QRPrinter.PageCount;
+        Main_T.FTotalPages := Main_T.QuickRep1.QRPrinter.PageCount;
       finally
         Main_T.QuickRep1.QRPrinter.Cleanup;
       end;
@@ -219,12 +219,36 @@ begin
   end;
 
   //补打凭证时不修改销售数据
-  if Main_T.reprint then
+
+  Main_T.ADOQuery2.SQL.Clear;
+  Main_T.ADOQuery2.SQL.Add('select * from aftersellmains where tid="' +
+    Main_T.Label26.Caption
+    + '"');
+  Main_T.ADOQuery2.Open;
+  if (Main_T.ADOQuery2.RecordCount = 1) and
+    (Main_T.ADOQuery2.FieldByName('pdate').AsString <> '') then
   begin
+    //处理单据补打
     Main_T.Labeluid.Caption := Main_T.uid;
     Main_T.Label19.Caption := Main_T.uname;
 
-    Main_T.reprint := False;
+    Main_T.edt1.Enabled := True;
+    Main_T.edt2.Enabled := True;
+    Main_T.edt3.Enabled := True;
+    Main_T.edt7.Enabled := True;
+    Main_T.edt8.Enabled := True;
+    Main_T.RzEdit7.Enabled := True;
+
+    Main_T.edt4.Enabled := True;
+    Main_T.edt5.Enabled := True;
+    Main_T.edt6.Enabled := True;
+
+    Main_T.cbb1.Enabled := True;
+    Main_T.mmo1.Enabled := True;
+
+    Main_T.cbb2.Enabled := True;
+    Main_T.mmo2.Enabled := True;
+
   end
   else //交易数据处理
   begin
@@ -332,6 +356,20 @@ begin
       SHQR.Close;
     if not (RzEdit1.ReadOnly) then
       JZ;
+  end;
+end;
+
+procedure TSHQR.FormActivate(Sender: TObject);
+begin
+  Main_T.ADOQuery2.SQL.Clear;
+  Main_T.ADOQuery2.SQL.Add('select * from aftersellmains where tid="' +
+    Main_T.Label26.Caption
+    + '"');
+  Main_T.ADOQuery2.Open;
+  if (Main_T.ADOQuery2.RecordCount = 1) and
+    (Main_T.ADOQuery2.FieldByName('pdate').AsString <> '') then
+  begin
+    //RzEdit1.ReadOnly := True;
   end;
 end;
 

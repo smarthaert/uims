@@ -57,8 +57,9 @@ object QHD_P: TQHD_P
       Left = 169
       Top = 50
       Width = 193
-      Height = 18
-      Ctl3D = False
+      Height = 20
+      Color = clBlack
+      Ctl3D = True
       Font.Charset = GB2312_CHARSET
       Font.Color = clWhite
       Font.Height = -12

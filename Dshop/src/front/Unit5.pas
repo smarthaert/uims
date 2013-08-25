@@ -192,7 +192,19 @@ begin
   //打印小票
   if CheckBox1.Checked then
   begin
-    if messagedlg('确认打印吗？', mtconfirmation, [mbyes,
+    if messagedlg('确认打印物流单吗？', mtconfirmation, [mbyes,
+      mbno], 0) = mryes then
+    begin
+      {
+      Main.QuickRep1.Height := 200 + Main.DetailBand1.Height * Main.ADOQuery1.RecordCount;
+      Main.QuickRep1.Page.LeftMargin := vIniFile.ReadInteger('System', 'P0', 0);
+      }
+
+      Main.QuickRepExpress.Print;
+      //Main.QuickRep1.Preview;
+    end;
+
+    if messagedlg('确认打印发货清单吗？', mtconfirmation, [mbyes,
       mbno], 0) = mryes then
     begin
       {
@@ -202,7 +214,7 @@ begin
 
       try
         Main.QuickRep1.Prepare;
-        FTotalPages := Main.QuickRep1.QRPrinter.PageCount;
+        Main.FTotalPages := Main.QuickRep1.QRPrinter.PageCount;
       finally
         Main.QuickRep1.QRPrinter.Cleanup;
       end;
@@ -223,12 +235,41 @@ begin
   end;
 
   //补打凭证时不修改销售数据
-  if Main.reprint then
+
+  Main.ADOQuery2.SQL.Clear;
+  Main.ADOQuery2.SQL.Add('select * from selllogmains where slid="' +
+    Main.Label26.Caption
+    + '"');
+  Main.ADOQuery2.Open;
+  if (Main.ADOQuery2.RecordCount = 1) and
+    (Main.ADOQuery2.FieldByName('pdate').AsString <> '') then
   begin
+    //处理单据补打
+
     Main.Labeluid.Caption := Main.uid;
     Main.Label19.Caption := Main.uname;
 
-    Main.reprint := False;
+    Main.edt1.Enabled := True;
+    Main.edt2.Enabled := True;
+    Main.edt3.Enabled := True;
+    Main.edt7.Enabled := True;
+    Main.edt8.Enabled := True;
+    Main.RzEdit7.Enabled := True;
+
+    Main.edt4.Enabled := True;
+    Main.edt5.Enabled := True;
+    Main.edt6.Enabled := True;
+
+    Main.cbb1.Enabled := True;
+    Main.mmo1.Enabled := True;
+
+    Main.RzEdit1.Enabled := True;
+    Main.RzEdit2.Enabled := True;
+    Main.RzEdit3.Enabled := True;
+    Main.RzEdit5.Enabled := True;
+
+    Main.rzchckbx1.Enabled := True;
+
   end
   else //交易数据处理
   begin
@@ -468,6 +509,17 @@ end;
 procedure TGathering.FormActivate(Sender: TObject);
 begin
   if Main.cbb1.Text <> '现金' then
+  begin
+    RzEdit1.ReadOnly := True;
+  end;
+
+  Main.ADOQuery2.SQL.Clear;
+  Main.ADOQuery2.SQL.Add('select * from selllogmains where slid="' +
+    Main.Label26.Caption
+    + '"');
+  Main.ADOQuery2.Open;
+  if (Main.ADOQuery2.RecordCount = 1) and
+    (Main.ADOQuery2.FieldByName('pdate').AsString <> '') then
   begin
     RzEdit1.ReadOnly := True;
   end;
