@@ -1,0 +1,14 @@
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+
+insert into mysql.user(Host,User,Password) values("localhost","redmine",password("redmine"));
+create database redmine;
+
+GRANT ALL PRIVILEGES ON redmine.* TO 'redmine'@'%' IDENTIFIED BY 'redmine' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+
+Delete FROM user Where User='redmine' and Host='localhost';
+flush privileges;
+drop database testDB;

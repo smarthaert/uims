@@ -15,13 +15,25 @@ result:string \
 cdate:date \
 remark:text
 
+#店铺表
+rails destroy scaffold Store
+rails generate scaffold Store \
+stid:string:uniq \
+stname:string \
+staddress:string \
+starea:string \
+sttel:string \
+cdate:date \
+remark:text
 
-#雇员表
+#雇员表stid_uid
 rails destroy scaffold User
 rails generate scaffold User \
 uid:string:uniq \
 loginname:string \
 uname:string \
+stid:string \
+stname:string \
 sex:string \
 age:integer \
 userpass:string \
@@ -41,8 +53,8 @@ cname:string \
 shopname:string \
 sex:string \
 address:string \
-email:string \
-qq:string \
+email:string:uniq \
+qq:string:uniq \
 tel:string:uniq \
 state:string \
 cdate:date \
@@ -84,9 +96,11 @@ custtel:string \
 cdate:date \
 remark:text
 
-#库存表，直接反映现有库存信息
+#库存表，直接反映现有库存信息stid_pid
 rails destroy scaffold Stock
 rails generate scaffold Stock \
+stid:string \
+stname:string \
 pid:string:uniq \
 barcode:string:uniq \
 goodsname:string \
@@ -102,7 +116,7 @@ discount:integer \
 baseline:integer \
 remark:text
 
-#会员优惠价配置表，特殊会员给予特殊价格
+#会员优惠价配置表，特殊会员给予特殊价格pid_custid_startdate_enddate
 rails destroy scaffold Memberprice
 rails generate scaffold Memberprice \
 pid:string \
@@ -124,6 +138,8 @@ remark:text
 #产品出库记录主表，主键CXXXXXX，数据来源于订单记录表
 rails destroy scaffold Selllogmain
 rails generate scaffold Selllogmain \
+stid:string \
+stname:string \
 slid:string:uniq \
 custid:string \
 custstate:string \
@@ -152,9 +168,11 @@ cdate:date \
 pdate:date \
 remark:text
 
-#产品出库明细表，数据来源于订单记录表
+#产品出库明细表，数据来源于订单记录表slid_pid_additional
 rails destroy scaffold Selllogdetail 
 rails generate scaffold Selllogdetail \
+stid:string \
+stname:string \
 slid:string \
 store:string \
 pid:string \
@@ -166,8 +184,6 @@ color:string \
 unit:string \
 'inprice:decimal{10,2}' \
 'pfprice:decimal{10,2}' \
-'shoukuan:decimal{10,2}' \
-'zhaoling:decimal{10,2}' \
 'hprice:decimal{10,2}' \
 'outprice:decimal{10,2}' \
 amount:integer \
@@ -186,6 +202,8 @@ remark:text
 #产品售后记录主表，主键TXXXXXX，数据来源于出库记录表
 rails destroy scaffold Aftersellmain
 rails generate scaffold Aftersellmain \
+stid:string \
+stname:string \
 tid:string:uniq \
 custid:string \
 custstate:string \
@@ -212,6 +230,7 @@ uid:string \
 tuid:string \
 uname:string \
 tuname:string \
+type:string \
 preid:string \
 nextid:string \
 cdate:date \
@@ -219,10 +238,12 @@ pdate:date \
 tremark:text \
 remark:text
 
-#产品售后记录明细表，数据来源于出库记录表
+#产品售后记录明细表，数据来源于出库记录表 唯一索引tid_pid_additional_type
 rails destroy scaffold Afterselldetail 
 rails generate scaffold Afterselldetail \
-tid:string \
+stid:string \
+stname:string \
+tid:string:uniq \
 pid:string \
 barcode:string \
 goodsname:string \
@@ -270,11 +291,11 @@ preid:string \
 nextid:string \
 type:string \
 cdate:date \
-source:date \
+canal:date \
 remark:text
 
 #订单记录明细表
-rails destroy scaffold Orderdetail 
+rails destroy scaffold Orderdetail
 rails generate scaffold Orderdetail \
 oid:string \
 pid:string \
@@ -302,6 +323,8 @@ remark:text
 #与客户往来帐务表
 rails destroy scaffold Contactpayment
 rails generate scaffold Contactpayment \
+stid:string \
+stname:string \
 custid:string \
 custname:string \
 'outmoney:decimal{10,2}' \
@@ -311,6 +334,7 @@ method:string \
 proof:string \
 ticketid:string:uniq \
 cdate:date \
+status:string \
 remark:text
 
 #采购表，数据来源于供应商提供的采购单。直接导入后加工为库存
