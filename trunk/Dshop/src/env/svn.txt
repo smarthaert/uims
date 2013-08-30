@@ -1,0 +1,33 @@
+sudo apt-get install subversion
+
+svnadmin create /home/svn/sgsz
+
+sudo chmod -R o+rw /home/svn/sgsz
+
+#svnserve.conf
+anon-access = none
+auth-access = write
+password-db = /home/svn/sgsz/conf/passwd
+authz-db = /home/svn/sgsz/conf/authz
+
+
+#passwd
+[users]
+sgsz = sgsz
+
+#authz
+[groups]
+admin = sgsz
+
+[sgsz:/]（这里一定要是你自己的工程名！）
+@admin = rw
+* = r
+
+
+svnserve -d -r /home/svn/
+
+killall svnserve
+netstat -ntlp | grep 3690
+
+svn://192.168.1.100/sgsz/
+
