@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  type: 
+  payment: MyString
+  amount: 1
+  value: 9.99
+
+two:
+  type: 
+  payment: MyString
+  amount: 1
+  value: 9.99

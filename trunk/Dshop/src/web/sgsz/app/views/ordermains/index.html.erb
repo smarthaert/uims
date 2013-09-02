@@ -1,0 +1,68 @@
+<h1>Listing ordermains</h1>
+
+<table>
+  <tr>
+    <th>Oid</th>
+    <th>Custid</th>
+    <th>Custstate</th>
+    <th>Custname</th>
+    <th>Shopname</th>
+    <th>Custtel</th>
+    <th>Custaddr</th>
+    <th>Yingshou</th>
+    <th>Shishou</th>
+    <th>Sid</th>
+    <th>Sname</th>
+    <th>Stel</th>
+    <th>Saddress</th>
+    <th>Payment</th>
+    <th>Status</th>
+    <th>Uid</th>
+    <th>Uname</th>
+    <th>Preid</th>
+    <th>Nextid</th>
+    <th>Type</th>
+    <th>Cdate</th>
+    <th>Canal</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @ordermains.each do |ordermain| %>
+  <tr>
+    <td><%= ordermain.oid %></td>
+    <td><%= ordermain.custid %></td>
+    <td><%= ordermain.custstate %></td>
+    <td><%= ordermain.custname %></td>
+    <td><%= ordermain.shopname %></td>
+    <td><%= ordermain.custtel %></td>
+    <td><%= ordermain.custaddr %></td>
+    <td><%= ordermain.yingshou %></td>
+    <td><%= ordermain.shishou %></td>
+    <td><%= ordermain.sid %></td>
+    <td><%= ordermain.sname %></td>
+    <td><%= ordermain.stel %></td>
+    <td><%= ordermain.saddress %></td>
+    <td><%= ordermain.payment %></td>
+    <td><%= ordermain.status %></td>
+    <td><%= ordermain.uid %></td>
+    <td><%= ordermain.uname %></td>
+    <td><%= ordermain.preid %></td>
+    <td><%= ordermain.nextid %></td>
+    <td><%= ordermain.type %></td>
+    <td><%= ordermain.cdate %></td>
+    <td><%= ordermain.canal %></td>
+    <td><%= ordermain.remark %></td>
+    <td><%= link_to 'Show', ordermain %></td>
+    <td><%= link_to 'Edit', edit_ordermain_path(ordermain) %></td>
+    <td><%= link_to 'Destroy', ordermain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= paginate @ordermains, :window => 2 %>
+<br />
+
+<%= link_to 'New Ordermain', new_ordermain_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pid: MyString
+  goodsname: MyString
+  color: MyString
+  amount: 1
+  baseline: 1
+
+two:
+  pid: MyString
+  goodsname: MyString
+  color: MyString
+  amount: 1
+  baseline: 1

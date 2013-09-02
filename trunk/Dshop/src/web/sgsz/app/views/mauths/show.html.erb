@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Uid:</b>
+  <%= @mauth.uid %>
+</p>
+
+<p>
+  <b>Rid:</b>
+  <%= @mauth.rid %>
+</p>
+
+<p>
+  <b>Mid:</b>
+  <%= @mauth.mid %>
+</p>
+
+<p>
+  <b>Cdkey:</b>
+  <%= @mauth.cdkey %>
+</p>
+
+<p>
+  <b>Result:</b>
+  <%= @mauth.result %>
+</p>
+
+<p>
+  <b>Cdate:</b>
+  <%= @mauth.cdate %>
+</p>
+
+<p>
+  <b>Remark:</b>
+  <%= @mauth.remark %>
+</p>
+
+
+<%= link_to 'Edit', edit_mauth_path(@mauth) %> |
+<%= link_to 'Back', mauths_path %>

@@ -1,0 +1,48 @@
+<h1>Listing contactpayments</h1>
+
+<table>
+  <tr>
+    <th>Stid</th>
+    <th>Stname</th>
+    <th>Custid</th>
+    <th>Custname</th>
+    <th>Outmoney</th>
+    <th>Inmoney</th>
+    <th>Strike</th>
+    <th>Method</th>
+    <th>Proof</th>
+    <th>Ticketid</th>
+    <th>Cdate</th>
+    <th>Status</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contactpayments.each do |contactpayment| %>
+  <tr>
+    <td><%= contactpayment.stid %></td>
+    <td><%= contactpayment.stname %></td>
+    <td><%= contactpayment.custid %></td>
+    <td><%= contactpayment.custname %></td>
+    <td><%= contactpayment.outmoney %></td>
+    <td><%= contactpayment.inmoney %></td>
+    <td><%= contactpayment.strike %></td>
+    <td><%= contactpayment.method %></td>
+    <td><%= contactpayment.proof %></td>
+    <td><%= contactpayment.ticketid %></td>
+    <td><%= contactpayment.cdate %></td>
+    <td><%= contactpayment.status %></td>
+    <td><%= contactpayment.remark %></td>
+    <td><%= link_to 'Show', contactpayment %></td>
+    <td><%= link_to 'Edit', edit_contactpayment_path(contactpayment) %></td>
+    <td><%= link_to 'Destroy', contactpayment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= paginate @contactpayments, :window => 2 %>
+<br />
+
+<%= link_to 'New Contactpayment', new_contactpayment_path %>

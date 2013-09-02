@@ -1,0 +1,81 @@
+<%= form_for(@stock) do |f| %>
+  <% if @stock.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stock.errors.count, "error") %> prohibited this stock from being saved:</h2>
+
+      <ul>
+      <% @stock.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :stid %><br />
+    <%= f.text_field :stid %>
+  </div>
+  <div class="field">
+    <%= f.label :stname %><br />
+    <%= f.text_field :stname %>
+  </div>
+  <div class="field">
+    <%= f.label :pid %><br />
+    <%= f.text_field :pid %>
+  </div>
+  <div class="field">
+    <%= f.label :barcode %><br />
+    <%= f.text_field :barcode %>
+  </div>
+  <div class="field">
+    <%= f.label :goodsname %><br />
+    <%= f.text_field :goodsname %>
+  </div>
+  <div class="field">
+    <%= f.label :size %><br />
+    <%= f.text_field :size %>
+  </div>
+  <div class="field">
+    <%= f.label :color %><br />
+    <%= f.text_field :color %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br />
+    <%= f.number_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :volume %><br />
+    <%= f.text_field :volume %>
+  </div>
+  <div class="field">
+    <%= f.label :unit %><br />
+    <%= f.text_field :unit %>
+  </div>
+  <div class="field">
+    <%= f.label :inprice %><br />
+    <%= f.text_field :inprice %>
+  </div>
+  <div class="field">
+    <%= f.label :pfprice %><br />
+    <%= f.text_field :pfprice %>
+  </div>
+  <div class="field">
+    <%= f.label :bundle %><br />
+    <%= f.number_field :bundle %>
+  </div>
+  <div class="field">
+    <%= f.label :discount %><br />
+    <%= f.number_field :discount %>
+  </div>
+  <div class="field">
+    <%= f.label :baseline %><br />
+    <%= f.number_field :baseline %>
+  </div>
+  <div class="field">
+    <%= f.label :remark %><br />
+    <%= f.text_area :remark %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

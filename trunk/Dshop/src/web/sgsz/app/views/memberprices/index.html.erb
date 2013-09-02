@@ -1,0 +1,52 @@
+<h1>Listing memberprices</h1>
+
+<table>
+  <tr>
+    <th>Pid</th>
+    <th>Barcode</th>
+    <th>Goodsname</th>
+    <th>Size</th>
+    <th>Color</th>
+    <th>Volume</th>
+    <th>Unit</th>
+    <th>Custid</th>
+    <th>Custname</th>
+    <th>Custtel</th>
+    <th>Startdate</th>
+    <th>Enddate</th>
+    <th>Hprice</th>
+    <th>Cdate</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @memberprices.each do |memberprice| %>
+  <tr>
+    <td><%= memberprice.pid %></td>
+    <td><%= memberprice.barcode %></td>
+    <td><%= memberprice.goodsname %></td>
+    <td><%= memberprice.size %></td>
+    <td><%= memberprice.color %></td>
+    <td><%= memberprice.volume %></td>
+    <td><%= memberprice.unit %></td>
+    <td><%= memberprice.custid %></td>
+    <td><%= memberprice.custname %></td>
+    <td><%= memberprice.custtel %></td>
+    <td><%= memberprice.startdate %></td>
+    <td><%= memberprice.enddate %></td>
+    <td><%= memberprice.hprice %></td>
+    <td><%= memberprice.cdate %></td>
+    <td><%= memberprice.remark %></td>
+    <td><%= link_to 'Show', memberprice %></td>
+    <td><%= link_to 'Edit', edit_memberprice_path(memberprice) %></td>
+    <td><%= link_to 'Destroy', memberprice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= paginate @memberprices, :window => 2 %>
+<br />
+
+<%= link_to 'New Memberprice', new_memberprice_path %>

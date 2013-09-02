@@ -1,0 +1,42 @@
+<h1>Listing shippers</h1>
+
+<table>
+  <tr>
+    <th>Sid</th>
+    <th>Sname</th>
+    <th>Tel</th>
+    <th>Address</th>
+    <th>Custid</th>
+    <th>Custname</th>
+    <th>Custtel</th>
+    <th>Cdate</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shippers.each do |shipper| %>
+  <tr>
+    <td><%= shipper.sid %></td>
+    <td><%= shipper.sname %></td>
+    <td><%= shipper.tel %></td>
+    <td><%= shipper.address %></td>
+    <td><%= shipper.custid %></td>
+    <td><%= shipper.custname %></td>
+    <td><%= shipper.custtel %></td>
+    <td><%= shipper.cdate %></td>
+    <td><%= shipper.remark %></td>
+    <td><%= link_to 'Show', shipper %></td>
+    <td><%= link_to 'Edit', edit_shipper_path(shipper) %></td>
+    <td><%= link_to 'Destroy', shipper, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= paginate @shippers, :window => 2 %>
+
+<br />
+
+<%= link_to 'New Shipper', new_shipper_path %>

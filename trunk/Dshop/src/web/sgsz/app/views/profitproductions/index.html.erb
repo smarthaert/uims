@@ -1,0 +1,23 @@
+<h1>Listing profitproductions</h1>
+
+<table>
+  <tr>
+    <th>Pid</th>
+    <th>Goodsname</th>
+    <th>Color</th>
+    <th>Profit</th>
+  </tr>
+
+<% @profitproductions.each do |profitproduction| %>
+  <tr>
+    <td><%= profitproduction.pid %></td>
+    <td><%= profitproduction.goodsname %></td>
+    <td><%= profitproduction.color %></td>
+    <td><%= profitproduction.profit %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= paginate @profitproductions, :window => 2 %>
+<br />
+

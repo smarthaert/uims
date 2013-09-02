@@ -1,0 +1,52 @@
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th>Uid</th>
+    <th>Loginname</th>
+    <th>Uname</th>
+    <th>Stid</th>
+    <th>Stname</th>
+    <th>Sex</th>
+    <th>Age</th>
+    <th>Userpass</th>
+    <th>Address</th>
+    <th>Tel</th>
+    <th>Salari</th>
+    <th>Position</th>
+    <th>Cdate</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.uid %></td>
+    <td><%= user.loginname %></td>
+    <td><%= user.uname %></td>
+    <td><%= user.stid %></td>
+    <td><%= user.stname %></td>
+    <td><%= user.sex %></td>
+    <td><%= user.age %></td>
+    <td><%= user.userpass %></td>
+    <td><%= user.address %></td>
+    <td><%= user.tel %></td>
+    <td><%= user.salari %></td>
+    <td><%= user.position %></td>
+    <td><%= user.cdate %></td>
+    <td><%= user.remark %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= paginate @users, :window => 2 %>
+
+<br />
+
+<%= link_to 'New User', new_user_path %>

@@ -1,0 +1,32 @@
+http://blog.csdn.net/nation_chen/article/details/7066277
+
+sudo apt-get install vsftpd 
+
+
+
+sudo gedit /etc/vsftpd.conf
+
+
+listen=YES       # 服务器监听
+anonymous_enable=YES       # 匿名访问允许
+local_enable=YES    # 本地主机访问允许
+write_enable=YES    # 写允许
+anon_upload_enable=YES
+# 匿名上传允许，默认是NO，嫌麻烦的可以开起来。出了问题我不负责～
+anon_mkdir_write_enable=YES  # 匿名创建文件夹允许
+dirmessage_enable=YES  # 进入文件夹允许
+xferlog_enable=YES   #  ftp 日志记录允许
+connect_from_port_20=YES     # 允许使用20号端口作为数据传送的端口
+secure_chroot_dir=/var/run/vsftpd/empty
+pam_service_name=vsftpd
+rsa_cert_file=/etc/ssl/private/vsftpd.pem
+
+
+sudo useradd -g ftpgroup -d /home/ubuntu/workplace -M ftpuser
+
+
+passwd ftpuser
+
+
+sudo service vsftpd start
+

@@ -1,0 +1,47 @@
+<h1>Listing customers</h1>
+
+<table>
+  <tr>
+    <th>Cid</th>
+    <th>Loginname</th>
+    <th>Cname</th>
+    <th>Shopname</th>
+    <th>Sex</th>
+    <th>Address</th>
+    <th>Email</th>
+    <th>Qq</th>
+    <th>Tel</th>
+    <th>State</th>
+    <th>Cdate</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @customers.each do |customer| %>
+  <tr>
+    <td><%= customer.cid %></td>
+    <td><%= customer.loginname %></td>
+    <td><%= customer.cname %></td>
+    <td><%= customer.shopname %></td>
+    <td><%= customer.sex %></td>
+    <td><%= customer.address %></td>
+    <td><%= customer.email %></td>
+    <td><%= customer.qq %></td>
+    <td><%= customer.tel %></td>
+    <td><%= customer.state %></td>
+    <td><%= customer.cdate %></td>
+    <td><%= customer.remark %></td>
+    <td><%= link_to 'Show', customer %></td>
+    <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+    <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= paginate @customers, :window => 2 %>
+
+<br />
+
+<%= link_to 'New Customer', new_customer_path %>

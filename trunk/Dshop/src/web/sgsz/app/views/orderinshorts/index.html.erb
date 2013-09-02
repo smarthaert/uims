@@ -1,0 +1,32 @@
+<h1>Listing orderinshorts</h1>
+
+<table>
+  <tr>
+    <th>Custname</th>
+    <th>Custtel</th>
+    <th>Pid</th>
+    <th>Amount</th>
+    <th>Oid</th>
+    <th>Cdate</th>
+    <th>Stockamount</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @orderinshorts.each do |orderinshort| %>
+  <tr>
+    <td><%= orderinshort.custname %></td>
+    <td><%= orderinshort.custtel %></td>
+    <td><%= orderinshort.pid %></td>
+    <td><%= orderinshort.amount %></td>
+    <td><%= orderinshort.oid %></td>
+    <td><%= orderinshort.cdate %></td>
+    <td><%= orderinshort.stockamount %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= paginate @orderinshorts, :window => 2 %>
+<br />
+

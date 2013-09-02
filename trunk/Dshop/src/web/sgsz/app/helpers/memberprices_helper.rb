@@ -1,0 +1,2 @@
+module MemberpricesHelper
+end

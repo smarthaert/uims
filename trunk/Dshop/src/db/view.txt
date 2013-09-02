@@ -1,0 +1,131 @@
+
+
+rails destroy scaffold Stocktip
+rails generate scaffold Stocktip \
+pid:string \
+goodsname:string \
+color:string \
+amount:integer \
+baseline:integer
+
+
+rails destroy scaffold Productionpreference
+rails generate scaffold Productionpreference \
+custstate:string \
+pid:string \
+goodsname:string \
+color:string \
+amount:integer
+
+
+rails destroy scaffold Delivertype
+rails generate scaffold Delivertype \
+discount:integer \
+amount:integer
+
+
+rails destroy scaffold Orderinshort
+rails generate scaffold Orderinshort \
+custname:string \
+custtel:string \
+pid:string \
+amount:integer \
+oid:string \
+cdate:date \
+stockamount:integer
+
+
+rails destroy scaffold Orderstate
+rails generate scaffold Orderstate \
+type:string \
+payment:string \
+amount:integer \
+'value:decimal{10,2}'
+
+
+rails destroy scaffold Stocknew
+rails generate scaffold Stocknew \
+pid:string \
+goodsname:string \
+color:string \
+amount:integer \
+unit:string \
+'volume:decimal{10,2}' \
+
+
+rails destroy scaffold Stockrepair
+rails generate scaffold Stockrepair \
+pid:string \
+goodsname:string \
+color:string \
+amount:integer \
+unit:string \
+'volume:decimal{10,2}' \
+
+
+rails destroy scaffold Profitproduction
+rails generate scaffold Profitproduction \
+pid:string \
+goodsname:string \
+color:string \
+'profit:decimal{10,2}'
+
+
+rails destroy scaffold Profitarea
+rails generate scaffold Profitarea \
+custstate:string \
+'profit:decimal{10,2}'
+
+
+rails destroy scaffold Profitcustomer
+rails generate scaffold Profitcustomer \
+custname:string \
+custtel:string \
+'profit:decimal{10,2}'
+
+
+rails destroy scaffold Profitshipper
+rails generate scaffold Profitshipper \
+sname:string \
+tel:string \
+amount:integer \
+'volume:decimal{10,2}' \
+'profit:decimal{10,2}'
+
+
+rails destroy scaffold Sellcostproduction
+rails generate scaffold Sellcostproduction \
+pid:string \
+goodsname:string \
+color:string \
+type:string \
+amount:integer \
+unit:string
+
+rails destroy scaffold Sellcostcustomer
+rails generate scaffold Sellcostcustomer \
+cname:string \
+tel:string \
+type:string \
+amount:integer \
+unit:string
+
+
+
+rails destroy scaffold Statementday
+rails generate scaffold Statementday \
+date:date \
+method:string \
+'outmoney:decimal{10,2}' \
+'inmoney:decimal{10,2}' \
+'strike:decimal{10,2}'
+
+
+
+
+rails destroy scaffold Sellcostgift
+rails generate scaffold Sellcostgift \
+additional:string \
+'cost:decimal{10,2}'
+
+

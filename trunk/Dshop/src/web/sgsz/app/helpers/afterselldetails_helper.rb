@@ -1,0 +1,2 @@
+module AfterselldetailsHelper
+end

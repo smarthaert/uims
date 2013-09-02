@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Uname:</b>
+  <%= @unit.uname %>
+</p>
+
+<p>
+  <b>Cdate:</b>
+  <%= @unit.cdate %>
+</p>
+
+<p>
+  <b>Remark:</b>
+  <%= @unit.remark %>
+</p>
+
+
+<%= link_to 'Edit', edit_unit_path(@unit) %> |
+<%= link_to 'Back', units_path %>

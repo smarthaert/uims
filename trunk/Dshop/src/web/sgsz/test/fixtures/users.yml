@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  uid: MyString
+  loginname: MyString
+  uname: MyString
+  stid: MyString
+  stname: MyString
+  sex: MyString
+  age: 1
+  userpass: MyString
+  address: MyText
+  tel: MyString
+  salari: 9.99
+  position: MyString
+  cdate: 2013-08-31
+  remark: MyText
+
+two:
+  uid: MyString
+  loginname: MyString
+  uname: MyString
+  stid: MyString
+  stname: MyString
+  sex: MyString
+  age: 1
+  userpass: MyString
+  address: MyText
+  tel: MyString
+  salari: 9.99
+  position: MyString
+  cdate: 2013-08-31
+  remark: MyText

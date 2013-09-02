@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  custname: MyString
+  custtel: MyString
+  pid: MyString
+  amount: 1
+  oid: MyString
+  cdate: 2013-08-31
+  stockamount: 1
+
+two:
+  custname: MyString
+  custtel: MyString
+  pid: MyString
+  amount: 1
+  oid: MyString
+  cdate: 2013-08-31
+  stockamount: 1

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  uname: MyString
+  cdate: 2013-08-31
+  remark: MyText
+
+two:
+  uname: MyString
+  cdate: 2013-08-31
+  remark: MyText

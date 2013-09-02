@@ -1,0 +1,78 @@
+<h1>Listing selllogdetails</h1>
+
+<table>
+  <tr>
+    <th>Stid</th>
+    <th>Stname</th>
+    <th>Slid</th>
+    <th>Store</th>
+    <th>Pid</th>
+    <th>Barcode</th>
+    <th>Goodsname</th>
+    <th>Size</th>
+    <th>Color</th>
+    <th>Volume</th>
+    <th>Unit</th>
+    <th>Inprice</th>
+    <th>Pfprice</th>
+    <th>Hprice</th>
+    <th>Outprice</th>
+    <th>Amount</th>
+    <th>Camount</th>
+    <th>Bundle</th>
+    <th>Cbundle</th>
+    <th>Discount</th>
+    <th>Additional</th>
+    <th>Type</th>
+    <th>Subtotal</th>
+    <th>Status</th>
+    <th>Cdate</th>
+    <th>Pdate</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @selllogdetails.each do |selllogdetail| %>
+  <tr>
+    <td><%= selllogdetail.stid %></td>
+    <td><%= selllogdetail.stname %></td>
+    <td><%= selllogdetail.slid %></td>
+    <td><%= selllogdetail.store %></td>
+    <td><%= selllogdetail.pid %></td>
+    <td><%= selllogdetail.barcode %></td>
+    <td><%= selllogdetail.goodsname %></td>
+    <td><%= selllogdetail.size %></td>
+    <td><%= selllogdetail.color %></td>
+    <td><%= selllogdetail.volume %></td>
+    <td><%= selllogdetail.unit %></td>
+    <td><%= selllogdetail.inprice %></td>
+    <td><%= selllogdetail.pfprice %></td>
+    <td><%= selllogdetail.hprice %></td>
+    <td><%= selllogdetail.outprice %></td>
+    <td><%= selllogdetail.amount %></td>
+    <td><%= selllogdetail.camount %></td>
+    <td><%= selllogdetail.bundle %></td>
+    <td><%= selllogdetail.cbundle %></td>
+    <td><%= selllogdetail.discount %></td>
+    <td><%= selllogdetail.additional %></td>
+    <td><%= selllogdetail.type %></td>
+    <td><%= selllogdetail.subtotal %></td>
+    <td><%= selllogdetail.status %></td>
+    <td><%= selllogdetail.cdate %></td>
+    <td><%= selllogdetail.pdate %></td>
+    <td><%= selllogdetail.remark %></td>
+    <td><%= link_to 'Show', selllogdetail %></td>
+    <td><%= link_to 'Edit', edit_selllogdetail_path(selllogdetail) %></td>
+    <td><%= link_to 'Destroy', selllogdetail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= paginate @selllogdetails, :window => 2 %>
+
+<br />
+
+<%= link_to 'New Selllogdetail', new_selllogdetail_path %>

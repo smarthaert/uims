@@ -1,0 +1,43 @@
+准备一些包
+sudo apt-get install g++ curl libssl-dev apache2-utils
+
+git是不可少的
+sudo apt-get install git-core
+
+用git下载node.js最新版
+git clone git://github.com/ry/node.git
+
+或者直接下载源码
+wget http://nodejs.org/dist/node-v0.8.2.tar.gz
+gunzip node-v0.8.2.tar.gz
+tar -xf node-v0.8.2
+
+开始编译安装node.js
+cd node-v0.8.2
+./configure
+make
+sudo make install 
+
+输入node –v 或者node –version可以查看node.js当前的版本 
+
+运行第一个node.js的程序
+在主文件夹中创建example.js，编辑文本
+
+?
+1
+2
+3
+4
+5
+6
+var http = require('http');
+  http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello Node.js');
+}).listen(8124, "127.0.0.1");
+console.log('Server running at http://127.0.0.1:8124/'); 
+ 
+在命令行中
+Node example.js 
+
+浏览器中浏览，浏览器中出现hello node.js

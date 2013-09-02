@@ -1,0 +1,36 @@
+<h1>Listing mauths</h1>
+
+<table>
+  <tr>
+    <th>Uid</th>
+    <th>Rid</th>
+    <th>Mid</th>
+    <th>Cdkey</th>
+    <th>Result</th>
+    <th>Cdate</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mauths.each do |mauth| %>
+  <tr>
+    <td><%= mauth.uid %></td>
+    <td><%= mauth.rid %></td>
+    <td><%= mauth.mid %></td>
+    <td><%= mauth.cdkey %></td>
+    <td><%= mauth.result %></td>
+    <td><%= mauth.cdate %></td>
+    <td><%= mauth.remark %></td>
+    <td><%= link_to 'Show', mauth %></td>
+    <td><%= link_to 'Edit', edit_mauth_path(mauth) %></td>
+    <td><%= link_to 'Destroy', mauth, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= paginate @mauths, :window => 2 %>
+<br />
+
+<%= link_to 'New Mauth', new_mauth_path %>

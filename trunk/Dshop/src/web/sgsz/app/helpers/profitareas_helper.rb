@@ -1,0 +1,2 @@
+module ProfitareasHelper
+end

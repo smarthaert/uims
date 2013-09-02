@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  uid: MyString
+  uname: MyString
+  utel: MyString
+  cpbh: MyString
+  cpmc: MyString
+  ys: MyString
+  sl: MyString
+  js: MyString
+  dj: 9.99
+  yfbz: 9.99
+  xj: 9.99
+  tj: 9.99
+  bz: MyString
+  cdate: 2013-08-31
+  remark: MyText
+
+two:
+  uid: MyString
+  uname: MyString
+  utel: MyString
+  cpbh: MyString
+  cpmc: MyString
+  ys: MyString
+  sl: MyString
+  js: MyString
+  dj: 9.99
+  yfbz: 9.99
+  xj: 9.99
+  tj: 9.99
+  bz: MyString
+  cdate: 2013-08-31
+  remark: MyText
