@@ -1,0 +1,127 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+table{
+    border:1px solid #cad9ea;
+    color:#666;
+}
+table th {
+    background-image: url(th_bg1.gif);
+    background-repeat::repeat-x;
+    height:30px;
+}
+table td,table.t1 th{
+    border:1px solid #cad9ea;
+    padding:0 1em 0;
+}
+table tr.a1{
+    background-color:#f5fafe;
+}
+
+table.t2{
+    border:1px solid #9db3c5;
+    color:#666;
+}
+table.t2 th {
+    background-image: url(th_bg2.gif);
+    background-repeat::repeat-x;
+    height:30px;
+    color:#fff;
+}
+table.t2 td{
+    border:1px dotted #cad9ea;
+    padding:0 2px 0;
+}
+table.t2 th{
+    border:1px solid #a7d1fd;
+    padding:0 2px 0;
+}
+table.t2 tr.a1{
+    background-color:#e8f3fd;
+}
+
+table.t3{
+    border:1px solid #fc58a6;
+    color:#720337;
+}
+table.t3 th {
+    background-image: url(th_bg3.gif);
+    background-repeat::repeat-x;
+    height:30px;
+    color:#35031b;
+}
+table.t3 td{
+    border:1px dashed #feb8d9;
+    padding:0 1.5em 0;
+}
+table.t3 th{
+    border:1px solid #b9f9dc;
+    padding:0 2px 0;
+}
+table.t3 tr.a1{
+    background-color:#fbd8e8;
+}
+
+
+
+.menu {
+font-family: arial, sans-serif; 
+width:1024px; 
+margin:0; 
+margin:50px 0;
+}
+.menu ul {
+padding:0; 
+margin:0;
+list-style-type: none;
+}
+.menu ul li {
+float:left; 
+position:relative;
+}
+.menu ul li a, .menu ul li a:visited {
+display:block; 
+text-align:center; 
+text-decoration:none; 
+width:104px; 
+height:30px; 
+color:#000; 
+border:1px solid #fff;
+border-width:1px 1px 0 0;
+background:#c9c9a7; 
+line-height:30px; 
+font-size:11px;
+}
+.menu ul li ul {
+display: none;
+}
+.menu ul li:hover a {
+color:#fff; 
+background:#b3ab79;
+}
+.menu ul li:hover ul {
+display:block; 
+position:absolute; 
+top:31px; 
+left:0; 
+width:105px;
+}
+.menu ul li:hover ul li a {
+display:block; 
+background:#faeec7; 
+color:#000;
+}
+.menu ul li:hover ul li a:hover {
+background:#dfc184; 
+color:#000;
+}

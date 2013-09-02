@@ -1,0 +1,124 @@
+<% if session[:user_id] %>
+<div class="menu">
+    <ul>
+        <li>
+            <a class="hide" href="">
+                <%= t 'views.application.menu.stock' %></a>
+            <ul>
+                <li>
+                    <%= link_to t('views.application.menu.stocknews'), stocknews_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.stockrepairs'), stockrepairs_path %></li>
+            </ul>
+        </li>
+        <li>
+            <a class="hide" href="">
+                <%= t 'views.application.menu.orders' %></a>
+            <ul>
+                <li>
+                    <%= link_to t('views.application.menu.orderstates'), orderstates_path %></li>
+            </ul>
+        </li>
+        <li>
+            <a class="hide" href="">
+                <%= t 'views.application.menu.tips' %></a>
+            <ul>
+                <li>
+                    <%= link_to t('views.application.menu.stocktips'), stocktips_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.orderinshorts'), orderinshorts_path %></li>
+            </ul>
+        </li>
+        <li>
+            <a class="hide" href="">
+                <%= t 'views.application.menu.analysisprofit' %></a>
+            <ul>
+                <li>
+                    <%= link_to t('views.application.menu.productionpreferences'), productionpreferences_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.delivertypes'), delivertypes_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.profitproductions'), profitproductions_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.profitareas'), profitareas_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.profitcustomers'), profitcustomers_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.profitshippers'), profitshippers_path %></li>
+            </ul>
+        </li>
+        <li>
+            <a class="hide" href="">
+                <%= t 'views.application.menu.analysiscost' %></a>
+            <ul>
+                <li>
+                    <%= link_to t('views.application.menu.sellcostproductions'), sellcostproductions_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.sellcostcustomers'), sellcostcustomers_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.sellcostgifts'), sellcostgifts_path %></li>
+            </ul>
+        </li>
+        <li>
+            <a class="hide" href="">
+                <%= t 'views.application.menu.transaction' %></a>
+            <ul>
+                <li>
+                    <%= link_to t('views.application.menu.statementdays'), statementdays_path %></li>
+            </ul>
+        </li>
+        <li>
+            <a class="hide" href="">
+                <%= t 'views.application.menu.manage' %></a>
+            <ul>
+                <li>
+                    <%= link_to t('views.application.menu.stores'), stores_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.users'), users_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.customers'), customers_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.feeders'), feeders_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.shippers'), shippers_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.memberprices'), memberprices_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.stocks'), stocks_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.selllogmains'), selllogmains_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.selllogdetails'), selllogdetails_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.aftersellmains'), aftersellmains_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.afterselldetails'), afterselldetails_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.ordermains'), ordermains_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.orderdetails'), orderdetails_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.contactpayments'), contactpayments_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.purchases'), purchases_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.buylogs'), buylogs_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.units'), units_path %></li>
+                <li>
+                    <%= link_to t('views.application.menu.mauths'), mauths_path %></li>
+            </ul>
+        </li>
+        <li>
+            <a class="hide" href="">
+                <%= t 'views.application.menu.system' %></a>
+            <ul>
+                <li>
+                    <%= link_to t('views.application.menu.logout'), logout_path, :method =>:delete %></li>
+            </ul>
+        </li>
+    </ul>
+    <div class="clear"></div>
+</div>
+<br />
+<% end %>

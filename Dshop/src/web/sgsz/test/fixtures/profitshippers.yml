@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sname: MyString
+  tel: MyString
+  amount: 1
+  volume: 9.99
+  profit: 9.99
+
+two:
+  sname: MyString
+  tel: MyString
+  amount: 1
+  volume: 9.99
+  profit: 9.99

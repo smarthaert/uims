@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Stid:</b>
+  <%= @store.stid %>
+</p>
+
+<p>
+  <b>Stname:</b>
+  <%= @store.stname %>
+</p>
+
+<p>
+  <b>Staddress:</b>
+  <%= @store.staddress %>
+</p>
+
+<p>
+  <b>Starea:</b>
+  <%= @store.starea %>
+</p>
+
+<p>
+  <b>Sttel:</b>
+  <%= @store.sttel %>
+</p>
+
+<p>
+  <b>Cdate:</b>
+  <%= @store.cdate %>
+</p>
+
+<p>
+  <b>Remark:</b>
+  <%= @store.remark %>
+</p>
+
+
+<%= link_to 'Edit', edit_store_path(@store) %> |
+<%= link_to 'Back', stores_path %>

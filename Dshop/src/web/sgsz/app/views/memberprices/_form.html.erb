@@ -1,0 +1,77 @@
+<%= form_for(@memberprice) do |f| %>
+  <% if @memberprice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@memberprice.errors.count, "error") %> prohibited this memberprice from being saved:</h2>
+
+      <ul>
+      <% @memberprice.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :pid %><br />
+    <%= f.text_field :pid %>
+  </div>
+  <div class="field">
+    <%= f.label :barcode %><br />
+    <%= f.text_field :barcode %>
+  </div>
+  <div class="field">
+    <%= f.label :goodsname %><br />
+    <%= f.text_field :goodsname %>
+  </div>
+  <div class="field">
+    <%= f.label :size %><br />
+    <%= f.text_field :size %>
+  </div>
+  <div class="field">
+    <%= f.label :color %><br />
+    <%= f.text_field :color %>
+  </div>
+  <div class="field">
+    <%= f.label :volume %><br />
+    <%= f.text_field :volume %>
+  </div>
+  <div class="field">
+    <%= f.label :unit %><br />
+    <%= f.text_field :unit %>
+  </div>
+  <div class="field">
+    <%= f.label :custid %><br />
+    <%= f.text_field :custid %>
+  </div>
+  <div class="field">
+    <%= f.label :custname %><br />
+    <%= f.text_field :custname %>
+  </div>
+  <div class="field">
+    <%= f.label :custtel %><br />
+    <%= f.text_field :custtel %>
+  </div>
+  <div class="field">
+    <%= f.label :startdate %><br />
+    <%= f.date_select :startdate %>
+  </div>
+  <div class="field">
+    <%= f.label :enddate %><br />
+    <%= f.date_select :enddate %>
+  </div>
+  <div class="field">
+    <%= f.label :hprice %><br />
+    <%= f.text_field :hprice %>
+  </div>
+  <div class="field">
+    <%= f.label :cdate %><br />
+    <%= f.date_select :cdate %>
+  </div>
+  <div class="field">
+    <%= f.label :remark %><br />
+    <%= f.text_area :remark %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<h1>Listing sellcostgifts</h1>
+
+<table>
+  <tr>
+    <th>Additional</th>
+    <th>Cost</th>
+  </tr>
+
+<% @sellcostgifts.each do |sellcostgift| %>
+  <tr>
+    <td><%= sellcostgift.additional %></td>
+    <td><%= sellcostgift.cost %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= paginate @sellcostgifts, :window => 2 %>
+<br />
+

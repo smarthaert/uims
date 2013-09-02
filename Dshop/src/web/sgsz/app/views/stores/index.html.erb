@@ -1,0 +1,38 @@
+<h1>Listing stores</h1>
+
+<table>
+  <tr>
+    <th>Stid</th>
+    <th>Stname</th>
+    <th>Staddress</th>
+    <th>Starea</th>
+    <th>Sttel</th>
+    <th>Cdate</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stores.each do |store| %>
+  <tr>
+    <td><%= store.stid %></td>
+    <td><%= store.stname %></td>
+    <td><%= store.staddress %></td>
+    <td><%= store.starea %></td>
+    <td><%= store.sttel %></td>
+    <td><%= store.cdate %></td>
+    <td><%= store.remark %></td>
+    <td><%= link_to 'Show', store %></td>
+    <td><%= link_to 'Edit', edit_store_path(store) %></td>
+    <td><%= link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= paginate @stores, :window => 2 %>
+
+<br />
+
+<%= link_to 'New Store', new_store_path %>

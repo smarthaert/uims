@@ -1,0 +1,59 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  stid: MyString
+  stname: MyString
+  slid: MyString
+  store: MyString
+  pid: MyString
+  barcode: MyString
+  goodsname: MyString
+  size: MyString
+  color: MyString
+  volume: 9.99
+  unit: MyString
+  inprice: 9.99
+  pfprice: 9.99
+  hprice: 9.99
+  outprice: 9.99
+  amount: 1
+  camount: 1
+  bundle: 1
+  cbundle: 1
+  discount: 1
+  additional: MyString
+  type: 
+  subtotal: 9.99
+  status: 1
+  cdate: 2013-08-31
+  pdate: 2013-08-31
+  remark: MyText
+
+two:
+  stid: MyString
+  stname: MyString
+  slid: MyString
+  store: MyString
+  pid: MyString
+  barcode: MyString
+  goodsname: MyString
+  size: MyString
+  color: MyString
+  volume: 9.99
+  unit: MyString
+  inprice: 9.99
+  pfprice: 9.99
+  hprice: 9.99
+  outprice: 9.99
+  amount: 1
+  camount: 1
+  bundle: 1
+  cbundle: 1
+  discount: 1
+  additional: MyString
+  type: 
+  subtotal: 9.99
+  status: 1
+  cdate: 2013-08-31
+  pdate: 2013-08-31
+  remark: MyText

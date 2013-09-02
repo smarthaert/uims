@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  stid: MyString
+  stname: MyString
+  staddress: MyString
+  starea: MyString
+  sttel: MyString
+  cdate: 2013-08-31
+  remark: MyText
+
+two:
+  stid: MyString
+  stname: MyString
+  staddress: MyString
+  starea: MyString
+  sttel: MyString
+  cdate: 2013-08-31
+  remark: MyText

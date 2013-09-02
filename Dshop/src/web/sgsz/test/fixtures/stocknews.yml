@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pid: MyString
+  goodsname: MyString
+  color: MyString
+  amount: 1
+  unit: MyString
+  volume: 9.99
+
+two:
+  pid: MyString
+  goodsname: MyString
+  color: MyString
+  amount: 1
+  unit: MyString
+  volume: 9.99

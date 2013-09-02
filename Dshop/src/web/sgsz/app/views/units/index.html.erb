@@ -1,0 +1,30 @@
+<h1>Listing units</h1>
+
+<table>
+  <tr>
+    <th>Uname</th>
+    <th>Cdate</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @units.each do |unit| %>
+  <tr>
+    <td><%= unit.uname %></td>
+    <td><%= unit.cdate %></td>
+    <td><%= unit.remark %></td>
+    <td><%= link_to 'Show', unit %></td>
+    <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+    <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= paginate @units, :window => 2 %>
+
+<br />
+
+<%= link_to 'New Unit', new_unit_path %>

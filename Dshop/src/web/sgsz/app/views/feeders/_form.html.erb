@@ -1,0 +1,65 @@
+<%= form_for(@feeder) do |f| %>
+  <% if @feeder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@feeder.errors.count, "error") %> prohibited this feeder from being saved:</h2>
+
+      <ul>
+      <% @feeder.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fid %><br />
+    <%= f.text_field :fid %>
+  </div>
+  <div class="field">
+    <%= f.label :feedername %><br />
+    <%= f.text_field :feedername %>
+  </div>
+  <div class="field">
+    <%= f.label :brand %><br />
+    <%= f.text_field :brand %>
+  </div>
+  <div class="field">
+    <%= f.label :linkman %><br />
+    <%= f.text_field :linkman %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :qq %><br />
+    <%= f.text_field :qq %>
+  </div>
+  <div class="field">
+    <%= f.label :zipcode %><br />
+    <%= f.text_field :zipcode %>
+  </div>
+  <div class="field">
+    <%= f.label :tel %><br />
+    <%= f.text_field :tel %>
+  </div>
+  <div class="field">
+    <%= f.label :fax %><br />
+    <%= f.text_field :fax %>
+  </div>
+  <div class="field">
+    <%= f.label :cdate %><br />
+    <%= f.date_select :cdate %>
+  </div>
+  <div class="field">
+    <%= f.label :remark %><br />
+    <%= f.text_area :remark %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

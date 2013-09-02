@@ -1,0 +1,68 @@
+<h1>Listing orderdetails</h1>
+
+<table>
+  <tr>
+    <th>Oid</th>
+    <th>Pid</th>
+    <th>Barcode</th>
+    <th>Goodsname</th>
+    <th>Size</th>
+    <th>Color</th>
+    <th>Volume</th>
+    <th>Unit</th>
+    <th>Inprice</th>
+    <th>Pfprice</th>
+    <th>Hprice</th>
+    <th>Outprice</th>
+    <th>Amount</th>
+    <th>Ramount</th>
+    <th>Bundle</th>
+    <th>Rbundle</th>
+    <th>Discount</th>
+    <th>Additional</th>
+    <th>Subtotal</th>
+    <th>Status</th>
+    <th>Cdate</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @orderdetails.each do |orderdetail| %>
+  <tr>
+    <td><%= orderdetail.oid %></td>
+    <td><%= orderdetail.pid %></td>
+    <td><%= orderdetail.barcode %></td>
+    <td><%= orderdetail.goodsname %></td>
+    <td><%= orderdetail.size %></td>
+    <td><%= orderdetail.color %></td>
+    <td><%= orderdetail.volume %></td>
+    <td><%= orderdetail.unit %></td>
+    <td><%= orderdetail.inprice %></td>
+    <td><%= orderdetail.pfprice %></td>
+    <td><%= orderdetail.hprice %></td>
+    <td><%= orderdetail.outprice %></td>
+    <td><%= orderdetail.amount %></td>
+    <td><%= orderdetail.ramount %></td>
+    <td><%= orderdetail.bundle %></td>
+    <td><%= orderdetail.rbundle %></td>
+    <td><%= orderdetail.discount %></td>
+    <td><%= orderdetail.additional %></td>
+    <td><%= orderdetail.subtotal %></td>
+    <td><%= orderdetail.status %></td>
+    <td><%= orderdetail.cdate %></td>
+    <td><%= orderdetail.remark %></td>
+    <td><%= link_to 'Show', orderdetail %></td>
+    <td><%= link_to 'Edit', edit_orderdetail_path(orderdetail) %></td>
+    <td><%= link_to 'Destroy', orderdetail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= paginate @orderdetails, :window => 2 %>
+
+<br />
+
+<%= link_to 'New Orderdetail', new_orderdetail_path %>

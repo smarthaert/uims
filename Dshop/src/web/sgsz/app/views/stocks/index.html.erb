@@ -1,0 +1,56 @@
+<h1>Listing stocks</h1>
+
+<table>
+  <tr>
+    <th>Stid</th>
+    <th>Stname</th>
+    <th>Pid</th>
+    <th>Barcode</th>
+    <th>Goodsname</th>
+    <th>Size</th>
+    <th>Color</th>
+    <th>Amount</th>
+    <th>Volume</th>
+    <th>Unit</th>
+    <th>Inprice</th>
+    <th>Pfprice</th>
+    <th>Bundle</th>
+    <th>Discount</th>
+    <th>Baseline</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stocks.each do |stock| %>
+  <tr>
+    <td><%= stock.stid %></td>
+    <td><%= stock.stname %></td>
+    <td><%= stock.pid %></td>
+    <td><%= stock.barcode %></td>
+    <td><%= stock.goodsname %></td>
+    <td><%= stock.size %></td>
+    <td><%= stock.color %></td>
+    <td><%= stock.amount %></td>
+    <td><%= stock.volume %></td>
+    <td><%= stock.unit %></td>
+    <td><%= stock.inprice %></td>
+    <td><%= stock.pfprice %></td>
+    <td><%= stock.bundle %></td>
+    <td><%= stock.discount %></td>
+    <td><%= stock.baseline %></td>
+    <td><%= stock.remark %></td>
+    <td><%= link_to 'Show', stock %></td>
+    <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
+    <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= paginate @stocks, :window => 2 %>
+
+<br />
+
+<%= link_to 'New Stock', new_stock_path %>

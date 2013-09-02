@@ -1,0 +1,73 @@
+<h1><%= t 'views.afterselldetails.index.h1_listing_afterselldetails' %></h1>
+
+<table>
+  <tr>
+    <th><%= t 'views.afterselldetails.index.stid' %></th>
+    <th><%= t 'views.afterselldetails.index.stname' %></th>
+    <th><%= t 'views.afterselldetails.index.tid' %></th>
+    <th><%= t 'views.afterselldetails.index.pid' %></th>
+    <th><%= t 'views.afterselldetails.index.barcode' %></th>
+    <th><%= t 'views.afterselldetails.index.goodsname' %></th>
+    <th><%= t 'views.afterselldetails.index.size' %></th>
+    <th><%= t 'views.afterselldetails.index.color' %></th>
+    <th><%= t 'views.afterselldetails.index.volume' %></th>
+    <th><%= t 'views.afterselldetails.index.unit' %></th>
+    <th><%= t 'views.afterselldetails.index.inprice' %></th>
+    <th><%= t 'views.afterselldetails.index.pfprice' %></th>
+    <th><%= t 'views.afterselldetails.index.hprice' %></th>
+    <th><%= t 'views.afterselldetails.index.outprice' %></th>
+    <th><%= t 'views.afterselldetails.index.amount' %></th>
+    <th><%= t 'views.afterselldetails.index.ramount' %></th>
+    <th><%= t 'views.afterselldetails.index.bundle' %></th>
+    <th><%= t 'views.afterselldetails.index.rbundle' %></th>
+    <th><%= t 'views.afterselldetails.index.discount' %></th>
+    <th><%= t 'views.afterselldetails.index.additional' %></th>
+    <th><%= t 'views.afterselldetails.index.type' %></th>
+    <th><%= t 'views.afterselldetails.index.subtotal' %></th>
+    <th><%= t 'views.afterselldetails.index.status' %></th>
+    <th><%= t 'views.afterselldetails.index.cdate' %></th>
+    <th><%= t 'views.afterselldetails.index.remark' %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @afterselldetails.each do |afterselldetail| %>
+  <tr>
+    <td><%= afterselldetail.stid %></td>
+    <td><%= afterselldetail.stname %></td>
+    <td><%= afterselldetail.tid %></td>
+    <td><%= afterselldetail.pid %></td>
+    <td><%= afterselldetail.barcode %></td>
+    <td><%= afterselldetail.goodsname %></td>
+    <td><%= afterselldetail.size %></td>
+    <td><%= afterselldetail.color %></td>
+    <td><%= afterselldetail.volume %></td>
+    <td><%= afterselldetail.unit %></td>
+    <td><%= afterselldetail.inprice %></td>
+    <td><%= afterselldetail.pfprice %></td>
+    <td><%= afterselldetail.hprice %></td>
+    <td><%= afterselldetail.outprice %></td>
+    <td><%= afterselldetail.amount %></td>
+    <td><%= afterselldetail.ramount %></td>
+    <td><%= afterselldetail.bundle %></td>
+    <td><%= afterselldetail.rbundle %></td>
+    <td><%= afterselldetail.discount %></td>
+    <td><%= afterselldetail.additional %></td>
+    <td><%= afterselldetail.type %></td>
+    <td><%= afterselldetail.subtotal %></td>
+    <td><%= afterselldetail.status %></td>
+    <td><%= afterselldetail.cdate %></td>
+    <td><%= afterselldetail.remark %></td>
+    <td><%= link_to t('views.show'), afterselldetail %></td>
+    <td><%= link_to t('views.edit'), edit_afterselldetail_path(afterselldetail) %></td>
+    <td><%= link_to t('views.destroy'), afterselldetail, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= paginate @afterselldetails, :window => 2, :remote => true %>
+<br />
+
+<%= link_to 'New Afterselldetail', new_afterselldetail_path %>

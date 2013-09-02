@@ -1,0 +1,45 @@
+<%= form_for(@mauth) do |f| %>
+  <% if @mauth.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mauth.errors.count, "error") %> prohibited this mauth from being saved:</h2>
+
+      <ul>
+      <% @mauth.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :uid %><br />
+    <%= f.text_field :uid %>
+  </div>
+  <div class="field">
+    <%= f.label :rid %><br />
+    <%= f.text_field :rid %>
+  </div>
+  <div class="field">
+    <%= f.label :mid %><br />
+    <%= f.text_field :mid %>
+  </div>
+  <div class="field">
+    <%= f.label :cdkey %><br />
+    <%= f.text_field :cdkey %>
+  </div>
+  <div class="field">
+    <%= f.label :result %><br />
+    <%= f.text_field :result %>
+  </div>
+  <div class="field">
+    <%= f.label :cdate %><br />
+    <%= f.date_select :cdate %>
+  </div>
+  <div class="field">
+    <%= f.label :remark %><br />
+    <%= f.text_area :remark %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

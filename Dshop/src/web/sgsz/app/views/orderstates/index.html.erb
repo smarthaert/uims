@@ -1,0 +1,23 @@
+<h1>Listing orderstates</h1>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Payment</th>
+    <th>Amount</th>
+    <th>Value</th>
+  </tr>
+
+<% @orderstates.each do |orderstate| %>
+  <tr>
+    <td><%= orderstate.type %></td>
+    <td><%= orderstate.payment %></td>
+    <td><%= orderstate.amount %></td>
+    <td><%= orderstate.value %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= paginate @orderstates, :window => 2 %>
+<br />
+

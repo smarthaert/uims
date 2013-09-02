@@ -1,0 +1,19 @@
+<h1>Listing delivertypes</h1>
+
+<table>
+  <tr>
+    <th>Discount</th>
+    <th>Amount</th>
+  </tr>
+
+<% @delivertypes.each do |delivertype| %>
+  <tr>
+    <td><%= delivertype.discount %></td>
+    <td><%= delivertype.amount %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= paginate @delivertypes, :window => 2 %>
+<br />
+

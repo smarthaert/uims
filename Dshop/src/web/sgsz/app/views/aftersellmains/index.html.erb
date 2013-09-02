@@ -1,0 +1,94 @@
+<h1>Listing aftersellmains</h1>
+
+<table>
+  <tr>
+    <th>Stid</th>
+    <th>Stname</th>
+    <th>Tid</th>
+    <th>Custid</th>
+    <th>Custstate</th>
+    <th>Custname</th>
+    <th>Shopname</th>
+    <th>Custtel</th>
+    <th>Custaddr</th>
+    <th>Yingshou</th>
+    <th>Shishou</th>
+    <th>Shoukuan</th>
+    <th>Zhaoling</th>
+    <th>Yingtui</th>
+    <th>Shitui</th>
+    <th>Fukuan</th>
+    <th>Zhaohui</th>
+    <th>Sid</th>
+    <th>Sname</th>
+    <th>Stel</th>
+    <th>Saddress</th>
+    <th>Payment</th>
+    <th>Tpayment</th>
+    <th>Status</th>
+    <th>Uid</th>
+    <th>Tuid</th>
+    <th>Uname</th>
+    <th>Tuname</th>
+    <th>Type</th>
+    <th>Preid</th>
+    <th>Nextid</th>
+    <th>Cdate</th>
+    <th>Pdate</th>
+    <th>Tremark</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @aftersellmains.each do |aftersellmain| %>
+  <tr>
+    <td><%= aftersellmain.stid %></td>
+    <td><%= aftersellmain.stname %></td>
+    <td><%= aftersellmain.tid %></td>
+    <td><%= aftersellmain.custid %></td>
+    <td><%= aftersellmain.custstate %></td>
+    <td><%= aftersellmain.custname %></td>
+    <td><%= aftersellmain.shopname %></td>
+    <td><%= aftersellmain.custtel %></td>
+    <td><%= aftersellmain.custaddr %></td>
+    <td><%= aftersellmain.yingshou %></td>
+    <td><%= aftersellmain.shishou %></td>
+    <td><%= aftersellmain.shoukuan %></td>
+    <td><%= aftersellmain.zhaoling %></td>
+    <td><%= aftersellmain.yingtui %></td>
+    <td><%= aftersellmain.shitui %></td>
+    <td><%= aftersellmain.fukuan %></td>
+    <td><%= aftersellmain.zhaohui %></td>
+    <td><%= aftersellmain.sid %></td>
+    <td><%= aftersellmain.sname %></td>
+    <td><%= aftersellmain.stel %></td>
+    <td><%= aftersellmain.saddress %></td>
+    <td><%= aftersellmain.payment %></td>
+    <td><%= aftersellmain.tpayment %></td>
+    <td><%= aftersellmain.status %></td>
+    <td><%= aftersellmain.uid %></td>
+    <td><%= aftersellmain.tuid %></td>
+    <td><%= aftersellmain.uname %></td>
+    <td><%= aftersellmain.tuname %></td>
+    <td><%= aftersellmain.type %></td>
+    <td><%= aftersellmain.preid %></td>
+    <td><%= aftersellmain.nextid %></td>
+    <td><%= aftersellmain.cdate %></td>
+    <td><%= aftersellmain.pdate %></td>
+    <td><%= aftersellmain.tremark %></td>
+    <td><%= aftersellmain.remark %></td>
+    <td><%= link_to 'Show', aftersellmain %></td>
+    <td><%= link_to 'Edit', edit_aftersellmain_path(aftersellmain) %></td>
+    <td><%= link_to 'Destroy', aftersellmain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= paginate @aftersellmains, :window => 2, :remote => true %>
+<br />
+
+
+<%= link_to 'New Aftersellmain', new_aftersellmain_path %>

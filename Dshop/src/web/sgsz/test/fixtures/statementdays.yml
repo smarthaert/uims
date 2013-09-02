@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: 2013-08-31
+  method: MyString
+  outmoney: 9.99
+  inmoney: 9.99
+  strike: 9.99
+
+two:
+  date: 2013-08-31
+  method: MyString
+  outmoney: 9.99
+  inmoney: 9.99
+  strike: 9.99

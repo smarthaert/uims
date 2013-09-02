@@ -1,0 +1,52 @@
+<h1>Listing buylogs</h1>
+
+<table>
+  <tr>
+    <th>Uid</th>
+    <th>Uname</th>
+    <th>Utel</th>
+    <th>Cpbh</th>
+    <th>Cpmc</th>
+    <th>Ys</th>
+    <th>Sl</th>
+    <th>Js</th>
+    <th>Dj</th>
+    <th>Yfbz</th>
+    <th>Xj</th>
+    <th>Tj</th>
+    <th>Bz</th>
+    <th>Cdate</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @buylogs.each do |buylog| %>
+  <tr>
+    <td><%= buylog.uid %></td>
+    <td><%= buylog.uname %></td>
+    <td><%= buylog.utel %></td>
+    <td><%= buylog.cpbh %></td>
+    <td><%= buylog.cpmc %></td>
+    <td><%= buylog.ys %></td>
+    <td><%= buylog.sl %></td>
+    <td><%= buylog.js %></td>
+    <td><%= buylog.dj %></td>
+    <td><%= buylog.yfbz %></td>
+    <td><%= buylog.xj %></td>
+    <td><%= buylog.tj %></td>
+    <td><%= buylog.bz %></td>
+    <td><%= buylog.cdate %></td>
+    <td><%= buylog.remark %></td>
+    <td><%= link_to 'Show', buylog %></td>
+    <td><%= link_to 'Edit', edit_buylog_path(buylog) %></td>
+    <td><%= link_to 'Destroy', buylog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= paginate @buylogs, :window => 2 %>
+<br />
+
+<%= link_to 'New Buylog', new_buylog_path %>

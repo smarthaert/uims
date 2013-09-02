@@ -1,0 +1,27 @@
+<h1>Listing stockrepairs</h1>
+
+<table>
+  <tr>
+    <th>Pid</th>
+    <th>Goodsname</th>
+    <th>Color</th>
+    <th>Amount</th>
+    <th>Unit</th>
+    <th>Volume</th>
+  </tr>
+
+<% @stockrepairs.each do |stockrepair| %>
+  <tr>
+    <td><%= stockrepair.pid %></td>
+    <td><%= stockrepair.goodsname %></td>
+    <td><%= stockrepair.color %></td>
+    <td><%= stockrepair.amount %></td>
+    <td><%= stockrepair.unit %></td>
+    <td><%= stockrepair.volume %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= paginate @stockrepairs, :window => 2 %>
+<br />
+

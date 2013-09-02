@@ -1,0 +1,81 @@
+<h1>Listing selllogmains</h1>
+
+<table>
+  <tr>
+    <th>Stid</th>
+    <th>Stname</th>
+    <th>Slid</th>
+    <th>Custid</th>
+    <th>Custstate</th>
+    <th>Custname</th>
+    <th>Shopname</th>
+    <th>Custtel</th>
+    <th>Custaddr</th>
+    <th>Yingshou</th>
+    <th>Shishou</th>
+    <th>Shoukuan</th>
+    <th>Zhaoling</th>
+    <th>Aamount</th>
+    <th>Avolume</th>
+    <th>Sid</th>
+    <th>Sname</th>
+    <th>Stel</th>
+    <th>Saddress</th>
+    <th>Payment</th>
+    <th>Status</th>
+    <th>Uid</th>
+    <th>Uname</th>
+    <th>Preid</th>
+    <th>Nextid</th>
+    <th>Type</th>
+    <th>Cdate</th>
+    <th>Pdate</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @selllogmains.each do |selllogmain| %>
+  <tr>
+    <td><%= selllogmain.stid %></td>
+    <td><%= selllogmain.stname %></td>
+    <td><%= selllogmain.slid %></td>
+    <td><%= selllogmain.custid %></td>
+    <td><%= selllogmain.custstate %></td>
+    <td><%= selllogmain.custname %></td>
+    <td><%= selllogmain.shopname %></td>
+    <td><%= selllogmain.custtel %></td>
+    <td><%= selllogmain.custaddr %></td>
+    <td><%= selllogmain.yingshou %></td>
+    <td><%= selllogmain.shishou %></td>
+    <td><%= selllogmain.shoukuan %></td>
+    <td><%= selllogmain.zhaoling %></td>
+    <td><%= selllogmain.aamount %></td>
+    <td><%= selllogmain.avolume %></td>
+    <td><%= selllogmain.sid %></td>
+    <td><%= selllogmain.sname %></td>
+    <td><%= selllogmain.stel %></td>
+    <td><%= selllogmain.saddress %></td>
+    <td><%= selllogmain.payment %></td>
+    <td><%= selllogmain.status %></td>
+    <td><%= selllogmain.uid %></td>
+    <td><%= selllogmain.uname %></td>
+    <td><%= selllogmain.preid %></td>
+    <td><%= selllogmain.nextid %></td>
+    <td><%= selllogmain.type %></td>
+    <td><%= selllogmain.cdate %></td>
+    <td><%= selllogmain.pdate %></td>
+    <td><%= selllogmain.remark %></td>
+    <td><%= link_to 'Show', selllogmain %></td>
+    <td><%= link_to 'Edit', edit_selllogmain_path(selllogmain) %></td>
+    <td><%= link_to 'Destroy', selllogmain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= paginate @selllogmains, :window => 2 %>
+
+<br />
+
+<%= link_to 'New Selllogmain', new_selllogmain_path %>

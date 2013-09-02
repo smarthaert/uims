@@ -1,0 +1,157 @@
+<%= form_for(@aftersellmain) do |f| %>
+  <% if @aftersellmain.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@aftersellmain.errors.count, "error") %> prohibited this aftersellmain from being saved:</h2>
+
+      <ul>
+      <% @aftersellmain.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :stid %><br />
+    <%= f.text_field :stid %>
+  </div>
+  <div class="field">
+    <%= f.label :stname %><br />
+    <%= f.text_field :stname %>
+  </div>
+  <div class="field">
+    <%= f.label :tid %><br />
+    <%= f.text_field :tid %>
+  </div>
+  <div class="field">
+    <%= f.label :custid %><br />
+    <%= f.text_field :custid %>
+  </div>
+  <div class="field">
+    <%= f.label :custstate %><br />
+    <%= f.text_field :custstate %>
+  </div>
+  <div class="field">
+    <%= f.label :custname %><br />
+    <%= f.text_field :custname %>
+  </div>
+  <div class="field">
+    <%= f.label :shopname %><br />
+    <%= f.text_field :shopname %>
+  </div>
+  <div class="field">
+    <%= f.label :custtel %><br />
+    <%= f.text_field :custtel %>
+  </div>
+  <div class="field">
+    <%= f.label :custaddr %><br />
+    <%= f.text_field :custaddr %>
+  </div>
+  <div class="field">
+    <%= f.label :yingshou %><br />
+    <%= f.text_field :yingshou %>
+  </div>
+  <div class="field">
+    <%= f.label :shishou %><br />
+    <%= f.text_field :shishou %>
+  </div>
+  <div class="field">
+    <%= f.label :shoukuan %><br />
+    <%= f.text_field :shoukuan %>
+  </div>
+  <div class="field">
+    <%= f.label :zhaoling %><br />
+    <%= f.text_field :zhaoling %>
+  </div>
+  <div class="field">
+    <%= f.label :yingtui %><br />
+    <%= f.text_field :yingtui %>
+  </div>
+  <div class="field">
+    <%= f.label :shitui %><br />
+    <%= f.text_field :shitui %>
+  </div>
+  <div class="field">
+    <%= f.label :fukuan %><br />
+    <%= f.text_field :fukuan %>
+  </div>
+  <div class="field">
+    <%= f.label :zhaohui %><br />
+    <%= f.text_field :zhaohui %>
+  </div>
+  <div class="field">
+    <%= f.label :sid %><br />
+    <%= f.text_field :sid %>
+  </div>
+  <div class="field">
+    <%= f.label :sname %><br />
+    <%= f.text_field :sname %>
+  </div>
+  <div class="field">
+    <%= f.label :stel %><br />
+    <%= f.text_field :stel %>
+  </div>
+  <div class="field">
+    <%= f.label :saddress %><br />
+    <%= f.text_field :saddress %>
+  </div>
+  <div class="field">
+    <%= f.label :payment %><br />
+    <%= f.text_field :payment %>
+  </div>
+  <div class="field">
+    <%= f.label :tpayment %><br />
+    <%= f.text_field :tpayment %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.number_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :uid %><br />
+    <%= f.text_field :uid %>
+  </div>
+  <div class="field">
+    <%= f.label :tuid %><br />
+    <%= f.text_field :tuid %>
+  </div>
+  <div class="field">
+    <%= f.label :uname %><br />
+    <%= f.text_field :uname %>
+  </div>
+  <div class="field">
+    <%= f.label :tuname %><br />
+    <%= f.text_field :tuname %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :preid %><br />
+    <%= f.text_field :preid %>
+  </div>
+  <div class="field">
+    <%= f.label :nextid %><br />
+    <%= f.text_field :nextid %>
+  </div>
+  <div class="field">
+    <%= f.label :cdate %><br />
+    <%= f.date_select :cdate %>
+  </div>
+  <div class="field">
+    <%= f.label :pdate %><br />
+    <%= f.date_select :pdate %>
+  </div>
+  <div class="field">
+    <%= f.label :tremark %><br />
+    <%= f.text_area :tremark %>
+  </div>
+  <div class="field">
+    <%= f.label :remark %><br />
+    <%= f.text_area :remark %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  custname: MyString
+  custtel: MyString
+  profit: 9.99
+
+two:
+  custname: MyString
+  custtel: MyString
+  profit: 9.99

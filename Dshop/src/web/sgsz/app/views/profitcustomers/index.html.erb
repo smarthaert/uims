@@ -1,0 +1,21 @@
+<h1>Listing profitcustomers</h1>
+
+<table>
+  <tr>
+    <th>Custname</th>
+    <th>Custtel</th>
+    <th>Profit</th>
+  </tr>
+
+<% @profitcustomers.each do |profitcustomer| %>
+  <tr>
+    <td><%= profitcustomer.custname %></td>
+    <td><%= profitcustomer.custtel %></td>
+    <td><%= profitcustomer.profit %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= paginate @profitcustomers, :window => 2 %>
+<br />
+

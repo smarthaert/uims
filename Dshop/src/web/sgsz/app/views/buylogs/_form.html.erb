@@ -1,0 +1,77 @@
+<%= form_for(@buylog) do |f| %>
+  <% if @buylog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@buylog.errors.count, "error") %> prohibited this buylog from being saved:</h2>
+
+      <ul>
+      <% @buylog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :uid %><br />
+    <%= f.text_field :uid %>
+  </div>
+  <div class="field">
+    <%= f.label :uname %><br />
+    <%= f.text_field :uname %>
+  </div>
+  <div class="field">
+    <%= f.label :utel %><br />
+    <%= f.text_field :utel %>
+  </div>
+  <div class="field">
+    <%= f.label :cpbh %><br />
+    <%= f.text_field :cpbh %>
+  </div>
+  <div class="field">
+    <%= f.label :cpmc %><br />
+    <%= f.text_field :cpmc %>
+  </div>
+  <div class="field">
+    <%= f.label :ys %><br />
+    <%= f.text_field :ys %>
+  </div>
+  <div class="field">
+    <%= f.label :sl %><br />
+    <%= f.text_field :sl %>
+  </div>
+  <div class="field">
+    <%= f.label :js %><br />
+    <%= f.text_field :js %>
+  </div>
+  <div class="field">
+    <%= f.label :dj %><br />
+    <%= f.text_field :dj %>
+  </div>
+  <div class="field">
+    <%= f.label :yfbz %><br />
+    <%= f.text_field :yfbz %>
+  </div>
+  <div class="field">
+    <%= f.label :xj %><br />
+    <%= f.text_field :xj %>
+  </div>
+  <div class="field">
+    <%= f.label :tj %><br />
+    <%= f.text_field :tj %>
+  </div>
+  <div class="field">
+    <%= f.label :bz %><br />
+    <%= f.text_field :bz %>
+  </div>
+  <div class="field">
+    <%= f.label :cdate %><br />
+    <%= f.date_select :cdate %>
+  </div>
+  <div class="field">
+    <%= f.label :remark %><br />
+    <%= f.text_area :remark %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

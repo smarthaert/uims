@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cname: MyString
+  tel: MyString
+  type: 
+  amount: 1
+  unit: MyString
+
+two:
+  cname: MyString
+  tel: MyString
+  type: 
+  amount: 1
+  unit: MyString

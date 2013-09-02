@@ -1,0 +1,69 @@
+<%= form_for(@contactpayment) do |f| %>
+  <% if @contactpayment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contactpayment.errors.count, "error") %> prohibited this contactpayment from being saved:</h2>
+
+      <ul>
+      <% @contactpayment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :stid %><br />
+    <%= f.text_field :stid %>
+  </div>
+  <div class="field">
+    <%= f.label :stname %><br />
+    <%= f.text_field :stname %>
+  </div>
+  <div class="field">
+    <%= f.label :custid %><br />
+    <%= f.text_field :custid %>
+  </div>
+  <div class="field">
+    <%= f.label :custname %><br />
+    <%= f.text_field :custname %>
+  </div>
+  <div class="field">
+    <%= f.label :outmoney %><br />
+    <%= f.text_field :outmoney %>
+  </div>
+  <div class="field">
+    <%= f.label :inmoney %><br />
+    <%= f.text_field :inmoney %>
+  </div>
+  <div class="field">
+    <%= f.label :strike %><br />
+    <%= f.text_field :strike %>
+  </div>
+  <div class="field">
+    <%= f.label :method %><br />
+    <%= f.text_field :method %>
+  </div>
+  <div class="field">
+    <%= f.label :proof %><br />
+    <%= f.text_field :proof %>
+  </div>
+  <div class="field">
+    <%= f.label :ticketid %><br />
+    <%= f.text_field :ticketid %>
+  </div>
+  <div class="field">
+    <%= f.label :cdate %><br />
+    <%= f.date_select :cdate %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :remark %><br />
+    <%= f.text_area :remark %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

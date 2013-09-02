@@ -1,0 +1,27 @@
+<h1>Listing sellcostproductions</h1>
+
+<table>
+  <tr>
+    <th>Pid</th>
+    <th>Goodsname</th>
+    <th>Color</th>
+    <th>Type</th>
+    <th>Amount</th>
+    <th>Unit</th>
+  </tr>
+
+<% @sellcostproductions.each do |sellcostproduction| %>
+  <tr>
+    <td><%= sellcostproduction.pid %></td>
+    <td><%= sellcostproduction.goodsname %></td>
+    <td><%= sellcostproduction.color %></td>
+    <td><%= sellcostproduction.type %></td>
+    <td><%= sellcostproduction.amount %></td>
+    <td><%= sellcostproduction.unit %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= paginate @sellcostproductions, :window => 2 %>
+<br />
+

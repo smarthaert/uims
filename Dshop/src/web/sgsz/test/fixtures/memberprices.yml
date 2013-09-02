@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pid: MyString
+  barcode: MyString
+  goodsname: MyString
+  size: MyString
+  color: MyString
+  volume: 9.99
+  unit: MyString
+  custid: MyString
+  custname: MyString
+  custtel: MyString
+  startdate: 2013-08-31
+  enddate: 2013-08-31
+  hprice: 9.99
+  cdate: 2013-08-31
+  remark: MyText
+
+two:
+  pid: MyString
+  barcode: MyString
+  goodsname: MyString
+  size: MyString
+  color: MyString
+  volume: 9.99
+  unit: MyString
+  custid: MyString
+  custname: MyString
+  custtel: MyString
+  startdate: 2013-08-31
+  enddate: 2013-08-31
+  hprice: 9.99
+  cdate: 2013-08-31
+  remark: MyText

@@ -1,0 +1,2 @@
+module StocknewsHelper
+end

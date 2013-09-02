@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  uid: MyString
+  rid: MyString
+  mid: MyString
+  cdkey: MyString
+  result: MyString
+  cdate: 2013-08-31
+  remark: MyText
+
+two:
+  uid: MyString
+  rid: MyString
+  mid: MyString
+  cdkey: MyString
+  result: MyString
+  cdate: 2013-08-31
+  remark: MyText

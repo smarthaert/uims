@@ -1,0 +1,75 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  stid: MyString
+  stname: MyString
+  tid: MyString
+  custid: MyString
+  custstate: MyString
+  custname: MyString
+  shopname: MyString
+  custtel: MyString
+  custaddr: MyString
+  yingshou: 9.99
+  shishou: 9.99
+  shoukuan: 9.99
+  zhaoling: 9.99
+  yingtui: 9.99
+  shitui: 9.99
+  fukuan: 9.99
+  zhaohui: 9.99
+  sid: MyString
+  sname: MyString
+  stel: MyString
+  saddress: MyString
+  payment: MyString
+  tpayment: MyString
+  status: 1
+  uid: MyString
+  tuid: MyString
+  uname: MyString
+  tuname: MyString
+  type: 
+  preid: MyString
+  nextid: MyString
+  cdate: 2013-08-31
+  pdate: 2013-08-31
+  tremark: MyText
+  remark: MyText
+
+two:
+  stid: MyString
+  stname: MyString
+  tid: MyString
+  custid: MyString
+  custstate: MyString
+  custname: MyString
+  shopname: MyString
+  custtel: MyString
+  custaddr: MyString
+  yingshou: 9.99
+  shishou: 9.99
+  shoukuan: 9.99
+  zhaoling: 9.99
+  yingtui: 9.99
+  shitui: 9.99
+  fukuan: 9.99
+  zhaohui: 9.99
+  sid: MyString
+  sname: MyString
+  stel: MyString
+  saddress: MyString
+  payment: MyString
+  tpayment: MyString
+  status: 1
+  uid: MyString
+  tuid: MyString
+  uname: MyString
+  tuname: MyString
+  type: 
+  preid: MyString
+  nextid: MyString
+  cdate: 2013-08-31
+  pdate: 2013-08-31
+  tremark: MyText
+  remark: MyText

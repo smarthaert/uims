@@ -1,0 +1,48 @@
+<h1>Listing feeders</h1>
+
+<table>
+  <tr>
+    <th>Fid</th>
+    <th>Feedername</th>
+    <th>Brand</th>
+    <th>Linkman</th>
+    <th>Address</th>
+    <th>Email</th>
+    <th>Qq</th>
+    <th>Zipcode</th>
+    <th>Tel</th>
+    <th>Fax</th>
+    <th>Cdate</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @feeders.each do |feeder| %>
+  <tr>
+    <td><%= feeder.fid %></td>
+    <td><%= feeder.feedername %></td>
+    <td><%= feeder.brand %></td>
+    <td><%= feeder.linkman %></td>
+    <td><%= feeder.address %></td>
+    <td><%= feeder.email %></td>
+    <td><%= feeder.qq %></td>
+    <td><%= feeder.zipcode %></td>
+    <td><%= feeder.tel %></td>
+    <td><%= feeder.fax %></td>
+    <td><%= feeder.cdate %></td>
+    <td><%= feeder.remark %></td>
+    <td><%= link_to 'Show', feeder %></td>
+    <td><%= link_to 'Edit', edit_feeder_path(feeder) %></td>
+    <td><%= link_to 'Destroy', feeder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= paginate @feeders, :window => 2 %>
+
+<br />
+
+<%= link_to 'New Feeder', new_feeder_path %>
