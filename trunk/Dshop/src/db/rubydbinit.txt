@@ -377,3 +377,9 @@ rake db:migrate
 
 #手动增加Selllogdetail表的联合主键slid和pid,additional
 #Afterselldetail tid pid additional type,
+
+
+rails generate migration add_hashed_password_to_user hashed_password:string
+
+rails generate migration add_salt_to_user salt:string
+
