@@ -1,0 +1,73 @@
+
+
+
+
+安装nginx
+
+
+
+wget http://nodejs.org/dist/v0.10.17/node-v0.10.17.tar.gz
+tar xzf node-v0.10.17.tar.gz 
+cd node-v0.10.17
+./configure 
+make
+sudo make install
+
+
+gem install capistrano
+
+capify .
+
+
+
+
+
+
+
+
+支持https
+
+
+
+
+
+server {
+  listen 80;
+  server_name demo.local;
+  root /home/redmine/workplace/depot_v/public;
+  passenger_enabled on;
+  rails_env development;
+}
+
+
+
+
+server {
+        listen       443;
+        server_name  localhost;
+  #server_name demo.local;
+  root /home/redmine/app/redmine/public;
+  #root /home/redmine/workplace/depot_v1/public;
+  passenger_enabled on;
+  rails_env development;
+
+        ssl                  on;
+        #ssl_certificate      cert.pem;
+        #ssl_certificate_key  cert.key;
+        ssl_certificate      /home/redmine/nginx/ssl/proj.gtja.com_nopass.crt;
+        ssl_certificate_key  /home/redmine/nginx/ssl/proj.gtja.com_nopass.key;
+
+    }
+
+
+
+
+root@PMServer:/home/redmine/nginx# ls ssl/
+proj.gtja.com.csr  proj.gtja.com_nopass.crt
+proj.gtja.com.key  proj.gtja.com_nopass.key
+
+
+
+
+
+
