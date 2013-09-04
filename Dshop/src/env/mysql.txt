@@ -1,6 +1,14 @@
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 
+sudo vim /etc/mysql/my.cnf
+bind-address            = 0.0.0.0
+#bind-address           = 127.0.0.1
+
+sudo /etc/init.d/mysql restart
+
+
+
 
 insert into mysql.user(Host,User,Password) values("localhost","redmine",password("redmine"));
 create database redmine;
