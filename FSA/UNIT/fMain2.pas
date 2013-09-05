@@ -1033,7 +1033,7 @@ begin
         else C.LineTo(X, Y);
 
         //ªÊ÷∆’≥∫œ
-        if PL[4][J] < 1.7 then
+        if PL[4][J] < 2.0 then
         begin
           bitmap := Tbitmap.create;
           bitmap.Width := 5;
