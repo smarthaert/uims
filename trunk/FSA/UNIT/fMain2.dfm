@@ -1,6 +1,6 @@
 object frmMain2: TfrmMain2
-  Left = 195
-  Top = 0
+  Left = 292
+  Top = 33
   AutoScroll = False
   Caption = #37329#34701#25968#25454#30424#21518#20998#26512#22823#24072' - Kylin v1.00'
   ClientHeight = 724

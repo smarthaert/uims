@@ -7,7 +7,7 @@ uses
   Dialogs, Grids, StdCtrls, Menus, fDef, ExtCtrls, DateUtils, StrUtils, MyGraph;
 
 const
-  MAC: array[0..5] of Integer = (5, 30, 60, 120, 250,1800);
+  MAC: array[0..5] of Integer = (3, 30, 60, 120, 250,1800);
   VMAC: array[0..3] of Integer = (5, 10, 30, -1);
   RSIC: array[0..1] of Integer = (5, 10);
   PLC: array[0..4] of Integer = (2, 1, 1, 3, 3);
@@ -133,7 +133,8 @@ type
     procedure DrawScaleV(C: TCanvas; R: TRect);
     procedure DrawLine(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single);     
     procedure DrawLineStyle(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single; Style: TPenStyle);
-    procedure DrawText(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single; Text: string);
+    procedure DrawText(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single; Text: string);       
+    procedure DrawTips(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single);
     procedure SetStockName(const Value: string);
     procedure SetPageStart(Value: Integer);
     procedure SetUnitWidth(Value: Integer);
@@ -722,10 +723,18 @@ begin
   
   _setPen_(C, clWhite, 1, psSolid, pmCopy);
 
+  //绘制3分钟
   DrawLineStyle(MA[0], TColor($C6C300), C, R, High, Low, psDot);
+
   for I := 1 to Length(MAC) - 2 do
     if MAC[I] > 0 then
-      DrawLine(MA[I], DEF_COLOR[I-1], C, R, High, Low);
+    begin
+
+      if I = 3 then
+        DrawTips(MA[I], DEF_COLOR[I-1], C, R, High, Low)
+      else
+        DrawLine(MA[I], DEF_COLOR[I-1], C, R, High, Low);
+    end;
 end;
 
 function TfrmMain2.FindKLineScaleHighLow(DataFile: IDataFile;
@@ -984,6 +993,54 @@ begin
               //C.TextOut(X, Y, '↓');
                 _line_(C, X-3, Y, X+3, Y, DEF_COLOR[1]);    //粘合
               end;
+
+      end;
+    end;
+  end;
+end;
+
+
+procedure TfrmMain2.DrawTips(A: TArrayOfSingle; Color: TColor;  //MA指标上绘制提示信息
+  C: TCanvas; R: TRect; High, Low: Single);
+var
+  I, J, X, Y, Len: Integer;
+  FirstDataFound: Boolean;
+  bitmap: Tbitmap;
+begin
+  if A <> nil then
+  begin
+    FirstDataFound := False;
+    _setPen_(C, Color, 1, psSolid, pmCopy);
+
+    C.Brush.Color := GRID.Color;
+    C.Brush.Style := bsSolid;
+    Len := Length(A);
+    for I := 0 to DataPerPage - 1 do
+    begin
+      J := PageStart + DataPerPage - I - 1;
+      J := PageIndex2DataIndex(J);
+      //if _valid_(J,0,Len-1) then
+      if _valid_(J, 0, Len - 1) and (A[J] <> -9999) then //没有计算出来均线时不显示，-1代表无数据
+      begin
+        
+        X := UnitWidth * I + UnitWidth div 2;
+        Y := Fy2Iy(A[J], R, High, Low);
+        if not FirstDataFound then
+        begin
+          C.MoveTo(X, Y);
+          FirstDataFound := True;
+        end
+        else C.LineTo(X, Y);
+
+        //绘制粘合
+        if PL[4][J] < 1.7 then
+        begin
+          bitmap := Tbitmap.create;
+          bitmap.Width := 5;
+          bitmap.Height := 5;
+          bitmap.Canvas.Brush.Color := Color;
+          C.Draw(X, Y-2, bitmap);
+        end;
 
       end;
     end;
@@ -1270,22 +1327,22 @@ begin
       GRID.Canvas.Font.Size := 8;
       GRID.Canvas.Font.Color := DEF_COLOR[0];
       if MA[0][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + 1, 'MA30: ' + FormatFloat('0,000.00', MA[0][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + 1, 'MA30: ' + FormatFloat('0,000.00', MA[1][StkDataFile.getCount - Index - 1]))
       else
         GRID.Canvas.TextOut(0, GRID.RowHeights[0] + 1, 'MA30: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[1];
       if MA[1][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(140, GRID.RowHeights[0] + 1, 'MA60: ' + FormatFloat('0,000.00', MA[1][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(140, GRID.RowHeights[0] + 1, 'MA60: ' + FormatFloat('0,000.00', MA[2][StkDataFile.getCount - Index - 1]))
       else
         GRID.Canvas.TextOut(140, GRID.RowHeights[0] + 1, 'MA60: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[2];
       if MA[2][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(280, GRID.RowHeights[0] + 1, 'MA120: ' + FormatFloat('0,000.00', MA[2][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(280, GRID.RowHeights[0] + 1, 'MA120: ' + FormatFloat('0,000.00', MA[3][StkDataFile.getCount - Index - 1]))
       else
         GRID.Canvas.TextOut(280, GRID.RowHeights[0] + 1, 'MA120: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[3];
       if MA[3][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(428, GRID.RowHeights[0] + 1, 'MA250: ' + FormatFloat('0,000.00', MA[3][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(428, GRID.RowHeights[0] + 1, 'MA250: ' + FormatFloat('0,000.00', MA[4][StkDataFile.getCount - Index - 1]))
       else
         GRID.Canvas.TextOut(428, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
 
@@ -1297,6 +1354,21 @@ begin
         GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + 1, 'VOL: ' + FormatFloat('0.00', P.VOL) + '                 ')
       else
         GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + 1, 'VOL: ' + '                 ');
+
+
+    //绘制粘合部分
+      GRID.Canvas.Font.Color := DEF_COLOR[4];
+      if PL[4][StkDataFile.getCount - Index - 1] <> -9999 then
+      begin
+        if PL[4][StkDataFile.getCount - Index - 1] > 0 then
+          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '粘合: ' + FormatFloat('+0.00', PL[4][StkDataFile.getCount - Index - 1]) + '                 ')
+        else
+          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '粘合: ' + FormatFloat(' -0.00', -PL[4][StkDataFile.getCount - Index - 1]) + '                 ');
+      end
+      else
+      begin
+        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '粘合: ' + '                  ');
+      end;
     
     {
     //绘制PL部分
