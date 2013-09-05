@@ -878,11 +878,15 @@ begin
       for I := 0 to Length(Result) - 1 do
       begin
         if MA[2][I] <> -9999 then
-          if (max(MA[0][I], max(MA[1][I], MA[2][I])) - min(MA[0][I], min(MA[1][I], MA[2][I]))) < 2 then
-             //Result[I] := max(MA[0][I],max(MA[1][I],MA[2][I])) - min(MA[0][I],min(MA[1][I],MA[2][I]))
+          Result[I] := max(MA[1][I],max(MA[2][I],MA[3][I])) - min(MA[1][I],min(MA[2][I],MA[3][I]))
+        else
+          Result[I] := -9999;
+        {
+          if (max(MA[0][I], max(MA[1][I], MA[2][I])) - min(MA[0][I], min(MA[1][I], MA[2][I]))) < 1.7 then
             Result[I] := 0
           else
             Result[I] := -9999;
+        }
       end;
   end;
 end;
