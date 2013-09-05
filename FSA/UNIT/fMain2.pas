@@ -1040,6 +1040,7 @@ begin
           bitmap.Height := 5;
           bitmap.Canvas.Brush.Color := Color;
           C.Draw(X, Y-2, bitmap);
+          bitmap.Free;
         end;
 
       end;
