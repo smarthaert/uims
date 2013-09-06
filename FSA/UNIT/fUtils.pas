@@ -807,7 +807,7 @@ begin
   for I := 0 to Length(Result) - 1 do
   begin
     Sum := Sum + Data[I];
-    if MAC=-1 then
+    if MAC = -1 then
       Result[I] := 4000
     else begin
       //if I < MAC then Result[I] := Sum / (I+1)
@@ -878,7 +878,7 @@ begin
       for I := 0 to Length(Result) - 1 do
       begin
         if MA[2][I] <> -9999 then
-          Result[I] := max(MA[1][I],max(MA[2][I],MA[3][I])) - min(MA[1][I],min(MA[2][I],MA[3][I]))
+          Result[I] := max(MA[1][I], max(MA[2][I], MA[3][I])) - min(MA[1][I], min(MA[2][I], MA[3][I]))
         else
           Result[I] := -9999;
         {
@@ -961,7 +961,7 @@ var
   I, Y: Integer;
   D: Single;
 begin
-{
+  {
   LineCount := Max(3, LineCount div 2 * 2 + 1);
   D := _div_(H - L, LineCount - 1);
   SetLength(FValueList, LineCount);

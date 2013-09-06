@@ -7,7 +7,7 @@ uses
   Dialogs, Grids, StdCtrls, Menus, fDef, ExtCtrls, DateUtils, StrUtils, MyGraph;
 
 const
-  MAC: array[0..5] of Integer = (3, 30, 60, 120, 250,1800);
+  MAC: array[0..5] of Integer = (3, 30, 60, 120, 250, 1800);
   VMAC: array[0..3] of Integer = (5, 10, 30, -1);
   RSIC: array[0..1] of Integer = (5, 10);
   PLC: array[0..4] of Integer = (2, 1, 1, 3, 3);
@@ -15,6 +15,20 @@ const
 type
 { TVertLine }
   TVertLine = class(TGraphicControl)
+  private
+    FVisible: Boolean;
+  protected
+    FPosition: Integer;
+    procedure SetPosition(const Value: Integer);
+    procedure Paint; override;
+  public
+    constructor Create(AOwner: TComponent); override;
+    property Position: Integer read FPosition write SetPosition;
+  end;
+
+type
+{ THoriLine }
+  THoriLine = class(TGraphicControl)
   private
     FVisible: Boolean;
   protected
@@ -97,7 +111,7 @@ type
     procedure miFirstClick(Sender: TObject);
     procedure miLastClick(Sender: TObject);
     procedure miQuickLeftClick(Sender: TObject);
-    procedure miQuickRightClick(Sender: TObject);  
+    procedure miQuickRightClick(Sender: TObject);
     procedure miQuickPageUpClick(Sender: TObject);
     procedure miQuickPageDownClick(Sender: TObject);
     procedure N11Click(Sender: TObject);
@@ -127,13 +141,13 @@ type
     procedure DrawK(C: TCanvas; R: TRect); overload;
     procedure DrawV(C: TCanvas; R: TRect); overload;
     procedure DrawRSI(C: TCanvas; R: TRect); overload;
-    procedure DrawPL(C: TCanvas; R: TRect); overload;  
+    procedure DrawPL(C: TCanvas; R: TRect); overload;
     procedure DrawMA(C: TCanvas; R: TRect); overload;
     procedure DrawScaleK(C: TCanvas; R: TRect);
     procedure DrawScaleV(C: TCanvas; R: TRect);
-    procedure DrawLine(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single);     
+    procedure DrawLine(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single);
     procedure DrawLineStyle(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single; Style: TPenStyle);
-    procedure DrawText(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single; Text: string);       
+    procedure DrawText(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single; Text: string);
     procedure DrawTips(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single);
     procedure SetStockName(const Value: string);
     procedure SetPageStart(Value: Integer);
@@ -145,7 +159,8 @@ type
     function PageIndex2DataIndex(Index: Integer): Integer;
     procedure DRAW_DATE_SCALE(C: TCanvas; R: TRect; ShowText: Boolean);
     procedure ITERATE_DATA(Index: Integer);
-    procedure MOVE_VERTLINE(DataIndex: Integer); overload;
+    procedure MOVE_VERTLINE(DataIndex: Integer); overload;    
+    procedure MOVE_HORILINE(DataIndex: Integer); overload;
     function DataIndexToPixel(DataIndex: Integer): Integer;
     function PixelToDataIndex(X: Integer): Integer;
     procedure CLEAR_ALL_CALCULATE_DATA();
@@ -207,6 +222,9 @@ begin
   GRID.RowHeights[1] := Round(h * 12);
   GRID.RowHeights[2] := Round(h * 4);
   GRID.RowHeights[3] := Round(h * 8);
+
+  GRID.DoubleBuffered := True;//解决界面闪烁问题
+
   R := GRID.CellRect(0, 0);
   InflateRect(R, -1, -1);
   Header.BoundsRect := R;
@@ -532,10 +550,10 @@ begin
     if IS_DRAW_MA then
     begin
       if (MAC[0] > 0) and IS_DRAW_MA_5 then
-          DrawLineStyle(MA[0], TColor($C6C300), C, R, High, Low, psDot);
+        DrawLineStyle(MA[0], TColor($C6C300), C, R, High, Low, psDot);
       for I := 1 to Length(MAC) - 1 do
         if MAC[I] > 0 then
-          DrawLine(MA[I], DEF_COLOR[I-1], C, R, High, Low);
+          DrawLine(MA[I], DEF_COLOR[I - 1], C, R, High, Low);
     end;
   end;
 end;
@@ -719,8 +737,8 @@ begin
         else _textRect_(C, Rt, str, DEF_COLOR[4], GRID.Color, taCenter, tlTop, False);
       end;
     end;
-   end;
-  
+  end;
+
   _setPen_(C, clWhite, 1, psSolid, pmCopy);
 
   //绘制3分钟
@@ -731,9 +749,9 @@ begin
     begin
 
       if I = 3 then
-        DrawTips(MA[I], DEF_COLOR[I-1], C, R, High, Low)
+        DrawTips(MA[I], DEF_COLOR[I - 1], C, R, High, Low)
       else
-        DrawLine(MA[I], DEF_COLOR[I-1], C, R, High, Low);
+        DrawLine(MA[I], DEF_COLOR[I - 1], C, R, High, Low);
     end;
 end;
 
@@ -941,7 +959,7 @@ end;
 
 
 
-procedure TfrmMain2.DrawText(A: TArrayOfSingle; Color: TColor;  //PL指标上绘制提示信息
+procedure TfrmMain2.DrawText(A: TArrayOfSingle; Color: TColor; //PL指标上绘制提示信息
   C: TCanvas; R: TRect; High, Low: Single; Text: string);
 var
   I, J, X, Y, Len: Integer;
@@ -975,7 +993,7 @@ begin
               //C.Brush.Color := DEF_COLOR[4];
               //C.Brush.Color := clBlack;
               //C.TextOut(X, Y-12, '↑')
-            _line_(C, X, Y - 10, X, Y, DEF_COLOR[4]);        //多头排列
+            _line_(C, X, Y - 10, X, Y, DEF_COLOR[4]); //多头排列
           end
           else
             if A[J] = -1 then
@@ -983,7 +1001,7 @@ begin
               //C.Brush.Color := DEF_COLOR[3];
               //C.Brush.Color := clBlack;
               //C.TextOut(X, Y, '↓');
-              _line_(C, X, Y, X, Y + 10, DEF_COLOR[3]);      //空头排列
+              _line_(C, X, Y, X, Y + 10, DEF_COLOR[3]); //空头排列
             end
             else
               if A[J] = 0 then
@@ -991,7 +1009,7 @@ begin
               //C.Brush.Color := DEF_COLOR[3];
               //C.Brush.Color := clBlack;
               //C.TextOut(X, Y, '↓');
-                _line_(C, X-3, Y, X+3, Y, DEF_COLOR[1]);    //粘合
+                _line_(C, X - 3, Y, X + 3, Y, DEF_COLOR[1]); //粘合
               end;
 
       end;
@@ -1000,7 +1018,7 @@ begin
 end;
 
 
-procedure TfrmMain2.DrawTips(A: TArrayOfSingle; Color: TColor;  //MA指标上绘制提示信息
+procedure TfrmMain2.DrawTips(A: TArrayOfSingle; Color: TColor; //MA指标上绘制提示信息
   C: TCanvas; R: TRect; High, Low: Single);
 var
   I, J, X, Y, Len: Integer;
@@ -1022,7 +1040,7 @@ begin
       //if _valid_(J,0,Len-1) then
       if _valid_(J, 0, Len - 1) and (A[J] <> -9999) then //没有计算出来均线时不显示，-1代表无数据
       begin
-        
+
         X := UnitWidth * I + UnitWidth div 2;
         Y := Fy2Iy(A[J], R, High, Low);
         if not FirstDataFound then
@@ -1036,10 +1054,15 @@ begin
         if PL[4][J] < 2.0 then
         begin
           bitmap := Tbitmap.create;
-          bitmap.Width := 5;
-          bitmap.Height := 5;
-          bitmap.Canvas.Brush.Color := Color;
-          C.Draw(X, Y-2, bitmap);
+          bitmap.Width := 12;
+          bitmap.Height := 12;
+          bitmap.Canvas.Brush.Color := clWhite;
+          bitmap.Canvas.Font.Size := 8;
+          bitmap.Canvas.Font.Color := clMaroon;
+          bitmap.Canvas.TextOut(0, 0, '○');
+          bitmap.TransparentColor := clWhite; //需要设置为透明背景的颜色
+          bitmap.Transparent := True; //透明背景
+          C.Draw(X - 5, Y - 6, bitmap);
           bitmap.Free;
         end;
 
@@ -1116,7 +1139,7 @@ begin
     Checked := not Checked;
     case Tag of
       100: IS_DRAW_MA := Checked;
-      1001:IS_DRAW_MA_5 := Checked;
+      1001: IS_DRAW_MA_5 := Checked;
       101: IS_SHOW_DATESCALE := Checked;
       102: ShowBackgroundDotLine := Checked;
       103: IS_FRACTION_UNDERLINE := Checked;
@@ -1305,7 +1328,7 @@ begin
       Header.Cells[09, 0] := _vs_(P.CP);
       if Q = nil then Header.Cells[11, 0] := ''
       else Header.Cells[11, 0] := _vs_(P.CP - Q.CP, 2, True, True);
-      //Header.Cells[13, 0] := _vs_(P.VOL, _if_(Pos('指数', StockName) > 0, 2, 0));  
+      //Header.Cells[13, 0] := _vs_(P.VOL, _if_(Pos('指数', StockName) > 0, 2, 0));
       Header.Cells[13, 0] := _vs_(P.VOL, 0, True, False);
     end
     else begin
@@ -1370,7 +1393,7 @@ begin
       begin
         GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '粘合: ' + '                  ');
       end;
-    
+
     {
     //绘制PL部分
       GRID.Canvas.Font.Color := DEF_COLOR[4];
@@ -1527,6 +1550,39 @@ begin
   end;
 end;
 
+
+{ THoriLine }
+
+constructor THoriLine.Create(AOwner: TComponent);
+begin
+  inherited Create(AOwner);
+  FVisible := True;
+  FPosition := 100;
+  Parent := TfrmMain2(Owner).GRID;
+  Align := alClient;
+  Width := 1;
+end;
+
+procedure THoriLine.Paint;
+begin
+  if Visible then
+  begin
+    _setPen_(Canvas, clFuchsia, 1, psSolid, pmXOR);
+    _line_(Canvas, 0, FPosition, Parent.ClientWidth - 1, FPosition);
+  end;
+end;
+
+procedure THoriLine.SetPosition(const Value: Integer);
+begin
+  if Value <> FPosition then
+  begin
+    Paint;
+    FPosition := Value;
+    Paint;
+  end;
+end;
+
+
 procedure TfrmMain2.FormDestroy(Sender: TObject);
 begin
   _free_(VertLine);
@@ -1590,6 +1646,37 @@ end;
 
 procedure TfrmMain2.MOVE_VERTLINE(DataIndex: Integer);
 begin
+  VertLine.Position := DataIndexToPixel(FDataIndex);
+end;
+
+procedure TfrmMain2.MOVE_HORILINE(DataIndex: Integer);
+begin
+  //根据当前的收盘价计算横线位置
+
+  LineCount := Max(3, LineCount div 2 * 2 + 1);
+  D := _div_(H - L, LineCount - 1);
+  SetLength(FValueList, LineCount);
+  FValueList[0] := H;
+  for I := 1 to LineCount - 2 do
+    FValueList[I] := H - D * I;
+  FValueList[LineCount - 1] := L;
+
+  if RoundToPrice then
+  begin
+    D := (H + L) / 2;
+    for I := 0 to LineCount - 1 do
+      if FValueList[I] > D then FValueList[I] := _round_(FValueList[I], 0)
+      else if FValueList[I] < D then FValueList[I] := _round_(FValueList[I], 1);
+  end;
+
+  _setPen_(C, cl3DDkShadow, 1, psDot, pmCopy);
+  _setBrush_(C, clBlack, bsSolid);
+  for I := 0 to LineCount - 1 do
+  begin
+    VertLine.Position := Fy2Iy(FValueList[I], R, HH, LL);
+  end;
+
+  
   VertLine.Position := DataIndexToPixel(FDataIndex);
 end;
 
@@ -1851,4 +1938,3 @@ begin
 end;
 
 end.
-
