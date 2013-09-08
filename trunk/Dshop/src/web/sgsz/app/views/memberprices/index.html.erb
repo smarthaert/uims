@@ -1,22 +1,22 @@
-<h1>Listing memberprices</h1>
+<h1><%= t 'views.memberprices.index.listing_memberprices' %></h1>
 
 <table>
   <tr>
-    <th>Pid</th>
-    <th>Barcode</th>
-    <th>Goodsname</th>
-    <th>Size</th>
-    <th>Color</th>
-    <th>Volume</th>
-    <th>Unit</th>
-    <th>Custid</th>
-    <th>Custname</th>
-    <th>Custtel</th>
-    <th>Startdate</th>
-    <th>Enddate</th>
-    <th>Hprice</th>
-    <th>Cdate</th>
-    <th>Remark</th>
+    <th><%= t 'views.memberprices.index.pid' %></th>
+    <th><%= t 'views.memberprices.index.barcode' %></th>
+    <th><%= t 'views.memberprices.index.goodsname' %></th>
+    <th><%= t 'views.memberprices.index.size' %></th>
+    <th><%= t 'views.memberprices.index.color' %></th>
+    <th><%= t 'views.memberprices.index.volume' %></th>
+    <th><%= t 'views.memberprices.index.unit' %></th>
+    <th><%= t 'views.memberprices.index.custid' %></th>
+    <th><%= t 'views.memberprices.index.custname' %></th>
+    <th><%= t 'views.memberprices.index.custtel' %></th>
+    <th><%= t 'views.memberprices.index.startdate' %></th>
+    <th><%= t 'views.memberprices.index.enddate' %></th>
+    <th><%= t 'views.memberprices.index.hprice' %></th>
+    <th><%= t 'views.memberprices.index.cdate' %></th>
+    <th><%= t 'views.memberprices.index.remark' %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -39,9 +39,9 @@
     <td><%= memberprice.hprice %></td>
     <td><%= memberprice.cdate %></td>
     <td><%= memberprice.remark %></td>
-    <td><%= link_to 'Show', memberprice %></td>
-    <td><%= link_to 'Edit', edit_memberprice_path(memberprice) %></td>
-    <td><%= link_to 'Destroy', memberprice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('views.show'), memberprice %></td>
+    <td><%= link_to t('views.edit'), edit_memberprice_path(memberprice) %></td>
+    <td><%= link_to t('views.destroy'), memberprice, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
   </tr>
 <% end %>
 </table>
@@ -49,4 +49,4 @@
 <%= paginate @memberprices, :window => 2 %>
 <br />
 
-<%= link_to 'New Memberprice', new_memberprice_path %>
+<%= link_to t('views.memberprices.index.new_memberprices'), new_memberprice_path %>

@@ -1,50 +1,50 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Sid:</b>
+  <b><%= t 'views.shippers.index.sid' %>:</b>
   <%= @shipper.sid %>
 </p>
 
 <p>
-  <b>Sname:</b>
+  <b><%= t 'views.shippers.index.sname' %>:</b>
   <%= @shipper.sname %>
 </p>
 
 <p>
-  <b>Tel:</b>
+  <b><%= t 'views.shippers.index.tel' %>:</b>
   <%= @shipper.tel %>
 </p>
 
 <p>
-  <b>Address:</b>
+  <b><%= t 'views.shippers.index.address' %>:</b>
   <%= @shipper.address %>
 </p>
 
 <p>
-  <b>Custid:</b>
+  <b><%= t 'views.shippers.index.custid' %>:</b>
   <%= @shipper.custid %>
 </p>
 
 <p>
-  <b>Custname:</b>
+  <b><%= t 'views.shippers.index.custname' %>:</b>
   <%= @shipper.custname %>
 </p>
 
 <p>
-  <b>Custtel:</b>
+  <b><%= t 'views.shippers.index.custtel' %>:</b>
   <%= @shipper.custtel %>
 </p>
 
 <p>
-  <b>Cdate:</b>
+  <b><%= t 'views.shippers.index.cdate' %>:</b>
   <%= @shipper.cdate %>
 </p>
 
 <p>
-  <b>Remark:</b>
+  <b><%= t 'views.shippers.index.remark' %>:</b>
   <%= @shipper.remark %>
 </p>
 
 
-<%= link_to 'Edit', edit_shipper_path(@shipper) %> |
-<%= link_to 'Back', shippers_path %>
+<%= link_to t('views.edit'), edit_shipper_path(@shipper) %> |
+<%= link_to t('views.back'), shippers_path %>

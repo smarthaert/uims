@@ -1,6 +1,6 @@
-<h1>Editing store</h1>
+<h1><%= t 'views.stores.index.editing_stores' %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @store %> |
-<%= link_to 'Back', stores_path %>
+<%= link_to t('views.show'), @store %> |
+<%= link_to t('views.back'), stores_path %>

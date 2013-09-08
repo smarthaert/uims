@@ -1,13 +1,13 @@
-<h1>Listing stockrepairs</h1>
+<h1><%= t 'views.stockrepairs.index.listing_stockrepairs' %></h1>
 
 <table>
   <tr>
-    <th>Pid</th>
-    <th>Goodsname</th>
-    <th>Color</th>
-    <th>Amount</th>
-    <th>Unit</th>
-    <th>Volume</th>
+    <th><%= t 'views.stockrepairs.index.pid' %></th>
+    <th><%= t 'views.stockrepairs.index.goodsname' %></th>
+    <th><%= t 'views.stockrepairs.index.color' %></th>
+    <th><%= t 'views.stockrepairs.index.amount' %></th>
+    <th><%= t 'views.stockrepairs.index.unit' %></th>
+    <th><%= t 'views.stockrepairs.index.volume' %></th>
   </tr>
 
 <% @stockrepairs.each do |stockrepair| %>

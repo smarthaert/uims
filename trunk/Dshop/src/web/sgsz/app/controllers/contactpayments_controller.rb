@@ -45,7 +45,7 @@ class ContactpaymentsController < ApplicationController
 
     respond_to do |format|
       if @contactpayment.save
-        format.html { redirect_to @contactpayment, notice: 'Contactpayment was successfully created.' }
+        format.html { redirect_to @contactpayment, notice: t('views.successfully_created') }
         format.json { render json: @contactpayment, status: :created, location: @contactpayment }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class ContactpaymentsController < ApplicationController
 
     respond_to do |format|
       if @contactpayment.update_attributes(params[:contactpayment])
-        format.html { redirect_to @contactpayment, notice: 'Contactpayment was successfully updated.' }
+        format.html { redirect_to @contactpayment, notice: t('views.successfully_updated') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

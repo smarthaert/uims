@@ -45,7 +45,7 @@ class BuylogsController < ApplicationController
 
     respond_to do |format|
       if @buylog.save
-        format.html { redirect_to @buylog, notice: 'Buylog was successfully created.' }
+        format.html { redirect_to @buylog, notice: t('views.successfully_created') }
         format.json { render json: @buylog, status: :created, location: @buylog }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class BuylogsController < ApplicationController
 
     respond_to do |format|
       if @buylog.update_attributes(params[:buylog])
-        format.html { redirect_to @buylog, notice: 'Buylog was successfully updated.' }
+        format.html { redirect_to @buylog, notice: t('views.successfully_updated') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

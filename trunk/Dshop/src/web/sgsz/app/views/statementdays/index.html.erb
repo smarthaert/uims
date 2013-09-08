@@ -1,12 +1,12 @@
-<h1>Listing statementdays</h1>
+<h1><%= t 'views.statementdays.index.listing_statementdays' %></h1>
 
 <table>
   <tr>
-    <th>Date</th>
-    <th>Method</th>
-    <th>Outmoney</th>
-    <th>Inmoney</th>
-    <th>Strike</th>
+    <th><%= t 'views.statementdays.index.date' %></th>
+    <th><%= t 'views.statementdays.index.method' %></th>
+    <th><%= t 'views.statementdays.index.outmoney' %></th>
+    <th><%= t 'views.statementdays.index.inmoney' %></th>
+    <th><%= t 'views.statementdays.index.strike' %></th>
   </tr>
 
 <% @statementdays.each do |statementday| %>

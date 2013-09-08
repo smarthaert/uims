@@ -12,54 +12,54 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :fid %><br />
+    <%= f.label t('views.feeders.index.fid') %>:<br />
     <%= f.text_field :fid %>
   </div>
   <div class="field">
-    <%= f.label :feedername %><br />
+    <%= f.label t('views.feeders.index.feedername') %>:<br />
     <%= f.text_field :feedername %>
   </div>
   <div class="field">
-    <%= f.label :brand %><br />
+    <%= f.label t('views.feeders.index.brand') %>:<br />
     <%= f.text_field :brand %>
   </div>
   <div class="field">
-    <%= f.label :linkman %><br />
+    <%= f.label t('views.feeders.index.linkman') %>:<br />
     <%= f.text_field :linkman %>
   </div>
   <div class="field">
-    <%= f.label :address %><br />
+    <%= f.label t('views.feeders.index.address') %>:<br />
     <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label t('views.feeders.index.email') %>:<br />
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :qq %><br />
+    <%= f.label t('views.feeders.index.qq') %>:<br />
     <%= f.text_field :qq %>
   </div>
   <div class="field">
-    <%= f.label :zipcode %><br />
+    <%= f.label t('views.feeders.index.zipcode') %>:<br />
     <%= f.text_field :zipcode %>
   </div>
   <div class="field">
-    <%= f.label :tel %><br />
+    <%= f.label t('views.feeders.index.tel') %>:<br />
     <%= f.text_field :tel %>
   </div>
   <div class="field">
-    <%= f.label :fax %><br />
+    <%= f.label t('views.feeders.index.fax') %>:<br />
     <%= f.text_field :fax %>
   </div>
   <div class="field">
-    <%= f.label :cdate %><br />
-    <%= f.date_select :cdate %>
+    <%= f.label t('views.feeders.index.cdate') %>:<br />
+    <%= f.date_select :cdate, :order => [:year,:month,:day] %>
   </div>
   <div class="field">
-    <%= f.label :remark %><br />
+    <%= f.label t('views.feeders.index.remark') %>:<br />
     <%= f.text_area :remark %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('views.submit') %>
   </div>
 <% end %>

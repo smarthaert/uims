@@ -1,6 +1,6 @@
-<h1>Editing feeder</h1>
+<h1><%= t 'views.feeders.index.editing_feeders' %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @feeder %> |
-<%= link_to 'Back', feeders_path %>
+<%= link_to t('views.show'), @feeder %> |
+<%= link_to t('views.back'), feeders_path %>

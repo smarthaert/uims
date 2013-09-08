@@ -1,14 +1,14 @@
-<h1>Listing stores</h1>
+<h1><%= t 'views.stores.index.listing_stores' %></h1>
 
 <table>
   <tr>
-    <th>Stid</th>
-    <th>Stname</th>
-    <th>Staddress</th>
-    <th>Starea</th>
-    <th>Sttel</th>
-    <th>Cdate</th>
-    <th>Remark</th>
+    <th><%= t 'views.stores.index.stid' %></th>
+    <th><%= t 'views.stores.index.stname' %></th>
+    <th><%= t 'views.stores.index.staddress' %></th>
+    <th><%= t 'views.stores.index.starea' %></th>
+    <th><%= t 'views.stores.index.sttel' %></th>
+    <th><%= t 'views.stores.index.cdate' %></th>
+    <th><%= t 'views.stores.index.remark' %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -23,9 +23,9 @@
     <td><%= store.sttel %></td>
     <td><%= store.cdate %></td>
     <td><%= store.remark %></td>
-    <td><%= link_to 'Show', store %></td>
-    <td><%= link_to 'Edit', edit_store_path(store) %></td>
-    <td><%= link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('views.show'), store %></td>
+    <td><%= link_to t('views.edit'), edit_store_path(store) %></td>
+    <td><%= link_to t('views.destroy'), store, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
   </tr>
 <% end %>
 </table>
@@ -35,4 +35,4 @@
 
 <br />
 
-<%= link_to 'New Store', new_store_path %>
+<%= link_to t('views.stores.index.new_stores'), new_store_path %>

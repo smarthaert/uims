@@ -1,6 +1,6 @@
-<h1>Editing user</h1>
+<h1><%= t 'views.users.index.editing_users' %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<%= link_to t('views.show'), @user %> |
+<%= link_to t('views.back'), users_path %>

@@ -1,4 +1,4 @@
-<h1>Listing contactpayments</h1>
+<h1><%= t 'views.contactpayments.index.listing_contactpayments' %></h1>
 
 <table>
   <tr>
@@ -35,9 +35,9 @@
     <td><%= contactpayment.cdate %></td>
     <td><%= contactpayment.status %></td>
     <td><%= contactpayment.remark %></td>
-    <td><%= link_to 'Show', contactpayment %></td>
-    <td><%= link_to 'Edit', edit_contactpayment_path(contactpayment) %></td>
-    <td><%= link_to 'Destroy', contactpayment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('views.show'), contactpayment %></td>
+    <td><%= link_to t('views.edit'), edit_contactpayment_path(contactpayment) %></td>
+    <td><%= link_to t('views.destroy'), contactpayment, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
   </tr>
 <% end %>
 </table>
@@ -45,4 +45,4 @@
 <%= paginate @contactpayments, :window => 2 %>
 <br />
 
-<%= link_to 'New Contactpayment', new_contactpayment_path %>
+<%= link_to t('views.contactpayments.index.new_contactpayments'), new_contactpayment_path %>

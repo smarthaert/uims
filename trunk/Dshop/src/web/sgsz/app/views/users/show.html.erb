@@ -1,75 +1,75 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Uid:</b>
+  <b><%= t 'views.users.index.uid' %>:</b>
   <%= @user.uid %>
 </p>
 
 <p>
-  <b>Loginname:</b>
+  <b><%= t 'views.users.index.loginname' %>:</b>
   <%= @user.loginname %>
 </p>
 
 <p>
-  <b>Uname:</b>
+  <b><%= t 'views.users.index.uname' %>:</b>
   <%= @user.uname %>
 </p>
 
 <p>
-  <b>Stid:</b>
+  <b><%= t 'views.users.index.stid' %>:</b>
   <%= @user.stid %>
 </p>
 
 <p>
-  <b>Stname:</b>
+  <b><%= t 'views.users.index.stname' %>:</b>
   <%= @user.stname %>
 </p>
 
 <p>
-  <b>Sex:</b>
+  <b><%= t 'views.users.index.sex' %>:</b>
   <%= @user.sex %>
 </p>
 
 <p>
-  <b>Age:</b>
+  <b><%= t 'views.users.index.age' %>:</b>
   <%= @user.age %>
 </p>
 
 <p>
-  <b>Userpass:</b>
-  <%= @user.userpass %>
+  <b><%= t 'views.users.index.password' %>:</b>
+  <%= @user.hashed_password %>
 </p>
 
 <p>
-  <b>Address:</b>
+  <b><%= t 'views.users.index.address' %>:</b>
   <%= @user.address %>
 </p>
 
 <p>
-  <b>Tel:</b>
+  <b><%= t 'views.users.index.tel' %>:</b>
   <%= @user.tel %>
 </p>
 
 <p>
-  <b>Salari:</b>
+  <b><%= t 'views.users.index.salari' %>:</b>
   <%= @user.salari %>
 </p>
 
 <p>
-  <b>Position:</b>
+  <b><%= t 'views.users.index.position' %>:</b>
   <%= @user.position %>
 </p>
 
 <p>
-  <b>Cdate:</b>
+  <b><%= t 'views.users.index.cdate' %>:</b>
   <%= @user.cdate %>
 </p>
 
 <p>
-  <b>Remark:</b>
+  <b><%= t 'views.users.index.remark' %>:</b>
   <%= @user.remark %>
 </p>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to t('views.edit'), edit_user_path(@user) %> |
+<%= link_to t('views.back'), users_path %>

@@ -1,4 +1,4 @@
-<h1>Listing units</h1>
+<h1><%= t 'views.units.index.listing_units' %></h1>
 
 <table>
   <tr>
@@ -15,9 +15,9 @@
     <td><%= unit.uname %></td>
     <td><%= unit.cdate %></td>
     <td><%= unit.remark %></td>
-    <td><%= link_to 'Show', unit %></td>
-    <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
-    <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('views.show'), unit %></td>
+    <td><%= link_to t('views.edit'), edit_unit_path(unit) %></td>
+    <td><%= link_to t('views.destroy'), unit, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
   </tr>
 <% end %>
 </table>
@@ -27,4 +27,4 @@
 
 <br />
 
-<%= link_to 'New Unit', new_unit_path %>
+<%= link_to t('views.units.index.new_units'), new_unit_path %>

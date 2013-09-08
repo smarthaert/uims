@@ -1,6 +1,6 @@
-<h1>Editing stock</h1>
+<h1><%= t 'views.stocks.index.editing_stocks' %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @stock %> |
-<%= link_to 'Back', stocks_path %>
+<%= link_to t('views.show'), @stock %> |
+<%= link_to t('views.back'), stocks_path %>

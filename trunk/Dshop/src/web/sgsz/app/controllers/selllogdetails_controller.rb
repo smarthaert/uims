@@ -45,7 +45,7 @@ class SelllogdetailsController < ApplicationController
 
     respond_to do |format|
       if @selllogdetail.save
-        format.html { redirect_to @selllogdetail, notice: 'Selllogdetail was successfully created.' }
+        format.html { redirect_to @selllogdetail, notice: t('views.successfully_created') }
         format.json { render json: @selllogdetail, status: :created, location: @selllogdetail }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class SelllogdetailsController < ApplicationController
 
     respond_to do |format|
       if @selllogdetail.update_attributes(params[:selllogdetail])
-        format.html { redirect_to @selllogdetail, notice: 'Selllogdetail was successfully updated.' }
+        format.html { redirect_to @selllogdetail, notice: t('views.successfully_updated') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

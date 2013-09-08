@@ -1,14 +1,14 @@
-<h1>Listing delivertypes</h1>
+<h1><%= t 'views.delivertypes.index.listing_delivertypes' %></h1>
 
 <table>
   <tr>
-    <th>Discount</th>
-    <th>Amount</th>
+    <th><%= t 'views.delivertypes.index.additional' %></th>
+    <th><%= t 'views.delivertypes.index.amount' %></th>
   </tr>
 
 <% @delivertypes.each do |delivertype| %>
   <tr>
-    <td><%= delivertype.discount %></td>
+    <td><%= delivertype.additional %></td>
     <td><%= delivertype.amount %></td>
   </tr>
 <% end %>

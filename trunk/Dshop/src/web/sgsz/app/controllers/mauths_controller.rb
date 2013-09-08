@@ -45,7 +45,7 @@ class MauthsController < ApplicationController
 
     respond_to do |format|
       if @mauth.save
-        format.html { redirect_to @mauth, notice: 'Mauth was successfully created.' }
+        format.html { redirect_to @mauth, notice: t('views.successfully_created') }
         format.json { render json: @mauth, status: :created, location: @mauth }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class MauthsController < ApplicationController
 
     respond_to do |format|
       if @mauth.update_attributes(params[:mauth])
-        format.html { redirect_to @mauth, notice: 'Mauth was successfully updated.' }
+        format.html { redirect_to @mauth, notice: t('views.successfully_updated') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

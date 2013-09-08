@@ -1,42 +1,42 @@
-<h1>Listing aftersellmains</h1>
+<h1><%= t 'views.aftersellmains.index.listing_aftersellmains' %></h1>
 
 <table>
   <tr>
-    <th>Stid</th>
-    <th>Stname</th>
-    <th>Tid</th>
-    <th>Custid</th>
-    <th>Custstate</th>
-    <th>Custname</th>
-    <th>Shopname</th>
-    <th>Custtel</th>
-    <th>Custaddr</th>
-    <th>Yingshou</th>
-    <th>Shishou</th>
-    <th>Shoukuan</th>
-    <th>Zhaoling</th>
-    <th>Yingtui</th>
-    <th>Shitui</th>
-    <th>Fukuan</th>
-    <th>Zhaohui</th>
-    <th>Sid</th>
-    <th>Sname</th>
-    <th>Stel</th>
-    <th>Saddress</th>
-    <th>Payment</th>
-    <th>Tpayment</th>
-    <th>Status</th>
-    <th>Uid</th>
-    <th>Tuid</th>
-    <th>Uname</th>
-    <th>Tuname</th>
-    <th>Type</th>
-    <th>Preid</th>
-    <th>Nextid</th>
-    <th>Cdate</th>
-    <th>Pdate</th>
-    <th>Tremark</th>
-    <th>Remark</th>
+    <th><%= t 'views.aftersellmains.index.stid' %></th>
+    <th><%= t 'views.aftersellmains.index.stname' %></th>
+    <th><%= t 'views.aftersellmains.index.tid' %></th>
+    <th><%= t 'views.aftersellmains.index.custid' %></th>
+    <th><%= t 'views.aftersellmains.index.custstate' %></th>
+    <th><%= t 'views.aftersellmains.index.custname' %></th>
+    <th><%= t 'views.aftersellmains.index.shopname' %></th>
+    <th><%= t 'views.aftersellmains.index.custtel' %></th>
+    <th><%= t 'views.aftersellmains.index.custaddr' %></th>
+    <th><%= t 'views.aftersellmains.index.yingshou' %></th>
+    <th><%= t 'views.aftersellmains.index.shishou' %></th>
+    <th><%= t 'views.aftersellmains.index.shoukuan' %></th>
+    <th><%= t 'views.aftersellmains.index.zhaoling' %></th>
+    <th><%= t 'views.aftersellmains.index.yingtui' %></th>
+    <th><%= t 'views.aftersellmains.index.shitui' %></th>
+    <th><%= t 'views.aftersellmains.index.fukuan' %></th>
+    <th><%= t 'views.aftersellmains.index.zhaohui' %></th>
+    <th><%= t 'views.aftersellmains.index.sid' %></th>
+    <th><%= t 'views.aftersellmains.index.sname' %></th>
+    <th><%= t 'views.aftersellmains.index.stel' %></th>
+    <th><%= t 'views.aftersellmains.index.saddress' %></th>
+    <th><%= t 'views.aftersellmains.index.payment' %></th>
+    <th><%= t 'views.aftersellmains.index.tpayment' %></th>
+    <th><%= t 'views.aftersellmains.index.status' %></th>
+    <th><%= t 'views.aftersellmains.index.uid' %></th>
+    <th><%= t 'views.aftersellmains.index.tuid' %></th>
+    <th><%= t 'views.aftersellmains.index.uname' %></th>
+    <th><%= t 'views.aftersellmains.index.tuname' %></th>
+    <th><%= t 'views.aftersellmains.index.type' %></th>
+    <th><%= t 'views.aftersellmains.index.preid' %></th>
+    <th><%= t 'views.aftersellmains.index.nextid' %></th>
+    <th><%= t 'views.aftersellmains.index.cdate' %></th>
+    <th><%= t 'views.aftersellmains.index.pdate' %></th>
+    <th><%= t 'views.aftersellmains.index.tremark' %></th>
+    <th><%= t 'views.aftersellmains.index.remark' %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -79,9 +79,9 @@
     <td><%= aftersellmain.pdate %></td>
     <td><%= aftersellmain.tremark %></td>
     <td><%= aftersellmain.remark %></td>
-    <td><%= link_to 'Show', aftersellmain %></td>
-    <td><%= link_to 'Edit', edit_aftersellmain_path(aftersellmain) %></td>
-    <td><%= link_to 'Destroy', aftersellmain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('views.show'), aftersellmain %></td>
+    <td><%= link_to t('views.edit'), edit_aftersellmain_path(aftersellmain) %></td>
+    <td><%= link_to t('views.destroy'), aftersellmain, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
   </tr>
 <% end %>
 </table>
@@ -91,4 +91,4 @@
 <br />
 
 
-<%= link_to 'New Aftersellmain', new_aftersellmain_path %>
+<%= link_to t('views.aftersellmains.index.new_aftersellmains'), new_aftersellmain_path %>

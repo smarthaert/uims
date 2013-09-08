@@ -1,4 +1,4 @@
-<h1>Listing buylogs</h1>
+<h1><%= t 'views.buylogs.index.listing_buylogs' %></h1>
 
 <table>
   <tr>
@@ -39,9 +39,9 @@
     <td><%= buylog.bz %></td>
     <td><%= buylog.cdate %></td>
     <td><%= buylog.remark %></td>
-    <td><%= link_to 'Show', buylog %></td>
-    <td><%= link_to 'Edit', edit_buylog_path(buylog) %></td>
-    <td><%= link_to 'Destroy', buylog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('views.show'), buylog %></td>
+    <td><%= link_to t('views.edit'), edit_buylog_path(buylog) %></td>
+    <td><%= link_to t('views.destroy'), buylog, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
   </tr>
 <% end %>
 </table>
@@ -49,4 +49,4 @@
 <%= paginate @buylogs, :window => 2 %>
 <br />
 
-<%= link_to 'New Buylog', new_buylog_path %>
+<%= link_to t('views.buylogs.index.new_buylogs'), new_buylog_path %>

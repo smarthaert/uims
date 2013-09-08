@@ -45,7 +45,7 @@ class AfterselldetailsController < ApplicationController
 
     respond_to do |format|
       if @afterselldetail.save
-        format.html { redirect_to @afterselldetail, notice: 'Afterselldetail was successfully created.' }
+        format.html { redirect_to @afterselldetail, notice: t('views.successfully_created') }
         format.json { render json: @afterselldetail, status: :created, location: @afterselldetail }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class AfterselldetailsController < ApplicationController
 
     respond_to do |format|
       if @afterselldetail.update_attributes(params[:afterselldetail])
-        format.html { redirect_to @afterselldetail, notice: 'Afterselldetail was successfully updated.' }
+        format.html { redirect_to @afterselldetail, notice: t('views.successfully_updated') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

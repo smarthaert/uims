@@ -1,4 +1,4 @@
-<h1>Listing orderdetails</h1>
+<h1><%= t 'views.orderdetails.index.listing_orderdetails' %></h1>
 
 <table>
   <tr>
@@ -53,9 +53,9 @@
     <td><%= orderdetail.status %></td>
     <td><%= orderdetail.cdate %></td>
     <td><%= orderdetail.remark %></td>
-    <td><%= link_to 'Show', orderdetail %></td>
-    <td><%= link_to 'Edit', edit_orderdetail_path(orderdetail) %></td>
-    <td><%= link_to 'Destroy', orderdetail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('views.show'), orderdetail %></td>
+    <td><%= link_to t('views.edit'), edit_orderdetail_path(orderdetail) %></td>
+    <td><%= link_to t('views.destroy'), orderdetail, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
   </tr>
 <% end %>
 </table>
@@ -65,4 +65,4 @@
 
 <br />
 
-<%= link_to 'New Orderdetail', new_orderdetail_path %>
+<%= link_to t('views.orderdetails.index.new_orderdetails'), new_orderdetail_path %>

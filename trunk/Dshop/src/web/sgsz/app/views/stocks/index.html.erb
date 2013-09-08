@@ -1,23 +1,23 @@
-<h1>Listing stocks</h1>
+<h1><%= t 'views.stocks.index.listing_stocks' %></h1>
 
 <table>
   <tr>
-    <th>Stid</th>
-    <th>Stname</th>
-    <th>Pid</th>
-    <th>Barcode</th>
-    <th>Goodsname</th>
-    <th>Size</th>
-    <th>Color</th>
-    <th>Amount</th>
-    <th>Volume</th>
-    <th>Unit</th>
-    <th>Inprice</th>
-    <th>Pfprice</th>
-    <th>Bundle</th>
-    <th>Discount</th>
-    <th>Baseline</th>
-    <th>Remark</th>
+    <th><%= t 'views.stocks.index.stid' %></th>
+    <th><%= t 'views.stocks.index.stname' %></th>
+    <th><%= t 'views.stocks.index.pid' %></th>
+    <th><%= t 'views.stocks.index.barcode' %></th>
+    <th><%= t 'views.stocks.index.goodsname' %></th>
+    <th><%= t 'views.stocks.index.size' %></th>
+    <th><%= t 'views.stocks.index.color' %></th>
+    <th><%= t 'views.stocks.index.amount' %></th>
+    <th><%= t 'views.stocks.index.volume' %></th>
+    <th><%= t 'views.stocks.index.unit' %></th>
+    <th><%= t 'views.stocks.index.inprice' %></th>
+    <th><%= t 'views.stocks.index.pfprice' %></th>
+    <th><%= t 'views.stocks.index.bundle' %></th>
+    <th><%= t 'views.stocks.index.discount' %></th>
+    <th><%= t 'views.stocks.index.baseline' %></th>
+    <th><%= t 'views.stocks.index.remark' %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -41,9 +41,9 @@
     <td><%= stock.discount %></td>
     <td><%= stock.baseline %></td>
     <td><%= stock.remark %></td>
-    <td><%= link_to 'Show', stock %></td>
-    <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
-    <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('views.show'), stock %></td>
+    <td><%= link_to t('views.edit'), edit_stock_path(stock) %></td>
+    <td><%= link_to t('views.destroy'), stock, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
   </tr>
 <% end %>
 </table>
@@ -53,4 +53,4 @@
 
 <br />
 
-<%= link_to 'New Stock', new_stock_path %>
+<%= link_to t('views.stocks.index.new_stocks'), new_stock_path %>

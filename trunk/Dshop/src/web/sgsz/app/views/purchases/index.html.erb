@@ -1,4 +1,4 @@
-<h1>Listing purchases</h1>
+<h1><%= t 'views.purchases.index.listing_purchases' %></h1>
 
 <table>
   <tr>
@@ -33,9 +33,9 @@
     <td><%= purchase.bz %></td>
     <td><%= purchase.cdate %></td>
     <td><%= purchase.remark %></td>
-    <td><%= link_to 'Show', purchase %></td>
-    <td><%= link_to 'Edit', edit_purchase_path(purchase) %></td>
-    <td><%= link_to 'Destroy', purchase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('views.show'), purchase %></td>
+    <td><%= link_to t('views.edit'), edit_purchase_path(purchase) %></td>
+    <td><%= link_to t('views.destroy'), purchase, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
   </tr>
 <% end %>
 </table>
@@ -45,4 +45,4 @@
 
 <br />
 
-<%= link_to 'New Purchase', new_purchase_path %>
+<%= link_to t('views.purchases.index.new_purchases'), new_purchase_path %>

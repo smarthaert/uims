@@ -1,11 +1,11 @@
-<h1>Listing orderstates</h1>
+<h1><%= t 'views.orderstates.index.listing_orderstates' %></h1>
 
 <table>
   <tr>
-    <th>Type</th>
-    <th>Payment</th>
-    <th>Amount</th>
-    <th>Value</th>
+    <th><%= t 'views.orderstates.index.type' %></th>
+    <th><%= t 'views.orderstates.index.payment' %></th>
+    <th><%= t 'views.orderstates.index.amount' %></th>
+    <th><%= t 'views.orderstates.index.value' %></th>
   </tr>
 
 <% @orderstates.each do |orderstate| %>
