@@ -1,6 +1,6 @@
-<h1>Editing unit</h1>
+<h1><%= t 'views.units.index.editing_units' %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @unit %> |
-<%= link_to 'Back', units_path %>
+<%= link_to t('views.show'), @unit %> |
+<%= link_to t('views.back'), units_path %>

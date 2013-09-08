@@ -1,6 +1,6 @@
-<h1>Editing orderdetail</h1>
+<h1><%= t 'views.orderdetails.index.editing_orderdetails' %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @orderdetail %> |
-<%= link_to 'Back', orderdetails_path %>
+<%= link_to t('views.show'), @orderdetail %> |
+<%= link_to t('views.back'), orderdetails_path %>

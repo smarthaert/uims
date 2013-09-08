@@ -12,34 +12,34 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :stid %><br />
+    <%= f.label t('views.stores.index.stid') %>:<br />
     <%= f.text_field :stid %>
   </div>
   <div class="field">
-    <%= f.label :stname %><br />
+    <%= f.label t('views.stores.index.stname') %>:<br />
     <%= f.text_field :stname %>
   </div>
   <div class="field">
-    <%= f.label :staddress %><br />
+    <%= f.label t('views.stores.index.staddress') %>:<br />
     <%= f.text_field :staddress %>
   </div>
   <div class="field">
-    <%= f.label :starea %><br />
+    <%= f.label t('views.stores.index.starea') %>:<br />
     <%= f.text_field :starea %>
   </div>
   <div class="field">
-    <%= f.label :sttel %><br />
+    <%= f.label t('views.stores.index.sttel') %>:<br />
     <%= f.text_field :sttel %>
   </div>
   <div class="field">
-    <%= f.label :cdate %><br />
-    <%= f.date_select :cdate %>
+    <%= f.label t('views.stores.index.cdate') %>:<br />
+    <%= f.date_select :cdate, :order => [:year,:month,:day]  %>
   </div>
   <div class="field">
-    <%= f.label :remark %><br />
+    <%= f.label t('views.stores.index.remark') %>:<br />
     <%= f.text_area :remark %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('views.submit') %>
   </div>
 <% end %>

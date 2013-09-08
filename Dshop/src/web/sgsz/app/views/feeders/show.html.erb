@@ -1,65 +1,65 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Fid:</b>
+  <b><%= t 'views.feeders.index.fid' %>:</b>
   <%= @feeder.fid %>
 </p>
 
 <p>
-  <b>Feedername:</b>
+  <b><%= t 'views.feeders.index.feedername' %>:</b>
   <%= @feeder.feedername %>
 </p>
 
 <p>
-  <b>Brand:</b>
+  <b><%= t 'views.feeders.index.brand' %>:</b>
   <%= @feeder.brand %>
 </p>
 
 <p>
-  <b>Linkman:</b>
+  <b><%= t 'views.feeders.index.linkman' %>:</b>
   <%= @feeder.linkman %>
 </p>
 
 <p>
-  <b>Address:</b>
+  <b><%= t 'views.feeders.index.address' %>:</b>
   <%= @feeder.address %>
 </p>
 
 <p>
-  <b>Email:</b>
+  <b><%= t 'views.feeders.index.email' %>:</b>
   <%= @feeder.email %>
 </p>
 
 <p>
-  <b>Qq:</b>
+  <b><%= t 'views.feeders.index.qq' %>:</b>
   <%= @feeder.qq %>
 </p>
 
 <p>
-  <b>Zipcode:</b>
+  <b><%= t 'views.feeders.index.zipcode' %>:</b>
   <%= @feeder.zipcode %>
 </p>
 
 <p>
-  <b>Tel:</b>
+  <b><%= t 'views.feeders.index.tel' %>:</b>
   <%= @feeder.tel %>
 </p>
 
 <p>
-  <b>Fax:</b>
+  <b><%= t 'views.feeders.index.fax' %>:</b>
   <%= @feeder.fax %>
 </p>
 
 <p>
-  <b>Cdate:</b>
+  <b><%= t 'views.feeders.index.cdate' %>:</b>
   <%= @feeder.cdate %>
 </p>
 
 <p>
-  <b>Remark:</b>
+  <b><%= t 'views.feeders.index.remark' %>:</b>
   <%= @feeder.remark %>
 </p>
 
 
-<%= link_to 'Edit', edit_feeder_path(@feeder) %> |
-<%= link_to 'Back', feeders_path %>
+<%= link_to t('views.edit'), edit_feeder_path(@feeder) %> |
+<%= link_to t('views.back'), feeders_path %>

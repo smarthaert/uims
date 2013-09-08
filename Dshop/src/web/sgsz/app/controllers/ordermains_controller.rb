@@ -45,7 +45,7 @@ class OrdermainsController < ApplicationController
 
     respond_to do |format|
       if @ordermain.save
-        format.html { redirect_to @ordermain, notice: 'Ordermain was successfully created.' }
+        format.html { redirect_to @ordermain, notice: t('views.successfully_created') }
         format.json { render json: @ordermain, status: :created, location: @ordermain }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class OrdermainsController < ApplicationController
 
     respond_to do |format|
       if @ordermain.update_attributes(params[:ordermain])
-        format.html { redirect_to @ordermain, notice: 'Ordermain was successfully updated.' }
+        format.html { redirect_to @ordermain, notice: t('views.successfully_updated') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

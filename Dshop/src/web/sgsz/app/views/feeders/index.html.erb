@@ -1,19 +1,19 @@
-<h1>Listing feeders</h1>
+<h1><%= t 'views.feeders.index.listing_feeders' %></h1>
 
 <table>
   <tr>
-    <th>Fid</th>
-    <th>Feedername</th>
-    <th>Brand</th>
-    <th>Linkman</th>
-    <th>Address</th>
-    <th>Email</th>
-    <th>Qq</th>
-    <th>Zipcode</th>
-    <th>Tel</th>
-    <th>Fax</th>
-    <th>Cdate</th>
-    <th>Remark</th>
+    <th><%= t 'views.feeders.index.fid' %></th>
+    <th><%= t 'views.feeders.index.feedername' %></th>
+    <th><%= t 'views.feeders.index.brand' %></th>
+    <th><%= t 'views.feeders.index.linkman' %></th>
+    <th><%= t 'views.feeders.index.address' %></th>
+    <th><%= t 'views.feeders.index.email' %></th>
+    <th><%= t 'views.feeders.index.qq' %></th>
+    <th><%= t 'views.feeders.index.zipcode' %></th>
+    <th><%= t 'views.feeders.index.tel' %></th>
+    <th><%= t 'views.feeders.index.fax' %></th>
+    <th><%= t 'views.feeders.index.cdate' %></th>
+    <th><%= t 'views.feeders.index.remark' %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -33,9 +33,9 @@
     <td><%= feeder.fax %></td>
     <td><%= feeder.cdate %></td>
     <td><%= feeder.remark %></td>
-    <td><%= link_to 'Show', feeder %></td>
-    <td><%= link_to 'Edit', edit_feeder_path(feeder) %></td>
-    <td><%= link_to 'Destroy', feeder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('views.show'), feeder %></td>
+    <td><%= link_to t('views.edit'), edit_feeder_path(feeder) %></td>
+    <td><%= link_to t('views.destroy'), feeder, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
   </tr>
 <% end %>
 </table>
@@ -45,4 +45,4 @@
 
 <br />
 
-<%= link_to 'New Feeder', new_feeder_path %>
+<%= link_to t('views.feeders.index.new_feeders'), new_feeder_path %>

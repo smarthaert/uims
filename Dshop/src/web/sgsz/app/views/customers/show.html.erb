@@ -1,65 +1,65 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Cid:</b>
+  <b><%= t 'views.customers.index.cid' %>:</b>
   <%= @customer.cid %>
 </p>
 
 <p>
-  <b>Loginname:</b>
+  <b><%= t 'views.customers.index.loginname' %>:</b>
   <%= @customer.loginname %>
 </p>
 
 <p>
-  <b>Cname:</b>
+  <b><%= t 'views.customers.index.cname' %>:</b>
   <%= @customer.cname %>
 </p>
 
 <p>
-  <b>Shopname:</b>
+  <b><%= t 'views.customers.index.shopname' %>:</b>
   <%= @customer.shopname %>
 </p>
 
 <p>
-  <b>Sex:</b>
+  <b><%= t 'views.customers.index.sex' %>:</b>
   <%= @customer.sex %>
 </p>
 
 <p>
-  <b>Address:</b>
+  <b><%= t 'views.customers.index.address' %>:</b>
   <%= @customer.address %>
 </p>
 
 <p>
-  <b>Email:</b>
+  <b><%= t 'views.customers.index.email' %>:</b>
   <%= @customer.email %>
 </p>
 
 <p>
-  <b>Qq:</b>
+  <b><%= t 'views.customers.index.qq' %>:</b>
   <%= @customer.qq %>
 </p>
 
 <p>
-  <b>Tel:</b>
+  <b><%= t 'views.customers.index.tel' %>:</b>
   <%= @customer.tel %>
 </p>
 
 <p>
-  <b>State:</b>
+  <b><%= t 'views.customers.index.state' %>:</b>
   <%= @customer.state %>
 </p>
 
 <p>
-  <b>Cdate:</b>
+  <b><%= t 'views.customers.index.cdate' %>:</b>
   <%= @customer.cdate %>
 </p>
 
 <p>
-  <b>Remark:</b>
+  <b><%= t 'views.customers.index.remark' %>:</b>
   <%= @customer.remark %>
 </p>
 
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+<%= link_to t('views.edit'), edit_customer_path(@customer) %> |
+<%= link_to t('views.back'), customers_path %>

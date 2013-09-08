@@ -45,7 +45,7 @@ class FeedersController < ApplicationController
 
     respond_to do |format|
       if @feeder.save
-        format.html { redirect_to @feeder, notice: 'Feeder was successfully created.' }
+        format.html { redirect_to @feeder, notice: t('views.successfully_created') }
         format.json { render json: @feeder, status: :created, location: @feeder }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class FeedersController < ApplicationController
 
     respond_to do |format|
       if @feeder.update_attributes(params[:feeder])
-        format.html { redirect_to @feeder, notice: 'Feeder was successfully updated.' }
+        format.html { redirect_to @feeder, notice: t('views.successfully_updated') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

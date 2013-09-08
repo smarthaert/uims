@@ -1,4 +1,4 @@
-<h1>Listing mauths</h1>
+<h1><%= t 'views.mauths.index.listing_mauths' %></h1>
 
 <table>
   <tr>
@@ -23,9 +23,9 @@
     <td><%= mauth.result %></td>
     <td><%= mauth.cdate %></td>
     <td><%= mauth.remark %></td>
-    <td><%= link_to 'Show', mauth %></td>
-    <td><%= link_to 'Edit', edit_mauth_path(mauth) %></td>
-    <td><%= link_to 'Destroy', mauth, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('views.show'), mauth %></td>
+    <td><%= link_to t('views.edit'), edit_mauth_path(mauth) %></td>
+    <td><%= link_to t('views.destroy'), mauth, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
   </tr>
 <% end %>
 </table>
@@ -33,4 +33,4 @@
 <%= paginate @mauths, :window => 2 %>
 <br />
 
-<%= link_to 'New Mauth', new_mauth_path %>
+<%= link_to t('views.mauths.index.new_mauths'), new_mauth_path %>

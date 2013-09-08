@@ -1,6 +1,6 @@
-<h1>Editing buylog</h1>
+<h1><%= t 'views.buylogs.index.editing_buylogs' %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @buylog %> |
-<%= link_to 'Back', buylogs_path %>
+<%= link_to t('views.show'), @buylog %> |
+<%= link_to t('views.back'), buylogs_path %>

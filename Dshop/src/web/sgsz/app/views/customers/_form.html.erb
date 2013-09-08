@@ -12,54 +12,54 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :cid %><br />
+    <%= f.label t('views.customers.index.cid') %>:<br />
     <%= f.text_field :cid %>
   </div>
   <div class="field">
-    <%= f.label :loginname %><br />
+    <%= f.label t('views.customers.index.loginname') %>:<br />
     <%= f.text_field :loginname %>
   </div>
   <div class="field">
-    <%= f.label :cname %><br />
-    <%= f.text_field :cname %>
+    <%= f.label t('views.customers.index.cname') %>:<br /
+  >  <%= f.text_field :cname %>
   </div>
   <div class="field">
-    <%= f.label :shopname %><br />
+    <%= f.label t('views.customers.index.shopname') %>:<r /b>
     <%= f.text_field :shopname %>
   </div>
   <div class="field">
-    <%= f.label :sex %><br />
+    <%=f.l abel t('views.customers.index.sex') %>:<br />
     <%= f.text_field :sex %>
   </div>
   <div class="field">
-    <%= f.label :address %><br />
+    <%= f.label t('views.customers.index.address') %>:<br />
     <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label t('views.customers.index.email') %>:<br />
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :qq %><br />
+    <%= f.label t('views.customers.index.qq') %>:<br />
     <%= f.text_field :qq %>
   </div>
   <div class="field">
-    <%= f.label :tel %><br />
+    <%= f.label t('views.customers.index.tel') %>:<br />
     <%= f.text_field :tel %>
   </div>
   <div class="field">
-    <%= f.label :state %><br />
+    <%= f.label t('views.customers.index.state') %>:<br />
     <%= f.text_field :state %>
   </div>
   <div class="field">
-    <%= f.label :cdate %><br />
-    <%= f.date_select :cdate %>
+    <%= f.label t('views.customers.index.cdate') %>:<br />
+    <%= f.date_select :cdate, :order => [:year,:month,:day] %>
   </div>
   <div class="field">
-    <%= f.label :remark %><br />
+    <%= f.label t('views.customers.index.remark') %>:<br />
     <%= f.text_area :remark %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('views.submit') %>
   </div>
 <% end %>

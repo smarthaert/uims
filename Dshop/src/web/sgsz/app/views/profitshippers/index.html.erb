@@ -1,12 +1,12 @@
-<h1>Listing profitshippers</h1>
+<h1><%= t 'views.profitshippers.index.listing_profitshippers' %></h1>
 
 <table>
   <tr>
-    <th>Sname</th>
-    <th>Tel</th>
-    <th>Amount</th>
-    <th>Volume</th>
-    <th>Profit</th>
+    <th><%= t 'views.profitshippers.index.sname' %></th>
+    <th><%= t 'views.profitshippers.index.tel' %></th>
+    <th><%= t 'views.profitshippers.index.amount' %></th>
+    <th><%= t 'views.profitshippers.index.volume' %></th>
+    <th><%= t 'views.profitshippers.index.profit' %></th>
   </tr>
 
 <% @profitshippers.each do |profitshipper| %>

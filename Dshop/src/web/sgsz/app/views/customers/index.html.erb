@@ -1,19 +1,19 @@
-<h1>Listing customers</h1>
+<h1><%= t 'views.customers.index.listing_customers' %></h1>
 
 <table>
   <tr>
-    <th>Cid</th>
-    <th>Loginname</th>
-    <th>Cname</th>
-    <th>Shopname</th>
-    <th>Sex</th>
-    <th>Address</th>
-    <th>Email</th>
-    <th>Qq</th>
-    <th>Tel</th>
-    <th>State</th>
-    <th>Cdate</th>
-    <th>Remark</th>
+    <th><%= t 'views.customers.index.cid' %></th>
+    <th><%= t 'views.customers.index.loginname' %></th>
+    <th><%= t 'views.customers.index.cname' %></th>
+    <th><%= t 'views.customers.index.shopname' %></th>
+    <th><%= t 'views.customers.index.sex' %></th>
+    <th><%= t 'views.customers.index.address' %></th>
+    <th><%= t 'views.customers.index.email' %></th>
+    <th><%= t 'views.customers.index.qq' %></th>
+    <th><%= t 'views.customers.index.tel' %></th>
+    <th><%= t 'views.customers.index.state' %></th>
+    <th><%= t 'views.customers.index.cdate' %></th>
+    <th><%= t 'views.customers.index.remark' %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -33,9 +33,9 @@
     <td><%= customer.state %></td>
     <td><%= customer.cdate %></td>
     <td><%= customer.remark %></td>
-    <td><%= link_to 'Show', customer %></td>
-    <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-    <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('views.show'), customer %></td>
+    <td><%= link_to t('views.edit'), edit_customer_path(customer) %></td>
+    <td><%= link_to t('views.destroy'), customer, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
   </tr>
 <% end %>
 </table>
@@ -44,4 +44,4 @@
 
 <br />
 
-<%= link_to 'New Customer', new_customer_path %>
+<%= link_to t('views.customers.index.new_customers'), new_customer_path %>

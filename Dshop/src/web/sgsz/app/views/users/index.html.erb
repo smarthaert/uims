@@ -1,21 +1,21 @@
-<h1>Listing users</h1>
+<h1><%= t 'views.users.index.listing_users' %></h1>
 
 <table>
   <tr>
-    <th>Uid</th>
-    <th>Loginname</th>
-    <th>Uname</th>
-    <th>Stid</th>
-    <th>Stname</th>
-    <th>Sex</th>
-    <th>Age</th>
-    <th>Userpass</th>
-    <th>Address</th>
-    <th>Tel</th>
-    <th>Salari</th>
-    <th>Position</th>
-    <th>Cdate</th>
-    <th>Remark</th>
+    <th><%= t 'views.users.index.uid' %></th>
+    <th><%= t 'views.users.index.loginname' %></th>
+    <th><%= t 'views.users.index.uname' %></th>
+    <th><%= t 'views.users.index.stid' %></th>
+    <th><%= t 'views.users.index.stname' %></th>
+    <th><%= t 'views.users.index.sex' %></th>
+    <th><%= t 'views.users.index.age' %></th>
+    <th><%= t 'views.users.index.password' %></th>
+    <th><%= t 'views.users.index.address' %></th>
+    <th><%= t 'views.users.index.tel' %></th>
+    <th><%= t 'views.users.index.salari' %></th>
+    <th><%= t 'views.users.index.position' %></th>
+    <th><%= t 'views.users.index.cdate' %></th>
+    <th><%= t 'views.users.index.remark' %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -30,16 +30,16 @@
     <td><%= user.stname %></td>
     <td><%= user.sex %></td>
     <td><%= user.age %></td>
-    <td><%= user.userpass %></td>
+    <td><%= user.hashed_password %></td>
     <td><%= user.address %></td>
     <td><%= user.tel %></td>
     <td><%= user.salari %></td>
     <td><%= user.position %></td>
     <td><%= user.cdate %></td>
     <td><%= user.remark %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('views.show'), user %></td>
+    <td><%= link_to t('views.edit'), edit_user_path(user) %></td>
+    <td><%= link_to t('views.destroy'), user, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
   </tr>
 <% end %>
 </table>
@@ -49,4 +49,4 @@
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to t('views.users.index.new_users'), new_user_path %>

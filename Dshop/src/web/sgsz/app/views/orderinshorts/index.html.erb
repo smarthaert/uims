@@ -1,17 +1,14 @@
-<h1>Listing orderinshorts</h1>
+<h1><%= t 'views.orderinshorts.index.listing_orderinshorts' %></h1>
 
 <table>
   <tr>
-    <th>Custname</th>
-    <th>Custtel</th>
-    <th>Pid</th>
-    <th>Amount</th>
-    <th>Oid</th>
-    <th>Cdate</th>
-    <th>Stockamount</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th><%= t 'views.orderinshorts.index.custname' %></th>
+    <th><%= t 'views.orderinshorts.index.custtel' %></th>
+    <th><%= t 'views.orderinshorts.index.pid' %></th>
+    <th><%= t 'views.orderinshorts.index.amount' %></th>
+    <th><%= t 'views.orderinshorts.index.oid' %></th>
+    <th><%= t 'views.orderinshorts.index.cdate' %></th>
+    <th><%= t 'views.orderinshorts.index.stockamount' %></th>
   </tr>
 
 <% @orderinshorts.each do |orderinshort| %>

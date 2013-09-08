@@ -1,80 +1,80 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Pid:</b>
+  <b><%= t 'views.memberprices.index.pid' %>:</b>
   <%= @memberprice.pid %>
 </p>
 
 <p>
-  <b>Barcode:</b>
+  <b><%= t 'views.memberprices.index.barcode' %>:</b>
   <%= @memberprice.barcode %>
 </p>
 
 <p>
-  <b>Goodsname:</b>
+  <b><%= t 'views.memberprices.index.goodsname' %>:</b>
   <%= @memberprice.goodsname %>
 </p>
 
 <p>
-  <b>Size:</b>
+  <b><%= t 'views.memberprices.index.size' %>:</b>
   <%= @memberprice.size %>
 </p>
 
 <p>
-  <b>Color:</b>
+  <b><%= t 'views.memberprices.index.color' %>:</b>
   <%= @memberprice.color %>
 </p>
 
 <p>
-  <b>Volume:</b>
+  <b><%= t 'views.memberprices.index.volume' %>:</b>
   <%= @memberprice.volume %>
 </p>
 
 <p>
-  <b>Unit:</b>
+  <b><%= t 'views.memberprices.index.unit' %>:</b>
   <%= @memberprice.unit %>
 </p>
 
 <p>
-  <b>Custid:</b>
+  <b><%= t 'views.memberprices.index.custid' %>:</b>
   <%= @memberprice.custid %>
 </p>
 
 <p>
-  <b>Custname:</b>
+  <b><%= t 'views.memberprices.index.custname' %>:</b>
   <%= @memberprice.custname %>
 </p>
 
 <p>
-  <b>Custtel:</b>
+  <b><%= t 'views.memberprices.index.custtel' %>:</b>
   <%= @memberprice.custtel %>
 </p>
 
 <p>
-  <b>Startdate:</b>
+  <b><%= t 'views.memberprices.index.startdate' %>:</b>
   <%= @memberprice.startdate %>
 </p>
 
 <p>
-  <b>Enddate:</b>
+  <b><%= t 'views.memberprices.index.enddate' %>:</b>
   <%= @memberprice.enddate %>
 </p>
 
 <p>
-  <b>Hprice:</b>
+  <b><%= t 'views.memberprices.index.hprice' %>:</b>
   <%= @memberprice.hprice %>
 </p>
 
 <p>
-  <b>Cdate:</b>
+  <b><%= t 'views.memberprices.index.cdate' %>:</b>
   <%= @memberprice.cdate %>
 </p>
 
 <p>
-  <b>Remark:</b>
+  <b><%= t 'views.memberprices.index.remark' %>:</b>
   <%= @memberprice.remark %>
 </p>
 
 
-<%= link_to 'Edit', edit_memberprice_path(@memberprice) %> |
-<%= link_to 'Back', memberprices_path %>
+<%= link_to t('views.edit'), edit_memberprice_path(@memberprice) %> |
+<%= link_to t('views.back'), memberprices_path %>

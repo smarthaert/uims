@@ -1,40 +1,40 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Stid:</b>
+  <b><%= t 'views.stores.index.stid' %>:</b>
   <%= @store.stid %>
 </p>
 
 <p>
-  <b>Stname:</b>
+  <b><%= t 'views.stores.index.stname' %>:</b>
   <%= @store.stname %>
 </p>
 
 <p>
-  <b>Staddress:</b>
+  <b><%= t 'views.stores.index.staddress' %>:</b>
   <%= @store.staddress %>
 </p>
 
 <p>
-  <b>Starea:</b>
+  <b><%= t 'views.stores.index.starea' %>:</b>
   <%= @store.starea %>
 </p>
 
 <p>
-  <b>Sttel:</b>
+  <b><%= t 'views.stores.index.sttel' %>:</b>
   <%= @store.sttel %>
 </p>
 
 <p>
-  <b>Cdate:</b>
+  <b><%= t 'views.stores.index.cdate' %>:</b>
   <%= @store.cdate %>
 </p>
 
 <p>
-  <b>Remark:</b>
+  <b><%= t 'views.stores.index.remark' %>:</b>
   <%= @store.remark %>
 </p>
 
 
-<%= link_to 'Edit', edit_store_path(@store) %> |
-<%= link_to 'Back', stores_path %>
+<%= link_to t('views.edit'), edit_store_path(@store) %> |
+<%= link_to t('views.back'), stores_path %>

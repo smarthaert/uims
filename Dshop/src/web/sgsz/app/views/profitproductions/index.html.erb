@@ -1,11 +1,11 @@
-<h1>Listing profitproductions</h1>
+<h1><%= t 'views.profitproductions.index.listing_profitproductions' %></h1>
 
 <table>
   <tr>
-    <th>Pid</th>
-    <th>Goodsname</th>
-    <th>Color</th>
-    <th>Profit</th>
+    <th><%= t 'views.profitproductions.index.pid' %></th>
+    <th><%= t 'views.profitproductions.index.goodsname' %></th>
+    <th><%= t 'views.profitproductions.index.color' %></th>
+    <th><%= t 'views.profitproductions.index.profit' %></th>
   </tr>
 
 <% @profitproductions.each do |profitproduction| %>

@@ -1,4 +1,4 @@
-<h1>Listing ordermains</h1>
+<h1><%= t 'views.ordermains.index.listing_ordermains' %></h1>
 
 <table>
   <tr>
@@ -55,9 +55,9 @@
     <td><%= ordermain.cdate %></td>
     <td><%= ordermain.canal %></td>
     <td><%= ordermain.remark %></td>
-    <td><%= link_to 'Show', ordermain %></td>
-    <td><%= link_to 'Edit', edit_ordermain_path(ordermain) %></td>
-    <td><%= link_to 'Destroy', ordermain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('views.show'), ordermain %></td>
+    <td><%= link_to t('views.edit'), edit_ordermain_path(ordermain) %></td>
+    <td><%= link_to t('views.destroy'), ordermain, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
   </tr>
 <% end %>
 </table>
@@ -65,4 +65,4 @@
 <%= paginate @ordermains, :window => 2 %>
 <br />
 
-<%= link_to 'New Ordermain', new_ordermain_path %>
+<%= link_to t('views.ordermains.index.new_ordermains'), new_ordermain_path %>

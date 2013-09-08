@@ -1,36 +1,36 @@
-<h1>Listing selllogmains</h1>
+<h1><%= t 'views.selllogmains.index.listing_selllogmains' %></h1>
 
 <table>
   <tr>
-    <th>Stid</th>
-    <th>Stname</th>
-    <th>Slid</th>
-    <th>Custid</th>
-    <th>Custstate</th>
-    <th>Custname</th>
-    <th>Shopname</th>
-    <th>Custtel</th>
-    <th>Custaddr</th>
-    <th>Yingshou</th>
-    <th>Shishou</th>
-    <th>Shoukuan</th>
-    <th>Zhaoling</th>
-    <th>Aamount</th>
-    <th>Avolume</th>
-    <th>Sid</th>
-    <th>Sname</th>
-    <th>Stel</th>
-    <th>Saddress</th>
-    <th>Payment</th>
-    <th>Status</th>
-    <th>Uid</th>
-    <th>Uname</th>
-    <th>Preid</th>
-    <th>Nextid</th>
-    <th>Type</th>
-    <th>Cdate</th>
-    <th>Pdate</th>
-    <th>Remark</th>
+    <th><%= t 'views.selllogmains.index.stid' %></th>
+    <th><%= t 'views.selllogmains.index.stname' %></th>
+    <th><%= t 'views.selllogmains.index.slid' %></th>
+    <th><%= t 'views.selllogmains.index.custid' %></th>
+    <th><%= t 'views.selllogmains.index.custstate' %></th>
+    <th><%= t 'views.selllogmains.index.custname' %></th>
+    <th><%= t 'views.selllogmains.index.shopname' %></th>
+    <th><%= t 'views.selllogmains.index.custtel' %></th>
+    <th><%= t 'views.selllogmains.index.custaddr' %></th>
+    <th><%= t 'views.selllogmains.index.yingshou' %></th>
+    <th><%= t 'views.selllogmains.index.shishou' %></th>
+    <th><%= t 'views.selllogmains.index.shoukuan' %></th>
+    <th><%= t 'views.selllogmains.index.zhaoling' %></th>
+    <th><%= t 'views.selllogmains.index.aamount' %></th>
+    <th><%= t 'views.selllogmains.index.avolume' %></th>
+    <th><%= t 'views.selllogmains.index.sid' %></th>
+    <th><%= t 'views.selllogmains.index.sname' %></th>
+    <th><%= t 'views.selllogmains.index.stel' %></th>
+    <th><%= t 'views.selllogmains.index.saddress' %></th>
+    <th><%= t 'views.selllogmains.index.payment' %></th>
+    <th><%= t 'views.selllogmains.index.status' %></th>
+    <th><%= t 'views.selllogmains.index.uid' %></th>
+    <th><%= t 'views.selllogmains.index.uname' %></th>
+    <th><%= t 'views.selllogmains.index.preid' %></th>
+    <th><%= t 'views.selllogmains.index.nextid' %></th>
+    <th><%= t 'views.selllogmains.index.type' %></th>
+    <th><%= t 'views.selllogmains.index.cdate' %></th>
+    <th><%= t 'views.selllogmains.index.pdate' %></th>
+    <th><%= t 'views.selllogmains.index.remark' %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -67,9 +67,9 @@
     <td><%= selllogmain.cdate %></td>
     <td><%= selllogmain.pdate %></td>
     <td><%= selllogmain.remark %></td>
-    <td><%= link_to 'Show', selllogmain %></td>
-    <td><%= link_to 'Edit', edit_selllogmain_path(selllogmain) %></td>
-    <td><%= link_to 'Destroy', selllogmain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('views.show'), selllogmain %></td>
+    <td><%= link_to t('views.edit'), edit_selllogmain_path(selllogmain) %></td>
+    <td><%= link_to t('views.destroy'), selllogmain, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
   </tr>
 <% end %>
 </table>
@@ -78,4 +78,4 @@
 
 <br />
 
-<%= link_to 'New Selllogmain', new_selllogmain_path %>
+<%= link_to t('views.selllogmains.index.new_selllogmains'), new_selllogmain_path %>

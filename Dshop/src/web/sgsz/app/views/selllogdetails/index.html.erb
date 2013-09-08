@@ -1,34 +1,34 @@
-<h1>Listing selllogdetails</h1>
+<h1><%= t 'views.selllogdetails.index.listing_selllogdetails' %></h1>
 
 <table>
   <tr>
-    <th>Stid</th>
-    <th>Stname</th>
-    <th>Slid</th>
-    <th>Store</th>
-    <th>Pid</th>
-    <th>Barcode</th>
-    <th>Goodsname</th>
-    <th>Size</th>
-    <th>Color</th>
-    <th>Volume</th>
-    <th>Unit</th>
-    <th>Inprice</th>
-    <th>Pfprice</th>
-    <th>Hprice</th>
-    <th>Outprice</th>
-    <th>Amount</th>
-    <th>Camount</th>
-    <th>Bundle</th>
-    <th>Cbundle</th>
-    <th>Discount</th>
-    <th>Additional</th>
-    <th>Type</th>
-    <th>Subtotal</th>
-    <th>Status</th>
-    <th>Cdate</th>
-    <th>Pdate</th>
-    <th>Remark</th>
+    <th><%= t 'views.selllogdetails.index.stid' %></th>
+    <th><%= t 'views.selllogdetails.index.stname' %></th>
+    <th><%= t 'views.selllogdetails.index.slid' %></th>
+    <th><%= t 'views.selllogdetails.index.store' %></th>
+    <th><%= t 'views.selllogdetails.index.pid' %></th>
+    <th><%= t 'views.selllogdetails.index.barcode' %></th>
+    <th><%= t 'views.selllogdetails.index.goodsname' %></th>
+    <th><%= t 'views.selllogdetails.index.size' %></th>
+    <th><%= t 'views.selllogdetails.index.color' %></th>
+    <th><%= t 'views.selllogdetails.index.volume' %></th>
+    <th><%= t 'views.selllogdetails.index.unit' %></th>
+    <th><%= t 'views.selllogdetails.index.inprice' %></th>
+    <th><%= t 'views.selllogdetails.index.pfprice' %></th>
+    <th><%= t 'views.selllogdetails.index.hprice' %></th>
+    <th><%= t 'views.selllogdetails.index.outprice' %></th>
+    <th><%= t 'views.selllogdetails.index.amount' %></th>
+    <th><%= t 'views.selllogdetails.index.camount' %></th>
+    <th><%= t 'views.selllogdetails.index.bundle' %></th>
+    <th><%= t 'views.selllogdetails.index.cbundle' %></th>
+    <th><%= t 'views.selllogdetails.index.discount' %></th>
+    <th><%= t 'views.selllogdetails.index.additional' %></th>
+    <th><%= t 'views.selllogdetails.index.type' %></th>
+    <th><%= t 'views.selllogdetails.index.subtotal' %></th>
+    <th><%= t 'views.selllogdetails.index.status' %></th>
+    <th><%= t 'views.selllogdetails.index.cdate' %></th>
+    <th><%= t 'views.selllogdetails.index.pdate' %></th>
+    <th><%= t 'views.selllogdetails.index.remark' %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -63,9 +63,9 @@
     <td><%= selllogdetail.cdate %></td>
     <td><%= selllogdetail.pdate %></td>
     <td><%= selllogdetail.remark %></td>
-    <td><%= link_to 'Show', selllogdetail %></td>
-    <td><%= link_to 'Edit', edit_selllogdetail_path(selllogdetail) %></td>
-    <td><%= link_to 'Destroy', selllogdetail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t('views.show'), selllogdetail %></td>
+    <td><%= link_to t('views.edit'), edit_selllogdetail_path(selllogdetail) %></td>
+    <td><%= link_to t('views.destroy'), selllogdetail, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
   </tr>
 <% end %>
 </table>
@@ -75,4 +75,4 @@
 
 <br />
 
-<%= link_to 'New Selllogdetail', new_selllogdetail_path %>
+<%= link_to t('views.selllogdetails.index.new_selllogdetails'), new_selllogdetail_path %>
