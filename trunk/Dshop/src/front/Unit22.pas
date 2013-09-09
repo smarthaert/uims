@@ -260,7 +260,7 @@ begin
         Label2.Caption + '", shitui="' + Label2.Caption
         +
         '",fukuan="' + RzEdit1.Text + '",zhaohui="' + Label7.Caption +
-        '", status="1", type="已处理", tpayment="' + Main_T.cbb2.Text +
+        '", status="1", dtype="已处理", tpayment="' + Main_T.cbb2.Text +
         '",tuid="' + Main_T.Labeluid.Caption + '",tuname="' +
         Main_T.Label19.Caption +
         '",pdate=now(),tremark="' + Main_T.mmo2.Text +
@@ -297,10 +297,10 @@ begin
       //更新selllogdetails中客户实际拥有的产品数量，
       Main_T.ADOQuerySQL.SQL.Clear;
       Main_T.ADOQuerySQL.SQL.Add('update (select a.ramount, a.tid, a.pid, a.type, a.goodsname, a.preid,b.slid, b.additional,b.camount from (select sum(ad.ramount)');
-      Main_T.ADOQuerySQL.SQL.Add(' as ramount, ad.tid, ad.pid, ad.additional, ad.type, ad.goodsname, am.preid from afterselldetails ad,aftersellmains am where ');
+      Main_T.ADOQuerySQL.SQL.Add(' as ramount, ad.tid, ad.pid, ad.additional, ad.dtype, ad.goodsname, am.preid from afterselldetails ad,aftersellmains am where ');
       Main_T.ADOQuerySQL.SQL.Add('ad.tid="' +
         Main_T.Label26.Caption +
-        '" and ad.tid=am.tid and ad.type="退货" group by tid,pid,additional) a,(select sd.slid, sd.pid, sd.additional,');
+        '" and ad.tid=am.tid and ad.dtype="退货" group by tid,pid,additional) a,(select sd.slid, sd.pid, sd.additional,');
       Main_T.ADOQuerySQL.SQL.Add(' sd.camount from selllogdetails sd,aftersellmains am where sd.slid=am.preid and am.tid="' + Main_T.Label26.Caption + '" and additional<>"补件" ');
       Main_T.ADOQuerySQL.SQL.Add('group by slid,pid,additional) b where a.preid=b.slid and a.pid=b.pid and a.additional=b.additional) t, selllogdetails sd ');
       Main_T.ADOQuerySQL.SQL.Add('set sd.camount=(sd.camount-t.ramount),sd.updated_at=now() where t.slid=sd.slid and t.pid=sd.pid and t.additional=sd.additional');
@@ -308,7 +308,7 @@ begin
 
       //更新selllogmain中状态为已售后
       Main_T.ADOQuerySQL.SQL.Clear;
-      Main_T.ADOQuerySQL.SQL.Add('update selllogmains sm,aftersellmains am set sm.type="已售后" where sm.slid=am.preid and am.tid="' + Main_T.Label26.Caption + '"');
+      Main_T.ADOQuerySQL.SQL.Add('update selllogmains sm,aftersellmains am set sm.dtype="已售后" where sm.slid=am.preid and am.tid="' + Main_T.Label26.Caption + '"');
       Main_T.ADOQuerySQL.ExecSQL;
       Main.ADOConnection1.CommitTrans;
     except

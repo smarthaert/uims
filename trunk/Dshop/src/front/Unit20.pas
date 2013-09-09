@@ -102,7 +102,7 @@ begin
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
   ADOQuery1.SQL.Add('select d.tid,d.pid,barcode,d.goodsname,d.size,d.color,d.volume,d.unit,d.inprice,d.pfprice,d.amount,');
-  ADOQuery1.SQL.Add('d.ramount,d.bundle,d.additional,d.discount,d.remark from aftersellmains m, afterselldetails d where not(d.status) and d.type="维修" and d.ramount>0 and m.tid=d.tid and m.type="已处理" and m.custtel="' + Main.edt2.Text + '"');
+  ADOQuery1.SQL.Add('d.ramount,d.bundle,d.additional,d.discount,d.remark from aftersellmains m, afterselldetails d where not(d.status) and d.dtype="维修" and d.ramount>0 and m.tid=d.tid and m.dtype="已处理" and m.custtel="' + Main.edt2.Text + '"');
   ADOQuery1.Active := True;
   {格式化小数显示}
   //TFloatField(DBGrid1.DataSource.DataSet.FieldByName('volume')).DisplayFormat := '0.00';

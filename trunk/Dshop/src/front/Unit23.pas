@@ -78,11 +78,11 @@ begin
 
     {合并两条记录,保留第一条记录}
     ADOQuerySQL.SQL.Clear;
-    ADOQuerySQL.SQL.Add('update afterselldetails ad,(select tid,pid,ramount,type from afterselldetails where tid="' + Main_T.Label26.Caption + '" and pid="' +
+    ADOQuerySQL.SQL.Add('update afterselldetails ad,(select tid,pid,ramount,dtype from afterselldetails where tid="' + Main_T.Label26.Caption + '" and pid="' +
       ADOQuery1.FieldByName('pid').AsString + '"');
-    ADOQuerySQL.SQL.Add(' and type="' +
+    ADOQuerySQL.SQL.Add(' and dtype="' +
       ADOQuery1.FieldByName('type').AsString +
-      '") t set ad.ramount=(ad.ramount+t.ramount),updated_at=now() where t.tid=ad.tid and t.pid=ad.pid and ad.type="' +
+      '") t set ad.ramount=(ad.ramount+t.ramount),updated_at=now() where t.tid=ad.tid and t.pid=ad.pid and ad.dtype="' +
       Main_T.ADOQuery1.FieldByName('type').AsString +
       '" and additional="' +
       ADOQuery1.FieldByName('additional').AsString + '"');
@@ -95,7 +95,7 @@ begin
       Main_T.ADOQuery1.FieldByName('pid').AsString +
       '" and additional="' +
       ADOQuery1.FieldByName('additional').AsString +
-      '" and type="' + ADOQuery1.FieldByName('type').AsString
+      '" and dtype="' + ADOQuery1.FieldByName('type').AsString
       +
       '"');
     ADOQuerySQL.ExecSQL;
@@ -140,12 +140,12 @@ begin
   ADOQuery1.SQL.Clear;
   ADOQuery1.SQL.Add('select (@row := @row + 1) as row,id, pid,goodsname,color,FORMAT(volume,2) as volume,FORMAT(amount,0) as amount,');
   ADOQuery1.SQL.Add('FORMAT(ramount,0) as ramount,unit,FORMAT(bundle,0) as bundle,FORMAT(rbundle,0) as rbundle,FORMAT(outprice,0) as outprice,discount,additional,FORMAT((subtotal),0) as subtotal, ');
-  ADOQuery1.SQL.Add('tid, barcode, size, inprice, pfprice,hprice,type from afterselldetails, (SELECT @row := 0) r where tid="' + Main_T.Label26.Caption +
+  ADOQuery1.SQL.Add('tid, barcode, size, inprice, pfprice,hprice,dtype as type from afterselldetails, (SELECT @row := 0) r where tid="' + Main_T.Label26.Caption +
     '" and ramount>0 and pid="' +
     Main_T.ADOQuery1.FieldByName('pid').AsString +
     '" and additional="' +
     Main_T.ADOQuery1.FieldByName('additional').AsString +
-    '" and type<>"' +
+    '" and dtype<>"' +
     Main_T.ADOQuery1.FieldByName('type').AsString +
     '" order by id');
   ADOQuery1.Active := True;

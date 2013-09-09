@@ -77,10 +77,10 @@ begin
     {复制记录}
     //主表 设置状态为0 设置来源单号为订单号，设置出库单号
     ADOQuerySQL.SQL.Clear;
-    ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,shoukuan,zhaoling,sid,sname,stel,saddress,payment,status,uid,uname,preid,nextid,type,cdate,remark,created_at,updated_at) select "' + Main.Label26.Caption +
+    ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,shoukuan,zhaoling,sid,sname,stel,saddress,payment,status,uid,uname,preid,nextid,dtype,cdate,remark,created_at,updated_at) select "' + Main.Label26.Caption +
       '" as slid,custid,custstate,custname,custtel,custaddr,yingshou,shishou,"" as shoukuan,"" as zhaoling,sid,sname,stel,saddress,payment,"0" as status,uid,uname,"' +
       ADOQuery1.FieldByName('oid').AsString +
-      '" as preid,nextid,"备货中"type,now() as cdate,remark,now() as created_at,now() as updated_at from ordermains where oid="' +
+      '" as preid,nextid,"备货中" as dtype,now() as cdate,remark,now() as created_at,now() as updated_at from ordermains where oid="' +
       ADOQuery1.FieldByName('oid').AsString + '"');
     ADOQuerySQL.ExecSQL;
 
@@ -93,7 +93,7 @@ begin
 
     //主表 设置订单的后续是该出库单，同时修改状态为出库中，避免其重复处理该订单
     ADOQuerySQL.SQL.Clear;
-    ADOQuerySQL.SQL.Add('update ordermains set type="出库中",nextid="' +
+    ADOQuerySQL.SQL.Add('update ordermains set dtype="出库中",nextid="' +
       Main.Label26.Caption + '" where oid="' +
       ADOQuery1.FieldByName('oid').AsString
       + '"');
@@ -160,7 +160,7 @@ procedure TQO.FormShow(Sender: TObject);
 begin
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from ordermains where Not(status) and type="支付"');
+  ADOQuery1.SQL.Add('Select * from ordermains where Not(status) and dtype="支付"');
   ADOQuery1.Active := True;
 end;
 

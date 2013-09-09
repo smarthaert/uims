@@ -59,11 +59,11 @@ begin
       //根据拆分数插入记录
       ADOQuerySQL.SQL.Clear;
       ADOQuerySQL.SQL.Add('insert into afterselldetails(tid,pid,barcode,goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,');
-      ADOQuerySQL.SQL.Add('ramount,bundle,rbundle,discount,additional,subtotal,status,type,cdate,remark,created_at,updated_at) select tid,pid,barcode,');
+      ADOQuerySQL.SQL.Add('ramount,bundle,rbundle,discount,additional,subtotal,status,dtype,cdate,remark,created_at,updated_at) select tid,pid,barcode,');
       ADOQuerySQL.SQL.Add('goodsname,size,color,volume,unit,inprice,pfprice,hprice,outprice,amount,"' + RzEdit1.Text +
         '" as ramount,bundle,rbundle,discount,additional,');
       ADOQuerySQL.SQL.Add('subtotal,status,"' + ComboBox1.Text
-        + '" as type,cdate,remark,created_at,now() as updated_at from afterselldetails where tid="' +
+        + '" as dtype,cdate,remark,created_at,now() as updated_at from afterselldetails where tid="' +
         Main_T.ADOQuery1.FieldByName('tid').AsString +
         '" and ');
       ADOQuerySQL.SQL.Add('pid="' +
@@ -71,7 +71,7 @@ begin
         '" and ');
       ADOQuerySQL.SQL.Add('additional="' +
         Main_T.ADOQuery1.FieldByName('additional').AsString +
-        '" and type="' +
+        '" and dtype="' +
         Main_T.ADOQuery1.FieldByName('type').AsString + '"');
       ADOQuerySQL.ExecSQL;
 
@@ -86,7 +86,7 @@ begin
         '" and ');
       ADOQuerySQL.SQL.Add('additional="' +
         Main_T.ADOQuery1.FieldByName('additional').AsString +
-        '" and type="' +
+        '" and dtype="' +
         Main_T.ADOQuery1.FieldByName('type').AsString + '"');
       ADOQuerySQL.ExecSQL;
 
