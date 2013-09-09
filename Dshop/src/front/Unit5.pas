@@ -340,7 +340,7 @@ begin
 
       //更新销售主表，包括修改的客户，托运部信息，合计的订单产品数量，体积，金额信息
       Main.ADOQuerySQL.SQL.Clear;
-      Main.ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,shoukuan,zhaoling,aamount,avolume,sid,sname,stel,saddress,payment,status,type,uid,uname,cdate,pdate,remark,created_at,updated_at) values("' + Main.Label26.Caption + '","","' + Main.edt8.Text + '","' +
+      Main.ADOQuerySQL.SQL.Add('insert into selllogmains(slid,custid,custstate,custname,shopname,custtel,custaddr,yingshou,shishou,shoukuan,zhaoling,aamount,avolume,sid,sname,stel,saddress,payment,status,dtype,uid,uname,cdate,pdate,remark,created_at,updated_at) values("' + Main.Label26.Caption + '","","' + Main.edt8.Text + '","' +
         Main.edt1.Text + '","' +
         Main.RzEdit7.Text + '","' + Main.edt2.Text + '","' +
         Main.edt3.Text + '","' +
@@ -371,7 +371,7 @@ begin
         +
         '",shoukuan="' + RzEdit1.Text + '",zhaoling="' + Label7.Caption +
         '",aamount="' + vaamount + '",avolume="' + vavolume +
-        '", status="1", type="已出库",pdate=now(),updated_at=now()');
+        '", status="1", dtype="已出库",pdate=now(),updated_at=now()');
       Main.ADOQuerySQL.ExecSQL;
 
       {
@@ -454,7 +454,7 @@ begin
 
       //更新订单状态
       Main.ADOQuerySQL.SQL.Clear;
-      Main.ADOQuerySQL.SQL.Add('update ordermains set type="已发货",status="1", updated_at=now() where nextid="' + Main.Label26.Caption + '"');
+      Main.ADOQuerySQL.SQL.Add('update ordermains set dtype="已发货",status="1", updated_at=now() where nextid="' + Main.Label26.Caption + '"');
       Main.ADOQuerySQL.ExecSQL;
 
       //维修库存状态更新
