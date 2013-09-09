@@ -96,8 +96,8 @@
     <%= f.text_field :additional %>
   </div>
   <div class="field">
-    <%= f.label t('views.selllogdetails.index.type') %>:<br />
-    <%= f.text_field :type %>
+    <%= f.label t('views.selllogdetails.index.dtype') %>:<br />
+    <%= f.text_field :dtype %>
   </div>
   <div class="field">
     <%= f.label t('views.selllogdetails.index.subtotal') %>:<br />
@@ -109,11 +109,11 @@
   </div>
   <div class="field">
     <%= f.label t('views.selllogdetails.index.cdate') %>:<br />
-    <%= f.date_select :cdate %>
+    <%= f.date_select :cdate, :order => [:year,:month,:day] %>
   </div>
   <div class="field">
     <%= f.label t('views.selllogdetails.index.pdate') %>:<br />
-    <%= f.date_select :pdate %>
+    <%= f.date_select :pdate, :order => [:year,:month,:day] %>
   </div>
   <div class="field">
     <%= f.label t('views.selllogdetails.index.remark') %>:<br />

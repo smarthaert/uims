@@ -23,15 +23,13 @@
     <th><%= t 'views.selllogdetails.index.cbundle' %></th>
     <th><%= t 'views.selllogdetails.index.discount' %></th>
     <th><%= t 'views.selllogdetails.index.additional' %></th>
-    <th><%= t 'views.selllogdetails.index.type' %></th>
+    <th><%= t 'views.selllogdetails.index.dtype' %></th>
     <th><%= t 'views.selllogdetails.index.subtotal' %></th>
     <th><%= t 'views.selllogdetails.index.status' %></th>
     <th><%= t 'views.selllogdetails.index.cdate' %></th>
     <th><%= t 'views.selllogdetails.index.pdate' %></th>
     <th><%= t 'views.selllogdetails.index.remark' %></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th colspan="3"><%= t 'views.operation' %></th>
   </tr>
 
 <% @selllogdetails.each do |selllogdetail| %>
@@ -57,7 +55,7 @@
     <td><%= selllogdetail.cbundle %></td>
     <td><%= selllogdetail.discount %></td>
     <td><%= selllogdetail.additional %></td>
-    <td><%= selllogdetail.type %></td>
+    <td><%= selllogdetail.dtype %></td>
     <td><%= selllogdetail.subtotal %></td>
     <td><%= selllogdetail.status %></td>
     <td><%= selllogdetail.cdate %></td>

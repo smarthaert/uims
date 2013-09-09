@@ -2,15 +2,15 @@
 
 <table>
   <tr>
-    <th><%= t 'views.profitcustomers.index.custname' %></th>
-    <th><%= t 'views.profitcustomers.index.custtel' %></th>
+    <th><%= t 'views.profitcustomers.index.cname' %></th>
+    <th><%= t 'views.profitcustomers.index.tel' %></th>
     <th><%= t 'views.profitcustomers.index.profit' %></th>
   </tr>
 
 <% @profitcustomers.each do |profitcustomer| %>
   <tr>
-    <td><%= profitcustomer.custname %></td>
-    <td><%= profitcustomer.custtel %></td>
+    <td><%= profitcustomer.cname %></td>
+    <td><%= profitcustomer.tel %></td>
     <td><%= profitcustomer.profit %></td>
   </tr>
 <% end %>

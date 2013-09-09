@@ -20,9 +20,9 @@ class CreateOrdermains < ActiveRecord::Migration
       t.string :uname
       t.string :preid
       t.string :nextid
-      t.string :type
+      t.string :dtype
       t.date :cdate
-      t.date :canal
+      t.string :canal
       t.text :remark
 
       t.timestamps

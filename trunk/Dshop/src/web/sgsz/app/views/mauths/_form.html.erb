@@ -12,31 +12,31 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :uid %><br />
+    <%= f.label t('views.mauths.index.uid') %>:<br />
     <%= f.text_field :uid %>
   </div>
   <div class="field">
-    <%= f.label :rid %><br />
+    <%= f.label t('views.mauths.index.rid') %>:<br />
     <%= f.text_field :rid %>
   </div>
   <div class="field">
-    <%= f.label :mid %><br />
+    <%= f.label t('views.mauths.index.mid') %>:<br />
     <%= f.text_field :mid %>
   </div>
   <div class="field">
-    <%= f.label :cdkey %><br />
+    <%= f.label t('views.mauths.index.cdkey') %>:<br />
     <%= f.text_field :cdkey %>
   </div>
   <div class="field">
-    <%= f.label :result %><br />
+    <%= f.label t('views.mauths.index.result') %>:<br />
     <%= f.text_field :result %>
   </div>
   <div class="field">
-    <%= f.label :cdate %><br />
-    <%= f.date_select :cdate %>
+    <%= f.label t('views.mauths.index.cdate') %>:<br />
+    <%= f.date_select :cdate, :order => [:year,:month,:day] %>
   </div>
   <div class="field">
-    <%= f.label :remark %><br />
+    <%= f.label t('views.mauths.index.remark') %>:<br />
     <%= f.text_area :remark %>
   </div>
   <div class="actions">

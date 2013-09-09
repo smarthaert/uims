@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label t('views.users.index.password') %>:<br />
-    <%= f.hashed_password_field :password %>
+    <%= f.text_field :password %>
   </div>
   <div class="field">
     <%= f.label :password_confirmation, t('views.users.index.confirm')%>:<br />
-    <%= f.hashed_password_field :password_confirmation%>
+    <%= f.text_field :password_confirmation%>
   </div>
   <div class="field">
     <%= f.label t('views.users.index.uname') %>:<br />

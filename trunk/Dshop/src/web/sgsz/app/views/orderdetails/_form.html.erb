@@ -12,91 +12,91 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :oid %><br />
+    <%= f.label t('views.orderdetails.index.oid') %>:<br />
     <%= f.text_field :oid %>
   </div>
   <div class="field">
-    <%= f.label :pid %><br />
+    <%= f.label t('views.orderdetails.index.pid') %>:<br />
     <%= f.text_field :pid %>
   </div>
   <div class="field">
-    <%= f.label :barcode %><br />
+    <%= f.label t('views.orderdetails.index.barcode') %>:<br />
     <%= f.text_field :barcode %>
   </div>
   <div class="field">
-    <%= f.label :goodsname %><br />
+    <%= f.label t('views.orderdetails.index.goodsname') %>:<br />
     <%= f.text_field :goodsname %>
   </div>
   <div class="field">
-    <%= f.label :size %><br />
+    <%= f.label t('views.orderdetails.index.size') %>:<br />
     <%= f.text_field :size %>
   </div>
   <div class="field">
-    <%= f.label :color %><br />
+    <%= f.label t('views.orderdetails.index.color') %>:<br />
     <%= f.text_field :color %>
   </div>
   <div class="field">
-    <%= f.label :volume %><br />
+    <%= f.label t('views.orderdetails.index.volume') %>:<br />
     <%= f.text_field :volume %>
   </div>
   <div class="field">
-    <%= f.label :unit %><br />
+    <%= f.label t('views.orderdetails.index.unit') %>:<br />
     <%= f.text_field :unit %>
   </div>
   <div class="field">
-    <%= f.label :inprice %><br />
+    <%= f.label t('views.orderdetails.index.inprice') %>:<br />
     <%= f.text_field :inprice %>
   </div>
   <div class="field">
-    <%= f.label :pfprice %><br />
+    <%= f.label t('views.orderdetails.index.pfprice') %>:<br />
     <%= f.text_field :pfprice %>
   </div>
   <div class="field">
-    <%= f.label :hprice %><br />
+    <%= f.label t('views.orderdetails.index.hprice') %>:<br />
     <%= f.text_field :hprice %>
   </div>
   <div class="field">
-    <%= f.label :outprice %><br />
+    <%= f.label t('views.orderdetails.index.outprice') %>:<br />
     <%= f.text_field :outprice %>
   </div>
   <div class="field">
-    <%= f.label :amount %><br />
+    <%= f.label t('views.orderdetails.index.amount') %>:<br />
     <%= f.number_field :amount %>
   </div>
   <div class="field">
-    <%= f.label :ramount %><br />
+    <%= f.label t('views.orderdetails.index.ramount') %>:<br />
     <%= f.number_field :ramount %>
   </div>
   <div class="field">
-    <%= f.label :bundle %><br />
+    <%= f.label t('views.orderdetails.index.bundle') %>:<br />
     <%= f.number_field :bundle %>
   </div>
   <div class="field">
-    <%= f.label :rbundle %><br />
+    <%= f.label t('views.orderdetails.index.rbundle') %>:<br />
     <%= f.number_field :rbundle %>
   </div>
   <div class="field">
-    <%= f.label :discount %><br />
+    <%= f.label t('views.orderdetails.index.discount') %>:<br />
     <%= f.number_field :discount %>
   </div>
   <div class="field">
-    <%= f.label :additional %><br />
+    <%= f.label t('views.orderdetails.index.additional') %>:<br />
     <%= f.text_field :additional %>
   </div>
   <div class="field">
-    <%= f.label :subtotal %><br />
+    <%= f.label t('views.orderdetails.index.subtotal') %>:<br />
     <%= f.text_field :subtotal %>
   </div>
   <div class="field">
-    <%= f.label :status %><br />
+    <%= f.label t('views.orderdetails.index.status') %>:<br />
     <%= f.number_field :status %>
   </div>
   <div class="field">
-    <%= f.label :cdate %><br />
-    <%= f.date_select :cdate %>
+    <%= f.label t('views.orderdetails.index.cdate') %>:<br />
+    <%= f.date_select :cdate, :order => [:year,:month,:day] %>
   </div>
   <div class="field">
-    <%= f.label :remark %><br />
+    <%= f.label t('views.orderdetails.index.remark') %>:<br />
     <%= f.text_area :remark %>
   </div>
   <div class="actions">

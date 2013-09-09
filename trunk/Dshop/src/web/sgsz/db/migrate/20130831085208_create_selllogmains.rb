@@ -26,7 +26,7 @@ class CreateSelllogmains < ActiveRecord::Migration
       t.string :uname
       t.string :preid
       t.string :nextid
-      t.string :type
+      t.string :dtype
       t.date :cdate
       t.date :pdate
       t.text :remark

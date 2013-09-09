@@ -21,7 +21,7 @@ class CreateAfterselldetails < ActiveRecord::Migration
       t.integer :rbundle
       t.integer :discount
       t.string :additional
-      t.string :type
+      t.string :dtype
       t.decimal :subtotal, :precision => 10, :scale => 2
       t.integer :status
       t.date :cdate

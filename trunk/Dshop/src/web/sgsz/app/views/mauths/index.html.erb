@@ -2,16 +2,14 @@
 
 <table>
   <tr>
-    <th>Uid</th>
-    <th>Rid</th>
-    <th>Mid</th>
-    <th>Cdkey</th>
-    <th>Result</th>
-    <th>Cdate</th>
-    <th>Remark</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th><%= t 'views.mauths.index.uid' %></th>
+    <th><%= t 'views.mauths.index.rid' %></th>
+    <th><%= t 'views.mauths.index.mid' %></th>
+    <th><%= t 'views.mauths.index.cdkey' %></th>
+    <th><%= t 'views.mauths.index.result' %></th>
+    <th><%= t 'views.mauths.index.cdate' %></th>
+    <th><%= t 'views.mauths.index.remark' %></th>
+    <th colspan="3"><%= t 'views.operation' %></th>
   </tr>
 
 <% @mauths.each do |mauth| %>

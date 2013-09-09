@@ -27,13 +27,11 @@
     <th><%= t 'views.selllogmains.index.uname' %></th>
     <th><%= t 'views.selllogmains.index.preid' %></th>
     <th><%= t 'views.selllogmains.index.nextid' %></th>
-    <th><%= t 'views.selllogmains.index.type' %></th>
+    <th><%= t 'views.selllogmains.index.dtype' %></th>
     <th><%= t 'views.selllogmains.index.cdate' %></th>
     <th><%= t 'views.selllogmains.index.pdate' %></th>
     <th><%= t 'views.selllogmains.index.remark' %></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th colspan="3"><%= t 'views.operation' %></th>
   </tr>
 
 <% @selllogmains.each do |selllogmain| %>
@@ -63,7 +61,7 @@
     <td><%= selllogmain.uname %></td>
     <td><%= selllogmain.preid %></td>
     <td><%= selllogmain.nextid %></td>
-    <td><%= selllogmain.type %></td>
+    <td><%= selllogmain.dtype %></td>
     <td><%= selllogmain.cdate %></td>
     <td><%= selllogmain.pdate %></td>
     <td><%= selllogmain.remark %></td>

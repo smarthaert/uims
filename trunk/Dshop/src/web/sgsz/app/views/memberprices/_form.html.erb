@@ -53,11 +53,11 @@
   </div>
   <div class="field">
     <%= f.label t('views.memberprices.index.startdate') %>:<br />
-    <%= f.date_select :startdate %>
+    <%= f.date_select :startdate, :order => [:year,:month,:day] %>
   </div>
   <div class="field">
     <%= f.label t('views.memberprices.index.enddate') %>:<br />
-    <%= f.date_select :enddate %>
+    <%= f.date_select :enddate, :order => [:year,:month,:day] %>
   </div>
   <div class="field">
     <%= f.label t('views.memberprices.index.hprice') %>:<br />
@@ -65,7 +65,7 @@
   </div>
   <div class="field">
     <%= f.label t('views.memberprices.index.cdate') %>:<br />
-    <%= f.date_select :cdate %>
+    <%= f.date_select :cdate, :order => [:year,:month,:day] %>
   </div>
   <div class="field">
     <%= f.label t('views.memberprices.index.remark') %>:<br />
