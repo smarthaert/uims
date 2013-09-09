@@ -79,8 +79,8 @@ custstate:string \
 
 rails destroy scaffold Profitcustomer
 rails generate scaffold Profitcustomer \
-custname:string \
-custtel:string \
+cname:string \
+tel:string \
 'profit:decimal{10,2}'
 
 
