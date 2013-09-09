@@ -163,7 +163,7 @@ uid:string \
 uname:string \
 preid:string \
 nextid:string \
-type:string \
+dtype:string \
 cdate:date \
 pdate:date \
 remark:text
@@ -192,7 +192,7 @@ bundle:integer \
 cbundle:integer \
 discount:integer \
 additional:string \
-type:string \
+dtype:string \
 'subtotal:decimal{10,2}' \
 status:integer \
 cdate:date \
@@ -230,7 +230,7 @@ uid:string \
 tuid:string \
 uname:string \
 tuname:string \
-type:string \
+dtype:string \
 preid:string \
 nextid:string \
 cdate:date \
@@ -261,7 +261,7 @@ bundle:integer \
 rbundle:integer \
 discount:integer \
 additional:string \
-type:string \
+dtype:string \
 'subtotal:decimal{10,2}' \
 status:integer \
 cdate:date \
@@ -289,7 +289,7 @@ uid:string \
 uname:string \
 preid:string \
 nextid:string \
-type:string \
+dtype:string \
 cdate:date \
 canal:date \
 remark:text
