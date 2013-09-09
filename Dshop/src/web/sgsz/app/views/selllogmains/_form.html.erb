@@ -112,16 +112,16 @@
     <%= f.text_field :nextid %>
   </div>
   <div class="field">
-    <%= f.label t('views.selllogmains.index.type') %>:<br />
-    <%= f.text_field :type %>
+    <%= f.label t('views.selllogmains.index.dtype') %>:<br />
+    <%= f.text_field :dtype %>
   </div>
   <div class="field">
     <%= f.label t('views.selllogmains.index.cdate') %>:<br />
-    <%= f.date_select :cdate %>
+    <%= f.date_select :cdate, :order => [:year,:month,:day] %>
   </div>
   <div class="field">
     <%= f.label t('views.selllogmains.index.pdate') %>:<br />
-    <%= f.date_select :pdate %>
+    <%= f.date_select :pdate, :order => [:year,:month,:day] %>
   </div>
   <div class="field">
     <%= f.label t('views.selllogmains.index.remark') %>:<br />

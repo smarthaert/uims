@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sgsz</title>
+  <title><%= t 'views.application.page_head' %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<h1><%= t 'views.application.page_head' %></h1>
+<br/>
 <%= render 'menu' %>
 
 <br/>

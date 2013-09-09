@@ -1,3 +1,3 @@
 class Profitcustomer < ActiveRecord::Base
-  attr_accessible :custname, :custtel, :profit
+  attr_accessible :cname, :tel, :profit
 end

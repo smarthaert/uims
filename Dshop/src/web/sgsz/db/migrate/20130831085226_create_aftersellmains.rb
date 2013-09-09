@@ -29,7 +29,7 @@ class CreateAftersellmains < ActiveRecord::Migration
       t.string :tuid
       t.string :uname
       t.string :tuname
-      t.string :type
+      t.string :dtype
       t.string :preid
       t.string :nextid
       t.date :cdate

@@ -2,31 +2,29 @@
 
 <table>
   <tr>
-    <th>Oid</th>
-    <th>Pid</th>
-    <th>Barcode</th>
-    <th>Goodsname</th>
-    <th>Size</th>
-    <th>Color</th>
-    <th>Volume</th>
-    <th>Unit</th>
-    <th>Inprice</th>
-    <th>Pfprice</th>
-    <th>Hprice</th>
-    <th>Outprice</th>
-    <th>Amount</th>
-    <th>Ramount</th>
-    <th>Bundle</th>
-    <th>Rbundle</th>
-    <th>Discount</th>
-    <th>Additional</th>
-    <th>Subtotal</th>
-    <th>Status</th>
-    <th>Cdate</th>
-    <th>Remark</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th><%= t 'views.orderdetails.index.oid' %></th>
+    <th><%= t 'views.orderdetails.index.pid' %></th>
+    <th><%= t 'views.orderdetails.index.barcode' %></th>
+    <th><%= t 'views.orderdetails.index.goodsname' %></th>
+    <th><%= t 'views.orderdetails.index.size' %></th>
+    <th><%= t 'views.orderdetails.index.color' %></th>
+    <th><%= t 'views.orderdetails.index.volume' %></th>
+    <th><%= t 'views.orderdetails.index.unit' %></th>
+    <th><%= t 'views.orderdetails.index.inprice' %></th>
+    <th><%= t 'views.orderdetails.index.pfprice' %></th>
+    <th><%= t 'views.orderdetails.index.hprice' %></th>
+    <th><%= t 'views.orderdetails.index.outprice' %></th>
+    <th><%= t 'views.orderdetails.index.amount' %></th>
+    <th><%= t 'views.orderdetails.index.ramount' %></th>
+    <th><%= t 'views.orderdetails.index.bundle' %></th>
+    <th><%= t 'views.orderdetails.index.rbundle' %></th>
+    <th><%= t 'views.orderdetails.index.discount' %></th>
+    <th><%= t 'views.orderdetails.index.additional' %></th>
+    <th><%= t 'views.orderdetails.index.subtotal' %></th>
+    <th><%= t 'views.orderdetails.index.status' %></th>
+    <th><%= t 'views.orderdetails.index.cdate' %></th>
+    <th><%= t 'views.orderdetails.index.remark' %></th>
+    <th colspan="3"><%= t 'views.operation' %></th>
   </tr>
 
 <% @orderdetails.each do |orderdetail| %>

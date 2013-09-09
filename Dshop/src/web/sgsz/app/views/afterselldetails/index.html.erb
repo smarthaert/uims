@@ -22,14 +22,12 @@
     <th><%= t 'views.afterselldetails.index.rbundle' %></th>
     <th><%= t 'views.afterselldetails.index.discount' %></th>
     <th><%= t 'views.afterselldetails.index.additional' %></th>
-    <th><%= t 'views.afterselldetails.index.type' %></th>
+    <th><%= t 'views.afterselldetails.index.dtype' %></th>
     <th><%= t 'views.afterselldetails.index.subtotal' %></th>
     <th><%= t 'views.afterselldetails.index.status' %></th>
     <th><%= t 'views.afterselldetails.index.cdate' %></th>
     <th><%= t 'views.afterselldetails.index.remark' %></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th colspan="3"><%= t 'views.operation' %></th>
   </tr>
 
 <% @afterselldetails.each do |afterselldetail| %>
@@ -54,7 +52,7 @@
     <td><%= afterselldetail.rbundle %></td>
     <td><%= afterselldetail.discount %></td>
     <td><%= afterselldetail.additional %></td>
-    <td><%= afterselldetail.type %></td>
+    <td><%= afterselldetail.dtype %></td>
     <td><%= afterselldetail.subtotal %></td>
     <td><%= afterselldetail.status %></td>
     <td><%= afterselldetail.cdate %></td>

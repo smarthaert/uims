@@ -30,16 +30,14 @@
     <th><%= t 'views.aftersellmains.index.tuid' %></th>
     <th><%= t 'views.aftersellmains.index.uname' %></th>
     <th><%= t 'views.aftersellmains.index.tuname' %></th>
-    <th><%= t 'views.aftersellmains.index.type' %></th>
+    <th><%= t 'views.aftersellmains.index.dtype' %></th>
     <th><%= t 'views.aftersellmains.index.preid' %></th>
     <th><%= t 'views.aftersellmains.index.nextid' %></th>
     <th><%= t 'views.aftersellmains.index.cdate' %></th>
     <th><%= t 'views.aftersellmains.index.pdate' %></th>
     <th><%= t 'views.aftersellmains.index.tremark' %></th>
     <th><%= t 'views.aftersellmains.index.remark' %></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th colspan="3"><%= t 'views.operation' %></th>
   </tr>
 
 <% @aftersellmains.each do |aftersellmain| %>
@@ -72,7 +70,7 @@
     <td><%= aftersellmain.tuid %></td>
     <td><%= aftersellmain.uname %></td>
     <td><%= aftersellmain.tuname %></td>
-    <td><%= aftersellmain.type %></td>
+    <td><%= aftersellmain.dtype %></td>
     <td><%= aftersellmain.preid %></td>
     <td><%= aftersellmain.nextid %></td>
     <td><%= aftersellmain.cdate %></td>

@@ -12,51 +12,51 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :cpbh %><br />
+    <%= f.label t('views.purchases.index.cpbh') %>:<br />
     <%= f.text_field :cpbh %>
   </div>
   <div class="field">
-    <%= f.label :cpmc %><br />
+    <%= f.label t('views.purchases.index.cpmc') %>:<br />
     <%= f.text_field :cpmc %>
   </div>
   <div class="field">
-    <%= f.label :ys %><br />
+    <%= f.label t('views.purchases.index.ys') %>:<br />
     <%= f.text_field :ys %>
   </div>
   <div class="field">
-    <%= f.label :sl %><br />
+    <%= f.label t('views.purchases.index.sl') %>:<br />
     <%= f.number_field :sl %>
   </div>
   <div class="field">
-    <%= f.label :js %><br />
+    <%= f.label t('views.purchases.index.js') %>:<br />
     <%= f.number_field :js %>
   </div>
   <div class="field">
-    <%= f.label :dj %><br />
+    <%= f.label t('views.purchases.index.dj') %>:<br />
     <%= f.text_field :dj %>
   </div>
   <div class="field">
-    <%= f.label :yfbz %><br />
+    <%= f.label t('views.purchases.index.yfbz') %>:<br />
     <%= f.text_field :yfbz %>
   </div>
   <div class="field">
-    <%= f.label :xj %><br />
+    <%= f.label t('views.purchases.index.xj') %>:<br />
     <%= f.text_field :xj %>
   </div>
   <div class="field">
-    <%= f.label :tj %><br />
+    <%= f.label t('views.purchases.index.tj') %>:<br />
     <%= f.text_field :tj %>
   </div>
   <div class="field">
-    <%= f.label :bz %><br />
+    <%= f.label t('views.purchases.index.bz') %>:<br />
     <%= f.text_field :bz %>
   </div>
   <div class="field">
-    <%= f.label :cdate %><br />
-    <%= f.date_select :cdate %>
+    <%= f.label t('views.purchases.index.cdate') %>:<br />
+    <%= f.date_select :cdate, :order => [:year,:month,:day] %>
   </div>
   <div class="field">
-    <%= f.label :remark %><br />
+    <%= f.label t('views.purchases.index.remark') %>:<br />
     <%= f.text_area :remark %>
   </div>
   <div class="actions">

@@ -12,95 +12,95 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :oid %><br />
+    <%= f.label t('views.ordermains.index.oid') %>:<br />
     <%= f.text_field :oid %>
   </div>
   <div class="field">
-    <%= f.label :custid %><br />
+    <%= f.label t('views.ordermains.index.custid') %>:<br />
     <%= f.text_field :custid %>
   </div>
   <div class="field">
-    <%= f.label :custstate %><br />
+    <%= f.label t('views.ordermains.index.custstate') %>:<br />
     <%= f.text_field :custstate %>
   </div>
   <div class="field">
-    <%= f.label :custname %><br />
+    <%= f.label t('views.ordermains.index.custname') %>:<br />
     <%= f.text_field :custname %>
   </div>
   <div class="field">
-    <%= f.label :shopname %><br />
+    <%= f.label t('views.ordermains.index.shopname') %>:<br />
     <%= f.text_field :shopname %>
   </div>
   <div class="field">
-    <%= f.label :custtel %><br />
+    <%= f.label t('views.ordermains.index.custtel') %>:<br />
     <%= f.text_field :custtel %>
   </div>
   <div class="field">
-    <%= f.label :custaddr %><br />
+    <%= f.label t('views.ordermains.index.custaddr') %>:<br />
     <%= f.text_field :custaddr %>
   </div>
   <div class="field">
-    <%= f.label :yingshou %><br />
+    <%= f.label t('views.ordermains.index.yingshou') %>:<br />
     <%= f.text_field :yingshou %>
   </div>
   <div class="field">
-    <%= f.label :shishou %><br />
+    <%= f.label t('views.ordermains.index.shishou') %>:<br />
     <%= f.text_field :shishou %>
   </div>
   <div class="field">
-    <%= f.label :sid %><br />
+    <%= f.label t('views.ordermains.index.sid') %>:<br />
     <%= f.text_field :sid %>
   </div>
   <div class="field">
-    <%= f.label :sname %><br />
+    <%= f.label t('views.ordermains.index.sname') %>:<br />
     <%= f.text_field :sname %>
   </div>
   <div class="field">
-    <%= f.label :stel %><br />
+    <%= f.label t('views.ordermains.index.stel') %>:<br />
     <%= f.text_field :stel %>
   </div>
   <div class="field">
-    <%= f.label :saddress %><br />
+    <%= f.label t('views.ordermains.index.saddress') %>:<br />
     <%= f.text_field :saddress %>
   </div>
   <div class="field">
-    <%= f.label :payment %><br />
+    <%= f.label t('views.ordermains.index.payment') %>:<br />
     <%= f.text_field :payment %>
   </div>
   <div class="field">
-    <%= f.label :status %><br />
+    <%= f.label t('views.ordermains.index.status') %>:<br />
     <%= f.number_field :status %>
   </div>
   <div class="field">
-    <%= f.label :uid %><br />
+    <%= f.label t('views.ordermains.index.uid') %>:<br />
     <%= f.text_field :uid %>
   </div>
   <div class="field">
-    <%= f.label :uname %><br />
+    <%= f.label t('views.ordermains.index.uname') %>:<br />
     <%= f.text_field :uname %>
   </div>
   <div class="field">
-    <%= f.label :preid %><br />
+    <%= f.label t('views.ordermains.index.preid') %>:<br />
     <%= f.text_field :preid %>
   </div>
   <div class="field">
-    <%= f.label :nextid %><br />
+    <%= f.label t('views.ordermains.index.nextid') %>:<br />
     <%= f.text_field :nextid %>
   </div>
   <div class="field">
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
+    <%= f.label t('views.ordermains.index.dtype') %>:<br />
+    <%= f.text_field :dtype %>
   </div>
   <div class="field">
-    <%= f.label :cdate %><br />
-    <%= f.date_select :cdate %>
+    <%= f.label t('views.ordermains.index.cdate') %>:<br />
+    <%= f.date_select :cdate, :order => [:year,:month,:day]  %>
   </div>
   <div class="field">
-    <%= f.label :canal %><br />
-    <%= f.date_select :canal %>
+    <%= f.label t('views.ordermains.index.canal') %>:<br />
+    <%= f.text_field :canal %>
   </div>
   <div class="field">
-    <%= f.label :remark %><br />
+    <%= f.label t('views.ordermains.index.remark') %>:<br />
     <%= f.text_area :remark %>
   </div>
   <div class="actions">

@@ -16,6 +16,7 @@ table{
     color:#666;
 }
 table th {
+    border:1px solid #cad9ea;
     background-image: url(th_bg1.gif);
     background-repeat::repeat-x;
     height:30px;

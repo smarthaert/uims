@@ -2,32 +2,30 @@
 
 <table>
   <tr>
-    <th>Oid</th>
-    <th>Custid</th>
-    <th>Custstate</th>
-    <th>Custname</th>
-    <th>Shopname</th>
-    <th>Custtel</th>
-    <th>Custaddr</th>
-    <th>Yingshou</th>
-    <th>Shishou</th>
-    <th>Sid</th>
-    <th>Sname</th>
-    <th>Stel</th>
-    <th>Saddress</th>
-    <th>Payment</th>
-    <th>Status</th>
-    <th>Uid</th>
-    <th>Uname</th>
-    <th>Preid</th>
-    <th>Nextid</th>
-    <th>Type</th>
-    <th>Cdate</th>
-    <th>Canal</th>
-    <th>Remark</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th><%= t 'views.ordermains.index.oid' %></th>
+    <th><%= t 'views.ordermains.index.custid' %></th>
+    <th><%= t 'views.ordermains.index.custstate' %></th>
+    <th><%= t 'views.ordermains.index.custname' %></th>
+    <th><%= t 'views.ordermains.index.shopname' %></th>
+    <th><%= t 'views.ordermains.index.custtel' %></th>
+    <th><%= t 'views.ordermains.index.custaddr' %></th>
+    <th><%= t 'views.ordermains.index.yingshou' %></th>
+    <th><%= t 'views.ordermains.index.shishou' %></th>
+    <th><%= t 'views.ordermains.index.sid' %></th>
+    <th><%= t 'views.ordermains.index.sname' %></th>
+    <th><%= t 'views.ordermains.index.stel' %></th>
+    <th><%= t 'views.ordermains.index.saddress' %></th>
+    <th><%= t 'views.ordermains.index.payment' %></th>
+    <th><%= t 'views.ordermains.index.status' %></th>
+    <th><%= t 'views.ordermains.index.uid' %></th>
+    <th><%= t 'views.ordermains.index.uname' %></th>
+    <th><%= t 'views.ordermains.index.preid' %></th>
+    <th><%= t 'views.ordermains.index.nextid' %></th>
+    <th><%= t 'views.ordermains.index.dtype' %></th>
+    <th><%= t 'views.ordermains.index.cdate' %></th>
+    <th><%= t 'views.ordermains.index.canal' %></th>
+    <th><%= t 'views.ordermains.index.remark' %></th>
+    <th colspan="3"><%= t 'views.operation' %></th>
   </tr>
 
 <% @ordermains.each do |ordermain| %>
@@ -51,7 +49,7 @@
     <td><%= ordermain.uname %></td>
     <td><%= ordermain.preid %></td>
     <td><%= ordermain.nextid %></td>
-    <td><%= ordermain.type %></td>
+    <td><%= ordermain.dtype %></td>
     <td><%= ordermain.cdate %></td>
     <td><%= ordermain.canal %></td>
     <td><%= ordermain.remark %></td>
