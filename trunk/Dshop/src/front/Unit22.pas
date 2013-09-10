@@ -296,7 +296,7 @@ begin
 
       //更新selllogdetails中客户实际拥有的产品数量，
       Main_T.ADOQuerySQL.SQL.Clear;
-      Main_T.ADOQuerySQL.SQL.Add('update (select a.ramount, a.tid, a.pid, a.type, a.goodsname, a.preid,b.slid, b.additional,b.camount from (select sum(ad.ramount)');
+      Main_T.ADOQuerySQL.SQL.Add('update (select a.ramount, a.tid, a.pid, a.dtype, a.goodsname, a.preid,b.slid, b.additional,b.camount from (select sum(ad.ramount)');
       Main_T.ADOQuerySQL.SQL.Add(' as ramount, ad.tid, ad.pid, ad.additional, ad.dtype, ad.goodsname, am.preid from afterselldetails ad,aftersellmains am where ');
       Main_T.ADOQuerySQL.SQL.Add('ad.tid="' +
         Main_T.Label26.Caption +
