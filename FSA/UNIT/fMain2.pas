@@ -124,7 +124,8 @@ type
     function GetDataPerPage: Integer;
     procedure SetDataIndex(Value: Integer);
   protected
-    VertLine: TVertLine;
+    VertLine: TVertLine;     
+    HoriLine: THoriLine;
     ScaleHigh: array[0..3] of Single;
     ScaleLow: array[0..3] of Single;
     MA: array[0..5] of TArrayOfSingle;
@@ -187,6 +188,7 @@ procedure TfrmMain2.FormCreate(Sender: TObject);
 begin
   IS_FRACTION_UNDERLINE := True;
   VertLine := TVertLine.Create(Self);
+  HoriLine := THoriLine.Create(Self);
   WindowState := wsMaximized;
   FPageStart := 0;
   FDataIndex := 0;
@@ -293,6 +295,7 @@ begin
       //Header.Cells[0,0] := Copy(FStockName,4,Length(FStockName)-3);
       Header.Cells[0, 0] := ExtractFileName(FStockName);
       MOVE_VERTLINE(DataIndex);
+      MOVE_HORILINE(DataIndex);
       ITERATE_DATA(DataIndex);
     end;
   end;
@@ -326,7 +329,8 @@ begin
     NewPageStart := Min(NewPageStart, StkDataFile.getCount - DataPerPage);
     FPageStart := NewPageStart;
     FDataIndex := Max(FDataIndex, FPageStart);
-    MOVE_VERTLINE(FDataIndex);
+    MOVE_VERTLINE(FDataIndex);  
+    MOVE_HORILINE(DataIndex);
 
     GRID.Repaint; //必须
     ITERATE_DATA(FDataIndex);
@@ -435,6 +439,7 @@ begin
 
   if IS_SHOW_DATESCALE then DRAW_DATE_SCALE(C, R, True);
 
+  // 查找最高最低
   if FindKLineScaleHighLow(StkDataFile, High, Low, HA, LA, HIndex, LIndex) then
   begin
     ScaleHigh[1] := High;
@@ -1191,6 +1196,7 @@ begin
       //Header.Cells[0,0] := Copy(FStockName,4,Length(FStockName)-3);
         Header.Cells[0, 0] := ExtractFileName(FStockName);
         MOVE_VERTLINE(DataIndex);
+        MOVE_HORILINE(DataIndex);
         ITERATE_DATA(DataIndex);
       end;
     end;
@@ -1241,6 +1247,7 @@ begin
         PageStart := PageStart + Diff; //DataPerPage div 4
       FDataIndex := Value;
       MOVE_VERTLINE(FDataIndex);
+      MOVE_HORILINE(DataIndex);
       //GRID.Repaint;
       ITERATE_DATA(FDataIndex);
 
@@ -1535,7 +1542,7 @@ procedure TVertLine.Paint;
 begin
   if Visible then
   begin
-    _setPen_(Canvas, clFuchsia, 1, psSolid, pmXOR);
+    _setPen_(Canvas, TColor($C6C300), 1, psDot, pmXor);
     _line_(Canvas, FPosition, 26, FPosition, Parent.ClientHeight - 1);
   end;
 end;
@@ -1567,7 +1574,7 @@ procedure THoriLine.Paint;
 begin
   if Visible then
   begin
-    _setPen_(Canvas, clFuchsia, 1, psSolid, pmXOR);
+    _setPen_(Canvas, TColor($C6C300), 1, psDot, pmXor);
     _line_(Canvas, 0, FPosition, Parent.ClientWidth - 1, FPosition);
   end;
 end;
@@ -1650,34 +1657,23 @@ begin
 end;
 
 procedure TfrmMain2.MOVE_HORILINE(DataIndex: Integer);
+var
+  High, Low, D: Single;
+  P: PStkDataRec;
+  HIndex, LIndex: TArrayOfInteger; //Range 0 to DataPerPage-1.
+  HA, LA: TArrayOfSingle;
+  Rt: TRect;
 begin
-  //根据当前的收盘价计算横线位置
-
-  LineCount := Max(3, LineCount div 2 * 2 + 1);
-  D := _div_(H - L, LineCount - 1);
-  SetLength(FValueList, LineCount);
-  FValueList[0] := H;
-  for I := 1 to LineCount - 2 do
-    FValueList[I] := H - D * I;
-  FValueList[LineCount - 1] := L;
-
-  if RoundToPrice then
+  if (DataIndex>0) and FindKLineScaleHighLow(StkDataFile, High, Low, HA, LA, HIndex, LIndex) then
   begin
-    D := (H + L) / 2;
-    for I := 0 to LineCount - 1 do
-      if FValueList[I] > D then FValueList[I] := _round_(FValueList[I], 0)
-      else if FValueList[I] < D then FValueList[I] := _round_(FValueList[I], 1);
-  end;
+    D := (High - Low) / 20;
+    High := High + D;
+    Low := Low - D * 2;
+    P := PStkDataRec(StkDataFile.getData(DataIndex));
 
-  _setPen_(C, cl3DDkShadow, 1, psDot, pmCopy);
-  _setBrush_(C, clBlack, bsSolid);
-  for I := 0 to LineCount - 1 do
-  begin
-    VertLine.Position := Fy2Iy(FValueList[I], R, HH, LL);
+    HoriLine.Position := Fy2Iy(P^.CP, GRID.CellRect(0, 1), High, Low);
+    //HoriLine.Position := 100;
   end;
-
-  
-  VertLine.Position := DataIndexToPixel(FDataIndex);
 end;
 
 procedure TfrmMain2.miPageFirstClick(Sender: TObject);
