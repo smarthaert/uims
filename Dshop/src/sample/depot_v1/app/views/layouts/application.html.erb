@@ -1,0 +1,65 @@
+<!-- START:head -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= t('.title') %></title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<!-- END:head -->
+<body class="<%= controller.controller_name %>" id="all">
+<!-- START:i18n -->
+  <div id="banner">
+<!-- START_HIGHLIGHT -->
+    <%= form_tag store_path, class: 'locale' do %>
+      <%= select_tag 'set_locale', 
+        options_for_select(LANGUAGES, I18n.locale.to_s),
+        onchange: 'this.form.submit()' %>
+      <%= submit_tag 'submit' %>
+      <%= javascript_tag "$('.locale input').hide()" %>
+    <% end %>
+<!-- END_HIGHLIGHT -->
+    <%= @page_title || t('.title') %>
+    <%= form_tag(orders_path, :method => "get") do%>
+      <div>
+         <%= text_field_tag :search, params[:search] %>    
+         <%= submit_tag t('.search'), :name => nil %>    
+      </div>
+    <% end %>
+  </div>
+<!-- END:i18n -->
+  <div id="columns">
+    <div id="side">
+
+      <ul>
+        <li><a href="/"><%= t('.home') %></li>
+        <li><a href="http://m.pconline.com.cn/shop273092" target="_blank" ><%= t('.pconline') %></a></li>
+        <li><a href="http://shop33285006.taobao.com/" target="_blank"><%= t('.taobao') %></a></li>
+      </ul>
+
+      <% if session[:user_id] %>
+        <ul>
+          <li><%= link_to t('.orders'),   orders_path  %></li>
+          <li><%= link_to t('.products'), products_path %></li>
+          <li><%= link_to t('.users'),    users_path    %></li>
+        </ul>
+        <%= button_to t('.logout'), logout_path, method: :delete   %>
+      <% end %>
+
+      
+      <!-- START:hidden_div -->
+      <% if @cart %>
+        <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+          <%= render @cart %>
+        <% end %>
+      <% end %>
+    <!-- END:hidden_div -->
+
+    </div>
+    <div id="main">
+      <%= yield %>
+    </div>
+  </div>
+</body>
+</html>

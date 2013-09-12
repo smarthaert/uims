@@ -1,0 +1,62 @@
+<h1><%= t('.title') %></h1>
+
+<% form_tag orders_path, :method => 'get' do %>    
+<p>    
+    <%= text_field_tag :search, params[:search] %>    
+    <%= submit_tag "Search", :name => nil %>    
+</p>    
+<% end %> 
+
+<table border="1">
+  <tr>
+    <th><%= t('.sum') %></th>
+    <th></th>
+    <th><%= number_to_currency @sum[1] %></th>
+    <th></th>
+    <th><%= number_to_currency @sum[0] %></th>
+    <th colspan="2" ></th>
+    <th colspan="4" ></th>
+  </tr>
+  <tr>
+    <th><%= t('.name') %></th>
+    <th><%= t('.cell_phone') %></th>
+    <th><%= t('.discount') %></th>
+    <th><%= t('.pay_type') %></th>
+    <th><%= t('.integration') %></th>
+    <th><%= t('.level') %></th>
+    <th><%= t('.created_at') %></th>
+    <th><%= t('.updated_at') %></th>
+    <th colspan="3"><%= t('.opt') %></th>
+  </tr>
+ 
+<% @orders.each do |order| %>
+  <tr>
+    <td><%= order.name %></td>
+    <td><%= order.cell_phone %></td>
+    <td><%= order.discount %></td>
+    <td><%= order.pay_type %></td>
+    <td><%= order.integration %></td>
+    <td><%= order.level %></td>
+    <td><%= order.created_at %></td>
+    <td><%= order.updated_at %></td>
+    <td><%= link_to t('.show'), order %></td>
+    <td><%= link_to t('.edit'), edit_order_path(order) %></td>
+    <td><%= link_to t('.destroy'), order, method: :delete,
+              data: { confirm: t('.are_you_sure') } %></td>
+  </tr>
+<% end %>
+
+<div>  
+  <div >  
+   <%= page_entries_info @orders %>  
+  </div>  
+  <%= will_paginate @orders, :container => false %>  
+</div>
+
+</table>
+
+<br/>
+
+<!-- START_HIGHLIGHT -->
+<p><%= will_paginate @orders %></p>
+<!-- END_HIGHLIGHT -->

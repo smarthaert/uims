@@ -1,0 +1,26 @@
+<h1><%= t('.show_product') %></h1>
+
+<p>
+  <b><%= t('.title') %>:</b>
+  <%= @product.title %>
+</p>
+
+<p>
+  <b><%= t('.description') %>:</b>
+  <%= @product.description %>
+</p>
+
+<p>
+  <b><%= t('.picture') %>:</b>
+  <!-- <%= @product.image_url %> -->
+  <%= image_tag @product.picture.url(:medium) %>
+</p>
+
+<p>
+  <b><%= t('.price') %>:</b>
+  <%= number_to_currency(@product.price) %>
+</p>
+
+
+<%= link_to t('.edit'), edit_product_path(@product) %> |
+<%= link_to t('.back'), products_path %>
