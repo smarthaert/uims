@@ -1,0 +1,32 @@
+<h1><%= t('.title') %></h1>
+
+<%= link_to t('.newProduct'), new_product_path %>
+<br />
+
+<table border="1">
+<% @products.each do |product| %>
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+
+    <td>
+      <%= image_tag(product.picture.url(:thumb), class: 'list_image') %>
+    </td>
+
+    <td class="list_description">
+      <dl>
+        <dt><%= product.title %></dt>
+        <dd><%= truncate(strip_tags(product.description),
+               length: 80) %></dd>
+      </dl>
+    </td>
+
+    <td class="list_actions">
+      <%= link_to t('.show'), product %><br/>
+      <%= link_to t('.edit'), edit_product_path(product) %><br/>
+      <%= link_to t('.destroy'), product, method: :delete,
+                  data: { confirm: t('.are_you_sure') } %>
+    </td>
+  </tr>
+<% end %>
+
+</table>
+

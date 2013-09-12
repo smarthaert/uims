@@ -1,0 +1,209 @@
+#START:layout
+#START:main
+#START:cart
+#START:currency
+#START:checkout
+#START:flash
+en:
+
+#END:cart
+#END:checkout
+#END:flash
+#END:main
+#END:layout
+  number:
+    currency:
+      format:
+        unit:      "$"
+        precision: 2
+        separator: "."
+        delimiter: ","
+        format:    "%u%n"
+#END:currency
+
+  sessions:
+    new:
+      login_title: "请输入验证信息"
+      login:    "登录"
+      name:    "用户"
+      password:    "密码"
+
+#START:errors
+  errors:
+    template:
+      body:        "下面的字段有错误:"
+      header:       
+        one:       "有一个错误，因此%{model} 保存失败。"
+        other:     "有%{count} 个错误，因此 %{model}保存失败。"
+#END:errors
+
+#START:layout
+  layouts:
+    application:
+      title:       "冰点手机，伴您一路同行～"
+      home:        "在线购物"
+      pconline:     "太平洋电脑旗舰店"
+      taobao:     "淘宝旗舰店"
+      orders:      "订单管理"
+      products:    "产品管理"
+      users:       "店员管理"
+      logout:      "登出"
+      name:         "客户姓名"
+      submit:       "查询"
+      search:       "统一搜索"
+#END:layout
+
+#START:admin
+  admin:
+    index:
+      welcome:     "欢迎您："
+      now:        "现在时间："
+      we_got:       "我们已经成功完成了"
+      order:       "订单，亲们，加油！加油 Oo～～"
+#END:admin
+
+#START:product
+  products:
+    new:
+      new_product: "新增产品"
+      back:         "返回"
+    show:
+      show_product: "产品详细信息"
+      title:       "产品名称"
+      description: "产品描述"
+      picture:     "产品图片"
+      price:       "产品价格"
+      edit:         "编辑"
+      back:         "返回"
+    edit:
+      editing_product: "产品信息编辑"
+      show:         "显示"
+      back:         "返回"
+    form:
+      title:       "产品名称"
+      description: "产品描述"
+      picture:     "产品图片"
+      price:       "产品价格"
+      submit:   "提交信息"
+      input_product_info:  "请输入产品信息"
+    index:
+      title:       "入库产品列表："
+      show:        "显示产品信息"
+      edit:        "编辑"
+      destroy:     "删除"
+      are_you_sure: "您确认要删除该产品吗？"
+      newProduct:  "新建产品"
+#END:cart
+
+#START:user
+  users:
+    index:
+      title:       "店员列表："
+      name:        "用户名"
+      show:        "显示店员信息"
+      edit:        "编辑"
+      destroy:     "删除"
+      are_you_sure: "您确认要删除该用户吗？"
+      newUser:     "新建店员"
+      opt:          "操作"
+      created_at:   "创建时间"
+      updated_at:   "更新时间"
+    show:
+      name:        "用户名"
+      password:     "密码"
+      edit:         "编辑"
+      back:         "返回"
+    edit:
+      edit_user:    "编辑用户信息"
+      back:         "返回"
+      show:        "显示用户信息"
+    form:
+      input_user_info:  "请输入用户信息"
+      name:        "用户名"
+      password:        "密码"
+      confirm:        "确认密码"
+      submit:   "提交信息"
+    new:
+      back:         "返回"
+
+
+#END:cart
+
+#START:cart
+  carts:
+    cart:
+      title:       "购物车"
+      empty:       "清空"
+      checkout:    "结算"
+      totle:       "合计："
+      are_you_sure: "确信清空购物车吗？"
+#END:cart
+
+#START:main
+  store:
+    index:
+      title_html:  "产品目录"
+      add_html:    "放入购物车"
+#END:main
+
+#START:checkout
+  orders:
+    new:
+      legend:       "订单信息录入"
+    form:
+      name:         "客户姓名"
+      cell_phone:   "移动电话"
+      address_html: "客户地址"
+      email:        "电子邮件"
+      pay_type:     "支付方式"
+      pay_prompt_html: "请选择支付方式"
+      integration:  "奖励积分"
+      discount:     "折扣价格"
+      teller:       "操作柜员"
+      level:        "会员级别"
+      note:         "备注"
+      submit:       "提交订单"
+      input_order_info:  "请输入订单信息"
+    index:
+      sum:          "合计"
+      discount:     "消费金额"
+      name:         "客户姓名"
+      cell_phone:   "移动电话"
+      integration:  "积分"
+      level:        "会员级别"
+      title:        "订单列表"
+      show:         "显示订单信息"
+      edit:         "编辑"
+      destroy:      "删除"
+      are_you_sure: "您确认要删除该订单吗？"
+      opt:          "操作"
+      created_at:   "创建时间"
+      updated_at:   "更新时间"
+    show:
+      name:         "客户姓名"
+      cell_phone:   "移动电话"
+      address_html: "客户地址"
+      email:        "电子邮件"
+      pay_type:     "支付方式"
+      pay_prompt_html: "请选择支付方式"
+      integration:  "奖励积分"
+      discount:     "折扣价格"
+      teller:       "操作柜员"
+      level:        "会员级别"
+      note:         "备注"
+      edit:         "编辑"
+      back:         "返回"
+    edit:
+      editing_order:  "编辑订单信息"
+      back:         "返回"
+      show:         "显示订单信息"
+#END:checkout
+
+#START:flash
+  thanks:          "感谢您选择冰点手机，选择品质生活。欢迎下光临。"
+#END:flash
+  
+  cash: "现金"
+  credit_card: "信用卡/银行卡"
+  integration:  "积分"
+
