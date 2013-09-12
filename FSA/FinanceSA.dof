@@ -90,7 +90,7 @@ MaxStackSize=1048576
 ImageBase=4194304
 ExeDescription=
 [Directories]
-OutputDir=
+OutputDir=C:\may\FSA\BIN
 UnitOutputDir=BIN
 PackageDLLOutputDir=
 PackageDCPOutputDir=
@@ -143,3 +143,10 @@ Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
 [HistoryLists\hlSearchPath]
 Count=1
 Item0=$(DELPHI)\Source\INDY\SOURCE;$(DELPHI)\Source\VGLBPL\UNIT;$(DELPHI)\Source\LMD70SE\LIB\D6;$(DELPHI)\Source\BRKSOCKET;C:\Program Files\Borland\Delphi6\Source\INDY\Source;C:\Program Files\Borland\Delphi6\Source\POWERARC\lib;C:\Program Files\Borland\Delphi6\Source\GRIDPACK
+[HistoryLists\hlUnitOutputDirectory]
+Count=1
+Item0=BIN
+[HistoryLists\hlOutputDirectorry]
+Count=2
+Item0=C:\may\FSA\BIN
+Item1=C:\may\FSA

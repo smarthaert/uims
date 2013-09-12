@@ -5,6 +5,19 @@ interface
 uses Classes, Dialogs, DateUtils, StrUtils;
 
 type
+  LP_s_k_line_data = ^s_k_line_data;
+  s_k_line_data = record
+    i_date: Cardinal;
+    i_open: Cardinal;
+    i_high: Cardinal;
+    i_low: Cardinal;
+    i_close: Cardinal;
+    f_amount: Single;
+    i_vol: Cardinal;
+    i_pre_close: Cardinal;
+  end;
+
+type
 
 { TArrayOfSingle }
 
@@ -21,6 +34,7 @@ type
 { IBaseDataFile }
   IBaseDataFile = interface(IUnknown)
     function getCount: Integer;
+    function writeStkDataToM(iFlag: Integer; p_s_k_line_data: LP_s_k_line_data): Integer;
     function getFileName: string;
     function getHeader: Pointer;
     function getHeaderSize: Integer;
@@ -35,8 +49,8 @@ type
   TBaseDataFile = class(TInterfacedObject, IBaseDataFile)
   protected
     M: TMemoryStream;
-  protected
     function getCount: Integer; virtual;
+    function writeStkDataToM(iFlag: Integer; p_s_k_line_data: LP_s_k_line_data): Integer; virtual;
     procedure Reload; virtual;
     function getHeader: Pointer; virtual;
     function getRec(Index: Integer): Pointer; virtual;
@@ -151,6 +165,50 @@ begin
   end;
 end;
 
+function TBaseDataFile.writeStkDataToM(iFlag: Integer; p_s_k_line_data: LP_s_k_line_data): Integer;
+var
+  stk_sdr: TStkDataRec;
+  AYear, AMonth, ADay, AHour, AMinute, ASecond, AMilliSecond: Word;
+begin
+  Result := 0;
+  if M = nil then Result := -1 else
+  begin
+    AMilliSecond := 0;
+    ASecond := 0;
+    AMinute := p_s_k_line_data.i_date mod 100;
+
+    if (AMinute < 50) then AHour := Round(p_s_k_line_data.i_date / 100) mod 100
+    else AHour := (Round((p_s_k_line_data.i_date - 10) / 100) mod 100);
+
+    ADay := Round(p_s_k_line_data.i_date / 100 / 100) mod 100;
+    AMonth := Round(p_s_k_line_data.i_date / 100 / 100 / 100) mod 100;
+    AYear := 2012;
+
+    stk_sdr.Date := EncodeDateTime(AYear, AMonth, ADay, AHour, AMinute, ASecond, AMilliSecond);
+    stk_sdr.OP := p_s_k_line_data.i_open / 100;
+    stk_sdr.HP := p_s_k_line_data.i_high / 100;
+    stk_sdr.LP := p_s_k_line_data.i_low / 100;
+    stk_sdr.CP := p_s_k_line_data.i_close / 100;
+    stk_sdr.VOL := p_s_k_line_data.i_vol / 100;
+    //stk_sdr.f_amount := p_s_k_line_data.f_amount;
+
+    if (stk_sdr.OP < 10.0) then Exit;
+    if (stk_sdr.HP < 10.0) then Exit;
+    if (stk_sdr.LP < 10.0) then Exit;
+    if (stk_sdr.CP < 10.0) then Exit;
+
+    if (iFlag = 0) then
+    begin
+      M.Seek(0, soFromEnd); //新的一分
+    end
+    else
+    begin
+      M.Seek(0 - sizeof(stk_sdr), soFromEnd); //60秒
+    end;
+    M.WriteBuffer(stk_sdr, sizeof(stk_sdr));
+  end;
+end;
+
 procedure TBaseDataFile.loadFromTxtFile(const FileName: string); //加载指定文件到内存
 var
   i: Integer;
@@ -255,6 +313,8 @@ begin
   FStockPath := StockPath;
   inherited Create;
 end;
+
+
 
 procedure TDataFile.Reload(const StockName: string);
 begin

@@ -356,9 +356,9 @@ object frmMain2: TfrmMain2
     Left = 18
     Top = 41
     Width = 380
-    Height = 36
+    Height = 32
     BorderStyle = bsNone
-    ColCount = 14
+    ColCount = 16
     Ctl3D = False
     DefaultColWidth = 40
     Enabled = False

@@ -124,7 +124,7 @@ type
     function GetDataPerPage: Integer;
     procedure SetDataIndex(Value: Integer);
   protected
-    VertLine: TVertLine;     
+    VertLine: TVertLine;
     HoriLine: THoriLine;
     ScaleHigh: array[0..3] of Single;
     ScaleLow: array[0..3] of Single;
@@ -153,20 +153,20 @@ type
     procedure SetStockName(const Value: string);
     procedure SetPageStart(Value: Integer);
     procedure SetUnitWidth(Value: Integer);
-    procedure CalcAll;
     function FindKLineScaleHighLow(DataFile: IDataFile; var High, Low: Single;
       var HA, LA: TArrayOfSingle; var HIndex, LIndex: TArrayOfInteger): Boolean;
     function FindVLineScaleHighLow(DataFile: IDataFile; var High, Low: Single): Boolean;
     function PageIndex2DataIndex(Index: Integer): Integer;
     procedure DRAW_DATE_SCALE(C: TCanvas; R: TRect; ShowText: Boolean);
     procedure ITERATE_DATA(Index: Integer);
-    procedure MOVE_VERTLINE(DataIndex: Integer); overload;    
+    procedure MOVE_VERTLINE(DataIndex: Integer); overload;
     procedure MOVE_HORILINE(DataIndex: Integer); overload;
     function DataIndexToPixel(DataIndex: Integer): Integer;
     function PixelToDataIndex(X: Integer): Integer;
     procedure CLEAR_ALL_CALCULATE_DATA();
   public
     StkDataFile: IDataFile;
+    procedure CalcAll;
     function Fy2Iy(FY: Single; R: TRect; ScaleHigh, ScaleLow: Single): Integer;
     property StockName: string read FStockName write SetStockName;
     property PageStart: Integer read FPageStart write SetPageStart;
@@ -182,7 +182,7 @@ implementation
 
 {$R *.dfm}
 
-uses Math, fUtils;
+uses Math, fUtils, ff_hs_base, s_lib_pas_unit;
 
 procedure TfrmMain2.FormCreate(Sender: TObject);
 begin
@@ -195,7 +195,7 @@ begin
   FUnitWidth := 6;
   GRID.Color := clBlack;
   //StockName := 'IFL0';//数据文件名
-  StockName := '.\DATA\IFL0.DAT'; //数据文件名
+  StockName := '..\DATA\IFL0.DAT'; //数据文件名
   Header.Options := Header.Options - [goVertLine, goHorzLine];
   Header.Color := clBlack;
   Header.Cells[2, 0] := '''开盘'; //显示列标题
@@ -204,11 +204,15 @@ begin
   Header.Cells[8, 0] := '''收盘';
   Header.Cells[10, 0] := '''涨跌';
   Header.Cells[12, 0] := '''成交量';
+
+  //启动行情
+  FF_creat_comm_obj();
+
 end;
 
 procedure TfrmMain2.FormResize(Sender: TObject);
 const //定义标题的宽度
-  WWW: array[0..13] of Single = (4, 7.5, 2.5, 3.5, 2.5, 3.5, 2.5, 3.5, 2.5, 3.5, 2.5, 2.5, 3.5, 3.5);
+  WWW: array[0..15] of Single = (4, 7.5, 2.5, 3.5, 2.5, 3.5, 2.5, 3.5, 2.5, 3.5, 2.5, 2.5, 3.5, 3.5, 3.5, 3.5);
 var
   I, Temp: Integer;
   w, h: Single;
@@ -225,7 +229,7 @@ begin
   GRID.RowHeights[2] := Round(h * 4);
   GRID.RowHeights[3] := Round(h * 8);
 
-  GRID.DoubleBuffered := True;//解决界面闪烁问题
+  GRID.DoubleBuffered := True; //解决界面闪烁问题
 
   R := GRID.CellRect(0, 0);
   InflateRect(R, -1, -1);
@@ -301,6 +305,7 @@ begin
   end;
 end;
 
+
 procedure TfrmMain2.SetPageStart(Value: Integer);
 begin
   if StkDataFile <> nil then
@@ -329,7 +334,7 @@ begin
     NewPageStart := Min(NewPageStart, StkDataFile.getCount - DataPerPage);
     FPageStart := NewPageStart;
     FDataIndex := Max(FDataIndex, FPageStart);
-    MOVE_VERTLINE(FDataIndex);  
+    MOVE_VERTLINE(FDataIndex);
     MOVE_HORILINE(DataIndex);
 
     GRID.Repaint; //必须
@@ -1592,7 +1597,9 @@ end;
 
 procedure TfrmMain2.FormDestroy(Sender: TObject);
 begin
+  FF_release_comm_obj();
   _free_(VertLine);
+  _free_(HoriLine);
 end;
 
 procedure TfrmMain2.FormMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
@@ -1664,7 +1671,7 @@ var
   HA, LA: TArrayOfSingle;
   Rt: TRect;
 begin
-  if (DataIndex>0) and FindKLineScaleHighLow(StkDataFile, High, Low, HA, LA, HIndex, LIndex) then
+  if (DataIndex > 0) and FindKLineScaleHighLow(StkDataFile, High, Low, HA, LA, HIndex, LIndex) then
   begin
     D := (High - Low) / 20;
     High := High + D;
@@ -1934,3 +1941,4 @@ begin
 end;
 
 end.
+
