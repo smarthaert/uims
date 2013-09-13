@@ -39,11 +39,11 @@ begin
 
     if (i_comm_ok = 0) then
     begin
-    frmMain2.Header.Cells[14, 0]:='断开';
+      frmMain2.Header.Cells[14, 0] := '断开';
     end
     else
     begin
-    frmMain2.Header.Cells[14, 0]:='联机';
+      frmMain2.Header.Cells[14, 0] := '联机';
     end;
 
     Sleep(15000);
@@ -70,11 +70,11 @@ begin
 
             if (i_comm_ok = 0) then
             begin
-          frmMain2.Header.Cells[14, 0]:='断开';
+              frmMain2.Header.Cells[14, 0] := '断开';
             end
             else
             begin
-          frmMain2.Header.Cells[14, 0]:='联机';
+              frmMain2.Header.Cells[14, 0] := '联机';
             end;
 
        //退出
@@ -169,4 +169,3 @@ begin
 end;
 
 end.
-

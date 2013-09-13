@@ -3867,12 +3867,12 @@ begin
 
   if (i_comm_ok = 0) then
   begin
-    frmMain2.Header.Cells[14, 0]:='断开';
+    frmMain2.Header.Cells[14, 0] := '断开';
     Exit;
   end
   else
   begin
-    frmMain2.Header.Cells[14, 0]:='联机';
+    frmMain2.Header.Cells[14, 0] := '联机';
   end;
   i_line_no_001 := i_line_no_001 + 1;
 
@@ -4640,4 +4640,3 @@ end;
 
 
 end.
-

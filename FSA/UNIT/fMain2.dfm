@@ -524,6 +524,14 @@ object frmMain2: TfrmMain2
         Checked = True
         OnClick = mi1001Click
       end
+      object N22: TMenuItem
+        Caption = '-'
+      end
+      object N51: TMenuItem
+        Tag = 51
+        Caption = #22312#32447#34892#24773
+        OnClick = mi1001Click
+      end
       object N18: TMenuItem
         Caption = '-'
       end
