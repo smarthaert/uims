@@ -86,6 +86,8 @@ type
     miQuickPageDown: TMenuItem;
     miQuickPageUp: TMenuItem;
     N21: TMenuItem;
+    N22: TMenuItem;
+    N51: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure GRIDDrawCell(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
@@ -205,8 +207,7 @@ begin
   Header.Cells[10, 0] := '''涨跌';
   Header.Cells[12, 0] := '''成交量';
 
-  //启动行情
-  FF_creat_comm_obj();
+  Header.Cells[14, 0] := '离线';
 
 end;
 
@@ -234,6 +235,7 @@ begin
   R := GRID.CellRect(0, 0);
   InflateRect(R, -1, -1);
   Header.BoundsRect := R;
+  Header.DoubleBuffered := True;//解决界面闪烁问题
   Header.Font.Height := Header.ClientHeight - 1;
   for I := 0 to Header.ColCount - 1 do
     Header.ColWidths[I] := Round(Header.Font.Height * WWW[I]);
@@ -1148,6 +1150,21 @@ begin
   begin
     Checked := not Checked;
     case Tag of
+      51:
+        begin
+
+          IS_ONLINE_HQ := Checked;
+          if IS_ONLINE_HQ then //联机
+          begin
+          //启动在线行情
+            FF_creat_comm_obj();
+          end
+          else
+          begin
+            FF_release_comm_obj();
+            Header.Cells[14, 0] := '离线';
+          end;
+        end;
       100: IS_DRAW_MA := Checked;
       1001: IS_DRAW_MA_5 := Checked;
       101: IS_SHOW_DATESCALE := Checked;
@@ -1597,7 +1614,9 @@ end;
 
 procedure TfrmMain2.FormDestroy(Sender: TObject);
 begin
-  FF_release_comm_obj();
+  if not IS_ONLINE_HQ then
+    FF_release_comm_obj();
+
   _free_(VertLine);
   _free_(HoriLine);
 end;
