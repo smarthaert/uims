@@ -302,6 +302,7 @@ begin
       Header.Cells[0, 0] := ExtractFileName(FStockName);
       MOVE_VERTLINE(DataIndex);
       MOVE_HORILINE(DataIndex);
+      GRID.Repaint; //必须
       ITERATE_DATA(DataIndex);
     end;
   end;
@@ -1219,6 +1220,7 @@ begin
         Header.Cells[0, 0] := ExtractFileName(FStockName);
         MOVE_VERTLINE(DataIndex);
         MOVE_HORILINE(DataIndex);
+        GRID.Repaint; //必须
         ITERATE_DATA(DataIndex);
       end;
     end;
@@ -1270,7 +1272,7 @@ begin
       FDataIndex := Value;
       MOVE_VERTLINE(FDataIndex);
       MOVE_HORILINE(DataIndex);
-      //GRID.Repaint;
+      GRID.Repaint;
       ITERATE_DATA(FDataIndex);
 
       //GRID.Repaint;  //引起页面闪烁
