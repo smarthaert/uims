@@ -443,7 +443,7 @@ object frmMain2: TfrmMain2
         Caption = '-'
       end
       object miQuickLeft: TMenuItem
-        Caption = #24448#24038'1/8'#39029'(CTRL+LEFTl)'
+        Caption = #24448#24038'1/8'#39029'(CTRL+LEFT)'
         OnClick = miQuickLeftClick
       end
       object miQuickRight: TMenuItem
