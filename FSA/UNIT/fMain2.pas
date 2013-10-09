@@ -1830,7 +1830,7 @@ end;
 procedure TfrmMain2.XTDAT1Click(Sender: TObject);
 var
   i: Integer;
-  lstSplit: TStringList;
+  lstSplit,lstdataSplit,lstdaySplit: TStringList;
   rec: TStkDataRec;
   line: string;
   rText: TextFile;
@@ -1855,20 +1855,33 @@ begin
         lstSplit.Delimiter := ',';
         lstSplit.DelimitedText := line;
 
-        if length(lstSplit.Strings[2]) = 4 then
-        begin
-          rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[1], 4)), StrToInt(MidStr(lstSplit.Strings[1], 5, 2)), StrToInt(RightStr(lstSplit.Strings[1], 2)), StrToInt(LeftStr(lstSplit.Strings[2], 2)), StrToInt(RightStr(lstSplit.Strings[2], 2)), 0, 0);
-        end
-        else
-        begin
-          rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[1], 4)), StrToInt(MidStr(lstSplit.Strings[1], 5, 2)), StrToInt(RightStr(lstSplit.Strings[1], 2)), StrToInt(LeftStr(lstSplit.Strings[2], 1)), StrToInt(RightStr(lstSplit.Strings[2], 2)), 0, 0);
-        end;
 
-        rec.OP := StrToFloat(lstSplit.Strings[3]);
-        rec.CP := StrToFloat(lstSplit.Strings[4]);
-        rec.HP := StrToFloat(lstSplit.Strings[5]);
-        rec.LP := StrToFloat(lstSplit.Strings[6]);
-        rec.VOL := StrToInt(lstSplit.Strings[10]);
+        //if length(lstSplit.Strings[2]) = 4 then
+        //begin
+        //  rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[1], 4)), StrToInt(MidStr(lstSplit.Strings[1], 5, 2)), StrToInt(RightStr(lstSplit.Strings[1], 2)), StrToInt(LeftStr(lstSplit.Strings[2], 2)), StrToInt(RightStr(lstSplit.Strings[2], 2)), 0, 0);
+        //end
+        //else
+        //begin
+        //  rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[1], 4)), StrToInt(MidStr(lstSplit.Strings[1], 5, 2)), StrToInt(RightStr(lstSplit.Strings[1], 2)), StrToInt(LeftStr(lstSplit.Strings[2], 1)), StrToInt(RightStr(lstSplit.Strings[2], 2)), 0, 0);
+        //end;
+
+        //2010-4-16 09:16:00
+        lstdataSplit := TStringList.Create;
+        lstdataSplit.Delimiter := ' ';
+        lstdataSplit.DelimitedText := lstSplit.Strings[0];
+
+        lstdaySplit := TStringList.Create;
+        lstdaySplit.Delimiter := '-';
+        lstdaySplit.DelimitedText := lstdataSplit.Strings[0];
+
+        rec.Date := EncodeDateTime(StrToInt(lstdaySplit.Strings[0]), StrToInt(lstdaySplit.Strings[1]), StrToInt(lstdaySplit.Strings[2]), StrToInt(LeftStr(lstSplit.Strings[1], 2)), StrToInt(MidStr(lstSplit.Strings[1], 4, 2)), 0, 0);
+
+
+        rec.OP := StrToFloat(lstSplit.Strings[2]);
+        rec.CP := StrToFloat(lstSplit.Strings[3]);
+        rec.HP := StrToFloat(lstSplit.Strings[4]);
+        rec.LP := StrToFloat(lstSplit.Strings[5]);
+        rec.VOL := StrToInt(lstSplit.Strings[6]);
 
 
         try
