@@ -90,7 +90,7 @@ MaxStackSize=1048576
 ImageBase=4194304
 ExeDescription=
 [Directories]
-OutputDir=D:\may\svn\FSA\BIN
+OutputDir=C:\may\FSA\BIN
 UnitOutputDir=BIN
 PackageDLLOutputDir=
 PackageDCPOutputDir=
@@ -148,6 +148,6 @@ Count=1
 Item0=BIN
 [HistoryLists\hlOutputDirectorry]
 Count=3
-Item0=D:\may\svn\FSA\BIN
-Item1=C:\may\FSA\BIN
+Item0=C:\may\FSA\BIN
+Item1=D:\may\svn\FSA\BIN
 Item2=C:\may\FSA
