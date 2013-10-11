@@ -88,6 +88,7 @@ type
     N21: TMenuItem;
     N22: TMenuItem;
     N51: TMenuItem;
+    N23: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure GRIDDrawCell(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
@@ -121,6 +122,7 @@ type
     procedure N17Click(Sender: TObject);
     procedure XTDAT1Click(Sender: TObject);
     procedure DATTXT1Click(Sender: TObject);
+    procedure N23Click(Sender: TObject);
   private
     FDataIndex: Integer;
     function GetDataPerPage: Integer;
@@ -235,7 +237,7 @@ begin
   R := GRID.CellRect(0, 0);
   InflateRect(R, -1, -1);
   Header.BoundsRect := R;
-  Header.DoubleBuffered := True;//解决界面闪烁问题
+  Header.DoubleBuffered := True; //解决界面闪烁问题
   Header.Font.Height := Header.ClientHeight - 1;
   for I := 0 to Header.ColCount - 1 do
     Header.ColWidths[I] := Round(Header.Font.Height * WWW[I]);
@@ -1829,13 +1831,15 @@ end;
 
 procedure TfrmMain2.XTDAT1Click(Sender: TObject);
 var
-  i: Integer;
-  lstSplit,lstdataSplit,lstdaySplit: TStringList;
+  recNum, i, period: Integer;
+  lstSplit, lstdataSplit, lstdaySplit: TStringList;
   rec: TStkDataRec;
-  line: string;
-  rText: TextFile;
+  line, time: string;
   M: TMemoryStream;
+  P: PStkDataRec;
+  rText: TextFile;
 begin
+
 //加载TXT文件转换为DAT文件
   OpenDialog1.Filter := '文本文件(*.txt)|*.txt';
 
@@ -1900,7 +1904,151 @@ begin
       _free_(M);
       closefile(rText);
     end;
+
+
+
+
+ {
+      period := 270;
+      //从当前的内存中获取数据
+      M := TMemoryStream.Create;
+      recNum := StkDataFile.getCount;
+      i := 0;
+      while i < recNum do
+      begin
+        p := StkDataFile.getRec(i);
+
+        //加工不同周期的数据
+        if ((i + 1) mod period) = 1 then
+        begin
+          rec.OP := P.OP;
+          rec.HP := P.HP;
+          rec.LP := P.LP;
+          rec.VOL := 0;
+        end;
+
+        if rec.HP < p.CP then
+        begin
+          rec.HP := p.CP;
+        end;
+
+        if rec.LP > P.LP then
+        begin
+          rec.LP := P.LP;
+        end;
+
+        rec.VOL := rec.VOL + P.VOL;
+
+        time := FormatDateTime('hh:nn', P.Date);
+
+        if (((i + 1) mod period) = 0) or (time = '15:15') then
+        begin
+          rec.Date := P.Date;
+          rec.CP := p.CP;
+          try
+          M.Write(rec, SizeOf(rec));
+
+          finally
+
+          end;
+        end;
+
+
+        i := i + 1;
+      end;
+
+      SaveDialog1.Filter := '文本文件(*.DAT)|*.DAT';
+
+      if SaveDialog1.Execute then
+        M.SaveToFile(SaveDialog1.FileName);
+
+      _free_(M);
+    }
 end;
+
+
+procedure TfrmMain2.N23Click(Sender: TObject);
+var
+  recNum,period,i: Integer;
+  lstSplit: TStringList;
+  rec: TStkDataRec;
+  time, str: string;
+  rText: TextFile;
+  M: TMemoryStream;   
+  P: PStkDataRec;
+begin
+
+  InputQuery('请输入周期包含的分钟数量：', '', str);
+  //ShowMessage(str); //显示输入的内容
+  if str <> '' then
+  begin
+    period := StrToInt(str);
+    if period <= 270 then
+    begin
+      //period := 270;
+      //从当前的内存中获取数据
+      M := TMemoryStream.Create;
+      recNum := StkDataFile.getCount;
+      i := 0;
+      while i < recNum do
+      begin
+        p := StkDataFile.getRec(i);
+
+        //加工不同周期的数据
+        if ((i + 1) mod period) = 1 then
+        begin
+          rec.OP := P.OP;
+          rec.HP := P.HP;
+          rec.LP := P.LP;
+          rec.VOL := 0;
+        end;
+
+        if rec.HP < p.CP then
+        begin
+          rec.HP := p.CP;
+        end;
+
+        if rec.LP > P.LP then
+        begin
+          rec.LP := P.LP;
+        end;
+
+        rec.VOL := rec.VOL + P.VOL;
+
+        time := FormatDateTime('hh:nn', P.Date);
+
+        if (((i + 1) mod period) = 0) or (time = '15:15') then
+        begin
+          rec.Date := P.Date;
+          rec.CP := p.CP;
+          try
+          M.Write(rec, SizeOf(rec));
+
+          finally
+
+          end;
+        end;
+
+
+        i := i + 1;
+      end;
+
+      SaveDialog1.Filter := '文本文件(*.DAT)|*.DAT';
+
+      if SaveDialog1.Execute then
+        M.SaveToFile(SaveDialog1.FileName);
+
+      _free_(M);
+    end
+    else
+    begin
+      ShowMessage('输入的周期最大包含270分钟，请重新输入。');
+    end;
+  end;
+      
+
+end;
+
 
 procedure TfrmMain2.DATTXT1Click(Sender: TObject);
 var
@@ -1973,6 +2121,10 @@ begin
   else
     ShowMessage('未知的数据年份！');
 end;
+
+
+
+
 
 end.
 

@@ -483,6 +483,10 @@ object frmMain2: TfrmMain2
         Caption = #27599#26085'TXT'#25968#25454#34917#24405
         OnClick = DATTXT1Click
       end
+      object N23: TMenuItem
+        Caption = #21608#26399#25968#25454#21152#24037
+        OnClick = N23Click
+      end
     end
     object N1: TMenuItem
       Caption = #35774#32622
