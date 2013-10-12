@@ -19,10 +19,18 @@ update selllogdetails sd, aftersellmains am, afterselldetails ad set sd.amount=i
 update selllogdetails sd, aftersellmains am, afterselldetails ad set sd.amount=if(ad.ramount<ad.amount,(sd.amount-1),sd.amount), ad.ramount=if(ad.ramount<ad.amount,(ad.ramount+1),ad.ramount),sd.updated_at=now() where sd.slid="' + Label26.Caption + '" and sd.pid="' + ADOQuery1.FieldByName('pid').AsString + '" and not(ad.status) and ad.type="维修" and ad.tid=am.tid and am.custtel="' + edt2.Text + '" and sd.pid=ad.pid;
 
 
+#会员价格一览
+select s.id,s.stid,s.stname,s.pid,s.barcode,s.goodsname,s.size,s.color,s.amount,s.volume,s.unit,s.inprice,if(h.hprice is null,s.pfprice,h.hprice) as pfprice,s.bundle,s.discount,s.baseline,s.remark,s.created_at,s.updated_at,s.picture_file_name,s.picture_content_type,s.picture_file_size,s.picture_updated_at from stocks s left join (select pid,goodsname,hprice from memberprices where custid='1' and current_timestamp() between startdate and enddate) h on s.pid=h.pid;
 #取分组中排名第一的商品
 SELECT * FROM qh2t1 a
 WHERE 2 >(SELECT count(*) FROM qh2t1 WHERE cdate = a.cdate and vv>a.vv)
 ORDER BY a.cdate,a.vv DESC;
+
+
+select hprice as zprice from memberprices where pid = '' and custid = '' and current_timestamp() between startdate and enddate
+select s.id,s.stid,s.stname,s.pid,s.barcode,s.goodsname,s.size,s.color,s.amount,s.volume,s.unit,s.inprice,if(h.hprice is null,s.pfprice,h.hprice) as pfprice,s.bundle,s.discount,s.baseline,s.remark,s.created_at,s.updated_at,s.picture_file_name,s.picture_content_type,s.picture_file_size,s.picture_updated_at from stocks where pid = ''
+    
+
 
 
 

@@ -160,7 +160,7 @@ procedure TQO.FormShow(Sender: TObject);
 begin
   ADOQuery1.Close;
   ADOQuery1.SQL.Clear;
-  ADOQuery1.SQL.Add('Select * from ordermains where Not(status) and dtype="÷ß∏∂"');
+  ADOQuery1.SQL.Add('Select * from ordermains where Not(status) and (dtype="÷ß∏∂" or dtype="…Û∫À")');
   ADOQuery1.Active := True;
 end;
 

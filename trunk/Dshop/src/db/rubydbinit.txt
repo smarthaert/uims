@@ -383,3 +383,32 @@ rails generate migration add_hashed_password_to_user hashed_password:string
 
 rails generate migration add_salt_to_user salt:string
 
+rails generate migration add_password_digest_to_customer password_digest:string
+
+rails generate migration add_cart_id_to_orderdetail cart_id:string
+
+
+rails generate migration add_stock_id_to_orderdetail stock_id:string
+
+rails generate migration add_ordermain_id_to_orderdetail ordermain_id:string
+
+rails generate migration add_customer_id_to_ordermain customer_id:string
+
+rails generate migration add_customer_id_to_cart customer_id:string
+
+rails generate migration add_zprice_to_stock 'zprice:decimal{10,2}'
+
+rails generate migration rename_password_digest_to_hashed_password
+	rename_column :customers, :password_digest, :hashed_password
+
+rails generate migration add_delivertype_to_shipper delivertype:string
+
+
+
+rake assets:precompile
+
+
+
+rake assets:clean
+
+
