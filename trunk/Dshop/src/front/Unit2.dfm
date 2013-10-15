@@ -1,8 +1,8 @@
 object Main: TMain
-  Left = 316
-  Top = 144
-  Width = 1045
-  Height = 810
+  Left = 129
+  Top = -10
+  Width = 1036
+  Height = 780
   ActiveControl = edt1
   Color = clBlack
   Font.Charset = GB2312_CHARSET
@@ -21,7 +21,7 @@ object Main: TMain
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1037
+    Width = 1030
     Height = 40
     Align = alTop
     BevelInner = bvLowered
@@ -68,8 +68,8 @@ object Main: TMain
   end
   object Panel3: TPanel
     Left = 0
-    Top = 719
-    Width = 1037
+    Top = 702
+    Width = 1030
     Height = 64
     Align = alBottom
     BevelInner = bvLowered
@@ -346,10 +346,10 @@ object Main: TMain
     end
   end
   object Panel4: TPanel
-    Left = 795
+    Left = 788
     Top = 40
     Width = 242
-    Height = 679
+    Height = 662
     Align = alRight
     BevelInner = bvLowered
     Color = clBlack

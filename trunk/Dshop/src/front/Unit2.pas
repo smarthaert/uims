@@ -1364,14 +1364,15 @@ begin
         Exit;
       end;
 
+      //设置件数的时候同时更新数量
       ADOQuerySQL.SQL.Clear;
-      ADOQuerySQL.SQL.Add('update selllogdetails set bundle="' + RzEdit5.Text +
-        '",updated_at=now() where slid = "' +
-        Label26.Caption + '" and pid="' +
+      ADOQuerySQL.SQL.Add('update selllogdetails sd,stocks st set sd.bundle="' + RzEdit5.Text +
+        '",sd.amount=st.dozen*' + RzEdit5.Text + ',sd.updated_at=now() where sd.slid = "' +
+        Label26.Caption + '" and sd.pid="' +
         ADOQuery1.FieldByName('pid').AsString +
-        '" and additional="' +
+        '" and sd.additional="' +
         ADOQuery1.FieldByName('additional').AsString +
-        '"');
+        '" and sd.pid=st.pid');
       ADOQuerySQL.ExecSQL;
 
       QH1;
