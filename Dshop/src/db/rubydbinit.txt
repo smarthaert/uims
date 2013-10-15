@@ -403,6 +403,22 @@ rails generate migration rename_password_digest_to_hashed_password
 
 rails generate migration add_delivertype_to_shipper delivertype:string
 
+rails g migration AddExtendsToShippers cid:string area:string custtel2:string tel2:string
+
+
+/usr/bin/mysql -uroot -hlocalhost -pzaqwsxcde123 sgsz_development_0 --local-infile=1 -e "load data local infile '/home/ubuntu/workplace/svn/depot_v1/data/cust.csv' into table shippers fields terminated by ',' lines terminated by '\r\n'(cid,area,custname,custtel,custtel2,sname,address,tel,tel2)"
+
+
+/usr/bin/mysql -uroot -hlocalhost -pzaqwsxcde123 sgsz_development_0 --local-infile=1 -e "load data local infile '/home/ubuntu/workplace/svn/depot_v1/data/prod.csv' into table stocks fields terminated by ',' lines terminated by '\r\n'(brand,pid,barcode,series,kind,goodsname,model,unit,color,power,spec,dozen,inprice,discount,pfprice,subsidy,volume,remark)"
+
+
+
+rails g migration AddExtendsToStocks brand:string series:string kind:string model:string power:string spec:string dozen:integer 'subsidy:decimal{10,2}'
+
+
+rails g migration AddDeliveryToOrdermains delivery:string
+
+
 
 
 rake assets:precompile
