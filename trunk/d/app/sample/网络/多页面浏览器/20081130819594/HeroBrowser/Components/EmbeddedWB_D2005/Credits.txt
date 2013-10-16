@@ -1,0 +1,112 @@
+Credits And Contributers:
+1. Remmember that all the stuf here is free and was found on the the web "As It Is"
+2. Please don't forget to credit the contributers.
+
+The web site with the wonderful ideas:
+http://www.euromind.com/iedelphi/embeddedwb.htm
+http://www.cryer.co.uk/brian/delphi/
+http://www.torry.net/
+http://www.swissdelphicenter.ch/en/index.php
+
+EmbeddedWB:
+http://www.euromind.com/iedelphi (Hosting and a lot more).
+Per Lindsø Larsen (EmbeddedWB component).
+Mathias Walter (messagehandling code).
+Neil Moss (setting downloadoptions).
+Thomas Stutz (TUserInterfaceOption).
+jezek1 (support for D7).
+Eran Bodankin (bsalsa) (Bug fix, D2005 update & all the new stuf).
+MM&I (D9 Update).
+
+EmbeddedWB Demo:
+Eran Bodankin (bsalsa)(Demo code).
+tom@swissdelphicenter.ch (Demo Menus And idea's).
+www.swissdelphicenter.ch (Contributors).
+
+BrowseForFolderU:
+http://www.cryer.co.uk/brian/delphi/ (BrowseForFolder unit).
+
+Favorites Tree:
+Peter Morris (FavoritesTree , DIRMonitor component).
+Eran Bodankin (bsalsa) (Bug fix, D2005 update & all the new procedures).
+
+Extended IEParser 2
+Per Lindsø Larsen  (Extended IEParser 2 component).
+Marc Hervais (Modified).
+Eran Bodankin (bsalsa) (D2005 update).
+
+FavoritesMenu:
+Per Lindsø Larsen (FavoritesMenu component).
+Rob Young (Contributions).
+Pete Morris (Contributions).
+Eran Bodankin (bsalsa) (Bug fix, D2005 update & new procedures).
+
+FavoritesListView:
+Per Lindsø Larsen (FavoritesListView component).
+Eran Bodankin (bsalsa) (Bug fix, D2005 update & new procedures).
+
+HistoryListView:
+Per Lindsø Larsen (HistoryListView component).
+Eran Bodankin (bsalsa) (Bug fix, D2005 update & new procedures).
+
+HistoryMenu:
+Per Lindsø Larsen (HistoryMenu component).
+Eran Bodankin (bsalsa) (Bug fix, D2005 update & new procedures).
+
+IETools:
+Per Lindsø Larsen (IETools unit).
+Eran Bodankin (bsalsa) (D2005 update & new procedures).
+
+IECache:
+Per Lindsø Larsen {IECache component)
+Christian Lovis (lib dynamic linking).
+
+IEAddress:
+Peter Morris (Pete@StuckIndoors.com)
+Khalid Almannai (almannai@batelco.com.bh)
+Henri Fournier (hfournier@home.com)
+Per Lindsø Larsen {lindsoe@post.tele.dk)
+Eran Bodankin (bsalsa) (Bug fix, D2005 update).
+
+IECont:
+Was created by : I don't know, Found it on the web*
+Eran Bodankin (bsalsa) - added some constants*
+
+IEDownload:
+Per Lindsø Larse (IEDownload component).
+Eran Bodankin (bsalsa) (D2005 update).
+
+IeGuid
+Was created by : I don't know, Found it on the web.
+Eran Bodankin (bsalsa) -  (D2005 update).
+
+IETravelLog:
+Per Lindsø Larsen (IETravelLog Component) .
+Eran Bodankin (bsalsa) (D2005 update).
+
+IEUTILS:
+IEUTILS Was created by : I don't know, Found it on the web.
+Eran Bodankin (bsalsa) (D2005 update & added new functions).
+
+IESecurityManager:
+Per Lindsø Larsen (IESecurityManager component).
+Eran Bodankin (bsalsa) (D2005 update).
+
+UrlHistory:
+Per Lindsø Larsen (UrlHistory component).
+Eran Bodankin (bsalsa) (D2005 update).
+
+SendMail:
+Mike Shkolnik (MapiMail component).
+
+Import Favorite
+bsalsa (Import component)
+Troels Jakobsen (Ideas & Code).   
+
+Export Favorite
+bsalsa (Export component)
+Troels Jakobsen (Ideas & Code).  
+
+
+And to all the rest that i did not see/forget and mention here,
+I am sorry, please mail me & i add u in.

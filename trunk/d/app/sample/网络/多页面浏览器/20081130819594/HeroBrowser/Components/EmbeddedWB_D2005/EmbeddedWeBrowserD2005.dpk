@@ -1,0 +1,75 @@
+package EmbeddedWeBrowserD2005;
+
+{$R *.res}
+{$R 'IEAddress.dcr'}
+{$R 'UrlHistory.dcr'}
+{$R 'IECache.dcr'}
+{$R 'SecurityManager.dcr'}
+{$R 'IETravelLog.dcr'}
+{$R 'FavMenu.dcr'}
+{$R 'HistoryMenu.dcr'}
+{$R 'IEDownload.dcr'}
+{$IFDEF VER170} { Delphi 2005}
+{$R 'extIEParser.dcr'}
+{$ENDIF}
+{$R 'FavoritesListView.dcr'}
+{$R 'FavoritesTree.dcr'}
+{$R 'HistoryListView.dcr'}
+{$R 'SendMail.dcr'}
+{$R 'ExportFavorites.dcr'}
+{$R 'ImportFavorites.dcr'}
+{$ALIGN 8}
+{$ASSERTIONS OFF}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Internet Embedded Web Browser Components'}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  vclie,
+  vclx,
+  vcljpg;
+
+contains
+  IEUtils in 'IEUtils.pas',
+  IeConst in 'IeConst.pas',
+  IEAddress in 'IEAddress.pas',
+  IE5tools in 'IE5tools.pas',
+  IEGuid in 'IEGuid.pas',
+  UrlHistory in 'UrlHistory.pas',
+  IECache in 'IECache.pas',
+  SecurityManager in 'SecurityManager.pas',
+  IETravelLog in 'IETravelLog.pas',
+  FavMenu in 'FavMenu.pas',
+  HistoryMenu in 'HistoryMenu.pas',
+  IEDownload in 'IEDownload.pas',
+  EmbeddedWB in 'EmbeddedWB.pas',
+  extIEParser in 'extIEParser.pas',
+  FavoritesListView in 'FavoritesListView.pas',
+  FavoritesTree in 'FavoritesTree.pas',
+  HistoryListView in 'HistoryListView.pas',
+  BrowseForFolderU in 'BrowseForFolderU.pas',
+  SendMail in 'SendMail.pas',
+  ExportFavorites in 'ExportFavorites.pas',
+  ImportFavorites in 'ImportFavorites.pas';
+
+end.

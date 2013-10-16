@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2010-07-15 23:15:27.140.pas,E:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Unit1.pas=E:\Documents and Settings\Administrator\桌面\SeekWang\UntSeek.pas</Transaction>
+    <Transaction>2010-07-15 23:15:27.140.dfm,E:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Unit1.dfm=E:\Documents and Settings\Administrator\桌面\SeekWang\UntSeek.dfm</Transaction>
+    <Transaction>2010-07-15 23:15:41.031.dproj,E:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Project1.dproj=E:\Documents and Settings\Administrator\桌面\SeekWang\SeekWang.dproj</Transaction>
+    <Transaction>2010-07-15 23:27:32.359.pas,E:\Documents and Settings\Administrator\桌面\SeekWang\UntSeek.pas=</Transaction>
+    <Transaction>2010-07-15 23:27:32.359.dfm,E:\Documents and Settings\Administrator\桌面\SeekWang\UntSeek.dfm=</Transaction>
+    <Transaction>2010-07-19 16:52:14.265.pas,E:\Documents and Settings\Administrator\桌面\SeekWang\Unit2.pas=E:\Documents and Settings\Administrator\桌面\SeekWang\UntFrmGY.pas</Transaction>
+    <Transaction>2010-07-19 16:52:14.265.dfm,E:\Documents and Settings\Administrator\桌面\SeekWang\Unit2.dfm=E:\Documents and Settings\Administrator\桌面\SeekWang\UntFrmGY.dfm</Transaction>
+    <Transaction>2010-07-20 23:37:12.312.pas,E:\Documents and Settings\Administrator\桌面\SeekWang\Unit2.pas=E:\Documents and Settings\Administrator\桌面\SeekWang\UntFrmAddAutoSend.pas</Transaction>
+    <Transaction>2010-07-20 23:37:12.312.dfm,E:\Documents and Settings\Administrator\桌面\SeekWang\Unit2.dfm=E:\Documents and Settings\Administrator\桌面\SeekWang\UntFrmAddAutoSend.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

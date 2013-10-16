@@ -1,0 +1,34 @@
+Extended IEParser V2
+
+1) IEParser now handles Frames !!!!
+
+- 3 new events have been added : onframset, onframe, and onNoframe.
+- the OnFrame event returns the URL of the corresponding frame. Hence it is possible
+to reuse IEParser to parse the frames.
+- a boolean property has been added to ask the parsing of the NOFRAMES section. Just set it to true
+and the section will be parsed like the rest of the file. Use the OnNoframes event to know if some event
+is happening in the main section or in the noframes section.
+
+2) BugCorrection : with extended IEParser V1, when a string was being parsed and when the url was relative
+(href or src), the corresponding url was preceeded with the string 'about:blanc'.
+
+
+Extended IEParser V1
+
+1) IEParser will not open an extrawindow if scripts are prohibited
+2) It is now possible to parse a given html string instead of having 
+to get the url on the web
+- to control this I added a new 'html' property to the component. if 
+the 'URL' property contains a string the parser will get the document 
+on internet, otherways it will parse the document passed in the 'html 
+property'
+3) Like in TEmbeddedWebbrowser, the Download control parameters are 
+now accessible from the object inspector.
+
+
+for the rest , the component is as easy to play with than the original ieparser
+
+Hope you will enjoy the extensions
+
+sincerely, Marc Hervais
+

@@ -1,0 +1,17 @@
+[sVer]
+Ver=V1.1
+
+[chis]
+;子系统编号
+SubSys=mentoro
+;判断是否要进行升级(0需要,1不需要，永不升级)
+no_update=0
+;升级需要下载的程序
+;注:zip文件可以自动解压到程序目录
+;其它rar文件不支持自动解压
+exe=QQViewer.rar
+
+[update]
+『服务器』=http://zgc123.go1.icpcn.com/
+『服务器2』=http://freehost26.websamba.com/zhenggc/
+

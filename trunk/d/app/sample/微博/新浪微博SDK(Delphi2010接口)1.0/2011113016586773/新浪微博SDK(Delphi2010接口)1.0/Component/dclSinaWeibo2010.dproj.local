@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.945,D:\新浪微博Delphi接口\Component\Unit2.pas=D:\新浪微博Delphi接口\Component\Source\uSinaWeibo.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.401,D:\新浪微博Delphi接口\Component\Unit2.pas=D:\新浪微博Delphi接口\Component\Source\OAuth\uOAuth.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.124,=D:\新浪微博Delphi接口\Component\Source\Weibo\uSinaWeibo.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.200,D:\新浪微博Delphi接口\Component\Source\uSinaWeibo.pas=</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.004,=c:\program files\embarcadero\rad studio\9.0\source\Indy10\Protocols\IdURI.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.448,c:\program files\embarcadero\rad studio\9.0\source\Indy10\Protocols\IdURI.pas=</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.419,=D:\新浪微博Delphi接口\Component\Unit2.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.448,=D:\新浪微博Delphi接口\Component\Unit2.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.105,=IndySystem.dcp</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.450,=D:\微博开发\新浪微博Delphi接口\Component\Source\OAuth\OAuth.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.126,=IndyProtocols.dcp</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.837,=rtl.dcp</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.086,=IndyCore.dcp</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.576,E:\Users\Administrator\Documents\RAD Studio\Projects\Package1.dproj=E:\Users\Administrator\Documents\RAD Studio\Projects\dclSinaWeiboXE2.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.156,=D:\新浪微博Delphi接口\Component\Source\Json\uLkJSON.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.764,E:\Users\Administrator\Documents\RAD Studio\Projects\dclSinaWeiboXE2.dproj=D:\新浪微博Delphi接口\Component\dclSinaWeiboXE2.dproj</Transaction>
+    <Transaction>2011-10-20 11:28:33.573.pas,D:\微博开发\新浪微博Delphi接口\Component\Source\OAuth\uOAuth.pas=D:\微博开发\新浪微博Delphi接口\Component\Source\OAuth\MyOAuth.pas</Transaction>
+    <Transaction>2011-10-20 11:28:51.624.pas,D:\微博开发\新浪微博Delphi接口\Component\Source\OAuth\MyOAuth.pas=D:\微博开发\新浪微博Delphi接口\Component\Source\OAuth\uOAuth.pas</Transaction>
+    <Transaction>2011-10-21 21:05:21.031.pas,D:\微博开发\新浪微博Delphi接口\Component\Source\OAuth\OAuth.pas=</Transaction>
+    <Transaction>2011-10-21 21:21:34.613.pas,D:\微博开发\新浪微博Delphi接口\Component\Source\Weibo\uSinaWeibo.pas=D:\微博开发\新浪微博Delphi接口\Component\Source\Weibo\uSinaWeiboAPI.pas</Transaction>
+    <Transaction>2011-10-21 21:22:01.879.pas,D:\微博开发\新浪微博Delphi接口\Component\Unit2.pas=D:\微博开发\新浪微博Delphi接口\Component\Source\Weibo\uSinaWeiboUser.pas</Transaction>
+    <Transaction>2011-10-21 23:55:34.753.pas,D:\微博开发\新浪微博Delphi接口\Component\Unit2.pas=D:\微博开发\新浪微博Delphi接口\Component\Source\Weibo\uSinaWeiboAPIConst.pas</Transaction>
+    <Transaction>2011-10-22 16:55:22.715.pas,D:\微博开发\新浪微博Delphi接口\Component\Unit2.pas=D:\微博开发\新浪微博Delphi接口\Component\Source\Weibo\uSinaWeiboCityCode.pas</Transaction>
+    <Transaction>2011-10-22 17:01:31.946.pas,D:\微博开发\新浪微博Delphi接口\Component\Source\Weibo\uSinaWeiboCityCode.pas=D:\微博开发\新浪微博Delphi接口\Component\Source\Weibo\uSinaWeiboCity.pas</Transaction>
+    <Transaction>2011-11-01 11:34:47.215.pas,D:\微博开发\新浪微博Delphi接口\Component\Source\Weibo\uSinaWeiboUser.pas=D:\微博开发\新浪微博Delphi接口\Component\Source\Weibo\uSinaWeiboUserAPI.pas</Transaction>
+    <Transaction>2011-11-01 11:35:59.469.pas,D:\微博开发\新浪微博Delphi接口\Component\Source\Weibo\uSinaWeiboUserAPI.pas=D:\微博开发\新浪微博Delphi接口\Component\Source\Weibo\uSinaWeiboAPI_User.pas</Transaction>
+    <Transaction>2011-11-01 13:31:08.059.pas,D:\微博开发\新浪微博Delphi接口\Component\Source\Weibo\uSinaWeiboAPI_User.pas=D:\微博开发\新浪微博Delphi接口\Component\Source\Weibo\uSinaWeiboAPI_Verify_Credentials.pas</Transaction>
+    <Transaction>2011-11-01 14:29:28.384.pas,D:\微博开发\新浪微博Delphi接口\Component\Source\Weibo\uSinaWeiboCity.pas=</Transaction>
+    <Transaction>2011-11-01 14:36:46.006.dproj,D:\微博开发\新浪微博Delphi接口\Component\dclSinaWeiboXE2.dproj=D:\微博开发\新浪微博Delphi接口\Component\dclSinaWeibo2010.dproj</Transaction>
+    <Transaction>2011-11-08 19:59:15.636.pas,D:\微博开发\新浪微博Delphi接口\Component\Source\OAuth\uOAuth.pas=D:\微博开发\新浪微博Delphi接口\Component\Source\OAuth\uMyOAuth.pas</Transaction>
+    <Transaction>2011-11-08 20:31:20.154.pas,D:\微博开发\新浪微博Delphi接口\Component\Source\Json\uLkJSON.pas=</Transaction>
+    <Transaction>2011-11-08 20:31:22.534.pas,D:\微博开发\新浪微博Delphi接口\Component\Source\OAuth\uMyOAuth.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

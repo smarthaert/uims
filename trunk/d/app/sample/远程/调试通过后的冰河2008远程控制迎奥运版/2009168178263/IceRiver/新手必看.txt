@@ -1,0 +1,45 @@
+         ******************************************************************************************************************
+ 
+         使用说明：
+
+         如果你已经使用过 SkinCaption，请先卸载以前的旧版本，屏蔽旧版本的路径。
+
+         根据你使用的版本，编译并安装，在 IDE 的控件栏可以看见 VCLSKIN 包含有 TSkinData,TSkinStore和TSkinCaption
+         如果你现在的工程上没有 TSkinCaption, 请在放置 TSkinData 控件的 FORM 上放上一个 TSkinCaption,
+         TSkinCaption 是补丁的主控件。
+
+
+         当TSkinCaption 的 Active 属性为 False 时关闭补丁，当 Active 为 True 时开启补丁。
+         本补丁的作用是开启 DEMO 版失去和未曾有过的功能。
+         请注意：3.93 以后的版本补丁 active 属性缺省为开启。
+
+         新增 SKIN 的透明属性 SkinAlpha，本设置可以制作全透明的 Vista 界面，
+         包括 Menus,Dialogs,MessageBox 等等全透明。
+         如果你需要制作透明窗体，SkinAlpha 一般情况下设置为 10，否则请关闭之( SkinAlpha := 0)
+
+
+         此版本可以和 TNT Unicode Controls 很好的一起工作！如果出现其他问题，先把 TNT 升升级。
+         如果你不能编译通过等诸如此类的问题，请先检查你的 IDE 或 DCC(BCC) 的系统环境设置是否正确。
+         如果出现 ... complied with different version 等问题，先确定你已经删除以前的旧版本，
+         包括目录，确保你现在的工程引用的目录就是当前版本的目录。
+        
+
+         如果你需要在运行时动态激活 SkinData，那么 SkinCaption 也一样需要动态激活。
+         先激活 SkinData, 再激活 SkinCaption，SkinCaption 不是能独立存在的控件，必须依赖 SkinData.
+　　　　 例如在你的工程中 OnFormShow 时设置 SkinData.active := true；SkinCaption.Active := True，否则本补丁可能会工作不正常。
+
+         如何在 DLL 中应用 SKIN 的问题，请注意官方的说明。（所有 VCLSKIN 的单元作为引用使用，不能把 SkinData 放置在 DLL 工程中的 Form 上，必须加入 ShareMem 单元)。
+         
+         如何解决出现的问题：
+　　　　　　如果在使用过程中，或在你的工程中出现这样那样的问题，请做个能说明问题的 DEMO 发过来：maotpo@126.com。
+    
+
+         如果你需要转载本补丁，请指明出处。
+         
+
+         本补丁仅供学习。
+
+         maotpo@126.com
+         QQ: 378453102 (欢迎交流)
+         QQ群：10310017(欢迎交流)
+         ******************************************************************************************************************

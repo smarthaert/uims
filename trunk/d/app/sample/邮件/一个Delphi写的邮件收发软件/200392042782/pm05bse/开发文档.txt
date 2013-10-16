@@ -1,0 +1,258 @@
+{------------------------P-Mail 0.5 beta版-----------------
+编程工具：Delphi 6 + D6_upd2 
+制作：广西百色 PLQ工作室
+声明：本代码纯属免费，仅供学习使用，希望您在使用她时保留这段话
+如果您对本程序作了改进，也希望您能与我联系
+My E-Mail:plq163001@163.com
+	  plq163003@163.com
+-----------------------------------------------------2002.5.19}
+
+
+
+
+
+p-mail 0.5 beta 版开发文档
+概述：实现单线程多帐户的邮件收发及保存。
+功能表：
+一。邮件操作
+1。收邮件
+2。发邮件
+3。另存邮件
+4。另存附件
+5。删除邮件
+6。回复邮件
+
+二。帐户操作
+1。新建帐户
+2。删除帐户
+3。帐户设置
+
+三。地址簿操作
+1。手动添加地址
+2。自动添加地址
+3。删除地址
+4。地址设置
+5。地址回复
+
+
+功能的具体实现：
+
+1。数据库表的建立：
+类型：access2000
+表数：四个
+库名：pm.mdb
+User	//帐户设置
+UserName UserID UserAddress Pwd PopHost SmtpHost 
+Mail	//邮件信息
+UserName Subject FromName FromAddress Date  Text Nu
+AFP	//附件路径
+Date Path
+AddressNote	//地址薄
+Name Address
+
+2。全局变量说明
+UserName	//帐户名
+UserID		//服务器用户名
+UserAddress	//用户电子邮件地址
+Pwd		//登陆密码
+PopHost		//pop主机地址
+SmtpHost	//smtp主机地址
+
+3。程序初始化
+动态设置dsn
+连接数据库
+读取UserName建立相应的TreeNode of tvUser
+在系统栏建立图标
+
+4。当tvUser的TreeNode被选择时
+   打开相应的User table 中的记录并将其读入全局变量中
+  同时打开mail table 中与UserName对应的mail记录并逐条显示在lvMail(report)中（注意新邮件在前）
+  窗口标题显示是哪个帐户
+  
+5。当lvMail的ListItem被选择时
+   Memo显示正文，打开AFP table 与 date 对应的记录，并将其显示在lvAF(small icon)中 
+
+6.当lvAF的ListItem被选择时
+  
+
+7。收邮件
+将全局变量赋给控件的相应属性，
+接收后，将邮件信息逐一添加到mail table ,如果有附件则先将其保存在默认目录下，再将其路径添加到
+AFP table中，最后从mail table 读入,以先后来在前排列逐条显示在lvMail中，
+
+8。发邮件
+将全局变量赋给控件的相应属性，
+添加正文
+添加附件，设置优先级
+发送！
+
+9，另存附件
+选定lvAF的item
+通过saveDialog实现
+
+10.另存邮件正文
+选定lvMail的item
+通过saveDialog实现
+
+11,删除邮件
+选定lvMail的item
+先删除AFP table 中相应记录
+再删除mail table中相应记录
+然后刷新lvMail，lvAF
+
+12.回复邮件
+将from赋给收件拦，
+
+13.新建帐户
+判断是否与原帐户重名，
+否->则将相应信息插入UserMail table 的一条新记录
+建立一个TreeNode of tvUser
+
+14.删除帐户
+选定某一TreeNode
+删除AFP table 中相应记录
+删除Mail table 中相应记录
+删除User table 中相应记录
+删除相应TreeNode
+全局变量置空
+窗口标题置空
+
+15。帐户设置
+选定某一TreeNode
+如果与原有的帐户不重名
+是
+修改AFP table 中相应记录
+修改Mail table 中相应记录
+修改User table 中相应记录
+修改相应TreeNode
+
+重新读取相应值
+
+
+16。手动添加地址
+将输入添加进AddressNote table 中记录中
+更新lvAddress
+
+17。自动添加地址
+选中某一邮件，将fromname,fromaddress,添加进AddressNote table 中记录中
+
+18.删除地址
+选中某一地址
+删除AddessNote table相应记录
+更新lvAddress
+
+19。地址设置
+选中某一地址
+如果与原有的地址不重名
+是
+修改AddessNote table相应记录
+更新lvAddress
+
+
+20。地址回复	chUser.pas
+在lbUser显示所有帐户清单
+根据所选的username重User table读入相应数据给控件的相应属性
+
+主要控件
+TIdSmtp
+TADOQuery
+TADOConnection
+Maill2000
+
+
+控件：
+adocPm
+adoqUser
+adoqAFP
+adoqMail
+adoqAddressNote
+
+几个多次使用的函数
+QueryUser
+InsertUser
+DeleteUser
+ReworkUser
+
+QueryMail
+InsertMail
+DeleteMail
+ReworkMail
+
+QueryAddressNote
+InsertAddressNote
+DeleteAddressNote
+ReworkAddressNote
+
+QueryAFP
+InsertAFP
+DeleteAFP
+//ReworkAddressNote
+
+菜单设置
+
+帐户操作 
+
+新建帐户 
+帐户设置
+删除帐户
+退出
+
+邮件操作
+
+接收邮件
+写新邮件
+回复邮件
+删除邮件
+加入地址簿
+邮件另存
+附件另存
+
+地址簿
+
+新增地址
+删除地址
+地址修改
+回复
+
+
+窗口设置
+
+主窗口 main.pas
+新建帐户窗口	
+帐户设置窗口
+写邮件窗口
+地址簿主窗口
+新增地址窗口
+地址修改窗口
+回复帐户选择窗口
+
+
+主窗口工具栏
+新建帐户	NewUser.pas
+帐户设置	UseSet.pas
+接收邮件
+写新邮件	Send.pas
+回复邮件 
+
+地址簿	AsNote.pas
+
+地址簿窗口工具栏
+新增地址	addNewAs.pas
+删除地址
+地址修改	asSet.pas
+回复
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

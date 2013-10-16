@@ -1,0 +1,1721 @@
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sat, 19 Mar 2005 20:56:02 +0800
+  1.2 Name/Description: MultiThreadDemo.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Sat, 19 Mar 2005 20:56:33 +0800
+  2.2 Address: 004262CF
+  2.3 Module : MultiThreadDemo.exe
+  2.4 Type   : EThread
+  2.5 Message: Thread Error: 句柄无效。 (6).
+
+Active Controls:
+---------------------------------------------------------
+  3.1 Form Class   : TAppBuilder
+  3.2 Form Text    : Delphi 7 - MultiThreadDemo [Running]
+  3.3 Control Class: TBitBtn
+  3.4 Control Text : Create Thread
+
+Computer:
+---------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 33 Mb
+  4.5 Total Disk  : 9.31 Gb
+  4.6 Free Disk   : 0.7 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+---------------------------------------------------------------------------------------------------------------------
+|Address |Module             |Unit                                        |Class   |Procedure/Method           |Line|
+---------------------------------------------------------------------------------------------------------------------
+|00524D5E|MultiThreadDemo.exe|MainForm.pas                                |TMainFrm|DBGridThreadsDrawColumnCell|299 |
+|77DF3C99|user32.dll         |                                            |        |FillRect                   |    |
+|77F82091|ntdll.dll          |                                            |        |RtlLeaveCriticalSection    |    |
+|77DF2C0C|user32.dll         |                                            |        |OffsetRect                 |    |
+|77DF3B50|user32.dll         |                                            |        |IsWindow                   |    |
+|77DF5F64|user32.dll         |                                            |        |DispatchMessageA           |    |
+|77DF5F5E|user32.dll         |                                            |        |DispatchMessageA           |    |
+|00525BCF|MultiThreadDemo.exe|Thread Manager (for Delphi 7 and Kylix 3.pas|        |MultiThreadDemo            |14  |
+---------------------------------------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name               |Description                                     |Version       |Size   |Path                                                   |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|MultiThreadDemo.exe|                                                |              |1431552|E:\Thread Manager (for Delphi 7 and Kylix 3)\新建文件夹|
+|01020000|UNISPIM.IME        |紫光拼音输入法3.0                               |3.0.0.0       |102400 |D:\WINNT\system32                                      |
+|01130000|upengine.dll       |紫光拼音输入法引擎                              |3.0.0.0       |299008 |D:\WINNT\system32                                      |
+|01640000|msctf.dll.mui      |MSUIM Server DLL                                |5.1.2409.7    |3584   |D:\WINNT\mui\fallback\0804                             |
+|10000000|BDPlugin.dll       |                                                |1.0.1.1       |110592 |D:\WINNT\DOWNLO~1                                      |
+|60000000|MSCTF.dll          |MSUIM Server DLL                                |5.1.2409.7    |273408 |D:\WINNT\system32                                      |
+|687E0000|PSAPI.DLL          |Process Status Helper                           |5.0.2134.1    |28944  |D:\WINNT\system32                                      |
+|74F50000|msafd.dll          |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816 |D:\WINNT\system32                                      |
+|74F90000|wshtcpip.dll       |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680  |D:\WINNT\System32                                      |
+|74FA0000|WS2HELP.DLL        |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192  |D:\WINNT\system32                                      |
+|74FB0000|WS2_32.DLL         |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904  |D:\WINNT\system32                                      |
+|74FD0000|wsock32.dll        |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920  |D:\WINNT\system32                                      |
+|75950000|LZ32.DLL           |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000  |D:\WINNT\system32                                      |
+|75E00000|IMM32.DLL          |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528  |D:\WINNT\system32                                      |
+|777E0000|version.dll        |Version Checking and File Installation Libraries|5.0.2195.6623 |16144  |D:\WINNT\system32                                      |
+|77990000|oleaut32.dll       |                                                |2.40.4522.0   |626960 |D:\WINNT\system32                                      |
+|77A30000|ole32.dll          |Microsoft OLE for Windows                       |5.0.2195.6769 |944912 |D:\WINNT\system32                                      |
+|77B30000|comctl32.dll       |Common Controls Library                         |5.81.3502.6601|550672 |D:\WINNT\system32                                      |
+|77C50000|SHLWAPI.DLL        |Shell Light-weight Utility Library              |5.0.3502.6601 |289552 |D:\WINNT\system32                                      |
+|77DF0000|user32.dll         |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216 |D:\WINNT\system32                                      |
+|77E60000|kernel32.dll       |Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672 |D:\WINNT\system32                                      |
+|77F40000|GDI32.DLL          |GDI Client DLL                                  |5.0.2195.6898 |242448 |D:\WINNT\system32                                      |
+|77F80000|ntdll.dll          |NT Layer DLL                                    |5.0.2195.6899 |497936 |D:\WINNT\system32                                      |
+|78000000|MSVCRT.DLL         |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773 |D:\WINNT\system32                                      |
+|786F0000|RPCRT4.DLL         |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400 |D:\WINNT\system32                                      |
+|78F90000|shell32.dll        |Windows Shell Common Dll                        |5.0.3700.6705 |2383632|D:\WINNT\system32                                      |
+|796D0000|advapi32.dll       |Advanced Windows 32 Base API                    |5.0.2195.6876 |388368 |D:\WINNT\system32                                      |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012F894: 0012F8D8   004262CF: E8 84 E3 FD FF 33 C0 5A 59 59 64 89 10 68 F1 62  .....3.ZYYd..h.b
+0012F898: 0040458C   004262DF: 42 00 8D 45 EC E8 FF E9 FD FF C3 E9 6D E2 FD FF  B..E........m...
+0012F89C: 0012F8B8   004262EF: EB F0 5B 8B E5 5D C3 8B C0 53 8B D8 84 D2 75 0E  ..[..]...S....u.
+0012F8A0: 00DF7EF8   004262FF: E8 60 13 FE FF 8B D0 8B C3 E8 6F FF FF FF 5B C3  .`........o...[.
+0012F8A4: 00000000   0042630F: 90 53 66 83 78 1A 00 74 0A 8B D8 8B D0 8B 43 1C  .Sf.x..t......C.
+0012F8A8: 00DF5024   0042631F: FF 53 18 5B C3 66 83 78 1A 00 74 0B 50 68 10 63  .S.[.f.x..t.Ph.c
+0012F8AC: 0012F80B   0042632F: 42 00 E8 AA 01 00 00 C3 90 53 56 8B D8 8B 43 04  B........SV...C.
+0012F8B0: 00000006   0042633F: 50 E8 C7 13 FE FF 8B F0 81 FE FF FF FF 7F 0F 95  P...............
+0012F8B4: 0012F900   0042634F: C2 8B C3 E8 A1 FF FF FF B0 03 33 D2 B9 D4 65 52  ..........3...eR
+0012F8B8: 0012F924   0042635F: 00 3B 31 75 02 8B C2 42 83 C1 04 80 FA 07 75 F1  .;1u...B......u.
+0012F8BC: 0042630D   0042636F: 5E 5B C3 8B C0 53 56 8B DA 8B F0 33 C0 8A C3 8B  ^[...SV....3....
+0012F8C0: 00DF7EF8   0042637F: 04 85 D4 65 52 00 50 8B 46 04 50 E8 CD 14 FE FF  ...eR.P.F.P.....
+0012F8C4: 00426357   0042638F: 83 F8 01 1B D2 42 8B C6 E8 5C FF FF FF 5E 5B C3  .....B...\...^[.
+0012F8C8: 00DF4854   0042639F: 90 55 8B EC 83 C4 F4 53 89 55 FC E8 7D 12 FE FF  .U.....S.U..}...
+0012F8CC: 00E0358C   004263AF: 8B 15 B4 EC 52 00 3B 02 75 0E 8B 5D FC 8B 43 0C  ....R.;.u..]..C.
+0012F8D0: 00524D63   004263BF: FF 53 08 E9 13 01 00 00 6A 00 6A 00 6A FF 6A 00  .S......j.j.j.j.
+
+
+
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sat, 19 Mar 2005 21:03:31 +0800
+  1.2 Name/Description: MultiThreadDemo.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Sat, 19 Mar 2005 21:03:49 +0800
+  2.2 Address: 004262CF
+  2.3 Module : MultiThreadDemo.exe
+  2.4 Type   : EThread
+  2.5 Message: Thread Error: 句柄无效。 (6).
+
+Active Controls:
+---------------------------------------------------------
+  3.1 Form Class   : TAppBuilder
+  3.2 Form Text    : Delphi 7 - MultiThreadDemo [Running]
+  3.3 Control Class: TBitBtn
+  3.4 Control Text : Create Thread
+
+Computer:
+---------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 32 Mb
+  4.5 Total Disk  : 9.31 Gb
+  4.6 Free Disk   : 0.7 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+---------------------------------------------------------------------------------------------------------------------
+|Address |Module             |Unit                                        |Class   |Procedure/Method           |Line|
+---------------------------------------------------------------------------------------------------------------------
+|00524D5E|MultiThreadDemo.exe|MainForm.pas                                |TMainFrm|DBGridThreadsDrawColumnCell|299 |
+|77DF3C99|user32.dll         |                                            |        |FillRect                   |    |
+|77F82091|ntdll.dll          |                                            |        |RtlLeaveCriticalSection    |    |
+|77DF2C0C|user32.dll         |                                            |        |OffsetRect                 |    |
+|77DF3B50|user32.dll         |                                            |        |IsWindow                   |    |
+|77DF5F64|user32.dll         |                                            |        |DispatchMessageA           |    |
+|77DF5F5E|user32.dll         |                                            |        |DispatchMessageA           |    |
+|00525BCF|MultiThreadDemo.exe|Thread Manager (for Delphi 7 and Kylix 3.pas|        |MultiThreadDemo            |14  |
+---------------------------------------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name               |Description                                     |Version       |Size   |Path                                                   |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|MultiThreadDemo.exe|                                                |              |1431552|E:\Thread Manager (for Delphi 7 and Kylix 3)\新建文件夹|
+|01020000|UNISPIM.IME        |紫光拼音输入法3.0                               |3.0.0.0       |102400 |D:\WINNT\system32                                      |
+|01130000|upengine.dll       |紫光拼音输入法引擎                              |3.0.0.0       |299008 |D:\WINNT\system32                                      |
+|01640000|msctf.dll.mui      |MSUIM Server DLL                                |5.1.2409.7    |3584   |D:\WINNT\mui\fallback\0804                             |
+|10000000|BDPlugin.dll       |                                                |1.0.1.1       |110592 |D:\WINNT\DOWNLO~1                                      |
+|60000000|MSCTF.dll          |MSUIM Server DLL                                |5.1.2409.7    |273408 |D:\WINNT\system32                                      |
+|687E0000|PSAPI.DLL          |Process Status Helper                           |5.0.2134.1    |28944  |D:\WINNT\system32                                      |
+|74F50000|msafd.dll          |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816 |D:\WINNT\system32                                      |
+|74F90000|wshtcpip.dll       |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680  |D:\WINNT\System32                                      |
+|74FA0000|WS2HELP.DLL        |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192  |D:\WINNT\system32                                      |
+|74FB0000|WS2_32.DLL         |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904  |D:\WINNT\system32                                      |
+|74FD0000|wsock32.dll        |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920  |D:\WINNT\system32                                      |
+|75950000|LZ32.DLL           |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000  |D:\WINNT\system32                                      |
+|75E00000|IMM32.DLL          |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528  |D:\WINNT\system32                                      |
+|777E0000|version.dll        |Version Checking and File Installation Libraries|5.0.2195.6623 |16144  |D:\WINNT\system32                                      |
+|77990000|oleaut32.dll       |                                                |2.40.4522.0   |626960 |D:\WINNT\system32                                      |
+|77A30000|ole32.dll          |Microsoft OLE for Windows                       |5.0.2195.6769 |944912 |D:\WINNT\system32                                      |
+|77B30000|comctl32.dll       |Common Controls Library                         |5.81.3502.6601|550672 |D:\WINNT\system32                                      |
+|77C50000|SHLWAPI.DLL        |Shell Light-weight Utility Library              |5.0.3502.6601 |289552 |D:\WINNT\system32                                      |
+|77DF0000|user32.dll         |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216 |D:\WINNT\system32                                      |
+|77E60000|kernel32.dll       |Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672 |D:\WINNT\system32                                      |
+|77F40000|GDI32.DLL          |GDI Client DLL                                  |5.0.2195.6898 |242448 |D:\WINNT\system32                                      |
+|77F80000|ntdll.dll          |NT Layer DLL                                    |5.0.2195.6899 |497936 |D:\WINNT\system32                                      |
+|78000000|MSVCRT.DLL         |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773 |D:\WINNT\system32                                      |
+|786F0000|RPCRT4.DLL         |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400 |D:\WINNT\system32                                      |
+|78F90000|shell32.dll        |Windows Shell Common Dll                        |5.0.3700.6705 |2383632|D:\WINNT\system32                                      |
+|796D0000|advapi32.dll       |Advanced Windows 32 Base API                    |5.0.2195.6876 |388368 |D:\WINNT\system32                                      |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012F894: 0012F8D8   004262CF: E8 84 E3 FD FF 33 C0 5A 59 59 64 89 10 68 F1 62  .....3.ZYYd..h.b
+0012F898: 0040458C   004262DF: 42 00 8D 45 EC E8 FF E9 FD FF C3 E9 6D E2 FD FF  B..E........m...
+0012F89C: 0012F8B8   004262EF: EB F0 5B 8B E5 5D C3 8B C0 53 8B D8 84 D2 75 0E  ..[..]...S....u.
+0012F8A0: 00DFC510   004262FF: E8 60 13 FE FF 8B D0 8B C3 E8 6F FF FF FF 5B C3  .`........o...[.
+0012F8A4: 00000000   0042630F: 90 53 66 83 78 1A 00 74 0A 8B D8 8B D0 8B 43 1C  .Sf.x..t......C.
+0012F8A8: 00DF5690   0042631F: FF 53 18 5B C3 66 83 78 1A 00 74 0B 50 68 10 63  .S.[.f.x..t.Ph.c
+0012F8AC: 0012F80B   0042632F: 42 00 E8 AA 01 00 00 C3 90 53 56 8B D8 8B 43 04  B........SV...C.
+0012F8B0: 00000006   0042633F: 50 E8 C7 13 FE FF 8B F0 81 FE FF FF FF 7F 0F 95  P...............
+0012F8B4: 0012F900   0042634F: C2 8B C3 E8 A1 FF FF FF B0 03 33 D2 B9 D4 65 52  ..........3...eR
+0012F8B8: 0012F924   0042635F: 00 3B 31 75 02 8B C2 42 83 C1 04 80 FA 07 75 F1  .;1u...B......u.
+0012F8BC: 0042630D   0042636F: 5E 5B C3 8B C0 53 56 8B DA 8B F0 33 C0 8A C3 8B  ^[...SV....3....
+0012F8C0: 00DFC510   0042637F: 04 85 D4 65 52 00 50 8B 46 04 50 E8 CD 14 FE FF  ...eR.P.F.P.....
+0012F8C4: 00426357   0042638F: 83 F8 01 1B D2 42 8B C6 E8 5C FF FF FF 5E 5B C3  .....B...\...^[.
+0012F8C8: 00DF4854   0042639F: 90 55 8B EC 83 C4 F4 53 89 55 FC E8 7D 12 FE FF  .U.....S.U..}...
+0012F8CC: 00E0358C   004263AF: 8B 15 B4 EC 52 00 3B 02 75 0E 8B 5D FC 8B 43 0C  ....R.;.u..]..C.
+0012F8D0: 00524D63   004263BF: FF 53 08 E9 13 01 00 00 6A 00 6A 00 6A FF 6A 00  .S......j.j.j.j.
+
+
+
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sat, 19 Mar 2005 21:58:44 +0800
+  1.2 Name/Description: MultiThreadDemo.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Sat, 19 Mar 2005 21:59:29 +0800
+  2.2 Address: 004262CF
+  2.3 Module : MultiThreadDemo.exe
+  2.4 Type   : EThread
+  2.5 Message: Thread Error: 句柄无效。 (6).
+
+Active Controls:
+---------------------------------------------------------
+  3.1 Form Class   : TAppBuilder
+  3.2 Form Text    : Delphi 7 - MultiThreadDemo [Running]
+  3.3 Control Class: TBitBtn
+  3.4 Control Text : Create Thread
+
+Computer:
+---------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 100 Mb
+  4.5 Total Disk  : 9.31 Gb
+  4.6 Free Disk   : 0.7 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+---------------------------------------------------------------------------------------------------------------------
+|Address |Module             |Unit                                        |Class   |Procedure/Method           |Line|
+---------------------------------------------------------------------------------------------------------------------
+|00525141|MultiThreadDemo.exe|MainForm.pas                                |TMainFrm|DBGridThreadsDrawColumnCell|312 |
+|77DF3C99|user32.dll         |                                            |        |FillRect                   |    |
+|77F82091|ntdll.dll          |                                            |        |RtlLeaveCriticalSection    |    |
+|77DF2C0C|user32.dll         |                                            |        |OffsetRect                 |    |
+|77DF3B50|user32.dll         |                                            |        |IsWindow                   |    |
+|77DF5F64|user32.dll         |                                            |        |DispatchMessageA           |    |
+|77DF5F5E|user32.dll         |                                            |        |DispatchMessageA           |    |
+|00525FE7|MultiThreadDemo.exe|Thread Manager (for Delphi 7 and Kylix 3.pas|        |MultiThreadDemo            |14  |
+---------------------------------------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name               |Description                                     |Version       |Size   |Path                                                   |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|MultiThreadDemo.exe|                                                |              |1432576|E:\Thread Manager (for Delphi 7 and Kylix 3)\新建文件夹|
+|01020000|UNISPIM.IME        |紫光拼音输入法3.0                               |3.0.0.0       |102400 |D:\WINNT\system32                                      |
+|01130000|upengine.dll       |紫光拼音输入法引擎                              |3.0.0.0       |299008 |D:\WINNT\system32                                      |
+|01640000|msctf.dll.mui      |MSUIM Server DLL                                |5.1.2409.7    |3584   |D:\WINNT\mui\fallback\0804                             |
+|10000000|BDPlugin.dll       |                                                |1.0.1.1       |110592 |D:\WINNT\DOWNLO~1                                      |
+|60000000|MSCTF.dll          |MSUIM Server DLL                                |5.1.2409.7    |273408 |D:\WINNT\system32                                      |
+|687E0000|PSAPI.DLL          |Process Status Helper                           |5.0.2134.1    |28944  |D:\WINNT\system32                                      |
+|74F50000|msafd.dll          |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816 |D:\WINNT\system32                                      |
+|74F90000|wshtcpip.dll       |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680  |D:\WINNT\System32                                      |
+|74FA0000|WS2HELP.DLL        |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192  |D:\WINNT\system32                                      |
+|74FB0000|WS2_32.DLL         |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904  |D:\WINNT\system32                                      |
+|74FD0000|wsock32.dll        |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920  |D:\WINNT\system32                                      |
+|75950000|LZ32.DLL           |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000  |D:\WINNT\system32                                      |
+|75E00000|IMM32.DLL          |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528  |D:\WINNT\system32                                      |
+|777E0000|version.dll        |Version Checking and File Installation Libraries|5.0.2195.6623 |16144  |D:\WINNT\system32                                      |
+|77990000|oleaut32.dll       |                                                |2.40.4522.0   |626960 |D:\WINNT\system32                                      |
+|77A30000|ole32.dll          |Microsoft OLE for Windows                       |5.0.2195.6769 |944912 |D:\WINNT\system32                                      |
+|77B30000|comctl32.dll       |Common Controls Library                         |5.81.3502.6601|550672 |D:\WINNT\system32                                      |
+|77C50000|SHLWAPI.DLL        |Shell Light-weight Utility Library              |5.0.3502.6601 |289552 |D:\WINNT\system32                                      |
+|77DF0000|user32.dll         |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216 |D:\WINNT\system32                                      |
+|77E60000|kernel32.dll       |Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672 |D:\WINNT\system32                                      |
+|77F40000|GDI32.DLL          |GDI Client DLL                                  |5.0.2195.6898 |242448 |D:\WINNT\system32                                      |
+|77F80000|ntdll.dll          |NT Layer DLL                                    |5.0.2195.6899 |497936 |D:\WINNT\system32                                      |
+|78000000|MSVCRT.DLL         |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773 |D:\WINNT\system32                                      |
+|786F0000|RPCRT4.DLL         |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400 |D:\WINNT\system32                                      |
+|78F90000|shell32.dll        |Windows Shell Common Dll                        |5.0.3700.6705 |2383632|D:\WINNT\system32                                      |
+|796D0000|advapi32.dll       |Advanced Windows 32 Base API                    |5.0.2195.6876 |388368 |D:\WINNT\system32                                      |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012F894: 0012F8D8   004262CF: E8 84 E3 FD FF 33 C0 5A 59 59 64 89 10 68 F1 62  .....3.ZYYd..h.b
+0012F898: 0040458C   004262DF: 42 00 8D 45 EC E8 FF E9 FD FF C3 E9 6D E2 FD FF  B..E........m...
+0012F89C: 0012F8B8   004262EF: EB F0 5B 8B E5 5D C3 8B C0 53 8B D8 84 D2 75 0E  ..[..]...S....u.
+0012F8A0: 00E0D4C0   004262FF: E8 60 13 FE FF 8B D0 8B C3 E8 6F FF FF FF 5B C3  .`........o...[.
+0012F8A4: 00000000   0042630F: 90 53 66 83 78 1A 00 74 0A 8B D8 8B D0 8B 43 1C  .Sf.x..t......C.
+0012F8A8: 00E0ABB0   0042631F: FF 53 18 5B C3 66 83 78 1A 00 74 0B 50 68 10 63  .S.[.f.x..t.Ph.c
+0012F8AC: 0012F80B   0042632F: 42 00 E8 AA 01 00 00 C3 90 53 56 8B D8 8B 43 04  B........SV...C.
+0012F8B0: 00000006   0042633F: 50 E8 C7 13 FE FF 8B F0 81 FE FF FF FF 7F 0F 95  P...............
+0012F8B4: 0012F900   0042634F: C2 8B C3 E8 A1 FF FF FF B0 03 33 D2 B9 D4 65 52  ..........3...eR
+0012F8B8: 0012F924   0042635F: 00 3B 31 75 02 8B C2 42 83 C1 04 80 FA 07 75 F1  .;1u...B......u.
+0012F8BC: 0042630D   0042636F: 5E 5B C3 8B C0 53 56 8B DA 8B F0 33 C0 8A C3 8B  ^[...SV....3....
+0012F8C0: 00E0D4C0   0042637F: 04 85 D4 65 52 00 50 8B 46 04 50 E8 CD 14 FE FF  ...eR.P.F.P.....
+0012F8C4: 00426357   0042638F: 83 F8 01 1B D2 42 8B C6 E8 5C FF FF FF 5E 5B C3  .....B...\...^[.
+0012F8C8: 00DF4858   0042639F: 90 55 8B EC 83 C4 F4 53 89 55 FC E8 7D 12 FE FF  .U.....S.U..}...
+0012F8CC: 00E035C4   004263AF: 8B 15 B4 EC 52 00 3B 02 75 0E 8B 5D FC 8B 43 0C  ....R.;.u..]..C.
+0012F8D0: 00525146   004263BF: FF 53 08 E9 13 01 00 00 6A 00 6A 00 6A FF 6A 00  .S......j.j.j.j.
+
+
+
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sat, 19 Mar 2005 22:01:39 +0800
+  1.2 Name/Description: MultiThreadDemo.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Sat, 19 Mar 2005 22:01:51 +0800
+  2.2 Address: 004262CF
+  2.3 Module : MultiThreadDemo.exe
+  2.4 Type   : EThread
+  2.5 Message: Thread Error: 句柄无效。 (6).
+
+Active Controls:
+---------------------------------------------------------
+  3.1 Form Class   : TAppBuilder
+  3.2 Form Text    : Delphi 7 - MultiThreadDemo [Running]
+  3.3 Control Class: TBitBtn
+  3.4 Control Text : Create Thread
+
+Computer:
+---------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 99 Mb
+  4.5 Total Disk  : 9.31 Gb
+  4.6 Free Disk   : 0.7 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+---------------------------------------------------------------------------------------------------------------------
+|Address |Module             |Unit                                        |Class   |Procedure/Method           |Line|
+---------------------------------------------------------------------------------------------------------------------
+|0052513D|MultiThreadDemo.exe|MainForm.pas                                |TMainFrm|DBGridThreadsDrawColumnCell|312 |
+|77DF3C99|user32.dll         |                                            |        |FillRect                   |    |
+|77F82091|ntdll.dll          |                                            |        |RtlLeaveCriticalSection    |    |
+|77DF2C0C|user32.dll         |                                            |        |OffsetRect                 |    |
+|77DF3B50|user32.dll         |                                            |        |IsWindow                   |    |
+|77DF5F64|user32.dll         |                                            |        |DispatchMessageA           |    |
+|77DF5F5E|user32.dll         |                                            |        |DispatchMessageA           |    |
+|00525FEF|MultiThreadDemo.exe|Thread Manager (for Delphi 7 and Kylix 3.pas|        |MultiThreadDemo            |14  |
+---------------------------------------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name               |Description                                     |Version       |Size   |Path                                                   |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|MultiThreadDemo.exe|                                                |              |1432576|E:\Thread Manager (for Delphi 7 and Kylix 3)\新建文件夹|
+|01020000|UNISPIM.IME        |紫光拼音输入法3.0                               |3.0.0.0       |102400 |D:\WINNT\system32                                      |
+|01130000|upengine.dll       |紫光拼音输入法引擎                              |3.0.0.0       |299008 |D:\WINNT\system32                                      |
+|01640000|msctf.dll.mui      |MSUIM Server DLL                                |5.1.2409.7    |3584   |D:\WINNT\mui\fallback\0804                             |
+|10000000|BDPlugin.dll       |                                                |1.0.1.1       |110592 |D:\WINNT\DOWNLO~1                                      |
+|60000000|MSCTF.dll          |MSUIM Server DLL                                |5.1.2409.7    |273408 |D:\WINNT\system32                                      |
+|687E0000|PSAPI.DLL          |Process Status Helper                           |5.0.2134.1    |28944  |D:\WINNT\system32                                      |
+|74F50000|msafd.dll          |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816 |D:\WINNT\system32                                      |
+|74F90000|wshtcpip.dll       |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680  |D:\WINNT\System32                                      |
+|74FA0000|WS2HELP.DLL        |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192  |D:\WINNT\system32                                      |
+|74FB0000|WS2_32.DLL         |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904  |D:\WINNT\system32                                      |
+|74FD0000|wsock32.dll        |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920  |D:\WINNT\system32                                      |
+|75950000|LZ32.DLL           |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000  |D:\WINNT\system32                                      |
+|75E00000|IMM32.DLL          |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528  |D:\WINNT\system32                                      |
+|777E0000|version.dll        |Version Checking and File Installation Libraries|5.0.2195.6623 |16144  |D:\WINNT\system32                                      |
+|77990000|oleaut32.dll       |                                                |2.40.4522.0   |626960 |D:\WINNT\system32                                      |
+|77A30000|ole32.dll          |Microsoft OLE for Windows                       |5.0.2195.6769 |944912 |D:\WINNT\system32                                      |
+|77B30000|comctl32.dll       |Common Controls Library                         |5.81.3502.6601|550672 |D:\WINNT\system32                                      |
+|77C50000|SHLWAPI.DLL        |Shell Light-weight Utility Library              |5.0.3502.6601 |289552 |D:\WINNT\system32                                      |
+|77DF0000|user32.dll         |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216 |D:\WINNT\system32                                      |
+|77E60000|kernel32.dll       |Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672 |D:\WINNT\system32                                      |
+|77F40000|GDI32.DLL          |GDI Client DLL                                  |5.0.2195.6898 |242448 |D:\WINNT\system32                                      |
+|77F80000|ntdll.dll          |NT Layer DLL                                    |5.0.2195.6899 |497936 |D:\WINNT\system32                                      |
+|78000000|MSVCRT.DLL         |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773 |D:\WINNT\system32                                      |
+|786F0000|RPCRT4.DLL         |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400 |D:\WINNT\system32                                      |
+|78F90000|shell32.dll        |Windows Shell Common Dll                        |5.0.3700.6705 |2383632|D:\WINNT\system32                                      |
+|796D0000|advapi32.dll       |Advanced Windows 32 Base API                    |5.0.2195.6876 |388368 |D:\WINNT\system32                                      |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012F898: 0012F8D8   004262CF: E8 84 E3 FD FF 33 C0 5A 59 59 64 89 10 68 F1 62  .....3.ZYYd..h.b
+0012F89C: 0040458C   004262DF: 42 00 8D 45 EC E8 FF E9 FD FF C3 E9 6D E2 FD FF  B..E........m...
+0012F8A0: 0012F8BC   004262EF: EB F0 5B 8B E5 5D C3 8B C0 53 8B D8 84 D2 75 0E  ..[..]...S....u.
+0012F8A4: 00E07514   004262FF: E8 60 13 FE FF 8B D0 8B C3 E8 6F FF FF FF 5B C3  .`........o...[.
+0012F8A8: 00000000   0042630F: 90 53 66 83 78 1A 00 74 0A 8B D8 8B D0 8B 43 1C  .Sf.x..t......C.
+0012F8AC: 00DF4ED0   0042631F: FF 53 18 5B C3 66 83 78 1A 00 74 0B 50 68 10 63  .S.[.f.x..t.Ph.c
+0012F8B0: 004AD00B   0042632F: 42 00 E8 AA 01 00 00 C3 90 53 56 8B D8 8B 43 04  B........SV...C.
+0012F8B4: 00000006   0042633F: 50 E8 C7 13 FE FF 8B F0 81 FE FF FF FF 7F 0F 95  P...............
+0012F8B8: 004A4700   0042634F: C2 8B C3 E8 A1 FF FF FF B0 03 33 D2 B9 D4 65 52  ..........3...eR
+0012F8BC: 0012F924   0042635F: 00 3B 31 75 02 8B C2 42 83 C1 04 80 FA 07 75 F1  .;1u...B......u.
+0012F8C0: 0042630D   0042636F: 5E 5B C3 8B C0 53 56 8B DA 8B F0 33 C0 8A C3 8B  ^[...SV....3....
+0012F8C4: 00E07514   0042637F: 04 85 D4 65 52 00 50 8B 46 04 50 E8 CD 14 FE FF  ...eR.P.F.P.....
+0012F8C8: 00426357   0042638F: 83 F8 01 1B D2 42 8B C6 E8 5C FF FF FF 5E 5B C3  .....B...\...^[.
+0012F8CC: 00DF4858   0042639F: 90 55 8B EC 83 C4 F4 53 89 55 FC E8 7D 12 FE FF  .U.....S.U..}...
+0012F8D0: 00E035C4   004263AF: 8B 15 B4 EC 52 00 3B 02 75 0E 8B 5D FC 8B 43 0C  ....R.;.u..]..C.
+0012F8D4: 00525142   004263BF: FF 53 08 E9 13 01 00 00 6A 00 6A 00 6A FF 6A 00  .S......j.j.j.j.
+
+
+
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sat, 19 Mar 2005 22:07:39 +0800
+  1.2 Name/Description: MultiThreadDemo.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Sat, 19 Mar 2005 22:07:47 +0800
+  2.2 Address: 004262CF
+  2.3 Module : MultiThreadDemo.exe
+  2.4 Type   : EThread
+  2.5 Message: Thread Error: 句柄无效。 (6).
+
+Active Controls:
+---------------------------------------------------------
+  3.1 Form Class   : TAppBuilder
+  3.2 Form Text    : Delphi 7 - MultiThreadDemo [Running]
+  3.3 Control Class: TBitBtn
+  3.4 Control Text : Create Thread
+
+Computer:
+---------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 99 Mb
+  4.5 Total Disk  : 9.31 Gb
+  4.6 Free Disk   : 0.7 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+---------------------------------------------------------------------------------------------------------------------
+|Address |Module             |Unit                                        |Class   |Procedure/Method           |Line|
+---------------------------------------------------------------------------------------------------------------------
+|0052514D|MultiThreadDemo.exe|MainForm.pas                                |TMainFrm|DBGridThreadsDrawColumnCell|313 |
+|77DF3C99|user32.dll         |                                            |        |FillRect                   |    |
+|77F82091|ntdll.dll          |                                            |        |RtlLeaveCriticalSection    |    |
+|77DF2C0C|user32.dll         |                                            |        |OffsetRect                 |    |
+|77DF3B50|user32.dll         |                                            |        |IsWindow                   |    |
+|77DF5F64|user32.dll         |                                            |        |DispatchMessageA           |    |
+|77DF5F5E|user32.dll         |                                            |        |DispatchMessageA           |    |
+|00525FF3|MultiThreadDemo.exe|Thread Manager (for Delphi 7 and Kylix 3.pas|        |MultiThreadDemo            |14  |
+---------------------------------------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name               |Description                                     |Version       |Size   |Path                                                   |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|MultiThreadDemo.exe|                                                |              |1432576|E:\Thread Manager (for Delphi 7 and Kylix 3)\新建文件夹|
+|01020000|UNISPIM.IME        |紫光拼音输入法3.0                               |3.0.0.0       |102400 |D:\WINNT\system32                                      |
+|01130000|upengine.dll       |紫光拼音输入法引擎                              |3.0.0.0       |299008 |D:\WINNT\system32                                      |
+|01640000|msctf.dll.mui      |MSUIM Server DLL                                |5.1.2409.7    |3584   |D:\WINNT\mui\fallback\0804                             |
+|10000000|BDPlugin.dll       |                                                |1.0.1.1       |110592 |D:\WINNT\DOWNLO~1                                      |
+|60000000|MSCTF.dll          |MSUIM Server DLL                                |5.1.2409.7    |273408 |D:\WINNT\system32                                      |
+|687E0000|PSAPI.DLL          |Process Status Helper                           |5.0.2134.1    |28944  |D:\WINNT\system32                                      |
+|74F50000|msafd.dll          |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816 |D:\WINNT\system32                                      |
+|74F90000|wshtcpip.dll       |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680  |D:\WINNT\System32                                      |
+|74FA0000|WS2HELP.DLL        |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192  |D:\WINNT\system32                                      |
+|74FB0000|WS2_32.DLL         |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904  |D:\WINNT\system32                                      |
+|74FD0000|wsock32.dll        |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920  |D:\WINNT\system32                                      |
+|75950000|LZ32.DLL           |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000  |D:\WINNT\system32                                      |
+|75E00000|IMM32.DLL          |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528  |D:\WINNT\system32                                      |
+|777E0000|version.dll        |Version Checking and File Installation Libraries|5.0.2195.6623 |16144  |D:\WINNT\system32                                      |
+|77990000|oleaut32.dll       |                                                |2.40.4522.0   |626960 |D:\WINNT\system32                                      |
+|77A30000|ole32.dll          |Microsoft OLE for Windows                       |5.0.2195.6769 |944912 |D:\WINNT\system32                                      |
+|77B30000|comctl32.dll       |Common Controls Library                         |5.81.3502.6601|550672 |D:\WINNT\system32                                      |
+|77C50000|SHLWAPI.DLL        |Shell Light-weight Utility Library              |5.0.3502.6601 |289552 |D:\WINNT\system32                                      |
+|77DF0000|user32.dll         |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216 |D:\WINNT\system32                                      |
+|77E60000|kernel32.dll       |Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672 |D:\WINNT\system32                                      |
+|77F40000|GDI32.DLL          |GDI Client DLL                                  |5.0.2195.6898 |242448 |D:\WINNT\system32                                      |
+|77F80000|ntdll.dll          |NT Layer DLL                                    |5.0.2195.6899 |497936 |D:\WINNT\system32                                      |
+|78000000|MSVCRT.DLL         |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773 |D:\WINNT\system32                                      |
+|786F0000|RPCRT4.DLL         |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400 |D:\WINNT\system32                                      |
+|78F90000|shell32.dll        |Windows Shell Common Dll                        |5.0.3700.6705 |2383632|D:\WINNT\system32                                      |
+|796D0000|advapi32.dll       |Advanced Windows 32 Base API                    |5.0.2195.6876 |388368 |D:\WINNT\system32                                      |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012F894: 0012F8D8   004262CF: E8 84 E3 FD FF 33 C0 5A 59 59 64 89 10 68 F1 62  .....3.ZYYd..h.b
+0012F898: 0040458C   004262DF: 42 00 8D 45 EC E8 FF E9 FD FF C3 E9 6D E2 FD FF  B..E........m...
+0012F89C: 0012F8B8   004262EF: EB F0 5B 8B E5 5D C3 8B C0 53 8B D8 84 D2 75 0E  ..[..]...S....u.
+0012F8A0: 00DFC528   004262FF: E8 60 13 FE FF 8B D0 8B C3 E8 6F FF FF FF 5B C3  .`........o...[.
+0012F8A4: 00000000   0042630F: 90 53 66 83 78 1A 00 74 0A 8B D8 8B D0 8B 43 1C  .Sf.x..t......C.
+0012F8A8: 00E04038   0042631F: FF 53 18 5B C3 66 83 78 1A 00 74 0B 50 68 10 63  .S.[.f.x..t.Ph.c
+0012F8AC: 0012F80B   0042632F: 42 00 E8 AA 01 00 00 C3 90 53 56 8B D8 8B 43 04  B........SV...C.
+0012F8B0: 00000006   0042633F: 50 E8 C7 13 FE FF 8B F0 81 FE FF FF FF 7F 0F 95  P...............
+0012F8B4: 0012F900   0042634F: C2 8B C3 E8 A1 FF FF FF B0 03 33 D2 B9 D4 65 52  ..........3...eR
+0012F8B8: 0012F924   0042635F: 00 3B 31 75 02 8B C2 42 83 C1 04 80 FA 07 75 F1  .;1u...B......u.
+0012F8BC: 0042630D   0042636F: 5E 5B C3 8B C0 53 56 8B DA 8B F0 33 C0 8A C3 8B  ^[...SV....3....
+0012F8C0: 00DFC528   0042637F: 04 85 D4 65 52 00 50 8B 46 04 50 E8 CD 14 FE FF  ...eR.P.F.P.....
+0012F8C4: 00426357   0042638F: 83 F8 01 1B D2 42 8B C6 E8 5C FF FF FF 5E 5B C3  .....B...\...^[.
+0012F8C8: 00DF4858   0042639F: 90 55 8B EC 83 C4 F4 53 89 55 FC E8 7D 12 FE FF  .U.....S.U..}...
+0012F8CC: 00E035C4   004263AF: 8B 15 B4 EC 52 00 3B 02 75 0E 8B 5D FC 8B 43 0C  ....R.;.u..]..C.
+0012F8D0: 00525152   004263BF: FF 53 08 E9 13 01 00 00 6A 00 6A 00 6A FF 6A 00  .S......j.j.j.j.
+
+
+
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sat, 19 Mar 2005 22:08:23 +0800
+  1.2 Name/Description: MultiThreadDemo.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Sat, 19 Mar 2005 22:08:31 +0800
+  2.2 Address: 004262CF
+  2.3 Module : MultiThreadDemo.exe
+  2.4 Type   : EThread
+  2.5 Message: Thread Error: 句柄无效。 (6).
+
+Active Controls:
+---------------------------------------------------------
+  3.1 Form Class   : TAppBuilder
+  3.2 Form Text    : Delphi 7 - MultiThreadDemo [Running]
+  3.3 Control Class: TBitBtn
+  3.4 Control Text : Create Thread
+
+Computer:
+---------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 97 Mb
+  4.5 Total Disk  : 9.31 Gb
+  4.6 Free Disk   : 0.7 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+---------------------------------------------------------------------------------------------------------------------
+|Address |Module             |Unit                                        |Class   |Procedure/Method           |Line|
+---------------------------------------------------------------------------------------------------------------------
+|00525149|MultiThreadDemo.exe|MainForm.pas                                |TMainFrm|DBGridThreadsDrawColumnCell|314 |
+|77DF3C99|user32.dll         |                                            |        |FillRect                   |    |
+|77F82091|ntdll.dll          |                                            |        |RtlLeaveCriticalSection    |    |
+|77DF2C0C|user32.dll         |                                            |        |OffsetRect                 |    |
+|77DF3B50|user32.dll         |                                            |        |IsWindow                   |    |
+|77DF5F64|user32.dll         |                                            |        |DispatchMessageA           |    |
+|77DF5F5E|user32.dll         |                                            |        |DispatchMessageA           |    |
+|00525FC7|MultiThreadDemo.exe|Thread Manager (for Delphi 7 and Kylix 3.pas|        |MultiThreadDemo            |14  |
+---------------------------------------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name               |Description                                     |Version       |Size   |Path                                                   |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|MultiThreadDemo.exe|                                                |              |1432576|E:\Thread Manager (for Delphi 7 and Kylix 3)\新建文件夹|
+|01020000|UNISPIM.IME        |紫光拼音输入法3.0                               |3.0.0.0       |102400 |D:\WINNT\system32                                      |
+|01130000|upengine.dll       |紫光拼音输入法引擎                              |3.0.0.0       |299008 |D:\WINNT\system32                                      |
+|01640000|msctf.dll.mui      |MSUIM Server DLL                                |5.1.2409.7    |3584   |D:\WINNT\mui\fallback\0804                             |
+|10000000|BDPlugin.dll       |                                                |1.0.1.1       |110592 |D:\WINNT\DOWNLO~1                                      |
+|60000000|MSCTF.dll          |MSUIM Server DLL                                |5.1.2409.7    |273408 |D:\WINNT\system32                                      |
+|687E0000|PSAPI.DLL          |Process Status Helper                           |5.0.2134.1    |28944  |D:\WINNT\system32                                      |
+|74F50000|msafd.dll          |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816 |D:\WINNT\system32                                      |
+|74F90000|wshtcpip.dll       |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680  |D:\WINNT\System32                                      |
+|74FA0000|WS2HELP.DLL        |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192  |D:\WINNT\system32                                      |
+|74FB0000|WS2_32.DLL         |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904  |D:\WINNT\system32                                      |
+|74FD0000|wsock32.dll        |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920  |D:\WINNT\system32                                      |
+|75950000|LZ32.DLL           |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000  |D:\WINNT\system32                                      |
+|75E00000|IMM32.DLL          |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528  |D:\WINNT\system32                                      |
+|777E0000|version.dll        |Version Checking and File Installation Libraries|5.0.2195.6623 |16144  |D:\WINNT\system32                                      |
+|77990000|oleaut32.dll       |                                                |2.40.4522.0   |626960 |D:\WINNT\system32                                      |
+|77A30000|ole32.dll          |Microsoft OLE for Windows                       |5.0.2195.6769 |944912 |D:\WINNT\system32                                      |
+|77B30000|comctl32.dll       |Common Controls Library                         |5.81.3502.6601|550672 |D:\WINNT\system32                                      |
+|77C50000|SHLWAPI.DLL        |Shell Light-weight Utility Library              |5.0.3502.6601 |289552 |D:\WINNT\system32                                      |
+|77DF0000|user32.dll         |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216 |D:\WINNT\system32                                      |
+|77E60000|kernel32.dll       |Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672 |D:\WINNT\system32                                      |
+|77F40000|GDI32.DLL          |GDI Client DLL                                  |5.0.2195.6898 |242448 |D:\WINNT\system32                                      |
+|77F80000|ntdll.dll          |NT Layer DLL                                    |5.0.2195.6899 |497936 |D:\WINNT\system32                                      |
+|78000000|MSVCRT.DLL         |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773 |D:\WINNT\system32                                      |
+|786F0000|RPCRT4.DLL         |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400 |D:\WINNT\system32                                      |
+|78F90000|shell32.dll        |Windows Shell Common Dll                        |5.0.3700.6705 |2383632|D:\WINNT\system32                                      |
+|796D0000|advapi32.dll       |Advanced Windows 32 Base API                    |5.0.2195.6876 |388368 |D:\WINNT\system32                                      |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012F898: 0012F8D8   004262CF: E8 84 E3 FD FF 33 C0 5A 59 59 64 89 10 68 F1 62  .....3.ZYYd..h.b
+0012F89C: 0040458C   004262DF: 42 00 8D 45 EC E8 FF E9 FD FF C3 E9 6D E2 FD FF  B..E........m...
+0012F8A0: 0012F8BC   004262EF: EB F0 5B 8B E5 5D C3 8B C0 53 8B D8 84 D2 75 0E  ..[..]...S....u.
+0012F8A4: 00DFC528   004262FF: E8 60 13 FE FF 8B D0 8B C3 E8 6F FF FF FF 5B C3  .`........o...[.
+0012F8A8: 00000000   0042630F: 90 53 66 83 78 1A 00 74 0A 8B D8 8B D0 8B 43 1C  .Sf.x..t......C.
+0012F8AC: 00DFC5A8   0042631F: FF 53 18 5B C3 66 83 78 1A 00 74 0B 50 68 10 63  .S.[.f.x..t.Ph.c
+0012F8B0: 004AD00B   0042632F: 42 00 E8 AA 01 00 00 C3 90 53 56 8B D8 8B 43 04  B........SV...C.
+0012F8B4: 00000006   0042633F: 50 E8 C7 13 FE FF 8B F0 81 FE FF FF FF 7F 0F 95  P...............
+0012F8B8: 004A4700   0042634F: C2 8B C3 E8 A1 FF FF FF B0 03 33 D2 B9 D4 65 52  ..........3...eR
+0012F8BC: 0012F924   0042635F: 00 3B 31 75 02 8B C2 42 83 C1 04 80 FA 07 75 F1  .;1u...B......u.
+0012F8C0: 0042630D   0042636F: 5E 5B C3 8B C0 53 56 8B DA 8B F0 33 C0 8A C3 8B  ^[...SV....3....
+0012F8C4: 00DFC528   0042637F: 04 85 D4 65 52 00 50 8B 46 04 50 E8 CD 14 FE FF  ...eR.P.F.P.....
+0012F8C8: 00426357   0042638F: 83 F8 01 1B D2 42 8B C6 E8 5C FF FF FF 5E 5B C3  .....B...\...^[.
+0012F8CC: 00DF4858   0042639F: 90 55 8B EC 83 C4 F4 53 89 55 FC E8 7D 12 FE FF  .U.....S.U..}...
+0012F8D0: 00E035C0   004263AF: 8B 15 B4 EC 52 00 3B 02 75 0E 8B 5D FC 8B 43 0C  ....R.;.u..]..C.
+0012F8D4: 0052514E   004263BF: FF 53 08 E9 13 01 00 00 6A 00 6A 00 6A FF 6A 00  .S......j.j.j.j.
+
+
+
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sat, 19 Mar 2005 22:09:18 +0800
+  1.2 Name/Description: MultiThreadDemo.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Sat, 19 Mar 2005 22:09:23 +0800
+  2.2 Address: 0042625F
+  2.3 Module : MultiThreadDemo.exe
+  2.4 Type   : EThread
+  2.5 Message: Thread Error: 句柄无效。 (6).
+
+Active Controls:
+---------------------------------------------------------
+  3.1 Form Class   : TAppBuilder
+  3.2 Form Text    : Delphi 7 - MultiThreadDemo [Running]
+  3.3 Control Class: TBitBtn
+  3.4 Control Text : Create Thread
+
+Computer:
+---------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 96 Mb
+  4.5 Total Disk  : 9.31 Gb
+  4.6 Free Disk   : 0.7 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+---------------------------------------------------------------------------------------------------------------------
+|Address |Module             |Unit                                        |Class   |Procedure/Method           |Line|
+---------------------------------------------------------------------------------------------------------------------
+|005252F8|MultiThreadDemo.exe|MainForm.pas                                |TMainFrm|DBGridThreadsDrawColumnCell|347 |
+|77DF3C99|user32.dll         |                                            |        |FillRect                   |    |
+|77F82091|ntdll.dll          |                                            |        |RtlLeaveCriticalSection    |    |
+|77DF2C0C|user32.dll         |                                            |        |OffsetRect                 |    |
+|77DF3B50|user32.dll         |                                            |        |IsWindow                   |    |
+|77DF5F64|user32.dll         |                                            |        |DispatchMessageA           |    |
+|77DF5F5E|user32.dll         |                                            |        |DispatchMessageA           |    |
+|00525F13|MultiThreadDemo.exe|Thread Manager (for Delphi 7 and Kylix 3.pas|        |MultiThreadDemo            |14  |
+---------------------------------------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name               |Description                                     |Version       |Size   |Path                                                   |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|MultiThreadDemo.exe|                                                |              |1432576|E:\Thread Manager (for Delphi 7 and Kylix 3)\新建文件夹|
+|01020000|UNISPIM.IME        |紫光拼音输入法3.0                               |3.0.0.0       |102400 |D:\WINNT\system32                                      |
+|01130000|upengine.dll       |紫光拼音输入法引擎                              |3.0.0.0       |299008 |D:\WINNT\system32                                      |
+|01640000|msctf.dll.mui      |MSUIM Server DLL                                |5.1.2409.7    |3584   |D:\WINNT\mui\fallback\0804                             |
+|10000000|BDPlugin.dll       |                                                |1.0.1.1       |110592 |D:\WINNT\DOWNLO~1                                      |
+|60000000|MSCTF.dll          |MSUIM Server DLL                                |5.1.2409.7    |273408 |D:\WINNT\system32                                      |
+|687E0000|PSAPI.DLL          |Process Status Helper                           |5.0.2134.1    |28944  |D:\WINNT\system32                                      |
+|74F50000|msafd.dll          |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816 |D:\WINNT\system32                                      |
+|74F90000|wshtcpip.dll       |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680  |D:\WINNT\System32                                      |
+|74FA0000|WS2HELP.DLL        |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192  |D:\WINNT\system32                                      |
+|74FB0000|WS2_32.DLL         |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904  |D:\WINNT\system32                                      |
+|74FD0000|wsock32.dll        |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920  |D:\WINNT\system32                                      |
+|75950000|LZ32.DLL           |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000  |D:\WINNT\system32                                      |
+|75E00000|IMM32.DLL          |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528  |D:\WINNT\system32                                      |
+|777E0000|version.dll        |Version Checking and File Installation Libraries|5.0.2195.6623 |16144  |D:\WINNT\system32                                      |
+|77990000|oleaut32.dll       |                                                |2.40.4522.0   |626960 |D:\WINNT\system32                                      |
+|77A30000|ole32.dll          |Microsoft OLE for Windows                       |5.0.2195.6769 |944912 |D:\WINNT\system32                                      |
+|77B30000|comctl32.dll       |Common Controls Library                         |5.81.3502.6601|550672 |D:\WINNT\system32                                      |
+|77C50000|SHLWAPI.DLL        |Shell Light-weight Utility Library              |5.0.3502.6601 |289552 |D:\WINNT\system32                                      |
+|77DF0000|user32.dll         |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216 |D:\WINNT\system32                                      |
+|77E60000|kernel32.dll       |Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672 |D:\WINNT\system32                                      |
+|77F40000|GDI32.DLL          |GDI Client DLL                                  |5.0.2195.6898 |242448 |D:\WINNT\system32                                      |
+|77F80000|ntdll.dll          |NT Layer DLL                                    |5.0.2195.6899 |497936 |D:\WINNT\system32                                      |
+|78000000|MSVCRT.DLL         |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773 |D:\WINNT\system32                                      |
+|786F0000|RPCRT4.DLL         |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400 |D:\WINNT\system32                                      |
+|78F90000|shell32.dll        |Windows Shell Common Dll                        |5.0.3700.6705 |2383632|D:\WINNT\system32                                      |
+|796D0000|advapi32.dll       |Advanced Windows 32 Base API                    |5.0.2195.6876 |388368 |D:\WINNT\system32                                      |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012F89C: 0012F8DC   0042625F: E8 F4 E3 FD FF 33 C0 5A 59 59 64 89 10 68 81 62  .....3.ZYYd..h.b
+0012F8A0: 0040458C   0042626F: 42 00 8D 45 EC E8 6F EA FD FF C3 E9 DD E2 FD FF  B..E..o.........
+0012F8A4: 0012F8C0   0042627F: EB F0 5B 8B E5 5D C3 8B C0 53 8B D8 84 D2 75 0E  ..[..]...S....u.
+0012F8A8: 00DFC528   0042628F: E8 D0 13 FE FF 8B D0 8B C3 E8 6F FF FF FF 5B C3  ..........o...[.
+0012F8AC: 00000000   0042629F: 90 53 66 83 78 1A 00 74 0A 8B D8 8B D0 8B 43 1C  .Sf.x..t......C.
+0012F8B0: 00DF1E2C   004262AF: FF 53 18 5B C3 66 83 78 1A 00 74 0B 50 68 A0 62  .S.[.f.x..t.Ph.b
+0012F8B4: 004AD00B   004262BF: 42 00 E8 AA 01 00 00 C3 90 53 56 8B D8 8B 43 04  B........SV...C.
+0012F8B8: 00000006   004262CF: 50 E8 37 14 FE FF 8B F0 81 FE FF FF FF 7F 0F 95  P.7.............
+0012F8BC: 004A4700   004262DF: C2 8B C3 E8 A1 FF FF FF B0 03 33 D2 B9 D4 65 52  ..........3...eR
+0012F8C0: 0012F924   004262EF: 00 3B 31 75 02 8B C2 42 83 C1 04 80 FA 07 75 F1  .;1u...B......u.
+0012F8C4: 0042629D   004262FF: 5E 5B C3 8B C0 53 56 8B DA 8B F0 33 C0 8A C3 8B  ^[...SV....3....
+0012F8C8: 00DFC528   0042630F: 04 85 D4 65 52 00 50 8B 46 04 50 E8 3D 15 FE FF  ...eR.P.F.P.=...
+0012F8CC: 004262E7   0042631F: 83 F8 01 1B D2 42 8B C6 E8 5C FF FF FF 5E 5B C3  .....B...\...^[.
+0012F8D0: 00DF520C   0042632F: 90 55 8B EC 83 C4 F4 53 89 55 FC E8 ED 12 FE FF  .U.....S.U......
+0012F8D4: 00E035C0   0042633F: 8B 15 B4 EC 52 00 3B 02 75 0E 8B 5D FC 8B 43 0C  ....R.;.u..]..C.
+0012F8D8: 005252FD   0042634F: FF 53 08 E9 13 01 00 00 6A 00 6A 00 6A FF 6A 00  .S......j.j.j.j.
+
+
+
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sat, 19 Mar 2005 22:21:06 +0800
+  1.2 Name/Description: MultiThreadDemo.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Sat, 19 Mar 2005 22:21:18 +0800
+  2.2 Address: 0042625F
+  2.3 Module : MultiThreadDemo.exe
+  2.4 Type   : EThread
+  2.5 Message: Thread Error: 句柄无效。 (6).
+
+Active Controls:
+---------------------------------------------------------
+  3.1 Form Class   : TAppBuilder
+  3.2 Form Text    : Delphi 7 - MultiThreadDemo [Running]
+  3.3 Control Class: TBitBtn
+  3.4 Control Text : Create Thread
+
+Computer:
+---------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 89 Mb
+  4.5 Total Disk  : 9.31 Gb
+  4.6 Free Disk   : 0.7 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+---------------------------------------------------------------------------------------------------------------------
+|Address |Module             |Unit                                        |Class   |Procedure/Method           |Line|
+---------------------------------------------------------------------------------------------------------------------
+|005250CD|MultiThreadDemo.exe|MainForm.pas                                |TMainFrm|DBGridThreadsDrawColumnCell|333 |
+|77DF3C99|user32.dll         |                                            |        |FillRect                   |    |
+|77F82091|ntdll.dll          |                                            |        |RtlLeaveCriticalSection    |    |
+|77DF2C0C|user32.dll         |                                            |        |OffsetRect                 |    |
+|77DF3B50|user32.dll         |                                            |        |IsWindow                   |    |
+|77DF5F64|user32.dll         |                                            |        |DispatchMessageA           |    |
+|77DF5F5E|user32.dll         |                                            |        |DispatchMessageA           |    |
+|00525CB3|MultiThreadDemo.exe|Thread Manager (for Delphi 7 and Kylix 3.pas|        |MultiThreadDemo            |14  |
+---------------------------------------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name               |Description                                     |Version       |Size   |Path                                                   |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|MultiThreadDemo.exe|                                                |              |1432064|E:\Thread Manager (for Delphi 7 and Kylix 3)\新建文件夹|
+|01020000|UNISPIM.IME        |紫光拼音输入法3.0                               |3.0.0.0       |102400 |D:\WINNT\system32                                      |
+|01130000|upengine.dll       |紫光拼音输入法引擎                              |3.0.0.0       |299008 |D:\WINNT\system32                                      |
+|01640000|msctf.dll.mui      |MSUIM Server DLL                                |5.1.2409.7    |3584   |D:\WINNT\mui\fallback\0804                             |
+|10000000|BDPlugin.dll       |                                                |1.0.1.1       |110592 |D:\WINNT\DOWNLO~1                                      |
+|60000000|MSCTF.dll          |MSUIM Server DLL                                |5.1.2409.7    |273408 |D:\WINNT\system32                                      |
+|687E0000|PSAPI.DLL          |Process Status Helper                           |5.0.2134.1    |28944  |D:\WINNT\system32                                      |
+|74F50000|msafd.dll          |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816 |D:\WINNT\system32                                      |
+|74F90000|wshtcpip.dll       |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680  |D:\WINNT\System32                                      |
+|74FA0000|WS2HELP.DLL        |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192  |D:\WINNT\system32                                      |
+|74FB0000|WS2_32.DLL         |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904  |D:\WINNT\system32                                      |
+|74FD0000|wsock32.dll        |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920  |D:\WINNT\system32                                      |
+|75950000|LZ32.DLL           |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000  |D:\WINNT\system32                                      |
+|75E00000|IMM32.DLL          |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528  |D:\WINNT\system32                                      |
+|777E0000|version.dll        |Version Checking and File Installation Libraries|5.0.2195.6623 |16144  |D:\WINNT\system32                                      |
+|77990000|oleaut32.dll       |                                                |2.40.4522.0   |626960 |D:\WINNT\system32                                      |
+|77A30000|ole32.dll          |Microsoft OLE for Windows                       |5.0.2195.6769 |944912 |D:\WINNT\system32                                      |
+|77B30000|comctl32.dll       |Common Controls Library                         |5.81.3502.6601|550672 |D:\WINNT\system32                                      |
+|77C50000|SHLWAPI.DLL        |Shell Light-weight Utility Library              |5.0.3502.6601 |289552 |D:\WINNT\system32                                      |
+|77DF0000|user32.dll         |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216 |D:\WINNT\system32                                      |
+|77E60000|kernel32.dll       |Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672 |D:\WINNT\system32                                      |
+|77F40000|GDI32.DLL          |GDI Client DLL                                  |5.0.2195.6898 |242448 |D:\WINNT\system32                                      |
+|77F80000|ntdll.dll          |NT Layer DLL                                    |5.0.2195.6899 |497936 |D:\WINNT\system32                                      |
+|78000000|MSVCRT.DLL         |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773 |D:\WINNT\system32                                      |
+|786F0000|RPCRT4.DLL         |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400 |D:\WINNT\system32                                      |
+|78F90000|shell32.dll        |Windows Shell Common Dll                        |5.0.3700.6705 |2383632|D:\WINNT\system32                                      |
+|796D0000|advapi32.dll       |Advanced Windows 32 Base API                    |5.0.2195.6876 |388368 |D:\WINNT\system32                                      |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012F89C: 0012F8DC   0042625F: E8 F4 E3 FD FF 33 C0 5A 59 59 64 89 10 68 81 62  .....3.ZYYd..h.b
+0012F8A0: 0040458C   0042626F: 42 00 8D 45 EC E8 6F EA FD FF C3 E9 DD E2 FD FF  B..E..o.........
+0012F8A4: 0012F8C0   0042627F: EB F0 5B 8B E5 5D C3 8B C0 53 8B D8 84 D2 75 0E  ..[..]...S....u.
+0012F8A8: 00DF4684   0042628F: E8 D0 13 FE FF 8B D0 8B C3 E8 6F FF FF FF 5B C3  ..........o...[.
+0012F8AC: 00000000   0042629F: 90 53 66 83 78 1A 00 74 0A 8B D8 8B D0 8B 43 1C  .Sf.x..t......C.
+0012F8B0: 00DF4EE0   004262AF: FF 53 18 5B C3 66 83 78 1A 00 74 0B 50 68 A0 62  .S.[.f.x..t.Ph.b
+0012F8B4: 004ACE0B   004262BF: 42 00 E8 AA 01 00 00 C3 90 53 56 8B D8 8B 43 04  B........SV...C.
+0012F8B8: 00000006   004262CF: 50 E8 37 14 FE FF 8B F0 81 FE FF FF FF 7F 0F 95  P.7.............
+0012F8BC: 004A4500   004262DF: C2 8B C3 E8 A1 FF FF FF B0 03 33 D2 B9 D4 65 52  ..........3...eR
+0012F8C0: 0012F924   004262EF: 00 3B 31 75 02 8B C2 42 83 C1 04 80 FA 07 75 F1  .;1u...B......u.
+0012F8C4: 0042629D   004262FF: 5E 5B C3 8B C0 53 56 8B DA 8B F0 33 C0 8A C3 8B  ^[...SV....3....
+0012F8C8: 00DF4684   0042630F: 04 85 D4 65 52 00 50 8B 46 04 50 E8 3D 15 FE FF  ...eR.P.F.P.=...
+0012F8CC: 004262E7   0042631F: 83 F8 01 1B D2 42 8B C6 E8 5C FF FF FF 5E 5B C3  .....B...\...^[.
+0012F8D0: 00DF521C   0042632F: 90 55 8B EC 83 C4 F4 53 89 55 FC E8 ED 12 FE FF  .U.....S.U......
+0012F8D4: 00E0359C   0042633F: 8B 15 B4 EC 52 00 3B 02 75 0E 8B 5D FC 8B 43 0C  ....R.;.u..]..C.
+0012F8D8: 005250D2   0042634F: FF 53 08 E9 13 01 00 00 6A 00 6A 00 6A FF 6A 00  .S......j.j.j.j.
+
+
+
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sat, 19 Mar 2005 22:22:02 +0800
+  1.2 Name/Description: MultiThreadDemo.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Sat, 19 Mar 2005 22:22:30 +0800
+  2.2 Address: 0042625F
+  2.3 Module : MultiThreadDemo.exe
+  2.4 Type   : EThread
+  2.5 Message: Thread Error: 句柄无效。 (6).
+
+Active Controls:
+---------------------------------------------------------
+  3.1 Form Class   : TAppBuilder
+  3.2 Form Text    : Delphi 7 - MultiThreadDemo [Running]
+  3.3 Control Class: TBitBtn
+  3.4 Control Text : Create Thread
+
+Computer:
+---------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 89 Mb
+  4.5 Total Disk  : 9.31 Gb
+  4.6 Free Disk   : 0.7 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+---------------------------------------------------------------------------------------------------------------------
+|Address |Module             |Unit                                        |Class   |Procedure/Method           |Line|
+---------------------------------------------------------------------------------------------------------------------
+|005250CD|MultiThreadDemo.exe|MainForm.pas                                |TMainFrm|DBGridThreadsDrawColumnCell|333 |
+|77DF3C99|user32.dll         |                                            |        |FillRect                   |    |
+|77F82091|ntdll.dll          |                                            |        |RtlLeaveCriticalSection    |    |
+|77DF2C0C|user32.dll         |                                            |        |OffsetRect                 |    |
+|77DF3B50|user32.dll         |                                            |        |IsWindow                   |    |
+|77DF5F64|user32.dll         |                                            |        |DispatchMessageA           |    |
+|77DF5F5E|user32.dll         |                                            |        |DispatchMessageA           |    |
+|00525CB3|MultiThreadDemo.exe|Thread Manager (for Delphi 7 and Kylix 3.pas|        |MultiThreadDemo            |14  |
+---------------------------------------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name               |Description                                     |Version       |Size   |Path                                                   |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|MultiThreadDemo.exe|                                                |              |1432064|E:\Thread Manager (for Delphi 7 and Kylix 3)\新建文件夹|
+|01020000|UNISPIM.IME        |紫光拼音输入法3.0                               |3.0.0.0       |102400 |D:\WINNT\system32                                      |
+|01130000|upengine.dll       |紫光拼音输入法引擎                              |3.0.0.0       |299008 |D:\WINNT\system32                                      |
+|01640000|msctf.dll.mui      |MSUIM Server DLL                                |5.1.2409.7    |3584   |D:\WINNT\mui\fallback\0804                             |
+|10000000|BDPlugin.dll       |                                                |1.0.1.1       |110592 |D:\WINNT\DOWNLO~1                                      |
+|60000000|MSCTF.dll          |MSUIM Server DLL                                |5.1.2409.7    |273408 |D:\WINNT\system32                                      |
+|687E0000|PSAPI.DLL          |Process Status Helper                           |5.0.2134.1    |28944  |D:\WINNT\system32                                      |
+|74F50000|msafd.dll          |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816 |D:\WINNT\system32                                      |
+|74F90000|wshtcpip.dll       |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680  |D:\WINNT\System32                                      |
+|74FA0000|WS2HELP.DLL        |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192  |D:\WINNT\system32                                      |
+|74FB0000|WS2_32.DLL         |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904  |D:\WINNT\system32                                      |
+|74FD0000|wsock32.dll        |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920  |D:\WINNT\system32                                      |
+|75950000|LZ32.DLL           |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000  |D:\WINNT\system32                                      |
+|75E00000|IMM32.DLL          |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528  |D:\WINNT\system32                                      |
+|777E0000|version.dll        |Version Checking and File Installation Libraries|5.0.2195.6623 |16144  |D:\WINNT\system32                                      |
+|77990000|oleaut32.dll       |                                                |2.40.4522.0   |626960 |D:\WINNT\system32                                      |
+|77A30000|ole32.dll          |Microsoft OLE for Windows                       |5.0.2195.6769 |944912 |D:\WINNT\system32                                      |
+|77B30000|comctl32.dll       |Common Controls Library                         |5.81.3502.6601|550672 |D:\WINNT\system32                                      |
+|77C50000|SHLWAPI.DLL        |Shell Light-weight Utility Library              |5.0.3502.6601 |289552 |D:\WINNT\system32                                      |
+|77DF0000|user32.dll         |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216 |D:\WINNT\system32                                      |
+|77E60000|kernel32.dll       |Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672 |D:\WINNT\system32                                      |
+|77F40000|GDI32.DLL          |GDI Client DLL                                  |5.0.2195.6898 |242448 |D:\WINNT\system32                                      |
+|77F80000|ntdll.dll          |NT Layer DLL                                    |5.0.2195.6899 |497936 |D:\WINNT\system32                                      |
+|78000000|MSVCRT.DLL         |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773 |D:\WINNT\system32                                      |
+|786F0000|RPCRT4.DLL         |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400 |D:\WINNT\system32                                      |
+|78F90000|shell32.dll        |Windows Shell Common Dll                        |5.0.3700.6705 |2383632|D:\WINNT\system32                                      |
+|796D0000|advapi32.dll       |Advanced Windows 32 Base API                    |5.0.2195.6876 |388368 |D:\WINNT\system32                                      |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012F89C: 0012F8DC   0042625F: E8 F4 E3 FD FF 33 C0 5A 59 59 64 89 10 68 81 62  .....3.ZYYd..h.b
+0012F8A0: 0040458C   0042626F: 42 00 8D 45 EC E8 6F EA FD FF C3 E9 DD E2 FD FF  B..E..o.........
+0012F8A4: 0012F8C0   0042627F: EB F0 5B 8B E5 5D C3 8B C0 53 8B D8 84 D2 75 0E  ..[..]...S....u.
+0012F8A8: 00E09794   0042628F: E8 D0 13 FE FF 8B D0 8B C3 E8 6F FF FF FF 5B C3  ..........o...[.
+0012F8AC: 00000000   0042629F: 90 53 66 83 78 1A 00 74 0A 8B D8 8B D0 8B 43 1C  .Sf.x..t......C.
+0012F8B0: 00DF1E2C   004262AF: FF 53 18 5B C3 66 83 78 1A 00 74 0B 50 68 A0 62  .S.[.f.x..t.Ph.b
+0012F8B4: 004ACE0B   004262BF: 42 00 E8 AA 01 00 00 C3 90 53 56 8B D8 8B 43 04  B........SV...C.
+0012F8B8: 00000006   004262CF: 50 E8 37 14 FE FF 8B F0 81 FE FF FF FF 7F 0F 95  P.7.............
+0012F8BC: 004A4500   004262DF: C2 8B C3 E8 A1 FF FF FF B0 03 33 D2 B9 D4 65 52  ..........3...eR
+0012F8C0: 0012F924   004262EF: 00 3B 31 75 02 8B C2 42 83 C1 04 80 FA 07 75 F1  .;1u...B......u.
+0012F8C4: 0042629D   004262FF: 5E 5B C3 8B C0 53 56 8B DA 8B F0 33 C0 8A C3 8B  ^[...SV....3....
+0012F8C8: 00E09794   0042630F: 04 85 D4 65 52 00 50 8B 46 04 50 E8 3D 15 FE FF  ...eR.P.F.P.=...
+0012F8CC: 004262E7   0042631F: 83 F8 01 1B D2 42 8B C6 E8 5C FF FF FF 5E 5B C3  .....B...\...^[.
+0012F8D0: 00DF521C   0042632F: 90 55 8B EC 83 C4 F4 53 89 55 FC E8 ED 12 FE FF  .U.....S.U......
+0012F8D4: 00E0359C   0042633F: 8B 15 B4 EC 52 00 3B 02 75 0E 8B 5D FC 8B 43 0C  ....R.;.u..]..C.
+0012F8D8: 005250D2   0042634F: FF 53 08 E9 13 01 00 00 6A 00 6A 00 6A FF 6A 00  .S......j.j.j.j.
+
+
+
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sat, 19 Mar 2005 22:22:02 +0800
+  1.2 Name/Description: MultiThreadDemo.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Sat, 19 Mar 2005 22:22:40 +0800
+  2.2 Address: 0042625F
+  2.3 Module : MultiThreadDemo.exe
+  2.4 Type   : EThread
+  2.5 Message: Thread Error: 句柄无效。 (6).
+
+Active Controls:
+---------------------------------------------------------
+  3.1 Form Class   : TAppBuilder
+  3.2 Form Text    : Delphi 7 - MultiThreadDemo [Running]
+  3.3 Control Class: 
+  3.4 Control Text : 
+
+Computer:
+---------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 90 Mb
+  4.5 Total Disk  : 9.31 Gb
+  4.6 Free Disk   : 0.7 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+---------------------------------------------------------------------------------------------------------------------
+|Address |Module             |Unit                                        |Class   |Procedure/Method           |Line|
+---------------------------------------------------------------------------------------------------------------------
+|005250CD|MultiThreadDemo.exe|MainForm.pas                                |TMainFrm|DBGridThreadsDrawColumnCell|333 |
+|77DF3C99|user32.dll         |                                            |        |FillRect                   |    |
+|77DF2C0C|user32.dll         |                                            |        |OffsetRect                 |    |
+|77DF5F64|user32.dll         |                                            |        |DispatchMessageA           |    |
+|77DF5F5E|user32.dll         |                                            |        |DispatchMessageA           |    |
+|00525CB3|MultiThreadDemo.exe|Thread Manager (for Delphi 7 and Kylix 3.pas|        |MultiThreadDemo            |14  |
+---------------------------------------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name               |Description                                     |Version       |Size   |Path                                                   |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|MultiThreadDemo.exe|                                                |              |1432064|E:\Thread Manager (for Delphi 7 and Kylix 3)\新建文件夹|
+|01020000|UNISPIM.IME        |紫光拼音输入法3.0                               |3.0.0.0       |102400 |D:\WINNT\system32                                      |
+|01130000|upengine.dll       |紫光拼音输入法引擎                              |3.0.0.0       |299008 |D:\WINNT\system32                                      |
+|01640000|msctf.dll.mui      |MSUIM Server DLL                                |5.1.2409.7    |3584   |D:\WINNT\mui\fallback\0804                             |
+|10000000|BDPlugin.dll       |                                                |1.0.1.1       |110592 |D:\WINNT\DOWNLO~1                                      |
+|60000000|MSCTF.dll          |MSUIM Server DLL                                |5.1.2409.7    |273408 |D:\WINNT\system32                                      |
+|687E0000|PSAPI.DLL          |Process Status Helper                           |5.0.2134.1    |28944  |D:\WINNT\system32                                      |
+|74F50000|msafd.dll          |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816 |D:\WINNT\system32                                      |
+|74F90000|wshtcpip.dll       |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680  |D:\WINNT\System32                                      |
+|74FA0000|WS2HELP.DLL        |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192  |D:\WINNT\system32                                      |
+|74FB0000|WS2_32.DLL         |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904  |D:\WINNT\system32                                      |
+|74FD0000|wsock32.dll        |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920  |D:\WINNT\system32                                      |
+|75950000|LZ32.DLL           |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000  |D:\WINNT\system32                                      |
+|75E00000|IMM32.DLL          |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528  |D:\WINNT\system32                                      |
+|777E0000|version.dll        |Version Checking and File Installation Libraries|5.0.2195.6623 |16144  |D:\WINNT\system32                                      |
+|77990000|oleaut32.dll       |                                                |2.40.4522.0   |626960 |D:\WINNT\system32                                      |
+|77A30000|ole32.dll          |Microsoft OLE for Windows                       |5.0.2195.6769 |944912 |D:\WINNT\system32                                      |
+|77B30000|comctl32.dll       |Common Controls Library                         |5.81.3502.6601|550672 |D:\WINNT\system32                                      |
+|77C50000|SHLWAPI.DLL        |Shell Light-weight Utility Library              |5.0.3502.6601 |289552 |D:\WINNT\system32                                      |
+|77DF0000|user32.dll         |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216 |D:\WINNT\system32                                      |
+|77E60000|kernel32.dll       |Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672 |D:\WINNT\system32                                      |
+|77F40000|GDI32.DLL          |GDI Client DLL                                  |5.0.2195.6898 |242448 |D:\WINNT\system32                                      |
+|77F80000|ntdll.dll          |NT Layer DLL                                    |5.0.2195.6899 |497936 |D:\WINNT\system32                                      |
+|78000000|MSVCRT.DLL         |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773 |D:\WINNT\system32                                      |
+|786F0000|RPCRT4.DLL         |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400 |D:\WINNT\system32                                      |
+|78F90000|shell32.dll        |Windows Shell Common Dll                        |5.0.3700.6705 |2383632|D:\WINNT\system32                                      |
+|796D0000|advapi32.dll       |Advanced Windows 32 Base API                    |5.0.2195.6876 |388368 |D:\WINNT\system32                                      |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012F89C: 0012F8DC   0042625F: E8 F4 E3 FD FF 33 C0 5A 59 59 64 89 10 68 81 62  .....3.ZYYd..h.b
+0012F8A0: 0040458C   0042626F: 42 00 8D 45 EC E8 6F EA FD FF C3 E9 DD E2 FD FF  B..E..o.........
+0012F8A4: 0012F8C0   0042627F: EB F0 5B 8B E5 5D C3 8B C0 53 8B D8 84 D2 75 0E  ..[..]...S....u.
+0012F8A8: 00E09794   0042628F: E8 D0 13 FE FF 8B D0 8B C3 E8 6F FF FF FF 5B C3  ..........o...[.
+0012F8AC: 00000000   0042629F: 90 53 66 83 78 1A 00 74 0A 8B D8 8B D0 8B 43 1C  .Sf.x..t......C.
+0012F8B0: 00E40230   004262AF: FF 53 18 5B C3 66 83 78 1A 00 74 0B 50 68 A0 62  .S.[.f.x..t.Ph.b
+0012F8B4: 004ACE0B   004262BF: 42 00 E8 AA 01 00 00 C3 90 53 56 8B D8 8B 43 04  B........SV...C.
+0012F8B8: 00000006   004262CF: 50 E8 37 14 FE FF 8B F0 81 FE FF FF FF 7F 0F 95  P.7.............
+0012F8BC: 004A4500   004262DF: C2 8B C3 E8 A1 FF FF FF B0 03 33 D2 B9 D4 65 52  ..........3...eR
+0012F8C0: 0012F924   004262EF: 00 3B 31 75 02 8B C2 42 83 C1 04 80 FA 07 75 F1  .;1u...B......u.
+0012F8C4: 0042629D   004262FF: 5E 5B C3 8B C0 53 56 8B DA 8B F0 33 C0 8A C3 8B  ^[...SV....3....
+0012F8C8: 00E09794   0042630F: 04 85 D4 65 52 00 50 8B 46 04 50 E8 3D 15 FE FF  ...eR.P.F.P.=...
+0012F8CC: 004262E7   0042631F: 83 F8 01 1B D2 42 8B C6 E8 5C FF FF FF 5E 5B C3  .....B...\...^[.
+0012F8D0: 00DF521C   0042632F: 90 55 8B EC 83 C4 F4 53 89 55 FC E8 ED 12 FE FF  .U.....S.U......
+0012F8D4: 00E0359C   0042633F: 8B 15 B4 EC 52 00 3B 02 75 0E 8B 5D FC 8B 43 0C  ....R.;.u..]..C.
+0012F8D8: 005250D2   0042634F: FF 53 08 E9 13 01 00 00 6A 00 6A 00 6A FF 6A 00  .S......j.j.j.j.
+
+
+
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sat, 19 Mar 2005 22:22:02 +0800
+  1.2 Name/Description: MultiThreadDemo.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Sat, 19 Mar 2005 22:22:44 +0800
+  2.2 Address: 0042625F
+  2.3 Module : MultiThreadDemo.exe
+  2.4 Type   : EThread
+  2.5 Message: Thread Error: 句柄无效。 (6).
+
+Active Controls:
+---------------------------------------------------------
+  3.1 Form Class   : TAppBuilder
+  3.2 Form Text    : Delphi 7 - MultiThreadDemo [Running]
+  3.3 Control Class: 
+  3.4 Control Text : 
+
+Computer:
+---------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 90 Mb
+  4.5 Total Disk  : 9.31 Gb
+  4.6 Free Disk   : 0.7 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+---------------------------------------------------------------------------------------------------------------------
+|Address |Module             |Unit                                        |Class   |Procedure/Method           |Line|
+---------------------------------------------------------------------------------------------------------------------
+|005250CD|MultiThreadDemo.exe|MainForm.pas                                |TMainFrm|DBGridThreadsDrawColumnCell|333 |
+|77DF3C99|user32.dll         |                                            |        |FillRect                   |    |
+|77DF2C0C|user32.dll         |                                            |        |OffsetRect                 |    |
+|77DF5F64|user32.dll         |                                            |        |DispatchMessageA           |    |
+|77DF5F5E|user32.dll         |                                            |        |DispatchMessageA           |    |
+|00525CB3|MultiThreadDemo.exe|Thread Manager (for Delphi 7 and Kylix 3.pas|        |MultiThreadDemo            |14  |
+---------------------------------------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name               |Description                                     |Version       |Size   |Path                                                   |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|MultiThreadDemo.exe|                                                |              |1432064|E:\Thread Manager (for Delphi 7 and Kylix 3)\新建文件夹|
+|01020000|UNISPIM.IME        |紫光拼音输入法3.0                               |3.0.0.0       |102400 |D:\WINNT\system32                                      |
+|01130000|upengine.dll       |紫光拼音输入法引擎                              |3.0.0.0       |299008 |D:\WINNT\system32                                      |
+|01640000|msctf.dll.mui      |MSUIM Server DLL                                |5.1.2409.7    |3584   |D:\WINNT\mui\fallback\0804                             |
+|10000000|BDPlugin.dll       |                                                |1.0.1.1       |110592 |D:\WINNT\DOWNLO~1                                      |
+|60000000|MSCTF.dll          |MSUIM Server DLL                                |5.1.2409.7    |273408 |D:\WINNT\system32                                      |
+|687E0000|PSAPI.DLL          |Process Status Helper                           |5.0.2134.1    |28944  |D:\WINNT\system32                                      |
+|74F50000|msafd.dll          |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816 |D:\WINNT\system32                                      |
+|74F90000|wshtcpip.dll       |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680  |D:\WINNT\System32                                      |
+|74FA0000|WS2HELP.DLL        |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192  |D:\WINNT\system32                                      |
+|74FB0000|WS2_32.DLL         |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904  |D:\WINNT\system32                                      |
+|74FD0000|wsock32.dll        |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920  |D:\WINNT\system32                                      |
+|75950000|LZ32.DLL           |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000  |D:\WINNT\system32                                      |
+|75E00000|IMM32.DLL          |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528  |D:\WINNT\system32                                      |
+|777E0000|version.dll        |Version Checking and File Installation Libraries|5.0.2195.6623 |16144  |D:\WINNT\system32                                      |
+|77990000|oleaut32.dll       |                                                |2.40.4522.0   |626960 |D:\WINNT\system32                                      |
+|77A30000|ole32.dll          |Microsoft OLE for Windows                       |5.0.2195.6769 |944912 |D:\WINNT\system32                                      |
+|77B30000|comctl32.dll       |Common Controls Library                         |5.81.3502.6601|550672 |D:\WINNT\system32                                      |
+|77C50000|SHLWAPI.DLL        |Shell Light-weight Utility Library              |5.0.3502.6601 |289552 |D:\WINNT\system32                                      |
+|77DF0000|user32.dll         |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216 |D:\WINNT\system32                                      |
+|77E60000|kernel32.dll       |Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672 |D:\WINNT\system32                                      |
+|77F40000|GDI32.DLL          |GDI Client DLL                                  |5.0.2195.6898 |242448 |D:\WINNT\system32                                      |
+|77F80000|ntdll.dll          |NT Layer DLL                                    |5.0.2195.6899 |497936 |D:\WINNT\system32                                      |
+|78000000|MSVCRT.DLL         |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773 |D:\WINNT\system32                                      |
+|786F0000|RPCRT4.DLL         |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400 |D:\WINNT\system32                                      |
+|78F90000|shell32.dll        |Windows Shell Common Dll                        |5.0.3700.6705 |2383632|D:\WINNT\system32                                      |
+|796D0000|advapi32.dll       |Advanced Windows 32 Base API                    |5.0.2195.6876 |388368 |D:\WINNT\system32                                      |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012F89C: 0012F8DC   0042625F: E8 F4 E3 FD FF 33 C0 5A 59 59 64 89 10 68 81 62  .....3.ZYYd..h.b
+0012F8A0: 0040458C   0042626F: 42 00 8D 45 EC E8 6F EA FD FF C3 E9 DD E2 FD FF  B..E..o.........
+0012F8A4: 0012F8C0   0042627F: EB F0 5B 8B E5 5D C3 8B C0 53 8B D8 84 D2 75 0E  ..[..]...S....u.
+0012F8A8: 00E09794   0042628F: E8 D0 13 FE FF 8B D0 8B C3 E8 6F FF FF FF 5B C3  ..........o...[.
+0012F8AC: 00000000   0042629F: 90 53 66 83 78 1A 00 74 0A 8B D8 8B D0 8B 43 1C  .Sf.x..t......C.
+0012F8B0: 00E405E8   004262AF: FF 53 18 5B C3 66 83 78 1A 00 74 0B 50 68 A0 62  .S.[.f.x..t.Ph.b
+0012F8B4: 004ACE0B   004262BF: 42 00 E8 AA 01 00 00 C3 90 53 56 8B D8 8B 43 04  B........SV...C.
+0012F8B8: 00000006   004262CF: 50 E8 37 14 FE FF 8B F0 81 FE FF FF FF 7F 0F 95  P.7.............
+0012F8BC: 004A4500   004262DF: C2 8B C3 E8 A1 FF FF FF B0 03 33 D2 B9 D4 65 52  ..........3...eR
+0012F8C0: 0012F924   004262EF: 00 3B 31 75 02 8B C2 42 83 C1 04 80 FA 07 75 F1  .;1u...B......u.
+0012F8C4: 0042629D   004262FF: 5E 5B C3 8B C0 53 56 8B DA 8B F0 33 C0 8A C3 8B  ^[...SV....3....
+0012F8C8: 00E09794   0042630F: 04 85 D4 65 52 00 50 8B 46 04 50 E8 3D 15 FE FF  ...eR.P.F.P.=...
+0012F8CC: 004262E7   0042631F: 83 F8 01 1B D2 42 8B C6 E8 5C FF FF FF 5E 5B C3  .....B...\...^[.
+0012F8D0: 00DF521C   0042632F: 90 55 8B EC 83 C4 F4 53 89 55 FC E8 ED 12 FE FF  .U.....S.U......
+0012F8D4: 00E0359C   0042633F: 8B 15 B4 EC 52 00 3B 02 75 0E 8B 5D FC 8B 43 0C  ....R.;.u..]..C.
+0012F8D8: 005250D2   0042634F: FF 53 08 E9 13 01 00 00 6A 00 6A 00 6A FF 6A 00  .S......j.j.j.j.
+
+
+
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sat, 19 Mar 2005 22:24:12 +0800
+  1.2 Name/Description: MultiThreadDemo.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Sat, 19 Mar 2005 22:24:25 +0800
+  2.2 Address: 0042625F
+  2.3 Module : MultiThreadDemo.exe
+  2.4 Type   : EThread
+  2.5 Message: Thread Error: 句柄无效。 (6).
+
+Active Controls:
+---------------------------------------------------------------------------------------
+  3.1 Form Class   : TMainFrm
+  3.2 Form Text    : Thread Manager - by guinther@clubedelphi.com.br - Delphi 7 version
+  3.3 Control Class: TDBGrid
+  3.4 Control Text : 
+
+Computer:
+---------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 91 Mb
+  4.5 Total Disk  : 9.31 Gb
+  4.6 Free Disk   : 0.7 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+----------------------------------------------------------------------------------------------------------------
+|Address |Module             |Unit                                        |Class    |Procedure/Method     |Line|
+----------------------------------------------------------------------------------------------------------------
+|00525258|MultiThreadDemo.exe|MainForm.pas                                |TMyThread|Resume               |364 |
+|00525250|MultiThreadDemo.exe|MainForm.pas                                |TMyThread|Resume               |363 |
+|0052578E|MultiThreadDemo.exe|MainForm.pas                                |TMainFrm |DBGridThreadsColEnter|480 |
+|77DF625C|user32.dll         |                                            |         |CallNextHookEx       |    |
+|77DF5F64|user32.dll         |                                            |         |DispatchMessageA     |    |
+|77DF5F5E|user32.dll         |                                            |         |DispatchMessageA     |    |
+|00525CD3|MultiThreadDemo.exe|Thread Manager (for Delphi 7 and Kylix 3.pas|         |MultiThreadDemo      |14  |
+----------------------------------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name               |Description                                     |Version       |Size   |Path                                                   |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|MultiThreadDemo.exe|                                                |              |1432064|E:\Thread Manager (for Delphi 7 and Kylix 3)\新建文件夹|
+|01020000|UNISPIM.IME        |紫光拼音输入法3.0                               |3.0.0.0       |102400 |D:\WINNT\system32                                      |
+|01130000|upengine.dll       |紫光拼音输入法引擎                              |3.0.0.0       |299008 |D:\WINNT\system32                                      |
+|01640000|msctf.dll.mui      |MSUIM Server DLL                                |5.1.2409.7    |3584   |D:\WINNT\mui\fallback\0804                             |
+|10000000|BDPlugin.dll       |                                                |1.0.1.1       |110592 |D:\WINNT\DOWNLO~1                                      |
+|60000000|MSCTF.dll          |MSUIM Server DLL                                |5.1.2409.7    |273408 |D:\WINNT\system32                                      |
+|687E0000|PSAPI.DLL          |Process Status Helper                           |5.0.2134.1    |28944  |D:\WINNT\system32                                      |
+|74F50000|msafd.dll          |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816 |D:\WINNT\system32                                      |
+|74F90000|wshtcpip.dll       |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680  |D:\WINNT\System32                                      |
+|74FA0000|WS2HELP.DLL        |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192  |D:\WINNT\system32                                      |
+|74FB0000|WS2_32.DLL         |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904  |D:\WINNT\system32                                      |
+|74FD0000|wsock32.dll        |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920  |D:\WINNT\system32                                      |
+|75950000|LZ32.DLL           |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000  |D:\WINNT\system32                                      |
+|75E00000|IMM32.DLL          |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528  |D:\WINNT\system32                                      |
+|777E0000|version.dll        |Version Checking and File Installation Libraries|5.0.2195.6623 |16144  |D:\WINNT\system32                                      |
+|77990000|oleaut32.dll       |                                                |2.40.4522.0   |626960 |D:\WINNT\system32                                      |
+|77A30000|ole32.dll          |Microsoft OLE for Windows                       |5.0.2195.6769 |944912 |D:\WINNT\system32                                      |
+|77B30000|comctl32.dll       |Common Controls Library                         |5.81.3502.6601|550672 |D:\WINNT\system32                                      |
+|77C50000|SHLWAPI.DLL        |Shell Light-weight Utility Library              |5.0.3502.6601 |289552 |D:\WINNT\system32                                      |
+|77DF0000|user32.dll         |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216 |D:\WINNT\system32                                      |
+|77E60000|kernel32.dll       |Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672 |D:\WINNT\system32                                      |
+|77F40000|GDI32.DLL          |GDI Client DLL                                  |5.0.2195.6898 |242448 |D:\WINNT\system32                                      |
+|77F80000|ntdll.dll          |NT Layer DLL                                    |5.0.2195.6899 |497936 |D:\WINNT\system32                                      |
+|78000000|MSVCRT.DLL         |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773 |D:\WINNT\system32                                      |
+|786F0000|RPCRT4.DLL         |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400 |D:\WINNT\system32                                      |
+|78F90000|shell32.dll        |Windows Shell Common Dll                        |5.0.3700.6705 |2383632|D:\WINNT\system32                                      |
+|796D0000|advapi32.dll       |Advanced Windows 32 Base API                    |5.0.2195.6876 |388368 |D:\WINNT\system32                                      |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012FC08: 0012FC88   0042625F: E8 F4 E3 FD FF 33 C0 5A 59 59 64 89 10 68 81 62  .....3.ZYYd..h.b
+0012FC0C: 0040458C   0042626F: 42 00 8D 45 EC E8 6F EA FD FF C3 E9 DD E2 FD FF  B..E..o.........
+0012FC10: 0012FC2C   0042627F: EB F0 5B 8B E5 5D C3 8B C0 53 8B D8 84 D2 75 0E  ..[..]...S....u.
+0012FC14: 00E08AA4   0042628F: E8 D0 13 FE FF 8B D0 8B C3 E8 6F FF FF FF 5B C3  ..........o...[.
+0012FC18: 00000000   0042629F: 90 53 66 83 78 1A 00 74 0A 8B D8 8B D0 8B 43 1C  .Sf.x..t......C.
+0012FC1C: 00E08AF8   004262AF: FF 53 18 5B C3 66 83 78 1A 00 74 0B 50 68 A0 62  .S.[.f.x..t.Ph.b
+0012FC20: 0000000B   004262BF: 42 00 E8 AA 01 00 00 C3 90 53 56 8B D8 8B 43 04  B........SV...C.
+0012FC24: 00000006   004262CF: 50 E8 37 14 FE FF 8B F0 81 FE FF FF FF 7F 0F 95  P.7.............
+0012FC28: 0012FC00   004262DF: C2 8B C3 E8 A1 FF FF FF B0 03 33 D2 B9 D4 65 52  ..........3...eR
+0012FC2C: 0012FC4C   004262EF: 00 3B 31 75 02 8B C2 42 83 C1 04 80 FA 07 75 F1  .;1u...B......u.
+0012FC30: 0042629D   004262FF: 5E 5B C3 8B C0 53 56 8B DA 8B F0 33 C0 8A C3 8B  ^[...SV....3....
+0012FC34: 00E08AA4   0042630F: 04 85 D4 65 52 00 50 8B 46 04 50 E8 3D 15 FE FF  ...eR.P.F.P.=...
+0012FC38: 00426563   0042631F: 83 F8 01 1B D2 42 8B C6 E8 5C FF FF FF 5E 5B C3  .....B...\...^[.
+0012FC3C: 00E08AA4   0042632F: 90 55 8B EC 83 C4 F4 53 89 55 FC E8 ED 12 FE FF  .U.....S.U......
+0012FC40: 00E08AA4   0042633F: 8B 15 B4 EC 52 00 3B 02 75 0E 8B 5D FC 8B 43 0C  ....R.;.u..]..C.
+0012FC44: 0052525D   0042634F: FF 53 08 E9 13 01 00 00 6A 00 6A 00 6A FF 6A 00  .S......j.j.j.j.
+
+
+
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sat, 19 Mar 2005 22:24:12 +0800
+  1.2 Name/Description: MultiThreadDemo.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Sat, 19 Mar 2005 22:24:44 +0800
+  2.2 Address: 0042625F
+  2.3 Module : MultiThreadDemo.exe
+  2.4 Type   : EThread
+  2.5 Message: Thread Error: 句柄无效。 (6).
+
+Active Controls:
+---------------------------------------------------------------------------------------
+  3.1 Form Class   : TMainFrm
+  3.2 Form Text    : Thread Manager - by guinther@clubedelphi.com.br - Delphi 7 version
+  3.3 Control Class: TDBGrid
+  3.4 Control Text : 
+
+Computer:
+---------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 89 Mb
+  4.5 Total Disk  : 9.31 Gb
+  4.6 Free Disk   : 0.7 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+----------------------------------------------------------------------------------------------------------------
+|Address |Module             |Unit                                        |Class    |Procedure/Method     |Line|
+----------------------------------------------------------------------------------------------------------------
+|0052527C|MultiThreadDemo.exe|MainForm.pas                                |TMyThread|Suspend              |371 |
+|00525274|MultiThreadDemo.exe|MainForm.pas                                |TMyThread|Suspend              |370 |
+|0052579E|MultiThreadDemo.exe|MainForm.pas                                |TMainFrm |DBGridThreadsColEnter|483 |
+|77DF625C|user32.dll         |                                            |         |CallNextHookEx       |    |
+|77DF5F64|user32.dll         |                                            |         |DispatchMessageA     |    |
+|77DF5F5E|user32.dll         |                                            |         |DispatchMessageA     |    |
+|00525CD3|MultiThreadDemo.exe|Thread Manager (for Delphi 7 and Kylix 3.pas|         |MultiThreadDemo      |14  |
+----------------------------------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name               |Description                                     |Version       |Size   |Path                                                   |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|MultiThreadDemo.exe|                                                |              |1432064|E:\Thread Manager (for Delphi 7 and Kylix 3)\新建文件夹|
+|01020000|UNISPIM.IME        |紫光拼音输入法3.0                               |3.0.0.0       |102400 |D:\WINNT\system32                                      |
+|01130000|upengine.dll       |紫光拼音输入法引擎                              |3.0.0.0       |299008 |D:\WINNT\system32                                      |
+|01640000|msctf.dll.mui      |MSUIM Server DLL                                |5.1.2409.7    |3584   |D:\WINNT\mui\fallback\0804                             |
+|10000000|BDPlugin.dll       |                                                |1.0.1.1       |110592 |D:\WINNT\DOWNLO~1                                      |
+|60000000|MSCTF.dll          |MSUIM Server DLL                                |5.1.2409.7    |273408 |D:\WINNT\system32                                      |
+|687E0000|PSAPI.DLL          |Process Status Helper                           |5.0.2134.1    |28944  |D:\WINNT\system32                                      |
+|74F50000|msafd.dll          |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816 |D:\WINNT\system32                                      |
+|74F90000|wshtcpip.dll       |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680  |D:\WINNT\System32                                      |
+|74FA0000|WS2HELP.DLL        |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192  |D:\WINNT\system32                                      |
+|74FB0000|WS2_32.DLL         |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904  |D:\WINNT\system32                                      |
+|74FD0000|wsock32.dll        |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920  |D:\WINNT\system32                                      |
+|75950000|LZ32.DLL           |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000  |D:\WINNT\system32                                      |
+|75E00000|IMM32.DLL          |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528  |D:\WINNT\system32                                      |
+|777E0000|version.dll        |Version Checking and File Installation Libraries|5.0.2195.6623 |16144  |D:\WINNT\system32                                      |
+|77990000|oleaut32.dll       |                                                |2.40.4522.0   |626960 |D:\WINNT\system32                                      |
+|77A30000|ole32.dll          |Microsoft OLE for Windows                       |5.0.2195.6769 |944912 |D:\WINNT\system32                                      |
+|77B30000|comctl32.dll       |Common Controls Library                         |5.81.3502.6601|550672 |D:\WINNT\system32                                      |
+|77C50000|SHLWAPI.DLL        |Shell Light-weight Utility Library              |5.0.3502.6601 |289552 |D:\WINNT\system32                                      |
+|77DF0000|user32.dll         |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216 |D:\WINNT\system32                                      |
+|77E60000|kernel32.dll       |Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672 |D:\WINNT\system32                                      |
+|77F40000|GDI32.DLL          |GDI Client DLL                                  |5.0.2195.6898 |242448 |D:\WINNT\system32                                      |
+|77F80000|ntdll.dll          |NT Layer DLL                                    |5.0.2195.6899 |497936 |D:\WINNT\system32                                      |
+|78000000|MSVCRT.DLL         |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773 |D:\WINNT\system32                                      |
+|786F0000|RPCRT4.DLL         |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400 |D:\WINNT\system32                                      |
+|78F90000|shell32.dll        |Windows Shell Common Dll                        |5.0.3700.6705 |2383632|D:\WINNT\system32                                      |
+|796D0000|advapi32.dll       |Advanced Windows 32 Base API                    |5.0.2195.6876 |388368 |D:\WINNT\system32                                      |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012FBEC: 0012FC20   0042625F: E8 F4 E3 FD FF 33 C0 5A 59 59 64 89 10 68 81 62  .....3.ZYYd..h.b
+0012FBF0: 0040458C   0042626F: 42 00 8D 45 EC E8 6F EA FD FF C3 E9 DD E2 FD FF  B..E..o.........
+0012FBF4: 0012FC10   0042627F: EB F0 5B 8B E5 5D C3 8B C0 53 8B D8 84 D2 75 0E  ..[..]...S....u.
+0012FBF8: 00E08AA4   0042628F: E8 D0 13 FE FF 8B D0 8B C3 E8 6F FF FF FF 5B C3  ..........o...[.
+0012FBFC: 00000000   0042629F: 90 53 66 83 78 1A 00 74 0A 8B D8 8B D0 8B 43 1C  .Sf.x..t......C.
+0012FC00: 00DF8B44   004262AF: FF 53 18 5B C3 66 83 78 1A 00 74 0B 50 68 A0 62  .S.[.f.x..t.Ph.b
+0012FC04: 0000000B   004262BF: 42 00 E8 AA 01 00 00 C3 90 53 56 8B D8 8B 43 04  B........SV...C.
+0012FC08: 00000006   004262CF: 50 E8 37 14 FE FF 8B F0 81 FE FF FF FF 7F 0F 95  P.7.............
+0012FC0C: 77E99700   004262DF: C2 8B C3 E8 A1 FF FF FF B0 03 33 D2 B9 D4 65 52  ..........3...eR
+0012FC10: 0012FC40   004262EF: 00 3B 31 75 02 8B C2 42 83 C1 04 80 FA 07 75 F1  .;1u...B......u.
+0012FC14: 0042629D   004262FF: 5E 5B C3 8B C0 53 56 8B DA 8B F0 33 C0 8A C3 8B  ^[...SV....3....
+0012FC18: 00E08AA4   0042630F: 04 85 D4 65 52 00 50 8B 46 04 50 E8 3D 15 FE FF  ...eR.P.F.P.=...
+0012FC1C: 0042651F   0042631F: 83 F8 01 1B D2 42 8B C6 E8 5C FF FF FF 5E 5B C3  .....B...\...^[.
+0012FC20: 0012FC88   0042632F: 90 55 8B EC 83 C4 F4 53 89 55 FC E8 ED 12 FE FF  .U.....S.U......
+0012FC24: 004046CB   0042633F: 8B 15 B4 EC 52 00 3B 02 75 0E 8B 5D FC 8B 43 0C  ....R.;.u..]..C.
+0012FC28: 0012FC40   0042634F: FF 53 08 E9 13 01 00 00 6A 00 6A 00 6A FF 6A 00  .S......j.j.j.j.
+
+
+
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sat, 19 Mar 2005 22:24:12 +0800
+  1.2 Name/Description: MultiThreadDemo.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Sat, 19 Mar 2005 22:24:48 +0800
+  2.2 Address: 0042625F
+  2.3 Module : MultiThreadDemo.exe
+  2.4 Type   : EThread
+  2.5 Message: Thread Error: 句柄无效。 (6).
+
+Active Controls:
+---------------------------------------------------------------------------------------
+  3.1 Form Class   : TMainFrm
+  3.2 Form Text    : Thread Manager - by guinther@clubedelphi.com.br - Delphi 7 version
+  3.3 Control Class: TDBGrid
+  3.4 Control Text : 
+
+Computer:
+---------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 90 Mb
+  4.5 Total Disk  : 9.31 Gb
+  4.6 Free Disk   : 0.7 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+----------------------------------------------------------------------------------------------------------------
+|Address |Module             |Unit                                        |Class    |Procedure/Method     |Line|
+----------------------------------------------------------------------------------------------------------------
+|00525258|MultiThreadDemo.exe|MainForm.pas                                |TMyThread|Resume               |364 |
+|00525250|MultiThreadDemo.exe|MainForm.pas                                |TMyThread|Resume               |363 |
+|0052578E|MultiThreadDemo.exe|MainForm.pas                                |TMainFrm |DBGridThreadsColEnter|480 |
+|77DF625C|user32.dll         |                                            |         |CallNextHookEx       |    |
+|77DF5F64|user32.dll         |                                            |         |DispatchMessageA     |    |
+|77DF5F5E|user32.dll         |                                            |         |DispatchMessageA     |    |
+|00525CD3|MultiThreadDemo.exe|Thread Manager (for Delphi 7 and Kylix 3.pas|         |MultiThreadDemo      |14  |
+----------------------------------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name               |Description                                     |Version       |Size   |Path                                                   |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|MultiThreadDemo.exe|                                                |              |1432064|E:\Thread Manager (for Delphi 7 and Kylix 3)\新建文件夹|
+|01020000|UNISPIM.IME        |紫光拼音输入法3.0                               |3.0.0.0       |102400 |D:\WINNT\system32                                      |
+|01130000|upengine.dll       |紫光拼音输入法引擎                              |3.0.0.0       |299008 |D:\WINNT\system32                                      |
+|01640000|msctf.dll.mui      |MSUIM Server DLL                                |5.1.2409.7    |3584   |D:\WINNT\mui\fallback\0804                             |
+|10000000|BDPlugin.dll       |                                                |1.0.1.1       |110592 |D:\WINNT\DOWNLO~1                                      |
+|60000000|MSCTF.dll          |MSUIM Server DLL                                |5.1.2409.7    |273408 |D:\WINNT\system32                                      |
+|687E0000|PSAPI.DLL          |Process Status Helper                           |5.0.2134.1    |28944  |D:\WINNT\system32                                      |
+|74F50000|msafd.dll          |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816 |D:\WINNT\system32                                      |
+|74F90000|wshtcpip.dll       |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680  |D:\WINNT\System32                                      |
+|74FA0000|WS2HELP.DLL        |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192  |D:\WINNT\system32                                      |
+|74FB0000|WS2_32.DLL         |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904  |D:\WINNT\system32                                      |
+|74FD0000|wsock32.dll        |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920  |D:\WINNT\system32                                      |
+|75950000|LZ32.DLL           |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000  |D:\WINNT\system32                                      |
+|75E00000|IMM32.DLL          |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528  |D:\WINNT\system32                                      |
+|777E0000|version.dll        |Version Checking and File Installation Libraries|5.0.2195.6623 |16144  |D:\WINNT\system32                                      |
+|77990000|oleaut32.dll       |                                                |2.40.4522.0   |626960 |D:\WINNT\system32                                      |
+|77A30000|ole32.dll          |Microsoft OLE for Windows                       |5.0.2195.6769 |944912 |D:\WINNT\system32                                      |
+|77B30000|comctl32.dll       |Common Controls Library                         |5.81.3502.6601|550672 |D:\WINNT\system32                                      |
+|77C50000|SHLWAPI.DLL        |Shell Light-weight Utility Library              |5.0.3502.6601 |289552 |D:\WINNT\system32                                      |
+|77DF0000|user32.dll         |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216 |D:\WINNT\system32                                      |
+|77E60000|kernel32.dll       |Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672 |D:\WINNT\system32                                      |
+|77F40000|GDI32.DLL          |GDI Client DLL                                  |5.0.2195.6898 |242448 |D:\WINNT\system32                                      |
+|77F80000|ntdll.dll          |NT Layer DLL                                    |5.0.2195.6899 |497936 |D:\WINNT\system32                                      |
+|78000000|MSVCRT.DLL         |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773 |D:\WINNT\system32                                      |
+|786F0000|RPCRT4.DLL         |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400 |D:\WINNT\system32                                      |
+|78F90000|shell32.dll        |Windows Shell Common Dll                        |5.0.3700.6705 |2383632|D:\WINNT\system32                                      |
+|796D0000|advapi32.dll       |Advanced Windows 32 Base API                    |5.0.2195.6876 |388368 |D:\WINNT\system32                                      |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012FC08: 0012FC88   0042625F: E8 F4 E3 FD FF 33 C0 5A 59 59 64 89 10 68 81 62  .....3.ZYYd..h.b
+0012FC0C: 0040458C   0042626F: 42 00 8D 45 EC E8 6F EA FD FF C3 E9 DD E2 FD FF  B..E..o.........
+0012FC10: 0012FC2C   0042627F: EB F0 5B 8B E5 5D C3 8B C0 53 8B D8 84 D2 75 0E  ..[..]...S....u.
+0012FC14: 00E08AA4   0042628F: E8 D0 13 FE FF 8B D0 8B C3 E8 6F FF FF FF 5B C3  ..........o...[.
+0012FC18: 00000000   0042629F: 90 53 66 83 78 1A 00 74 0A 8B D8 8B D0 8B 43 1C  .Sf.x..t......C.
+0012FC1C: 00E43010   004262AF: FF 53 18 5B C3 66 83 78 1A 00 74 0B 50 68 A0 62  .S.[.f.x..t.Ph.b
+0012FC20: 0000000B   004262BF: 42 00 E8 AA 01 00 00 C3 90 53 56 8B D8 8B 43 04  B........SV...C.
+0012FC24: 00000006   004262CF: 50 E8 37 14 FE FF 8B F0 81 FE FF FF FF 7F 0F 95  P.7.............
+0012FC28: 0012FC00   004262DF: C2 8B C3 E8 A1 FF FF FF B0 03 33 D2 B9 D4 65 52  ..........3...eR
+0012FC2C: 0012FC4C   004262EF: 00 3B 31 75 02 8B C2 42 83 C1 04 80 FA 07 75 F1  .;1u...B......u.
+0012FC30: 0042629D   004262FF: 5E 5B C3 8B C0 53 56 8B DA 8B F0 33 C0 8A C3 8B  ^[...SV....3....
+0012FC34: 00E08AA4   0042630F: 04 85 D4 65 52 00 50 8B 46 04 50 E8 3D 15 FE FF  ...eR.P.F.P.=...
+0012FC38: 00426563   0042631F: 83 F8 01 1B D2 42 8B C6 E8 5C FF FF FF 5E 5B C3  .....B...\...^[.
+0012FC3C: 00E08AA4   0042632F: 90 55 8B EC 83 C4 F4 53 89 55 FC E8 ED 12 FE FF  .U.....S.U......
+0012FC40: 00E08AA4   0042633F: 8B 15 B4 EC 52 00 3B 02 75 0E 8B 5D FC 8B 43 0C  ....R.;.u..]..C.
+0012FC44: 0052525D   0042634F: FF 53 08 E9 13 01 00 00 6A 00 6A 00 6A FF 6A 00  .S......j.j.j.j.
+
+
+
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sun, 20 Mar 2005 11:09:05 +0800
+  1.2 Name/Description: MultiThreadDemo.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Sun, 20 Mar 2005 11:09:18 +0800
+  2.2 Address: 0042625F
+  2.3 Module : MultiThreadDemo.exe
+  2.4 Type   : EThread
+  2.5 Message: Thread Error: 句柄无效。 (6).
+
+Active Controls:
+---------------------------------------------------------
+  3.1 Form Class   : TAppBuilder
+  3.2 Form Text    : Delphi 7 - MultiThreadDemo [Running]
+  3.3 Control Class: TBitBtn
+  3.4 Control Text : Create Thread
+
+Computer:
+---------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 62 Mb
+  4.5 Total Disk  : 9.31 Gb
+  4.6 Free Disk   : 0.7 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+---------------------------------------------------------------------------------------------------------------------
+|Address |Module             |Unit                                        |Class   |Procedure/Method           |Line|
+---------------------------------------------------------------------------------------------------------------------
+|005252CC|MultiThreadDemo.exe|MainForm.pas                                |TMainFrm|DBGridThreadsDrawColumnCell|344 |
+|77DF3C99|user32.dll         |                                            |        |FillRect                   |    |
+|77F42755|GDI32.DLL          |                                            |        |GdiReleaseDC               |    |
+|77F82091|ntdll.dll          |                                            |        |RtlLeaveCriticalSection    |    |
+|77F82091|ntdll.dll          |                                            |        |RtlLeaveCriticalSection    |    |
+|77DF2C0C|user32.dll         |                                            |        |OffsetRect                 |    |
+|77DF3B50|user32.dll         |                                            |        |IsWindow                   |    |
+|77DF5F64|user32.dll         |                                            |        |DispatchMessageA           |    |
+|77DF5F5E|user32.dll         |                                            |        |DispatchMessageA           |    |
+|00525EE7|MultiThreadDemo.exe|Thread Manager (for Delphi 7 and Kylix 3.pas|        |MultiThreadDemo            |14  |
+---------------------------------------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name               |Description                                     |Version       |Size   |Path                                                   |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|00400000|MultiThreadDemo.exe|                                                |              |1432576|E:\Thread Manager (for Delphi 7 and Kylix 3)\新建文件夹|
+|01100000|UNISPIM.IME        |紫光拼音输入法3.0                               |3.0.0.0       |102400 |D:\WINNT\system32                                      |
+|01640000|msctf.dll.mui      |MSUIM Server DLL                                |5.1.2409.7    |3584   |D:\WINNT\mui\fallback\0804                             |
+|10000000|BDPlugin.dll       |                                                |1.0.1.1       |110592 |D:\WINNT\DOWNLO~1                                      |
+|60000000|MSCTF.dll          |MSUIM Server DLL                                |5.1.2409.7    |273408 |D:\WINNT\system32                                      |
+|687E0000|PSAPI.DLL          |Process Status Helper                           |5.0.2134.1    |28944  |D:\WINNT\system32                                      |
+|74F50000|msafd.dll          |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816 |D:\WINNT\system32                                      |
+|74F90000|wshtcpip.dll       |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680  |D:\WINNT\System32                                      |
+|74FA0000|WS2HELP.DLL        |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192  |D:\WINNT\system32                                      |
+|74FB0000|WS2_32.DLL         |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904  |D:\WINNT\system32                                      |
+|74FD0000|wsock32.dll        |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920  |D:\WINNT\system32                                      |
+|75950000|LZ32.DLL           |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000  |D:\WINNT\system32                                      |
+|75E00000|IMM32.DLL          |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528  |D:\WINNT\system32                                      |
+|777E0000|version.dll        |Version Checking and File Installation Libraries|5.0.2195.6623 |16144  |D:\WINNT\system32                                      |
+|77990000|oleaut32.dll       |                                                |2.40.4522.0   |626960 |D:\WINNT\system32                                      |
+|77A30000|ole32.dll          |Microsoft OLE for Windows                       |5.0.2195.6769 |944912 |D:\WINNT\system32                                      |
+|77B30000|comctl32.dll       |Common Controls Library                         |5.81.3502.6601|550672 |D:\WINNT\system32                                      |
+|77C50000|SHLWAPI.DLL        |Shell Light-weight Utility Library              |5.0.3502.6601 |289552 |D:\WINNT\system32                                      |
+|77DF0000|user32.dll         |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216 |D:\WINNT\system32                                      |
+|77E60000|kernel32.dll       |Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672 |D:\WINNT\system32                                      |
+|77F40000|GDI32.DLL          |GDI Client DLL                                  |5.0.2195.6898 |242448 |D:\WINNT\system32                                      |
+|77F80000|ntdll.dll          |NT Layer DLL                                    |5.0.2195.6899 |497936 |D:\WINNT\system32                                      |
+|78000000|MSVCRT.DLL         |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773 |D:\WINNT\system32                                      |
+|786F0000|RPCRT4.DLL         |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400 |D:\WINNT\system32                                      |
+|78F90000|shell32.dll        |Windows Shell Common Dll                        |5.0.3700.6705 |2383632|D:\WINNT\system32                                      |
+|796D0000|advapi32.dll       |Advanced Windows 32 Base API                    |5.0.2195.6876 |388368 |D:\WINNT\system32                                      |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012F89C: 0012F8DC   0042625F: E8 F4 E3 FD FF 33 C0 5A 59 59 64 89 10 68 81 62  .....3.ZYYd..h.b
+0012F8A0: 0040458C   0042626F: 42 00 8D 45 EC E8 6F EA FD FF C3 E9 DD E2 FD FF  B..E..o.........
+0012F8A4: 0012F8C0   0042627F: EB F0 5B 8B E5 5D C3 8B C0 53 8B D8 84 D2 75 0E  ..[..]...S....u.
+0012F8A8: 00DFC4AC   0042628F: E8 D0 13 FE FF 8B D0 8B C3 E8 6F FF FF FF 5B C3  ..........o...[.
+0012F8AC: 00000000   0042629F: 90 53 66 83 78 1A 00 74 0A 8B D8 8B D0 8B 43 1C  .Sf.x..t......C.
+0012F8B0: 00DFC540   004262AF: FF 53 18 5B C3 66 83 78 1A 00 74 0B 50 68 A0 62  .S.[.f.x..t.Ph.b
+0012F8B4: 004AD00B   004262BF: 42 00 E8 AA 01 00 00 C3 90 53 56 8B D8 8B 43 04  B........SV...C.
+0012F8B8: 00000006   004262CF: 50 E8 37 14 FE FF 8B F0 81 FE FF FF FF 7F 0F 95  P.7.............
+0012F8BC: 004A4700   004262DF: C2 8B C3 E8 A1 FF FF FF B0 03 33 D2 B9 D4 65 52  ..........3...eR
+0012F8C0: 0012F924   004262EF: 00 3B 31 75 02 8B C2 42 83 C1 04 80 FA 07 75 F1  .;1u...B......u.
+0012F8C4: 0042629D   004262FF: 5E 5B C3 8B C0 53 56 8B DA 8B F0 33 C0 8A C3 8B  ^[...SV....3....
+0012F8C8: 00DFC4AC   0042630F: 04 85 D4 65 52 00 50 8B 46 04 50 E8 3D 15 FE FF  ...eR.P.F.P.=...
+0012F8CC: 004262E7   0042631F: 83 F8 01 1B D2 42 8B C6 E8 5C FF FF FF 5E 5B C3  .....B...\...^[.
+0012F8D0: 00DF5200   0042632F: 90 55 8B EC 83 C4 F4 53 89 55 FC E8 ED 12 FE FF  .U.....S.U......
+0012F8D4: 00E03598   0042633F: 8B 15 B4 EC 52 00 3B 02 75 0E 8B 5D FC 8B 43 0C  ....R.;.u..]..C.
+0012F8D8: 005252D1   0042634F: FF 53 08 E9 13 01 00 00 6A 00 6A 00 6A FF 6A 00  .S......j.j.j.j.
+
+
+
+
+

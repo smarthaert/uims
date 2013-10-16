@@ -1,0 +1,16 @@
+[RunData]
+TitleStr=¼«ËÙä¯ÀÀÆ÷
+CurrentVer=5.0.1
+NewVer=5.0.1
+NewVersionInt=80
+URL=http://www.aisoho.com/update/
+RunFile=top.exe
+s=0
+DBIndex=1
+DGIndex=0
+onewz=1
+rlink=0
+LocalCopyFile=top_copy.exe
+CopyFileUpdate=0
+UpdateFileList=top.exe
+DeleteFileList=top.exe,update.txt

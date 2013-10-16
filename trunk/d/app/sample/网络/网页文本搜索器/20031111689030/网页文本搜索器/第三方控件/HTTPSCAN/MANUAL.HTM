@@ -1,0 +1,608 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>-</title>
+<meta name="Microsoft Border" content="none">
+</head>
+
+<body>
+
+<font face="Verdana, Arial, Helvetica">
+<!--webbot bot="Include" u-include="version.htm" tag="BODY" startspan -->
+
+<h3 align="left"><font size="2" face="Verdana"><a href="../features.htm"><br>
+</a></font><font face="Verdana">THttpScan<br>
+</font><font size="2" face="Verdana">Version 4.02 &nbsp; - &nbsp; December 16, 2001</font></h3>
+
+<!--webbot bot="Include" i-checksum="41238" endspan -->
+
+</font>
+<p><font face="Verdana" size="2">Home page <a href="http://www.delphicity.com">http://www.delphicity.com</a></font></p>
+<ul>
+  <li>
+    <h3><a href="#Description"><font face="Verdana" size="2">Description -
+    Features - Registration</font></a></h3>
+  </li>
+  <li>
+    <h3><font face="Verdana" size="2"><span lang="fr">
+    <a href="#LICENSE">License</a></span></font></h3>
+  </li>
+</ul>
+<!--webbot bot="Include" u-include="man_comm.htm" tag="BODY" startspan -->
+
+<ul>
+  <li>
+    <h3><a href="#INSTALL HOWTO"><font face="Verdana" size="2">Package Install</font></a></h3>
+  </li>
+  <li>
+    <h3><a href="#methods and functions"><font face="Verdana" size="2">Methods
+    and Functions</font></a></h3>
+    <ul>
+      <li><a href="#Start"><b><font color="#008000" face="Verdana" size="2">Start</font></b></a></li>
+      <li><a href="#Stop"><font color="#008000" face="Verdana" size="2">Stop<br>
+        </font></a></li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li>
+    <h3><a href="#properties"><b><font face="Verdana" size="2">Properties</font></b></a></h3>
+    <ul>
+      <li><a href="#Agent"><font color="#008000" face="Verdana" size="2">Agent</font></a></li>
+      <li><a href="#ConcurrentDownloads"><b><font color="#008000" face="Verdana" size="2">ConcurrentDownloads</font></b></a></li>
+      <li><a href="#DeepSearchLevel"><b><font face="Verdana" color="#008000" size="2">DepthSearchLevel</font></b></a></li>
+      <li><a href="#FileOfResult"><b><font face="Verdana" color="#008000" size="2">FileOfResult</font></b></a></li>
+      <li><a href="#HttpPort"><font face="Verdana" color="#008000" size="2">HttpPort</font></a></li>
+      <li><a href="#HtmlExtensions"><font face="Verdana" color="#008000" size="2">HtmlExtensions</font></a></li>
+      <li><a href="#KeywordsFilter"><font face="Verdana" color="#008000" size="2">KeywordsFilter</font></a></li>
+      <li><a href="#KeywordsFilterEnabled"><font face="Verdana" color="#008000" size="2">KeywordsFilterEnabled</font></a></li>
+      <li><a href="#KeywordsLimiter"><font face="Verdana" color="#008000" size="2">KeywordsLimiter</font></a></li>
+      <li><a href="#KeywordsLimiterEnabled"><font face="Verdana" color="#008000" size="2">KeywordsLimiterEnabled</font></a></li>
+      <li><a href="#LeavesFirst"><font face="Verdana" color="#008000" size="2">LeavesFirst</font></a></li>
+      <li><a href="#Linkscan"><font face="Verdana" color="#008000" size="2">LinkScan</font></a></li>
+      <li><a href="#LinkReport"><font face="Verdana" color="#008000" size="2">LinkReport</font></a></li>
+      <li><a href="#MaxQueueSize"><font color="#008000" face="Verdana" size="2">MaxQueueSize</font></a></li>
+      <li><a href="#ProxyAddress"><font face="Verdana" color="#008000" size="2">ProxyAddress</font></a></li>
+      <li><a href="#ProxyPassword"><font face="Verdana" size="2" color="#008000">ProxyPassword</font></a></li>
+      <li><a href="#ProxyPort"><font face="Verdana" size="2" color="#008000">ProxyPort</font></a></li>
+      <li><a href="#ProxyType"><font face="Verdana" size="2" color="#008000">ProxyType</font></a></li>
+      <li><a href="#ProxyUser"><font face="Verdana" size="2" color="#008000">ProxyUser</font></a></li>
+      <li><a href="#Referer"><font face="Verdana" size="2" color="#008000">Referrer</font></a></li>
+      <li><a href="#Retries"><font face="Verdana" size="2" color="#008000">Retries</font></a></li>
+      <li><a href="#ReUseCache :"><font face="Verdana" size="2" color="#008000">ReuseCache</font></a></li>
+      <li><a href="#SeekRobotsTxt"><font face="Verdana" size="2" color="#008000">SeekRobotsTxt</font></a></li>
+      <li><a href="#StartingUrl :"><b><font face="Verdana" size="2" color="#008000">StartingUrl</font></b></a></li>
+      <li><a href="#TimeOut"><font face="Verdana" size="2" color="#008000">TimeOut</font></a></li>
+      <li><a href="#TypeFilter"><font face="Verdana" size="2" color="#008000">TypeFilter</font></a></li>
+      <li><a href="#TypeFilterEnabled"><font face="Verdana" size="2" color="#008000">TypeFilterEnabled</font></a></li>
+      <li><a href="#UserName"><font face="Verdana" size="2" color="#008000">UserName</font></a></li>
+      <li><a href="#Working"><font face="Verdana" size="2" color="#008000">Working<br>
+        </font></a></li>
+    </ul>
+  </li>
+  <li>
+    <h3><a href="#events"><font face="Verdana" size="2">Events</font></a></h3>
+    <ul>
+      <li><a href="#OnError"><font color="#008000" face="Verdana" size="2">OnError</font></a></li>
+      <li><a href="#Onlog"><font color="#008000" face="Verdana" size="2">OnLog</font></a></li>
+      <li><a href="#OnLinkFound"><b><font color="#008000" face="Verdana" size="2">OnLinkFound</font></b></a></li>
+      <li><a href="#OnMetaTag"><font face="Verdana" color="#008000" size="2">OnMetaTag</font></a></li>
+      <li><a href="#OnPageReceived"><font color="#008000" face="Verdana" size="2">OnPageReceived</font></a></li>
+      <li><a href="#OnUpdatedStats"><font color="#008000" face="Verdana" size="2">OnUpdatedStats</font></a></li>
+      <li><a href="#OnWorking"><font color="#008000" face="Verdana" size="2">OnWorking</font></a></li>
+    </ul>
+    <font face="Verdana, Arial, Helvetica">
+    <p>&nbsp;</li>
+  </ul>
+<hr align="center">
+</font>
+<h3><b><a name="INSTALL HOWTO"><font face="Verdana" color="#000080" size="2">PACKAGE
+INSTALL</font></a></b></h3>
+<p><font face="Verdana" size="2"> Note to C++Builder users:<br>
+ ------------------------<br>
+&nbsp;&nbsp;&nbsp; Add a&nbsp;<br>
+&nbsp;&nbsp;&nbsp; #pragma link "inet.lib"&nbsp;<br>
+&nbsp;&nbsp;&nbsp; statement at the top of your main cpp file.<br>
+</font></p>
+<p><font face="Verdana" size="2"><b> 1. If a previous THttpScan package is already installed,&nbsp;<br>
+   remove it first:<br>
+</b><br>
+   - Components | Install Packages,<br>
+<br>
+   - click on "DelphiCity THttpScan",<br>
+<br>
+   - click "Remove",<br>
+<br>
+   - click "Yes",<br>
+<br>
+   - click "Ok",<br>
+<br>
+   - search for "HttpScan.*" and &quot;Th*.*&quot; files in your Borland&nbsp;<br>
+     directories and delete them, to be certain that old units will<br>
+     not remain in the search paths (causing later raw errors).&nbsp;<br>
+<br>
+<br>
+<b> 2. Install the current package:<br>
+</b><br>
+    - unzip the archive in a folder of your choice,<br>
+<br>
+    - according to your Delphi or C++Builder version, copy all&nbsp;<br>
+      the Delphi\*.* or CBuilder\*.* archive files to&nbsp;<br>
+      the Borland\Delphi\Imports or \Borland\CBuilder\Imports directory,<br>
+<br>
+    - run Delphi or C++Builder,<br>
+<br>
+    - select Component | Install packages,<br>
+<br>
+    - press the "Add" button,<br>
+<br>
+    - locate the HttpScan.bpl file in the Imports directory and select it,<br>
+<br>
+    - select Open,<br>
+<br>
+    - select Ok,<br>
+<br>
+    - check the Delphicity tab in the right of the component palette.&nbsp;<br>
+      The THttpScan object should have been added.<br>
+</font></p>
+<font face="Verdana, Arial, Helvetica">
+<hr align="center">
+<p>&nbsp;</p>
+</font>
+<h2><a name="methods and functions"><font face="Verdana" color="#000080" size="2">methods
+and functions</font></a></h2>
+<p><font size="2"><b><font face="Verdana" color="#008000">function </font></b><font face="Verdana"><font color="#008000"><b><a name="Start">Start</a></b></font>:
+Boolean&nbsp;&nbsp;&nbsp; <i>(1st syntax)</i><b><br>
+</b>starts downloading and processing the URL set in the <a href="#StartingUrl :">StartingUrl</a>
+property, which must have been set beforehand.</font></font></p>
+<p><font size="2"><b><font face="Verdana" color="#008000">function </font></b><font face="Verdana"><font color="#008000"><a name="Start"><b>Start</b></a></font>
+(StartingUrl_: string): boolean&nbsp;&nbsp;<i> (2nd syntax)</i><br>
+starts downloading and processing the URL set in the StartingUrl_ parameter
+passed to the function.</font></font></p>
+<p><font size="2"><b><font face="Verdana" color="#008000">procedure <a name="Stop">Stop</a>:</font></b><font face="Verdana">
+kills all HttpScan processes currently running. Must be called before closing
+the Form. The Form can be closed after the <a href="#OnWorking">OnWorking</a>
+event occurs (false) or the <a href="#Working">Working</a> property returns
+false.</font></font></p>
+<font face="Verdana, Arial, Helvetica">
+<hr align="center">
+<p>&nbsp;</p>
+</font>
+<h2><b><a name="properties"><font face="Verdana" color="#000080" size="2">properties</font></a></b></h2>
+<p><font size="2"><b><a name="Agent"><font color="#008000" face="Verdana">Agent</font></a><font color="#008000" face="Verdana">:</font></b><font face="Verdana">
+string = ' '<br>
+<i>OBSOLETE.</i></font></font></p>
+<p><font size="2"><b><a name="ConcurrentDownloads"><font face="Verdana" color="#008000">ConcurrentDownloads</font></a><font face="Verdana" color="#008000">:</font></b><font face="Verdana"><font color="#008000">
+</font>integer = 6<br>
+number of html pages downloads running simultaneously (between 4 and 20,
+according to your ISP speed and your processor is a good range).</font></font></p>
+<p><font size="2"><b><a name="DeepSearchLevel"><font color="#008000" face="Verdana">DepthSearchLevel</font></a></b><font face="Verdana"><font color="#008000">:</font>
+integer = 3<br>
+represents the deep of&nbsp; the followed pages tree starting from the first
+Url. Or &quot;each time I find a link, I click on this link, n times&quot;. If
+kept on the host of the starting Url with StayOnSite set to true, a high value
+allow to grab an entire web site.&nbsp;<br>
+<i><u>The most important parameter with <a href="#StayOnSite">StayOnSite</a>.</u></i></font></font></p>
+<p><font size="2"><b><a name="HttpPort"><font color="#008000" face="Verdana">HttpPort</font></a></b><font face="Verdana"><font color="#008000">:</font>
+integer = 80<br>
+http port of the starting Url</font></font></p>
+<p><font size="2"><a name="FileOfResult"><b><font color="#008000" face="Verdana">FileOfResults</font></b></a><font face="Verdana"><font color="#008000">:</font>
+string = ' '<br>
+complete path of the file in which to store the results of the processing.<br>
+<br>
+<font color="#008000"><b><a name="HtmlExtensions">HtmlExtensions</a></b>: </font>string
+of<i> </i>extensions separated by char(13)+char(10),<i> <b>not visible on the
+object properties.</b></i><br>
+Set of extensions that should be recognized as html pages (e.g. &quot;htm&quot;,
+&quot;html&quot;, &quot;php&quot;, &quot;asp&quot;, etc...). THttpScan don't
+know if a link is a text file, image, video, sound or binary file, because for
+speed reasons, it doesn't get the head of each link. Don't change this string
+except if you want to add and html type extension THttpScan should follow. To do
+that, simply add a char(10) + char (13) + 'your ext' to the string. DO NOT CRUSH
+THE STRING OTHERWISE THTTPSCAN WILL NOT WORK.</font></font></p>
+<p><font size="2"><b><a name="KeywordsFilter"><font color="#008000" face="Verdana">KeywordsFilter</font></a></b><font face="Verdana"><font color="#008000">:</font>
+string of keywords separated by char(13)+char(10), <i><b>not visible on the
+object properties.</b></i><br>
+Set of keywords to filter URLs. One keyword per line. Very short keywords will
+eliminate a lot of Url (e.g. a keyword like &quot;th&quot; eliminates all the
+Url containing &quot;th&quot;). Activated by KeywordsFilterEnabled = true.<br>
+<br>
+<font color="#008000"><b><a name="KeywordsFilterEnabled">KeywordsFilterEnabled</a></b>:
+</font>boolean = false<br>
+if set to true, the KeywordsFilter stringlist is used to determine if the URL
+contains one of the keywords and must be ignored.</font></font></p>
+<p><font size="2"><b><a name="KeywordsLimiter"><font color="#008000" face="Verdana">KeywordsLimiter</font></a></b><font face="Verdana"><font color="#008000">:</font>
+string of keywords separated by char(13)+char(10), <i><b>not visible with the
+object inspector.</b></i><br>
+Set of keywords URLs MUST CONTAIN. One keyword per line. Very short keywords
+will report a lot of Urls (e.g. a keyword like &quot;th&quot; allows all the Url
+containing &quot;th&quot;). Activated by KeywordsLimiterEnabled = true.</font></font></p>
+<p><font size="2"><b><a name="KeywordsLimiterEnabled"><font color="#008000" face="Verdana">KeywordsLimiterEnabled</font></a></b><font face="Verdana"><font color="#008000">:
+</font>boolean = false<br>
+if set to true, the KeywordsLimiter stringlist is used to determine if the URL
+contains one of the keywords and must be reported.</font></font></p>
+<p><font size="2"><b><a name="LeavesFirst"><font color="#008000" face="Verdana">LeavesFirst</font></a></b><font face="Verdana"><font color="#008000">:
+</font>boolean = false<b><br>
+</b>if we think to the pages scanned (starting from the initial URL) as a tree
+with its branches and leaves, THttpScan scans</font></font><font face="Verdana"> through the leaves before the
+branches.</font></p>
+<p><font size="2"><b><a name="Linkscan"><font color="#008000" face="Verdana">LinkScan</font></a></b><font color="#008000" face="Verdana">:</font><font face="Verdana"><font color="#008000">
+</font>TLinkScan = (scanAllLinks, scanInitialSite, scanInitialPath)<b><br>
+</b>Sets the global way to surf through links.&nbsp;<br>
+scanAllLinks: for each html page found, all the links are downloaded and
+scanned, and so on...<br>
+scanInitialSite: scans only links owned by the site of the starting url.<br>
+scanInitialPath: scans only links with the same sub path than the starting url
+(links of the same tree level and below).</font></font></p>
+<p><font size="2"><b><a name="LinkReport"><font color="#008000" face="Verdana">LinkReport</font></a></b><font color="#008000" face="Verdana">:</font><font face="Verdana"><font color="#008000">
+</font>TLinkReport = (reportAllLinks, reportCurrentSiteLinks, reportCurrentPathLinks)<b><br>
+</b>Sets the global way links are reported.<br>
+reportAllLinks: reports all links found in the current html page,<br>
+reportCurrentSiteLinks: reports links owned by the same site than the current
+html page,<br>
+reportCurrentPathLinks: reports only links with the same sub path than the
+current html page (links of the same tree level and below).</font></font></p>
+<p><font size="2"><font face="Verdana"><font color="#008000"><b><a name="MaxQueueSize">MaxQueueSize</a></b>: </font>integer
+= 5000<br>
+maximum size of the html pages queue. The html pages queue grows faster than the
+analyzed pages. After a few minutes, we can have 50 pages analyzed and 10000
+pages in queue. This queue size limitation helps to avoid memory problems with
+huge queues. New links founds are ignored if adding them implies a queue size
+greater than MaxQueueSize.<br>
+<br>
+</font><b><font color="#008000" face="Verdana"><a name="Password">Password</a>:</font></b><font face="Verdana">
+string = ' '<br>
+needed if the starting Url is username/password protected.</font></font></p>
+<p><font size="2"><b><a name="ProxyAddress"><font color="#008000" face="Verdana">ProxyAddress</font></a></b><font face="Verdana"><font color="#008000">:</font>
+string = ''<br>
+Ip address of the proxy server<br>
+<br>
+<font color="#008000"><b><a name="ProxyPassword">ProxyPassword</a></b>:</font>
+string = ''<br>
+password to authenticate to the proxy server<br>
+<br>
+<font color="#008000"><b><a name="ProxyPort"><i>ProxyPort</i></a></b>:</font>
+integer<br>
+Port of the proxy server<br>
+<br>
+<font color="#008000"><b><a name="ProxyType">ProxyType</a></b>:</font>
+tProxyType = (PROXY_DIRECT, PROXY_USE_PROXY, PROXY_DEFAULT)<br>
+PROXY_DIRECT: direct connection to Internet, all the Proxy.. parameters are
+ignored<br>
+PROXY_USE_PROXY: the Proxy... parameters are used to authenticate to the proxy
+server<br>
+PROXY_DEFAULT: the control panel parameters are used<br>
+<br>
+<font color="#008000"><b><a name="ProxyUser"><i>ProxyUser</i></a></b>:</font>
+string<br>
+username to authenticate to the proxy server</font></font></p>
+<p><font size="2"><b><a name="Referer"><font color="#008000" face="Verdana">Referrer</font></a><font color="#008000" face="Verdana">:</font></b><font face="Verdana">
+string = ' '<b><br>
+</b><i>OBSOLETE.</i></font></font></p>
+<p><font size="2"><a name="Retries"><b><font color="#008000" face="Verdana">Retries</font></b></a><font face="Verdana"><font color="#008000">:</font>
+integer = 3<b><br>
+</b>number of download retries when a connect or GET error occurs.</font></font></p>
+<p><font size="2"><a name="SeekRobotsTxt"><b><font color="#008000" face="Verdana">SeekRobotsTxt</font></b></a><font face="Verdana"><font color="#008000">:</font>
+boolean = false<br>
+if set to true, THttpScan searches for robots.txt files at the root of the sites
+(http://www.hostname.foo/robots.txt). If the file is found, the body content is
+returned by the <a href="#OnPageReceived">OnPageReceived</a> event</font></font></p>
+<p><font size="2"><b><a name="StartingUrl :"><font color="#008000" face="Verdana">StartingUrl</font></a></b><font face="Verdana"><font color="#008000">:</font>
+string = ' '<br>
+the Url from which the scanning will be performed.<i>&nbsp;<br>
+Must be set before calling the <a href="http://www.mfornengo.ath.cx#Start">Start</a>
+function if it is called without Url parameter.</i></font></font></p>
+<p><font size="2"><a name="TimeOut"><b><font color="#008000" face="Verdana">TimeOut</font></b></a><font face="Verdana"><font color="#008000">:
+</font>integer = 300<br>
+time left to the http thread to connect to an URL (in seconds) before aborting
+process. The thread tries to connect <a href="#Retries">Retries</a> times before
+the <a href="#OnError">OnError</a> event occurs.</font></font></p>
+<p><font size="2"><b><a name="TypeFilter"><font color="#008000" face="Verdana">TypeFilter</font></a></b><font face="Verdana"><font color="#008000">:</font>
+string of file types separated by char(13)+char(10), <i><b>not visible on the
+object properties.</b></i><br>
+Set of file types to report only corresponding URLs. One file type per line
+(e.g. : jpg&nbsp; gif mp3). Lowercase only. For jpeg use &quot;jpg&quot; and for
+mpeg use &quot;mpg&quot; (THttpScan converts jpeg in jpg and mpeg in mpg).
+Activated by TypeFilterEnabled = true.<br>
+<br>
+<font color="#008000"><b><a name="TypeFilterEnabled">TypeFilterEnabled</a></b>: </font>boolean
+= false<br>
+if set to true, the TypeFilter stringlist is used to report on URL whose file
+type is found in the TypeFilter list.</font></font></p>
+<p><font size="2"><b><a name="UserName"><font color="#008000" face="Verdana">UserName</font></a></b><font face="Verdana"><font color="#008000">:
+</font>string = ' '<br>
+needed if the starting Url is username/password protected.</font></font></p>
+<p><font size="2"><b><a name="Working"><font color="#008000" face="Verdana">Working</font></a><font color="#008000" face="Verdana">:</font></b><font face="Verdana">
+boolean = false. <i>Read only, <b>non visible in the object properties.</b></i><br>
+Indicates the state of HttpScan: &quot;waiting&quot; or &quot;working&quot;. Can
+be tested before closing the Form to know if downloads are currently running.
+See also the <a href="#OnWorking">OnWorking</a> event.</font></font></p>
+<font face="Verdana, Arial, Helvetica">
+<hr align="center">
+<p>&nbsp;</p>
+</font>
+<h2><a name="events"><font face="Verdana" color="#000080" size="2">events</font></a></h2>
+<p><font size="2"><a name="OnError"><b><font face="Verdana" color="#008000">OnError</font></b></a><font face="Verdana">
+(Url: String; ErrorCode: Cardinal; ErrorMsg: String);<br>
+occurs when a &quot;GET&quot; request fails. Returns the Url which failed, with
+the error code and the error message if available.</font></font></p>
+<p><font size="2"><b><a name="OnLinkFound"><font face="Verdana" color="#008000">OnLinkFound</font></a><font face="Verdana" color="#008000">
+</font></b><font face="Verdana">(UrlFound, TypeLink, FromUrl, HostName, UrlPath,
+UrlPathWithFile, ExtraInfos: String; var <a href="#WriteToFile">WriteToFile</a>:
+String);<br>
+<i>This event occurs each time a link is found and returns the following
+parameters:<br>
+</i><u>UrlFound</u>: the full address on the link found<br>
+<u>TypeLink</u>: type of link (htm, jpg, mpg, cgi, php, etc...)<br>
+<u>FromUrl</u>: the referring url (.htm) from which the link come from<br>
+<u>Hostname</u>: the host name of the UrlFound address<br>
+<u>UrlPath</u>: the Url path (without host name &amp; without filename)<br>
+<u>UrlPathWithFile</u>: the Url path (without host name but with filename)<br>
+<u>ExtraInfos</u>: the extra info passed to the URL (e.g. ?param1=v)<br>
+<a href="#WriteToFile">WriteToFile</a>: the line to be written to <a href="#FileOfResult">FileOfResult</a>.
+See comments <a href="#WriteToFile">here</a>.<br>
+<u>HrefOrSrc</u>: returns 'S' if the link is an object loaded on the page (a
+thumb for example) and 'H' if the link is the destination URL.<br>
+<u>CountArea</u>: all the area found receive a sequential number. When a Href or
+Src link is found, it receives the number corresponding to his area. So, the
+couples Href / Src link can be associated.<br>
+<u>FollowIfHtmlLink</u>: if false, THttpScan doesn't continue searching in the
+direction of the current link.</font></font></p>
+<p><font size="2"><a name="Onlog"><b><font face="Verdana" color="#008000">Onlog</font></b></a><font face="Verdana"><font color="#008000">
+</font>(LogMessage: string);<br>
+returns a string which explains the internal process (for debugging purposes)</font></font></p>
+<p><font size="2"><a name="OnMetaTag"><b><font color="#008000" face="Verdana">OnMetaTag</font></b></a><font face="Verdana">
+(Url, ReferringUrl, TagType, Tag1stAttrib, Tag1stValue, Tag2ndAttrib,
+Tag2ndValue, Tag3rdAttrib, Tag3rdValue: String);<br>
+Returns the tag type and attributes of the current html page. If there is 5 tags
+on a page the event occurs 5 times for this page. The number of attributes is
+different according to the tag types, so the attribute parameters are called
+&quot;1st&quot;, &quot;2nd&quot; and &quot;3rd&quot;.<br>
+<u>Url</u>: the URL from which the meta tag is returned<br>
+ReferringUrl: the parent URL<br>
+<u>TagType</u>: TITLE, META, LINK, BASE, etc...<br>
+<u>Tag1stAttrib</u>: tag attribute, according to the TagType. E.g. if TagType =
+META, returns &quot;NAME&quot;, &quot;HTTP-EQUIV&quot;, etc...<br>
+<u>Tag1stValue</u>: value of the Tag1stAttrib, e.g. if Tag1stAttrib =
+&quot;NAME&quot;, returns &quot;keywords&quot;, &quot;description&quot;, etc...<br>
+<u>Tag2ndAttrib</u>: e.g. if Tag1stAttrib = &quot;NAME&quot; and Tag1stValue =
+&quot;keywords&quot;, returns &quot;CONTENT&quot; ;<br>
+<u>Tag2ndValue</u>: e.g. if Tag1stAttrib = &quot;NAME&quot;, Tag1stValue =
+&quot;keywords&quot; and Tag2ndAttrib =&nbsp; &quot;CONTENT&quot;, returns the
+content string.<br>
+<u>Tag3rdAttrib</u>: e.g. if TagType = &quot;LINK&quot;, Tag1stAttrib = &quot;REL&quot;,
+Tag1stValue = &quot;STYLESHEET&quot;, Tag2ndAttrib =&nbsp; &quot;HREF&quot;,
+Tag2ndValue = &quot;/style/??.css&quot;, returns &quot;TYPE&quot;.<br>
+<u>Tag3rdValue</u>: e.g. &quot;/text/css&quot; for the sample above.<br>
+<b>If you find this is complicated, take a look at the demo, and you'll think it
+is finally very simple!</b></font></font></p>
+<p><font size="2"><a name="OnPageReceived"><b><font color="#008000" face="Verdana">OnPageReceived</font></b></a><font face="Verdana"><font color="#008000">
+</font>(Hostname, Url, Head, Body: string);<br>
+<i>this event occurs each time an html page is downloaded and returns the
+following parameters:<br>
+</i><u>Url</u>: Url of the text page received<br>
+<u>Hostname</u>: hostname of the page received<br>
+<u>Head</u>: head of the http query request for the page received<br>
+<u>Body</u>: body of the text of the page received.</font></font></p>
+<p><font size="2"><b><i><a name="OnUpdatedStats"><font face="Verdana" color="#008000">OnUpdatedStats</font></a></i></b><font face="Verdana">
+(InQueue, Downloading, ToAnalyze, Done, Retries, Errors: Integer);<br>
+occurs each time something changes in the HttpScan state. Returns the number of
+pages in queue (waiting for download), the number of pages currently
+downloading, the number of pages waiting to be analyzed, the number of pages
+analyzed (done), and the number of page downloads in error.</font></font></p>
+<p><font size="2"><a name="OnWorking"><b><font face="Verdana" color="#008000">OnWorking</font></b></a><font face="Verdana"><font color="#008000">
+</font>(working_: boolean);<br>
+occurs when HttpScan pass from the state &quot;waiting&quot; to the state
+&quot;working&quot; and opposite. Can be used to detected when HttpScan has
+terminated his job. You can use also the <a href="#Working">Working</a>
+property.</font></font></p>
+<hr align="center">
+<p>&nbsp;</p>
+<p><font face="Verdana" color="#008000" size="2">Comments about the<b> </b><a name="WriteToFile"><b>WriteToFile</b></a>
+parameter used in the <a href="#OnLinkFound">OnLinkFound</a> event:</font></p>
+<p><font face="Verdana" size="2">WriteToFile contains the string to be written
+to the FileOfResults. If you leave it untouched, for each link found a line is
+written to the file like this : &quot;TypeLink&quot;;&quot;NewUrl&quot;;&quot;HostName&quot;.</font></p>
+<p><font face="Verdana" size="2">WriteToFile is useful to write links to the <a href="#FileOfResult">FileOfResult</a>
+file only for some kind of links (e.g. &quot;jpg&quot;), or to choose the
+information written to the file. For examples:</font></p>
+<p><font face="Verdana" size="2">If you want to write your own data to the file,
+e.g. Typelink, NewUrl and FromUrl then add the following line in the event:<br>
+WriteToFile:= '&quot;' + TypeLink + '&quot;;&quot;' + NewUrl + '&quot;;&quot;' +
+HostName + '&quot;';</font></p>
+<p><font face="Verdana" size="2">If you want to skip the event's link and not to
+write anything into the file for the current link found, simply add the
+following line in the event:<br>
+if ...=... then begin<br>
+&nbsp;&nbsp; WriteToFile:= '';<br>
+end;</font></p>
+
+<p>&nbsp;</p>
+
+<!--webbot bot="Include" i-checksum="16487" endspan -->
+
+<font face="Verdana, Arial, Helvetica">
+<hr>
+</font>
+<h3 align="left">&nbsp;</h3>
+<table border="1" cellpadding="5" cellspacing="0" bordercolor="#0000FF" bgcolor="#FFFFFF">
+  <tr>
+    <td align="center">
+      <p align="center"><b><font face="Verdana" size="2"><span lang="fr">
+      <a name="LICENSE">LICENSE</a></span></font></b></td>
+  </tr>
+</table>
+
+<!--webbot bot="Include" u-include="../../Common/License.htm" tag="BODY" startspan -->
+<p>
+&nbsp;</p>
+<p>
+<font face="Verdana" color="#000080"><u><b>Copyright</b></u></font></p>
+<p>
+<font face="Verdana" size="2">All DelphiCity.com Software components are 
+copyrighted by Michel Fornengo (hereafter &quot;author&quot;), and shall remain the 
+exclusive property of the author.
+</font></p>
+<p>
+<font face="Verdana" color="#000080"><u><b>Agreement</b></u></font></p>
+<p>
+<font face="Verdana" size="2">By installing this software you agree with: <br>
+<br>
+- You may not use the source code in this package to create competitive software 
+product.<br>
+- You may not manipulate any binary files included or generated by 
+Delphi/C++Builder using the package.<br>
+- You may not distribute source code or registered version to non registered 
+people.</font></p>
+<p>
+<font face="Verdana" color="#000080"><u><b>License statement</b></u></font></p>
+<p>
+<font face="Verdana" size="2">This software and any accompanying documentation 
+are protected by France copyright law and also by International Treaty 
+provisions. <br>
+<br>
+Any use of this software in violation of copyright law or the terms of this 
+agreement will be prosecuted to the best of the author's ability.<br>
+<br>
+You are hereby authorized to make archival copies of this software for the sole 
+purpose of back-up and protecting your investment from loss. <br>
+<br>
+Under no circumstances may you copy this software or documentation for the 
+purposes of distribution to others. Under no conditions may you remove the 
+copyright notices made part of the software or documentation.</font></p>
+<p>
+<font face="Verdana" color="#000080"><u><b>Distribution Rights</b></u></font></p>
+<p>
+<font face="Verdana" size="2">You are granted a non-exclusive, royalty-free 
+right to produce and distribute executable binary files (executables, DLLs, 
+etc.) that are built with the software unless specifically stated otherwise.</font></p>
+<p>
+<font face="Verdana" color="#000080"><u><b>Restrictions</b></u></font></p>
+<p>
+<font face="Verdana" size="2">Without the express prior written consent of the 
+author, you may not distribute any of the author's commercial source code, 
+compiled units or documentation by any means whatsoever. You may not transfer, 
+lease, lend, copy, modify, translate , sublicense, time-share , or 
+electronically transmit or receive the software or documentation.</font></p>
+<p>
+<font face="Verdana" color="#000080"><u><b>Upgrade</b></u></font></p>
+<p>
+<font face="Verdana" size="2">The upgrade version of the software constitutes a 
+single product of the author's software that you upgraded. For example, the 
+upgrade and the software that you upgraded cannot both be available for use by 
+two different people at the same time, without written permission from the 
+author.
+</font></p>
+<p>
+<font face="Verdana" color="#000080"><u><b>Disclaimer</b></u></font></p>
+<p>
+<font face="Verdana" size="2">The Author cannot and does not warrant that any 
+functions contained in the Software will meet your requirements, or that its 
+operations will be error free. The entire risk as to the Software performance or 
+quality, or both, is solely with the user and not the Author. You assume 
+responsibility for the selection of the component to achieve your intended 
+results, and for the installation, use, and results obtained from the Software.
+<br>
+<br>
+The Author makes no warranty, either implied or expressed, including without 
+limitation any warranty with respect to this Software documented here, its 
+quality, performance, or fitness for a particular purpose. In no event shall the 
+Author be liable to you for damages, whether direct or indirect, incidental, 
+special, or consequential arising out the use of or any defect in the Software, 
+even if the Author has been advised of the possibility of such damages, or for 
+any claim by any other party. <br>
+<br>
+All other warranties of any kind, either express or implied, including but not 
+limited to the implied warranties of merchantability and fitness for a 
+particular purpose, are expressly excluded. <br>
+<br>
+<br>
+&nbsp;</font></p>
+
+<!--webbot bot="Include" i-checksum="34046" endspan -->
+
+<hr>
+<p align="left">&nbsp;</p>
+<!--webbot bot="Include" u-include="descript.htm" tag="BODY" startspan -->
+
+<table border="0" cellpadding="6">
+  <tr>
+    <td width="100%" valign="top">
+      <table border="1" cellpadding="5" cellspacing="0" bordercolor="#0000FF" bgcolor="#FFFFFF">
+        <tr>
+          <td align="center">
+            <p align="center"><b><font face="Verdana" size="2">DESCRIPTION</font></b></p>
+          </td>
+        </tr>
+      </table>
+      <p><font face="Verdana" size="2">With THTTPSCAN you access to web sites as
+      a collection of links to files and data, instead of as graphics and text.<br>
+      <br>
+      THTTPSCAN recursively analyzes HTML pages and reports all the links it
+      finds to a text file: html, mail, jpg, mpeg, mp3, etc.</font></p>
+      <p><font face="Verdana" size="2">THttpScan surfs on the links through HTML pages in
+      the neighborhood of the initial URL. The links appearing several times are
+      treated only once.<br>
+      <br>
+      The LinkScan property allows you to limit the scanning to the initial site
+      or the initial URL path.&nbsp;</font></p>
+      <p><font face="Verdana" size="2">The LinkReport property allows you to
+      report only links owned by the current site or even with the same path
+      name.</font></p>
+      <p><font face="Verdana" size="2">The DepthSearchLevel allows you to limit
+      the level of pages scanned, starting from the initial page, especially
+      when not limiting the scanning to a site.&nbsp;</font></p>
+      <p><font face="Verdana" size="2">Using the LinkScan and LinkReport
+      properties with a high DelphSearchLevel value, you can easily scan a whole
+      site or only a subdirectory of a web site.<br>
+      <br>
+      Events are generated for each link found and each page read, returning
+      URL, meta tags, document type, referrer, host name,...</font></p>
+      <p><font face="Verdana" size="2">According to your line speed, you can grab thousands of links from a
+      starting URL in a few minutes.</font></p>
+      <p><font face="Verdana" size="2">THTTPSCAN saves you having to tangle with
+      the HTML parsing.
+      Most common parameters can be simply set from the Object Inspector. It can
+      be placed on any window, it is only visible at design time.<br>
+      <br>
+      Register and you will get the full source code with 24 months upgrades.</font></p>
+      <p>&nbsp;</p>
+      <table border="1" cellpadding="5" cellspacing="0" bordercolor="#0000FF" bgcolor="#FFFFFF">
+        <tr>
+          <td align="center">
+            <p align="center"><b><font face="Verdana" size="2">SYSTEM
+            REQUIREMENTS</font></b></p>
+          </td>
+        </tr>
+      </table>
+      <ul>
+        <li><font face="Verdana" size="2">Windows 95/98/NT/2000<span lang="fr">/XP</span>,<br>
+          </font></li>
+        <li><font face="Verdana" size="2">Delphi 4 / Delphi 5 / Delphi 6 /
+          C++Builder 4 / C++Builder 5.</font></li>
+      </ul>
+      <p>&nbsp;</td>
+  </tr>
+</table>
+&nbsp;
+<p>&nbsp;</p>
+
+<!--webbot bot="Include" i-checksum="59395" endspan -->
+
+<table border="1" cellpadding="5" cellspacing="0" bordercolor="#0000FF" bgcolor="#FFFFFF">
+  <tr>
+    <td align="center">
+      <p align="center"><b><font face="Verdana" size="2">REGISTRATION</font></b></td>
+  </tr>
+</table>
+<p><font face="Verdana" size="2">Click <a href="http://www.delphicity.com/httpscan/register.htm"><b>here</b></a>
+to register.</font></p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

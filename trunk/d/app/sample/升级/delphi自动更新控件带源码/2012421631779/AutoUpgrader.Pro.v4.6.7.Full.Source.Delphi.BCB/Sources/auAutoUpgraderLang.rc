@@ -1,0 +1,1311 @@
+// AVALIABLE LANGUAGE RESOURCES:
+#define  stEnglish      41000
+#define  stRussian      41050
+#define  stGerman       41100
+#define  stFrench       41150
+#define  stSpanish      41200
+#define  stPortuguese   41250
+#define  stPortugBrazil 41300
+#define  stItalian      41350
+#define  stDutch        41400
+#define  stDanish       41450
+#define  stSwedish      41500
+#define  stFinnish      41550
+#define  stEstonian     41600
+#define  stUkrainian    41650
+#define  stPolish       41700
+#define  stCzech        41750
+#define  stHungarian    41800
+#define  stRomanian     41850
+#define  stCatalan      41900
+#define  stBasque       41950
+#define  stAfrikaans    42000
+#define  stChineseTrad  42050
+#define  stChineseSimp  42100
+#define  stIndonesian   42150
+#define  stMalay        42200
+#define  stIcelandic    42250
+#define  stTurkish      42300
+#define  stNorwegian    42350
+#define  stSlovak       42400
+
+// ^- here you can add your language
+
+
+// optional resources
+STRINGTABLE
+{
+ stEnglish-1,  "AutoUpgrader"
+ stEnglish-2,  "Delphi"
+ stEnglish-3,  "<AppTitle>"
+}
+
+// -= English =-
+#pragma code_page(1252)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stEnglish,      "Application update wizard"
+ stEnglish+1,    "Downloading files..."
+ stEnglish+2,    "Upgrade completed!"
+ stEnglish+3,    "Current file"
+ stEnglish+4,    "All files"
+ stEnglish+5,    "Downloading file from"
+ stEnglish+6,    "File size: %.1f Kb"
+ stEnglish+7,    "Transfer rate: %.1f Kb/s"
+ stEnglish+8,    "Estimated time left: %d:%.2d:%.2d"
+ stEnglish+9,    "Downloading %d of %d"
+ stEnglish+10,   "The update of %s has been successfully completed.\n\nPress the OK button to restart program."
+ stEnglish+11,   "Enter password"
+ stEnglish+12,   "User Name"
+ stEnglish+13,   "Password"
+
+// Buttons
+ stEnglish+14,  "&Yes"
+ stEnglish+15,  "&No"
+ stEnglish+16,  "&OK"
+ stEnglish+17,  "&Cancel"
+ stEnglish+18,  "&Next >"
+ stEnglish+19,  "&Later"
+
+// Error messages
+ stEnglish+20,  "Warning"
+ stEnglish+21,  "Error"
+ stEnglish+22,  "Preparing. . ."
+ stEnglish+23,  "A newer version of %s was released.\n%s\nDo you want to update your version with the latest one?"
+ stEnglish+24,  "Newer version not found. You actually are\nusing most recent version of this program."
+ stEnglish+25,  "File which contains upgrade information was not found on developer's site."
+ stEnglish+26,  "Host %s unreachable.\n\nPlease check your Internet connection and\ntry to upgrade this software again later."
+ stEnglish+27,  "The update is not completed.\nWould you like to abort upgrading?"
+ stEnglish+28,  "File %s not found or inaccessible.\n\nTry to skip this file and continue upgrade?"
+ stEnglish+29,  "Access to remote file ""%s"" is password protected.\n\nPlease enter your username and password (received after registration) to continue software upgrade."
+ stEnglish+30,  "Connection with remote server lost.\n\nPlease restore connection and try to\nupgrade this software again later."
+}
+
+
+// -= Russian =-
+#pragma code_page(1251)
+STRINGTABLE
+{
+// Çàãîëîâêè äëÿ ôîğì, ïàíåëåé è ìåòîê
+ stRussian,      "Ìàñòåğ îáíîâëåíèÿ ïğèëîæåíèé"
+ stRussian+1,    "Çàãğóçêà ôàéëîâ..."
+ stRussian+2,    "Îáíîâëåíèå çàâåğøåíî!"
+ stRussian+3,    "Òåêóùèé ôàéë"
+ stRussian+4,    "Âñå ôàéëû"
+ stRussian+5,    "Çàãğóæàåòñÿ ôàéë ñ"
+ stRussian+6,    "Ğàçìåğ ôàéëà: %.1f Êá"
+ stRussian+7,    "Ñêîğîñòü ïåğåäà÷è äàííûõ: %.1f Êá/ñ"
+ stRussian+8,    "Ïğèáëèçèòåëüíîå âğåìÿ çàâåğøåíèÿ: %d:%.2d:%.2d"
+ stRussian+9,    "Çàãğóæàåòñÿ %d èç %d"
+ stRussian+10,   "Îáíîâëåíèå %s óñïåøíî çàâåğøåíî.\n\nÍàæìèòå êíîïêó OK äëÿ ïåğåçàãğóçêè ïğîãğàììû."
+ stRussian+11,   "Ââåäèòå ïàğîëü"
+ stRussian+12,   "Ïîëüçîâàòåëü"
+ stRussian+13,   "Ïàğîëü"
+
+// Êíîïêè
+ stRussian+14,   "&Äà"
+ stRussian+15,   "&Íåò"
+ stRussian+16,   "&OK"
+ stRussian+17,   "Îòìåíà"
+ stRussian+18,   "&Äàëåå >"
+ stRussian+19,   "&Ïîçæå"
+
+// Ñîîáùåíèÿ îá îøèáêàõ
+ stRussian+20,   "Ïğåäóïğåæäåíèå"
+ stRussian+21,   "Îøèáêà"
+ stRussian+22,   "Ïîäãîòîâêà. . ."
+ stRussian+23,   "Îáíàğóæåíà íîâàÿ âåğñèÿ %s äîñòóïíàÿ äëÿ çàãğóçêè.\n%s\nÆåëàåòå îáíîâèòü ïğîãğàììó?"
+ stRussian+24,   "Íîâàÿ âåğñèÿ íå îáíàğóæåíà. Ñåé÷àñ âû\nèñïîëüçóåòå ïîñëåäíşş âåğñèş ıòîé ïğîãğàììû."
+ stRussian+25,   "Ôàéë ñîäåğæàùèé èíôîğìàöèş îá îáíîâëåíèÿõ ıòîé\nïğîãğàììû íå íàéäåí íà ñàéòå ğàçğàáîò÷èêà."
+ stRussian+26,   "Ñåğâåğ %s âíå äîñÿãàåìîñòè.\n\nÏîæàëóéñòà ïğîâåğüòå ñîåäèíåíèå ñ Èíòåğíåò è\nïîïûòàéòåñü îáíîâèòü ïğîãğàììó ñíîâà."
+ stRussian+27,   "Îáíîâëåíèå ïğîãğàììû íå çàâåğøåíî.\nÆåëàåòå ïğåğâàòü îáíîâëåíèå?"
+ stRussian+28,   "Ôàéë %s íå íàéäåí èëè íåäîñòóïåí.\n\nÏîïûòàòüñÿ ïğîïóñòèòü ıòîò ôàéë è ïğîäîëæèòü îáíîâëåíèå?"
+ stRussian+29,   "Äîñòóï ê óäàë¸ííîìó ôàéëó ""%s"" çàùèù¸í ïàğîëåì.\n\nÏîæàëóéñòà ââåäèòå èìÿ ïîëüçîâàòåëÿ è ïàğîëü (ïîëó÷åíûå ïğè ğåãèñòğàöèè) äëÿ ïğîäîëæåíèÿ îáíîâëåíèÿ ïğîãğàììû."
+ stRussian+30,   "Ñîåäèíåíèå ñ óäàë¸ííûì ñåğâåğîì ïğåğâàíî.\n\nÏîæàëóéñòà âîññòàíîâèòå ñâÿçü è ïîïûòàéòåñü\nîáíîâèòü ïğîãğàììó ñíîâà."
+}
+
+
+// -= German =-
+// Translated by Simon Grossenbacher (http://www.swissdelphicenter.ch)
+#pragma code_page(1252)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stGerman,       "Upgrade Anwendungsassistent"
+ stGerman+1,     "Dateien herunterladen..."
+ stGerman+2,     "Upgrade fertig!"
+ stGerman+3,     "Aktuelle Datei"
+ stGerman+4,     "Alle Dateien"
+ stGerman+5,     "Herunterladen der Datei von"
+ stGerman+6,     "Datei Grösse: %.1f Kb"
+ stGerman+7,     "Übertragungsgeschwindigkeit: %.1f Kb/s"
+ stGerman+8,     "Verbleibende Zeit: %d:%.2d:%.2d"
+ stGerman+9,     "Herunterladen %d von %d"
+ stGerman+10,    "Das Upgrade von %s wurde erfolgreich beendet.\n\nDrücken Sie den OK Button, um das Programm neuzustarten."
+ stGerman+11,    "Passworteingabe"
+ stGerman+12,    "Benutzername"
+ stGerman+13,    "Passwort"
+
+// Buttons
+ stGerman+14,    "&Ja"
+ stGerman+15,    "&Nein"
+ stGerman+16,    "&OK"
+ stGerman+17,    "&Abbruch"
+ stGerman+18,    "&Weiter >"
+ stGerman+19,    "Später"
+
+// Error messages
+ stGerman+20,    "Warnung"
+ stGerman+21,    "Fehler"
+ stGerman+22,    "Vorbereiten. . ."
+ stGerman+23,    "Neuere Version von %s erhältlich.\n%s\nMöchten Sie diese Software aktualisieren?"
+ stGerman+24,    "Keine neuere Version gefunden. Sie verwenden\ndie aktuellste Version dieser Anwendung."
+ stGerman+25,    "Datei mit Upgrade Informationen wurde auf der Herstellerseite nicht gefunden."
+ stGerman+26,    "Host %s unerreichbar.\n\nBitte überprüfen Sie Ihre Internet Verbindung\nund versuchen Sie es später nochmal."
+ stGerman+27,    "Das Upgrade wurde nicht vollständig ausgeführt.\nMöchten Sie den Vorgang abbrechen ?"
+ stGerman+28,    "Datei %s nicht gefunden.\n\nUpgrade fortsetzen ?"
+ stGerman+29,    "Datei ""%s"" ist durch ein Passwort geschützt. Bitte geben Sie Ihren Benutzernamen und Ihr Passwort ein (erhalten Sie nach der Registrierung), um mit dem Upgrade fortzufahren."
+ stGerman+30,    "Verbindung mit Server verloren.\n\nBitte stellen Sie Ihre Internet Verbindung\nwieder her und versuchen Sie es später."
+}
+
+
+// -= French =-
+// Thanks to Marc DETEZ for translation
+#pragma code_page(1252)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stFrench,       "Expert de mise à jour d'application"
+ stFrench+1,     "Téléchargement Fichiers ..."
+ stFrench+2,     "Mise à jour terminée!"
+ stFrench+3,     "Fichier actuel"
+ stFrench+4,     "Tous les fichiers"
+ stFrench+5,     "Téléchargement fichier depuis"
+ stFrench+6,     "Taille du fichier: %.1f Kb"
+ stFrench+7,     "Taux de transfert: %.1f Kb/s"
+ stFrench+8,     "Temps restant estimé: %d:%.2d:%.2d"
+ stFrench+9,     "Téléchargement %d de %d"
+ stFrench+10,    "La mise à jour de %s s'est terminée correctement.\n\nPressez le bouton OK pour redémarrer le programme."
+ stFrench+11,    "Entrez le mot de passe"
+ stFrench+12,    "Nom Utilisateur"
+ stFrench+13,    "Mot de passe"
+
+// Buttons
+ stFrench+14,    "&Oui"
+ stFrench+15,    "&Non"
+ stFrench+16,    "&OK"
+ stFrench+17,    "&Annuler"
+ stFrench+18,    "&Suivant >"
+ stFrench+19,    "+ Tard"
+
+// Error messages
+ stFrench+20,    "Avertissement"
+ stFrench+21,    "Erreur"
+ stFrench+22,    "Preparation . . ."
+ stFrench+23,    "Une nouvelle version de %s est disponible.\n%s\nDésirez-vous mettre à jour votre version ?"
+ stFrench+24,    "Pas de nouvelle version disponible. Vous utilisez\nactuellement la version la plus récente du programme."
+ stFrench+25,    "Le fichier qui contient les informations de mise à jour n'est pas disponible sur le site Web."
+ stFrench+26,    "Site Web %s inaccessible.\n\nSVP vérifiez votre connexion Internet et ré-essayer\nplus tard la mise à jour."
+ stFrench+27,    "La mise à jour n'est pas terminée.\nDésirez-vous arrêter la mise à jour ?"
+ stFrench+28,    "Fichier %s absent ou inaccessible.\n\nAbandonnez ce fichier et continuez la mise à jour ?"
+ stFrench+29,    "Accès au fichier distant ""%s"" est protégé par un mot de passe.\n\nSVP entrez votre nom et mot de passe (reçu après enregistrement) pour continuer la mise à jour du logiciel."
+ stFrench+30,    "Connexion avec le serveur est perdue.\n\nSVP Rétablissez la connexion et essayez\nà nouveau la mise à jour du logiciel."
+}
+
+
+// -= Spanish =-
+// Thanks to Hector Juarez Lara for translation
+#pragma code_page(1252)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stSpanish,      "Asistente de actualización"
+ stSpanish+1,    "Bajando archivos..."
+ stSpanish+2,    "Actualización completa!"
+ stSpanish+3,    "Archivo actual"
+ stSpanish+4,    "Todos los archivos"
+ stSpanish+5,    "Bajando desde"
+ stSpanish+6,    "Tamaño: %.1f Kb"
+ stSpanish+7,    "Tasa de transferencia: %.1f Kb/s"
+ stSpanish+8,    "Tiempo estimado: %d:%.2d:%.2d"
+ stSpanish+9,    "Bajado %d de %d"
+ stSpanish+10,   "La actualización del %s ha sido exitosa.\n\nPresione OK para reiniciar el programa."
+ stSpanish+11,   "Escriba la contraseña"
+ stSpanish+12,   "Nombre de usuario"
+ stSpanish+13,   "Contraseña"
+
+// Buttons
+ stSpanish+14,   "&Si"
+ stSpanish+15,   "&No"
+ stSpanish+16,   "&OK"
+ stSpanish+17,   "&Cancelar"
+ stSpanish+18,   "&Siguiente >"
+ stSpanish+19,   "&Después"
+
+// Error messages
+ stSpanish+20,   "Aviso"
+ stSpanish+21,   "Error"
+ stSpanish+22,   "Preparando. . ."
+ stSpanish+23,   "Una nueva versión del %s esta disponible.\n%s\nDesea actualizar?"
+ stSpanish+24,   "No existe nueva versión. Usted está usando la versión mas reciente de este programa."
+ stSpanish+25,   "No fue encontrado el archivo que contiene la información de actualización."
+ stSpanish+26,   "Servidor %s no está disponible.\n\nPor favor verifique su conexión a internet y reintente."
+ stSpanish+27,   "La actualización no está completa.\nLe gustaria cancelar la actualización?"
+ stSpanish+28,   "El archivo %s no se encontro o está inaccesible.\n\nDesea intentar saltar éste archivo y continuar?"
+ stSpanish+29,   "El acceso al archivo ""%s"" esta protegido con contraseña.\n\nPor favor escriba su nombre de usuario y contraseña."
+ stSpanish+30,   "Se perdió la conexión con el servidor.\n\nPor favor restaure la conexión y reintente mas tarde."
+}
+
+
+// -= Portuguese =-
+// Thanks to Marco Araujo for translation
+#pragma code_page(1252)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stPortuguese,    "Actualização do Software"
+ stPortuguese+1,  "Transferir ficheiros..."
+ stPortuguese+2,  "Actualização concluida!"
+ stPortuguese+3,  "A transferir o ficheiro"
+ stPortuguese+4,  "Todos os ficheiros"
+ stPortuguese+5,  "Transferir ficheiros de..."
+ stPortuguese+6,  "Tamanho do ficheiro: %.1f Kb"
+ stPortuguese+7,  "A tranferir ficheiro: %.1f Kb/s"
+ stPortuguese+8,  "Tempo estimado: %d:%.2d:%.2d"
+ stPortuguese+9,  "Transferir %d de %d"
+ stPortuguese+10, "Transferencia do Software %s ficou completa.\n\nCarregue OK do botão para iniciar o programa."
+ stPortuguese+11, "Insira a password"
+ stPortuguese+12, "User Name"
+ stPortuguese+13, "Password"
+
+// Buttons
+ stPortuguese+14, "&Sim"
+ stPortuguese+15, "&Não"
+ stPortuguese+16, "&OK"
+ stPortuguese+17, "&Cancelar"
+ stPortuguese+18, "&Seguinte"
+ stPortuguese+19, "&Não"
+
+// Error messages
+ stPortuguese+20, "Atenção"
+ stPortuguese+21, "Erro"
+ stPortuguese+22, "A Preparar. . ."
+ stPortuguese+23, "Existe uma nova versão do %s.\n%s\nDeseja actualizar a nova versão?"
+ stPortuguese+24, "Não existe nenhuma nova versão do Software.\n\nActualmente está usar uma versão mais recente."
+ stPortuguese+25, "NÃO TEM PERMISSÃO PARA FAZER ACTUALIZAÇÕES (CONTACTE OS SERVIÇOS TÉCNICOS).\n\nOU NÃO FOI ENCONTRADO NENHUMA ACTUALIZAÇÃO NECESSÁRIA."
+ stPortuguese+26, "Erro na %s ligação da Internet.\n\nPor favor verifique sua ligação à Internet.\nOu tente fazer a actualização deste software mais tarde."
+ stPortuguese+27, "A actualização não está completa.\n\nDeseja interromper a actualização?"
+ stPortuguese+28, "Ficheiro %s não foi encontrado ou está inacessível.\n\nTente não actualizar este ficheiro e continuar com a actualização?"
+ stPortuguese+29, "O acesso a certos ficheiros ""%s"" esta protegido por palavra passe.\n\nPor favor introduza a sua password (recebida depois de registado) para continuar o upgrade do software."
+ stPortuguese+30, "Ligação do servidor foi perdida.\n\nRefaça a ligação e continue com actualização do software."
+}
+
+
+// -= Portuguese Brazil =-
+// Thanks to Rowdy Rabouw for the file
+#pragma code_page(1252)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stPortugBrazil,     "Ajudante de Atualização Aplicação"
+ stPortugBrazil+1,   "Baixando arquivos..."
+ stPortugBrazil+2,   "Atualização Completada !"
+ stPortugBrazil+3,   "Arquivo atual:"
+ stPortugBrazil+4,   "Todos arquivos"
+ stPortugBrazil+5,   "Baixando arquivo de "
+ stPortugBrazil+6,   "Tamanho do arquivo: %.1f Kb"
+ stPortugBrazil+7,   "Taxa Transferência: %.1f Kb/s"
+ stPortugBrazil+8,   "Tempo restante estimado: %d:%.2d:%.2d"
+ stPortugBrazil+9,   "Baixando %d de %d"
+ stPortugBrazil+10,  "A atualização de %s foi completada com sucesso.\n\nClique no botão OK para reiniciar."
+ stPortugBrazil+11,  "Entre Senha"
+ stPortugBrazil+12,  "Nome Usuário"
+ stPortugBrazil+13,  "Senha"
+
+// Buttons
+ stPortugBrazil+14,  "&Sim"
+ stPortugBrazil+15,  "&Não"
+ stPortugBrazil+16,  "&OK"
+ stPortugBrazil+17,  "&Cancelar"
+ stPortugBrazil+18,  "&Próximo >"
+ stPortugBrazil+19,  "&Later"
+
+// Error messages
+ stPortugBrazil+20,  "Atenção"
+ stPortugBrazil+21,  "Erro"
+ stPortugBrazil+22,  "Preparando. . ."
+ stPortugBrazil+23,  "Uma versão mais atual de %s esta disponível.\n%s\nVocê quer atualizar sua verão com a mais recente?"
+ stPortugBrazil+24,  "Nenhuma atualização disponível. Você esta utilizando\na versão mais atual deste programa."
+ stPortugBrazil+25,  "O arquivo que contem informações sobre atualizações não foi encontrado do site do desenvolvedor."
+ stPortugBrazil+26,  "Servidor %s não encontrado.\n\nPor favor verifique a sua conexão com a internet\nou tente atualizar este programa mais tarde."
+ stPortugBrazil+27,  "A atualização não foi completada.\nVocê quer realmente abandonar a atualização?"
+ stPortugBrazil+28,  "Arquivo %s não foi encontrado ou esta inacessível.\n\nDeseja ignorar este arquivo e continuar com a atualização?"
+ stPortugBrazil+29,  "O acesso ao arquivo remoto ""%s"" é protegido por senha.\n\nPor favor informe seu nome de usuário e senha (recebidos após o registro) para continuar com a atualização do programa."
+ stPortugBrazil+30,  "Conexão com o servidor remoto perdida.\n\nPor favor reinicie a conexão e tente\natualizar este programa novamente."
+}
+
+
+// -= Italian =-
+// Thanks to Luca Bigatti for translation
+#pragma code_page(1252)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stItalian,      "Wizard di Applicazione di aggiornamento"
+ stItalian+1,    "Scaricamento files..."
+ stItalian+2,    "Aggiornamento completato!"
+ stItalian+3,    "File corrente"
+ stItalian+4,    "Tutti i files"
+ stItalian+5,    "Scaricamento file da"
+ stItalian+6,    "Dimensione file: %.1f Kb"
+ stItalian+7,    "Velocità di trasferimento: %.1f Kb/s"
+ stItalian+8,    "Tempo residuo stimato: %d:%.2d:%.2d"
+ stItalian+9,    "Scaricamento %d di %d"
+ stItalian+10,   "L' aggiornamento di %s completato con successo.\n\nPremi il pulsante OK per riavviare il programma."
+ stItalian+11,   "Immetti password"
+ stItalian+12,   "Nome utente"
+ stItalian+13,   "Password"
+
+// Buttons
+ stItalian+14,   "&Si"
+ stItalian+15,   "&No"
+ stItalian+16,   "&OK"
+ stItalian+17,   "&Cancella"
+ stItalian+18,   "&Prossimo >"
+ stItalian+19,   "&Più tardi"
+
+// Error messages
+ stItalian+20,   "Attenzione"
+ stItalian+21,   "Errore"
+ stItalian+22,   "Preparazione. . ."
+ stItalian+23,   "Una nuova versione di %s è stata rilasciata.\n%s\nVuoi aggiornare la tua versione con la più recente?"
+ stItalian+24,   "Nessuna nuova versione trovata. Attualmente stai\nusando la versione più recente di questo programma."
+ stItalian+25,   "Il file che contiene le informazioni di aggiornamento non è stato trovato sul sito del programmatore."
+ stItalian+26,   "Host %s non raggiungibile.\n\nPer favore controllare la connessione a Internet e\nprovare ad aggiornare questo software più tardi."
+ stItalian+27,   "L' aggiornamento non è completo.\nVuoi interrompere l' aggiornamento?"
+ stItalian+28,   "File %s non presente o inaccessibile.\n\nVuoi provare a saltare questo file e continuare l' aggiornamento?"
+ stItalian+29,   "L' accesso al file remoto ""%s"" è protetto da password.\n\nPer favore inserisci il tuo nome utente e la password (ricevuta dopo la registrazione) per continuare l' aggiornamento del software."
+ stItalian+30,   "Connessione con il server remoto persa.\n\nPer favore ripristina la connessione e prova ad\naggiornare questo software più tardi."
+}
+
+
+// -= Dutch =-
+// Thanks to Carl Peeraer for translation
+#pragma code_page(1252)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stDutch,        "Upgrade wizard"
+ stDutch+1,      "Bestanden downloaden..."
+ stDutch+2,      "Upgrade voltooid!"
+ stDutch+3,      "Huidig bestand"
+ stDutch+4,      "Alle bestanden"
+ stDutch+5,      "Bestand downloaden van"
+ stDutch+6,      "Bestandsgrootte: %.1f Kb"
+ stDutch+7,      "Transfer snelheid: %.1f Kb/s"
+ stDutch+8,      "Geschatte tijd over: %d:%.2d:%.2d"
+ stDutch+9,      "Downloaden %d van %d"
+ stDutch+10,     "De upgrade van %s is succesvol voltooid.\n\nKlik op OK om het programma te herstarten."
+ stDutch+11,     "Paswoord invoeren"
+ stDutch+12,     "Gebruikersnaam"
+ stDutch+13,     "Wachtwoord"
+
+// Buttons
+ stDutch+14,     "&Ja"
+ stDutch+15,     "&Nee"
+ stDutch+16,     "&OK"
+ stDutch+17,     "&Stoppen"
+ stDutch+18,     "&Volgende >"
+ stDutch+19,     "&Later"
+
+// Error messages
+ stDutch+20,     "Waarschuwing"
+ stDutch+21,     "Fout"
+ stDutch+22,     "Voorbereiden. . ."
+ stDutch+23,     "Een nieuwere versie van %s is beschikbaar.\n%s\nWenst U te upgraden naar deze nieuwe versie?"
+ stDutch+24,     "Geen nieuwe versie gevonden. U gebruikt\nde meest recente versie van dit programma!"
+ stDutch+25,     "Het bestand met upgrade informatie werd niet gevonden op de server!"
+ stDutch+26,     "Server %s niet bereikbaar.\n\nControleer uw Internet verbinding en\nprobeer dit programma opnieuw te upgraden."
+ stDutch+27,     "De upgrade is nog niet voltooid.\nWenst U het upgraden af te breken?"
+ stDutch+28,     "Het bestand %s werd niet gevonden of is onbeschikbaar.\n\nDit bestand overslaan en verder gaan?"
+ stDutch+29,     "De toegang tot bestand ""%s"" is met een paswoord beveiligd.\n\nVoer de gebruikersnaam en het paswoord in (ontvangen na registratie) om verder te gaan met de upgrade."
+ stDutch+30,     "De verbinding met de server werd verbroken.\n\nHerstel de verbinding en probeer \nhet later upgraden opnieuw."
+}
+
+
+// -= Danish =-
+// Thanks to Riho-Rene Ellermaa for translation. Tilrettet af Jacob.
+#pragma code_page(1252)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stDanish,       "Programopdatering"
+ stDanish+1,     "Henter opdatering..."
+ stDanish+2,     "Opdatering færdig!"
+ stDanish+3,     "Aktuel fil"
+ stDanish+4,     "Alle filer"
+ stDanish+5,     "Henter opdatering fra"
+ stDanish+6,     "Filstørrelse: %.1f Kb"
+ stDanish+7,     "Hastighed: %.1f Kb/s"
+ stDanish+8,     "Forventet tid tilbage: %d:%.2d:%.2d"
+ stDanish+9,     "Henter %d af %d"
+ stDanish+10,    "Opdateringen af %s færdig.\r\rKlik på OK for at genstarte programmet."
+ stDanish+11,    "Indtast adgangskode"
+ stDanish+12,    "Brugernavn"
+ stDanish+13,    "Adgangskode"
+
+// Buttons
+ stDanish+14,    "&Ja"
+ stDanish+15,    "&Nej"
+ stDanish+16,    "&OK"
+ stDanish+17,    "&Fortryd"
+ stDanish+18,    "&Næste >"
+ stDanish+19,    "&Senere"
+
+// Error messages
+ stDanish+20,    "Advarsel"
+ stDanish+21,    "Fejl"
+ stDanish+22,    "Klargører ..."
+ stDanish+23,    "En nyere version af %s er frigivet.\n%s\nØnsker du at opdatere?"
+ stDanish+24,    "Ingen opdatering fundet. Du benytter den nyeste version af programmet."
+ stDanish+25,    "Fil med information om evt. opdateringer findes ikke på programudbyderens server."
+ stDanish+26,    "Kan ikke få adgang til %s.\r\rCheck venligst din internetopkobling og prøv igen."
+ stDanish+27,    "Opdateringen kan ikke færdiggøres.\rØnsker du at afbryde?"
+ stDanish+28,    "Filen %s findes ikke.\r\rSkip installationen af denne fil og fortsæt?"
+ stDanish+29,    "Adgang til filen ""%s"" kræver en adgangskode.\n\nIndtast venligst brugernavn og adgangskode for at fortsætte opdateringen."
+ stDanish+30,    "Forbindelsen til webstedet er stoppet.\r\rGenstart din internetforbindelse og prøv at\ropdatere programmet igen senere."
+}
+
+
+// -= Swedish =-
+// Thanks to Rowdy Rabouw for the file
+#pragma code_page(1252)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stSwedish,         "Programuppdateringsguide"
+ stSwedish+1,   "Laddar ner filer..."
+ stSwedish+2,   "Uppgradering färdig!"
+ stSwedish+3,   "Aktuell fil,"
+ stSwedish+4,   "Alla filer"
+ stSwedish+5,   "Laddar ner fil från"
+ stSwedish+6,   "Filstorlek: %.1f Kb"
+ stSwedish+7,   "Överföringshatighet: %.1f Kb/s"
+ stSwedish+8,   "Uppskattad tid kvar: %d:%.2d:%.2d"
+ stSwedish+9,   "Nedladdning %d av %d"
+ stSwedish+10,  "Uppdateringen av %s är klar.\n\nKlicka på OK knappen för att starta om programmet."
+ stSwedish+11,  "Ange lösenord"
+ stSwedish+12,  "Användarnamn"
+ stSwedish+13,  "Lösenord"
+
+// Buttons
+ stSwedish+14,  "&Ja"
+ stSwedish+15,  "&Nej"
+ stSwedish+16,  "&OK"
+ stSwedish+17,  "&Avbryt"
+ stSwedish+18,  "&Nästa >"
+ stSwedish+19,  "&Senare"
+
+// Error messages
+ stSwedish+20,  "Varning"
+ stSwedish+21,  "Fel"
+ stSwedish+22,  "Förbereder. . ."
+ stSwedish+23,  "En nyare version av %s har givits ut.\n%s\nVill du uppdatera din version till den senaste versionen?"
+ stSwedish+24,  "Nyare version hittades inte. Du använder faktiskt\nden senaste versionen av detta program."
+ stSwedish+25,  "Filen som innehåller uppgraderingsinformationen hittades inte på utvecklarens hemsida."
+ stSwedish+26,  "Värddator %s kunde inte nås.\n\nVänligen kontrollera din Internetuppkoppling och\nförsök uppgradera denna programvara vid ett senare tillfälle ."
+ stSwedish+27,  "Uppdatering slutfördes inte.\nVilldu avbryta uppgraderingen?"
+ stSwedish+28,  "Filen %s hittades inte eller var inte accessbar.\n\nHoppa över denna file och fortsätt uppgraderingen?"
+ stSwedish+29,  "Access till fjärrfil ""%s"" är lösenordsskyddad.\n\nVänligen mata in ditt användarnamn och lösenord (erhållet efter registrering) för att fortsätta mjukvaruuppgradering."
+ stSwedish+30,  "Uppkoppling till fjärrserver försvunnen.\n\nVänligen koppla upp dig igen och försök\natt uppgradera denna mjukvara vid ett senare tillfälle."
+}
+
+
+// -= Finnish =-
+// Thanks to Mikko Ruokojoki for the file and Tero Raitanen for corrections
+#pragma code_page(1252)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stFinnish,      "Ohjelman päivitysvelho"
+ stFinnish+1,    "Lataan tiedostoja..."
+ stFinnish+2,    "Päivitys valmis!"
+ stFinnish+3,    "Nykyinen tiedosto"
+ stFinnish+4,    "Kaikki tiedostot"
+ stFinnish+5,    "Lataan tiedostoa osoitteesta"
+ stFinnish+6,    "Koko: %.1f Kt"
+ stFinnish+7,    "Siirtonopeus: %.1f Kt/s"
+ stFinnish+8,    "Arvioitu aika jäljellä: %d:%.2d:%.2d"
+ stFinnish+9,    "Lataan %d / %d"
+ stFinnish+10,   "%s päivitys onnistui.\n\nPaina OK käynnistääksesi ohjelman uudelleen."
+ stFinnish+11,   "Anna salasana"
+ stFinnish+12,   "Käyttäjä"
+ stFinnish+13,   "Salasana"
+
+// Buttons
+ stFinnish+14,  "&Kyllä"
+ stFinnish+15,  "&Ei"
+ stFinnish+16,  "&OK"
+ stFinnish+17,  "&Peruuta"
+ stFinnish+18,  "&Seuraava >"
+ stFinnish+19,  "&Myöhemmin"
+
+// Error messages
+ stFinnish+20,  "Varoitus"
+ stFinnish+21,  "Virhe"
+ stFinnish+22,  "Valmistaudun. . ."
+ stFinnish+23,  "Uudempi versio %s on julkaistu.\n%s\nHaluatko päivittää ohjelmasi uusimpaan versioon?"
+ stFinnish+24,  "Uudempaa versiota ei löytynyt.\nKäytät uusinta versiota ohjelmasta."
+ stFinnish+25,  "Tiedosto, joka sisältää päivitystiedot ei löytynyt ohjelman kehittäjän sivuilta."
+ stFinnish+26,  "Osoite %s tavoittamattomissa.\n\nOle hyvä ja tarkista Internet yhteytesi\nja yritä päivittää ohjelma myöhemmin."
+ stFinnish+27,  "Päivitys ei vielä valmis.\nHaluatko perua päivityksen?"
+ stFinnish+28,  "Tiedostoa %s ei löydy tai on saavuttamattomissa.\n\nOhitetaanko tiedosto ja jatketaan päivitystä?"
+ stFinnish+29,  "Pääsy tiedostoon ""%s"" on suojattu salasanalla.\n\nOle hyvä ja anna nimesi ja salasanasi (lähetetty rekisteröinnin jälkeen) jatkaaksesi ohjelman päivitystä."
+ stFinnish+30,  "Yhteys palvelimeen katkesi.\n\nOle hyvä ja luo yhteys uudelleen ja\nyritä päivitystä uudelleen."
+}
+
+
+// -= Estonian =-
+// Thanks to Riho-Rene Ellermaa for translation
+#pragma code_page(1257)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stEstonian,     "Tarkvara uuenduse viisard"
+ stEstonian+1,   "Failide mahalaadimine..."
+ stEstonian+2,   "Uuendamine lõpetatud!"
+ stEstonian+3,   "Jooksev fail"
+ stEstonian+4,   "Kõik failid"
+ stEstonian+5,   "Faili mahalaadimine"
+ stEstonian+6,   "Faili suurus: %.1f Kb"
+ stEstonian+7,   "Ülekande kiirus: %.1f Kb/s"
+ stEstonian+8,   "Aega kulub veel: %d:%.2d:%.2d"
+ stEstonian+9,   "Loen %d / %d"
+ stEstonian+10,  "%s uuendus on edukalt lõpetatud.\n\nProgrammi restartimiseks vajutage OK nupule."
+ stEstonian+11,  "Sisestage parool"
+ stEstonian+12,  "Kasutajanimi"
+ stEstonian+13,  "Parool"
+
+// Buttons
+ stEstonian+14,  "&Jah"
+ stEstonian+15,  "&Ei"
+ stEstonian+16,  "&OK"
+ stEstonian+17,  "&Katkesta"
+ stEstonian+18,  "&Järgmine >"
+ stEstonian+19,  "&Hiljem"
+
+// Error messages
+ stEstonian+20,  "Hoiatus"
+ stEstonian+21,  "Viga"
+ stEstonian+22,  "Ettevalmistus. . ."
+ stEstonian+23,  "Valminud on %s uus versioon.\n%s\nKas soovite oma praegust versiooni uuendada?"
+ stEstonian+24,  "Uuemat versiooni ei leitud.\nTe kasutate juba kõige värskemat versiooni."
+ stEstonian+25,  "Uuenduste infofaili ei leitud interneti serverist."
+ stEstonian+26,  "%s ei ole kättesaadav.\n\nPalun kontrollige oma internetiühendust ja\nproovige siis uuesti."
+ stEstonian+27,  "Uuendamine ei ole lõpetatud.\nKas soovite protsessi katkestada?"
+ stEstonian+28,  "Faili %s ei leitud.\n\nKas jätta see fail vahele ja tööd jätkata?"
+ stEstonian+29,  "Ligipääs failile ""%s"" on kaitstud parooliga.\n\nPalun sisestage oma kasutajanimi ja parool (saadud pärast registreerimist)."
+ stEstonian+30,  "Ühendus serveriga katkes.\n\nPalun taastage ühendus ja proovige tööd jätkata."
+}
+
+
+// -= Ukrainian =-
+#pragma code_page(1251)
+STRINGTABLE
+{
+// Çàãîëîâêè äëÿ ôîğì, ïàíåëåé òà ïîì³òîê
+ stUkrainian,      "Ìàécòåğ ïîíîâëåííÿ ïğîãğàì"
+ stUkrainian+1,    "Çàâàíòàæåííÿ ôàéë³â..."
+ stUkrainian+2,    "Ïîíîâëåííÿ çàê³í÷åíî!"
+ stUkrainian+3,    "Ïîòî÷íèé ôàéë"
+ stUkrainian+4,    "Óñ³ ôàéëè"
+ stUkrainian+5,    "Çàâàíòàæóåòñÿ ôàéë ç"
+ stUkrainian+6,    "Ğîçì³ğ ôàéëó: %.1f Êá"
+ stUkrainian+7,    "Øâèäê³ñòü ïåğåäà÷³ äàíèõ: %.1f Êá/ñ"
+ stUkrainian+8,    "Ïğèáëèçíèé ÷àñ çàâåğøåííÿ: %d:%.2d:%.2d"
+ stUkrainian+9,    "Çàâàíòàæóºòüñÿ %d ç %d"
+ stUkrainian+10,   "Ïîíîâëåííÿ %s óñï³øíî çàâåğøåíå.\n\nÍàòèñí³òü êíîïêó OK äëÿ ïåğåçàâàíòàæåííÿ ïğîãğàìè."
+ stUkrainian+11,   "Ââåä³òü ïàğîëü"
+ stUkrainian+12,   "Êîğèñòóâà÷"
+ stUkrainian+13,   "Ïàğîëü"
+
+// Êíîïêè
+ stUkrainian+14,   "&Òàê"
+ stUkrainian+15,   "&Í³"
+ stUkrainian+16,   "&OK"
+ stUkrainian+17,   "Ñêàñóâàííÿ"
+ stUkrainian+18,   "&Äàë³ >"
+ stUkrainian+19,   "&Ï³çí³øå"
+
+// Ïîâ³äîìëåííÿ ïğî ïîìèëêè
+ stUkrainian+20,   "Îñòåğåæåííÿ"
+ stUkrainian+21,   "Ïîìèëêà"
+ stUkrainian+22,   "Ï³äãîòîâêà. . ."
+ stUkrainian+23,   "Çíàéäåíà ïîíîâëåíà âåğñ³ÿ %s äîñòóïíà äëÿ çàâàíòàæåííÿ.\n%s\nÁàæàºòå ïîíîâèòè ïğîãğàìó?"
+ stUkrainian+24,   "Íîâ³øà âåğñ³ÿ íå çíàéäåíà. Âè çàğàç êîğèñòóºòåñü\nîñòàííüîş âåğñ³ºş ö³º¿ ïğîãğàìè."
+ stUkrainian+25,   "Ôàéë ÿêèé ì³ñòèòü ³íôîğìàö³ş ïğî ïîíîâëåííÿ ö³º¿\nïğîãğàìè íå çíàéäåí íà ñàéò³ ğîçğîáíèêà."
+ stUkrainian+26,   "Ñåğâåğ %s ïîçà äîñÿãíåííÿì.\n\nÁóäü-ëàñêà ïåğåâ³ğòå çâ'ÿçîê ç ²íòåğíåò òà\nñïğîáóéòå ïîíîâèòè ïğîãğàìó çíîâó."
+ stUkrainian+27,   "Ïîíîâëåííÿ ïğîãğàìè íå çàâåğøåíî.\nÁàæàºòå ïåğåğâàòè ïîíîâëåííÿ?"
+ stUkrainian+28,   "Ôàéë %s íå çíàéäåíèé àáî íåäîñòóïíèé.\n\nÑïğîáóâàòè ïğîïóñòèòè öåé ôàéë òà ïğîäîâæèòè ïîíîâëåííÿ?"
+ stUkrainian+29,   "Äîñòóï äî â³ääàëåíîãî ôàéëó ""%s"" çàõèùåíèé ïàğîëåì.\n\nÁóäü-ëàñêà ââåä³òü èì'ÿ êîğèñòóâà÷à òà ïàğîëü (îòğèìàí³ ïğè ğåºñòğàö³¿) äëÿ ïğîäîâæåííÿ ïîíîâëåííÿ ïğîãğàìè."
+ stUkrainian+30,   "Çâ'ÿçîê ç â â³ääàëåíèì ñåğâåğîì ğîç³ğâàíî.\n\nÁóäü-ëàñêà â³äíîâ³òü çâ'ÿçîê òà ñïğîáóéòå\nïîíîâèòè ïğîãğàìó çíîâó."
+}
+
+
+// -= Polish =-
+#pragma code_page(1250)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stPolish,      "Master modernizacji aplikacji"
+ stPolish+1,    "Œci¹ganie plików..."
+ stPolish+2,    "Modernizacja zakoñczona!"
+ stPolish+3,    "Bierz¹cy plik"
+ stPolish+4,    "Wszystkie pliki"
+ stPolish+5,    "Œci¹ganie pliku z"
+ stPolish+6,    "Rozmiar pliku: %.1f Kb"
+ stPolish+7,    "Prêdkoœæ transferu: %.1f Kb/s"
+ stPolish+8,    "Szacowany czas do koñca: %d:%.2d:%.2d"
+ stPolish+9,    "Œci¹gniêto %d z %d"
+ stPolish+10,   "Modernizacja %s zakoñczona pomyœlnie.\n\nWciœnij przycisk OK aby uruchomiæ program."
+ stPolish+11,   "Wpisz has³o"
+ stPolish+12,   "Nazwa u¿ytkownika"
+ stPolish+13,   "Has³o"
+
+// Buttons
+ stPolish+14,   "&Tak"
+ stPolish+15,   "&Nie"
+ stPolish+16,   "&OK"
+ stPolish+17,   "Kasuj"
+ stPolish+18,   "&Nastêpny >"
+ stPolish+19,   "&Pó¼niej"
+
+// Error messages
+ stPolish+20,   "Ostrze¿enie"
+ stPolish+21,   "B³¹d"
+ stPolish+22,   "Przygotowywanie. . ."
+ stPolish+23,   "Pojawi³a siê nowa wersja %s.\n%s\nCzy chcesz zmodernizowaæ Twoj¹ wersjê do najnowszej?"
+ stPolish+24,   "Nowsza wersja nieznaleziona. Aktualnie u¿ywasz najnowszej wersji programu."
+ stPolish+25,   "Plik zawieraj¹cy modernizuj¹ce informacje nie zosta³ znaleziony na wywo³ywanej stronie."
+ stPolish+26,   "Serwer %s przeci¹¿ony.\n\nSprawdŸ swoje po³¹cznie z internetem i\nspróbuj zmodernizowaæ oprogramowanie póŸniej."
+ stPolish+27,   "Modernizacja niezakñczona.\nCzy chcesz anulowaæ modernizacjê?"
+ stPolish+28,   "Plik %s nieodnaleziony lub niedostêpny.\n\nOmin¹æ ten plik i kontynuowaæ modernizacjê?"
+ stPolish+29,   "Dostêp do pliku ""%s"" jest chroniony has³em.\n\nWpisz nazwêu¿ytkownika i has³o (otrzymane podczas rejestracji) aby kontynuowaæ modenizacjê oprogramowania."
+ stPolish+30,   "Utracono po³¹czenie z serwerem.\n\nSpróbuj przywróciæ po³¹cznie i\nzmodernizowaæ oprogramowanie póŸniej."
+}
+
+
+// -= Czech =-
+// Thanks to Rowdy Rabouw for the file
+#pragma code_page(1250)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stCzech,     "Prùvodce aktualizace programu"
+ stCzech+1,   "Stahuji soubory..."
+ stCzech+2,   "Aktualizace dokonèena!"
+ stCzech+3,   "Nynìjší soubor"
+ stCzech+4,   "Všechny soubory"
+ stCzech+5,   "Stahuji soubor z"
+ stCzech+6,   "Velikost souboru: %.1f Kb"
+ stCzech+7,   "Rychlost stahování: %.1f Kb/s"
+ stCzech+8,   "Odhad zbıvajícího èasu: %d:%.2d:%.2d"
+ stCzech+9,   "Stahování %d z %d"
+ stCzech+10,  "Aktualizace programu %s byla úspìšnì dokonèena.\n\nZmáèknìte OK pro restart programu."
+ stCzech+11,  "Vlote heslo"
+ stCzech+12,  "Uivatelské jméno"
+ stCzech+13,  "Heslo"
+
+// Buttons
+ stCzech+14,  "&Ano"
+ stCzech+15,  "&Ne"
+ stCzech+16,  "&OK"
+ stCzech+17,  "&Zruš"
+ stCzech+18,  "&Další >"
+ stCzech+19,  "&Pozdìji"
+
+// Error messages
+ stCzech+20,  "Upozornìní"
+ stCzech+21,  "Chyba"
+ stCzech+22,  "Pøipravuji. . ."
+ stCzech+23,  "Novìjší verze programu %s byla vydána.\n%s\nChcete aktualizovat vaši verzi novou?"
+ stCzech+24,  "Novìjší verze nenalezena. Právì\npouíváte nejnovìjší verzi tohoto programu."
+ stCzech+25,  "Soubor, kterı obsahuje informace o aktualizaci, nebyl nalezen u vırobce."
+ stCzech+26,  "Host %s je nedosaitelnı.\n\nProsím, zkontrolujte vaše pøipojení na Internet a\nzkuste aktualizovat program znovu pozdìji."
+ stCzech+27,  "Aktulalizace není dokonèena.\nChcete pøerušit aktualizaci?"
+ stCzech+28,  "Soubor %s nenalezenı nebo nedosaitelnı.\n\nZkusit pøeskoèit tento soubor a pokraèovat v aktualizaci?"
+ stCzech+29,  "Pøistup ke vzdálenému souboru ""%s"" je chránìn heslem.\n\nProsím vlote vaše uivatelské jméno a heslo (obdrené po registraci) pro pokraèování v aktualizaci."
+ stCzech+30,  "Spojení se vzdálenım serverem bylo ztraceno.\n\nProsím, obnovte spojení a zkuste\n tento program aktualizovat znovu pozdìji."
+}
+
+
+// -= Hungarian =-
+// Thanks to Rowdy Rabouw for the file
+#pragma code_page(1250)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stHungarian,     "Alkalmazásfrissítõ varázsló"
+ stHungarian+1,   "Fájlok letöltése..."
+ stHungarian+2,   "A frissítés befejezõdött!"
+ stHungarian+3,   "Aktuális fájl"
+ stHungarian+4,   "Minden fájl"
+ stHungarian+5,   "Fájl letöltése a következõrõl:"
+ stHungarian+6,   "Fájl size: %.1f Kb"
+ stHungarian+7,   "Átviteli sebesség: %.1f Kb/s"
+ stHungarian+8,   "Becsült hátralevõ idõ: %d:%.2d:%.2d"
+ stHungarian+9,   "Letöltés: %d/%d"
+ stHungarian+10,  "A(z) %s frissítése sikeresen bejefezõdött.\n\nNyomja meg az OK gombot a program újraindításához."
+ stHungarian+11,  "Jelszó megadása"
+ stHungarian+12,  "Felhasználónév"
+ stHungarian+13,  "Jelszó"
+
+// Buttons
+ stHungarian+14,  "&Igen"
+ stHungarian+15,  "&Nem"
+ stHungarian+16,  "&OK"
+ stHungarian+17,  "&Mégse"
+ stHungarian+18,  "&Tovább >"
+ stHungarian+19,  "&Késõbb"
+
+// Error messages
+ stHungarian+20,  "Figyelem"
+ stHungarian+21,  "Hiba"
+ stHungarian+22,  "Felkészülés. . ."
+ stHungarian+23,  "Kiadták a(z) %s egy újabb változatát.\n%s\nKívánja frissíteni az ön változatát a legutóbbival?"
+ stHungarian+24,  "Nem található újabb változat. Ön jelenleg a program\nlegújabb változatát használja."
+ stHungarian+25,  "A frissítési információkat tartalmazó fájl nem található a fejlesztõ oldalán."
+ stHungarian+26,  "A(z) %s gazda nem érhetõ el.\n\nKérem ellenõrizze az internetkapcsolatát,\nés késõbb próbálja újra frissíteni a szoftvert."
+ stHungarian+27,  "A frissítés nem fejezõdött be.\nMeg kívánja szakítani a frissítést?"
+ stHungarian+28,  "A(z) %s fájl nem található vagy nem lehet hozzáférni.\n\nMegpróbálja kihagyni ezt a fájlt és folytetni a frissítést?"
+ stHungarian+29,  "A(z) ""%s"" távoli fájlhoz való hozzáférés jelszóval van védve.\n\nKérem adja meg a felhasználónevét és jelszavát (a regisztrálás után kapta) a szoftver frissítésének folytatásához."
+ stHungarian+30,  "A távoli kiszolgálóval való kapcsolat megszakadt.\n\nKérem állítsa vissza a kapcsolatot,\nés késõbb próbálja újra frissíteni a szoftvert."
+}
+
+
+// -= Romanian =-
+// Thanks to Rowdy Rabouw for the file
+#pragma code_page(1250)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stRomanian,     "Expertul de actualizare a aplicaşiei"
+ stRomanian+1,   "Descãrcare fiºiere..."
+ stRomanian+2,   "Actualizare terminatã!"
+ stRomanian+3,   "Fiºierul curent"
+ stRomanian+4,   "Toate fiºierele"
+ stRomanian+5,   "Descãrcare fiºier de la"
+ stRomanian+6,   "Mãrime fiºier: %.1f Kb"
+ stRomanian+7,   "Ratã de transfer: %.1f Kb/s"
+ stRomanian+8,   "Timpul rãmas estimat: %d:%.2d:%.2d"
+ stRomanian+9,   "Descãrcare %d din %d"
+ stRomanian+10,  "Actualizarea %s s-a desfãºurat cu succes.\n\nApãsaşi butonul OK pentru a restarta programul."
+ stRomanian+11,  "Introducere parolã"
+ stRomanian+12,  "Nume Utilizator"
+ stRomanian+13,  "Parolã"
+
+// Buttons
+ stRomanian+14,  "&Da"
+ stRomanian+15,  "&Nu"
+ stRomanian+16,  "&OK"
+ stRomanian+17,  "&Renunşare"
+ stRomanian+18,  "&Urmãtorul >"
+ stRomanian+19,  "&Mai târziu"
+
+// Error messages
+ stRomanian+20,  "Avertisment"
+ stRomanian+21,  "Eroare"
+ stRomanian+22,  "Pregãtire. . ."
+ stRomanian+23,  "O nouã versiune a %s a fost realizatã.\n%s\nDorişi sã actualizaşi versiunea dumneavoastrã?"
+ stRomanian+24,  "O nouã versiune nu a fost gãsitã. În momentul actual \nutilizaşi cea mai recentã versiune a acestui program."
+ stRomanian+25,  "Fiºierul care conşine informaşii despre actualizare nu a fost gãsit pe site-ul producãtorului."
+ stRomanian+26,  "Gazdã %s inaccesibilã.\n\nVerificaşi conexiunea Internet ºi\nreîncercaşi actualizarea programului."
+ stRomanian+27,  "Actualizarea nu s-a terminat.\nDorişi sã abandonaşi?"
+ stRomanian+28,  "Fiºierul %s nu poate fi gãsit sau este inaccesibil.\n\nRenunşaşi la acest fiºier ºi continuaşi actualizarea?"
+ stRomanian+29,  "Accesul la fiºierul ""%s"" este protejat prin parolã.\n\nIntroduceşi numele ºi parola (primite dupã înregistrare) pentru a continua actualizarea programului."
+ stRomanian+30,  "Conectarea la server s-a încheiat.\n\nRefaceşi conexiunea ºi reîncercaşi  actualizarea programului."
+}
+
+
+// -= Catalan =-
+// Thanks to Juan Ramon Caballero Dominguez for translation
+#pragma code_page(1252)
+STRINGTABLE
+{
+// 'Captions' per als 'forms', 'panels' i 'labels'
+ stCatalan,     "Assistent d'actualització"
+ stCatalan+1,   "Baixant fitxers..."
+ stCatalan+2,   "Actualització completa!"
+ stCatalan+3,   "Fitxer actual"
+ stCatalan+4,   "Tots els fitxers"
+ stCatalan+5,   "Baixant el fitxer des de"
+ stCatalan+6,   "Tamany del fitxer: %.1f Kb"
+ stCatalan+7,   "Taxa de transferència: %.1f Kb/s"
+ stCatalan+8,   "Temps estimat restant: %d:%.2d:%.2d"
+ stCatalan+9,   "Baixat %d de %d"
+ stCatalan+10,  "L'actualització de %s ha sigut completada amb èxit.\n\nFeu click en OK per a reiniciar el programa."
+ stCatalan+11,  "Escriviu la contrasenya"
+ stCatalan+12,  "Nom d'usuari"
+ stCatalan+13,  "Contrasenya"
+
+// Botons
+ stCatalan+14,  "&Si"
+ stCatalan+15,  "&No"
+ stCatalan+16,  "&OK"
+ stCatalan+17,  "&Cancel"
+ stCatalan+18,  "&Següent >"
+ stCatalan+19,  "&Després"
+
+// Missatges d'error
+ stCatalan+20,  "Avís"
+ stCatalan+21,  "Error"
+ stCatalan+22,  "Preparant. . ."
+ stCatalan+23,  "Una nova versió de %s està disponible.\n%s\nVoleu actualitzar la vostra versió amb la més recent?"
+ stCatalan+24,  "Nova versió no trobada. Esteu usant la versió més recent d'aquest programa."
+ stCatalan+25,  "No ha sigut trobat el fitxer que conté la informació d'actualització."
+ stCatalan+26,  "El servidor %s no està disponible.\n\nPer favor verifiqueu la vostra connexió a Internet i reintenteu de nou després."
+ stCatalan+27,  "L'actualització no està completa.\nVoleu cancel·lar l'actualització?"
+ stCatalan+28,  "El fitxer %s no es troba o està inaccesible.\n\nVoleu saltar aquest fitxer i continuar actualitzant?"
+ stCatalan+29,  "L'accés al fitxer ""%s"" està protegit amb contrasenya.\n\nPer favor introduïu el vostre nom d'usuari i contrasenya per a continuar."
+ stCatalan+30,  "La connexió amb el servidor s'ha perdut.\n\nPer favor restaureu la connexió  i reintenteu de nou després."
+}
+
+
+// -= Basque =-
+// Thanks to Rowdy Rabouw for the file
+#pragma code_page(1252)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stBasque,     "Programa eguneratzeko laguntzailea"
+ stBasque+1,   "Fitxategiak jaisten..."
+ stBasque+2,   "Eguneratzea egina!"
+ stBasque+3,   "Fitxategia"
+ stBasque+4,   "Fitxategi guztiak"
+ stBasque+5,   "Fitxategiak hemendik jaitsi:"
+ stBasque+6,   "Fitxategi tamaina: %.1f Kb"
+ stBasque+7,   "Transferentzia abiadura: %.1f Kb/s"
+ stBasque+8,   "Falta den denbora: %d:%.2d:%.2d"
+ stBasque+9,   "Jaisten %d. %d(e)tik"
+ stBasque+10,  "%s(r)en eguneraketa ongi gauzatu da.\n\nZapal ezazu Onartu botoia aplikazio berriro hasteko."
+ stBasque+11,  "Idatzi pasahitza"
+ stBasque+12,  "Erabiltzaile izena"
+ stBasque+13,  "Pasahitza"
+
+// Buttons
+ stBasque+14,  "&Bai"
+ stBasque+15,  "&Ez"
+ stBasque+16,  "&Onartu"
+ stBasque+17,  "&Utzi"
+ stBasque+18,  "&Hurrengoa >"
+ stBasque+19,  "&Azkena"
+
+// Error messages
+ stBasque+20,  "Kontuz"
+ stBasque+21,  "Errorea"
+ stBasque+22,  "Prestatzen. . ."
+ stBasque+23,  "%s(r)en bertsio berri bat atera da.\n%s\nEguneratu nahi al duzu zure bertsioa azkenarekin?"
+ stBasque+24,  "Bertsio berria ez da aurkitu. Dagoeneko programa honen\nazken bertsioarekin ari zara."
+ stBasque+25,  "Eguneraketa informazioa duen fitxategia ez da topatu programatzaileren web tokian."
+ stBasque+26,  "%s zerbitzaria ezin da topatu.\n\nMesedez egiaztatu zure Internet konexioa eta\n\nberanduago saiatu eguneraketa egiten."
+ stBasque+27,  "Eguneraketa ez da amaitu oraindik.\nNahi al duzu eguneraketa alde batera utzi?"
+ stBasque+28,  "%s fitxategia ez da aurkitu edo ezin da eskuratu.\n\nFitxategia hau alde batera utzi eta jarraitu?"
+ stBasque+29,  "Urruneko ""%s"" fitxategia pasahitzez babestua dago.\n\nMesedez sar itzazu zure erabiltzaile izena eta pasahitza (erregistratu ondoren jasoko zenituenak) eguneraketa jarraitzeko."
+ stBasque+30,  "Urruneko zerbitzariarekin konexioa galdu da.\n\nMesedez berreskura ezazu konexioa eta\nsaiatu eguneraketa beranduago berriro."
+}
+
+
+// -= Afrikaans =-
+// Thanks to Rowdy Rabouw for the file
+#pragma code_page(1252)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stAfrikaans,     "Applikasie dateringstel"
+ stAfrikaans+1,   "Aflaai van leers ..."
+ stAfrikaans+2,   "Opgradering is voltooi!"
+ stAfrikaans+3,   "Huidige leer"
+ stAfrikaans+4,   "Alle leers"
+ stAfrikaans+5,   "Aflaai van leer vavaf"
+ stAfrikaans+6,   "Leer grootte: %.1f Kb"
+ stAfrikaans+7,   "Oorplasingspoed: %.1f Kb/s"
+ stAfrikaans+8,   "Geskatte tyd oor: %d:%.2d:%.2d"
+ stAfrikaans+9,   "Aflaai %d van %d"
+ stAfrikaans+10,  "Die opgradering van %s was suksesvol.\n\nDruk die OK knoppie on die program aan te skakel."
+ stAfrikaans+11,  "Verskaf wagwoord"
+ stAfrikaans+12,  "Gebruikersnaam"
+ stAfrikaans+13,  "Wagwoord"
+
+// Buttons
+ stAfrikaans+14,  "&Ja"
+ stAfrikaans+15,  "&Nee"
+ stAfrikaans+16,  "&OK"
+ stAfrikaans+17,  "&Kanselleer"
+ stAfrikaans+18,  "&Volgende >"
+ stAfrikaans+19,  "&Later"
+
+// Error messages
+ stAfrikaans+20,  "Waarskuwing"
+ stAfrikaans+21,  "Fout"
+ stAfrikaans+22,  "Voorbereiding van . . ."
+ stAfrikaans+23,  "'n Nuwer weergawe van %s is beskikbaar.\n%s\nWil u u weergawe opdateer met die nuutste weergawe?"
+ stAfrikaans+24,  "Nuwer weergawe nie gevind. U gebruik alreeds die nuutste weergawe van die program."
+ stAfrikaans+25,  "Leer met opgegradeerde inligting is nie beskikbaar op die ontwikkelaar se webtuiste."
+ stAfrikaans+26,  "Gasheer %s onbereikbaar.\n\nGaan asb. u Internet konneksie na en \nprobeer opgradeer na hierdie sagteware later."
+ stAfrikaans+27,  "Die opdatering is nie volledig nie.\nWil u die opdatering staak?"
+ stAfrikaans+28,  "Leer %s nie gevind of onbereikbaar.\n\nProbeer om die leer uit te laat en aan te gaan met opgradering?"
+ stAfrikaans+29,  "Toegang tot afgesonderde leer ""%s"" is met 'n wagwoord beskerm.\n\nVerskaf asb. u gebruikersnaam en wagwoord (received after registration) to continue software upgrade."
+ stAfrikaans+30,  "Connection with remote server lost.\n\nPlease restore connection and try to\nupgrade this software again later."
+}
+
+
+// -= Chinese (traditional) =-
+// Thanks to Sun Shan-Chieh for translation
+#pragma code_page(950)
+STRINGTABLE DISCARDABLE
+{
+// Captions for forms, panels and labels
+ stChineseTrad,     "³nÅé¤É¯ÅºëÆF"
+ stChineseTrad+1,   "ÀÉ®×¤U¸ü¤¤..."
+ stChineseTrad+2,   "¤É¯Å§¹¦¨!"
+ stChineseTrad+3,   "¥Ø«eªºÀÉ®×"
+ stChineseTrad+4,   "¥ş³¡ªºÀÉ®×"
+ stChineseTrad+5,   "ÀÉ®×¤U¸ü±q"
+ stChineseTrad+6,   "ÀÉ®×¤j¤p: %.1f Kb"
+ stChineseTrad+7,   "¶Ç¿é³t²v: %.1f Kb/s"
+ stChineseTrad+8,   "¹w¦ô³Ñ¾lªº®É¶¡: %d:%.2d:%.2d"
+ stChineseTrad+9,   "¥Ø«e¥¿¦b¤U¸ü %d of %d"
+ stChineseTrad+10,  "%s ¤w¸g¤É¯Å§¹¦¨,\n\n½Ğ«ö[½T©w]Áä­«·s±Ò°Êµ{¦¡."
+ stChineseTrad+11,  "½Ğ¿é¤J±K½X"
+ stChineseTrad+12,  "±b¸¹"
+ stChineseTrad+13,  "±K½X"
+
+// Buttons
+ stChineseTrad+14,  "(&Y)¦n"
+ stChineseTrad+15,  "(&N)¤£­n"
+ stChineseTrad+16,  "(&O)½T©w"
+ stChineseTrad+17,  "(&C)¨ú®ø"
+ stChineseTrad+18,  "(&N)¤U¤@­Ó >"
+ stChineseTrad+19,  "(&L)µyµ¥¤@¤U"
+
+// Error messages
+ stChineseTrad+20,  "Äµ§i"
+ stChineseTrad+21,  "¿ù»~"
+ stChineseTrad+22,  "·Ç³Æ¤¤. . ."
+ stChineseTrad+23,  "%s ¤w¸g¦³·sªºª©¥»±À¥X.\n%s\n±z­n¤É¯Å¨ì·sªºª©¥»¶Ü ?"
+ stChineseTrad+24,  "¨S¦³µo²{·sªºª©¥».±z¥Ø«e¤w¸g¬O³Ì·sªºª©¥»."
+ stChineseTrad+25,  "¦b¦øªA¾¹¤¤µLªk§ä¨ì¤É¯Åªº¬ÛÃö¸ê°T."
+ stChineseTrad+26,  "µLªk»P¦øªA¾¹ %s ³s½u.\n\n½ĞÀË¬d±zªº Internet ³]©w¤§«á¦A¶i¦æ¤É¯Å§@·~."
+ stChineseTrad+27,  "¤É¯Å§@·~©|¥¼§¹¦¨.\n±z½T©w­n©ñ±ó§@·~¶Ü ?"
+ stChineseTrad+28,  "ÀÉ®× %s §ä¤£¨ì©ÎªÌµo¥Í¿ù»~.\n\n±z­n©¿²¤³o­ÓÀÉ®×¨Ã¥BÄ~Äò¤É¯Å§@·~¶Ü ?"
+ stChineseTrad+29,  "»·ºİªºÀÉ®× ""%s"" ¬O³Q±K½X«OÅ@µÛ.\n\n½Ğ¿é¤J±zªº±b¸¹¤Î±K½X (µù¥U¥Î¤á) ¨ÓÄ~Äò¶i¦æ¤É¯Å§@·~."
+ stChineseTrad+30,  "»P»·ºİ¦øªA¾¹ªº³s½u¤¤Â_.\n\n½Ğ­«·s³s½u«á¦A¶i¦æ¤É¯Å§@·~."
+}
+
+
+// -= Chinese (simplified) =-
+// Thanks to Sun Shan-Chieh for translation
+#pragma code_page(936)
+STRINGTABLE DISCARDABLE
+{
+// Captions for forms, panels and labels
+ stChineseSimp,     "Èí¼şÉı¼¶¾«Áé"
+ stChineseSimp+1,   "ÎÄµµÏÂÔØÖĞ"
+ stChineseSimp+2,   "Éı¼¶Íê³É£¡"
+ stChineseSimp+3,   "µ±Ç°µÄÎÄµµ"
+ stChineseSimp+4,   "È«²¿µÄÎÄµµ"
+ stChineseSimp+5,   "ÎÄµµÏÂÔØÔ´"
+ stChineseSimp+6,   "ÎÄµµ´óĞ¡:%.1f Kb"
+ stChineseSimp+7,   "´«ÊäËÙÂÊ:%.1f Kb/s"
+ stChineseSimp+8,   "¹À¼ÆÊ£ÓàÊ±¼ä: %d:%.2d:%.2d"
+ stChineseSimp+9,   "µ±Ç°ÕıÔÚÏÂÔØ:%d of %d"
+ stChineseSimp+10,  "%s ÒÑ¾­Éı¼¶Íê³É£¬\n\nÇë°´[È·¶¨]¼üÖØĞÂÆô¶¯³ÌĞò"
+ stChineseSimp+11,  "ÇëÊäÈëÃÜÂë"
+ stChineseSimp+12,  "ÕÊºÅ"
+ stChineseSimp+13,  "ÃÜÂë"
+
+// Buttons
+ stChineseSimp+14,  "[&Y]ÊÇ"
+ stChineseSimp+15,  "[&N]·ñ"
+ stChineseSimp+16,  "[&O]È·¶¨"
+ stChineseSimp+17,  "[&C]È¡Ïû"
+ stChineseSimp+18,  "[&N]ÏÂÒ»¸ö>"
+ stChineseSimp+19,  "[&L]ÉÔµÈÒ»ÏÂ"
+
+// Error messages
+ stChineseSimp+20,  "¾¯¸æ"
+ stChineseSimp+21,  "´íÎó"
+ stChineseSimp+22,  "×¼±¸ÖĞ"
+ stChineseSimp+23,  "%sÒÑ¾­ÓĞĞÂ°æ±¾ÍÆ³ö£¬\n%s\nÄúÒªÉı¼¶µ½ĞÂ°æ±¾Âğ£¿"
+ stChineseSimp+24,  "Ã»ÓĞ·¢ÏÖĞÂµÄ°æ±¾£¬ÄúÄ¿Ç°ÒÑ¾­ÊÇ×îĞÂ°æ±¾¡£"
+ stChineseSimp+25,  "ÔÚ·şÎñÆ÷ÖĞÎŞ·¨ÕÒµ½Éı¼¶µÄÏà¹ØĞÅÏ¢¡£"
+ stChineseSimp+26,  "ÎŞ·¨Óë·şÎñÆ÷%sÁ¬½Ó¡£\n\nÇë¼ì²éÄúµÄinternetÉè¶¨Ö®ºóÔÙ½øĞĞÉı¼¶²Ù×÷¡£"
+ stChineseSimp+27,  "Éı¼¶²Ù×÷ÉĞÎ´Íê³É£¬\nÄúÈ·¶¨Òª·ÅÆúÉı¼¶Âğ£¿"
+ stChineseSimp+28,  "ÎÄµµ%sÕÒ²»µ½»òÕß·¢Éú´íÎó£¬\n\nÄúÒªºöÂÔÕâ¸öÎÄµµ²¢ÇÒ¼ÌĞøÉı¼¶²Ù×÷Âğ£¿"
+ stChineseSimp+29,  "Ô¶¶ËµÄÎÄµµ""%s""±»ÃÜÂë±£»¤£¬\n\nÇëÊäÈëÄúµÄÕÊºÅ¼°ÃÜÂë[×¢²áÓÃ»§]À´¼ÌĞø½øĞĞÉı¼¶²Ù×÷¡£"
+ stChineseSimp+30,  "ÓëÔ¶¶Ë·şÎñÆ÷µÄÁ¬½ÓÖĞ¶Ï£¬\n\nÇëÖØĞÂÁ¬½ÓºóÔÙ½øĞĞÉı¼¶²Ù×÷¡£"
+}
+
+
+// -= Indonesian =-
+// Thanks to Rowdy Rabouw for the file
+#pragma code_page(1252)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stIndonesian,     "Wizard Pembaruan Aplikasition"
+ stIndonesian+1,   "Mendownload file-file..."
+ stIndonesian+2,   "Pembaruan selesai!"
+ stIndonesian+3,   "File sekarang"
+ stIndonesian+4,   "Semua file"
+ stIndonesian+5,   "Mendownload file dari"
+ stIndonesian+6,   "Ukuran file: %.1f Kb"
+ stIndonesian+7,   "Kecepatan transfer rata-rata: %.1f Kb/s"
+ stIndonesian+8,   "Sisa waktu perkiraan: %d:%.2d:%.2d"
+ stIndonesian+9,   "Sedang mendownload %d of %d"
+ stIndonesian+10,  "Update dari %s telah selesai.\n\nTekan tombol OK untuk me-restart program."
+ stIndonesian+11,  "Masukkan password"
+ stIndonesian+12,  "Nama Pengguna"
+ stIndonesian+13,  "Password"
+
+// Buttons
+ stIndonesian+14,  "&Ya"
+ stIndonesian+15,  "&Tidak"
+ stIndonesian+16,  "&OK"
+ stIndonesian+17,  "&Batal"
+ stIndonesian+18,  "&Selanjutnya >"
+ stIndonesian+19,  "&Nanti"
+
+// Error messages
+ stIndonesian+20,  "Peringatan"
+ stIndonesian+21,  "Kesalahan"
+ stIndonesian+22,  "Sedang melakukan persiapan. . ."
+ stIndonesian+23,  "Versi terbaru dari %s telah beredar.\n%s\nApakah Anda ingin memperbarui dengan yang paling baru ?"
+ stIndonesian+24,  "Versi yang lebih baru tidak ditemukan. Anda sedang \nmenggunakan versi yang paling baru"
+ stIndonesian+25,  "File yang berisi informasi upgrade tidak ditemukan dari situs developer."
+ stIndonesian+26,  "Host %s tak terjangkau.\n\nHarap periksa koneksi internet Anda dan\ncoba untuk mengupgrade program ini di lain waktu."
+ stIndonesian+27,  "Update tidak selesai.\nApakah Anda ingin membatalkannya ?"
+ stIndonesian+28,  "File %s tidak ditemukan atau tidak dapat diakses.\n\nCoba melewati file dan melanjutkan upgrade ?"
+ stIndonesian+29,  "Akses ke remot file ""%s"" Terlindung password.\n\nMohon masukkan Nama Pengguna dan password (didapat setelah registrasi) untuk melanjutkan upgrade."
+ stIndonesian+30,  "Koneksi dengan server putus.\n\nMohon koneksi di perbaiki dan \nulangi proses upgrade."
+}
+
+
+// -= Malay =-
+// Thanks to Rowdy Rabouw for the file
+#pragma code_page(1252)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stMalay,      "Wizad pengemaskini aplikasi"
+ stMalay+1,    "Memuat turun fail..."
+ stMalay+2,    "Penaikan taraf selesai!"
+ stMalay+3,    "Fail terkini"
+ stMalay+4,    "Semua fail"
+ stMalay+5,    "Memuat turunkan fail daripada"
+ stMalay+6,    "Saiz fail: %.1f Kb"
+ stMalay+7,    "Kadar pindahan: %.1f Kb/s"
+ stMalay+8,    "Anggaran masa yang tertinggal: %d:%.2d:%.2d"
+ stMalay+9,    "Memuat turun %d of %d"
+ stMalay+10,   "Pengemaskinian %s telah diselesaikan dengan sempurna.\n\nTekan butang OK untuk memulakan semula program."
+ stMalay+11,   "Masukkan katalaluan"
+ stMalay+12,   "Nama Pengguna"
+ stMalay+13,   "Katalaluan"
+
+// Buttons
+ stMalay+14,   "&Ya"
+ stMalay+15,   "&Tidak"
+ stMalay+16,   "&OK"
+ stMalay+17,   "&Batal"
+ stMalay+18,   "&Seterusnya >"
+ stMalay+19,   "&Kemudian"
+
+// Error messages
+ stMalay+20,   "Amaran"
+ stMalay+21,   "Ralat"
+ stMalay+22,   "Bersedia. . ."
+ stMalay+23,   "Versi %s yang lebih baru telah dikeluarkan.\n%s\nAdakah anda ingin mengemaskini versi anda dengan versi yang terkini?"
+ stMalay+24,   "Versi yang lebih baru tidak ditemui. Anda sedang menggunakan versi program yang terkini."
+ stMalay+25,   "Fail yang mempunyai maklumat penaikan taraf tidak ditemui pada tapak pembangun."
+ stMalay+26,   "Hos %s tidak dapat dihubungi.\n\nSila semak sambungan Internet anda dan/atau cuba\nuntuk menaik taraf perisian ini kemudian nanti."
+ stMalay+27,   "Penaikan taraf tidak selesai dengan sempurna.\nAdakah anda ingin membatalkan penaikan taraf?"
+ stMalay+28,   "Fail %s tidak ditemui atau tidak dapat dicapai.\n\nCuba langkau fail ini dan teruskan penaikan taraf?"
+ stMalay+29,   "Akses kepada fail jauh ""%s"" dilindungi katalaluan.\n\nSila masukkan nama pengguna dan katalaluan (diperolehi selepas pendaftaran) untuk menyambung penaikan taraf perisian."
+ stMalay+30,   "Sambungan kepada pelayan jauh terputus.\n\nSila pulihkan sambungan dan cuba untuk menaikkan taraf perisian ini sekali lagi."
+}
+
+
+// -= Icelandic =-
+// Thanks to Matthias Matthiasson for translation
+#pragma code_page(1252)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stIcelandic,      "Uppfærsla hugbúnağar"
+ stIcelandic+1,    "Uppfærsla sótt..."
+ stIcelandic+2,    "Uppfærslu er lokiğ!"
+ stIcelandic+3,    "Skráarnafn"
+ stIcelandic+4,    "Allar skrár"
+ stIcelandic+5,    "Stağsetning uppfærslu á neti"
+ stIcelandic+6,    "Stærğ skráar: %.1f Kb"
+ stIcelandic+7,    "Flutningshraği: %.1f Kb/s"
+ stIcelandic+8,    "Áætlağur tími eftir: %d:%.2d:%.2d"
+ stIcelandic+9,    "Sæki skrá %d af %d"
+ stIcelandic+10,   "Forritiğ %s hefur veriğ uppfært.\n\nİtiğ á OK takkann til ağ endurræsa forritiğ."
+ stIcelandic+11,   "Sláiğ inn lykilorğ"
+ stIcelandic+12,   "Notandanafn"
+ stIcelandic+13,   "Lykilorğ"
+
+// Buttons
+ stIcelandic+14,  "&Já"
+ stIcelandic+15,  "&Nei"
+ stIcelandic+16,  "&OK"
+ stIcelandic+17,  "&Hætta"
+ stIcelandic+18,  "&Áfram >"
+ stIcelandic+19,  "&Seinna"
+
+// Error messages
+ stIcelandic+20,  "Ağvörun"
+ stIcelandic+21,  "Villa"
+ stIcelandic+22,  "Uppfærsla undirbúin. . ."
+ stIcelandic+23,  "Nı útgáfa forritsins %s er til á neti.\n%s\nViltu sækja nıju útgáfuna og uppfæra?"
+ stIcelandic+24,  "Nırri útgáfa fannst ekki. Nıjasta útgáfa şessa forrits er nú şegar í notkun."
+ stIcelandic+25,  "Upplısingaskrá vegna hugbúnağaruppfærslu fannst ekki á heimasíğu forritsins."
+ stIcelandic+26,  "Ekki náğist samband viğ %s.\n\nVinsamlegast athugiğ internettengingu\nog reyniğ uppfærslu ağ nıju."
+ stIcelandic+27,  "Uppfærslu er ekki lokiğ ağ fullu.\nViltu hætta viğ uppfærsluna?"
+ stIcelandic+28,  "Skráin %s fannst ekki eğa er óağgengileg.\n\nViltu sleppa skránni og halda áfram?"
+ stIcelandic+29,  "Ağgangur ağ skránni ""%s"" er varinn meğ lykilorği.\n\nVinsamlega sláiğ inn viğeigandi notandanafn og lykilorğ til şess ağ unnt sé ağ ljúka uppfærslu."
+ stIcelandic+30,  "Tenging viğ netşjón rofnaği.\n\nVinsamlegast athugiğ internettengingu\nog reyniğ uppfærslu ağ nıju."
+}
+
+
+// -= Turkish =-
+#pragma code_page(1254)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stTurkish,      "Gücelleme Sihirbazı"
+ stTurkish+1,    "Çekilen Dosyalar..."
+ stTurkish+2,    "Gücelleme Tamamlandı!"
+ stTurkish+3,    "Bozuk Dosyalar"
+ stTurkish+4,    "Bütün Dosyalar"
+ stTurkish+5,    "Çekilen Yer"
+ stTurkish+6,    "Dosya Büyüklüğü: %.1f Kb"
+ stTurkish+7,    "Transfer Hızı: %.1f Kb/s"
+ stTurkish+8,    "Kalan Zaman: %d:%.2d:%.2d"
+ stTurkish+9,    "Çekilen Dosya %d / %d"
+ stTurkish+10,   "Gücellenen %s başarıyla tamamlandı.\n\nLütfen Tamam Tuşuna Basınız. Program tekrar Başlıyacak!"
+ stTurkish+11,   "Şifre Giriniz"
+ stTurkish+12,   "Kullanıcı Adı"
+ stTurkish+13,   "Şifre"
+
+// Buttons
+ stTurkish+14,  "&Evet"
+ stTurkish+15,  "&Hayır"
+ stTurkish+16,  "&Tamam"
+ stTurkish+17,  "&İptal"
+ stTurkish+18,  "&İleri >"
+ stTurkish+19,  "&Sonra"
+
+// Error messages
+ stTurkish+20,  "Tehlike"
+ stTurkish+21,  "Hata"
+ stTurkish+22,  "Hazırlanıyor. . ."
+ stTurkish+23,  "%s yeni Versiyonu Bulundu.\n%s\n Gücellemek İstiyormusunuz?"
+ stTurkish+24,  "Yeni Versiyon Bulunamadı."
+ stTurkish+25,  "Gücellenicek info Dosyası Sitede Bulunamadı!."
+ stTurkish+26,  "%s Geçersiz.\n\nİnternet Bağlantısı Kontrol Ediniz \nSonra Tekrar Deneyiniz."
+ stTurkish+27,  "Gücelleme Başarız Oldu.\nGücellemeyi iptal Etmek İstiyormusunuz?"
+ stTurkish+28,  "%s Dosya Bulunamadı.\n\nDiger Dosyaya Atlamak İstermisiniz?"
+ stTurkish+29,  " ""%s""  Sifre Korumalı.\n\n Lütfen kullanıcı Adınızı ve Sifrenizi Giriniz sonra Devam Edebilirsiniz."
+ stTurkish+30,  "Serverla Bağlantı Kesildi.\n\nBağlantınızı Kontrol Edip Tekrar Deneyebilirsiniz."
+}
+
+
+// -= Norwegian =-
+// Thanks to Tor J. M. Breines for translation
+#pragma code_page(1252)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stNorwegian,       "Programoppdatering"
+ stNorwegian+1,     "Henter oppdatering..."
+ stNorwegian+2,     "Oppdatering ferdig!"
+ stNorwegian+3,     "Filnavn"
+ stNorwegian+4,     "Alle filer"
+ stNorwegian+5,     "Henter oppdatering fra"
+ stNorwegian+6,     "Filstørrelse: %.1f Kb"
+ stNorwegian+7,     "Hastighet: %.1f Kb/s"
+ stNorwegian+8,     "Forventet tid igjen: %d:%.2d:%.2d"
+ stNorwegian+9,     "Henter %d av %d"
+ stNorwegian+10,    "Oppdateringen av %s er ferdig.\n\nKlikk på OK for å restarte programmet."
+ stNorwegian+11,    "Legg inn passord"
+ stNorwegian+12,    "Brukernavn"
+ stNorwegian+13,    "Passord"
+
+// Buttons
+ stNorwegian+14,    "&Ja"
+ stNorwegian+15,    "&Nei"
+ stNorwegian+16,    "&OK"
+ stNorwegian+17,    "&Avbryt"
+ stNorwegian+18,    "&Neste >"
+ stNorwegian+19,    "&Senere"
+
+// Error messages
+ stNorwegian+20,    "Advarsel"
+ stNorwegian+21,    "Feil"
+ stNorwegian+22,    "Klargjøre. . ."
+ stNorwegian+23,    "En nyere versjon av %s er tilgjengelig.\n%s\nVil du oppdatere din nåværende versjon til den nyeste?"
+ stNorwegian+24,    "Ingen oppdateringer ble funnet. Du har den nyeste versjonen av programmet."
+ stNorwegian+25,    "Ingen fil med oppdateringsinformasjon ble funnet på produsentens nettsted."
+ stNorwegian+26,    "Får ikke tilgang til %s.\n\nKontroller internetforbindelsen og prøv igjen."
+ stNorwegian+27,    "Oppdateringen er ikke ferdig.\nVil du avbryte oppdateringen?"
+ stNorwegian+28,    "Filen %s finnes ikke.\n\nVil du hoppe over installasjonen av denne filen og fortsette?"
+ stNorwegian+29,    "Filen ""%s"" er passordbeskyttet.\n\nDu må taste inn ditt brukernavn og passord for å fortsette oppdateringen."
+ stNorwegian+30,    "Mistet forbindelsen til netstedet.\n\nGjenopprett internetforbindelsen og prøv å\noppdatere programmet igjen senere."
+}
+
+
+// -= Slovak =-
+// Thanks to VladoPortos for the file
+#pragma code_page(1250)
+STRINGTABLE
+{
+// Captions for forms, panels and labels
+ stSlovak,     "Sprievodca aktualizáciou programu"
+ stSlovak+1,   "Sahujem súbory..."
+ stSlovak+2,   "Aktualizácia dokonèená!"
+ stSlovak+3,   "Terajší súbor"
+ stSlovak+4,   "Všetky súbory"
+ stSlovak+5,   "Sahujem súbor z"
+ stSlovak+6,   "Velkos súboru: %.1f Kb"
+ stSlovak+7,   "Rıchlos sahovania: %.1f Kb/s"
+ stSlovak+8,   "Odhad zostávajúceho èasu: %d:%.2d:%.2d"
+ stSlovak+9,   "Stahovanie %d z %d"
+ stSlovak+10,  "Aktualizácia programu %s bola úspešne dokonèená.\n\nZmaèknite OK pre reštart programu."
+ stSlovak+11,  "Vlote heslo"
+ stSlovak+12,  "Uivate¾ské meno"
+ stSlovak+13,  "Heslo"
+
+// Buttons
+ stSlovak+14,  "&Áno"
+ stSlovak+15,  "&Nie"
+ stSlovak+16,  "&OK"
+ stSlovak+17,  "&Zruš"
+ stSlovak+18,  "&Da¾ší >"
+ stSlovak+19,  "&Neskôr"
+
+// Error messages
+ stSlovak+20,  "Upozornenie"
+ stSlovak+21,  "Chyba"
+ stSlovak+22,  "Pripravujem. . ."
+ stSlovak+23,  "Novšia verzia programu %s bola vydaná.\n%s\nChcete aktualizova vašu verziu novou?"
+ stSlovak+24,  "Novšia verzia nenájdená. Práve\npouívate najnovšiu verziu tohto programu."
+ stSlovak+25,  "Súbor, ktorı obsahuje informácie o aktualizácií, nebol nájdenı u vırobcu."
+ stSlovak+26,  "Host %s je nedosaitelnı.\n\nSkontrolujte vaše pripojenie na Internet a\nskúste aktualizova program neskôr, prosím."
+ stSlovak+27,  "Aktulalizácia nie je dokonèená.\nChcete preruši aktualizáciu?"
+ stSlovak+28,  "Súbor %s nenájdenı, alebo nedosaite¾nı.\n\nSkúsi preskoèi tento súbor a pokraèova v aktualizácií?"
+ stSlovak+29,  "Prístup k vzdialenému súboru ""%s"" je chránenı heslom.\n\nProsím, vlote vaše uívate¾ské meno a heslo (obdrané po registracii) pre pokraèovanie v aktualizácii."
+ stSlovak+30,  "Spojenie s vzdialenım serverom bolo stratené.\n\nProsím, obnovte spojenie a skúste\n tento program aktualizova neskôr."
+}

@@ -1,0 +1,13 @@
+[AntiIDEOnly] 作用：破解DynamicSkinForm V4.62及其它所有版本；＃精品控件，可惜用的人少＃
+   
+　　很多共享性质的VCL控件采用IDE-Only的保护方式，即只能在Delphi IDE已经运行的环境下运行。
+如果一个一个地去破解这些控件，不仅难度较大，在很大程度上也是重复工作。AntiIDEOnly就是解决
+这个问题的最好方法，只要在工程文件源文件（Project->View Source）的uses段中加上AntiIDEOnly，
+就可让你的程序彻底摒弃Delphi IDE。由于控件保护的位置有所不同，对于某些控件，必须将
+AntiIDEOnly作为uses段的第一个单元。
+#有了它就可以直接到VCL控件的官方网站下载控件，不用等待或自己破解#
+
+
+[DynamicSkinForm V4.62未注册版] 作用：皮肤控件
+
+[httpscan]　作用：网络搜索控件

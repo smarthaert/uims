@@ -1,0 +1,59 @@
+a{text-decoration: none;} /* 链接无下划线,有为underline */ 
+a:link {color: #000000;} /* 未访问的链接 */
+a:visited {color: #333333;} /* 已访问的链接 */
+a:hover{background: #ccffff;} /* 鼠标在链接上 */ 
+a:active {color: #0000ff;} /* 点击激活链接 */
+
+body
+{
+font-size: 9pt;background:url(images/bg_001.gif);
+text-decoration: none;
+scrollbar-face-color: #ff9999;
+scrollbar-highlight-color: #ffffff; scrollbar-shadow-color: #cccccc; scrollbar-3dlight-color: #cccccc; scrollbar-arrow-color: #330000; scrollbar-track-color: #f6f6f6; scrollbar-darkshadow-color: #ffffff;
+margin-top: 1px;
+margin-bottom: 1px;
+}
+
+.biao_bdr
+{
+border-right: 1px solid #cc0000;border-left: 1px solid #cc0000;
+}
+
+.biao_bdr1
+{
+border-right: 1px solid #cc0000;border-left: 1px solid #cc0000;border-top: 1px solid #cc0000;
+}
+
+.biao_bdr2
+{
+border-right: 1px solid #cc0000;border-left: 1px solid #cc0000;border-bottom: 1px solid #cc0000;
+}
+
+input
+{
+background-color: #ffffff; 
+border-bottom: #666666 1px solid;
+border-left: #666666 1px solid;
+border-right: #666666 1px solid;
+border-top: #666666 1px solid;
+color: #666666;
+height: 18px;
+border-color: #666666 #666666 #666666 #666666; font-size: 9pt
+}
+
+button
+{
+font-size: 9pt;height: 20px;
+}
+
+select
+{
+background-color: #ffffff; 
+font-size: 9pt;height: 20px;
+color: #666666;
+}
+
+td
+{
+font-family:宋体;font-size: 9pt;line-height: 180%; 
+}

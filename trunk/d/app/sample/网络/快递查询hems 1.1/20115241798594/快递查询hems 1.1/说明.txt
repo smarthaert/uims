@@ -1,0 +1,14 @@
+开发环境：delphi 7
+hems.exe 主程序
+com.txt  快递公司，格式为:中文|快递100中的代码
+
+修正了编码问题
+
+注意：请将中的your_apikey改为你自己申请到的APIKEY(没有请申请)即可，默认程序集成作者自己的，嘻嘻
+其它：感谢快递100提供的接口
+
+开发:hpping
+网址:mykd.tk
+邮件:hpping@hpping.com
+
+2011.5.11

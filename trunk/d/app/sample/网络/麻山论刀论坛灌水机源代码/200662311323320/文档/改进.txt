@@ -1,0 +1,266 @@
+新帖分工:
+打开地址:http://bbs.4fcom.net/post.asp?action=new&boardid=153
+发送到:/SavePost.asp?Action=snew&boardid=153
+1.界面
+2.读取设置文件
+3.判断并连接到网站
+4.判断发帖时间限制并等待
+5.判断是否登录网站并登录
+6.发帖
+7.根据返回文本判断成功与否
+回复分工,和新帖分工一样的.
+打开地址:http://bbs.4fcom.net/post.asp?action=re&BoardID=153&ID=1712921&star=1&page=1
+发送到:SavePost.asp?Action=sre&method=Topic&boardid=153
+
+//这是用ie进行登录的例子.这是成功的例子
+POST /login.asp?action=chk HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Referer: http://bbs.4fcom.net/login.asp
+Accept-Language: zh-cn
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: bbs.4fcom.net
+Content-Length: 132
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: bbs%2E4fcom%2Enet%2FKill=kill=0; bbs%2E4fcom%2Enet%2F=StatUserID=22025444444&UserID=0&usercookies=0&password=&userhidden=2&userclass=&username=; ASPSESSIONIDCASBQTQC=CGKKCLIDAAIPHGHOONEHCPCJ
+
+username=%C2%E9%C9%BD%C2%DB%B5%B6&password=6820956&codestr=1868&CookieDate=3&userhidden=2&comeurl=bbs.4fcom.net&submit=%B5%C7+%C2%BC
+
+//这是用程序登录的例子.没有成功
+POST /login.asp?action=chk HTTP/1.0
+Connection: Keep-Alive
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 94
+Cache-control: no-cache
+Host: bbs.4fcom.net
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Accept-Encoding: gzip, deflateidentity
+Accept-Language: zh-cn
+Referer: http://bbs.4fcom.net/login.asp
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Cookie: bbs%2E4fcom%2Enet%2F=StatUserID=22024755887; bbs%2E4fcom%2Enet%2FKill=kill=0; ASPSESSIONIDCASBQTQC=JHNKCLIDJINJGPGMCJGBDLDA....
+
+//用IE发表回复的例子:
+POST /savepost.asp?action=sre&method=fastreply&BoardID=152 HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Referer: http://bbs.4fcom.net/dispbbs.asp?boardID=152&ID=1870336&page=1
+Accept-Language: zh-cn
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: bbs.4fcom.net
+Content-Length: 231
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: ASPSESSIONIDCASBQTQC=CGKKCLIDAAIPHGHOONEHCPCJ; upNum=0; Dvbbs=; bbs%2E4fcom%2Enet%2F=UserID=34047&usercookies=3&StatUserID=22025444444&password=4P263V7IhD325jyc&userhidden=2&userclass=%C2%DB%CC%B3%D3%CE%C3%F1&username=%C2%E9%C9%BD%C2%DB%B5%B6
+//带的参数:
+passwd={$memberword}&followup=1603090&RootID=1870336&star=1&Body=内容&TotalUseTable=Dv_bbs4&UserName=帐号&ShowFacePage=1&Expression=face1.gif&signflag=yes&Submit=提交
+//在IE里用"发表回复"的例子:
+POST /SavePost.asp?Action=sre&method=Topic&boardid=152 HTTP/1.1..Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*..Referer: http://bbs.4fcom.net/post.asp?action=re&BoardID=152&ID=1870336&star=1&page=1..Accept-Language: zh-cn..Content-Type: application/x-www-form-urlencoded..Accept-Encoding: gzip, deflate..User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)..Host: bbs.4fcom.net..Content-Length: 296..Connection: Keep-Alive..Cache-Control: no-cache..Cookie: ASPSESSIONIDCASBQTQC=CGKKCLIDAAIPHGHOONEHCPCJ; upNum=0; Dvbbs=; bbs%2E4fcom%2Enet%2FKill=kill=0; bbs%2E4fcom%2Enet%2F=UserID=34047&usercookies=3&userclass=%C2%DB%CC%B3%D3%CE%C3%F1&username=%C2%E9%C9%BD%C2%DB%B5%B6&password=v0rdu3g775UqY735&userhidden=2&StatUserID=22025444444...
+//带的参数:
+upfilerename=&Body=%3CP%3E%B2%E2%CA%D4%D2%BB%CF%C2%3C%2FP%3E&dvbbs=bbs.4fcom.net%2F&star=1&page=1&TotalUseTable=Dv_bbs4&followup=1603090&rootID=1870336&username=%C2%E9%C9%BD%C2%DB%B5%B6&passwd=**********&font=&topic=%B2%E2%CA%D4%D2%BB%CF%C2&Expression=face1.gif&autofix=1&signflag=yes&emailflag=0
+
+用IE进行注册的例子:
+POST /reg.asp?action=save HTTP/1.1..Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*..Referer: http://bbs.4fcom.net/reg.asp?action=apply..Accept-Language: zh-cn..Content-Type: application/x-www-form-urlencoded..Accept-Encoding: gzip, deflate..User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)..Host: bbs.4fcom.net..Content-Length: 508..Connection: Keep-Alive..Cache-Control: no-cache..Cookie: bbs%2E4fcom%2Enet%2FKill=kill=0; bbs%2E4fcom%2Enet%2F=StatUserID=22025444444&UserID=0&usercookies=0&userclass=&username=&password=&userhidden=2; ASPSESSIONIDCAABQSQT=KCPDGDDAHLHACFMNHJOJDAIN....
+封包:
+name=12131&codestr=1213&sex=1&psw=12131&pswc=12131&quesion=12131&answer=12131&e_mail=12131&face=Images%2Fuserface%2Fimage1.gif&myface=&width=58&height=79&groupname=%B5%DB%CD%F5%D4%DA%CF%DF&birthday=&Signature=&homepage=&OICQ=&ICQ=&msn=&aim=&yahoo=&uc=&usercookies=1&setuserinfo=1&setusertrue=0&showRe=0&realname=&personal=&country=&userphone=&address=&province=&selectp=0&city=&selectc=0&shengxiao=&blood=&belief=&occupation=&marital=&education=&college=&Submit=%D7%A2+%B2%E
+
+//这是用IE发新帖的例子:
+POST /SavePost.asp?Action=snew&boardid=104 HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Referer: http://bbs.4fcom.net/post.asp?action=new&boardid=104
+Accept-Language: zh-cn
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: bbs.4fcom.net
+Content-Length: 247
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: bbs%2E4fcom%2Enet%2FKill=kill=0; bbs%2E4fcom%2Enet%2F=userid=34047&usercookies=3&userhidden=2&password=67485105N3p4tPFI&userclass=%C2%DB%CC%B3%D3%CE%C3%F1&username=%C2%E9%C9%BD%C2%DB%B5%B6&StatUserID=22025992612; ASPSESSIONIDCAABQSQT=GNEHGDDAGMCKHOABHGDMOBNE; upNum=0; Dvbbs=
+.
+//参数:
+upfilerename=&Body=%B2%E2%CA%D4%D2%BB%CF%C2&dvbbs=bbs.4fcom.net%2F&star=1&page=1&TotalUseTable=Dv_bbs4&username=%C2%E9%C9%BD%C2%DB%B5%B6&passwd=**********&font=&topic=%B2%E2%CA%D4%D2%BB%CF%C2&Expression=face1.gif&autofix=1&signflag=yes&emailflag=0
+
+短消息灌水 
+
+邮件群发
+
+被管理员锁定了.
+http://bbs.7gg.net/showerr.asp?BoardID=315&ErrCodes=12&action=%A1%FE+%B4%AB%C6%E63G%C1%AA%C3%CB%D6%D0%D0%C4+%A1%FE%2D%B1%A3%B4%E6%CC%FB%D7%D3
+http://bbs.7gg.net/showerr.asp?ErrCodes=<Br><li>本论坛限制发贴距离时间为30秒，请稍后再发。&action=OtherErr
+
+
+直接采用Delphi自带的控件的INDY组件为例.新建一个工程,放上一个TIdHTTP控件,一个TIdAntiFreeze控件,一个TProgressBar用于显示下载进度.最后放上一个TButton用于开始执行我们的命令.代码如下: 
+
+procedure TForm1.Button1Click(Sender: TObject);//点击按钮的时候开始下载我们的文件
+var
+MyStream:TMemoryStream;
+begin
+IdAntiFreeze1.OnlyWhenIdle:=False;//设置使程序有反应.
+MyStream:=TMemoryStream.Create;
+try
+IdHTTP1.Get('http://www.138soft.com/download/Mp3ToExe.zip',MyStream);//下载我站点的一个ZIP文件
+except//INDY控件一般要使用这种try..except结构.
+Showmessage('网络出错!');
+MyStream.Free;
+Exit;
+end;
+MyStream.SaveToFile('c:\Mp3ToExe.zip');
+MyStream.Free;
+Showmessage('OK');
+end;
+
+procedure TForm1.IdHTTP1WorkBegin(Sender: TObject; AWorkMode: TWorkMode;
+const AWorkCountMax: Integer);//开始下载前,将ProgressBar1的最大值设置为需要接收的数据大小.
+begin
+ProgressBar1.Max:=AWorkCountMax;
+ProgressBar1.Min:=0;
+ProgressBar1.Position:=0;
+end;
+
+procedure TForm1.IdHTTP1Work(Sender: TObject; AWorkMode: TWorkMode;
+const AWorkCount: Integer);//接收数据的时候,进度将在ProgressBar1显示出来.
+begin
+ProgressBar1.Position:=ProgressBar1.Position+AWorkCount;
+end; 
+
+
+　　IdHTTP1的Get还有一种形式就是获取字符串:例如,上面的程序可以改写成:
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+MyStr:String;
+begin
+IdAntiFreeze1.OnlyWhenIdle:=False;//设置使程序有反应.
+try
+MyStr:=IdHTTP1.Get('http://www.138soft.com/default.htm');
+except
+Showmessage('网络出错!');
+Exit;
+end;
+Showmessage(MyStr);
+end; 
+（出处：www.vbzx.net）
+
+
+'upfilerename='#$D#$A'followup=1664514&STAR=1'#$D#$A'rootid=1664514&STAR=1'#$D#$A'Body=联系我:'#$D#$A'dvbbs=bbs.4fcom.net'#$D#$A'page=1&TotalUseTable=Dv_bbs1'#$D#$A'username=zhukwpkxzn'#$D#$A'passwd=opezfpkrsz'#$D#$A'codestr=4383'#$D#$A'topic='#$D#$A'font=&ShowFacePage=1&Expression=face1.gif&autofix=1&signflag=yes&emailflag=0'#$D#$A
+
+//用IE"回复帖子"功能的例子
+POST /SavePost.asp?Action=sre&method=Topic&boardid=564 HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Referer: http://bbs.4fcom.net/post.asp?action=re&BoardID=564&ID=1664514&star=1&page=1
+Accept-Language: zh-cn
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: bbs.4fcom.net
+Content-Length: 267
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: bbs%2E4fcom%2Enet%2F=UserID=34047&usercookies=3&password=AfVHy4k886YuC956&userhidden=2&userclass=%C2%DB%CC%B3%D3%CE%C3%F1&username=%C2%E9%C9%BD%C2%DB%B5%B6&StatUserID=22025992612; ASPSESSIONIDCSBDCTTC=PPJBPACDJBKAJDAJBHDDJNGG; Dvbbs=
+.
+//参数
+upfilerename=&Body=%BD%F1%CC%EC%D2%D1%B7%A2%CC%FB%CA%FD&dvbbs=bbs.4fcom.net%2F&star=1&page=1&TotalUseTable=Dv_bbs4&followup=1179995&rootID=1664514&username=%C2%E9%C9%BD%C2%DB%B5%B6&passwd=**********&font=&topic=&Expression=face1.gif&autofix=1&signflag=yes&emailflag=0
+
+//别人的灌水机发的回复帖
+GET /dispbbs.asp?boardID=564&ID=1664514 HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Accept-Language: zh-cn
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: bbs.4fcom.net
+Connection: Keep-Alive
+Cookie: bbs%2E4fcom%2Enet%2F=userid=34047&usercookies=0&StatUserID=22025992612&userclass=%C2%DB%CC%B3%D3%CE%C3%F1&username=%C2%E9%C9%BD%C2%DB%B5%B6&userhidden=&password=r85y6115O3q4uQGJ; ASPSESSIONIDCSBDCTTC=AKCCPACDNLNHIDKJJCCKBLDK; upNum=0
+.
+//别人的第一次回复
+POST /savepost.asp?action=sre&method=fastreply&BoardID=564 HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Referer: http://bbs.4fcom.net/dispbbs.asp?boardID=564&ID=1664514
+Accept-Language: zh-cn
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: bbs.4fcom.net
+Content-Length: 237
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: bbs%2E4fcom%2Enet%2F=UserID=34047&usercookies=0&password=v0qdt2f765U6x7J5&userhidden=2&userclass=%C2%DB%CC%B3%D3%CE%C3%F1&username=%C2%E9%C9%BD%C2%DB%B5%B6&StatUserID=22025992612; ASPSESSIONIDCSBDCTTC=AKCCPACDNLNHIDKJJCCKBLDK; upNum=0; Dvbbs=
+.
+参数:
+passwd=%7B%24memberword%7D&followup=1179995&RootID=1664514&star=1&Body=aaaaaaaaaaaaaaaaaaaaaaaa&TotalUseTable=Dv_bbs4&UserName=%C2%E9%C9%BD%C2%DB%B5%B6&ShowFacePage=1&Expression=face1.gif&signflag=yes&Submit=OK%21%B7%A2%B1%ED%BB%D8%B8%B
+再次并没有什么不同.真的是过了.
+//别人的灌水机第二次发回复帖
+POST /savepost.asp?action=sre&method=fastreply&BoardID=564 HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Referer: http://bbs.4fcom.net/dispbbs.asp?boardID=564&ID=1664514
+Accept-Language: zh-cn
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: bbs.4fcom.net
+Content-Length: 237
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: bbs%2E4fcom%2Enet%2F=UserID=34047&usercookies=0&password=v0qdt2f765U6x7J5&userhidden=2&userclass=%C2%DB%CC%B3%D3%CE%C3%F1&username=%C2%E9%C9%BD%C2%DB%B5%B6&StatUserID=22025992612; ASPSESSIONIDCSBDCTTC=AKCCPACDNLNHIDKJJCCKBLDK; upNum=0; Dvbbs=
+.
+参数:
+passwd=%7B%24memberword%7D&followup=1179995&RootID=1664514&star=1&Body=aaaaaaaaaaaaaaaaaaaaaaaa&TotalUseTable=Dv_bbs4&UserName=麻山论刀&ShowFacePage=1&Expression=face1.gif&signflag=yes&Submit=提交
+
+在第一次和第二次回帖之间
+GET /dispbbs.asp?boardid=564&id=1664514&star=1 HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Accept-Language: zh-cn
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: bbs.4fcom.net
+Connection: Keep-Alive
+Cookie: bbs%2E4fcom%2Enet%2F=UserID=34047&usercookies=0&password=v0qdt2f765U6x7J5&userhidden=2&userclass=%C2%DB%CC%B3%D3%CE%C3%F1&username=%C2%E9%C9%BD%C2%DB%B5%B6&StatUserID=22025992612; ASPSESSIONIDCSBDCTTC=AKCCPACDNLNHIDKJJCCKBLDK; upNum=0; Dvbbs=564
+.
+
+//用IE回复帖子
+POST /SavePost.asp?Action=sre&method=Topic&boardid=564 HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Referer: http://bbs.4fcom.net/post.asp?action=re&BoardID=564&ID=1664514&star=1&page=1
+Accept-Language: zh-cn
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: bbs.4fcom.net
+Content-Length: 281
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: bbs%2E4fcom%2Enet%2F=userid=34047&usercookies=3&userhidden=2&password=3M152T6ffz2D4g8z&userclass=%C2%DB%CC%B3%D3%CE%C3%F1&username=%C2%E9%C9%BD%C2%DB%B5%B6&StatUserID=223615646; ASPSESSIONIDSCQARSCR=JNDNKJMDCOLPONBBKBGJOOKM; upNum=0; Dvbbs=
+.
+参数:
+upfilerename=&Body=aaaaaaaaaaaaaaaaaaaaaaa&dvbbs=bbs.4fcom.net%2F&star=1&page=1&TotalUseTable=Dv_bbs4&followup=1179995&rootID=1664514&username=麻山论刀&passwd=6820956&font=&topic=saaaaaaaaaaaaaaaaaaaaaaaaaa&Expression=face1.gif&autofix=1&signflag=yes&emailflag=0
+
+//用IE发的回复帖子(有目录的BBs/)
+POST /bbs/SavePost.asp?Action=sre&method=Topic&boardid=19 HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Referer: http://www.b4cn.com/bbs/post.asp?action=re&BoardID=19&ID=73&star=1&page=1
+Accept-Language: zh-cn
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: www.b4cn.com
+Content-Length: 288
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: www%2Eb4cn%2Ecom%2Fbbs%2F=UserID=65&usercookies=3&StatUserID=22017713784&userclass=%D0%C2%CA%D6%C9%CF%C2%B7&username=%C2%E9%C9%BD%C2%DB%B5%B6&password=56374Y8KKF435Mbf&userhidden=2; ASPSESSIONIDQCATABDQ=AGNBJHEANOPBHNFNOHNPEBCD; Dvbbs=; ASPSESSIONIDSABTBCCR=HNKPIOEAPJLGGAMCGKLMAIEP; upNum=0
+.
+参数:
+upfilerename=&Body=aaaaaaaaaaaaaaaaaaaaaaaa&dvbbs=www.b4cn.com%2Fbbs%2F&star=1&page=1&TotalUseTable=dv_bbs1&followup=75&rootID=73&username=%C2%E9%C9%BD%C2%DB%B5%B6&passwd=**********&codestr=3996&font=&topic=aaaaaaaaaaaaaaaaaaaaaaaaa&Expression=face1.gif&autofix=1&signflag=yes&emailflag=
+
+用IE打开论坛首页的实例
+GET / HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Accept-Language: zh-cn
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: bbs.4fcom.net
+Connection: Keep-Alive
+Cookie: bbs%2E4fcom%2Enet%2F=UserID=34047&usercookies=3&StatUserID=22021277770&userclass=%C2%DB%CC%B3%D3%CE%C3%F1&username=%C2%E9%C9%BD%C2%DB%B5%B6&password=46374X8KJF435Lbe&userhidden=2
+

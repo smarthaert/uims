@@ -1,0 +1,70 @@
+package EmbeddedWebBrowser_D2006;
+
+{$R *.res}
+{$R 'EWB.dcr'}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Internet Embedded Web Browser Components'}
+{$IMPLICITBUILD OFF}
+{%File 'EWB.inc'}
+
+requires
+  rtl,
+  vclx,
+  vcl,
+  vcljpg,
+  vclie;
+
+contains
+  AppWebUpdater in 'AppWebUpdater.pas',
+  BrowseForFolderU in 'BrowseForFolderU.pas',
+  DirMonitor in 'DirMonitor.pas',
+  EmbeddedWB in 'EmbeddedWB.pas',
+  ExportFavorites in 'ExportFavorites.pas',
+  extIEParser in 'extIEParser.pas',
+  FavMenu in 'FavMenu.pas',
+  FavoritesListView in 'FavoritesListView.pas',
+  FavoritesTree in 'FavoritesTree.pas',
+  HighLightHTML in 'HighLightHTML.pas',
+  HighLightRichSyntax in 'HighLightRichSyntax.pas',
+  HighLightXML in 'HighLightXML.pas',
+  HistoryListView in 'HistoryListView.pas',
+  HistoryMenu in 'HistoryMenu.pas',
+  IE5tools in 'IE5tools.pas',
+  IEAddress in 'IEAddress.pas',
+  IECache in 'IECache.pas',
+  IeConst in 'IeConst.pas',
+  IEDownload in 'IEDownload.pas',
+  IEGuid in 'IEGuid.pas',
+  IETravelLog in 'IETravelLog.pas',
+  IEUtils in 'IEUtils.pas',
+  ImportFavorites in 'ImportFavorites.pas',
+  intshcut in 'intshcut.pas',
+  LibXmlComps in 'LibXmlComps.pas',
+  LibXmlParser in 'LibXmlParser.pas',
+  LinksBar in 'LinksBar.pas',
+  RichEditBrowser in 'RichEditBrowser.pas',
+  SecurityManager in 'SecurityManager.pas',
+  SendMail in 'SendMail.pas',
+  UrlHistory in 'UrlHistory.pas';
+
+end.

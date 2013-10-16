@@ -1,0 +1,31 @@
+[API]
+Name=CryptoAPI2
+Version=
+Date=01-12-00
+Originated=Platform SDK
+URL=http://msdn.microsoft.com
+Description=Cryptographic API Prototypes and Definitions
+[Platform]
+Win31=No
+Win95=Yes
+Win98=Yes
+WinNT3=No
+WinNT4=Yes
+Win2000=Unknown
+[Captain]
+Name=Massimo Maria Ghisalberti
+Email=nissl@dada.it
+HomePage=
+[Converters]
+Converter1="Massimo Maria Ghisalberti",nissl@dada.it,
+[CONVERSION1]
+FileName=wcrypt2.pas
+FileDate=8-Aug-1999
+Status=Ready
+Version=2.0
+LastModify=20-Jul-2000
+OriginalFile=wincrypt.h
+[CONVERSION]
+MajorVersion=1
+MinorVersion=0
+Number=1

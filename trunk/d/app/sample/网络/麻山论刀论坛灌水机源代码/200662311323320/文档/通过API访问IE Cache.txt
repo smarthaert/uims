@@ -1,0 +1,114 @@
+通过API访问IE Cache     选择自 technofantasy 的 Blog  
+关键字   IE Cache 临时文件 Delphi 
+出处    
+ 
+ 通过API访问IE Cache
+    我们知道在使用IE浏览网页时，IE会把远端主机的内容保存在本机以供以后脱机访问。下面将介绍的是如何通过Delphi编程实现遍历Cache中所有保存的内容。
+    如果大家对Windows API编程比较熟悉的话，应该知道对于遍历访问一般有两种办法，一是定义一个回调函数，然后将回调函数地址传递给遍历函数，当遍历到一个内容时就会调用回调函数一次，例如EnumWindows函数。另外一种是先利用一个API函数建立一个局柄，然后以这个局柄作为遍历函数的参数，我们可以通过反复调用遍历函数知道返回False，例如FindFirstFile以及FindNextFile函数。对IE Cache的遍历使用的是第二种方法，即首先调用FindFirstUrlCacheEntryEx，如果成功返回一个局柄，然后通过重复调用FindNextUrlCacheEntryEx知道函数返回False，这样就可以实现对Cache中所有文件的遍历。
+    下面来看程序，建立一个新工程，然后在Form1中分别加入两个TButton组件以及两个TListBox组件，Form1的完整代码如下：
+
+unit Unit1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Wininet, StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    Button1: TButton;
+    ListBox1: TListBox;
+    ListBox2: TListBox;
+    Button2: TButton;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    function FindNextEntrys(Handle:Integer):Boolean;
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.DFM}
+function TForm1.FindNextEntrys(Handle:Integer):Boolean;
+var
+  T: PInternetCacheEntryInfo;
+  D: DWORD;
+begin
+  D := 0;
+  FindnextUrlCacheEntryEx(Handle, nil, @D, nil, nil, nil);
+  GetMem(T, D);
+  try
+    if FindNextUrlCacheEntryEx(Handle, T, @D, nil, nil, nil) then begin
+      ListBox1.Items.Add(T.lpszSourceUrlName);
+      ListBox2.Items.Add(T.lpszLocalFileName);
+      Result := True;
+    end
+    else
+      Result := False;
+  finally
+    FreeMem(T, D)
+  end;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  H:Integer;
+  T: PInternetCacheEntryInfo;
+  D: DWORD;
+begin
+  D := 0;
+  FindFirstUrlCacheEntryEx(nil, 0, NORMAL_CACHE_ENTRY, 0,nil,@D, nil, nil, nil);
+  GetMem(T, D);
+  try
+    H := FindFirstUrlCacheEntryEx(nil,0, NORMAL_CACHE_ENTRY, 0, T, @D, nil, nil, nil);
+    if (H = 0) then
+    else begin
+      repeat
+      until not FindNextEntrys(H);
+      FindCloseUrlCache(H);
+    end
+  finally
+    FreeMem(T, D)
+  end;
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+var
+  URL:String;
+begin
+  If ListBox1.ItemIndex >=0 then begin
+    URL:=ListBox1.Items.Strings[ListBox1.ItemIndex];
+    Self.Caption := URL;
+    if DeleteUrlCacheEntry(PChar(URL))then
+      ListBox1.Items.Delete(ListBox1.ItemIndex);
+  end;
+end;
+
+end.
+
+    运行程序，点击Button1，就可以分别在ListBox1中列出所有在Cache中的文件所对应的URL以及在ListBox2中列出相应的文件名。在ListBox1中选择一个列表，然后点击 Button2 就可以将该项从Cache中删除。
+    下面看程序，FindFirstUrlCacheEntryEx函数在Delphi中定义如下：
+
+function FindFirstUrlCacheEntryExA(lpszUrlSearchPattern: PAnsiChar;
+    dwFlags: DWORD;
+    dwFilter: DWORD;
+    GroupId: GROUPID;
+    lpFirstCacheEntryInfo: PInternetCacheEntryInfo;
+    lpdwFirstCacheEntryInfoBufferSize: LPDWORD;
+    lpGroupAttributes: Pointer;  { 必须为 nil }
+    pcbGroupAttributes: LPDWORD;    {必须为 nil }
+    lpReserved: Pointer             { 必须为 nil }
+    ): THandle; stdcall;
+
+    其中，dwFilter定义查找类型，在这里定义为NORMAL_CACHE_ENTRY以查找普通的Cache文件，GroupId定义查找分组，在这里定义为0以查找所有分组。lpFirstCacheEntryInfo定义Cache文件数据结构。该结构在Wininet.pas中有定义，这里就不列出了，其中成员lpszSourceUrlName以及lpszLocalFileName分别定义文件URL以及本地文件名。
+    在上面的程序中我们可以看到，不论调用FindFirstUrlCacheEntryEx还是FindNextUrlCacheEntryEx，都需要调用两次，第一次获得一个指向PInternetCacheEntryInfo结构的指针，将这个指针通过GetMem函数赋予一个PInternetCacheEntryInfo结构数据。然后第二次调用才可以获得结果。遍历访问完毕后需要调用FindCloseUrlCache方法关闭打开的局柄。
+    上面介绍的是Cache操作中的遍历Cache文件以及删除Cache文件的操作。Cache操作函数还包括：分组函数，可以将特定的文件分在一个组内并执行组操作，例如：CreateUrlCacheGroup、SetUrlCacheEntryGroup；数据流(Stream)操作函数，可以将Cache中的内容输入到数据流中。等等。大家可以参考MSDN中的帮助，或者到我的主页 http://www.applevb.com 同我讨论以及获得源程序。
+    以上程序在Win2000、Delphi 5下编写，Win2000、Win98下运行通过。
+ 

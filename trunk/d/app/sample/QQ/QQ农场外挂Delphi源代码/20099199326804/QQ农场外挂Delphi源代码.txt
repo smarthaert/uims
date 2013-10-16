@@ -1,0 +1,814 @@
+//QQ农场外挂源代码
+
+unit WebQQFunction;
+
+interface
+
+uses
+    Windows, SysUtils, Classes, StdCtrls, IdBaseComponent, IdComponent, StrUtils, ExtCtrls,
+    IdTCPConnection, IdTCPClient, IdHTTP, jpeg, IdAuthentication, IdHash, IdHashMessageDigest,
+    PublicFunctions, IniFiles, Forms, ComCtrls, SHDocVw, Dialogs, Variants, DateUtils;
+
+const
+     //QQ校友农场
+     Const_QQxyHost = 'happyfarm.xiaoyou.qq.com';
+     //QQ空间农场
+     Const_QQqzone = 'happyfarm.qzone.qq.com';
+     //登录用的字符串
+     Const_PostLoginInfo = 'u=%s&p=%s&verifycode=%s';
+     Const_PostLoginStr = '&aid=15000102&u1=http%3A%2F%2Fxiaoyou.qq.com%2Findex.php%3Fmod%3D'+
+          'login&fp=&h=1&ptredirect=1&ptlang=0&from_ui=1&dumy=1';
+     //操作农场时,IdHTTP Referer 的值 通过GetFlaseVersion得到 IdHTTP Referer的全部字串
+     Const_Flase_Version = 'http://appimg.qq.com/happyfarm/module/&#39;;
+     //FarmKey的形式
+     Const_farmKey = 'farmTime=%d&farmKey=%s';
+     //读取好友列表
+     Const_FriendsRefresh = 'refresh=true&farmTime=%d&farmKey=%s';
+
+     
+     
+     //自己ID,名字,时间,对方名称,farmKey
+     Const_Action = 'farmKey=%s&fName=%s&ownerId=%d&farmTime=%d&tName=%s&place=%d';
+     //Cookie的组成
+     Const_Cookie = 'Cookie: appTips=1; pt2gguin=%s; uin=%s; skey=%s; ptcz=%s; pvid=%s; name=%s; schooltype=0; province=11; pst=%d; flv=10.0;';
+     //升一级加多少经验
+     CONST_OneLevelNum = 200;
+     //取FarmKey时,时间延后多少秒
+     Const_DelayFarmTime = 10;
+
+type
+    //背包类型   0仓库 1商店 2包裹 
+    TBagsType = (farm_Warehouse, farm_Goods, farm_Bag);
+    //动作类型 0偷取 1杀虫 2浇水 3除草 4收获
+    //          5松土 6种植 7全部卖出   8购买种子
+    //          9查看消息   10所有动作(在PostAction中没有实现义意,不作操作)
+    TActionType =(Action_scrounge, Action_spraying, Action_water, Action_clearWeed,
+          Action_harvest, Action_scarify, Action_planting, Action_Sale, Action_SaleAll,
+          Action_Buy, Action_getAllInfo, Action_ALL_OPP);
+
+
+var
+   QQ_Cookie, VerifySession, farmKey, ConnHost,
+   Cookie_pt2gguin, Cookie_uin, Cookie_skey, Cookie_ptcz,
+   Cookie_pvid, Cookie_name, FlaseVersion: string;
+   farmTime, Cookie_pst: int64;
+   //服务器时间    本地时间 本地时间与服务器的时间差
+   QQ_ServerTime, Loc_ServerTime, DelayedDpikeInt : integer;
+
+
+//将本地时间转成QQ服务器时间
+function DateTimeToServerTime(aDateTime: TDateTime): integer;
+
+function Preprocess(aPassWord, aVerifyCode:string):string;
+
+//取得Flash版本 通过GetFlaseVersion得到 IdHTTP Referer的全部字串
+procedure GetFlaseVersion(var aStr: string);
+
+//取得验证码
+function GetVerifyPic(aIdHTTP:TIdHTTP; var aImage: TImage): boolean;
+
+//将汉字转换为unicode码
+function AnsiToUnicode(aSubWideChar: PWideChar):string;
+
+//将unicode码转换为汉字
+function UnicodeToAnsi(aSubUnicode: string):string;
+
+//提取字符串
+function SubString(aInputStr, aStr_L, aStr_R:string):string;
+
+function HashStr2BinStr(Hash: string):string;
+
+function Fmd5(str: string):string;
+
+//以Web形式登录QQ
+function LoginQQ(aIdHTTP: TIdHTTP; aUserNameStr, aPasswordStr, aVerifyStr: string; var aWebStr: string): Boolean;
+
+//登录QQ校友社区
+function LoginQQxiaoyou(aIdHTTP: TIdHTTP): Boolean;
+
+//取自己农场数据
+function GetMyFarmLandDB(aIdHTTP: TIdHTTP; var aWebStr: string): Boolean;
+
+//取好友列表数据
+function GetFriendsListDB(aIdHTTP: TIdHTTP; var aWebStr: string): Boolean;
+
+//取好友农场数据
+function GetFriendFarmLandDB(aIdHTTP: TIdHTTP; aUserID: integer; var aWebStr: string): Boolean;
+
+//计算等级 返回等级
+function ResultLevel(aSumExp:integer; var aNowExp, aOutLevelMaxExp: integer): integer;
+
+//分析仓库商店背包数据 aType 0仓库1商店2背包
+function PostBagsBD(aIdHTTP:TIdHTTP; var aWebStr: string; aType: TBagsType): boolean;
+
+
+//动作类型 0偷取 1杀虫 2浇水 3除草 4收获
+//          5松土 6种植 7全部卖出   8购买种子
+//          9查看消息   10所有动作(在PostAction中没有实现义意,不作操作)
+//
+//aActionType动作类型 是种植\卖出\购买种子还是做什么在此赋值
+//aOwnerId是自己的UserID 必须为自己的UserID
+//aPlace为地块的序号,从0开始 不用时可为0
+//aSeedID 为作物\种子的aID 种植\卖出\购买种子时用到 不用时可为0
+function PostAction(aIdHTTP: TIdHTTP; var aWebStr: string; aActionType: TActionType;
+         aOwnerId, aPlace, aSeedID: integer): boolean;
+
+//取得farmKey
+function GetfarmKey(aInputTimeInt: Int64; var aFarmTime: int64; var aFarmKey: string): Boolean;
+
+//写日志文件
+procedure WriteLog(aQQnum, aLogStr, aAppPah: String);
+
+implementation
+
+
+//将本地时间转成QQ服务器时间 getTime() 方法傳回從 1970 年 1 月 1 日午夜開始計算的毫秒數
+function DateTimeToServerTime(aDateTime: TDateTime): integer;
+begin
+     Result:= DateTimeToUnix(aDateTime)-28800;
+end;
+
+//提取字符串
+function SubString(aInputStr, aStr_L, aStr_R:string):string;
+var
+   sPosB,sPosE:integer;
+   Lwhtml,LwCstr_L,LwCstr_R:string;
+begin
+     Result:='';
+     if Trim(aInputStr)='' then
+        Exit;
+     Lwhtml:= LowerCase(aInputStr);
+     LwCstr_L := LowerCase(aStr_L);
+     LwCstr_R := LowerCase(aStr_R);
+     sPosB:= Pos(LwCstr_L, Lwhtml) + Length(LwCstr_L);
+     sPosE:= PosEx(LwCstr_R, Lwhtml, sPosB);
+     if (sPosB<sPosE) and (sPosE>0) then
+       Result:=Copy(aInputStr, sPosB, sPosE-sPosB);
+end;
+
+function HashStr2BinStr(Hash:string):string;
+var
+   buf:array[0..63] of Char;
+   i:Integer;
+begin
+    Result:='';
+    FillChar(buf, SizeOf(buf),0);
+    SetLength(Result, Round(Length(Hash)/2));
+    FillChar(Result[1], Length(Result),0);
+    HexToBin(PChar(Hash), buf,SizeOf(buf));
+    for i:=0 to Round(Length(Hash)/2)-1 do
+        Result:= buf;
+end;
+
+function Fmd5(str:string):string;
+var
+   md5 : TIdHashMessageDigest5;
+   longWordRec : T4x4LongWordRecord;
+begin
+     md5 := TIdHashMessageDigest5.Create;
+     try
+        {$IFDEF ID10}
+        Result:= md5.HashStringAsHex(str);
+        {$ELSE}
+        longWordRec:= md5.HashValue(str);
+        Result:= md5.AsHex(longWordRec);
+        {$ENDIF}
+     finally
+        md5.Free;
+     end;
+end;
+
+function md5_3(str:string):string;
+begin
+     Result:= Fmd5(str);
+     Result:= HashStr2BinStr(Result);
+     Result:= Fmd5(Result);
+     Result:= HashStr2BinStr(Result);
+     Result:= Fmd5(Result);
+end;
+
+function Preprocess(aPassWord, aVerifyCode:string):string;
+begin
+     Result:= Fmd5(md5_3(aPassWord) + UpperCase(aVerifyCode));
+end;
+
+//取得Flash版本
+procedure GetFlaseVersion(var aStr: string);
+var
+   tmpGerVersion: string;
+   tmpIdHTTP: TIdHTTP;
+   RespData: TStringStream;
+begin
+     try    
+        RespData:= TStringStream.Create(''); 
+        tmpIdHTTP:= TIdHTTP.Create(Application);
+        tmpGerVersion:= Const_Flase_Version+'ini.xml';
+        tmpIdHTTP.Get(tmpGerVersion, RespData);
+        tmpGerVersion:= Utf8ToAnsi(RespData.DataString);
+        tmpGerVersion:= SubString(tmpGerVersion, 'name="main" url="module/', '"');
+        if pos('Main.swf?v=', tmpGerVersion)=0 then
+          tmpGerVersion:= 'Main.swf?v=57';
+        aStr:= Const_Flase_Version + tmpGerVersion;
+     except
+     end;
+     tmpIdHTTP.Free;
+end;
+
+//取得验证码
+function GetVerifyPic(aIdHTTP:TIdHTTP; var aImage: TImage): boolean;
+var
+    ms:TMemoryStream;
+    pic:TJPEGImage;
+begin
+     Result:=False; 
+     
+     try
+        ms:=TMemoryStream.Create;
+        try          
+          aIdHTTP.Request.SetHeaders;
+          aIdHTTP.Request.RawHeaders.Clear;
+          aIdHTTP.Request.Accept:= '*/*';
+          aIdHTTP.Request.AcceptLanguage:= 'zh-CN';
+          aIdHTTP.Request.Referer:= 'http://ui.ptlogin2.qq.com/cgi-bin/login?link_target=blank&appid=15000102&#39;;
+          aIdHTTP.Request.ContentType:= 'application/x-www-form-urlencoded';
+          aIdHTTP.Request.AcceptEncoding:= 'gzip, deflate';
+          aIdHTTP.Request.UserAgent:= 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)';
+          aIdHTTP.Request.Connection:= 'Keep-Alive';
+          aIdHTTP.Request.CacheControl:= 'no-cache'; 
+          aIdHTTP.Request.Host:= 'ptlogin2.qq.com';
+          aIdHTTP.Request.URL:= Format('/getimage?aid=15000102&%0.15f', [Time()]);
+          aIdHTTP.Host:= 'ptlogin2.qq.com';
+          aIdHTTP.ReadTimeout:= 15000;
+          aIdHTTP.Get( Format('http://ptlogin2.qq.com/getimage?aid=15000102&%0.15f&#39;, [Time()]) , ms);
+          ms.Position:=0;
+          pic:=TJPEGImage.Create;
+          try
+          pic.LoadFromStream(ms);
+          aImage.Picture.Assign(pic);
+          finally
+          pic.Free;
+          end;
+          QQ_Cookie:= '';
+          QQ_Cookie:= SubString(aIdHTTP.Response.RawHeaders.Text, 'Set-Cookie: verifysession=', ';');
+          QQ_Cookie:= 'verifysession=' + QQ_Cookie + ';'; 
+          VerifySession:= QQ_Cookie;
+          aIdHTTP.Request.CustomHeaders.Clear;
+          aIdHTTP.Request.CustomHeaders.Add('Cookie:'+QQ_Cookie);
+          Result:= True;
+        finally
+          ms.Free;
+        end;
+     except
+     end; 
+     
+end;
+
+
+//转换
+function Str_Gb2UniCode(text: string): String; 
+var 
+i,len: Integer;
+cur: Integer;
+t: String;
+ws: WideString;
+begin
+Result := '';
+ws := text;
+len := Length(ws);
+i := 1;
+while i <= len do
+begin
+       cur := Ord(ws[i]);
+       FmtStr(t,'%4.4X',[cur]);
+       Result := Result + t;
+       Inc(i);
+end;
+end;
+
+
+//将汉字转换为unicode码
+function AnsiToUnicode(aSubWideChar: PWideChar):string;
+var
+   tmpLen, iCount: integer;
+begin
+     Result:= '';
+     tmpLen:= Length(aSubWideChar);
+     for iCount:= 1 to tmpLen do
+         Result:= Result + '\u'+IntToHex(Ord(aSubWideChar[iCount-1]), 2);
+end;
+
+//将unicode码转换为汉字
+function UnicodeToAnsi(aSubUnicode: string):string;
+var
+tmpLen, iCount: Integer;
+tmpWS: WideString;
+begin
+     tmpWS := '';
+     iCount := 1;
+     tmpLen := Length(aSubUnicode);
+     while iCount <= tmpLen do
+     try
+        if (Copy(aSubUnicode, iCount, 1)='\')and
+          (Copy(aSubUnicode, iCount, 2)='\u') then   //'\u7eff\/zq\u75d5'
+        begin
+          tmpWS := tmpWS + WideChar(StrToInt('$' + Copy(aSubUnicode, iCount+2, 4)));
+          iCount := iCount+6;
+        end
+        else
+        begin
+          tmpWS := tmpWS + Copy(aSubUnicode, iCount, 1); 
+          iCount := iCount+1;
+        end;
+     except
+     end;
+     Result := tmpWS;
+end;
+
+//以Web形式登录QQ
+function LoginQQ(aIdHTTP: TIdHTTP; aUserNameStr, aPasswordStr, aVerifyStr: string; var aWebStr: string): Boolean;
+var
+   PostData, RespData: TStringStream;
+   tmpStr: string;
+begin
+     PostData:= TStringStream.Create( Format(Const_PostLoginInfo, [aUserNameStr,
+          Preprocess(aPasswordStr, aVerifyStr),
+          aVerifyStr])
+          + Const_PostLoginStr);
+     RespData:= TStringStream.Create(''); 
+     Result:= False;     
+     
+     aWebStr:= '';
+     try
+        aIdHTTP.ReadTimeout:= 15000;
+        aIdHTTP.Request.Accept:= 'image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/x-shockwave-flash, application/msword, */*';
+        aIdHTTP.Request.ContentType:= 'application/x-www-form-urlencoded';
+        aIdHTTP.Request.Host:= 'ptlogin2.qq.com';
+        aIdHTTP.Request.Referer:= 'http://ui.ptlogin2.qq.com/cgi-bin/login?appid=15000102&#39;;
+        aIdHTTP.Request.UserAgent:= 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)';
+        aIdHTTP.Request.AcceptEncoding:= 'gzip, deflate';
+        aIdHTTP.Request.URL:= 'http://ptlogin2.qq.com/login&#39;;
+        //aIdHTTP.Request.SetHeaders;
+        aIdHTTP.Request.RawHeaders.Values['Cookie'] := 'Cookie:'+QQ_Cookie;
+
+        aIdHTTP.Post('http://ptlogin2.qq.com/login&#39;, PostData, RespData);
+        tmpStr:= Utf8ToAnsi(RespData.DataString);
+        if pos('如果未能自动跳转，请<a href="http://xiaoyou.qq.com/index.php?mod=login"; target="_top">点击</a>完成跳转。</div>', tmpStr)>0 then
+        begin
+          Result:= True;
+
+          tmpStr:= SubString(aIdHTTP.Response.RawHeaders.Text, 'Set-Cookie: pt2gguin=', ';');
+          Cookie_pt2gguin:= tmpStr;
+          tmpStr:= SubString(aIdHTTP.Response.RawHeaders.Text, 'Set-Cookie: uin=', ';');
+          Cookie_uin:= tmpStr;
+          tmpStr:= SubString(aIdHTTP.Response.RawHeaders.Text, 'Set-Cookie: skey=', ';');
+          Cookie_skey:= tmpStr;
+          tmpStr:= SubString(aIdHTTP.Response.RawHeaders.Text, 'Set-Cookie: ptcz=', ';');
+          Cookie_ptcz:= tmpStr;
+          QQ_Cookie:= QQ_Cookie + ' pt2gguin=' + Cookie_pt2gguin + '; uin=' + Cookie_uin + '; skey=' +
+          Cookie_skey + '; ptcz=' + Cookie_ptcz + ';';
+        end
+        else if pos('超时', tmpStr)>0 then 
+          aWebStr:= '连接超时或者页面出错!'
+        else if pos('验证码', tmpStr)>0 then 
+          aWebStr:= '验证码错误!'
+        else if pos('密码', tmpStr)>0 then 
+          aWebStr:= '密码错误!';
+     except
+        Result:= False;   
+        aWebStr:= '连接超时或者页面出错!';
+     end;
+     
+     PostData.Free;
+     RespData.Free; 
+end;
+
+//登录QQ校友社区
+function LoginQQxiaoyou(aIdHTTP: TIdHTTP): Boolean;
+var
+   tmpStr: string;
+begin
+     Result:= False;
+     
+     try
+        aIdHTTP.Request.Accept:= 'image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/x-shockwave-flash, application/msword, */*';
+        aIdHTTP.Request.ContentType:= 'application/x-www-form-urlencoded';
+        aIdHTTP.Request.Host:= 'xiaoyou.qq.com';
+        aIdHTTP.Request.Referer:= 'http://ptlogin2.qq.com/&#39;;
+        aIdHTTP.Request.UserAgent:= 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)';
+        aIdHTTP.Request.AcceptEncoding:= 'gzip, deflate';
+        aIdHTTP.Request.URL:= '/index.php?mod=login';
+        aIdHTTP.Request.ContentVersion:= 'x-flash-version: 10,0,22,87';
+
+        aIdHTTP.Request.CustomHeaders.Clear;
+        aIdHTTP.Request.CustomHeaders.Add('Cookie:'+QQ_Cookie);
+        try
+          aIdHTTP.Get('http://xiaoyou.qq.com/index.php?mod=login&#39;);
+        except
+        end;
+     
+        Randomize;
+        Cookie_pvid:= IntToStr(Random(10))+
+          IntToStr(Random(10))+
+          IntToStr(Random(10))+
+          IntToStr(Random(10))+
+          IntToStr(Random(10))+
+          IntToStr(Random(10))+
+          IntToStr(Random(10))+
+          IntToStr(Random(10))+
+          IntToStr(Random(10))+
+          IntToStr(Random(10));
+
+        tmpStr:= SubString(aIdHTTP.Response.RawHeaders.Text, 'Set-Cookie: pst=', ';');
+        Cookie_pst:= StrToIntDef(tmpStr, 0)+84600*3;
+        tmpStr:= SubString(aIdHTTP.Response.RawHeaders.Text, 'Set-Cookie: name=', ';');
+        Cookie_name:= tmpStr;
+
+        QQ_Cookie:= QQ_Cookie + ' pst=' + IntToStr(Cookie_pst) + ';';
+        QQ_Cookie:= QQ_Cookie + ' name=' + Cookie_name + ';';
+        QQ_Cookie:= QQ_Cookie + ' schooltype=0; province=11; pvid='+Cookie_pvid+'; flv=10.0;';
+
+        QQ_Cookie:= Format(Const_Cookie, [Cookie_pt2gguin, Cookie_uin, Cookie_skey, Cookie_ptcz,
+          Cookie_pvid, Cookie_name, Cookie_pst]);
+        aIdHTTP.Request.SetHeaders;
+        aIdHTTP.Request.CustomHeaders.Clear;
+        aIdHTTP.Request.RawHeaders.Values['Cookie'] := QQ_Cookie;
+
+        Result:= True;
+     except
+     end;
+     
+end;
+ 
+
+//取自己农场数据
+function GetMyFarmLandDB(aIdHTTP: TIdHTTP; var aWebStr: string): Boolean;
+var
+   RespData: TStringStream;
+begin
+
+     RespData:= TStringStream.Create('');
+     Result:= False;
+     
+     try
+        aIdHTTP.Request.Accept:= '*/*';
+        aIdHTTP.Request.ContentType:= '';
+        aIdHTTP.Request.Host:= ConnHost;
+        aIdHTTP.Request.Referer:= FlaseVersion;
+        aIdHTTP.Request.UserAgent:= 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; Embedded Web Browser from: http://bsalsa.com/; .NET CLR 2.0.50727)';
+        aIdHTTP.Request.AcceptEncoding:= 'gzip, deflate';
+        aIdHTTP.Request.URL:= '/api.php?mod=user&act=run';
+        aIdHTTP.Request.ContentVersion:= 'x-flash-version: 10,0,22,87';
+
+        QQ_Cookie:= Format(Const_Cookie, [Cookie_pt2gguin, Cookie_uin, Cookie_skey, Cookie_ptcz,
+          Cookie_pvid, Cookie_name, Cookie_pst]);
+        aIdHTTP.Request.CustomHeaders.Clear;
+        aIdHTTP.Request.RawHeaders.Values['Cookie'] := QQ_Cookie;
+
+     
+        try
+          aIdHTTP.Get('http://&#39;+ConnHost+'/api.php?mod=user&act=run', RespData);
+        except
+        end; 
+        Result:= True;
+        aWebStr:= Utf8ToAnsi(RespData.DataString);
+     except
+     end;
+     
+     RespData.Free;
+
+end;
+
+
+//取好友列表数据
+function GetFriendsListDB(aIdHTTP: TIdHTTP; var aWebStr: string): Boolean;
+var
+   PostData, RespData, tmpRespData: TStringStream;
+   tmpaWebStr: string;
+begin
+
+     farmTime:= DateTimeToServerTime(Now());
+     farmTime:= farmTime - Const_DelayFarmTime;      
+     //取key
+     GetFarmKey(farmTime, farmTime, farmKey);
+     PostData:= TStringStream.Create( Format(Const_FriendsRefresh, [farmTime, farmKey]) );
+     RespData:= TStringStream.Create('');
+     Result:= False;
+     
+     try
+        aIdHTTP.Request.Accept:= '*/*';
+        aIdHTTP.Request.ContentType:= 'application/x-www-form-urlencoded';
+        aIdHTTP.Request.Host:= ConnHost;
+        aIdHTTP.Request.Referer:= FlaseVersion;
+        aIdHTTP.Request.UserAgent:= 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; Embedded Web Browser from: http://bsalsa.com/; .NET CLR 2.0.50727)';
+        aIdHTTP.Request.AcceptEncoding:= 'gzip, deflate';
+        aIdHTTP.Request.URL:= '/api.php?mod=friend';
+        aIdHTTP.Request.ContentVersion:= 'x-flash-version: 10,0,22,87';
+
+        QQ_Cookie:= Format(Const_Cookie, [Cookie_pt2gguin, Cookie_uin, Cookie_skey, Cookie_ptcz,
+          Cookie_pvid, Cookie_name, Cookie_pst]);
+        aIdHTTP.Request.CustomHeaders.Clear;
+        aIdHTTP.Request.RawHeaders.Values['Cookie'] := QQ_Cookie;
+
+        try
+          aIdHTTP.Post('http://&#39;+ConnHost+'/api.php?mod=friend', PostData, RespData);
+        except
+        end;
+
+        Result:= True;
+        aWebStr:= Utf8ToAnsi(RespData.DataString);
+        if aWebStr='' then
+          aWebStr:= tmpaWebStr;
+     except
+     end;
+     
+     RespData.Free;
+     
+end;
+
+//取好友农场数据
+function GetFriendFarmLandDB(aIdHTTP: TIdHTTP; aUserID: integer; var aWebStr: string): Boolean;
+var
+   RespData: TStringStream;
+begin          
+     
+     RespData:= TStringStream.Create('');
+     Result:= False;       
+     
+     try
+        aIdHTTP.Request.Accept:= '*/*';
+        aIdHTTP.Request.ContentType:= '';
+        aIdHTTP.Request.Host:= ConnHost;
+        aIdHTTP.Request.Referer:= FlaseVersion;
+        aIdHTTP.Request.UserAgent:= 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; Embedded Web Browser from: http://bsalsa.com/; .NET CLR 2.0.50727)';
+        aIdHTTP.Request.AcceptEncoding:= 'gzip, deflate';
+        aIdHTTP.Request.URL:= '/api.php?mod=user&act=run&flag=1&ownerId='+IntToStr(aUserID);
+        aIdHTTP.Request.ContentVersion:= 'x-flash-version: 10,0,22,87';
+
+        QQ_Cookie:= Format(Const_Cookie, [Cookie_pt2gguin, Cookie_uin, Cookie_skey, Cookie_ptcz,
+          Cookie_pvid, Cookie_name, Cookie_pst]);
+        aIdHTTP.Request.CustomHeaders.Clear;
+        aIdHTTP.Request.RawHeaders.Values['Cookie'] := QQ_Cookie;
+        try
+          aIdHTTP.Get('http://&#39;+ConnHost+'/api.php?mod=user&act=run&flag=1&ownerId='+IntToStr(aUserID), RespData);
+        except
+        end;
+        Result:= True;
+        aWebStr:= Utf8ToAnsi(RespData.DataString);
+     except
+     end;
+     
+     RespData.Free;
+
+end;
+
+
+//计算等级 返回等级
+function ResultLevel(aSumExp:integer; var aNowExp, aOutLevelMaxExp: integer): integer;
+var
+   iCount, tmpExp, tmpLevelExp, tmpSumMaxExp: integer;
+begin
+     iCount:= 0;
+     //当前等级经验
+     tmpExp:= aSumExp;
+     //累计升级经验
+     tmpSumMaxExp:= CONST_OneLevelNum;
+     //当前等级升级经验
+     tmpLevelExp:= CONST_OneLevelNum;
+     
+     if tmpSumMaxExp<aSumExp then
+     begin
+          inc(iCount);
+          tmpExp:= tmpExp - tmpLevelExp;
+     end;
+     
+     //如果当前等级升级经验 小于 累计经验
+     while tmpSumMaxExp<aSumExp do
+     begin
+          tmpLevelExp:= tmpLevelExp + CONST_OneLevelNum;
+          //累计升级经验
+          tmpSumMaxExp:= tmpSumMaxExp + tmpLevelExp;
+          if tmpSumMaxExp<aSumExp then
+          begin
+          inc(iCount);
+          tmpExp:= tmpExp - tmpLevelExp;
+          end;   
+     end;
+     
+     //返回当前等级经验
+     aNowExp:= tmpExp; 
+     //返回当前等级升级经验
+     aOutLevelMaxExp:= (iCount+1)*CONST_OneLevelNum;
+     Result:= iCount;
+end;
+
+//取背包数据
+function PostBagsBD(aIdHTTP:TIdHTTP; var aWebStr: string; aType: TBagsType): boolean;
+var
+   PostData, RespData: TStringStream;
+   tmpStr: string;
+begin         
+     
+     farmTime:= DateTimeToServerTime(Now());
+     farmTime:= farmTime - Const_DelayFarmTime; 
+     //取key
+     GetFarmKey(farmTime, farmTime, farmKey);
+     PostData:= TStringStream.Create( Format(Const_farmKey, [farmTime, farmKey]) );
+     RespData:= TStringStream.Create('');
+     Result:= False;
+     
+     try
+        aIdHTTP.Request.Accept:= '*/*';
+        aIdHTTP.Request.ContentType:= 'application/x-www-form-urlencoded';
+        aIdHTTP.Request.Host:= ConnHost;
+        aIdHTTP.Request.Referer:= FlaseVersion;
+        aIdHTTP.Request.UserAgent:= 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; Embedded Web Browser from: http://bsalsa.com/; .NET CLR 2.0.50727)';
+        aIdHTTP.Request.AcceptEncoding:= 'gzip, deflate';
+        aIdHTTP.Request.ContentVersion:= 'x-flash-version: 10,0,22,87';
+
+        case aType of
+          farm_Warehouse : tmpStr:= '/api.php?mod=repertory&act=getUserCrop';
+          farm_Goods   : tmpStr:= '/api.php?mod=repertory&act=getSeedInfo';
+          farm_Bag    : tmpStr:= '/api.php?mod=repertory&act=getUserSeed';
+        end;
+        aIdHTTP.Request.URL:= tmpStr;
+
+        try
+          aIdHTTP.Post('http://&#39;+ConnHost+tmpStr, PostData, RespData);
+        except
+        end;
+        Result:= True;
+        aWebStr:= Utf8ToAnsi(RespData.DataString);
+     except
+     end;
+     
+     RespData.Free;
+
+end;
+
+
+//动作类型 0偷取 1杀虫 2浇水 3除草 4收获
+//          5松土 6种植 7全部卖出   8购买种子
+//          9查看消息   10所有动作(在PostAction中没有实现义意,不作操作)
+//
+//aActionType动作类型 是种植\卖出\购买种子还是做什么在此赋值
+//aOwnerId是自己的UserID 必须为自己的UserID
+//aPlace为地块的序号,从0开始 不用时可为0
+//aSeedID 为作物\种子的aID 种植\卖出\购买种子时用到 不用时可为0
+function PostAction(aIdHTTP: TIdHTTP; var aWebStr: string; aActionType: TActionType;
+         aOwnerId, aPlace, aSeedID: integer): boolean;
+var
+   PostData, RespData: TStringStream;
+   tmpGetStr: string;
+begin
+
+     farmTime:= DateTimeToServerTime(Now());
+     farmTime:= farmTime - Const_DelayFarmTime; 
+     //取key
+     GetFarmKey(farmTime, farmTime, farmKey);
+
+     PostData:= TStringStream.Create( Format(Const_Action, [farmKey, Cookie_name, aOwnerId, farmTime, Cookie_name, aPlace]) );
+     RespData:= TStringStream.Create('');
+     Result:= False;
+     
+     try
+        aIdHTTP.Request.Accept:= '*/*';
+        aIdHTTP.Request.ContentType:= 'application/x-www-form-urlencoded';
+        aIdHTTP.Request.Host:= ConnHost;
+        aIdHTTP.Request.Referer:= FlaseVersion;
+        aIdHTTP.Request.UserAgent:= 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; Embedded Web Browser from: http://bsalsa.com/; .NET CLR 2.0.50727)';
+        aIdHTTP.Request.AcceptEncoding:= 'gzip, deflate';
+        aIdHTTP.Request.ContentVersion:= 'x-flash-version: 10,0,22,87';
+
+        case aActionType of
+          //偷取
+          Action_scrounge : tmpGetStr:= '/api.php?mod=farmlandstatus&act=scrounge';
+          //喷虫
+          Action_spraying : begin
+          tmpGetStr:= '/api.php?mod=farmlandstatus&act=spraying';
+          PostData:= TStringStream.Create( Format('tId=0&'+Const_Action,
+          [farmKey, Cookie_name, aOwnerId, farmTime, Cookie_name, aPlace]) );
+          end;
+          //浇水
+          Action_water    : tmpGetStr:= '/api.php?mod=farmlandstatus&act=water';
+          //除草
+          Action_clearWeed: tmpGetStr:= '/api.php?mod=farmlandstatus&act=clearWeed';
+          //收获
+          Action_harvest : begin
+          tmpGetStr:= '/api.php?mod=farmlandstatus&act=harvest';
+          PostData:= TStringStream.Create( Format('place=%d&ownerId=%d&farmTime=%d&farmKey=%s',
+          [aPlace, aOwnerId, farmTime, farmKey]) );
+          end;
+          //松土
+          Action_scarify : begin
+          tmpGetStr:= '/api.php?mod=farmlandstatus&act=scarify';
+          PostData:= TStringStream.Create( Format('place=%d&ownerId=%d&farmTime=%d&farmKey=%s',
+          [aPlace, aOwnerId, farmTime, farmKey]) ); 
+          end;
+          //种植
+          Action_planting : begin
+          tmpGetStr:= '/api.php?mod=farmlandstatus&act=planting';
+          PostData:= TStringStream.Create( Format('place=%d&cId=%d&ownerId=%d&farmTime=%d&farmKey=%s',
+          [aPlace, aSeedID, aOwnerId, farmTime, farmKey]) );
+          end;
+          //卖出
+          Action_Sale:      begin 
+          tmpGetStr:= '/api.php?mod=repertory&act=sale';
+          PostData:= TStringStream.Create( Format('cId=%d&farmTime=%d&number=%d&farmKey=%s',
+          [aSeedID, farmTime, aPlace, farmKey]) );
+          end;
+
+          //全部卖出
+          Action_SaleAll : begin
+          tmpGetStr:= '/api.php?mod=repertory&act=saleAll';
+          PostData:= TStringStream.Create( Format('farmTime=%d&farmKey=%s',
+          [farmTime, farmKey]) );
+          end;
+          //买东西
+          Action_Buy      : begin
+          tmpGetStr:= '/api.php?mod=repertory&act=buySeed';
+          PostData:= TStringStream.Create( Format('number=%d&cId=%d&farmTime=%d&farmKey=%s',
+          [aPlace, aSeedID, farmTime, farmKey]) );
+          end;
+          //查看消息
+          Action_getAllInfo : begin
+          tmpGetStr:= '/api.php?mod=chat&act=getAllInfo';
+          PostData:= TStringStream.Create( Format('uId==%d&farmTime=%d&farmKey=%s',
+          [aOwnerId, farmTime, farmKey]) );
+          end;
+        end;
+
+        aIdHTTP.Request.URL:= tmpGetStr;
+        try
+          aIdHTTP.Post('http://&#39;+ConnHost+tmpGetStr, PostData, RespData);
+          if aIdHTTP.ResponseCode = 200 then
+          Result:= True;
+          aWebStr:= Utf8ToAnsi(RespData.DataString);
+        except
+        end;
+     except
+     end;
+     
+     RespData.Free;
+end;
+
+//取得farmKey
+function GetfarmKey(aInputTimeInt: Int64; var aFarmTime: int64; var aFarmKey: string): Boolean;
+var
+   tmpaIdHTTP: TIdHTTP;
+   RespData: TStringStream;
+   tmpStr: string;
+   tmpTimePos, tmpKeyPos: integer;
+begin
+     Result:= False;
+
+     afarmTime:= aInputTimeInt;
+     afarmKey:= LowerCase(Fmd5( IntToStr(afarmTime) + Copy('sdoit78sdopig7w34057', (afarmTime mod 10)+1, 20) ));
+     
+     Result:= True;
+end;
+
+//写日志文件
+procedure WriteLog(aQQnum, aLogStr, aAppPah: String);
+var
+   F : TextFile;
+   tmpStr: string;
+begin
+     tmpStr:= aAppPah + '日志\';
+     if not DirectoryExists(tmpStr) then
+        if not CreateDir(tmpStr) then
+        begin
+          //Application.ProcessMessages;
+        end;
+
+     tmpStr:= tmpStr+ aQQnum + '\';
+     if not DirectoryExists(tmpStr) then
+        if not CreateDir(tmpStr) then
+        begin
+          //Application.ProcessMessages;
+        end;
+
+     tmpStr:= tmpStr+FormatDateTime('YYYYMM', Date())+'\';
+     if not DirectoryExists(tmpStr) then
+        if not CreateDir(tmpStr) then
+        begin
+          //Application.ProcessMessages;
+        end;
+
+     tmpStr:= tmpStr+FormatDateTime('YYYYMMDD', Date())+'.Log';
+     AssignFile(F, tmpStr);
+     if FileExists(tmpStr) then
+        Append(F)
+     else
+        ReWrite(F);
+        
+     Writeln(F, aLogStr);
+     CloseFile(F);
+end;
+
+
+initialization
+   DelayedDpikeInt:= 0; 
+   QQ_ServerTime:= DateTimeToServerTime(Now());
+   Loc_ServerTime:= QQ_ServerTime;
+   
+end.
