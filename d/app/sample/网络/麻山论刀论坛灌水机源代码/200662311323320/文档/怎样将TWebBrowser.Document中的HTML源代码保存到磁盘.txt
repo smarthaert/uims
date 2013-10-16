@@ -1,0 +1,39 @@
+问题提出/摘要:
+怎样将TWebBrowser.Document中的HTML源代码保存到磁盘? -- 从WebBrowser.Document中获取HTML源代码. 
+ 
+
+回答:
+  TWebBrowser.Document实现了IPersistStreamInit接口，此接口提供了一个Save()方法。你所需要了解的是如何使用这个方法，通常是与实现了IStream接口的对象配合使用。我们可以简单地使用TStreamAdapter来达到这个目的。
+  
+  注意IPersistStreamInit和IStream接口是在ActiveX单元中声明的。
+  
+  以下是代码：
+  
+  procedure TForm1.SaveHTMLSourceToFile(const FileName: string; 
+    WB: TWebBrowser); 
+  var 
+    PersistStream: IPersistStreamInit; 
+    FileStream: TFileStream; 
+    Stream: IStream; 
+    SaveResult: HRESULT; 
+  begin 
+    PersistStream := WB.Document as IPersistStreamInit; 
+    FileStream := TFileStream.Create(FileName, fmCreate); 
+    try 
+      Stream := TStreamAdapter.Create(FileStream, soReference) as IStream; 
+      SaveResult := PersistStream.Save(Stream, True); 
+      if FAILED(SaveResult) then 
+        MessageBox(Handle, 'Fail to save HTML source', 'Error', 0); 
+    finally 
+      { we are passing soReference in TStreamAdapter constructor, 
+        it is our responsibility to destroy the TFileStream object. } 
+      FileStream.Free; 
+    end; 
+  end; 
+  
+  pocedure TForm1.Button1Click(Sender: TObject); 
+  begin 
+    if SaveDialog1.Execute then 
+      SaveHTMLSourceToFile(SaveDialog1.FileName, WebBrowser1); 
+  end; 
+ 

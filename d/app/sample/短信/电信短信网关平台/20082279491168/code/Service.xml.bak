@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <Service>
+                 <KF><!--客服
+                          -->
+                        <SPNumber>1186185</SPNumber>
+                        <Extend>5</Extend>	<!--按特服号模糊匹配,指令模糊匹配 -->	
+                        <SequenceID>2411</SequenceID> 
+                        <Instructor>185</Instructor>                         
+                </KF>
+				<OY><!--奥运
+                          -->
+                        <SPNumber>1186185</SPNumber>
+                        <Extend>2</Extend>	<!--按特服号精确匹配,指令模糊匹配 -->	
+                        <SequenceID>2404</SequenceID> 
+                        <Instructor>7</Instructor>                         
+                </OY> 
+				<OY>
+                        <SPNumber>1186185</SPNumber>
+                        <Extend>2</Extend>	
+                        <SequenceID>2404</SequenceID> 
+                        <Instructor>PH</Instructor>                         
+                </OY>  
+				<OY>
+                        <SPNumber>1186185</SPNumber>
+                        <Extend>2</Extend>	
+                        <SequenceID>2404</SequenceID> 
+                        <Instructor>FS</Instructor>                         
+                </OY> 
+				<OY>
+                        <SPNumber>1186185</SPNumber>
+                        <Extend>2</Extend>	
+                        <SequenceID>2404</SequenceID> 
+                        <Instructor>OY</Instructor>                         
+                </OY> 
+                <OY>
+                        <SPNumber>1186185</SPNumber>
+                        <Extend>3</Extend>	<!--特符号指令精确匹配 -->	
+                        <SequenceID>2404</SequenceID> 
+                        <Instructor>DJ</Instructor> <!--定购指令 -->
+						<Enter>J</Enter>           <!-- 二次确认指令,如果没有确认指令,请填定购指令-->
+						<QXInstructor>QXD</QXInstructor> <!--取消指令 -->
+                </OY>	
+				<OY>
+                        <SPNumber>1186185</SPNumber>
+                        <Extend>3</Extend>		
+                        <SequenceID>2404</SequenceID> 
+                        <Instructor>DH</Instructor>  
+						<Enter>H</Enter>           
+						<QXInstructor>QXH</QXInstructor>  
+                </OY>
+				 <OY>
+                        <SPNumber>1186185</SPNumber>
+                        <Extend>3</Extend>		
+                        <SequenceID>2404</SequenceID> 
+                        <Instructor>DKX</Instructor>  
+						<Enter>KX</Enter>           
+						<QXInstructor>QXKX</QXInstructor> 
+                </OY>
+                <XYCQ><!--一星语传情指令
+                          -->
+                        <SPNumber>1186185</SPNumber>
+                        <Extend>3</Extend>		
+                        <SequenceID>2467</SequenceID> 
+                        <Instructor>CQ</Instructor> <!--定购指令 -->
+						<Enter>Q1</Enter>           <!-- 二次确认指令-->
+						<QXInstructor>QXCQ</QXInstructor> <!--取消指令 -->
+                </XYCQ>	
+				<OY>
+                        <SPNumber>1186185</SPNumber>
+                        <Extend>2</Extend>	
+                        <SequenceID>2404</SequenceID> 
+                        <Instructor>C</Instructor>                         
+                </OY>
+		        <SSXY><!--一神算星语指令
+                          -->
+                        <SPNumber>1186185</SPNumber>
+                        <Extend>3</Extend>		
+                        <SequenceID>2468</SequenceID> 
+                        <Instructor>SM</Instructor> 
+						<Enter>S</Enter>
+						<QXInstructor>QXSM</QXInstructor>
+                </SSXY>
+				<XYZB><!--一星语占卜指令
+                          -->
+                        <SPNumber>1186185</SPNumber>
+                        <Extend>3</Extend>		
+                        <SequenceID>2465</SequenceID> 
+                        <Instructor>JB</Instructor> 
+						<Enter>B</Enter>
+						<QXInstructor>QXJB</QXInstructor> 
+                </XYZB>
+                
+				<QX><!--通用指令0000/00000/Q/Qn(n=1..2..)/'?' '？'/1186185(特服号码) 
+                          -->
+                        <SPNumber>1186185</SPNumber>
+                        <Extend>4</Extend>	<!--通用指令 -->
+						<Instructor40>0000</Instructor40>
+                        <Instructor50>00000</Instructor50>
+						<InstructorQ>Q</InstructorQ>
+						<InstructorNO>1186185</InstructorNO>
+                        <InstructorHelp>?</InstructorHelp>
+                        <SequenceID>2400</SequenceID>
+                </QX>             
+
+				<WH><!-- 外汇
+                    -->
+		  				<SPNumber>11861857</SPNumber>
+		  				<Extend>0</Extend><!--按特服号精确匹配没有指令匹配 -->			
+                        <SequenceID>2410</SequenceID>
+				</WH>		
+				<FZWB><!-- 福州晚报
+					 -->
+						<SPNumber>11861850</SPNumber>
+						<Extend>0</Extend>
+						<SequenceID>2401</SequenceID>
+				</FZWB>    		
+				<FC><!-- 房产 -->
+					    <SPNumber>11861855</SPNumber>
+						<Extend>0</Extend>
+						<SequenceID>2402</SequenceID>
+				</FC>		
+				<HXRC><!-- 人才 -->
+					<SPNumber>11861851</SPNumber>
+					<Extend>0</Extend>
+					<SequenceID>2403</SequenceID>
+				</HXRC>
+				<HXCJDB><!--海峡财经导报 -->
+					 <SPNumber>118618587</SPNumber>
+					 <Extend>0</Extend>
+					 <SequenceID>2487</SequenceID>
+				</HXCJDB>
+				<XYCQ><!--一星语传情
+								  -->
+					 <SPNumber>118618567</SPNumber>
+					 <Extend>0</Extend>		
+					 <SequenceID>2467</SequenceID>                         
+				</XYCQ>
+				<SSXY><!--一神算星语指令
+								  -->
+					 <SPNumber>118618568</SPNumber>
+					 <Extend>0</Extend>		
+					 <SequenceID>2468</SequenceID>                        
+				</SSXY>
+				<XYZB><!--一星语占卜指令
+								  -->
+					<SPNumber>118618565</SPNumber>
+					<Extend>0</Extend>		
+					<SequenceID>2465</SequenceID>                        
+				</XYZB>
+				<Chat><!-- 聊天 -->
+					<SPNumber>118618561</SPNumber>
+					<Extend>1</Extend><!--按特服号模糊匹配 -->
+					<SequenceID>2406</SequenceID>
+				</Chat>
+	</Service>
+
+

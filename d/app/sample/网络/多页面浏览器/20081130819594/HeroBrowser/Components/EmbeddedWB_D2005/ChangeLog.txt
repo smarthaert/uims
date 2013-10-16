@@ -1,0 +1,117 @@
+Version 5
+===========
+
+****UPDATED VERSION THAT WAS ADAPTED TO DELPHI 7 TOO ************ 
+
+(I did several test's and it looks like its all working in D7 but i can not guarrenty nothing
+I am starting a new project now, so i have very limited time, sorry.
+I will be back to it on my spair time.)
+I hope that also for D8 but I can't test it.)
+
+*Wrote a brand new component "Export Favorites".
+*Wrote a brand new component "Import Favorites".
+
+*Added  all the possible options to the Export Favorites component
+*Added all the possible options to the Import Favorites component.
+*Added User warnings (Exceptions) to the new components.
+*Added a dcr file for the new components.
+*Added a component for TMapi.. (Enable to send mail with atachments, recipients and so on).
+*Added a procedure to the EmbeddedWB "AddToFavorites"(URL, Title: string)(it will auto convert the values to the proper oleVariants)
+*Added a procedure to the EmbeddedWB "CheckOnlineStatus": Boolean; (Best use is in onCreate of your form)
+*Added a procedure to the EmbeddedWB "CreateADesktopShortcut". (True internet shortcut including the favicon);
+*Added a procedure to the EmbeddedWB "CreateNewMail".
+*Added a procedure to the EmbeddedWB "GoAboutBlank".(Will open a new blank page and mask the address to "About:Blank").
+*Added a procedure to the EmbeddedWB "GoDownloadFile(URL: string)".(Will download a file using the browser with all the flags disable).
+*Added a procedure to the EmbeddedWB "GoDownloadMaskedFile(SourceFile, TargetFile: string ;Notify: boolean);".(Will download a file with/without a user notice(Notify)).
+*Added a procedure to the EmbeddedWB "SendPageInMail(FileName: string)" (As an attachment)I can expend it with all the mail options as strings if you like.
+*Added a property to the FavoritesTreeView to linkage the Export Favorites.
+*Added a property to the FavoritesTreeView to linkage the Import Favorites.
+*Added a procedure to the FavoritesTreeView to auto open the Export Favorites.
+*Added a procedure to the FavoritesTreeView to auto open the Import Favorites.
+*Added to the demo, the options and uses of the GetSpecialFolderPath.
+*Added a proper credit file.
+
+*Changed ShowContextMenu to obtain all possible cases.
+*Changed the procedure "MailTheUrl" to "SendURLInMail"
+*changed the EmbeddedeWB to be used in d7 too.
+*changed the EmbeddedeWB demo to be used in d7 too.
+*changed the EmbeddedeWB pack to be used in d7 too.
+*Fixed a bug linked to FavoeiteTreeView Import favorite node.
+*Fixed a bug linked to FavoeiteTreeView Export favorite node.
+*Fixed the miss spell error in the History Menu position property.
+*Fixed a bug linked to the key's stroke and d9;
+*Fixed a bug linked to windowsUpdate web site and the userAgent (I hope);
+*Fixed a bug in the FavoritesTreeView linked to "add folders";
+*Fixed some minor functions in thr TMapi.
+
+*Updated the EmbeddedWB demo with all the above.
+
+
+Version 4
+===========
+*Fixed the bug that made the History and Favorites menus to crash on exit.
+*Fixed the old OpenAddressBook bug.
+*Fixed the old OpenDialog bug.
+*Fixed the old Print bug.
+*Fixed the old PrintPreview bug.
+*Fixed the old PrintSetup bug.
+
+*Added a function "GetCachedFileFromURL".(Get as a string the path to the site in the cache.)
+*Added a function "GetCookie".(Return the cookie as a string (If Exist)).
+*Added a function "SetCharactersSet".(Assign a new charters set using Refresh2 level.)
+*Added a function "GetCookiessPath" (Return a string with the path).
+*Added a function "GetFavoritesPath" (Return a string with the path).
+*Added a function "GetHistoryPath" (Return a string with the path).
+*Added a function DocumentLoaded: Boolean; (Use it to pverent crash on checks).
+*Added a function GetIEHomePage (Return IE Homepage as a string).
+*Added a function GetSpecialFolderPath(CallerHandle: THandle; CSIDL: Integer): PChar;
+*Added a function OpenEudoraMail: Boolean;
+*Added a function OpenGoogleMail: Boolean;
+*Added a function OpenHotmailMail: Boolean;
+*Added a function OpenOutlookExpressMail: Boolean;
+*Added a function OpenOutlookMail: Boolean;
+*Added a function OpenYahooMail: Boolean;
+*Added a function URLFromFavorites: string;
+*Added a function URLFromHistory: string;
+*Added a function VariantIsObject(const value: OleVariant): boolean;
+*Added a procedure "Cut".
+*Added a procedure "Paste".
+*Added a procedure "ShowOrgenizeFavorites" (Show organize favorites);
+*Added a procedure "ScrolToBottom".
+*Added a procedure "ScrolToPosition"(X, Y : integer).
+*Added a procedure "ScrolToTop".
+*Added a procedure "SearchInGoogle" (Using a string as an input query for google).
+*Added a procedure name "SaveImagesDialog" that Save all the page images to a selected folder.
+*Added a procedure name "SavePageTextDialog" that save the current page text only using a dialog to a file.
+*Added a procedure name "SearchAndHighlightAll" that Search And Highlight All search terms in 1 key press.
+*Added a procedure name "ViewPageSourceText" (That show the page text only without the html).
+*Added a procedure OpenOtherWBFavorites; (Will open local favorite file of mozila / firefox / opera and so on
+*Added a procedure SetNewHomePage('Homegage'):string; (will set a new Homepage and will display a message).
+*Added BrowserForFolder unit ("SHBrowseForFolder" wrapper) with add a "New Folder" button.
+*Added Components TextIEParser.
+*Added demo for the favorites and history menu's and Tree/ListView.(1 line of code to create the menu's)
+*Added images to all the componnents.
+*Added linkage from the HistoryListView to the EmbeddedWB (Auto navigation click). 
+*Added/Fixed a new procedure name "Work offline (With a user "internet state" warning).
+*Added/Fixed a new procedure name "Work Online  (With a user "internet state" warning).
+*Added a boolean property "DisableRightClickMenu" (FINALLY!! after I saw 100000000 help requests on the web);
+*Added a boolean property "HideBorders"
+*Added a boolean property "HideScrollBars"
+
+*Changed HistoryMenu & FavoritesMenu property from menupos to MenuPosition.
+*Changed the EmbeddedWB function from ShowAddressBook to OpenAddressBook.
+*Changed the EmbeddedWB function from ShowCalender to OpenCalender.
+*Changed the EmbeddedWB function from ShowNewsClient to OpenNewsClient.
+*Changed the EmbeddedWB property from find to ShowFindDialog.
+*Changed the EmbeddedWB property from Options to ShowInternetOptions.
+*Changed the EmbeddedWB property from properties to ShowPageProperties.
+*Changed the EmbeddedWB property from viewsource to ViewPageSourceHtml.
+
+*Code cleaning in the HistoryMenu & FavoritesMenu and in the embeddedWB.
+
+*Removed the old GetOffline.. Procedure. 
+*Removed the old ShowMailClient.
+
+Created a demo for all the above :)
+
+

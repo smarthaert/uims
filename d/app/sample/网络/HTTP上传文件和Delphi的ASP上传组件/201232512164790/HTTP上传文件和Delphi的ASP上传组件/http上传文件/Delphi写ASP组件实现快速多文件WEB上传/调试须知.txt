@@ -1,0 +1,7 @@
+调试步骤
+ 1 regsvr32 FileUpload.dll  注册组件
+ 2 把web demo下的文件拷贝到IIS或PWS的发布目录下
+ 3 在浏览器上打开发布的demo.htm页面
+
+笔者调试环境
+  Windows 2000 , Delphi 5.0

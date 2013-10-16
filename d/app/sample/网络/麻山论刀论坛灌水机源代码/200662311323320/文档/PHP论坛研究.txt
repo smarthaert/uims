@@ -1,0 +1,146 @@
+Discuz! 4.0.0RC2研究:
+注册:
+POST /register.php?regsubmit=yes HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Referer: http://www.discuz.net/register.php
+Accept-Language: zh-cn
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: www.discuz.net
+Content-Length: 388
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: cdb_sid=bwc39X
+
+formhash=d20f5096&referer=index.php%3Fsid%3Dbwc39X&username=kcgiiyflra&password=kcgiiyflra&password2=kcgiiyflra&email=gqbavvbx@493.com&questionid=0&answer=&field_1new=&gendernew=0&year=&month=&day=&locationnew=&site=&qq=&icq=&yahoo=&msn=&bio=&styleidnew=&tppnew=0&pppnew=0&timeoffsetnew=9999&timeformatnew=0&dateformatnew=0&cdateformatnew=&pmsoundnew=1&showemail=1&newsletter=1&signature=
+
+打开首页:
+GET /index.php?sid=bwc39X HTTP/1.1..Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*..Accept-Language: zh-cn..Accept-Encoding: gzip, deflate..User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)..Host: www.discuz.net..Connection: Keep-Alive..Cookie: cdb_sid=bwc39X...
+
+不带INDEX.PHP时是这样的:
+GET / HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Accept-Language: zh-cn
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: www.discuz.net
+Connection: Keep-Alive
+Cookie: cdb_sid=T8fdRS; cdb_sid=bwc39X
+
+发新帖
+POST /post.php?action=newthread&fid=48&topicsubmit=yes HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Referer: http://www.discuz.net/post.php?action=newthread&fid=48&typeid=0
+Accept-Language: zh-cn
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: www.discuz.net
+Content-Length: 207
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: cdb_sid=vhFksX; cdb_cookietime=315360000; cdb_auth=AlJTV1QCUl1UAARQX1JRVFFWAFANAlwGBgMLVQACXQNoPwRcUAABDw; cdb_visitedfid=48D10D23; cdb_sid=bwc39X
+
+formhash=ae2108f6&isblog=&subject=新帖标题&iconid=0&mode=2&font=&size=&color=&message=新帖内容
+
+打开帖子
+GET /viewthread.php?tid=111584 HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Accept-Language: zh-cn
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: www.discuz.net
+Connection: Keep-Alive
+Cookie: cdb_sid=bwEkTh; cdb_cookietime=315360000; cdb_auth=AlJTV1QCUl1UAARQX1JRVFFWAFANAlwGBgMLVQACXQNoPwRcUAABDw; cdb_visitedfid=48D10D23; cdb_sid=bwc39X
+.
+
+回复帖子
+地址例子:http://www.discuz.net/post.php?action=reply&fid=48&tid=110823
+POST /post.php?action=reply&fid=48&tid=111584&replysubmit=yes HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Referer: http://www.discuz.net/post.php?action=reply&fid=48&tid=111584
+Accept-Language: zh-cn
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: www.discuz.net
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: cdb_sid=9v8nMB; cdb_cookietime=315360000; cdb_auth=AlJTV1QCUl1UAARQX1JRVFFWAFANAlwGBgMLVQACXQNoPwRcUAABDw; cdb_visitedfid=48D10D23; cdb_oldtopics=D111584D; cdb_fid48=1111471971; cdb_sid=bwc39X
+
+formhash=ae2108f6&subject=&mode=2&font=&size=&color=&message=回复内容
+
+
+
+
+
+
+
+
+
+以下是PHPWind的.
+用IE登录:
+POST /login.php? HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Referer: http://www.phpwind.net/login.php
+Accept-Language: zh-cn
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: www.phpwind.net
+Content-Length: 141
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: ol_offset=16393; ck_num=3c58f3cde860ec2ba946e31fcdb6e390; lastvisit=2%091109606992%09%2Flogin.php
+
+loginuser=fkjqqwhmid&loginpwd=fkjqqwhmid&hideid=0&cktime=2592000&submit=%CC%E1+%BD%BB&jumpurl=http%3A%2F%2Fwww.phpwind.net%2Findex.php&step=2
+
+
+打开首页:
+GET /index.php HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Referer: http://www.phpwind.net/login.php
+Accept-Language: zh-cn
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: www.phpwind.net
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: ol_offset=16393; ck_num=3c58f3cde860ec2ba946e31fcdb6e390; winduid=183820; windpwd=7aa5ddc7729fdcb7cb996ec94caf86a9
+..
+
+注册帐号:
+POST /cn/register.php? HTTP/1.1
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*
+Referer: http://bbs.green-stone.org/cn/register.php
+Accept-Language: zh-cn
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322)
+Host: bbs.green-stone.org
+Content-Length: 265
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: lastpath=C%3A%2Fcn%2Fregister.php; lastfid=24; lastvisit=1109607454; ol_offset=2231
+
+regname=kcgiiyflra
+regpwd=kcgiiyflra
+regpwdrepeat=kcgiiyflra
+regemail=gqbavvbx@493.com
+regemailtoall=yes
+regsex=none
+regbirthyear=
+regbirthmonth=
+regbirthday=
+regoicq=
+reghomepage=
+regicon=
+regsign=
+regfrom=
+regintroduce=
+regifemail=1
+step=2
+regsubmit=提交
+

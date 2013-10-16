@@ -1,0 +1,138 @@
+ 
+      --------------------------------------------------------
+       
+               Almediadev Visual Component Library
+                                for 
+                    Borland Delphi and C++ Builder
+
+       Component:  DynamicSkinForm
+       Author:     Almediadev
+       Email:      support@almdev.com
+       Internet:   http://www.almdev.com
+      --------------------------------------------------------
+
+                 (c) Copyright Almediadev, 2000-2002
+                        All rights reserved
+
+      --------------------------------------------------------
+
+          LICENSE AGREEMENT FOR ALMEDIADEV COMPONENTS
+          ===============================================
+
+This software is protected by copyright law and international copyright treaty.  
+Therefore, you must treat this software just like a book, except that you 
+may copy it onto a computer to be used and you may make archive copies of 
+the software for the sole purpose of backing up our software and protecting 
+your investment from loss.  The software may be moved from one computer 
+to another, so long as there is no possibility of it being used by more 
+than one person at a time.
+
+ADDING USERS
+============
+
+You may add users by paying for a separate software package for each user you 
+wish to add.  You may also add users by purchasing a site-license, so long as 
+the number of persons who are able to use the software at one time is not more 
+than the number of authorized users specified in our package or license.
+
+TRANSFERRING THE SOFTWARE
+=========================
+
+You may transfer all of your rights to use the software to another person, 
+provided that you transfer to that person all of the software, diskettes 
+(if applicable), and documentation provided in this package (including this 
+statement), and transfer or destroy all copies in any form.  Remember, once 
+you transfer the software, you no longer have any right to use it, and the 
+person to whom it is transferred may use it only in accordance with the 
+copyright law, international treaty, and this statement.
+
+If you have purchased an upgrade version of the software, it constitutes a 
+single product with the Almediadev software that you upgraded.  
+For example, the upgrade and the software that you upgraded cannot both be 
+available for use by two different people at the same time, and cannot be 
+transferred separately, without written permission from Almediadev.
+
+Except as provided in this statement, you may not transfer, rent, lease, 
+lend, copy, modify, translate, sublicense, time-share, or electronically 
+transmit or receive the software, media, or documentation.
+
+LIMITED WARRANTY
+================
+
+The entire and exclusive liability and remedy for breach of this limited 
+warranty shall be limited to replacement of defective media or documentation 
+and shall not include or extend to any claim for or right to recover any other 
+damages, including but not limited to, loss of profit, data, or use of the 
+software or special, incidental or consequential damages, or other similar 
+claims, even if Almediadev has been specifically advised of 
+the possibility of such damages.  In no event will Almediadev liability 
+for any damages to you or any other person ever exceed the lower of the list 
+price or the actual price paid for the package or the license to use the 
+software, regardless of the form of the claim.
+
+ALMEDIADEV SPECIFICALLY DISCLAIMS ALL OTHER WARRANTIES, REPRESENTATIONS, 
+OR CONDITIONS, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO, ANY IMPLIED 
+WARRANTY OR CONDITION OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.  
+ALL OTHER IMPLIED TERMS ARE EXCLUDED.
+
+Specifically, Almediadev makes no representation or warranty that the 
+software or documentation are "error-free," or meet any user's particular 
+standards, requirements, or needs.  In all events, any implied warranty, 
+representation, condition, or other term is limited to the electronic 
+distribution file(s) and online documentation and is limited to the 
+60-day duration of the limited warranty.
+
+Almediadev is not responsible for, and does not make any representation, 
+warranty, or condition concerning product, media, software, or documentation 
+not manufactured or supplied by Almediadev, such as 
+third-parties' programs that are designed using Almediadev software or 
+which include Almediadev programs or files.
+
+GENERAL TERMS THAT APPLY TO COMPILED PROGRAMS
+=============================================
+
+The license granted in this statement for you to create your own compiled 
+programs and distribute your programs using the software in this package is 
+subject to all of the following conditions:
+
+1. All copies of the programs you create must include a valid copyright 
+   notice, or Almediadev' copyright notice on your product 
+   label.
+
+2. You may not remove or alter any Almediadev' copyright, trademark, or 
+   other proprietary rights notice contained in any portion of Almediadev 
+   units, source code, or other files that bear such a notice.
+
+3. Almediadev provides no warranty at all to any person, other than the 
+   Limited Warranty provided to the original purchaser of this package.
+
+4. You will remain solely responsible to anyone receiving your programs for 
+   support, service, upgrades, or technical or other assistance, and such 
+   recipients will have no right to contact Almediadev for 
+   such services or assistance.
+
+5. You will indemnify, hold harmless, and defend Almediadev from and 
+   against any claims or lawsuits, including attorney's fees, that arise 
+   or result from the use, reproduction, or distribution of your programs.
+
+6. Your programs must be written using a licensed, registered copy of this 
+   Almediadev' product.
+
+7. You may not use Almediadev' name, logo, or trademarks to market 
+   your programs, except to state that your program was written using 
+   this Almediadev' software.
+
+PROVISIONS FOR VISUAL COMPONENT LIBRARY CLASSES
+===============================================
+
+Almediadev grants you a non-exclusive royalty-free right to compile, 
+reproduce, and distribute any new software programs created using the 
+components included in this package provided that you: 
+
+(a) distribute the components only in compiled executable programs; 
+(b) do not use any part of the source code of the components to build 
+    any other components for public distribution or commercial sale; 
+(c) do not use any of the components as an object-oriented ancestor to 
+    build any other components (through inheritance) for public distribution 
+    or commercial sale.
+

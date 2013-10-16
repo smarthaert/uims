@@ -1,0 +1,2 @@
+本目录中的CrackCaptchaAPI.dll和CrackCaptchaClient.dll请使用新的SDK中的C_CPP\BIN_X86（32位应用）或C_CPP\BIN_X64（64位应用）下的对应文件。
+SDK下载地址：http://www.dama2.com/download/sdk/dama2_sdk_1.0.zip

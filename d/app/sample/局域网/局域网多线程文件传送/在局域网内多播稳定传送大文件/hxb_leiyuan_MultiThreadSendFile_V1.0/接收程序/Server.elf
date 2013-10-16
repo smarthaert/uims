@@ -1,0 +1,474 @@
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Wed, 16 Mar 2005 00:54:42 +0800
+  1.2 Name/Description: Server.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+----------------------------------------------
+  2.1 Date   : Wed, 16 Mar 2005 00:55:04 +0800
+  2.2 Address: 0047D5DF
+  2.3 Module : Server.exe
+  2.4 Type   : EIdNoExecuteSpecified
+  2.5 Message: No execute handler found.
+
+Active Controls:
+--------------------------------
+  3.1 Form Class   : TEditWindow
+  3.2 Form Text    : uClient.pas
+  3.3 Control Class: 
+  3.4 Control Text : 
+
+Computer:
+---------------------------------
+  4.1 Name        : JANE
+  4.2 User        : Administrator
+  4.3 Total Memory: 126 Mb
+  4.4 Free Memory : 13 Mb
+  4.5 Total Disk  : 4.33 Gb
+  4.6 Free Disk   : 2.43 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+-----------------------------------------------------------------------------
+|Address |Module    |Unit           |Class            |Procedure/Method|Line|
+-----------------------------------------------------------------------------
+|0047D5DF|Server.exe|IdTCPServer.pas|TIdPeerThread    |Run             |893 |
+|0047A8C6|Server.exe|IdThread.pas   |TIdThread        |Execute         |208 |
+|0047AB73|Server.exe|IdThread.pas   |TIdThread        |Start           |283 |
+|0047D376|Server.exe|IdTCPServer.pas|TIdListenerThread|Run             |801 |
+|0047A8C6|Server.exe|IdThread.pas   |TIdThread        |Execute         |208 |
+-----------------------------------------------------------------------------
+
+Modules Information:
+-----------------------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name          |Description                                     |Version       |Size  |Path                                    |
+-----------------------------------------------------------------------------------------------------------------------------------------
+|00400000|Server.exe    |                                                |              |620032|G:\delphi\projects\新建文件夹 (4)\Server|
+|010A0000|msctf.dll.mui |MSUIM Server DLL                                |5.1.2409.8    |3584  |C:\WINNT\mui\fallback\0804              |
+|010B0000|KMailFun.dll  |KMailFun                                        |2002.9.7.8    |23040 |C:\KAV2003                              |
+|011E0000|kerne132.dll  |                                                |              |58368 |C:\WINNT                                |
+|01320000|ct2dll.dll    |                                                |              |19456 |C:\WINNT\system32                       |
+|01450000|interapi32.dll|                                                |              |49664 |C:\WINNT\system32                       |
+|10000000|ws2_64.dll    |                                                |              |40960 |C:\WINNT\system32                       |
+|60000000|MSCTF.dll     |MSUIM Server DLL                                |5.1.2409.8    |279040|C:\WINNT\system32                       |
+|687E0000|PSAPI.DLL     |Process Status Helper                           |5.0.2134.1    |28944 |C:\WINNT\system32                       |
+|74F50000|msafd.dll     |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816|C:\WINNT\system32                       |
+|74F90000|wshtcpip.dll  |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680 |C:\WINNT\System32                       |
+|74FA0000|WS2HELP.DLL   |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192 |C:\WINNT\system32                       |
+|74FB0000|WS2_32.DLL    |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904 |C:\WINNT\system32                       |
+|74FD0000|wsock32.dll   |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920 |C:\WINNT\system32                       |
+|75950000|LZ32.DLL      |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000 |C:\WINNT\system32                       |
+|75E00000|IMM32.DLL     |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528 |C:\WINNT\system32                       |
+|76BC0000|WININET.dll   |Internet Extensions for Win32                   |5.0.3700.6713 |466704|C:\WINNT\system32                       |
+|777E0000|version.dll   |Version Checking and File Installation Libraries|5.0.2195.6623 |16144 |C:\WINNT\system32                       |
+|77990000|oleaut32.dll  |                                                |2.40.4522.0   |626960|C:\WINNT\system32                       |
+|77A30000|ole32.dll     |Microsoft OLE for Windows                       |5.0.2195.6692 |996112|C:\WINNT\system32                       |
+|77B30000|comctl32.dll  |Common Controls Library                         |5.81.3502.6601|550672|C:\WINNT\system32                       |
+|77C50000|SHLWAPI.DLL   |Shell Light-weight Utility Library              |5.0.3502.6601 |289552|C:\WINNT\system32                       |
+|77DF0000|user32.dll    |Windows 2000 USER API Client DLL                |5.0.2195.6688 |403216|C:\WINNT\system32                       |
+|77E60000|kernel32.dll  |Windows NT BASE API Client DLL                  |5.0.2195.6688 |871696|C:\WINNT\system32                       |
+|77F40000|GDI32.DLL     |GDI Client DLL                                  |5.0.2195.6660 |233744|C:\WINNT\system32                       |
+|77F80000|ntdll.dll     |NT Layer DLL                                    |5.0.2195.6685 |491792|C:\WINNT\system32                       |
+|78000000|MSVCRT.DLL    |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773|C:\WINNT\system32                       |
+|786F0000|RPCRT4.DLL    |Remote Procedure Call Runtime                   |5.0.2195.6701 |454416|C:\WINNT\system32                       |
+|796D0000|advapi32.dll  |Advanced Windows 32 Base API                    |5.0.2195.6710 |387344|C:\WINNT\system32                       |
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0166FED4: 0166FEE0   0047D5DF: E8 68 6E F8 FF 33 C0 5A 59 59 64 89 10 E9 88 00  .hn..3.ZYYd.....
+0166FED8: 0047D5F1   0047D5EF: 00 00 E9 D2 6B F8 FF 03 00 00 00 30 12 47 00 12  ....k......0.G..
+0166FEDC: 0166FF0C   0047D5FF: D6 47 00 9C 08 47 00 44 D6 47 00 38 08 47 00 5D  .G...G.D.G.8.G.]
+0166FEE0: 0166FEEC   0047D60F: D6 47 00 89 C3 8B 45 FC 8B 40 68 8B 80 B8 00 00  .G....E..@h.....
+0166FEE4: 004044BF   0047D61F: 00 8B CB 8B 55 FC E8 66 F3 FF FF 8B 43 0C 05 BB  ....U..f....C...
+0166FEE8: 0166FF0C   0047D62F: D8 FF FF 83 E8 02 73 3D 8B 45 FC 8B 40 68 8B 10  ......s=.E..@h..
+0166FEEC: 0166FF14   0047D63F: FF 52 5C EB 30 8B 55 FC 8B 52 68 8B 92 B8 00 00  .R\.0.U..Rh.....
+0166FEF0: 00404380   0047D64F: 00 8B C8 8B 45 FC 92 E8 35 F3 FF FF EB 17 8B 55  ....E...5......U
+0166FEF4: 0166FF0C   0047D65F: FC 8B 52 68 8B 92 B8 00 00 00 8B C8 8B 45 FC 92  ..Rh.........E..
+0166FEF8: 000000D8   0047D66F: E8 1C F3 FF FF E8 4F 6E F8 FF 8B 45 FC 8B 40 68  ......On...E..@h
+0166FEFC: 00000000   0047D67F: 8B 10 FF 52 54 84 C0 75 08 8B 45 FC 8B 10 FF 52  ...RT..u..E....R
+0166FF00: 00D223F8   0047D68F: 30 33 C0 5A 59 59 64 89 10 EB 32 E9 29 6B F8 FF  03.ZYYd...2.)k..
+0166FF04: 00000000   0047D69F: 01 00 00 00 B8 7F 40 00 AB D6 47 00 8B 55 FC 8B  ......@...G..U..
+0166FF08: 00D223F8   0047D6AF: 52 68 8B 92 B8 00 00 00 8B C8 8B 45 FC 92 E8 CE  Rh.........E....
+0166FF0C: 0166FF60   0047D6BF: F2 FF FF E8 AD 6D F8 FF E8 FC 6D F8 FF 33 C0 5A  .....m....m..3.Z
+0166FF10: 0047A8C9   0047D6CF: 59 59 64 89 10 68 E9 D6 47 00 8D 45 F8 E8 FB 73  YYd..h..G..E...s
+
+
+
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sat, 19 Mar 2005 18:20:40 +0800
+  1.2 Name/Description: Server.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+--------------------------------------------------------------------------------------------------------------------
+  2.1 Date   : Sat, 19 Mar 2005 20:55:55 +0800
+  2.2 Address: 004181A8
+  2.3 Module : Server.exe
+  2.4 Type   : EFCreateError
+  2.5 Message: Cannot create file "D:\Server\php-4.3.1-Win32.zip". 进程无法访问文件，因为另一个程序正在使用此文件。.
+
+Active Controls:
+----------------------------------------------------
+  3.1 Form Class   : TMessageForm
+  3.2 Form Text    : Debugger Exception Notification
+  3.3 Control Class: 
+  3.4 Control Text : 
+
+Computer:
+----------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 30 Mb
+  4.5 Total Disk  : 10.32 Gb
+  4.6 Free Disk   : 5.25 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+-----------------------------------------------------------------------------------------
+|Address |Module    |Unit           |Class            |Procedure/Method            |Line|
+-----------------------------------------------------------------------------------------
+|0047E130|Server.exe|uServer.pas    |TfmServer        |IdTCPServer1Execute         |81  |
+|77F82091|ntdll.dll |               |                 |RtlLeaveCriticalSection     |    |
+|77F83201|ntdll.dll |               |                 |RtlImageDirectoryEntryToData|    |
+|77F831C9|ntdll.dll |               |                 |RtlImageDirectoryEntryToData|    |
+|77F82091|ntdll.dll |               |                 |RtlLeaveCriticalSection     |    |
+|77F880D1|ntdll.dll |               |                 |ZwTestAlert                 |    |
+|77F88087|ntdll.dll |               |                 |LdrInitializeThunk          |    |
+|77F9FF39|ntdll.dll |               |                 |KiUserApcDispatcher         |    |
+|77F82881|ntdll.dll |               |                 |ZwContinue                  |    |
+|77F9FF3E|ntdll.dll |               |                 |KiUserApcDispatcher         |    |
+|0047C834|Server.exe|IdTCPServer.pas|TIdTCPServer     |DoExecute                   |455 |
+|0047D320|Server.exe|IdTCPServer.pas|TIdPeerThread    |Run                         |892 |
+|0047A8C6|Server.exe|IdThread.pas   |TIdThread        |Execute                     |208 |
+|0047AB73|Server.exe|IdThread.pas   |TIdThread        |Start                       |283 |
+|0047D0DA|Server.exe|IdTCPServer.pas|TIdListenerThread|Run                         |801 |
+|0047A8C6|Server.exe|IdThread.pas   |TIdThread        |Execute                     |208 |
+-----------------------------------------------------------------------------------------
+
+Modules Information:
+---------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name         |Description                                     |Version       |Size   |Path                      |
+---------------------------------------------------------------------------------------------------------------------------
+|00400000|Server.exe   |                                                |              |620032 |D:\Server                 |
+|00F50000|UNISPIM.IME  |紫光拼音输入法3.0                               |3.0.0.0       |102400 |D:\WINNT\system32         |
+|010A0000|upengine.dll |紫光拼音输入法引擎                              |3.0.0.0       |299008 |D:\WINNT\system32         |
+|015B0000|msctf.dll.mui|MSUIM Server DLL                                |5.1.2409.7    |3584   |D:\WINNT\mui\fallback\0804|
+|10000000|BDPlugin.dll |                                                |1.0.1.1       |110592 |D:\WINNT\DOWNLO~1         |
+|60000000|MSCTF.dll    |MSUIM Server DLL                                |5.1.2409.7    |273408 |D:\WINNT\system32         |
+|687E0000|PSAPI.DLL    |Process Status Helper                           |5.0.2134.1    |28944  |D:\WINNT\system32         |
+|74F50000|msafd.dll    |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816 |D:\WINNT\system32         |
+|74F90000|wshtcpip.dll |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680  |D:\WINNT\System32         |
+|74FA0000|WS2HELP.DLL  |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192  |D:\WINNT\system32         |
+|74FB0000|WS2_32.DLL   |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904  |D:\WINNT\system32         |
+|74FD0000|wsock32.dll  |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920  |D:\WINNT\system32         |
+|75950000|LZ32.DLL     |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000  |D:\WINNT\system32         |
+|75E00000|IMM32.DLL    |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528  |D:\WINNT\system32         |
+|777E0000|version.dll  |Version Checking and File Installation Libraries|5.0.2195.6623 |16144  |D:\WINNT\system32         |
+|77990000|oleaut32.dll |                                                |2.40.4522.0   |626960 |D:\WINNT\system32         |
+|77A30000|ole32.dll    |Microsoft OLE for Windows                       |5.0.2195.6769 |944912 |D:\WINNT\system32         |
+|77B30000|comctl32.dll |Common Controls Library                         |5.81.3502.6601|550672 |D:\WINNT\system32         |
+|77C50000|SHLWAPI.DLL  |Shell Light-weight Utility Library              |5.0.3502.6601 |289552 |D:\WINNT\system32         |
+|77DF0000|user32.dll   |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216 |D:\WINNT\system32         |
+|77E60000|kernel32.dll |Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672 |D:\WINNT\system32         |
+|77F40000|GDI32.DLL    |GDI Client DLL                                  |5.0.2195.6898 |242448 |D:\WINNT\system32         |
+|77F80000|ntdll.dll    |NT Layer DLL                                    |5.0.2195.6899 |497936 |D:\WINNT\system32         |
+|78000000|MSVCRT.DLL   |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773 |D:\WINNT\system32         |
+|786F0000|RPCRT4.DLL   |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400 |D:\WINNT\system32         |
+|78F90000|SHELL32.dll  |Windows Shell Common Dll                        |5.0.3700.6705 |2383632|D:\WINNT\system32         |
+|796D0000|advapi32.dll |Advanced Windows 32 Base API                    |5.0.2195.6876 |388368 |D:\WINNT\system32         |
+---------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+01BCF9F8: 01BCFA44   004181A8: E8 9F C2 FE FF EB 63 0F B7 D7 8B C6 E8 0B 12 FF  ......c.........
+01BCF9FC: 00404380   004181B8: FF 8B C8 33 D2 8B C3 E8 38 FE FF FF 83 7B 04 00  ...3....8....{..
+01BCFA00: 01BCFA34   004181C8: 7D 48 8D 55 E0 8B C6 E8 00 16 FF FF 8B 45 E0 89  }H.U.........E..
+01BCFA04: 0047BC3C   004181D8: 45 EC C6 45 F0 0B E8 A1 EE FE FF 8D 55 DC E8 95  E..E........U...
+01BCFA08: 00D31188   004181E8: 42 FF FF 8B 45 DC 89 45 F4 C6 45 F8 0B 8D 45 EC  B...E..E..E...E.
+01BCFA0C: 00000001   004181F8: 50 6A 01 8B 0D F4 27 48 00 B2 01 A1 A4 2C 41 00  Pj....'H.....,A.
+01BCFA10: 00000000   00418208: E8 A7 4B FF FF E8 3A C2 FE FF 33 C0 5A 59 59 64  ..K...:...3.ZYYd
+01BCFA14: 00000000   00418218: 89 10 68 34 82 41 00 8D 45 DC BA 04 00 00 00 E8  ..h4.A..E.......
+01BCFA18: 00000000   00418228: D4 C8 FE FF C3 E9 1E C1 FE FF EB EB 8B C3 80 7D  ...............}
+01BCFA1C: 00000000   00418238: FF 00 74 0F E8 37 BD FE FF 64 8F 05 00 00 00 00  ..t..7...d......
+01BCFA20: 00D25E78   00418248: 83 C4 0C 8B C3 5F 5E 5B 8B E5 5D C2 08 00 8B C0  ....._^[..].....
+01BCFA24: 0041390B   00418258: 53 56 E8 29 BD FE FF 8B DA 8B F0 8B 46 04 85 C0  SV.)........F...
+01BCFA28: 00D25EA4   00418268: 7C 05 E8 69 12 FF FF 8B D3 80 E2 FC 8B C6 E8 75  |..i...........u
+01BCFA2C: 00D2370B   00418278: B9 FE FF 84 DB 7E 07 8B C6 E8 EA BC FE FF 5E 5B  .....~........^[
+01BCFA30: 00403F2A   00418288: C3 8D 40 00 89 50 04 89 48 08 C3 90 53 56 57 8B  ..@..P..H...SVW.
+01BCFA34: 01BCFA5C   00418298: D8 8B 7B 0C 85 FF 7C 24 85 C9 7C 20 8B 73 08 2B  ..{...|$..| .s.+
+
+
+
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sat, 19 Mar 2005 21:26:32 +0800
+  1.2 Name/Description: Server.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+--------------------------------------------------------------------------
+  2.1 Date   : Sat, 19 Mar 2005 21:26:37 +0800
+  2.2 Address: 00475F00
+  2.3 Module : Server.exe
+  2.4 Type   : EIdCouldNotBindSocket
+  2.5 Message: Could not bind socket. Address and port are already in use.
+
+Active Controls:
+----------------------------------
+  3.1 Form Class   : ExploreWClass
+  3.2 Form Text    : D:\Server
+  3.3 Control Class: 
+  3.4 Control Text : 
+
+Computer:
+----------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 81 Mb
+  4.5 Total Disk  : 10.32 Gb
+  4.6 Free Disk   : 5.25 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+-------------------------------------------------------------------------------------------
+|Address |Module    |Unit              |Class          |Procedure/Method             |Line|
+-------------------------------------------------------------------------------------------
+|00475F00|Server.exe|IdSocketHandle.pas|TIdSocketHandle|Bind                         |209 |
+|00472B30|Server.exe|IdStack.pas       |TIdStack       |CreateSocketHandle           |200 |
+|00475CA4|Server.exe|IdSocketHandle.pas|TIdSocketHandle|AllocateSocket               |120 |
+|00475E0C|Server.exe|IdSocketHandle.pas|TIdSocketHandle|Bind                         |193 |
+|0047CAFB|Server.exe|IdTCPServer.pas   |TIdTCPServer   |SetActive                    |558 |
+|0047C946|Server.exe|IdTCPServer.pas   |TIdTCPServer   |Loaded                       |491 |
+|77F83404|ntdll.dll |                  |               |RtlReleasePebLock            |    |
+|77F850A3|ntdll.dll |                  |               |RtlQueryEnvironmentVariable_U|    |
+|77FCC0EF|ntdll.dll |                  |               |RtlAllocateHeap              |    |
+|77F82091|ntdll.dll |                  |               |RtlLeaveCriticalSection      |    |
+|0047E6F7|Server.exe|Server.dpr        |               |                             |12  |
+-------------------------------------------------------------------------------------------
+
+Modules Information:
+-----------------------------------------------------------------------------------------------------------------
+|Handle  |Name        |Description                                     |Version       |Size   |Path             |
+-----------------------------------------------------------------------------------------------------------------
+|00400000|Server.exe  |                                                |              |620032 |D:\Server        |
+|00F50000|UNISPIM.IME |紫光拼音输入法3.0                               |3.0.0.0       |102400 |D:\WINNT\system32|
+|10000000|BDPlugin.dll|                                                |1.0.1.1       |110592 |D:\WINNT\DOWNLO~1|
+|60000000|MSCTF.dll   |MSUIM Server DLL                                |5.1.2409.7    |273408 |D:\WINNT\system32|
+|687E0000|PSAPI.DLL   |Process Status Helper                           |5.0.2134.1    |28944  |D:\WINNT\system32|
+|74F50000|msafd.dll   |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816 |D:\WINNT\system32|
+|74F90000|wshtcpip.dll|Windows Sockets Helper DLL                      |5.0.2195.6601 |17680  |D:\WINNT\System32|
+|74FA0000|WS2HELP.DLL |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192  |D:\WINNT\system32|
+|74FB0000|WS2_32.DLL  |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904  |D:\WINNT\system32|
+|74FD0000|wsock32.dll |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920  |D:\WINNT\system32|
+|75950000|LZ32.DLL    |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000  |D:\WINNT\system32|
+|75E00000|IMM32.DLL   |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528  |D:\WINNT\system32|
+|777E0000|version.dll |Version Checking and File Installation Libraries|5.0.2195.6623 |16144  |D:\WINNT\system32|
+|77990000|oleaut32.dll|                                                |2.40.4522.0   |626960 |D:\WINNT\system32|
+|77A30000|ole32.dll   |Microsoft OLE for Windows                       |5.0.2195.6769 |944912 |D:\WINNT\system32|
+|77B30000|comctl32.dll|Common Controls Library                         |5.81.3502.6601|550672 |D:\WINNT\system32|
+|77C50000|SHLWAPI.DLL |Shell Light-weight Utility Library              |5.0.3502.6601 |289552 |D:\WINNT\system32|
+|77DF0000|user32.dll  |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216 |D:\WINNT\system32|
+|77E60000|kernel32.dll|Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672 |D:\WINNT\system32|
+|77F40000|GDI32.DLL   |GDI Client DLL                                  |5.0.2195.6898 |242448 |D:\WINNT\system32|
+|77F80000|ntdll.dll   |NT Layer DLL                                    |5.0.2195.6899 |497936 |D:\WINNT\system32|
+|78000000|MSVCRT.DLL  |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773 |D:\WINNT\system32|
+|786F0000|RPCRT4.DLL  |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400 |D:\WINNT\system32|
+|78F90000|SHELL32.dll |Windows Shell Common Dll                        |5.0.3700.6705 |2383632|D:\WINNT\system32|
+|796D0000|advapi32.dll|Advanced Windows 32 Base API                    |5.0.2195.6876 |388368 |D:\WINNT\system32|
+-----------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00D22C58
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0012FD94: 0012FDC8   00475F00: E8 47 E5 F8 FF 33 C0 5A 59 59 64 89 10 68 27 5F  .G...3.ZYYd..h'_
+0012FD98: 00404380   00475F10: 47 00 8D 45 E4 BA 03 00 00 00 E8 E1 EB F8 FF C3  G..E............
+0012FD9C: 0012FDC0   00475F20: E9 2B E4 F8 FF EB EB 5B 8B E5 5D C3 53 56 57 8B  .+.....[..].SVW.
+0012FDA0: 00D22BD8   00475F30: F9 8B F2 8B D8 8D 43 18 8B D6 E8 F1 EB F8 FF 89  ......C.........
+0012FDA4: 00000000   00475F40: 7B 20 5F 5E 5B C3 8B C0 53 56 8B F2 8B D8 A1 04  { _^[...SV......
+0012FDA8: 00000000   00475F50: 2D 48 00 8B 00 8B CE 8B 53 0C 8B 18 FF 53 38 8B  -H......S....S8.
+0012FDAC: 00000000   00475F60: D0 A1 04 2D 48 00 8B 00 E8 6F CB FF FF 5E 5B C3  ...-H....o...^[.
+0012FDB0: 0012FDEC   00475F70: 53 56 57 83 C4 F8 8B DA 8B F8 B2 01 8B C7 E8 A5  SVW.............
+0012FDB4: 00475CA9   00475F80: 02 00 00 8D 47 1C 50 8D 4F 14 A1 04 2D 48 00 8B  ....G.P.O...-H..
+0012FDB8: 00D211CC   00475F90: 00 8B D3 8B 18 FF 53 10 8B F0 6A 01 C7 44 24 04  ......S...j..D$.
+0012FDBC: 00000002   00475FA0: 14 27 00 00 C7 44 24 08 36 27 00 00 8D 4C 24 04  .'...D$.6'...L$.
+0012FDC0: 0012FDEC   00475FB0: A1 04 2D 48 00 8B 00 8B D6 E8 2A CB FF FF 8B D8  ..-H......*.....
+0012FDC4: 0047CB00   00475FC0: 80 F3 01 84 DB 74 15 89 77 0C C6 47 10 01 8B C7  .....t..w..G....
+0012FDC8: 0012FE0C   00475FD0: E8 0B 02 00 00 8B C7 E8 28 02 00 00 8B C3 59 5A  ........(.....YZ
+0012FDCC: 004044BF   00475FE0: 5F 5E 5B C3 53 56 57 84 D2 74 08 83 C4 F0 E8 2D  _^[.SVW..t.....-
+0012FDD0: 0012FDEC   00475FF0: DF F8 FF 8B F1 8B DA 8B F8 8B CE 33 D2 8B C7 E8  ...........3....
+
+
+
+EurekaLog 4.5.7
+
+Application:
+-------------------------------------------------------
+  1.1 Start Date      : Sun, 20 Mar 2005 10:50:44 +0800
+  1.2 Name/Description: Server.exe
+  1.3 Version Number  : 
+  1.4 Parameters      : 
+
+Exception:
+--------------------------------------------------------------------------------------------------------------------
+  2.1 Date   : Sun, 20 Mar 2005 14:35:34 +0800
+  2.2 Address: 004181A8
+  2.3 Module : Server.exe
+  2.4 Type   : EFCreateError
+  2.5 Message: Cannot create file "D:\Server\php-4.3.1-Win32.zip". 进程无法访问文件，因为另一个程序正在使用此文件。.
+
+Active Controls:
+----------------------------------------------------
+  3.1 Form Class   : TMessageForm
+  3.2 Form Text    : Debugger Exception Notification
+  3.3 Control Class: 
+  3.4 Control Text : 
+
+Computer:
+----------------------------
+  4.1 Name        : HXBZY
+  4.2 User        : hxb
+  4.3 Total Memory: 255 Mb
+  4.4 Free Memory : 30 Mb
+  4.5 Total Disk  : 10.32 Gb
+  4.6 Free Disk   : 5.24 Gb
+
+Operating System:
+--------------------------------------
+  5.1 Type    : Microsoft Windows 2000
+  5.2 Build # : 2195
+  5.3 Update  : Service Pack 4
+  5.4 Language: 中文(中国)
+
+Call Stack Information:
+-----------------------------------------------------------------------------------------
+|Address |Module    |Unit           |Class            |Procedure/Method            |Line|
+-----------------------------------------------------------------------------------------
+|0047E130|Server.exe|uServer.pas    |TfmServer        |IdTCPServer1Execute         |81  |
+|77FCC1CB|ntdll.dll |               |                 |RtlAllocateHeap             |    |
+|77F83201|ntdll.dll |               |                 |RtlImageDirectoryEntryToData|    |
+|77F831C9|ntdll.dll |               |                 |RtlImageDirectoryEntryToData|    |
+|77F82091|ntdll.dll |               |                 |RtlLeaveCriticalSection     |    |
+|77F880D1|ntdll.dll |               |                 |ZwTestAlert                 |    |
+|77F88087|ntdll.dll |               |                 |LdrInitializeThunk          |    |
+|77F9FF39|ntdll.dll |               |                 |KiUserApcDispatcher         |    |
+|77F82881|ntdll.dll |               |                 |ZwContinue                  |    |
+|77F9FF3E|ntdll.dll |               |                 |KiUserApcDispatcher         |    |
+|0047C834|Server.exe|IdTCPServer.pas|TIdTCPServer     |DoExecute                   |455 |
+|0047D320|Server.exe|IdTCPServer.pas|TIdPeerThread    |Run                         |892 |
+|0047A8C6|Server.exe|IdThread.pas   |TIdThread        |Execute                     |208 |
+|0047AB73|Server.exe|IdThread.pas   |TIdThread        |Start                       |283 |
+|0047D0DA|Server.exe|IdTCPServer.pas|TIdListenerThread|Run                         |801 |
+|0047A8C6|Server.exe|IdThread.pas   |TIdThread        |Execute                     |208 |
+-----------------------------------------------------------------------------------------
+
+Modules Information:
+--------------------------------------------------------------------------------------------------------------------------
+|Handle  |Name         |Description                                     |Version       |Size  |Path                      |
+--------------------------------------------------------------------------------------------------------------------------
+|00400000|Server.exe   |                                                |              |620032|D:\Server                 |
+|01070000|msctf.dll.mui|MSUIM Server DLL                                |5.1.2409.7    |3584  |D:\WINNT\mui\fallback\0804|
+|10000000|BDPlugin.dll |                                                |1.0.1.1       |110592|D:\WINNT\DOWNLO~1         |
+|60000000|MSCTF.dll    |MSUIM Server DLL                                |5.1.2409.7    |273408|D:\WINNT\system32         |
+|687E0000|PSAPI.DLL    |Process Status Helper                           |5.0.2134.1    |28944 |D:\WINNT\system32         |
+|74F50000|msafd.dll    |Microsoft Windows Sockets 2.0 Service Provider  |5.0.2195.6602 |108816|D:\WINNT\system32         |
+|74F90000|wshtcpip.dll |Windows Sockets Helper DLL                      |5.0.2195.6601 |17680 |D:\WINNT\System32         |
+|74FA0000|WS2HELP.DLL  |Windows Socket 2.0 Helper for Windows NT        |5.0.2134.1    |18192 |D:\WINNT\system32         |
+|74FB0000|WS2_32.DLL   |Windows Socket 2.0 32-Bit DLL                   |5.0.2195.6601 |69904 |D:\WINNT\system32         |
+|74FD0000|wsock32.dll  |Windows Socket 32-Bit DLL                       |5.0.2195.6603 |27920 |D:\WINNT\system32         |
+|75950000|LZ32.DLL     |LZ Expand/Compress API DLL                      |5.0.2195.6611 |10000 |D:\WINNT\system32         |
+|75E00000|IMM32.DLL    |Windows 2000 IMM32 API Client DLL               |5.0.2195.6655 |96528 |D:\WINNT\system32         |
+|777E0000|version.dll  |Version Checking and File Installation Libraries|5.0.2195.6623 |16144 |D:\WINNT\system32         |
+|77990000|oleaut32.dll |                                                |2.40.4522.0   |626960|D:\WINNT\system32         |
+|77A30000|ole32.dll    |Microsoft OLE for Windows                       |5.0.2195.6769 |944912|D:\WINNT\system32         |
+|77B30000|comctl32.dll |Common Controls Library                         |5.81.3502.6601|550672|D:\WINNT\system32         |
+|77DF0000|user32.dll   |Windows 2000 USER API Client DLL                |5.0.2195.6897 |403216|D:\WINNT\system32         |
+|77E60000|kernel32.dll |Windows NT BASE API Client DLL                  |5.0.2195.6897 |870672|D:\WINNT\system32         |
+|77F40000|GDI32.DLL    |GDI Client DLL                                  |5.0.2195.6898 |242448|D:\WINNT\system32         |
+|77F80000|ntdll.dll    |NT Layer DLL                                    |5.0.2195.6899 |497936|D:\WINNT\system32         |
+|78000000|MSVCRT.DLL   |Microsoft (R) C Runtime Library                 |6.1.9844.0    |286773|D:\WINNT\system32         |
+|786F0000|RPCRT4.DLL   |Remote Procedure Call Runtime                   |5.0.2195.6753 |432400|D:\WINNT\system32         |
+|796D0000|advapi32.dll |Advanced Windows 32 Base API                    |5.0.2195.6876 |388368|D:\WINNT\system32         |
+--------------------------------------------------------------------------------------------------------------------------
+
+Registers:
+-----------------------------
+EAX: 00000000   EDI: 00000000
+EBX: 00000000   ESI: 00000000
+ECX: 00000000   ESP: 00000000
+EDX: 00000000   EIP: 00000000
+
+Stack:               Memory Dump:
+------------------   ---------------------------------------------------------------------------
+0144F9F8: 0144FA44   004181A8: E8 9F C2 FE FF EB 63 0F B7 D7 8B C6 E8 0B 12 FF  ......c.........
+0144F9FC: 00404380   004181B8: FF 8B C8 33 D2 8B C3 E8 38 FE FF FF 83 7B 04 00  ...3....8....{..
+0144FA00: 0144FA34   004181C8: 7D 48 8D 55 E0 8B C6 E8 00 16 FF FF 8B 45 E0 89  }H.U.........E..
+0144FA04: 0047BC3C   004181D8: 45 EC C6 45 F0 0B E8 A1 EE FE FF 8D 55 DC E8 95  E..E........U...
+0144FA08: 00D25DA0   004181E8: 42 FF FF 8B 45 DC 89 45 F4 C6 45 F8 0B 8D 45 EC  B...E..E..E...E.
+0144FA0C: 00000001   004181F8: 50 6A 01 8B 0D F4 27 48 00 B2 01 A1 A4 2C 41 00  Pj....'H.....,A.
+0144FA10: 00000000   00418208: E8 A7 4B FF FF E8 3A C2 FE FF 33 C0 5A 59 59 64  ..K...:...3.ZYYd
+0144FA14: 00000000   00418218: 89 10 68 34 82 41 00 8D 45 DC BA 04 00 00 00 E8  ..h4.A..E.......
+0144FA18: 00000000   00418228: D4 C8 FE FF C3 E9 1E C1 FE FF EB EB 8B C3 80 7D  ...............}
+0144FA1C: 00000000   00418238: FF 00 74 0F E8 37 BD FE FF 64 8F 05 00 00 00 00  ..t..7...d......
+0144FA20: 00D27AC8   00418248: 83 C4 0C 8B C3 5F 5E 5B 8B E5 5D C2 08 00 8B C0  ....._^[..].....
+0144FA24: 0041390B   00418258: 53 56 E8 29 BD FE FF 8B DA 8B F0 8B 46 04 85 C0  SV.)........F...
+0144FA28: 00D27AF4   00418268: 7C 05 E8 69 12 FF FF 8B D3 80 E2 FC 8B C6 E8 75  |..i...........u
+0144FA2C: 00D27A0B   00418278: B9 FE FF 84 DB 7E 07 8B C6 E8 EA BC FE FF 5E 5B  .....~........^[
+0144FA30: 00403F2A   00418288: C3 8D 40 00 89 50 04 89 48 08 C3 90 53 56 57 8B  ..@..P..H...SVW.
+0144FA34: 0144FA5C   00418298: D8 8B 7B 0C 85 FF 7C 24 85 C9 7C 20 8B 73 08 2B  ..{...|$..| .s.+
+
+
+
+
+

@@ -1,0 +1,362 @@
+! 26-02-08 22:38:32     5 |Start|
+! 26-02-08 22:38:32    22 |1 Existing connections|
+! 26-02-08 22:38:32    40 |PPPoE_VIA Rhine II Fast Ethernet Adapter|
+! 26-02-08 22:39:09    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 26-02-08 22:39:09    12 |Opening Port|
+! 26-02-08 22:39:09    11 |Port Opened|
+! 26-02-08 22:39:09    17 |Connecting Device|
+! 26-02-08 22:39:09    16 |Device Connected|
+! 26-02-08 22:39:09    21 |All Devices Connected|
+! 26-02-08 22:39:09    23 |Starting Authentication|
+! 26-02-08 22:39:12    21 |Authentication Notify|
+! 26-02-08 22:39:12    21 |Authentication Notify|
+! 26-02-08 22:40:37     8 |Canceled|
+! 26-02-08 22:40:40    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 26-02-08 22:40:40    12 |Opening Port|
+! 26-02-08 22:40:40    11 |Port Opened|
+! 26-02-08 22:40:40    17 |Connecting Device|
+! 26-02-08 22:40:40    16 |Device Connected|
+! 26-02-08 22:40:40    21 |All Devices Connected|
+! 26-02-08 22:40:40    23 |Starting Authentication|
+! 26-02-08 22:40:42    21 |Authentication Notify|
+! 26-02-08 22:40:42    24 |Projection Phase Started|
+! 26-02-08 22:40:42    21 |Authentication Notify|
+! 26-02-08 22:40:42     9 |Projected|
+! 26-02-08 22:40:42    21 |Authentication Notify|
+! 26-02-08 22:40:42    13 |Authenticated|
+! 26-02-08 22:40:42     9 |Connected|
+! 26-02-08 22:41:21    13 |Disconnecting|
+! 26-02-08 22:41:21    62 |Duration: 39 Sec with PPPoE_VIA Rhine II Fast Ethernet Adapter|
+! 26-02-08 22:41:21    26 |Cumulated Duration: 39 Sec|
+! 26-02-08 22:42:24    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 26-02-08 22:42:24    12 |Opening Port|
+! 26-02-08 22:42:24    11 |Port Opened|
+! 26-02-08 22:42:24    17 |Connecting Device|
+! 26-02-08 22:42:24    16 |Device Connected|
+! 26-02-08 22:42:24    21 |All Devices Connected|
+! 26-02-08 22:42:24    23 |Starting Authentication|
+! 26-02-08 22:42:26    21 |Authentication Notify|
+! 26-02-08 22:42:26    24 |Projection Phase Started|
+! 26-02-08 22:42:26    21 |Authentication Notify|
+! 26-02-08 22:42:26     9 |Projected|
+! 26-02-08 22:42:26    21 |Authentication Notify|
+! 26-02-08 22:42:26    13 |Authenticated|
+! 26-02-08 22:42:26     9 |Connected|
+! 26-02-08 22:42:31    13 |Disconnecting|
+! 26-02-08 22:42:31    61 |Duration: 4 Sec with PPPoE_VIA Rhine II Fast Ethernet Adapter|
+! 26-02-08 22:42:31    26 |Cumulated Duration: 43 Sec|
+! 26-02-08 22:43:06    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 26-02-08 22:43:06    12 |Opening Port|
+! 26-02-08 22:43:06    11 |Port Opened|
+! 26-02-08 22:43:06    17 |Connecting Device|
+! 26-02-08 22:43:06    16 |Device Connected|
+! 26-02-08 22:43:06    21 |All Devices Connected|
+! 26-02-08 22:43:06    23 |Starting Authentication|
+! 26-02-08 22:43:08    21 |Authentication Notify|
+! 26-02-08 22:43:08    24 |Projection Phase Started|
+! 26-02-08 22:43:08    21 |Authentication Notify|
+! 26-02-08 22:43:08     9 |Projected|
+! 26-02-08 22:43:08    21 |Authentication Notify|
+! 26-02-08 22:43:08    13 |Authenticated|
+! 26-02-08 22:43:08     9 |Connected|
+! 26-02-08 22:43:33    13 |Disconnecting|
+! 26-02-08 22:43:33    62 |Duration: 25 Sec with PPPoE_VIA Rhine II Fast Ethernet Adapter|
+! 26-02-08 22:43:34    26 |Cumulated Duration: 68 Sec|
+! 26-02-08 22:43:49    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 26-02-08 22:43:49    12 |Opening Port|
+! 26-02-08 22:43:49    11 |Port Opened|
+! 26-02-08 22:43:49    17 |Connecting Device|
+! 26-02-08 22:43:49    16 |Device Connected|
+! 26-02-08 22:43:49    21 |All Devices Connected|
+! 26-02-08 22:43:49    23 |Starting Authentication|
+! 26-02-08 22:43:51    21 |Authentication Notify|
+! 26-02-08 22:43:51    24 |Projection Phase Started|
+! 26-02-08 22:43:51    21 |Authentication Notify|
+! 26-02-08 22:43:51     9 |Projected|
+! 26-02-08 22:43:51    21 |Authentication Notify|
+! 26-02-08 22:43:51    13 |Authenticated|
+! 26-02-08 22:43:51     9 |Connected|
+! 26-02-08 22:44:36    13 |Disconnecting|
+! 26-02-08 22:44:36    62 |Duration: 44 Sec with PPPoE_VIA Rhine II Fast Ethernet Adapter|
+! 26-02-08 22:44:36    27 |Cumulated Duration: 112 Sec|
+! 26-02-08 22:44:45    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 26-02-08 22:44:45    12 |Opening Port|
+! 26-02-08 22:44:45    11 |Port Opened|
+! 26-02-08 22:44:45    17 |Connecting Device|
+! 26-02-08 22:44:45    16 |Device Connected|
+! 26-02-08 22:44:45    21 |All Devices Connected|
+! 26-02-08 22:44:45    23 |Starting Authentication|
+! 26-02-08 22:44:47    21 |Authentication Notify|
+! 26-02-08 22:44:47    24 |Projection Phase Started|
+! 26-02-08 22:44:47    21 |Authentication Notify|
+! 26-02-08 22:44:47     9 |Projected|
+! 26-02-08 22:44:47    21 |Authentication Notify|
+! 26-02-08 22:44:47    13 |Authenticated|
+! 26-02-08 22:44:48     9 |Connected|
+! 26-02-08 22:46:07    49 |Stop. Elapsed time: 00:07:35. Messages logged: 96|
+! 26-02-08 22:55:59     5 |Start|
+! 26-02-08 22:55:59    22 |1 Existing connections|
+! 26-02-08 22:55:59    40 |PPPoE_VIA Rhine II Fast Ethernet Adapter|
+! 26-02-08 22:56:05    25 |Connection already active|
+! 26-02-08 22:56:20    17 |Connection closed|
+! 26-02-08 22:56:24    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 26-02-08 22:56:24    12 |Opening Port|
+! 26-02-08 22:56:24    11 |Port Opened|
+! 26-02-08 22:56:24    17 |Connecting Device|
+! 26-02-08 22:56:24    16 |Device Connected|
+! 26-02-08 22:56:24    21 |All Devices Connected|
+! 26-02-08 22:56:24    23 |Starting Authentication|
+! 26-02-08 22:56:26    21 |Authentication Notify|
+! 26-02-08 22:56:26    24 |Projection Phase Started|
+! 26-02-08 22:56:26    21 |Authentication Notify|
+! 26-02-08 22:56:26     9 |Projected|
+! 26-02-08 22:56:26    21 |Authentication Notify|
+! 26-02-08 22:56:26    13 |Authenticated|
+! 26-02-08 22:56:26     9 |Connected|
+! 26-02-08 22:56:51    49 |Stop. Elapsed time: 00:00:52. Messages logged: 20|
+! 26-02-08 23:03:36     5 |Start|
+! 26-02-08 23:03:37    22 |1 Existing connections|
+! 26-02-08 23:03:37    40 |PPPoE_VIA Rhine II Fast Ethernet Adapter|
+! 26-02-08 23:03:58    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 26-02-08 23:03:58    12 |Opening Port|
+! 26-02-08 23:03:58    11 |Port Opened|
+! 26-02-08 23:03:58    17 |Connecting Device|
+! 26-02-08 23:03:58    16 |Device Connected|
+! 26-02-08 23:03:58    21 |All Devices Connected|
+! 26-02-08 23:03:58    23 |Starting Authentication|
+! 26-02-08 23:04:00    21 |Authentication Notify|
+! 26-02-08 23:04:00    24 |Projection Phase Started|
+! 26-02-08 23:04:00    21 |Authentication Notify|
+! 26-02-08 23:04:00     9 |Projected|
+! 26-02-08 23:04:00    21 |Authentication Notify|
+! 26-02-08 23:04:00    13 |Authenticated|
+! 26-02-08 23:04:00     9 |Connected|
+! 26-02-08 23:04:27    13 |Disconnecting|
+! 26-02-08 23:04:27    62 |Duration: 27 Sec with PPPoE_VIA Rhine II Fast Ethernet Adapter|
+! 26-02-08 23:04:27    27 |Cumulated Duration: 139 Sec|
+! 26-02-08 23:04:36    74 |Duration'PPPoE_VIA Rhine II Fast Ethernet Adapter' cleared. It was 139 Sec|
+! 26-02-08 23:04:40    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 26-02-08 23:04:40    12 |Opening Port|
+! 26-02-08 23:04:40    11 |Port Opened|
+! 26-02-08 23:04:40    17 |Connecting Device|
+! 26-02-08 23:04:40    16 |Device Connected|
+! 26-02-08 23:04:40    21 |All Devices Connected|
+! 26-02-08 23:04:40    23 |Starting Authentication|
+! 26-02-08 23:04:42    21 |Authentication Notify|
+! 26-02-08 23:04:42    24 |Projection Phase Started|
+! 26-02-08 23:04:42    21 |Authentication Notify|
+! 26-02-08 23:04:42     9 |Projected|
+! 26-02-08 23:04:42    21 |Authentication Notify|
+! 26-02-08 23:04:42    13 |Authenticated|
+! 26-02-08 23:04:42     9 |Connected|
+! 26-02-08 23:06:13    49 |Stop. Elapsed time: 00:02:36. Messages logged: 36|
+! 26-02-08 23:14:24     5 |Start|
+! 26-02-08 23:14:24    22 |1 Existing connections|
+! 26-02-08 23:14:24    40 |PPPoE_VIA Rhine II Fast Ethernet Adapter|
+! 26-02-08 23:14:59    25 |Connection already active|
+! 26-02-08 23:15:18    25 |Connection already active|
+! 26-02-08 23:15:19    25 |Connection already active|
+! 26-02-08 23:15:19    25 |Connection already active|
+! 26-02-08 23:15:20    25 |Connection already active|
+! 26-02-08 23:15:22    25 |Connection already active|
+! 26-02-08 23:15:23    25 |Connection already active|
+! 26-02-08 23:15:24    25 |Connection already active|
+! 26-02-08 23:15:25    25 |Connection already active|
+! 26-02-08 23:15:30    49 |Stop. Elapsed time: 00:01:06. Messages logged: 13|
+! 27-02-08 22:38:08     5 |Start|
+! 27-02-08 22:51:39     5 |Start|
+! 27-02-08 23:03:01     5 |Start|
+! 27-02-08 23:03:07    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 27-02-08 23:03:07    12 |Opening Port|
+! 27-02-08 23:03:07    11 |Port Opened|
+! 27-02-08 23:03:07    17 |Connecting Device|
+! 27-02-08 23:03:07    16 |Device Connected|
+! 27-02-08 23:03:07    21 |All Devices Connected|
+! 27-02-08 23:03:07    23 |Starting Authentication|
+! 27-02-08 23:03:07    21 |Authentication Notify|
+! 27-02-08 23:03:07    24 |Projection Phase Started|
+! 27-02-08 23:03:07    21 |Authentication Notify|
+! 27-02-08 23:03:07     9 |Projected|
+! 27-02-08 23:03:07    21 |Authentication Notify|
+! 27-02-08 23:03:07    13 |Authenticated|
+! 27-02-08 23:03:07     9 |Connected|
+! 27-02-08 23:05:21    13 |Disconnecting|
+! 27-02-08 23:05:21    61 |Duration: 133秒 with PPPoE_VIA Rhine II Fast Ethernet Adapter|
+! 27-02-08 23:05:21    25 |Cumulated Duration: 133秒|
+! 27-02-08 23:05:32    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 27-02-08 23:05:32    12 |Opening Port|
+! 27-02-08 23:05:32    11 |Port Opened|
+! 27-02-08 23:05:32    17 |Connecting Device|
+! 27-02-08 23:05:32    16 |Device Connected|
+! 27-02-08 23:05:32    21 |All Devices Connected|
+! 27-02-08 23:05:32    23 |Starting Authentication|
+! 27-02-08 23:05:35    21 |Authentication Notify|
+! 27-02-08 23:05:35    24 |Projection Phase Started|
+! 27-02-08 23:05:35    21 |Authentication Notify|
+! 27-02-08 23:05:35     9 |Projected|
+! 27-02-08 23:05:35    21 |Authentication Notify|
+! 27-02-08 23:05:35    13 |Authenticated|
+! 27-02-08 23:05:35     9 |Connected|
+! 27-02-08 23:05:53    13 |Disconnecting|
+! 27-02-08 23:05:53    60 |Duration: 18秒 with PPPoE_VIA Rhine II Fast Ethernet Adapter|
+! 27-02-08 23:05:53    25 |Cumulated Duration: 151秒|
+! 27-02-08 23:06:17    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 27-02-08 23:06:17    12 |Opening Port|
+! 27-02-08 23:06:17    11 |Port Opened|
+! 27-02-08 23:06:17    17 |Connecting Device|
+! 27-02-08 23:06:17    16 |Device Connected|
+! 27-02-08 23:06:17    21 |All Devices Connected|
+! 27-02-08 23:06:17    23 |Starting Authentication|
+! 27-02-08 23:06:20    21 |Authentication Notify|
+! 27-02-08 23:06:20    24 |Projection Phase Started|
+! 27-02-08 23:06:20    21 |Authentication Notify|
+! 27-02-08 23:06:20     9 |Projected|
+! 27-02-08 23:06:20    21 |Authentication Notify|
+! 27-02-08 23:06:20    13 |Authenticated|
+! 27-02-08 23:06:20     9 |Connected|
+! 27-02-08 23:06:47    49 |Stop. Elapsed time: 00:03:45. Messages logged: 50|
+! 04-03-08 08:06:36     5 |Start|
+! 04-03-08 08:06:43    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 04-03-08 08:06:43    12 |Opening Port|
+! 04-03-08 08:06:43    11 |Port Opened|
+! 04-03-08 08:06:43    17 |Connecting Device|
+! 04-03-08 08:06:43    16 |Device Connected|
+! 04-03-08 08:06:43    21 |All Devices Connected|
+! 04-03-08 08:06:43    23 |Starting Authentication|
+! 04-03-08 08:06:45    21 |Authentication Notify|
+! 04-03-08 08:06:45    24 |Projection Phase Started|
+! 04-03-08 08:06:45    21 |Authentication Notify|
+! 04-03-08 08:06:45     9 |Projected|
+! 04-03-08 08:06:45    21 |Authentication Notify|
+! 04-03-08 08:06:45    13 |Authenticated|
+! 04-03-08 08:06:45     9 |Connected|
+! 04-03-08 08:08:11    49 |Stop. Elapsed time: 00:01:35. Messages logged: 16|
+! 10-03-08 11:14:42     5 |Start|
+! 10-03-08 11:14:49    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 10-03-08 11:14:49    12 |Opening Port|
+! 10-03-08 11:14:49    11 |Port Opened|
+! 10-03-08 11:14:49    17 |Connecting Device|
+! 10-03-08 11:15:07    17 |Connecting Device|
+! 10-03-08 11:15:42    22 |756 已经拨了这个连接。|
+! 10-03-08 11:15:44    22 |756 已经拨了这个连接。|
+! 10-03-08 11:15:45    22 |756 已经拨了这个连接。|
+! 10-03-08 11:16:13    49 |Stop. Elapsed time: 00:01:31. Messages logged: 10|
+! 12-03-08 21:39:37     5 |Start|
+! 12-03-08 21:39:38    22 |1 Existing connections|
+! 12-03-08 21:39:38    40 |PPPoE_VIA Rhine II Fast Ethernet Adapter|
+! 12-03-08 21:48:11     5 |Start|
+! 12-03-08 21:48:15    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 12-03-08 21:48:25    12 |Opening Port|
+! 12-03-08 21:48:25    11 |Port Opened|
+! 12-03-08 21:48:25    17 |Connecting Device|
+! 12-03-08 21:48:25    16 |Device Connected|
+! 12-03-08 21:48:25    21 |All Devices Connected|
+! 12-03-08 21:48:25    23 |Starting Authentication|
+! 12-03-08 21:48:27    21 |Authentication Notify|
+! 12-03-08 21:48:27    24 |Projection Phase Started|
+! 12-03-08 21:48:27    21 |Authentication Notify|
+! 12-03-08 21:48:27     9 |Projected|
+! 12-03-08 21:48:27    21 |Authentication Notify|
+! 12-03-08 21:48:27    13 |Authenticated|
+! 12-03-08 21:48:27     9 |Connected|
+! 12-03-08 21:48:42    13 |Disconnecting|
+! 12-03-08 21:48:42    60 |Duration: 14秒 with PPPoE_VIA Rhine II Fast Ethernet Adapter|
+! 12-03-08 21:48:42    25 |Cumulated Duration: 165秒|
+! 12-03-08 21:48:52    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 12-03-08 21:48:52    12 |Opening Port|
+! 12-03-08 21:48:52    11 |Port Opened|
+! 12-03-08 21:48:52    17 |Connecting Device|
+! 12-03-08 21:48:52    16 |Device Connected|
+! 12-03-08 21:48:52    21 |All Devices Connected|
+! 12-03-08 21:48:52    23 |Starting Authentication|
+! 12-03-08 21:48:54    21 |Authentication Notify|
+! 12-03-08 21:48:54    24 |Projection Phase Started|
+! 12-03-08 21:48:54    21 |Authentication Notify|
+! 12-03-08 21:48:54     9 |Projected|
+! 12-03-08 21:48:54    21 |Authentication Notify|
+! 12-03-08 21:48:54    13 |Authenticated|
+! 12-03-08 21:48:54     9 |Connected|
+! 12-03-08 21:49:06    13 |Disconnecting|
+! 12-03-08 21:49:06    60 |Duration: 11秒 with PPPoE_VIA Rhine II Fast Ethernet Adapter|
+! 12-03-08 21:49:06    25 |Cumulated Duration: 176秒|
+! 12-03-08 21:49:19    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 12-03-08 21:49:19    12 |Opening Port|
+! 12-03-08 21:49:19    11 |Port Opened|
+! 12-03-08 21:49:19    17 |Connecting Device|
+! 12-03-08 21:49:19    16 |Device Connected|
+! 12-03-08 21:49:19    21 |All Devices Connected|
+! 12-03-08 21:49:19    23 |Starting Authentication|
+! 12-03-08 21:49:21    21 |Authentication Notify|
+! 12-03-08 21:49:21    24 |Projection Phase Started|
+! 12-03-08 21:49:21    21 |Authentication Notify|
+! 12-03-08 21:49:21     9 |Projected|
+! 12-03-08 21:49:21    21 |Authentication Notify|
+! 12-03-08 21:49:21    13 |Authenticated|
+! 12-03-08 21:49:21     9 |Connected|
+! 12-03-08 22:01:35    13 |Disconnecting|
+! 12-03-08 22:01:35    61 |Duration: 733秒 with PPPoE_VIA Rhine II Fast Ethernet Adapter|
+! 12-03-08 22:01:35    25 |Cumulated Duration: 909秒|
+! 12-03-08 22:01:43    49 |Stop. Elapsed time: 00:13:31. Messages logged: 53|
+! 13-03-08 15:06:14     5 |Start|
+! 13-03-08 15:06:17    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 13-03-08 15:06:17    12 |Opening Port|
+! 13-03-08 15:06:17    11 |Port Opened|
+! 13-03-08 15:06:17    17 |Connecting Device|
+! 13-03-08 15:06:35    17 |Connecting Device|
+! 13-03-08 15:06:42    48 |Stop. Elapsed time: 00:00:27. Messages logged: 7|
+! 13-03-08 17:36:33     5 |Start|
+! 13-03-08 17:36:35    36 |623 系统无法为这个连接找到电话簿项。|
+! 13-03-08 17:36:40    48 |Stop. Elapsed time: 00:00:07. Messages logged: 3|
+! 13-03-08 17:37:35     5 |Start|
+! 13-03-08 17:37:40    59 |Dialing 'PPPoE_Accton EN1207D-TX PCI Fast Ethernet Adapter'|
+! 13-03-08 17:37:40    12 |Opening Port|
+! 13-03-08 17:37:40    11 |Port Opened|
+! 13-03-08 17:37:40    17 |Connecting Device|
+! 13-03-08 17:37:49     8 |Canceled|
+! 13-03-08 17:37:49    17 |Connecting Device|
+! 13-03-08 17:37:53    54 |Dialing 'PPPoE_Intel(R) PRO_100 VE Network Connection'|
+! 13-03-08 17:37:53    12 |Opening Port|
+! 13-03-08 17:37:53    11 |Port Opened|
+! 13-03-08 17:37:53    17 |Connecting Device|
+! 13-03-08 17:37:53    16 |Device Connected|
+! 13-03-08 17:37:53    21 |All Devices Connected|
+! 13-03-08 17:37:53    23 |Starting Authentication|
+! 13-03-08 17:37:53    21 |Authentication Notify|
+! 13-03-08 17:37:53    24 |Projection Phase Started|
+! 13-03-08 17:37:53    21 |Authentication Notify|
+! 13-03-08 17:37:53     9 |Projected|
+! 13-03-08 17:37:53    21 |Authentication Notify|
+! 13-03-08 17:37:53    13 |Authenticated|
+! 13-03-08 17:37:53     9 |Connected|
+! 13-03-08 17:38:13    13 |Disconnecting|
+! 13-03-08 17:38:13    64 |Duration: 19秒 with PPPoE_Intel(R) PRO_100 VE Network Connection|
+! 13-03-08 17:38:13    24 |Cumulated Duration: 19秒|
+! 13-03-08 17:38:15    49 |Stop. Elapsed time: 00:00:39. Messages logged: 25|
+! 16-03-08 23:10:09     5 |Start|
+! 16-03-08 23:10:10    22 |1 Existing connections|
+! 16-03-08 23:10:10    40 |PPPoE_VIA Rhine II Fast Ethernet Adapter|
+! 16-03-08 23:11:09    72 |Duration'PPPoE_VIA Rhine II Fast Ethernet Adapter' cleared. It was 909秒|
+! 16-03-08 23:11:27    25 |Connection already active|
+! 16-03-08 23:15:32    48 |Stop. Elapsed time: 00:05:22. Messages logged: 6|
+! 18-03-08 10:21:54     5 |Start|
+! 18-03-08 10:22:01    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 18-03-08 10:22:01    12 |Opening Port|
+! 18-03-08 10:22:01    11 |Port Opened|
+! 18-03-08 10:22:01    17 |Connecting Device|
+! 18-03-08 10:22:10     8 |Canceled|
+! 18-03-08 10:22:10    17 |Connecting Device|
+! 18-03-08 10:22:11    48 |Stop. Elapsed time: 00:00:16. Messages logged: 8|
+! 18-03-08 10:22:42     5 |Start|
+! 18-03-08 10:22:47    48 |Stop. Elapsed time: 00:00:04. Messages logged: 2|
+! 18-03-08 10:22:57     5 |Start|
+! 18-03-08 10:23:05    48 |Stop. Elapsed time: 00:00:08. Messages logged: 2|
+! 18-03-08 10:23:28     5 |Start|
+! 18-03-08 10:23:38    48 |Stop. Elapsed time: 00:00:10. Messages logged: 2|
+! 18-03-08 10:25:36     5 |Start|
+! 18-03-08 10:28:42    50 |Dialing 'PPPoE_VIA Rhine II Fast Ethernet Adapter'|
+! 18-03-08 10:28:42    12 |Opening Port|
+! 18-03-08 10:28:42    11 |Port Opened|
+! 18-03-08 10:28:42    17 |Connecting Device|
+! 18-03-08 10:28:48     8 |Canceled|
+! 18-03-08 10:28:48    17 |Connecting Device|
+! 18-03-08 10:28:59    48 |Stop. Elapsed time: 00:03:22. Messages logged: 8|

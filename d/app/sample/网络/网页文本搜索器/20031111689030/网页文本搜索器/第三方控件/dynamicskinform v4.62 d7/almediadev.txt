@@ -1,0 +1,82 @@
+ 
+      --------------------------------------------------------
+       
+                Almediadev Visual Component Library
+                                for 
+                     Borland Delphi and C++ Builder
+
+      --------------------------------------------------------
+
+                 (c) Copyright Almediadev, 2000-2002
+                        All rights reserved
+
+      --------------------------------------------------------
+
+
+CONTENTS
+========
+
+  1. INTRODUCTION         
+  2. PRODUCT LIST
+  3. SUPPORT
+  4. CONTACT INFORMATION
+           
+      ========================================================
+
+1. INTRODUCTION
+===============
+
+Dear Delphi and C++Builder users:
+
+ Our company  helps you create powerful applications with Delphi and 
+C++ Builder fast and easy.  Our products are  specially designed  to 
+suit  Rapid Application Development (RAD) technology. We believe that 
+RAD significantly decreases the time and  efforts you spend on 
+application development, increasing productivity.
+
+ Look  at  our demo  programs that  basically contain  no manually
+written code. You can make  your own  applications  with  the same
+functionality without writing a single line of code.
+
+2. PRODUCT LIST
+=============== 
+
+  DynamicSkinForm Visual Component Library
+  ================================= 
+
+   DynamicSkinForm, 4.x (Delphi 4,5,6 and C++ Builder 4,5,6)
+   Create skinable application
+   Cost US$ 55.00 
+
+  BusinessSkinForm Visual Component Library
+  ================================= 
+
+   BusinessSkinForm, 1.x (Delphi 5,6 and C++ Builder 5,6)
+   Create skinable application
+   Cost US$ 65.00 
+
+   Includes Sources, Demos, and FAQ.
+
+
+3. SUPPORT
+==========
+
+If you have a question, visit Almediadev support web site:
+
+http://www.almdev.com
+
+In addition all registered users of Almediadev products receive a 
+free full-time support via E-mail.
+We will answer your questions about the products usage  and  give
+you advice on building better applications with our products.
+We react to any bug report and  prepare  bug  fixes  as  soon  as
+possible. You receive updates for free.
+
+
+4. CONTACT INFORMATION
+======================
+
+Almediadev:
+
+Email:     support@almdev.com
+Internet:  http://www.almdev.com

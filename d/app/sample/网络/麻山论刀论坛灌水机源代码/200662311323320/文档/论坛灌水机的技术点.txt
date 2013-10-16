@@ -1,0 +1,111 @@
+动网论坛是使用最广泛的了.
+在它的验证码图象里
+1.字体没有变化
+2.颜色较淡,不能被转成单色位图.可以用一个循环来转变.因为它的背景色是一样的.这样的话可以判断每个点的RGB值.如果这个值=背景色.那么
+把它变成白色.如果不是就变成黑色.这样就可以转成单色了.
+3.
+论坛灌水机的技术点
+
+破天惊 10.06.2004
+ 
+ 
+
+本来以为网页里的edit,memo等都和程序里的一样,可以用句柄来控制,但后来才明白,它是不存在句柄的!
+查了好久,前几天看到一个关于QQ自动申请的例子.主要就是控制网页各种操作的!总结了一下,做出一个论坛灌水机:
+首先要在uses中引用mshtml单元. 
+
+代码及分析如下:
+
+var
+hform:IHTMLFormelement;
+hdoc:ihtmldocument2;
+hall:ihtmlelementcollection;
+Hinput:IHTMLinputelement;
+iw:iwebbrowser2;
+hlen,tmploop:integer;
+vk:oleVariant;
+dispatch:IDispatch;
+begin
+if Assigned(webbrowse1) then ///保证网页里有内容;即已经打开一个网页!
+begin
+hdoc:=webbrowse1.document as ihtmldocument2;
+hall:=hdoc.get_all;
+hlen:=hall.get_length;
+////以上几步的操作为:将浏览器控件里的内容赋给hdoc.取其所有标识,并算出总数;
+////下面的操作为:按总数循环找到用户名和密码的edit;并赋值;
+for tmploop:=0 to hlen-1 do
+begin
+vk:=tmploop;
+dispatch:=hall.item(vk,0);
+if succeeded(Dispatch.QueryInterface(IHTMLInputelement,hinput)) then
+///如果此标识是一个edit控件.....
+begin ////下面这里的uppercase是必需的!防止因大小写的不同而判断失误!
+///下面的"TEXT"是由网页里的内容来确定的.也就是说你要判断就必需根据具体网页代码来!
+///密码框和用户名处是一样的!
+if uppercase(hinput.Type_)='TEXT' then hinput.value:='tresss'
+else if uppercase(hinput.type_)='PASSWORD' then hinput.value:='tresss';
+end;
+if succeeded(dispatch.QueryInterface(IHTMLFormElement,hform)) and (uppercase(hform.name)='THEFORM') then
+///此处是form提交.如果从html发现只有一个form的话那第二个条件是非必需的!
+///而且也不一定要判断name属性,也可以根据其它属性来判断.
+Hform.submit;
+end; ////for end;
+end; //if end;
+end;
+
+到此,,一个自动登陆的例子就作好了..如果要实现灌水的话,,可以将hinput:ihtmlinputelement换成htext:ihtmltextareaelement,也就相当于memo控件.将用户名的赋值换成是发言的赋值就好;当然这里还可以换成是其它的,如单选等...具体内容可以查看mshtml里的列表!
+
+本来到这里已经够了.但是后来发现--原来论坛里是有框架--frame的.好长一段时间被此困扰着,后来在csdn上问了一下,有人给出了解决方法,试了一下很不错!
+
+上面的代码里可以加入:
+var
+......
+......
+iw:iwebbrowser2;
+begin
+.....
+iw:=getframe(3); //此步即是取得webbrowse里的第二个框架;
+///而后的操作都是一样的,也就是上面的操作的作用是将一个框架里的内容来作为一个网页来处理;
+hdoc:=iw.document as ihtmldocument2;
+hall:=hdoc.get_all;
+......
+......
+
+
+///getframe() 函数如下需要在uses里加入activex单元:
+
+
+Function TFrmain.GetFrame(FrameNo:Integer):IWebbrowser2;
+var
+OleContainer:IOleContainer;
+enum:IEnumUnknown;
+unk:IUnknown;
+Fetched:PLongint;
+begin
+while webbrowse1.ReadyState<>READYSTATE_COMPLETE do
+Application.ProcessMessages;
+if Assigned(webbrowse.document) then
+begin
+Fetched:=nil;
+OleContainer:=webbrowse.Document as IOleContainer;
+OleContainer.EnumObjects(OLECONTF_EMBEDDINGS,enum);
+Enum.Skip(FrameNo);
+Enum.Next(OLECONTF_EMBEDDINGS,Unk,Fetched);
+Result:=Unk as IWebbrowser2;
+end
+else
+Result:=nil;
+end;
+
+还有要说明的一点就是网页里框架的跳转!依然是使用的navigate 但是需要两个参数!
+webbrowse.navigae('要转到的网页地址',flag1,flag2);
+其中两个参数的类型是:olevariant;
+第一个参数不需要赋值,它控制的是网页打开的其它选项(如:在新网页中打开.等).
+我们所要操作的是第二个参数.这里你要先打开网页的源文件,查看他的frame的name属性!记住所要控制的frame的name把它的值赋给flag2就可以了!这样就是在一个frame中打开一个网页!
+
+这样的话,加上一个timer再加上一些代码就可以作成一个完整的灌水机了!
+
+ 
+
+破天惊工作室 10.06.2004
+ 

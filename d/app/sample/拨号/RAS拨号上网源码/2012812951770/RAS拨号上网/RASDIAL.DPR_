@@ -1,0 +1,27 @@
+program RasDial;
+
+uses
+  Forms,
+  RasDialer in 'RasDialer.pas' {RasDialerForm},
+  Ras in 'Ras.pas',
+  Logmsg in 'Logmsg.pas',
+  Formpos in 'Formpos.pas',
+  FormAuto in 'FORMAUTO.PAS' {AutoForm},
+  About in 'About.pas' {AboutForm},
+  ConfigureAuto in 'ConfigureAuto.pas' {ConfigureAutoForm},
+  TimeAuto in 'TimeAuto.pas' {TimeAutoForm},
+  TimePasswordAuto in 'TimePasswordAuto.pas' {TimePasswordAutoForm};
+
+{$R *.RES}
+
+begin
+  Log := TLogMsg.Create('');
+  Application.Initialize;
+  Application.CreateForm(TRasDialerForm, RasDialerForm);
+  Application.CreateForm(TAboutForm, AboutForm);
+  Application.CreateForm(TConfigureAutoForm, ConfigureAutoForm);
+  Application.CreateForm(TTimeAutoForm, TimeAutoForm);
+  Application.CreateForm(TTimePasswordAutoForm, TimePasswordAutoForm);
+  Application.Run;
+  Log.Destroy;
+end.

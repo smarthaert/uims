@@ -1,0 +1,145 @@
+object FrmDrop: TFrmDrop
+  Left = 65
+  Top = 495
+  ActiveControl = pelMain
+  BorderIcons = []
+  BorderStyle = bsNone
+  ClientHeight = 57
+  ClientWidth = 149
+  Color = clBtnFace
+  DefaultMonitor = dmPrimary
+  Font.Charset = GB2312_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = #23435#20307
+  Font.Style = []
+  FormStyle = fsStayOnTop
+  OldCreateOrder = False
+  Scaled = False
+  OnCreate = FormCreate
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 12
+  object pelMain: TPanel
+    Left = 0
+    Top = 0
+    Width = 149
+    Height = 57
+    Color = clBlack
+    PopupMenu = PopupMenu1
+    TabOrder = 0
+    OnMouseDown = pelMainMouseDown
+    object Label1: TLabel
+      Left = 80
+      Top = 12
+      Width = 48
+      Height = 12
+      Caption = '00:00:00'
+      Color = clBlack
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clRed
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      Transparent = True
+      OnMouseDown = pelMainMouseDown
+    end
+    object lblStr1: TLabel
+      Left = 8
+      Top = 12
+      Width = 54
+      Height = 12
+      Caption = #26412#26376#29992#26102':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clRed
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+      OnMouseDown = pelMainMouseDown
+    end
+    object lblStr2: TLabel
+      Left = 8
+      Top = 38
+      Width = 54
+      Height = 12
+      Caption = #26412#27425#29992#26102':'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clRed
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+      OnMouseDown = pelMainMouseDown
+    end
+    object Label2: TLabel
+      Left = 80
+      Top = 38
+      Width = 48
+      Height = 12
+      Caption = '00:00:00'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clRed
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+      OnMouseDown = pelMainMouseDown
+    end
+  end
+  object PopupMenu1: TPopupMenu
+    AutoHotkeys = maManual
+    OwnerDraw = True
+    Left = 30
+    Top = 4
+    object MenuDrop: TMenuItem
+      Caption = #26174#31034#25302#25918#31383#21475'(&V)'
+      Checked = True
+      OnClick = MenuDropClick
+    end
+    object MenuShowMain: TMenuItem
+      Caption = #26174#31034#20027#31383#21475
+      OnClick = MenuShowMainClick
+    end
+    object MenuTrac: TMenuItem
+      Caption = #25302#25918#31383#21475#21322#36879#26126#26174#31034
+      Checked = True
+      OnClick = MenuTracClick
+    end
+    object MenuN1: TMenuItem
+      Caption = '-'
+    end
+    object MenuDropSetup: TMenuItem
+      Caption = #25302#25918#31383#21475#35774#32622'(&S)'
+      OnClick = MenuDropSetupClick
+    end
+  end
+  object XPMenu1: TXPMenu
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clMenuText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    Color = clBtnFace
+    IconBackColor = clBtnFace
+    MenuBarColor = clBtnFace
+    SelectColor = clHighlight
+    SelectBorderColor = clHighlight
+    SelectFontColor = clMenuText
+    DisabledColor = clInactiveCaption
+    SeparatorColor = clBtnFace
+    CheckedColor = clHighlight
+    IconWidth = 24
+    DrawSelect = True
+    UseSystemColors = True
+    OverrideOwnerDraw = False
+    Gradient = False
+    FlatMenu = False
+    AutoDetect = False
+    Active = True
+    Left = 2
+    Top = 4
+  end
+end

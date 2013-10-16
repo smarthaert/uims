@@ -1,0 +1,247 @@
+//////////////////////////////////////
+//程序能够实现QQ查询添加好友的自动翻页
+//如果稍加修改，完全可以变成一个"千夫指"
+//之类的软件，其实很多软件都使用这个原理
+//用SendMessage操作别的程序
+//                           By 6+*
+//                         QQ:16668215
+//                         2003.02.07
+//        www.51safe.org
+/////////////////////////////////////
+unit Unit1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, 
+Classes, Graphics, Controls, Forms,
+  Dialogs, XP_Form, ComCtrls, 
+XP_GroupBox, XP_CheckBox, StdCtrls, 
+XP_Button,
+  ExtCtrls;
+
+type
+  TForm1 = class(TForm)
+    XP_Form1: TXP_Form;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
+    XP_GroupBox1: TXP_GroupBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    XP_CheckBox1: TXP_CheckBox;
+    XP_Button1: TXP_Button;
+    XP_Button2: TXP_Button;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Timer1: TTimer;
+    Memo1: TMemo;
+    procedure FormShow(Sender: TObject);
+    procedure XP_Button1Click(Sender: 
+TObject);
+    procedure Timer1Timer(Sender: 
+TObject);
+    procedure XP_Button2Click(Sender: 
+TObject);
+    procedure FormResize(Sender: 
+TObject);
+    procedure Edit1KeyPress(Sender: 
+TObject; var Key: Char);
+    procedure Edit2KeyPress(Sender: 
+TObject; var Key: Char);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  ButtonHandleNext:HWND;//按钮"下一个"的句
+柄
+  ButtonHandleAll:HWND;//按钮"全部"的句柄
+  i:integer;//次数的计数器
+
+implementation
+
+{$R *.dfm}
+
+//列举所有windows窗口，查找是否出现“查询结
+果”这四个字
+function myfindwindow():string;
+var
+Handle:THandle;
+mywindowhandle:HWND;
+mywindowsname:array[0..255] of char;
+begin
+Handle:=FindWindow('progman','Program 
+Manager');//列举所有的程序
+mywindowhandle:=GetWindow(Handle,GW_HWNDF
+IRST);
+  while mywindowhandle<>0 do
+  begin
+  if GetWindowText(mywindowhandle, 
+@mywindowsname, 255)>0 then
+     begin
+       if pos('查询结果
+',StrPas(@mywindowsname))>0 then//是否窗口
+有“查询结果”
+          begin
+//            showmessage('找到了
+exelock');
+            
+Result:=StrPas(@mywindowsname);//返回窗口
+的名字
+            exit;
+          end;
+//       
+showmessage(StrPas(@mywindowsname));
+     end;
+    
+mywindowhandle:=GetWindow(mywindowhandle,
+GW_HWNDNEXT);
+  end;
+Result:='';//没有找到就返回空
+end;
+
+//这个函数取当前qq查询结果窗口上“下页”的按
+钮的句柄
+function 
+GetButtonHandleNext(hwnd:Integer;lparam:L
+ongint):Boolean;stdcall;
+var
+myclass:array[0..255] of Char;
+mycaption:array[0..255] of Char;
+begin
+Result:=True;//返回为True就继续找下一个按钮
+GetClassName(hwnd,myclass,255);//得到目标
+窗口的控件类名
+if StrPas(myclass)='Button' then//如果是
+Button类
+  begin
+   GetWindowText(hwnd,mycaption,100);//得
+到Botton的Caption名字
+    if mycaption='下页' then//名字正确就
+     begin
+      PInteger(lparam)^:=hwnd; //得到目标
+控件的Hwnd(句柄)
+      Result:=False;//终止循环
+     end;
+  end;
+end;//end of function
+
+//两个函数差不多，就不多废话了
+function 
+GetButtonHandleAll(hwnd:Integer;lparam:Lo
+ngint):Boolean;stdcall;
+var
+myclass:array[0..255] of Char;
+mycaption:array[0..255] of Char;
+begin
+Result:=True;
+GetClassName(hwnd,myclass,255);
+if StrPas(myclass)='Button' then
+  begin
+   GetWindowText(hwnd,mycaption,100);
+    if mycaption='全部' then
+     begin
+      PInteger(lparam)^:=hwnd;
+      Result:=False;
+     end;
+  end;
+end;
+
+procedure TForm1.FormShow(Sender: 
+TObject);
+begin
+XP_Button1.SetFocus;//使开始键获得焦点
+end;
+
+procedure TForm1.XP_Button1Click(Sender: 
+TObject);
+var
+myhandle1:Integer;
+myhandle2:Integer;
+windowsname:string;
+begin
+windowsname:=myfindwindow();
+if windowsname='' then
+ begin
+  application.messagebox('程序找不到QQ查找
+用户窗口!请点QQ上面的"查找"--->"下一步"出现"
+查找在线人数"窗口!', '信息',32);
+ end
+else
+ begin//找到了
+{取句柄}
+myhandle1:=FindWindow(nil,pchar(windowsna
+me)); //就是窗口的Caption
+if myhandle1<>0 then
+begin
+  myhandle2:=myhandle1;
+  //在这里循环取到想要的句柄为止
+  //继续查找"下页"按钮的句柄
+  
+EnumChildWindows(myhandle1,@GetButtonHand
+leNext,Integer(@myhandle1));
+  ButtonHandleNext:=myhandle1;
+  if XP_CheckBox1.Checked=true then//判断
+有没有必要去查找"全部"按钮的句柄
+    begin
+    //继续查找"全部"按钮的句柄
+    
+EnumChildWindows(myhandle2,@GetButtonHand
+leAll,Integer(@myhandle2));
+    ButtonHandleAll:=myhandle2;
+    end;
+  i:=0;
+  
+Timer1.Interval:=StrToInt(edit1.Text);//时
+间间隔
+  Timer1.Enabled:=true;
+  XP_Button1.Enabled:=false;
+  XP_Button2.Enabled:=true;
+  end;
+ end;
+end;
+
+procedure TForm1.Timer1Timer(Sender: 
+TObject);
+begin
+{定时发送}
+if i=strtoint(edit2.Text) then//达到次数了
+  begin
+    XP_Button2.Click;
+  end
+else
+  begin
+  //发送按钮
+  
+SendMessage(ButtonHandleNext,$201,0,0);//
+WM_LBUTTONDOWN=$201按钮按下的动作
+  
+SendMessage(ButtonHandleNext,$202,0,0);//
+WM_LBUTTONUP=$202按钮放开的动作
+  inc(i);
+  end;
+end;
+
+//停止按钮
+procedure TForm1.XP_Button2Click(Sender: 
+TObject);
+begin
+Timer1.Enabled:=false;
+if XP_CheckBox1.Checked=true then//需要点
+击"全部"按钮
+  begin
+    
+SendMessage(ButtonHandleAll,$201,0,0);
+    
+SendMessage(ButtonHandleAll,$202,0,0);
+  end;
+XP_Button2.Enabled:=false;
+XP_Button1.Enabled:=true;
+end;
+
+end.

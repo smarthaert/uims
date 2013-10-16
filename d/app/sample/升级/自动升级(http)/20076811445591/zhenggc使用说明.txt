@@ -1,0 +1,24 @@
+把ver.txt上传到网站，
+ver.txt 里Ver=V***
+代表程序版本，
+zip文件支持自动解压
+rar 不支持。
+如果需要下载文件
+只需修改
+本地ini文件0ver.ini里的
+exe=[需要下载的文件]
+
+服务器路径可以任意添加
+其中
+格式如：
+『服务器』=[url]
+服务器2可以下载测试 
+测试exe=sql.rar 或者qqviewer.rar
+
+[update]
+『服务器』=http://zgc123.go1.icpcn.com/
+『服务器2』=http://freehost26.websamba.com/zhenggc/
+
+您如果有更好的建议或者对软件做了优化，请您联系我：
+email:zgc123_1978@163.com
+QQ:1119063 (请注明:dephi交流)

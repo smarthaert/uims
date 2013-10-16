@@ -1,0 +1,26 @@
+      --------------------------------------------------------
+       
+               Almediadev Visual Component Library
+                                for 
+                    Borland Delphi and C++ Builder
+
+       Component:  DynamicSkinForm 
+       Author:     Almediadev
+       Email:      support@almdev.com
+       Internet:   http://www.almdev.com
+      --------------------------------------------------------
+
+                 (c) Copyright Almediadev, 2000-2002
+                        All rights reserved
+
+      --------------------------------------------------------
+
+You can try out our software before you buy it. You can download it 
+freely, try it out, and pass it around to people you know. However, 
+after using the software for a trial period, you must register and 
+pay for it, or remove it from your system.
+
+CURRENT PRICING
+===============
+
+DynamicSkinForm 4.x with full source code - $55.00 US

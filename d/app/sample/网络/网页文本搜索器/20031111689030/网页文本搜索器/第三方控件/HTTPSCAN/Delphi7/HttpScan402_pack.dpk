@@ -1,0 +1,44 @@
+package HttpScan402_pack;
+
+{$R *.res}
+{$R '..\sources\THtScan.dcr'}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl;
+
+contains
+  ThConst in '..\Sources\ThConst.pas',
+  ThCrkUrl in '..\Sources\ThCrkUrl.pas',
+  ThDwnld in '..\Sources\ThDwnld.pas',
+  ThGetThr in '..\Sources\ThGetThr.pas',
+  ThGetUrl in '..\Sources\ThGetUrl.pas',
+  ThSlist in '..\Sources\ThSlist.pas',
+  ThTools in '..\Sources\ThTools.pas',
+  THtScan in '..\Sources\THtScan.pas',
+  ThTypes in '..\Sources\ThTypes.pas',
+  ThUrlQue in '..\Sources\ThUrlQue.pas';
+
+end.

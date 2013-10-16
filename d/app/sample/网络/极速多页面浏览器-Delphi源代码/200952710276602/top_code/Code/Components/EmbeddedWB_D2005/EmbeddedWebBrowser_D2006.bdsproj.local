@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2006/02/13 12:32:35.203.pas,E:\Borland\BDS\3.0\lib\VCL\EmbeddedWB_D2005\Source\XmlTools.pas=</Transaction>
+    <Transaction>2006/03/09 07:31:43.953.dcr,E:\Borland\BDS\3.0\lib\VCL\EmbeddedWB_D2005\Source\EmbeddedWebBrowser.dcr=E:\Borland\BDS\3.0\lib\VCL\EmbeddedWB_D2005\Source\EWB.dcr</Transaction>
+    <Transaction>2006/03/09 07:41:53.765.bdsproj,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\EmbeddedWebBrowser_D2005.bdsproj=E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\EmbeddedWebBrowser_D2006.bdsproj</Transaction>
+  </Transactions>
+</BorlandProject>
