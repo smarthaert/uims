@@ -41,6 +41,7 @@ type
     function getRec(Index: Integer): Pointer;
     function getRecSize: Integer;
     procedure loadFromFile(const FileName: string);
+    procedure loadFromM(const newM: TMemoryStream); 
     procedure saveAs(FileName: string);
     function seek(Index: Integer): Pointer;
   end;
@@ -56,6 +57,7 @@ type
     function getRec(Index: Integer): Pointer; virtual;
     function seek(Index: Integer): Pointer; virtual;
     procedure loadFromFile(const FileName: string); virtual;
+    procedure loadFromM(const newM: TMemoryStream); virtual;  
     procedure loadFromTxtFile(const FileName: string); virtual;
     procedure saveAs(FileName: string); virtual;
   protected
@@ -78,7 +80,8 @@ type
     function getCP: TArrayOfSingle;
     function getUD: TArrayOfSingle;
     function getVOL: TArrayOfSingle;
-    procedure save;
+    procedure save;                 
+    procedure setM(newM: TMemoryStream);
   end;
 
 { TDataFile }
@@ -104,6 +107,7 @@ type
   public
     constructor Create(const StockPath: string); reintroduce;
     procedure Reload(const StockName: string);
+    procedure setM(newM: TMemoryStream);
   end;
 
 implementation
@@ -163,6 +167,12 @@ begin
     M.LoadFromFile(FileName);
     M.Position := 0;
   end;
+end;
+
+procedure TBaseDataFile.loadFromM(const newM: TMemoryStream); //Ìæ»»ÄÚ´æ
+begin
+  _free_(M);
+  M := newM;
 end;
 
 function TBaseDataFile.writeStkDataToM(iFlag: Integer; p_s_k_line_data: LP_s_k_line_data): Integer;
@@ -314,8 +324,6 @@ begin
   inherited Create;
 end;
 
-
-
 procedure TDataFile.Reload(const StockName: string);
 begin
   FStockName := Trim(StockName);
@@ -376,6 +384,12 @@ function TDataFile.indexOf(Date: TDateTime): Integer; begin Result := indexOf(Da
 function TDataFile.getStockName: string; begin Result := FStockName; end;
 
 procedure TDataFile.save; begin if M <> nil then M.SaveToFile(getFilePath); end;
+
+procedure TDataFile.setM(newM: TMemoryStream);
+begin
+  _free_(M);
+  M := newM;
+end;
 
 function TDataFile.Seek(Index: Integer): Pointer;
 begin

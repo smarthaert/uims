@@ -170,6 +170,7 @@ type
     procedure CLEAR_ALL_CALCULATE_DATA();
   public
     StkDataFile: IDataFile;
+    StkDataFile1Min: IDataFile;
     procedure CalcAll;
     function Fy2Iy(FY: Single; R: TRect; ScaleHigh, ScaleLow: Single): Integer;
     property StockName: string read FStockName write SetStockName;
@@ -198,7 +199,7 @@ begin
   FDataIndex := 0;
   FUnitWidth := 6;
   GRID.Color := clBlack;
-  //StockName := 'IFL0';//数据文件名
+  //StockName := 'IFL0';//数据文件名  
   StockName := '..\DATA\IFL0.DAT'; //数据文件名
   Header.Options := Header.Options - [goVertLine, goHorzLine];
   Header.Color := clBlack;
@@ -290,7 +291,8 @@ begin
   begin
     FStockName := Value;
     CLEAR_ALL_CALCULATE_DATA(); //清除计算好的数据
-    StkDataFile := TDataFile.Create(FStockName);
+    StkDataFile := TDataFile.Create(FStockName);    
+    StkDataFile1Min := TDataFile.Create(FStockName);
     if StkDataFile <> nil then
     begin
       if DataIndex > StkDataFile.getCount - 1 then
@@ -1983,16 +1985,17 @@ begin
   if str <> '' then
   begin
     period := StrToInt(str);
-    if period <= 270 then
+    
+    if (period > 1) and (period <= 270) then
     begin
       //period := 270;
       //从当前的内存中获取数据
       M := TMemoryStream.Create;
-      recNum := StkDataFile.getCount;
+      recNum := StkDataFile1Min.getCount;
       i := 0;
       while i < recNum do
       begin
-        p := StkDataFile.getRec(i);
+        p := StkDataFile1Min.getRec(i);
 
         //加工不同周期的数据
         if ((i + 1) mod period) = 1 then
@@ -2029,18 +2032,33 @@ begin
           end;
         end;
 
-
         i := i + 1;
       end;
-
+      
+      StkDataFile.setM(M);
+      CLEAR_ALL_CALCULATE_DATA(); //清除计算好的数据
+      CalcAll;
+      GRID.Repaint;
+      ITERATE_DATA(DataIndex);
+      {
       SaveDialog1.Filter := '文本文件(*.DAT)|*.DAT';
 
       if SaveDialog1.Execute then
         M.SaveToFile(SaveDialog1.FileName);
 
       _free_(M);
+      }
     end
-    else
+    else if period = 1 then
+      begin
+        
+      StkDataFile.setM(M);
+      CLEAR_ALL_CALCULATE_DATA(); //清除计算好的数据
+      CalcAll;
+      GRID.Repaint;
+      ITERATE_DATA(DataIndex);
+      end
+      else
     begin
       ShowMessage('输入的周期最大包含270分钟，请重新输入。');
     end;
