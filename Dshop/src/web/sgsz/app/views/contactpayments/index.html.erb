@@ -1,29 +1,22 @@
-<h1><%= t 'views.contactpayments.index.listing_contactpayments' %></h1>
+<h1><%= t '.listing_contactpayments' %></h1>
 
-<table>
+<table border="1">
   <tr>
-    <th><%= t 'views.contactpayments.index.stid' %></th>
-    <th><%= t 'views.contactpayments.index.stname' %></th>
-    <th><%= t 'views.contactpayments.index.custid' %></th>
-    <th><%= t 'views.contactpayments.index.custname' %></th>
-    <th><%= t 'views.contactpayments.index.outmoney' %></th>
-    <th><%= t 'views.contactpayments.index.inmoney' %></th>
-    <th><%= t 'views.contactpayments.index.strike' %></th>
-    <th><%= t 'views.contactpayments.index.method' %></th>
-    <th><%= t 'views.contactpayments.index.proof' %></th>
-    <th><%= t 'views.contactpayments.index.ticketid' %></th>
-    <th><%= t 'views.contactpayments.index.cdate' %></th>
-    <th><%= t 'views.contactpayments.index.status' %></th>
-    <th><%= t 'views.contactpayments.index.remark' %></th>
-    <th colspan="3"><%= t 'views.operation' %></th>
+    <th width="80px"><%= t '.stname' %></th>
+    <th width="80px"><%= t '.outmoney' %></th>
+    <th width="80px"><%= t '.inmoney' %></th>
+    <th width="80px"><%= t '.strike' %></th>
+    <th width="90px"><%= t '.method' %></th>
+    <th width="90px"><%= t '.proof' %></th>
+    <th width="90px"><%= t '.ticketid' %></th>
+    <th width="80px"><%= t '.cdate' %></th>
+    <th width="40px"><%= t '.status' %></th>
+    <th width="100px"><%= t '.remark' %></th>
   </tr>
 
 <% @contactpayments.each do |contactpayment| %>
   <tr>
-    <td><%= contactpayment.stid %></td>
     <td><%= contactpayment.stname %></td>
-    <td><%= contactpayment.custid %></td>
-    <td><%= contactpayment.custname %></td>
     <td><%= contactpayment.outmoney %></td>
     <td><%= contactpayment.inmoney %></td>
     <td><%= contactpayment.strike %></td>
@@ -33,14 +26,11 @@
     <td><%= contactpayment.cdate %></td>
     <td><%= contactpayment.status %></td>
     <td><%= contactpayment.remark %></td>
-    <td><%= link_to t('views.show'), contactpayment %></td>
-    <td><%= link_to t('views.edit'), edit_contactpayment_path(contactpayment) %></td>
-    <td><%= link_to t('views.destroy'), contactpayment, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
   </tr>
 <% end %>
 </table>
+
 <br />
 <%= paginate @contactpayments, :window => 2 %>
 <br />
 
-<%= link_to t('views.contactpayments.index.new_contactpayments'), new_contactpayment_path %>

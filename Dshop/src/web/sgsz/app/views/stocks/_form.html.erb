@@ -1,7 +1,12 @@
-<%= form_for(@stock) do |f| %>
+<div class="bingdian_form">
+<%= form_for @stock, :html => { :multipart => true } do |f| %>
+
+    <fieldset>
+  <legend><%= t('.input_stock_info') %></legend>
   <% if @stock.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@stock.errors.count, "error") %> prohibited this stock from being saved:</h2>
+      <h2><%= pluralize(@stock.errors.count, "error") %>
+      prohibited this product from being saved:</h2>
 
       <ul>
       <% @stock.errors.full_messages.each do |msg| %>
@@ -12,70 +17,27 @@
   <% end %>
 
   <div class="field">
-    <%= f.label t('views.stocks.index.stid') %>:<br />
-    <%= f.text_field :stid %>
+    <%= t('.pid') %>:
+    <%= f.text_field :pid%>
   </div>
   <div class="field">
-    <%= f.label t('views.stocks.index.stname') %>:<br />
-    <%= f.text_field :stname %>
+    <%= t('.goodsname') %>:<br />
+<!-- START_HIGHLIGHT -->
+    <%= f.text_area :goodsname, rows: 23, cols: 80  %>
+<!-- END_HIGHLIGHT -->
   </div>
   <div class="field">
-    <%= f.label t('views.stocks.index.pid') %>:<br />
-    <%= f.text_field :pid %>
+    <%= t('.picture') %>:
+    <%= f.file_field :picture %>
   </div>
   <div class="field">
-    <%= f.label t('views.stocks.index.barcode') %>:<br />
-    <%= f.text_field :barcode %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.stocks.index.goodsname') %>:<br />
-    <%= f.text_field :goodsname %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.stocks.index.size') %>:<br />
-    <%= f.text_field :size %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.stocks.index.color') %>:<br />
-    <%= f.text_field :color %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.stocks.index.amount') %>:<br />
-    <%= f.number_field :amount %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.stocks.index.volume') %>:<br />
-    <%= f.text_field :volume %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.stocks.index.unit') %>:<br />
-    <%= f.text_field :unit %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.stocks.index.inprice') %>:<br />
-    <%= f.text_field :inprice %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.stocks.index.pfprice') %>:<br />
-    <%= f.text_field :pfprice %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.stocks.index.bundle') %>:<br />
-    <%= f.number_field :bundle %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.stocks.index.discount') %>:<br />
-    <%= f.number_field :discount %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.stocks.index.baseline') %>:<br />
-    <%= f.number_field :baseline %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.stocks.index.remark') %>:<br />
-    <%= f.text_area :remark %>
+    <%= t('.pfprice') %>:
+    <%= number_to_currency(f.text_field :pfprice) %>
   </div>
   <div class="actions">
-    <%= f.submit t('views.submit') %>
+    <%= f.submit t('.submit')%>
   </div>
+
+    </fieldset>
 <% end %>
+</div>

@@ -1,0 +1,22 @@
+
+
+server {
+        listen 443;
+        server_name domain.com;
+        root /where/your/app/is;
+        passenger_enabled on;
+        ssl on;
+        ssl_certificate /path/to/server.crt;
+        ssl_certificate_key /path/to/server.key;
+}
+
+
+
+
+cd /path/to/ssl/certs
+openssl genrsa -des3 -out server.key 1024
+openssl req -new -key server.key -out server.csr
+cp server.key server.key.org
+openssl rsa -in server.key.org -out server.key
+openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+

@@ -1,3 +1,19 @@
+#---
+# Excerpted from "Agile Web Development with Rails",
+# published by The Pragmatic Bookshelf.
+# Copyrights apply to this code. It may not be used to create training material, 
+# courses, books, articles, and the like. Contact us if you are in doubt.
+# We make no guarantees that this code is fit for any purpose. 
+# Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
+#---
 class Orderdetail < ActiveRecord::Base
-  attr_accessible :additional, :amount, :barcode, :bundle, :cdate, :color, :discount, :goodsname, :hprice, :inprice, :oid, :outprice, :pfprice, :pid, :ramount, :rbundle, :remark, :size, :status, :subtotal, :unit, :volume
+  belongs_to :ordermain
+  belongs_to :stock
+  belongs_to :cart
+  attr_accessible :cart_id, :stock_id;
+
+  def total_price
+    outprice * amount 
+    #stock.pfprice * amount 
+  end
 end

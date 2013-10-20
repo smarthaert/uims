@@ -2,8 +2,7 @@ class ShippersController < ApplicationController
   # GET /shippers
   # GET /shippers.json
   def index
-    @shippers = Shipper.page(params[:page])
-    # @shippers = Shipper.all
+    @shippers = Shipper.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,7 +44,7 @@ class ShippersController < ApplicationController
 
     respond_to do |format|
       if @shipper.save
-        format.html { redirect_to @shipper, notice: t('views.successfully_created') }
+        format.html { redirect_to @shipper, notice: 'Shipper was successfully created.' }
         format.json { render json: @shipper, status: :created, location: @shipper }
       else
         format.html { render action: "new" }
@@ -61,7 +60,7 @@ class ShippersController < ApplicationController
 
     respond_to do |format|
       if @shipper.update_attributes(params[:shipper])
-        format.html { redirect_to @shipper, notice: t('views.successfully_updated') }
+        format.html { redirect_to @shipper, notice: 'Shipper was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

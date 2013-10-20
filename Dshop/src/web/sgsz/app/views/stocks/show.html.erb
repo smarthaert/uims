@@ -1,85 +1,25 @@
-<p id="notice"><%= notice %></p>
+<h1><%= t('.show_stock') %></h1>
 
 <p>
-  <b><%= t 'views.stocks.index.stid' %>:</b>
-  <%= @stock.stid %>
-</p>
-
-<p>
-  <b><%= t 'views.stocks.index.stname' %>:</b>
-  <%= @stock.stname %>
-</p>
-
-<p>
-  <b><%= t 'views.stocks.index.pid' %>:</b>
+  <b><%= t('.pid') %>:</b>
   <%= @stock.pid %>
 </p>
 
 <p>
-  <b><%= t 'views.stocks.index.barcode' %>:</b>
-  <%= @stock.barcode %>
+  <b><%= t('.goodsname') %>:</b>
+  <%= @stock.goodsname%>
 </p>
 
 <p>
-  <b><%= t 'views.stocks.index.goodsname' %>:</b>
-  <%= @stock.goodsname %>
+  <b><%= t('.picture') %>:</b>
+  <%= image_tag @stock.picture.url(:medium) %>
 </p>
 
 <p>
-  <b><%= t 'views.stocks.index.size' %>:</b>
-  <%= @stock.size %>
-</p>
-
-<p>
-  <b><%= t 'views.stocks.index.color' %>:</b>
-  <%= @stock.color %>
-</p>
-
-<p>
-  <b><%= t 'views.stocks.index.amount' %>:</b>
-  <%= @stock.amount %>
-</p>
-
-<p>
-  <b><%= t 'views.stocks.index.volume' %>:</b>
-  <%= @stock.volume %>
-</p>
-
-<p>
-  <b><%= t 'views.stocks.index.unit' %>:</b>
-  <%= @stock.unit %>
-</p>
-
-<p>
-  <b><%= t 'views.stocks.index.inprice' %>:</b>
-  <%= @stock.inprice %>
-</p>
-
-<p>
-  <b><%= t 'views.stocks.index.pfprice' %>:</b>
-  <%= @stock.pfprice %>
-</p>
-
-<p>
-  <b><%= t 'views.stocks.index.bundle' %>:</b>
-  <%= @stock.bundle %>
-</p>
-
-<p>
-  <b><%= t 'views.stocks.index.discount' %>:</b>
-  <%= @stock.discount %>
-</p>
-
-<p>
-  <b><%= t 'views.stocks.index.baseline' %>:</b>
-  <%= @stock.baseline %>
-</p>
-
-<p>
-  <b><%= t 'views.stocks.index.remark' %>:</b>
-  <%= @stock.remark %>
+  <b><%= t('.price') %>:</b>
+  <%= number_to_currency(@stock.pfprice) %>
 </p>
 
 
-<%= link_to t('views.edit'), edit_stock_path(@stock) %> |
-<%= link_to t('views.back'), stocks_path %>
+<%= link_to t('.edit'), edit_stock_path(@stock) %> |
+<%= link_to t('.back'), stocks_path %>

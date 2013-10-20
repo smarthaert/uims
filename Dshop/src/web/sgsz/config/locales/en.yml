@@ -1,5 +1,336 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
+#START:layout
+#START:main
+#START:cart
+#START:currency
+#START:checkout
+#START:flash
 en:
-  hello: "Hello world"
+  views:
+    pagination:
+      first: "首页"
+      last: "末页"
+      previous: "上一页"
+      next: "下一页"
+      truncate: "..."
+
+#END:cart
+#END:checkout
+#END:flash
+#END:main
+#END:layout
+  number:
+    currency:
+      format:
+        unit:      "$"
+        precision: 2
+        separator: "."
+        delimiter: ","
+        format:    "%u%n"
+#END:currency
+
+  sessions:
+    new:
+      login_title: "请输入验证信息"
+      login:    "登录"
+      loginname:    "用户"
+      password:    "密码"
+#START:errors
+  errors:
+    template:
+      body:        "下面的字段有错误:"
+      header:       
+        one:       "有一个错误，因此%{model} 保存失败。"
+        other:     "有%{count} 个错误，因此 %{model}保存失败。"
+#END:errors
+
+#START:layout
+  layouts:
+    application:
+      title:       "实广水族世界，您家中的海洋世界～"
+      stocks:    "产品管理"
+      customers:       "店员管理"
+      login:      "会员登录"
+      logout:      "退出"
+      cname:         "姓名:"
+      cardno:         "会员编号:"
+      submit:       "查询"
+      search:       "统一搜索"
+#END:layout
+
+#START:admin
+  admin:
+    index:
+      welcome:     "欢迎您："
+      now:        "现在时间："
+      we_got:       "我们已经成功完成了"
+      order:       "订单，亲们，加油！加油 Oo～～"
+    menu:
+      ordermainsopen:      "待处理订单"
+      ordermainsclose:      "历史订单"
+      contactpayments:     "对帐单"
+      
+#END:admin
+
+#START:product
+  stocks:
+    new:
+      new_stock: "新增产品"
+      back:         "返回"
+    show:
+      pid: "编码"
+      goodsname: "名称"
+      show_stock: "产品详细信息"
+      title:       "产品名称"
+      description: "产品描述"
+      picture:     "产品图片"
+      price:       "产品价格"
+      edit:         "编辑"
+      back:         "返回"
+    edit:
+      editing_stock: "产品信息编辑"
+      show:         "显示"
+      back:         "返回"
+    form:
+      title:       "产品名称"
+      pid: "编码"
+      goodsname: "名称"
+      description: "产品描述"
+      picture:     "产品图片"
+      price:       "产品价格"
+      pfprice:       "产品价格"
+      submit:   "提交信息"
+      input_stock_info:  "请输入产品信息"
+    index:
+      title:       "入库产品列表："
+      show:        "显示产品信息"
+      edit:        "编辑"
+      destroy:     "删除"
+      are_you_sure: "您确认要删除该产品吗？"
+      newStock:  "新增产品"
+#END:cart
+
+#START:customer
+  customers:
+    index:
+      new_customer: "新增客户"
+      title:       "店员列表："
+      loginname:        "用户名"
+      show:        "显示详细信息"
+      edit:        "编辑"
+      destroy:     "删除"
+      are_you_sure: "您确认要删除该用户吗？"
+      newUser:     "新建店员"
+      opt:          "操作"
+      created_at:   "创建时间"
+      updated_at:   "更新时间"
+    show:
+      show_customer:    "显示用户信息"
+      cid: "会员编号"
+      loginname: "网站用户名"
+      cname: "姓名"
+      shopname: "店铺名称"
+      sex: "性别"
+      address: "地址"
+      email: "邮件"
+      qq: "QQ"
+      tel: "电话"
+      state: "地区"
+      edit:         "编辑"
+      back:         "返回"
+    edit:
+      edit_customer:    "编辑用户信息"
+      back:         "返回"
+      show:        "显示用户信息"
+    form:
+      input_customer_info:  "请输入用户信息"
+      cid: "会员编号"
+      loginname: "网站用户名"
+      cname: "姓名"
+      shopname: "店铺名称"
+      sex: "性别"
+      address: "地址"
+      email: "邮件"
+      qq: "QQ"
+      tel: "电话"
+      state: "地区"
+      password:        "密码"
+      confirm:        "确认密码"
+      submit:   "提交信息"
+    new:
+      back:         "返回"
+
+
+#END:cart
+
+#START:cart
+  carts:
+    cart:
+      title:       "购物车"
+      empty:       "清空"
+      checkout:    "结算"
+      totle:       "合计："
+      are_you_sure: "确信清空购物车吗？"
+#END:cart
+
+#START:main
+  store:
+    index:
+      title_html:  "产品目录"
+      add_html:    "放入购物车"
+    category:
+      home:        "产品目录"
+  
+#END:main
+
+#START:checkout
+  ordermains:
+    new:
+      legend:       "订单信息录入"
+    form:
+      oid: "订单号"
+      custname:         "客户姓名"
+      custtel:   "电话"
+      custaddr: "客户地址"
+      delivertype: "配送方式"
+      sname: "物流"
+      select_a_shipper: "请选择物流服务提供商"
+      select_a_delivertype: "请选择配送方式"
+      stel: "物流电话"
+      saddress: "物流地址"
+      email:        "电子邮件"
+      payment:     "支付方式"
+      pay_prompt_html: "请选择支付方式"
+      integration:  "奖励积分"
+      discount:     "折扣价格"
+      teller:       "操作柜员"
+      level:        "会员级别"
+      remark:         "备注"
+      yingshou:         "订单金额"
+      allvolume:       "体积合计"
+      allamount:       "数量合计"
+      submit:       "提交订单"
+      input_ordermain_info:  "请输入订单信息"
+    index:
+      ordermain_search_info:  "检索条件"
+      search:       "检索"
+      oid:         "订单号"
+      custname:         "客户"
+      custtel:   "电话"
+      custaddr: "收货地址"
+      shishou: "总价"
+      sname: "物流"
+      stel: "电话"
+      status: "允许操作"
+      submited: "编辑"
+      shippered: "查看"
+      dtype: "阶段"
+      uid: "柜员"
+      uname: "姓名"
+      canal: "来源"
+      payment:     "支付方式"
+      sum:          "合计"
+      discount:     "消费金额"
+      name:         "客户姓名"
+      cell_phone:   "移动电话"
+      integration:  "积分"
+      level:        "会员级别"
+      title:        "订单列表"
+      show:         "显示订单信息"
+      edit:         "取回购物车中"
+      destroy:      "删除"
+      are_you_sure: "您确认要删除该订单吗？"
+      opt:          "操作"
+      created_at:   "创建时间"
+      updated_at:   "更新时间"
+      are_you_sure_empty_cart: "取回该订单将会清空当前购物车中未提交的商品，请确认本次操作。"
+    show:
+      oid:         "订单号"
+      custname:         "客户"
+      custtel:   "电话"
+      custaddr: "收货地址"
+      shishou: "总价"
+      sname: "物流"
+      stel: "电话"
+      status: "状态"
+      uid: "柜员"
+      uname: "姓名"
+      canal: "来源"
+      payment:     "支付方式"
+      name:         "客户姓名"
+      cell_phone:   "移动电话"
+      address_html: "客户地址"
+      email:        "电子邮件"
+      pay_type:     "支付方式"
+      pay_prompt_html: "请选择支付方式"
+      integration:  "奖励积分"
+      discount:     "折扣价格"
+      teller:       "操作柜员"
+      level:        "会员级别"
+      note:         "备注"
+      edit:         "编辑"
+      back:         "返回"
+      remark: "备注"
+    edit:
+      editing_order:  "编辑订单信息"
+      back:         "返回"
+      show:         "显示订单信息"
+  orderdetails: 
+    orderdetailconfirm:
+      input_orderdetails_info:  "订单中产品信息"
+      orderconfirm: "产品详情"
+      pid: "编号"
+      goodsname: "名称"
+      size: "尺寸"
+      color: "颜色"
+      volume: "体积"
+      outprice: "价格"
+      amount: "数量"
+      unit: "单位"
+      bundle: "件数"
+      subtotal: "小计"
+      opt: "数量调整"
+      add_html: "+"
+      sub_html: "-"
+      del_html: "X"
+      are_you_sure: "您确认要从订单中删除该产品吗？"
+    orderdetailcart:
+      pid: "编号"
+      goodsname: "名称"
+      size: "尺寸"
+      color: "颜色"
+      volume: "体积"
+      outprice: "价格"
+      amount: "数量"
+      unit: "单位"
+      bundle: "件数"
+      subtotal: "小计"
+  contactpayments:
+    index:
+      listing_contactpayments: "对账单信息表"
+      stid: "仓库编号"
+      stname: "名称"
+      custid: "客户编号"
+      custname: "姓名"
+      outmoney: "发货"
+      inmoney: "回款"
+      strike: "冲减"
+      method: "支付方式"
+      proof: "凭证"
+      ticketid: "单号"
+      cdate: "日期"
+      status: "状态"
+      remark: "备注"
+      new_contactpayments: "新增对账单信息"
+      editing_contactpayments: "更新对账单信息"
+#END:checkout
+
+#START:flash
+  thanks:          "感谢您选择实广水族，选择品质生活。欢迎下光临。"
+#END:flash
+  
+  cash: "现金"
+  credit_card: "信用卡/银行卡"
+  integration:  "积分"
+  your_cart_is_empty: "您的购物车中无产品"
+  invalid_user_password_combination: "错误的用户名或密码，请核实后再尝试，或与老板联系。～"
+  logged_out: "您已经安全退出系统～"

@@ -11,10 +11,10 @@ one:
   custid: MyString
   custname: MyString
   custtel: MyString
-  startdate: 2013-08-31
-  enddate: 2013-08-31
+  startdate: 2013-10-04
+  enddate: 2013-10-04
   hprice: 9.99
-  cdate: 2013-08-31
+  cdate: 2013-10-04
   remark: MyText
 
 two:
@@ -28,8 +28,8 @@ two:
   custid: MyString
   custname: MyString
   custtel: MyString
-  startdate: 2013-08-31
-  enddate: 2013-08-31
+  startdate: 2013-10-04
+  enddate: 2013-10-04
   hprice: 9.99
-  cdate: 2013-08-31
+  cdate: 2013-10-04
   remark: MyText

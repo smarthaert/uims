@@ -12,58 +12,58 @@
   <% end %>
 
   <div class="field">
-    <%= f.label t('views.contactpayments.index.stid') %>:<br />
+    <%= f.label :stid %><br />
     <%= f.text_field :stid %>
   </div>
   <div class="field">
-    <%= f.label t('views.contactpayments.index.stname') %>:<br />
+    <%= f.label :stname %><br />
     <%= f.text_field :stname %>
   </div>
   <div class="field">
-    <%= f.label t('views.contactpayments.index.custid') %>:<br />
+    <%= f.label :custid %><br />
     <%= f.text_field :custid %>
   </div>
   <div class="field">
-    <%= f.label t('views.contactpayments.index.custname') %>:<br />
+    <%= f.label :custname %><br />
     <%= f.text_field :custname %>
   </div>
   <div class="field">
-    <%= f.label t('views.contactpayments.index.outmoney') %>:<br />
+    <%= f.label :outmoney %><br />
     <%= f.text_field :outmoney %>
   </div>
   <div class="field">
-    <%= f.label t('views.contactpayments.index.inmoney') %>:<br />
+    <%= f.label :inmoney %><br />
     <%= f.text_field :inmoney %>
   </div>
   <div class="field">
-    <%= f.label t('views.contactpayments.index.strike') %>:<br />
+    <%= f.label :strike %><br />
     <%= f.text_field :strike %>
   </div>
   <div class="field">
-    <%= f.label t('views.contactpayments.index.method') %>:<br />
+    <%= f.label :method %><br />
     <%= f.text_field :method %>
   </div>
   <div class="field">
-    <%= f.label t('views.contactpayments.index.proof') %>:<br />
+    <%= f.label :proof %><br />
     <%= f.text_field :proof %>
   </div>
   <div class="field">
-    <%= f.label t('views.contactpayments.index.ticketid') %>:<br />
+    <%= f.label :ticketid %><br />
     <%= f.text_field :ticketid %>
   </div>
   <div class="field">
-    <%= f.label t('views.contactpayments.index.cdate') %>:<br />
-    <%= f.date_select :cdate, :order => [:year,:month,:day] %>
+    <%= f.label :cdate %><br />
+    <%= f.date_select :cdate %>
   </div>
   <div class="field">
-    <%= f.label t('views.contactpayments.index.status') %>:<br />
+    <%= f.label :status %><br />
     <%= f.text_field :status %>
   </div>
   <div class="field">
-    <%= f.label t('views.contactpayments.index.remark') %>:<br />
+    <%= f.label :remark %><br />
     <%= f.text_area :remark %>
   </div>
   <div class="actions">
-    <%= f.submit t('views.submit') %>
+    <%= f.submit %>
   </div>
 <% end %>

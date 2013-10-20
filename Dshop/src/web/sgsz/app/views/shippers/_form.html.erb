@@ -12,42 +12,42 @@
   <% end %>
 
   <div class="field">
-    <%= f.label t('views.shippers.index.sid') %><br />
+    <%= f.label :sid %><br />
     <%= f.text_field :sid %>
   </div>
   <div class="field">
-    <%= f.label t('views.shippers.index.sname') %><br />
+    <%= f.label :sname %><br />
     <%= f.text_field :sname %>
   </div>
   <div class="field">
-    <%= f.label t('views.shippers.index.tel') %><br />
+    <%= f.label :tel %><br />
     <%= f.text_field :tel %>
   </div>
   <div class="field">
-    <%= f.label t('views.shippers.index.address') %><br />
+    <%= f.label :address %><br />
     <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label t('views.shippers.index.custid') %><br />
+    <%= f.label :custid %><br />
     <%= f.text_field :custid %>
   </div>
   <div class="field">
-    <%= f.label t('views.shippers.index.custname') %><br />
+    <%= f.label :custname %><br />
     <%= f.text_field :custname %>
   </div>
   <div class="field">
-    <%= f.label t('views.shippers.index.custtel') %><br />
+    <%= f.label :custtel %><br />
     <%= f.text_field :custtel %>
   </div>
   <div class="field">
-    <%= f.label t('views.shippers.index.cdate') %><br />
-    <%= f.date_select :cdate, :order => [:year,:month,:day] %>
+    <%= f.label :cdate %><br />
+    <%= f.date_select :cdate %>
   </div>
   <div class="field">
-    <%= f.label t('views.shippers.index.remark') %><br />
+    <%= f.label :remark %><br />
     <%= f.text_area :remark %>
   </div>
   <div class="actions">
-    <%= f.submit t('views.submit') %>
+    <%= f.submit %>
   </div>
 <% end %>

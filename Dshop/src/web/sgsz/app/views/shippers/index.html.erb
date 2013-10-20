@@ -1,17 +1,19 @@
-<h1><%= t 'views.shippers.index.listing_shippers' %></h1>
+<h1>Listing shippers</h1>
 
 <table>
   <tr>
-    <th><%= t 'views.shippers.index.sid' %></th>
-    <th><%= t 'views.shippers.index.sname' %></th>
-    <th><%= t 'views.shippers.index.tel' %></th>
-    <th><%= t 'views.shippers.index.address' %></th>
-    <th><%= t 'views.shippers.index.custid' %></th>
-    <th><%= t 'views.shippers.index.custname' %></th>
-    <th><%= t 'views.shippers.index.custtel' %></th>
-    <th><%= t 'views.shippers.index.cdate' %></th>
-    <th><%= t 'views.shippers.index.remark' %></th>
-    <th colspan="3"><%= t 'views.operation' %></th>
+    <th>Sid</th>
+    <th>Sname</th>
+    <th>Tel</th>
+    <th>Address</th>
+    <th>Custid</th>
+    <th>Custname</th>
+    <th>Custtel</th>
+    <th>Cdate</th>
+    <th>Remark</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
 <% @shippers.each do |shipper| %>
@@ -25,16 +27,13 @@
     <td><%= shipper.custtel %></td>
     <td><%= shipper.cdate %></td>
     <td><%= shipper.remark %></td>
-    <td><%= link_to t('views.show'), shipper %></td>
-    <td><%= link_to t('views.edit'), edit_shipper_path(shipper) %></td>
-    <td><%= link_to t('views.destroy'), shipper, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
+    <td><%= link_to 'Show', shipper %></td>
+    <td><%= link_to 'Edit', edit_shipper_path(shipper) %></td>
+    <td><%= link_to 'Destroy', shipper, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-<%= paginate @shippers, :window => 2 %>
 
-<br />
-
-<%= link_to t('views.shippers.index.new_shippers'), new_shipper_path %>
+<%= link_to 'New Shipper', new_shipper_path %>

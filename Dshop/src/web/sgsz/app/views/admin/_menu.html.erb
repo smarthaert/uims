@@ -1,0 +1,9 @@
+<div id="menu">
+  <% if session[:customer_id] %>
+  <ul>
+    <li><%= link_to t('.ordermainsopen'), new_ordermain_path %></li>
+    <li><%= link_to t('.ordermainsclose'), ordermains_close_path %></li>
+    <li><%= link_to t('.contactpayments'), contactpayments_path %></li>
+  </ul>
+<% end %>
+</div>

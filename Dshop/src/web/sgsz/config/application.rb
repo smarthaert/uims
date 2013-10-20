@@ -1,3 +1,11 @@
+#---
+# Excerpted from "Agile Web Development with Rails",
+# published by The Pragmatic Bookshelf.
+# Copyrights apply to this code. It may not be used to create training material, 
+# courses, books, articles, and the like. Contact us if you are in doubt.
+# We make no guarantees that this code is fit for any purpose. 
+# Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
+#---
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -9,7 +17,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module Sgsz
+module Depot
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -31,9 +39,18 @@ module Sgsz
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'models', '*', '*.yml').to_s]
-    # config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'views', '*', '*.yml').to_s]
-    config.i18n.default_locale = :zh
+    # config.i18n.default_locale = :de
+    #config.action_mailer.delivery_method = :smtp
+    #config.action_mailer.smtp_settings = {
+#	:address => "smtp.163.com",
+#	:port => 25,
+#	:domain => "www.163.com",
+#	:authentication => "login",
+#	:user_name => "vip_test@163.com",
+#	:password => "zaqwsxcde123",
+#	:enable_starttls_auto => true
+#    }
+
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

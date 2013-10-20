@@ -1,109 +1,82 @@
-<%= form_for(@ordermain) do |f| %>
+<div class="input_form">
+<!-- START:explanation -->
+
+<%= form_for @ordermain do |f| %>
+
+    <fieldset>
+  <legend><%= t('.input_ordermain_info') %></legend>
   <% if @ordermain.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@ordermain.errors.count, "error") %> prohibited this ordermain from being saved:</h2>
+<!-- START_HIGHLIGHT -->
+      <h2><%=raw t('errors.template.header', count: @ordermain.errors.count,
+        model: t('activerecord.models.ordermain')) %>.</h2>
+      <p><%= t('errors.template.body') %></p>
+<!-- END_HIGHLIGHT -->
 
       <ul>
       <% @ordermain.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<!-- START_HIGHLIGHT -->
+        <li><%=raw msg %></li>
+<!-- END_HIGHLIGHT -->
       <% end %>
       </ul>
     </div>
   <% end %>
+<!-- ... -->
+<!-- END:explanation -->
+
 
   <div class="field">
-    <%= f.label t('views.ordermains.index.oid') %>:<br />
-    <%= f.text_field :oid %>
+    <%= f.label :oid, t('.oid') %>:
+    <%= f.text_field :oid, size: 40, :disabled => "disabled" %>
+  </div>
+  <p>----------------------------------------------------------------------------------------------------------------------------------------------</p>
+  <div class="field">
+    <%= f.label :custname, t('.custname') %>:
+    <%= f.text_field :custname, size: 40, :disabled => "disabled" %>
   </div>
   <div class="field">
-    <%= f.label t('views.ordermains.index.custid') %>:<br />
-    <%= f.text_field :custid %>
+    <%= f.label :custtel, t('.custtel') %>:
+    <%= f.text_field :custtel, size: 13 %>
   </div>
   <div class="field">
-    <%= f.label t('views.ordermains.index.custstate') %>:<br />
-    <%= f.text_field :custstate %>
+<!-- START_HIGHLIGHT -->
+    <%= f.label :custaddr, t('.custaddr') %>:<br/>
+<!-- END_HIGHLIGHT -->
+    <%= f.text_area :custaddr, rows: 2, cols: 80 %>
   </div>
+
+  <p>----------------------------------------------------------------------------------------------------------------------------------------------</p>
+
   <div class="field">
-    <%= f.label t('views.ordermains.index.custname') %>:<br />
-    <%= f.text_field :custname %>
+    <%= f.label :delivertype, t('.delivertype') %>:
+    <%= collection_select(:shipper, :id, @shippers, :id, :delivertype, options ={:prompt => t('.select_a_delivertype')}, :class =>"shipper") %>
+    <%= f.label :sname, t('.sname') %>:
+    <%= collection_select(:shipper, :id, @shippers, :id, :sname, options ={:prompt => t('.select_a_shipper')}, :class =>"shipper") %>
   </div>
+
+  <p>----------------------------------------------------------------------------------------------------------------------------------------------</p>
+
   <div class="field">
-    <%= f.label t('views.ordermains.index.shopname') %>:<br />
-    <%= f.text_field :shopname %>
+    <%= f.label :remark, t('.remark') %>:<br/>
+    <%= f.text_area :remark, rows: 4, cols: 80 %>
   </div>
+
+  <p>----------------------------------------------------------------------------------------------------------------------------------------------</p>
   <div class="field">
-    <%= f.label t('views.ordermains.index.custtel') %>:<br />
-    <%= f.text_field :custtel %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.ordermains.index.custaddr') %>:<br />
-    <%= f.text_field :custaddr %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.ordermains.index.yingshou') %>:<br />
-    <%= f.text_field :yingshou %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.ordermains.index.shishou') %>:<br />
-    <%= f.text_field :shishou %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.ordermains.index.sid') %>:<br />
-    <%= f.text_field :sid %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.ordermains.index.sname') %>:<br />
-    <%= f.text_field :sname %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.ordermains.index.stel') %>:<br />
-    <%= f.text_field :stel %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.ordermains.index.saddress') %>:<br />
-    <%= f.text_field :saddress %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.ordermains.index.payment') %>:<br />
-    <%= f.text_field :payment %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.ordermains.index.status') %>:<br />
-    <%= f.number_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.ordermains.index.uid') %>:<br />
-    <%= f.text_field :uid %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.ordermains.index.uname') %>:<br />
-    <%= f.text_field :uname %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.ordermains.index.preid') %>:<br />
-    <%= f.text_field :preid %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.ordermains.index.nextid') %>:<br />
-    <%= f.text_field :nextid %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.ordermains.index.dtype') %>:<br />
-    <%= f.text_field :dtype %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.ordermains.index.cdate') %>:<br />
-    <%= f.date_select :cdate, :order => [:year,:month,:day]  %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.ordermains.index.canal') %>:<br />
-    <%= f.text_field :canal %>
-  </div>
-  <div class="field">
-    <%= f.label t('views.ordermains.index.remark') %>:<br />
-    <%= f.text_area :remark %>
+    <%= f.label :yingshou, t('.yingshou') %>:
+    <%= f.text_field :yingshou, size: 20, :disabled => "disabled" %>
+    <%= label_tag :allvolume, t('.allvolume') %>:
+    <%= text_field_tag :allvolume, '', size: 20, disabled: true %>
+    <%= label_tag :allamount, t('.allamount') %>:
+    <%= text_field_tag :allamount, '', size: 20, disabled: true %>
   </div>
   <div class="actions">
-    <%= f.submit t('views.submit') %>
+<!-- START_HIGHLIGHT -->
+    <%= f.submit t('.submit') %>
+<!-- END_HIGHLIGHT -->
   </div>
+
+    </fieldset>
 <% end %>
+</div>
