@@ -1,0 +1,37 @@
+// Place all the styles related to the Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#login{
+	background:url(login.jpg) no-repeat;
+	padding:55px 0px 10px 0px;
+}
+#login form{
+	padding:0px; margin:0px;
+}
+#login p{
+	margin:0px; text-align:left;
+	padding:5px 0px 0px 25px;
+}
+#login p input{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+#login form input.text{
+	border-bottom:1px solid #000000;
+	border-left:none; border-right:none;
+	border-top:none;
+	padding:0px; width:90px;
+}
+#login form input.btn{
+	border:1px solid #000000;
+	background-color:#ffeff0;
+	height:17px; padding:0px;
+}
+#login p a:link, #login p a:visited{
+	color:#333333;
+	text-decoration:none;
+}
+#login p a:hover{
+	color:#000088;
+	text-decoration:underline;
+}

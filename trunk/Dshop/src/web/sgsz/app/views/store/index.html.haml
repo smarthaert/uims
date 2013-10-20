@@ -1,0 +1,28 @@
+- if notice
+  %p#notice= notice
+
+%h1= t('.title_html')
+
+%div{:id => "recommend"}
+  %ul
+    - @stocks.each do |product|
+      %li 
+        .item
+          %a 
+            = image_tag(product.picture.url(:medium), class: 'list_image')
+            %p= product.pid
+            %p= truncate(product.goodsname, length: 20)
+          - if session[:customer_id]
+            .price_line
+              - if product.zprice
+                %s.price= number_to_currency(product.pfprice, :unit => "￥")
+              -else
+                %span.price= number_to_currency(product.pfprice, :unit => "￥")
+              %span.zprice= number_to_currency(product.zprice, :unit => "￥")
+              = button_to t('.add_html'), orderdetails_path(stock_id: product), remote: true
+
+%br
+#page
+  = paginate @stocks, :window => 2 
+
+

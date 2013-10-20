@@ -1,0 +1,29 @@
+<table border="1" >
+  <tr>
+    <th width="90px"><%= t('.pid') %></th>
+    <th width="120px"><%= t('.goodsname') %></th>
+    <th width="50px"><%= t('.size') %></th>
+    <th width="40px"><%= t('.color') %></th>
+    <th width="40px"><%= t('.volume') %></th>
+    <th width="70px"><%= t('.outprice') %></th>
+    <th width="40px"><%= t('.amount') %></th>
+    <th width="30px"><%= t('.unit') %></th>
+    <th width="30px"><%= t('.bundle') %></th>
+    <th width="90px"><%= t('.subtotal') %></th>
+  </tr>
+
+<% @ordermain.orderdetails.each do |orderdetail| %>
+  <tr>
+    <td><%= orderdetail.pid%></td>
+    <td><%= orderdetail.goodsname%></td>
+    <td><%= orderdetail.size%></td>
+    <td><%= orderdetail.color%></td>
+    <td><%= orderdetail.volume%></td>
+    <td><%= orderdetail.outprice%></td>
+    <td><%= orderdetail.amount%></td>
+    <td><%= orderdetail.unit%></td>
+    <td><%= orderdetail.bundle%></td>
+    <td class="item_price"><%= number_to_currency(orderdetail.total_price) %></td>
+  </tr>
+<% end %>
+</table>

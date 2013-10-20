@@ -1,0 +1,5 @@
+<%= sprintf("%2d x %s %s %s",
+            orderdetail.amount,
+            truncate(orderdetail.stock.goodsname, length: 50),
+            orderdetail.size,
+            orderdetail.color) %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130901044631) do
+ActiveRecord::Schema.define(:version => 20131004074141) do
 
   create_table "afterselldetails", :force => true do |t|
     t.string   "stid"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20130901044631) do
     t.integer  "rbundle"
     t.integer  "discount"
     t.string   "additional"
-    t.string   "type"
+    t.string   "dtype"
     t.decimal  "subtotal",   :precision => 10, :scale => 2
     t.integer  "status"
     t.date     "cdate"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20130901044631) do
     t.datetime "updated_at",                                :null => false
   end
 
-  add_index "afterselldetails", ["tid"], :name => "index_afterselldetails_on_tid", :unique => true
+  add_index "afterselldetails", ["tid", "pid", "additional", "dtype"], :name => "tid_pid_type_additional", :unique => true
 
   create_table "aftersellmains", :force => true do |t|
     t.string   "stid"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20130901044631) do
     t.string   "tuid"
     t.string   "uname"
     t.string   "tuname"
-    t.string   "type"
+    t.string   "dtype"
     t.string   "preid"
     t.string   "nextid"
     t.date     "cdate"
@@ -105,6 +105,13 @@ ActiveRecord::Schema.define(:version => 20130901044631) do
     t.text     "remark"
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
+  end
+
+  create_table "carts", :force => true do |t|
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "teller"
+    t.string   "customer_id"
   end
 
   create_table "cidprofit", :id => false, :force => true do |t|
@@ -145,8 +152,10 @@ ActiveRecord::Schema.define(:version => 20130901044631) do
     t.string   "state"
     t.date     "cdate"
     t.text     "remark"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "hashed_password"
+    t.string   "salt"
   end
 
   add_index "customers", ["cid"], :name => "index_customers_on_cid", :unique => true
@@ -225,24 +234,27 @@ ActiveRecord::Schema.define(:version => 20130901044631) do
     t.string   "goodsname"
     t.string   "size"
     t.string   "color"
-    t.decimal  "volume",     :precision => 10, :scale => 2
+    t.decimal  "volume",       :precision => 10, :scale => 2
     t.string   "unit"
-    t.decimal  "inprice",    :precision => 10, :scale => 2
-    t.decimal  "pfprice",    :precision => 10, :scale => 2
-    t.decimal  "hprice",     :precision => 10, :scale => 2
-    t.decimal  "outprice",   :precision => 10, :scale => 2
+    t.decimal  "inprice",      :precision => 10, :scale => 2
+    t.decimal  "pfprice",      :precision => 10, :scale => 2
+    t.decimal  "hprice",       :precision => 10, :scale => 2
+    t.decimal  "outprice",     :precision => 10, :scale => 2
     t.integer  "amount"
     t.integer  "ramount"
     t.integer  "bundle"
     t.integer  "rbundle"
     t.integer  "discount"
     t.string   "additional"
-    t.decimal  "subtotal",   :precision => 10, :scale => 2
+    t.decimal  "subtotal",     :precision => 10, :scale => 2
     t.integer  "status"
     t.date     "cdate"
     t.text     "remark"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.string   "cart_id"
+    t.string   "stock_id"
+    t.string   "ordermain_id"
   end
 
   create_table "orderinshorts", :id => false, :force => true do |t|
@@ -263,8 +275,8 @@ ActiveRecord::Schema.define(:version => 20130901044631) do
     t.string   "shopname"
     t.string   "custtel"
     t.string   "custaddr"
-    t.decimal  "yingshou",   :precision => 10, :scale => 2
-    t.decimal  "shishou",    :precision => 10, :scale => 2
+    t.decimal  "yingshou",    :precision => 10, :scale => 2
+    t.decimal  "shishou",     :precision => 10, :scale => 2
     t.string   "sid"
     t.string   "sname"
     t.string   "stel"
@@ -275,12 +287,13 @@ ActiveRecord::Schema.define(:version => 20130901044631) do
     t.string   "uname"
     t.string   "preid"
     t.string   "nextid"
-    t.string   "type"
+    t.string   "dtype"
     t.date     "cdate"
-    t.date     "canal"
+    t.string   "canal"
     t.text     "remark"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.string   "customer_id"
   end
 
   add_index "ordermains", ["oid"], :name => "index_ordermains_on_oid", :unique => true
@@ -391,7 +404,7 @@ ActiveRecord::Schema.define(:version => 20130901044631) do
     t.integer  "cbundle"
     t.integer  "discount"
     t.string   "additional"
-    t.string   "type"
+    t.string   "dtype"
     t.decimal  "subtotal",   :precision => 10, :scale => 2
     t.integer  "status"
     t.date     "cdate"
@@ -400,6 +413,8 @@ ActiveRecord::Schema.define(:version => 20130901044631) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
   end
+
+  add_index "selllogdetails", ["slid", "pid", "additional"], :name => "slid_pid_additional", :unique => true
 
   create_table "selllogmains", :force => true do |t|
     t.string   "stid"
@@ -427,7 +442,7 @@ ActiveRecord::Schema.define(:version => 20130901044631) do
     t.string   "uname"
     t.string   "preid"
     t.string   "nextid"
-    t.string   "type"
+    t.string   "dtype"
     t.date     "cdate"
     t.date     "pdate"
     t.text     "remark"
@@ -447,8 +462,9 @@ ActiveRecord::Schema.define(:version => 20130901044631) do
     t.string   "custtel"
     t.date     "cdate"
     t.text     "remark"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "delivertype"
   end
 
   create_table "sidprofit", :id => false, :force => true do |t|
@@ -493,16 +509,21 @@ ActiveRecord::Schema.define(:version => 20130901044631) do
     t.string   "size"
     t.string   "color"
     t.integer  "amount"
-    t.decimal  "volume",     :precision => 10, :scale => 2
+    t.decimal  "volume",               :precision => 10, :scale => 2
     t.string   "unit"
-    t.decimal  "inprice",    :precision => 10, :scale => 2
-    t.decimal  "pfprice",    :precision => 10, :scale => 2
+    t.decimal  "inprice",              :precision => 10, :scale => 2
+    t.decimal  "pfprice",              :precision => 10, :scale => 2
     t.integer  "bundle"
     t.integer  "discount"
     t.integer  "baseline"
     t.text     "remark"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                                          :null => false
+    t.datetime "updated_at",                                          :null => false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.decimal  "zprice",               :precision => 10, :scale => 2
   end
 
   add_index "stocks", ["barcode"], :name => "index_stocks_on_barcode", :unique => true

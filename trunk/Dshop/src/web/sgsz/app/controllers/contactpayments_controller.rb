@@ -2,8 +2,9 @@ class ContactpaymentsController < ApplicationController
   # GET /contactpayments
   # GET /contactpayments.json
   def index
-    @contactpayments = Contactpayment.page(params[:page])
-    # @contactpayments = Contactpayment.all
+    #@contactpayments = Contactpayment.all
+    customer = Customer.find_by_id(session[:customer_id])
+    @contactpayments = Contactpayment.where("custid = ?", customer.cid).order("created_at desc").page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,7 +46,7 @@ class ContactpaymentsController < ApplicationController
 
     respond_to do |format|
       if @contactpayment.save
-        format.html { redirect_to @contactpayment, notice: t('views.successfully_created') }
+        format.html { redirect_to @contactpayment, notice: 'Contactpayment was successfully created.' }
         format.json { render json: @contactpayment, status: :created, location: @contactpayment }
       else
         format.html { render action: "new" }
@@ -61,7 +62,7 @@ class ContactpaymentsController < ApplicationController
 
     respond_to do |format|
       if @contactpayment.update_attributes(params[:contactpayment])
-        format.html { redirect_to @contactpayment, notice: t('views.successfully_updated') }
+        format.html { redirect_to @contactpayment, notice: 'Contactpayment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

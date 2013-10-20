@@ -21,6 +21,21 @@ sudo gedit /etc/samba/smb.conf
       browsealbe = yes
       public = yes
       writable = yes
+
+[workplace]
+comment = rdev
+path = /home/rdev/workplace
+public = yes
+writable = yes
+valid users = rdev
+create mask = 0777
+directory mask = 0777
+force user = rdev
+force group = rdev
+available = yes
+browseable = yes
+
+
 四. 创建samba帐户
 
   sudo touch /etc/samba/smbpasswd
@@ -37,3 +52,6 @@ smbclient -L //localhost/share
 七，使用
 
 可以到windows下输入ip使用了，在文件夹处输入 "\\" + "Ubuntu机器的ip或主机名" + "\\" + "share"
+
+
+net use Y: \\192.168.0.105\workplace "123456" /user:"rdev"

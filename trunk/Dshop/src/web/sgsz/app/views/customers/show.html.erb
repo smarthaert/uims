@@ -1,65 +1,56 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b><%= t 'views.customers.index.cid' %>:</b>
-  <%= @customer.cid %>
-</p>
+  <fieldset>
+  <legend><%= t('.show_customer') %></legend>
 
-<p>
-  <b><%= t 'views.customers.index.loginname' %>:</b>
-  <%= @customer.loginname %>
-</p>
+  <div>
+    <%= label_tag :cid, t('.cid') %>:
+    <%= @customer.cid %>
+  </div>
 
-<p>
-  <b><%= t 'views.customers.index.cname' %>:</b>
-  <%= @customer.cname %>
-</p>
+  <div>
+    <%= label_tag :loginname, t('.loginname') %>:
+    <%= @customer.loginname %>
+  </div>
 
-<p>
-  <b><%= t 'views.customers.index.shopname' %>:</b>
-  <%= @customer.shopname %>
-</p>
+  <div>
+    <%= label_tag :cname, t('.cname') %>:
+    <%= @customer.cname %>
+  </div>
 
-<p>
-  <b><%= t 'views.customers.index.sex' %>:</b>
-  <%= @customer.sex %>
-</p>
+  <div>
+    <%= label_tag :shopname, t('.shopname') %>:
+    <%= @customer.shopname %>
+  </div>
 
-<p>
-  <b><%= t 'views.customers.index.address' %>:</b>
-  <%= @customer.address %>
-</p>
+  <div>
+    <%= label_tag :sex, t('.sex') %>:
+    <%= @customer.sex %>
+  </div>
 
-<p>
-  <b><%= t 'views.customers.index.email' %>:</b>
-  <%= @customer.email %>
-</p>
+  <div>
+    <%= label_tag :address, t('.address') %>:
+    <%= @customer.address %>
+  </div>
 
-<p>
-  <b><%= t 'views.customers.index.qq' %>:</b>
-  <%= @customer.qq %>
-</p>
+  <div>
+    <%= label_tag :email, t('.email') %>:
+    <%= @customer.email %>
+  </div>
 
-<p>
-  <b><%= t 'views.customers.index.tel' %>:</b>
-  <%= @customer.tel %>
-</p>
+  <div>
+    <%= label_tag :qq, t('.qq') %>:
+    <%= @customer.qq %>
+  </div>
 
-<p>
-  <b><%= t 'views.customers.index.state' %>:</b>
-  <%= @customer.state %>
-</p>
+  <div>
+    <%= label_tag :tel, t('.tel') %>:
+    <%= @customer.tel %>
+  </div>
 
-<p>
-  <b><%= t 'views.customers.index.cdate' %>:</b>
-  <%= @customer.cdate %>
-</p>
+  <div>
+    <%= label_tag :state, t('.state') %>:
+    <%= @customer.state %>
+  </div>
+</fieldset>
 
-<p>
-  <b><%= t 'views.customers.index.remark' %>:</b>
-  <%= @customer.remark %>
-</p>
-
-
-<%= link_to t('views.edit'), edit_customer_path(@customer) %> |
-<%= link_to t('views.back'), customers_path %>
+<%= link_to t('.edit'), edit_customer_path(@customer) %> |

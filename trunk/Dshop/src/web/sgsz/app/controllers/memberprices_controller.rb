@@ -2,8 +2,7 @@ class MemberpricesController < ApplicationController
   # GET /memberprices
   # GET /memberprices.json
   def index
-    @memberprices = Memberprice.page(params[:page])
-    # @memberprices = Memberprice.all
+    @memberprices = Memberprice.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,7 +44,7 @@ class MemberpricesController < ApplicationController
 
     respond_to do |format|
       if @memberprice.save
-        format.html { redirect_to @memberprice, notice: t('views.successfully_created') }
+        format.html { redirect_to @memberprice, notice: 'Memberprice was successfully created.' }
         format.json { render json: @memberprice, status: :created, location: @memberprice }
       else
         format.html { render action: "new" }
@@ -61,7 +60,7 @@ class MemberpricesController < ApplicationController
 
     respond_to do |format|
       if @memberprice.update_attributes(params[:memberprice])
-        format.html { redirect_to @memberprice, notice: t('views.successfully_updated') }
+        format.html { redirect_to @memberprice, notice: 'Memberprice was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

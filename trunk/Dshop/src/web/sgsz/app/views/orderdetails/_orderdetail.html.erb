@@ -1,0 +1,10 @@
+<% if orderdetail == @orderdetail %>
+<tr id="current_item">
+<% else %>
+<tr>
+<% end %>
+  <td><%= orderdetail.amount %>&times;</td>
+  <td><%= truncate(orderdetail.stock.goodsname, length: 15) %></td>
+  <td class="item_price"><%= number_to_currency(orderdetail.total_price) %></td>
+</tr>
+

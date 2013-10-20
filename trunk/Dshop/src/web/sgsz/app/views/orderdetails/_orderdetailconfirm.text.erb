@@ -1,0 +1,36 @@
+<h1><%= t('.orderconfirm') %></h1>
+
+<table>
+  <tr>
+    <th><%= t('.pid') %></th>
+    <th><%= t('.goodsname') %></th>
+    <th><%= t('.size') %></th>
+    <th><%= t('.color') %></th>
+    <th><%= t('.volume') %></th>
+    <th><%= t('.outprice') %></th>
+    <th><%= t('.amount') %></th>
+    <th><%= t('.unit') %></th>
+    <th><%= t('.bundle') %></th>
+    <th><%= t('.subtotal') %></th>
+    <th colspan="2"><%= t('.opt') %></th>
+  </tr>
+
+<% @orderdetails.each do |orderdetail| %>
+<tr>
+  <td><%= orderdetail.pid %></td>
+  <td><%= truncate(orderdetail.stock.goodsname, length: 15) %></td>
+  <td><%= orderdetail.size %></td>
+  <td><%= orderdetail.color %></td>
+  <td><%= orderdetail.volume %></td>
+  <td><%= orderdetail.outprice %></td>
+  <td><%= orderdetail.amount %></td>
+  <td><%= orderdetail.unit %></td>
+  <td><%= orderdetail.bundle %></td>
+  <td class="item_price"><%= number_to_currency(orderdetail.total_price) %></td>
+  <td><%= button_to t('.add_html'), orderdetails_add_path(orderdetail_id: orderdetail), remote: true %></td>
+  <td><%= button_to t('.sub_html'), orderdetails_sub_path(orderdetail_id: orderdetail), remote: true %></td>
+</tr>
+<% end %>
+</table>
+
+

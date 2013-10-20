@@ -1,0 +1,62 @@
+<h1><%= t('.title') %></h1>
+
+<% form_tag ordermains_path, :method => 'get' do %>    
+<p>    
+    <%= text_field_tag :search, params[:search] %>    
+    <%= submit_tag "Search", :name => nil %>    
+</p>    
+<% end %> 
+
+<table border="1">
+  <tr>
+    <th><%= t('.oid') %></th>
+    <th><%= t('.custname') %></th>
+    <th><%= t('.custtel') %></th>
+    <th><%= t('.custaddr') %></th>
+    <th><%= t('.shishou') %></th>
+    <th><%= t('.sname') %></th>
+    <th><%= t('.stel') %></th>
+    <th><%= t('.status') %></th>
+    <th><%= t('.uid') %></th>
+    <th><%= t('.uname') %></th>
+    <th><%= t('.canal') %></th>
+    <th><%= t('.payment') %></th>
+    <th><%= t('.created_at') %></th>
+    <th><%= t('.updated_at') %></th>
+    <th colspan="1"><%= t('.opt') %></th>
+  </tr>
+ 
+<% @ordermains.each do |ordermain| %>
+  <tr>
+    <td><%= ordermain.oid %></td>
+    <td><%= ordermain.custname %></td>
+    <td><%= ordermain.custtel %></td>
+    <td><%= ordermain.custaddr %></td>
+    <td><%= ordermain.shishou %></td>
+    <td><%= ordermain.sname %></td>
+    <td><%= ordermain.stel %></td>
+    <td><%= ordermain.status %></td>
+    <td><%= ordermain.uid %></td>
+    <td><%= ordermain.uname %></td>
+    <td><%= ordermain.canal %></td>
+    <td><%= ordermain.payment %></td>
+    <td><%= ordermain.created_at %></td>
+    <td><%= ordermain.updated_at %></td>
+    <td><%= link_to t('.show'), ordermain %></td>
+  </tr>
+<% end %>
+
+<div>  
+  <div >  
+   <%= page_entries_info @ordermains %>  
+  </div>  
+  <%= will_paginate @ordermains, :container => false %>  
+</div>
+
+</table>
+
+<br/>
+
+<!-- START_HIGHLIGHT -->
+<p><%= will_paginate @ordermains %></p>
+<!-- END_HIGHLIGHT -->

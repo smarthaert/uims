@@ -1,13 +1,21 @@
+#---
+# Excerpted from "Agile Web Development with Rails",
+# published by The Pragmatic Bookshelf.
+# Copyrights apply to this code. It may not be used to create training material, 
+# courses, books, articles, and the like. Contact us if you are in doubt.
+# We make no guarantees that this code is fit for any purpose. 
+# Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
+#---
 class StocksController < ApplicationController
   # GET /stocks
   # GET /stocks.json
   def index
-    @stocks = Stock.page(params[:page])
-    # @stocks = Stock.all
+    @stocks = Stock.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @stocks }
+      format.xml
+      format.json { render json: @stocks}
     end
   end
 
@@ -45,11 +53,14 @@ class StocksController < ApplicationController
 
     respond_to do |format|
       if @stock.save
-        format.html { redirect_to @stock, notice: t('views.successfully_created') }
-        format.json { render json: @stock, status: :created, location: @stock }
+        format.html { redirect_to @stock,
+          notice: 'Product was successfully created.' }
+        format.json { render json: @stock, status: :created,
+          location: @stock}
       else
         format.html { render action: "new" }
-        format.json { render json: @stock.errors, status: :unprocessable_entity }
+        format.json { render json: @stock.errors,
+          status: :unprocessable_entity }
       end
     end
   end
@@ -61,11 +72,13 @@ class StocksController < ApplicationController
 
     respond_to do |format|
       if @stock.update_attributes(params[:stock])
-        format.html { redirect_to @stock, notice: t('views.successfully_updated') }
+        format.html { redirect_to @stock,
+          notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @stock.errors, status: :unprocessable_entity }
+        format.json { render json: @stock.errors,
+          status: :unprocessable_entity }
       end
     end
   end
@@ -73,12 +86,22 @@ class StocksController < ApplicationController
   # DELETE /stocks/1
   # DELETE /stocks/1.json
   def destroy
-    @stock = Stock.find(params[:id])
+    @stock= Stock.find(params[:id])
     @stock.destroy
 
     respond_to do |format|
       format.html { redirect_to stocks_url }
       format.json { head :no_content }
+    end
+  end
+
+  def who_bought
+    @stock= Stock.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.xml
+      format.atom
+      format.json { render json: @stock.to_json(include: :ordermains) }
     end
   end
 end

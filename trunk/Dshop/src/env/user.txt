@@ -1,0 +1,1 @@
+chow -R user:group dir

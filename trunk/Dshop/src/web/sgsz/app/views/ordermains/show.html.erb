@@ -1,120 +1,70 @@
-<p id="notice"><%= notice %></p>
 
 <p>
-  <b><%= t 'views.ordermains.index.oid' %>:</b>
+  <b><%= t('.oid') %>:</b>
   <%= @ordermain.oid %>
 </p>
 
 <p>
-  <b><%= t 'views.ordermains.index.custid' %>:</b>
-  <%= @ordermain.custid %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.custstate' %>:</b>
-  <%= @ordermain.custstate %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.custname' %>:</b>
-  <%= @ordermain.custname %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.shopname' %>:</b>
-  <%= @ordermain.shopname %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.custtel' %>:</b>
-  <%= @ordermain.custtel %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.custaddr' %>:</b>
-  <%= @ordermain.custaddr %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.yingshou' %>:</b>
-  <%= @ordermain.yingshou %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.shishou' %>:</b>
-  <%= @ordermain.shishou %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.sid' %>:</b>
-  <%= @ordermain.sid %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.sname' %>:</b>
-  <%= @ordermain.sname %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.stel' %>:</b>
-  <%= @ordermain.stel %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.saddress' %>:</b>
-  <%= @ordermain.saddress %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.payment' %>:</b>
-  <%= @ordermain.payment %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.status' %>:</b>
+  <b><%= t('.status') %>:</b>
   <%= @ordermain.status %>
 </p>
 
 <p>
-  <b><%= t 'views.ordermains.index.uid' %>:</b>
-  <%= @ordermain.uid %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.uname' %>:</b>
-  <%= @ordermain.uname %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.preid' %>:</b>
-  <%= @ordermain.preid %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.nextid' %>:</b>
-  <%= @ordermain.nextid %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.dtype' %>:</b>
-  <%= @ordermain.dtype %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.cdate' %>:</b>
-  <%= @ordermain.cdate %>
-</p>
-
-<p>
-  <b><%= t 'views.ordermains.index.canal' %>:</b>
+  <b><%= t('.canal') %>:</b>
   <%= @ordermain.canal %>
 </p>
 
 <p>
-  <b><%= t 'views.ordermains.index.remark' %>:</b>
-  <%= @ordermain.remark %>
+  <b><%= t('.payment') %>:</b>
+  <%= @ordermain.payment %>
 </p>
 
+<p>----------------------------------------------------------------------------------------------------------------------------------------------</p>
+<p>
+  <b><%= t('.custname') %>:</b>
+  <%= @ordermain.custname %>
+</p>
 
-<%= link_to t('views.edit'), edit_ordermain_path(@ordermain) %> |
-<%= link_to t('views.back'), ordermains_path %>
+<p>
+  <b><%= t('.custtel') %>:</b>
+  <%= @ordermain.custtel %>
+</p>
+
+<p>
+  <b><%= t('.address_html') %>:</b>
+  <%= @ordermain.custaddr %>
+</p>
+
+<p>----------------------------------------------------------------------------------------------------------------------------------------------</p>
+<p>
+  <b><%= t('.sname') %>:</b>
+  <%= @ordermain.sname %>
+</p>
+
+<p>
+  <b><%= t('.stel') %>:</b>
+  <%= @ordermain.stel %>
+</p>
+
+<p>----------------------------------------------------------------------------------------------------------------------------------------------</p>
+<p>
+  <b><%= t('.uid') %>:</b>
+  <%= @ordermain.uid %>
+</p>
+
+<p>
+  <b><%= t('.uname') %>:</b>
+  <%= @ordermain.uname%>
+</p>
+
+<p>----------------------------------------------------------------------------------------------------------------------------------------------</p>
+
+<p>
+  <b><%= t('.remark') %>:</b>
+  <%= @ordermain.remark%>
+</p>
+
+<%= render "orderdetails/orderdetailcart" %>
+
+
+<%= link_to t('.back'), ordermains_close_path %>

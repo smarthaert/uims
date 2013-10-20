@@ -1,0 +1,113 @@
+// Place all the styles related to the Store controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* START_HIGHLIGHT */
+.store {
+  h1 {
+    margin: 0;
+    padding-bottom: 0.5em;
+    font:  150% sans-serif;
+    color: #226;
+    border-bottom: 3px dotted #77d;
+  }
+
+  /* An entry in the store catalog */
+  .entry {
+    overflow: auto;
+    margin-top: 1em;
+    border-bottom: 1px dotted #77d;
+    min-height: 100px;
+
+    img {
+      width: 80px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      position: absolute;
+    }
+
+    h3 {
+      font-size: 120%;
+      font-family: sans-serif;
+      margin-left: 100px;
+      margin-top: 0;
+      margin-bottom: 2px;
+      color: #227;
+    }
+
+//#START:inline
+    p, div.price_line {
+      margin-left: 100px;
+      margin-top: 0.5em; 
+      margin-bottom: 0.8em; 
+
+      /* START_HIGHLIGHT */
+      form, div {
+        display: inline;
+      }
+      /* END_HIGHLIGHT */
+    }
+//#END:inline
+
+    .zprice {
+      color: #04a;
+      font-weight: bold;
+      font-size: 20px;
+      margin-right: 3em;
+    }
+  }
+}
+
+
+
+
+
+#recommend{
+	margin:5px 0px 0px 0px;
+	padding:35px 0px 0px 0px;
+}
+#recommend ul{
+	list-style:none;
+	margin:0px;
+	padding:5px 5px 5px 8px;
+}
+#recommend ul li{
+	text-align:center;
+	float:left;
+	width:340px;
+	height:300px;
+  border-bottom: 1px dotted #595;
+}
+#recommend ul li img{
+	border:none;
+	margin:5px 0px 3px 0px;
+	padding:0px;
+        width:300px;
+        height:150px;
+}
+#recommend ul li a:link,#recommend ul li a:visited, #new ul li a:link,#new ul li a:visited{
+	color:#666666;
+	text-decoration:none;
+}
+#recommend ul li a:hover, #new ul li a:hover{
+	color:#d20005;
+	text-decoration:underline;
+}
+.price {
+      color: blue;
+      font-weight: bold;
+      font-size: 18px;
+}
+
+.zprice {
+      color: red;
+      font-weight: bold;
+      font-size: 20px;
+      margin-right: 3em;
+    }
+#page{
+	text-align:center;
+	clear:both;
+}
+
+/* END_HIGHLIGHT */

@@ -1,0 +1,2 @@
+$('#oid<%= @orderdetail.id%> td:eq(6)').html("<%= @orderdetail.amount %>");
+$('#oid<%= @orderdetail.id%> td:eq(9)').html("<%= number_to_currency(@orderdetail.total_price) %>");

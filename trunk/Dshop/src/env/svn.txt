@@ -31,3 +31,12 @@ netstat -ntlp | grep 3690
 
 svn://192.168.1.100/sgsz/
 
+
+
+svn co svn://
+
+svn ci -m '' --username user
+
+svn up
+
+

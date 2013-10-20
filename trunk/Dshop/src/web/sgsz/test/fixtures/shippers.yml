@@ -8,7 +8,7 @@ one:
   custid: MyString
   custname: MyString
   custtel: MyString
-  cdate: 2013-08-31
+  cdate: 2013-10-01
   remark: MyText
 
 two:
@@ -19,5 +19,5 @@ two:
   custid: MyString
   custname: MyString
   custtel: MyString
-  cdate: 2013-08-31
+  cdate: 2013-10-01
   remark: MyText
