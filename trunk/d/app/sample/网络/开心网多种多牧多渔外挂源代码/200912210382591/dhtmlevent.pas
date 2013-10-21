@@ -5,26 +5,26 @@ interface
 uses Windows, Classes;
 
 type
-  TDHTMLEvent = class (TObject, IUnknown, IDispatch)
+  TDHTMLEvent = class(TObject, IUnknown, IDispatch)
   private
-      FRefCount: Integer;
-      FOldEvent: IDispatch;
-      FElementEvent: TNotifyEvent;
+    FRefCount: Integer;
+    FOldEvent: IDispatch;
+    FElementEvent: TNotifyEvent;
       // IUnknown
-      function QueryInterface(const IID: TGUID; out Obj): Integer; stdcall;
-      function _AddRef: Integer; stdcall;
-      function _Release: Integer; stdcall;
+    function QueryInterface(const IID: TGUID; out Obj): Integer; stdcall;
+    function _AddRef: Integer; stdcall;
+    function _Release: Integer; stdcall;
       // IDispatch
-      function GetTypeInfoCount(out Count: Integer): HResult; stdcall;
-      function GetTypeInfo(Index, LocaleID: Integer; out TypeInfo): HResult; stdcall;
-      function GetIDsOfNames(const IID: TGUID; Names: Pointer;
-                             NameCount, LocaleID: Integer; DispIDs: Pointer): HResult; stdcall;
-      function Invoke(DispID: Integer; const IID: TGUID; LocaleID: Integer;
-                      Flags: Word; var Params; VarResult, ExcepInfo, ArgErr: Pointer): HResult; stdcall;
+    function GetTypeInfoCount(out Count: Integer): HResult; stdcall;
+    function GetTypeInfo(Index, LocaleID: Integer; out TypeInfo): HResult; stdcall;
+    function GetIDsOfNames(const IID: TGUID; Names: Pointer;
+      NameCount, LocaleID: Integer; DispIDs: Pointer): HResult; stdcall;
+    function Invoke(DispID: Integer; const IID: TGUID; LocaleID: Integer;
+      Flags: Word; var Params; VarResult, ExcepInfo, ArgErr: Pointer): HResult; stdcall;
   public
     { Public declarations }
-      function HookEventHandler(CallerHandler: TNotifyEvent): IDispatch;
-      property ElementEvent: TNotifyEvent read FElementEvent write FElementEvent;
+    function HookEventHandler(CallerHandler: TNotifyEvent): IDispatch;
+    property ElementEvent: TNotifyEvent read FElementEvent write FElementEvent;
   end;
 
 implementation
@@ -87,23 +87,22 @@ function TDHTMLEvent.Invoke(DispID: Integer; const IID: TGUID;
   ArgErr: Pointer): HResult;
 begin
   try
-     if Assigned(FElementEvent) then FElementEvent(Self);
+    if Assigned(FElementEvent) then FElementEvent(Self);
   finally
     if FOldEvent <> nil then
-       Result := FOldEvent.Invoke(DispID, IID, LocaleID, Flags, Params,
-                                  VarResult, ExcepInfo, ArgErr)
+      Result := FOldEvent.Invoke(DispID, IID, LocaleID, Flags, Params,
+        VarResult, ExcepInfo, ArgErr)
     else
-       Result := E_NOTIMPL;
+      Result := E_NOTIMPL;
   end;
 end;
 
 function TDHTMLEvent.HookEventHandler(CallerHandler: TNotifyEvent): IDispatch;
 begin
-  FOldEvent:=nil;
-  ElementEvent:=CallerHandler;
-  Result:=Self;
+  FOldEvent := nil;
+  ElementEvent := CallerHandler;
+  Result := Self;
 end;
 
 
 end.
-
