@@ -11,6 +11,7 @@ const
   VMAC: array[0..3] of Integer = (5, 10, 30, -1);
   RSIC: array[0..1] of Integer = (5, 10);
   PLC: array[0..4] of Integer = (2, 1, 1, 3, 3);
+  ACTC: array[0..0] of Integer = (15);
 
 type
 { TVertLine }
@@ -136,11 +137,13 @@ type
     VMA: array[0..3] of TArrayOfSingle;
     RSI: array[0..1] of TArrayOfSingle;
     PL: array[0..4] of TArrayOfSingle;
+    ACT: array[0..0] of TArrayOfSingle;
     FStockName: string;
     FPageStart: Integer;
     FUnitWidth: Integer;
     procedure CalcMA;
     procedure CalcPL;
+    procedure CalcAction;
     procedure CalcVMA;
     procedure CalcRSI;
     procedure DrawK(C: TCanvas; R: TRect); overload;
@@ -154,6 +157,7 @@ type
     procedure DrawLineStyle(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single; Style: TPenStyle);
     procedure DrawText(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single; Text: string);
     procedure DrawTips(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single);
+    procedure DrawActions(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single);
     procedure SetStockName(const Value: string);
     procedure SetPageStart(Value: Integer);
     procedure SetUnitWidth(Value: Integer);
@@ -199,7 +203,7 @@ begin
   FDataIndex := 0;
   FUnitWidth := 6;
   GRID.Color := clBlack;
-  //StockName := 'IFL0';//数据文件名  
+  //StockName := 'IFL0';//数据文件名
   StockName := '..\DATA\IFL0.DAT'; //数据文件名
   Header.Options := Header.Options - [goVertLine, goHorzLine];
   Header.Color := clBlack;
@@ -291,7 +295,7 @@ begin
   begin
     FStockName := Value;
     CLEAR_ALL_CALCULATE_DATA(); //清除计算好的数据
-    StkDataFile := TDataFile.Create(FStockName);    
+    StkDataFile := TDataFile.Create(FStockName);
     StkDataFile1Min := TDataFile.Create(FStockName);
     if StkDataFile <> nil then
     begin
@@ -387,6 +391,7 @@ begin
   CalcVMA;
   CalcRSI;
   CalcPL;
+  CalcAction;
 end;
 
 function TfrmMain2.GetDataPerPage: Integer;
@@ -412,6 +417,15 @@ begin
   for I := 0 to Length(PLC) - 1 do
     if PLC[I] = 0 then PL[I] := nil //0代表不计算
     else PL[I] := _calcPL_(I, StkDataFile.getCP, MA, PLC[I]);
+end;
+
+procedure TfrmMain2.CalcAction;
+var
+  I: Integer;
+begin
+  for I := 0 to Length(ACTC) - 1 do
+    if ACTC[I] = 0 then ACT[I] := nil //0代表不计算
+    else ACT[I] := _calcAction_(I, StkDataFile.getCP, MA, ACTC[I]);
 end;
 
 procedure TfrmMain2.CalcRSI;
@@ -770,6 +784,13 @@ begin
       else
         DrawLine(MA[I], DEF_COLOR[I - 1], C, R, High, Low);
     end;
+
+  for I := 0 to Length(ACTC) - 1 do
+    if ACTC[I] > 0 then
+    begin
+      DrawActions(MA[I], DEF_COLOR[I - 1], C, R, High, Low)
+    end;
+
 end;
 
 function TfrmMain2.FindKLineScaleHighLow(DataFile: IDataFile;
@@ -1028,6 +1049,66 @@ begin
               //C.TextOut(X, Y, '↓');
                 _line_(C, X - 3, Y, X + 3, Y, DEF_COLOR[1]); //粘合
               end;
+
+      end;
+    end;
+  end;
+end;
+
+procedure TfrmMain2.DrawActions(A: TArrayOfSingle; Color: TColor; //MA指标上绘制提示信息
+  C: TCanvas; R: TRect; High, Low: Single);
+var
+  I, J, X, Y, Len: Integer;
+  FirstDataFound: Boolean;
+  bitmap: Tbitmap;
+begin
+  if A <> nil then
+  begin
+    FirstDataFound := False;
+
+    C.Brush.Color := GRID.Color;
+    C.Brush.Style := bsSolid;
+    Len := Length(A);
+    for I := 0 to DataPerPage - 1 do
+    begin
+      J := PageStart + DataPerPage - I - 1;
+      J := PageIndex2DataIndex(J);
+      //if _valid_(J,0,Len-1) then
+      if _valid_(J, 0, Len - 1) and (A[J] <> -9999) then //没有计算出来均线时不显示，-1代表无数据
+      begin
+
+        X := UnitWidth * I + UnitWidth div 2;
+        Y := Fy2Iy(A[J], R, High, Low);
+
+        //绘制操作提示
+        if ACT[0][J] = 1 then
+        begin
+          bitmap := Tbitmap.create;
+          bitmap.Width := 12;
+          bitmap.Height := 12;
+          bitmap.Canvas.Brush.Color := clWhite;
+          bitmap.Canvas.Font.Size := 8;
+          bitmap.Canvas.Font.Color := clRed;
+          bitmap.Canvas.TextOut(0, 0, '↑');
+          bitmap.TransparentColor := clWhite; //需要设置为透明背景的颜色
+          bitmap.Transparent := True; //透明背景
+          C.Draw(X - 5, Y - 6, bitmap);
+          bitmap.Free;
+        end
+        else if ACT[0][J] = -1 then
+        begin
+          bitmap := Tbitmap.create;
+          bitmap.Width := 12;
+          bitmap.Height := 12;
+          bitmap.Canvas.Brush.Color := clWhite;
+          bitmap.Canvas.Font.Size := 8;
+          bitmap.Canvas.Font.Color := clGreen;
+          bitmap.Canvas.TextOut(0, 0, '↓');
+          bitmap.TransparentColor := clWhite; //需要设置为透明背景的颜色
+          bitmap.Transparent := True; //透明背景
+          C.Draw(X - 5, Y - 6, bitmap);
+          bitmap.Free;
+        end;
 
       end;
     end;
@@ -1971,13 +2052,14 @@ end;
 
 procedure TfrmMain2.N23Click(Sender: TObject);
 var
-  recNum,period,i: Integer;
+  recNum, period, i: Integer;
   lstSplit: TStringList;
   rec: TStkDataRec;
   time, str: string;
   rText: TextFile;
-  M: TMemoryStream;   
+  M: TMemoryStream;
   P: PStkDataRec;
+var wText: TextFile;
 begin
 
   InputQuery('请输入周期包含的分钟数量：', '', str);
@@ -1985,7 +2067,7 @@ begin
   if str <> '' then
   begin
     period := StrToInt(str);
-    
+
     if (period > 1) and (period <= 270) then
     begin
       //period := 270;
@@ -2025,7 +2107,7 @@ begin
           rec.Date := P.Date;
           rec.CP := p.CP;
           try
-          M.Write(rec, SizeOf(rec));
+            M.Write(rec, SizeOf(rec));
 
           finally
 
@@ -2034,7 +2116,7 @@ begin
 
         i := i + 1;
       end;
-      
+
       StkDataFile.setM(M);
       CLEAR_ALL_CALCULATE_DATA(); //清除计算好的数据
       CalcAll;
@@ -2050,20 +2132,46 @@ begin
       }
     end
     else if period = 1 then
-      begin
-        
+    begin
+
       StkDataFile.setM(M);
       CLEAR_ALL_CALCULATE_DATA(); //清除计算好的数据
       CalcAll;
       GRID.Repaint;
       ITERATE_DATA(DataIndex);
-      end
-      else
+    end
+    else
     begin
       ShowMessage('输入的周期最大包含270分钟，请重新输入。');
     end;
   end;
-      
+
+
+  //数据导出
+  SaveDialog1.Filter := '文本文件(*.txt)|*.txt';
+
+  if SaveDialog1.Execute then
+  begin
+
+    AssignFile(wText, SaveDialog1.FileName);
+    Rewrite(wText); //创建文件，或者使用ReSet打开文件
+
+    recNum := StkDataFile.getCount;
+    i := 0;
+    while i < recNum do
+    begin
+      p := StkDataFile.getRec(i);
+      if ACT[0][i] <> 0 then
+      begin
+        str := Format('%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s', [FormatDateTime('yyyy/mm/dd hh:nn', p.Date), Format('%5.1f', [p.OP]), Format('%5.1f', [p.HP]), Format('%5.1f', [p.LP]), Format('%5.1f', [p.CP]), Format('%5.1f', [p.VOL]), FloatToStr(ACT[0][i])]);
+        Writeln(wText, str);
+      end;
+
+
+      i := i + 1;
+    end;
+    CloseFile(wText);
+  end;
 
 end;
 

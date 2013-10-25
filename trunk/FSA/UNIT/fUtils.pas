@@ -179,6 +179,7 @@ procedure _lineBox_(Canvas: TCanvas; X1, Y1, X2, Y2: Integer); overload;
 procedure _lineBox_(Canvas: TCanvas; Rect: TRect); overload;
 function _calcMA_(Data: TArrayOfSingle; MAC: Integer): TArrayOfSingle;
 function _calcPL_(Index: Integer; Data: TArrayOfSingle; MA: array of TArrayOfSingle; PLC: Integer): TArrayOfSingle;
+function _calcAction_(Index: Integer; Data: TArrayOfSingle; MA: array of TArrayOfSingle; ACTC: Integer): TArrayOfSingle;
 function _div_(Value, DivNum: Single; DefaultWhenDivZero: Single = 0): Extended;
 procedure DRAW_HORZ_SCALE(C: TCanvas; R: TRect; L, H, LL, HH: Single; LineCount: Integer; RoundToPrice: Boolean);
 procedure DRAW_SCALE(C: TCanvas; R: TRect; L, H, LL, HH: Single; LineCount: Integer; RoundToPrice: Boolean); overload;
@@ -821,6 +822,37 @@ begin
   end;
 end;
 
+function _calcAction_(Index: Integer; Data: TArrayOfSingle; MA: array of TArrayOfSingle; ACTC: Integer): TArrayOfSingle;
+var
+  Sum: Single;
+  I: Integer;
+begin
+  Result := nil;
+  if Length(Data) / ACTC = 0 then Exit;
+  SetLength(Result, Length(Data));
+
+  case Index of
+    0:
+      for I := 0 to Length(Result) - 1 do
+      begin
+        Result[I] := MA[3][I] - MA[3][I];
+        if (MA[0][I] > MA[0][I - 1]) and (MA[0][I - 1] <= MA[0][I - 2]) then
+        begin
+          Result[I] := 1;
+        end
+        else if (MA[0][I] < MA[0][I - 1]) and (MA[0][I - 1] >= MA[0][I - 2]) then
+        begin
+          Result[I] := -1;
+        end
+        else
+        begin
+          Result[I] := 0;
+        end;
+      end;
+  end;
+end;
+
+
 //计算当前价格与250均价的差额
 
 function _calcPL_(Index: Integer; Data: TArrayOfSingle; MA: array of TArrayOfSingle; PLC: Integer): TArrayOfSingle;
@@ -1163,3 +1195,4 @@ begin
 end;
 
 end.
+
