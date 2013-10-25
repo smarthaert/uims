@@ -41,7 +41,7 @@ type
     function getRec(Index: Integer): Pointer;
     function getRecSize: Integer;
     procedure loadFromFile(const FileName: string);
-    procedure loadFromM(const newM: TMemoryStream); 
+    procedure loadFromM(const newM: TMemoryStream);
     procedure saveAs(FileName: string);
     function seek(Index: Integer): Pointer;
   end;
@@ -57,7 +57,7 @@ type
     function getRec(Index: Integer): Pointer; virtual;
     function seek(Index: Integer): Pointer; virtual;
     procedure loadFromFile(const FileName: string); virtual;
-    procedure loadFromM(const newM: TMemoryStream); virtual;  
+    procedure loadFromM(const newM: TMemoryStream); virtual;
     procedure loadFromTxtFile(const FileName: string); virtual;
     procedure saveAs(FileName: string); virtual;
   protected
@@ -80,7 +80,7 @@ type
     function getCP: TArrayOfSingle;
     function getUD: TArrayOfSingle;
     function getVOL: TArrayOfSingle;
-    procedure save;                 
+    procedure save;
     procedure setM(newM: TMemoryStream);
   end;
 
@@ -455,3 +455,4 @@ begin
 end;
 
 end.
+
