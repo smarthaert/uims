@@ -2146,6 +2146,8 @@ begin
     end;
   end;
 
+  if messagedlg('是否导出数据',mtconfirmation,[mbyes,mbno],0)=7 then
+    Exit;
 
   //数据导出
   SaveDialog1.Filter := '文本文件(*.txt)|*.txt';
@@ -2161,11 +2163,11 @@ begin
     while i < recNum do
     begin
       p := StkDataFile.getRec(i);
-      if ACT[0][i] <> 0 then
-      begin
+      //if ACT[0][i] <> 0 then
+      //begin
         str := Format('%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s', [FormatDateTime('yyyy/mm/dd hh:nn', p.Date), Format('%5.1f', [p.OP]), Format('%5.1f', [p.HP]), Format('%5.1f', [p.LP]), Format('%5.1f', [p.CP]), Format('%5.1f', [p.VOL]), FloatToStr(ACT[0][i])]);
         Writeln(wText, str);
-      end;
+      //end;
 
 
       i := i + 1;
