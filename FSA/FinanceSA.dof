@@ -90,7 +90,7 @@ MaxStackSize=1048576
 ImageBase=4194304
 ExeDescription=
 [Directories]
-OutputDir=C:\may\FSA\BIN
+OutputDir=E:\may\svn\FSA\BIN
 UnitOutputDir=BIN
 PackageDLLOutputDir=
 PackageDCPOutputDir=
@@ -147,7 +147,8 @@ Item0=$(DELPHI)\Source\INDY\SOURCE;$(DELPHI)\Source\VGLBPL\UNIT;$(DELPHI)\Source
 Count=1
 Item0=BIN
 [HistoryLists\hlOutputDirectorry]
-Count=3
-Item0=C:\may\FSA\BIN
-Item1=D:\may\svn\FSA\BIN
-Item2=C:\may\FSA
+Count=4
+Item0=E:\may\svn\FSA\BIN
+Item1=C:\may\FSA\BIN
+Item2=D:\may\svn\FSA\BIN
+Item3=C:\may\FSA
