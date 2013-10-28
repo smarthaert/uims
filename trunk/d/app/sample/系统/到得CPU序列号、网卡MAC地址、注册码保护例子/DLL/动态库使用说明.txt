@@ -1,0 +1,2 @@
+此动态连接库提供的两个函数为GetCPUSerialNumber和GetMacAddress，分别以字符串指针形式，反回机器的CPU序列号和网卡Mac地址，这两个函数都不带参数，调用方法和Window的API一样。
+在压缩包里提供了delphi和VB的调用示例。

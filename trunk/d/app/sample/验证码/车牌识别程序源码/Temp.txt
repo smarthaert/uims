@@ -1,0 +1,96 @@
+var
+  getcol: Tgetcol;
+
+
+const
+  Digits : array[0..$F] of Char = '0123456789ABCDEF';
+
+
+var t : tcolor;
+r,g,b : byte;
+clip:tclipboard;
+begin
+t := canvas.pixels[tx,ty];
+r := getRvalue(t);
+g := getGvalue(t);
+B := getBvalue(t);
+LABEL2.COLOR := T;
+LABEL1.CAPTION := HEXB(R) + HEXB(G) + HEXB(B);
+clip:=tclipboard.create;
+clip.astext:=label1.caption;
+clip.Free;
+
+
+function HexB(B : Byte) : string;
+  {-Return hex string for byte}
+begin
+  //HexB[0] := #2;
+  //HexB[1] := Digits[B shr 4];
+  //HexB[2] := Digits[B and $F];
+  //Delphi5将上三行改为：
+  HexB:=Digits[B shr 4]+Digits[B and $F];
+end;
+
+
+
+procedure TForm1.SpeedButton2Click(Sender: TObject);
+begin
+  adoPic1.Edit;
+  adoPic1.FieldByName('PicData').AsString:='';
+  adoPic1.Post;
+end;
+
+
+procedure TForm1.FormCreate(Sender: TObject);
+var
+  str:String;
+begin
+  if adoCon.Connected then
+    adoCon.Connected :=false;
+  str:='Provider=Microsoft.Jet.OLEDB.4.0;User ID=Admin;'+
+  'Data Source='+ExtractFilePath(ParamStr(0))+'picdata.mdb;'+
+  'Mode=Share Deny None;Extended Properties="";Jet OLEDB:System database="";'+
+  'Jet OLEDB:Registry Path="";Jet OLEDB:Database Password="";'+
+  'Jet OLEDB:Engine Type=5;Jet OLEDB:Database Locking Mode=1;'+
+  'Jet OLEDB:Global Partial Bulk Ops=2;Jet OLEDB:Global Bulk Transactions=1;'+
+  'Jet OLEDB:New Database Password="";Jet OLEDB:Create System Database=False;'+
+  'Jet OLEDB:Encrypt Database=False;Jet OLEDB:Don'+''''+'t Copy Locale on Compact=False;'+
+  'Jet OLEDB:Compact Without Replica Repair=False;Jet OLEDB:SFP=False';
+  adoCon.ConnectionString :=str;
+  try
+    adoCon.Connected :=true;
+    adoPic1.Active :=true;
+    adoPic2.Active :=true;
+  except
+    ShowMessage('找不到数据库文件！');
+    Application.Terminate;
+  end;
+end;
+
+
+procedure TForm1.SpeedButton1Click(Sender: TObject);
+var
+  st: TStringStream;
+  Str : String;
+  Jpeg1 : TJPEGIMAGE;
+  bmp:TBitmap;
+begin
+  if OpenPictureDialog1.Execute then
+  begin
+    bmp:=TBitmap.Create;
+    Str := ExtractFileExt(OpenPictureDialog1.filename);
+    Str := Copy(Str,2,3);
+    if Str='bmp' then
+      bmp.LoadFromFile(OpenPictureDialog1.FileName)
+    else if Str='jpg' then
+    begin
+      Jpeg1 := TJPEGIMAGE.Create;
+      Jpeg1.LoadFromFile(OpenPictureDialog1.FileName);
+      bmp.Assign(Jpeg1);
+    end;
+    st := tstringstream.Create('');
+    bmp.SaveToStream(st);
+    adoPic1.Edit;
+    adoPic1.FieldByName('PicData').AsString:= st.datastring;
+  end;
+end;

@@ -1,0 +1,8 @@
+前提：要安装codesoft软件
+
+先在 Project->Import Type Library 
+引用 codesoft安装路径中的 lppx2.tlb 
+
+
+uses 
+   comobj

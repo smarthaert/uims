@@ -1,0 +1,1243 @@
+[info]
+name = 3721上网助手
+describe = http://www.3721.com.cn
+author = tomm
+version = 2.23
+
+
+[indentify]
+HKEY_CURRENT_USER\SOFTWARE\3721 = exists
+
+
+[process]
+assistse.exe = kill
+rundll32.exe = kill
+
+
+[regsvr]
+{prg}3721\Notifier.dll = unregsvr
+{prg}3721\patch03.dll = unregsvr
+{prg}3721\patch05.dll = unregsvr
+{prg}3721\patch06.dll = unregsvr
+{prg}3721\scrblock.dll = unregsvr
+{prg}3721\3721\AutoLive.dll = unregsvr
+{prg}3721\Shell\AsMenu.dll = unregsvr
+{prg}3721\Shell\Assecblk.dll = unregsvr
+{prg}3721\Shell\IEAngel.dll = unregsvr
+{prg}3721\Shell\MenuInfo.dll = unregsvr
+{prg}3721\assist\assist.dll = unregsvr
+
+
+[files]
+{prg}3721= delete
+{win}cnsinfo.dat = delete
+{sys}cns.dat = delete
+{sys}cns.exe = delete
+{sys}cns.dll = delete
+{sys}CnsMinKP.sys = delete
+{sys}drivers\CnsMinKP.sys = delete
+{win}Downloaded Program Files\cns*.* = delete
+{win}Downloaded Program Files\*.ico = delete
+{win}Downloaded Program Files\3721 = delete
+{win}Downloaded Program Files\keepmain*.* = delete
+{win}Downloaded Program Files\zsmod.dll = delete
+{sys}drivers\cdntran.sys = delete
+{uprograms}上网助手 = delete
+{cprograms}上网助手 = delete
+
+
+
+[registry]
+HKEY_CLASSES_ROOT\CLSID\{141A5E19-BDCB-4E27-A3D7-9E16503BC05B} = delete
+HKEY_CLASSES_ROOT\CLSID\{1B0E7716-898E-48CC-9690-4E338E8DE1D3} = delete
+HKEY_CLASSES_ROOT\CLSID\{38928D50-8A48-44C2-945F-D2F23F771410} = delete
+HKEY_CLASSES_ROOT\CLSID\{7CA83CF1-3AEA-42D0-A4E3-1594FC6E48B2} = delete
+HKEY_CLASSES_ROOT\CLSID\{9EB2B422-C9EE-46C4-A471-1E79C7517B1D} = delete
+HKEY_CLASSES_ROOT\CLSID\{ABEC6103-F6AC-43A3-834F-FB03FBA339A2} = delete
+HKEY_CLASSES_ROOT\CLSID\{B83FC273-3522-4CC6-92EC-75CC86678DA4} = delete
+HKEY_CLASSES_ROOT\CLSID\{BB936323-19FA-4521-BA29-ECA6A121BC78} = delete
+HKEY_CLASSES_ROOT\CnsHelper.CH = delete
+HKEY_CLASSES_ROOT\CnsHelper.CH.1 = delete
+HKEY_CLASSES_ROOT\TypeLib\{19069804-2CF0-4357-B696-BA6E9AAD99EF} = delete
+HKEY_CLASSES_ROOT\TypeLib\{4158DB95-DE71-41FF-BEA1-2C3D1C679DF1} = delete
+HKEY_CLASSES_ROOT\TypeLib\{7354662F-CAA3-448B-BC01-04F55A2DCA35} = delete
+HKEY_CLASSES_ROOT\TypeLib\{D4839331-534D-4D0C-875F-D25AF6A10CCC} = delete
+HKEY_CLASSES_ROOT\TypeLib\{F97E75A4-0103-4F27-A752-327B600B1130} = delete
+HKEY_CLASSES_ROOT\TypeLib\{F9AD9D67-EFA8-480E-8291-0163F3960DE7} = delete
+HKEY_CURRENT_USER\SOFTWARE\3721 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\3721 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{141A5E19-BDCB-4E27-A3D7-9E16503BC05B} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{1B0E7716-898E-48CC-9690-4E338E8DE1D3} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{38928D50-8A48-44C2-945F-D2F23F771410} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{7CA83CF1-3AEA-42D0-A4E3-1594FC6E48B2} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{9EB2B422-C9EE-46C4-A471-1E79C7517B1D} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{ABEC6103-F6AC-43A3-834F-FB03FBA339A2} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{B83FC273-3522-4CC6-92EC-75CC86678DA4} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{BB936323-19FA-4521-BA29-ECA6A121BC78} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CnsHelper.CH = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CnsHelper.CH.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{19069804-2CF0-4357-B696-BA6E9AAD99EF} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{4158DB95-DE71-41FF-BEA1-2C3D1C679DF1} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{7354662F-CAA3-448B-BC01-04F55A2DCA35} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{D4839331-534D-4D0C-875F-D25AF6A10CCC} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{F97E75A4-0103-4F27-A752-327B600B1130} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{F9AD9D67-EFA8-480E-8291-0163F3960DE7} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Extensions\{00000000-0000-0001-0001-596BAEDD1289} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Extensions\{507F9113-CD77-4866-BA92-0E86DA3D0B97} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Extensions\{59BC54A2-56B3-44a0-93E5-432D58746E26} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Extensions\{5D73EE86-05F1-49ed-B850-E423120EC338} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Extensions\{ECF2E268-F28C-48d2-9AB7-8F69C11CCB71} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Extensions\{FD00D911-7529-4084-9946-A29F1BDF4FE5} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\assistse = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\CnsMin = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\helper.dll = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce\3721C:\PROGRA~1\3721\autolive.dll7831941 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce\3721C:\PROGRA~1\3721\autolive.dll7892729 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce\3721C:\PROGRA~1\3721\autolive.dll7954517 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{1B0E7716-898E-48cc-9690-4E338E8DE1D3} = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\CnsMinKP = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CnsMinKP = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\3721 = delete
+HKEY_CLASSES_ROOT\CLSID\{D157330A-9EF3-49F8-9A67-4141AC41ADD4} = delete
+HKEY_CLASSES_ROOT\CnsMinHK.CnsHook = delete
+HKEY_CLASSES_ROOT\CnsMinHK.CnsHook.1 = delete
+HKEY_CLASSES_ROOT\TypeLib\{A5ADEAE7-A8B4-4F94-9128-BF8D8DB5E927} = delete
+HKEY_CLASSES_ROOT\TypeLib\{AAB6BCE3-1DF6-4930-9B14-9CA79DC8C267} = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\!搜一搜 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{D157330A-9EF3-49F8-9A67-4141AC41ADD4} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CnsMinHK.CnsHook = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CnsMinHK.CnsHook.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{A5ADEAE7-A8B4-4F94-9128-BF8D8DB5E927} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{AAB6BCE3-1DF6-4930-9B14-9CA79DC8C267} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\AdvancedOptions\!CNS = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\CnsMin = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum\Root\LEGACY_CNSMINKP = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\CnsMinKP = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Enum\Root\LEGACY_CNSMINKP = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\Root\LEGACY_CNSMINKP = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CnsMinKP = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Internet Explorer\MenuExt\!搜一搜 = delete
+HKEY_CLASSES_ROOT\Assist.EasyAssist = delete
+HKEY_CLASSES_ROOT\Assist.EasyAssist.1 = delete
+HKEY_CLASSES_ROOT\AutoLive.Live = delete
+HKEY_CLASSES_ROOT\AutoLive.Live.1 = delete
+HKEY_CLASSES_ROOT\Interface\{1BB0ABBE-2D95-4847-B9D8-6F90DE3714C1} = delete
+HKEY_CLASSES_ROOT\Interface\{924F5B3A-7A27-484A-B873-E855C9708667} = delete
+HKEY_CLASSES_ROOT\Interface\{BE08F6BC-C3E6-4149-BEB1-CB449E1B372E} = delete
+HKEY_CLASSES_ROOT\Interface\{DF692509-D9EF-48A0-9CD0-3AA5B81F6F68} = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Main\CNSAutoUpdate = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Main\CNSEnable = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Main\CNSHint = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Main\CNSList = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Main\CNSMenu = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Main\CNSReset = delete
+HKEY_CLASSES_ROOT\ADKiller.ADKillerObj = delete
+HKEY_CLASSES_ROOT\ADKiller.ADKillerObj.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\ADKiller.ADKillerObj = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\ADKiller.ADKillerObj.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\ActiveX Compatibility\{1B0E7716-898E-48CC-9690-4E338E8DE1D3} = delete
+HKEY_CLASSES_ROOT\Angling.AntiFish = delete
+HKEY_CLASSES_ROOT\Angling.AntiFish.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Angling.AntiFish = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Angling.AntiFish.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{38928D50-8A48-44C2-945F-D2F23F771410} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\ActiveX Compatibility\{7CA83CF1-3AEA-42D0-A4E3-1594FC6E48B2} = delete
+HKEY_CLASSES_ROOT\FFlash.FlashObjectInterface = delete
+HKEY_CLASSES_ROOT\FFlash.FlashObjectInterface.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\FFlash.FlashObjectInterface = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\FFlash.FlashObjectInterface.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\ActiveX Compatibility\{B83FC273-3522-4CC6-92EC-75CC86678DA4} = delete
+HKEY_CLASSES_ROOT\CoolBar.CoolBarObj = delete
+HKEY_CLASSES_ROOT\CoolBar.CoolBarObj.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CoolBar.CoolBarObj = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CoolBar.CoolBarObj.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{BB936323-19FA-4521-BA29-ECA6A121BC78} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{7436DB12-1A7A-4D87-A4E0-713EC9D86050} = delete
+HKEY_CLASSES_ROOT\Interface\{C3A9F7F8-8862-496A-B8A4-25D4140B7DBC} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{172862CD-9D35-40E7-BAF2-BA7ECF043B9C} = delete
+HKEY_CLASSES_ROOT\Interface\{7436DB12-1A7A-4D87-A4E0-713EC9D86050} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{7436DB12-1A7A-4D87-A4E0-713EC9D86050} = delete
+HKEY_CLASSES_ROOT\Interface\{172862CD-9D35-40E7-BAF2-BA7ECF043B9C} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{172862CD-9D35-40E7-BAF2-BA7ECF043B9C} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{D157330A-9EF3-49F8-9A67-4141AC41ADD4} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShellExecuteHooks\{D157330A-9EF3-49F8-9A67-4141AC41ADD4} = delete
+
+[info]
+name = 百度搜霸
+describe = http://www.baidu.com.cn
+author = tomm
+version = 2.41
+
+[indentify]
+HKEY_LOCAL_MACHINE\SOFTWARE\Baidu = exists
+
+
+[process]
+
+[regsvr]
+{sys}Baidu\bar\BaiDuBar.dll = unregsvr
+{win}Downloaded Program Files\BaiDuBar.dll = unregsvr
+
+[files]
+{sys}\drivers\BDGuard.SYS = delete
+{sys}\BDGuard.DAT = delete
+{prg}Baidu = delete
+{uprograms}百度超级搜霸 = delete
+{cprograms}百度超级搜霸 = delete
+{win}Downloaded Program Files\BaiDuBar.dll = delete
+{prg}Baidu\bar\BaiduBar.dll = delete
+{prg}Baidu\bar\bdgdins.dll = delete
+{prg}Baidu\bar\baidubar.dat = delete
+
+[registry]
+HKEY_LOCAL_MACHINE\SOFTWARE\Baidu = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Baidu$hint = 看来baidu搜霸是要和广大人民作对到底了,流氓行为不但不改正,反而变本加厉.
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度-词典搜索 = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度-搜索MP3 = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度-搜索歌词 = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度-搜索贴吧 = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度-搜索图片 = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度-搜索网页 = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度-搜索新闻 = delete
+HKEY_CLASSES_ROOT\BaiduBar.Baidu = delete
+HKEY_CLASSES_ROOT\BaiduBar.Baidu.1 = delete
+HKEY_CLASSES_ROOT\BaiduBar.Tool = delete
+HKEY_CLASSES_ROOT\BaiduBar.Tool.1 = delete
+HKEY_CLASSES_ROOT\BaiduBar.Tool.1 = delete
+HKEY_CLASSES_ROOT\CLSID\{B580CF65-E151-49C3-B73F-70B13FCA8E86} = delete
+HKEY_CLASSES_ROOT\CLSID\{A7F05EE4-0426-454F-8013-C41E3596E9E9} = delete
+HKEY_CLASSES_ROOT\CLSID\{FE14F22E-BE14-4F08-A80F-F27BC3A67B2D} = delete
+HKEY_CLASSES_ROOT\Interface\{89FDCC4B-8D91-49B0-81A6-18BCFF582735} = delete
+HKEY_CLASSES_ROOT\TypeLib\{6AFC2761-1253-427C-9A56-385B4609BE1D} = delete
+HKEY_CURRENT_USER\SOFTWARE\Baidu = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{FE14F22E-BE14-4F08-A80F-F27BC3A67B2D} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{89FDCC4B-8D91-49B0-81A6-18BCFF582735} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{6AFC2761-1253-427C-9A56-385B4609BE1D} = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Baidu = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\sobar = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\MimeFilter.AdFilter = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\MimeFilter.AdFilter.1 = delete
+HKEY_CLASSES_ROOT\MimeFilter.AdFilter = delete
+HKEY_CLASSES_ROOT\MimeFilter.AdFilter.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\MimeFilter.AdFilter = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\MimeFilter.AdFilter.1 = delete
+HKEY_CLASSES_ROOT\Interface\{464C8A26-31E9-411C-9583-5B858E631DCC} = delete
+HKEY_CLASSES_ROOT\Interface\{96249369-D3DC-4AE6-8A3B-E7109D46E98D} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{464C8A26-31E9-411C-9583-5B858E631DCC} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{B580CF65-E151-49C3-B73F-70B13FCA8E86} = delete
+HKEY_CLASSES_ROOT\BaiduBarEx.BandIE = delete
+HKEY_CLASSES_ROOT\BaiduBarEx.BandIE.1 = delete
+HKEY_CLASSES_ROOT\BaiduBarEx.DropTarget = delete
+HKEY_CLASSES_ROOT\BaiduBarEx.DropTarget.1 = delete
+HKEY_CLASSES_ROOT\CLSID\{77FEF28E-EB96-44FF-B511-3185DEA48697} = delete
+HKEY_CLASSES_ROOT\CLSID\{7C76C055-ED6E-4535-A70F-CD476E727F67} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\BaiduBarEx.BandIE = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\BaiduBarEx.BandIE.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\BaiduBarEx.DropTarget = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{77FEF28E-EB96-44FF-B511-3185DEA48697} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{7C76C055-ED6E-4535-A70F-CD476E727F67} = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Baidu = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum\Root\LEGACY_BDGUARD = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\BdGuard = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Enum\Root\LEGACY_BDGUARD = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\BdGuard = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\Root\LEGACY_BDGUARD = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BdGuard = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{77FEF28E-EB96-44FF-B511-3185DEA48697} = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度Flash搜索 = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度mp3搜索 = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度信息快递搜索 = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度图片搜索 = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度搜索 = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度新闻搜索 = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度Flash搜索 = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度mp3搜索 = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度信息快递搜索 = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度图片搜索 = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度搜索 = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Internet Explorer\MenuExt\百度新闻搜索 = delete
+
+[info]
+name = 博采网摘
+describe = blogmark.blogchina.com
+author = tomm
+version = 2.0
+
+[indentify]
+HKEY_LOCAL_MACHINE\SOFTWARE\BlogChina = exists
+
+[process]
+bcup.exe = kill
+
+
+[regsvr]
+BoCaiToolBar.dll = unregsvr
+
+[files]
+{sys}bcup.exe = delete
+{sys}BoCaiToolBar.dll = delete
+
+[registry]
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\BCUpdate = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\BlogChina  = delete
+HKEY_CLASSES_ROOT\BoCaiToolBar.StockBar = delete
+HKEY_CLASSES_ROOT\BoCaiToolBar.StockBar.1 = delete
+HKEY_CLASSES_ROOT\CLSID\{4DA2EE61-6399-4C39-AEB9-0D990E610D29} = delete
+HKEY_CLASSES_ROOT\TypeLib\{693A1E03-7B1B-41D8-8803-CF9ED9D86070} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\BoCaiToolBar.StockBar = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\BoCaiToolBar.StockBar.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{4DA2EE61-6399-4C39-AEB9-0D990E610D29} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{693A1E03-7B1B-41D8-8803-CF9ED9D86070} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Toolbar\{4DA2EE61-6399-4C39-AEB9-0D990E610D29} = delete
+HKEY_CLASSES_ROOT\Interface\{3855CF44-363B-4E48-B3FD-25736207B27F} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{3855CF44-363B-4E48-B3FD-25736207B27F} = delete
+
+[info]
+name = 彩信通
+describe = 彩信通
+author = tomm
+version = 1.0
+
+[indentify]
+HKEY_LOCAL_MACHINE\SOFTWARE\mmsassist = exists
+
+
+[process]
+
+
+[regsvr]
+{prg}MMSAssist\MMSAssist.dll = unregsvr
+
+
+[files]
+{prg}MMSAssist = delete
+
+[registry]
+HKEY_CLASSES_ROOT\CLSID\{6671A431-5C3D-463d-A7CF-5587F9B7E191} = delete
+HKEY_CLASSES_ROOT\Interface\{74289A79-E652-4A57-A6B9-EE64AD532A8D} = delete
+HKEY_CLASSES_ROOT\MMSBho.MMSAssist = delete
+HKEY_CLASSES_ROOT\MMSBho.MMSAssist.1 = delete
+HKEY_CLASSES_ROOT\MMSBho.MMSAssistMenu = delete
+HKEY_CLASSES_ROOT\MMSBho.MMSAssistMenu.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{6671A431-5C3D-463d-A7CF-5587F9B7E191} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{74289A79-E652-4A57-A6B9-EE64AD532A8D} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\MMSBho.MMSAssist = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\MMSBho.MMSAssist.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\MMSBho.MMSAssistMenu = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\MMSBho.MMSAssistMenu.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Management\ARPCache\MMSAssist = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{6671A431-5C3D-463d-A7CF-5587F9B7E191} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\MMSAssist = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\mmsassist = delete
+HKEY_CLASSES_ROOT\Interface\{74289A7A-E652-4A57-A6B9-EE64AD532A8D} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{74289A7A-E652-4A57-A6B9-EE64AD532A8D} = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\  >> 彩信发送 << = delete
+
+[info]
+name = CNIC中文上网
+describe = CNIC
+author = tomm
+version = 2.3
+
+[indentify]
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\cdnprot = exists
+
+
+[process]
+cdnup.exe = kill
+
+
+[regsvr]
+{prg}CNNIC\Cdn\cdniehlp.dll = unregsvr
+{prg}CNNIC\Cdn\imaol.dll = unregsvr
+
+[files]
+{sys}drivers\cdnprot.sys = delete
+{prg}cnnic = delete
+{sys}cdn.dll = delete
+{tmp}\setup\cdn*.* = delete
+{uprograms}中文上网官方版软件 = delete
+{cprograms}中文上网官方版软件 = delete
+
+
+
+[registry]
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run\CdnCtr = delete
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run\renewup = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\cdnprot = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\cdntran = delete
+HKEY_CLASSES_ROOT\CLSID\{461A86F7-A29D-460A-80D5-52979AA6C46D} = delete
+HKEY_CURRENT_USER\Software\CNNIC = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\CNNIC = delete
+HKEY_CLASSES_ROOT\TypeLib\{C24A5A5C-0874-4386-85C7-E669F90997A9} = delete
+HKEY_CLASSES_ROOT\CLSID\{9A578C98-3C2F-4630-890B-FC04196EF420} = delete
+HKEY_CLASSES_ROOT\CLSID\{D449EB58-55AF-4695-B216-895D546AED89} = delete
+HKEY_CLASSES_ROOT\TypeLib\{B7DB519E-7131-47B1-A9F5-DA8D061C2611} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{461A86F7-A29D-460A-80D5-52979AA6C46D} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{9A578C98-3C2F-4630-890B-FC04196EF420} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{D449EB58-55AF-4695-B216-895D546AED89} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{B7DB519E-7131-47B1-A9F5-DA8D061C2611} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\AdvancedOptions\CDNCLIENT = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\uncnnic = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\CdnClient = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\renewup = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\Outlook\Addins\MailParserSvr.MailParser.1 = delete
+HKEY_CLASSES_ROOT\Cdn.CdnObj = delete
+HKEY_CLASSES_ROOT\Cdn.CdnObj.1 = delete
+HKEY_CLASSES_ROOT\MailParserSvr.MailParser = delete
+HKEY_CLASSES_ROOT\MailParserSvr.MailParser.1 = delete
+HKEY_CLASSES_ROOT\MailParserSvr.InspectorHandler = delete
+HKEY_CLASSES_ROOT\MailParserSvr.InspectorHandler.1 = delete
+HKEY_CLASSES_ROOT\Interface\{951A869A-1003-4897-948F-D55E570871DB} = delete
+HKEY_CLASSES_ROOT\Interface\{446761D5-3AC9-40CC-9DCD-CDE23E2CE31A} = delete
+HKEY_CLASSES_ROOT\Interface\{BF0A2EB3-0704-45C6-90F4-9EBB1DEB57FD} = delete
+HKEY_CLASSES_ROOT\CLSID\{35980F6E-A137-4E50-953D-813BB8556899} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Extensions\{35980F6E-A137-4E50-953D-813BB8556899} = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum\Root\LEGACY_CDNPROT = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Enum\Root\LEGACY_CDNPROT = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\Root\LEGACY_CDNPROT = delete
+HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\MenuExt\访问通用网址 = delete
+
+
+[info]
+name = dudu下载加速器
+describe = dudu
+author = tomm
+version = 1.4
+
+[indentify]
+HKEY_LOCAL_MACHINE\SOFTWARE\Dudu = exists
+
+
+[process]
+dudupros.exe = kill
+duduacc.exe = kill
+
+
+[regsvr]
+{prg}DuDu\DddClient\dddiemon.dll = unregsvr
+{prg}DuDu\DddClient\dddspocx.dll = unregsvr
+{prg}DuDu\DddClient\dddmext.dll = unregsvr
+
+
+[files]
+{prg}DuDu = delete
+{win}temp\rep.exe
+{win}temp\setup.exe
+{uprograms}DuDu下载加速器.lnk = delete
+{cprograms}DuDu下载加速器.lnk = delete
+{desktop}dudu下载加速器.lnk = delete
+{cdesktop}dudu下载加速器.lnk = delete
+{cstartup}DuDu下载加速器.lnk = delete
+{ustartup}DuDu下载加速器.lnk = delete
+
+[registry]
+HKEY_CLASSES_ROOT\Applications\DuDuAcc.exe = delete
+HKEY_CLASSES_ROOT\CLSID\{8135EF31-FE8C-4C6E-A18A-F59944C3A488} = delete
+HKEY_CLASSES_ROOT\CLSID\{915E63F4-4733-401E-8556-6559B30A4C5A} = delete
+HKEY_CLASSES_ROOT\CLSID\{6BDE1669-B490-48E3-B668-456314F2D6C3} = delete
+HKEY_CLASSES_ROOT\CLSID\{FFD95F65-F5E4-4AB8-B7F9-F61F13878A04} = delete
+HKEY_CLASSES_ROOT\ddd.dd! = delete
+HKEY_CLASSES_ROOT\Installer\Products\6AC48BD8EB0E3A14C9C1D6BC2B8B71AC = delete
+HKEY_CLASSES_ROOT\TypeLib\{49BD048A-3EBA-4234-A408-DF92AD121FD8} = delete
+HKEY_CLASSES_ROOT\TypeLib\{A088BCC7-7E07-424B-B46D-A84C6F5BA3BC} = delete
+HKEY_CLASSES_ROOT\TypeLib\{E984B17C-7FAE-4E2B-8D80-E1C9EA96B0CB} = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\&使用DuDu 加速器下载 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Applications\DuDuAcc.exe = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{6BDE1669-B490-48E3-B668-456314F2D6C3} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{915E63F4-4733-401E-8556-6559B30A4C5A} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{FFD95F65-F5E4-4AB8-B7F9-F61F13878A04} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\ddd.dd! = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Products\6AC48BD8EB0E3A14C9C1D6BC2B8B71AC = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{49BD048A-3EBA-4234-A408-DF92AD121FD8} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{A088BCC7-7E07-424B-B46D-A84C6F5BA3BC} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{E984B17C-7FAE-4E2B-8D80-E1C9EA96B0CB} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Dudu = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Extensions\{3DB9F45E-AA74-4373-A466-C18A9F1C500D} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components\382478FCEACA3464185A5CDBD2E9C29A = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components\5B7C33E4FDA02AA4287797F620A0E5AA = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components\868E2227D31C6DE48B66D73A0C2FB985 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components\9436210F3F108F04F94A4AE9114E2BE5 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components\AB56AEA2378463E468D255AE2BE26F47 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components\B1D00428C9F190D4A90CFE1A732A4511 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components\B355811CFF18C43458B6F3FDE232F7E2 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components\CA2FBB769736558448D9AE9BCF2E0391 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components\DF058F2C7C9676B42822BCF0535906FF = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components\E0D2D740E52C38C4DAF160D371F42512 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components\EBC8CB2BCD699494093149B73ED1E0C8 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components\F1FBA1F6C56B20F4D8E1DE9F0BD5EBF9 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Products\6AC48BD8EB0E3A14C9C1D6BC2B8B71AC = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{8DB84CA6-E0BE-41A3-9C1C-6DCBB2B817CA} = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List\C:\Program Files\DuDu\DddClient\DuDuAcc.exe = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List\C:\Program Files\DuDu\DddClient\dudupros.exe = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List\C:\Program Files\DuDu\DddClient\DuDuProsvc.exe = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List\C:\Program Files\DuDu\DddClient\rep.exe = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List\C:\Program Files\DuDu\DddClient\DuDuAcc.exe = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List\C:\Program Files\DuDu\DddClient\dudupros.exe = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List\C:\Program Files\DuDu\DddClient\DuDuProsvc.exe = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List\C:\Program Files\DuDu\DddClient\rep.exe = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Internet Explorer\MenuExt\&使用DuDu 加速器下载 = delete
+HKEY_CURRENT_USER\SOFTWARE\dudu = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components\49CCDEAABE3D322419F3E445BC74E081 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components\7EF92EFFDC80CF94597EC2CACCA73B9A = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\dudu = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\WinTrust\Trust Providers\Software Publishing\Trust Database\0\dcikpcfhalmblomhkcfcebnnefiledge jhdbdpompddfiebckchcfncbojcinmdp = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Windows\CurrentVersion\WinTrust\Trust Providers\Software Publishing\Trust Database\0\dcikpcfhalmblomhkcfcebnnefiledge jhdbdpompddfiebckchcfncbojcinmdp = delete
+
+
+[info]
+name = 易趣工具栏
+describe = 易趣工具栏
+author = tomm
+version = 1.26
+
+[indentify]
+HKEY_CURRENT_USER\SOFTWARE\eBay = exists
+
+
+[process]
+ebaytbdaemon.exe = kill
+ebaytbdaemon.ex = kill
+
+[regsvr]
+{prg}eBay\eBay Toolbar2\eBayTb.dll = unregsvr
+{prg}eBay\eBay Toolbar2\eBayToolbarComm.dll = unregsvr
+
+
+[files]
+{prg}eBay\*.* = delete
+{prg}eBay = delete
+{cstartmenu}易趣购物.lnk = delete
+{ustartmenu}易趣购物.lnk = delete
+
+
+[registry]
+HKEY_CLASSES_ROOT\CLSID\{22D8E815-4A5E-4DFB-845E-AAB64207F5BD} = delete
+HKEY_CLASSES_ROOT\CLSID\{92085AD4-F48A-450D-BD93-B28CC7DF67CE} = delete
+HKEY_CLASSES_ROOT\CLSID\{B7856497-7097-424a-B03C-557ACA6477B4} = delete
+HKEY_CLASSES_ROOT\CLSID\{BC0FA0E8-0E7A-4836-B6EA-6E6880F4522C} = delete
+HKEY_CLASSES_ROOT\eBayToolbarCommLib.IWebEvent = delete
+HKEY_CLASSES_ROOT\eBayToolbarRCSearchLib.IRCSearch = delete
+HKEY_CLASSES_ROOT\eBayToolbarRCSearchLib.IRCSearch.1 = delete
+HKEY_CLASSES_ROOT\TypeLib\{6A28870C-9ABB-48c6-82BB-64442C1925B9} = delete
+HKEY_CURRENT_USER\SOFTWARE\eBay = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\&eBay Search = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{22D8E815-4A5E-4DFB-845E-AAB64207F5BD} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{92085AD4-F48A-450D-BD93-B28CC7DF67CE} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{B7856497-7097-424a-B03C-557ACA6477B4} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{BC0FA0E8-0E7A-4836-B6EA-6E6880F4522C} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\eBayToolbarCommLib.IWebEvent = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\eBayToolbarCommLib.IWebEvent.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\eBayToolbarRCSearchLib.IRCSearch = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\eBayToolbarRCSearchLib.IRCSearch.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{6A28870C-9ABB-48c6-82BB-64442C1925B9} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{3DB5FD00-BB93-4AF3-B925-77DAA0E4E2F4} = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\eBay = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Internet Explorer\MenuExt\&eBay Search = delete
+HKEY_CLASSES_ROOT\CLSID\{22D8E815-4A5E-4DFB-845E-AAB64207F5BD} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{22D8E815-4A5E-4DFB-845E-AAB64207F5BD} = delete
+HKEY_CLASSES_ROOT\CLSID\{92085AD4-F48A-450D-BD93-B28CC7DF67CE} = delete
+HKEY_CLASSES_ROOT\eBayToolbarRCSearchLib.IRCSearch = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\eBayToolbar = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Extensions\{EE60714F-AC17-427e-861A-FD60CBDF119A} = delete
+
+
+
+[info]
+name = 很棒小秘书
+describe = 很棒小秘书
+author = tomm
+version = 1.6
+
+[indentify]
+{prg}HDP = exists
+
+
+[process]
+henbang.exe = delete
+
+[regsvr]
+{prg}HDP\Henbang\XPWindow.dll = unregsvr
+{sys}winhtp.dll = unregsvr
+{sys}hap.dll = unregsvr
+
+
+[files]
+{prg}HDP\Henbang\*.* = delete
+{prg}HDP = delete
+{sys}winup.exe = delete
+{sys}winhtp.dll = delete
+{sys}henbagkiller.exe = delete
+{win}henbang.INI = delete
+{sys}hdp.ini = delete
+{sys}Microsoft\hdp.ini = delete
+{sys}hda.ini = delete
+{win}hbsetup.log = delete
+{sys}webad.dll = delete
+{sys}hda.ini = delete
+{sys}win.htm = delete
+{sys}uninstall.exe = delete
+{sys}unregister.ini = delete
+{sys}hdp.dll = delete
+{sys}hbhap.dll = delete
+{sys}drivers\ustqilnr.sys = delete
+{sys}drivers\pupw.sys = delete
+{sys}drivers\Madbp.sys = delete
+{sys}drivers\Khdap.sys = delete
+{sys}879f5.msi = delete = delete
+{sys}hap.dll = delete
+{sys}temp\temp0.dll = delete
+{sys}temp\temp1.dll = delete
+
+
+
+[registry]
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\Explorer\Run\helperdll = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\HDP = delete
+HKEY_CLASSES_ROOT\CLSID\{2D6F6BFF-1796-4779-9BA3-5F20F17E5CEA} = delete
+HKEY_CLASSES_ROOT\TypeLib\{AE9C1B10-C380-4363-8620-7C6311169BAA} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{2D6F6BFF-1796-4779-9BA3-5F20F17E5CEA} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{AE9C1B10-C380-4363-8620-7C6311169BAA} = delete
+HKEY_CLASSES_ROOT\TypeLib\{AE9C1B10-C380-4363-8620-7C6311169BAA} = delete
+HKEY_CLASSES_ROOT\XPWindow.XWindow = delete
+HKEY_CLASSES_ROOT\XPWindow.XWindow.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{AE9C1B10-C380-4363-8620-7C6311169BAA} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\XPWindow.XWindow = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\XPWindow.XWindow.1 = delete
+HKEY_CLASSES_ROOT\CLSID\{2D6F6BFF-1796-4779-9BA3-5F20F17E5CEA} = delete
+HKEY_CLASSES_ROOT\CLSID\{616D4040-5712-4F0F-BCF1-5C6420A99E14} = delete
+HKEY_CLASSES_ROOT\TypeLib\{315A06D6-FCA7-45EA-B77D-EE7B90041224} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{616D4040-5712-4F0F-BCF1-5C6420A99E14} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{315A06D6-FCA7-45EA-B77D-EE7B90041224} = delete
+HKEY_CLASSES_ROOT\CLSID\{3ED9FFDA-79DB-4B2D-99B7-16EA3C4A3A92} = delete
+HKEY_CLASSES_ROOT\TypeLib\{B58A1EFB-3DEE-4493-93B9-4DE3F99C8AEE} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{3ED9FFDA-79DB-4B2D-99B7-16EA3C4A3A92} = delete
+HKEY_CLASSES_ROOT\Applications\henbang.exe = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Applications\henbang.exe = delete
+HKEY_CLASSES_ROOT\DownloadStart.DownloadValue = delete
+HKEY_CLASSES_ROOT\DownloadStart.DownloadValue.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DownloadStart.DownloadValue = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\DownloadStart.DownloadValue.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{616D4040-5712-4F0F-BCF1-5C6420A99E14} = delete
+HKEY_CLASSES_ROOT\Monitor.URLMonitor = delete
+HKEY_CLASSES_ROOT\Monitor.URLMonitor.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Monitor.URLMonitor = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Monitor.URLMonitor.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{3ED9FFDA-79DB-4B2D-99B7-16EA3C4A3A92} = delete
+
+
+[info]
+name = 划词搜索
+describe = 划词搜索
+author = tomm
+version = 1.72
+
+[indentify]
+{prg}wsearch = exists
+
+
+[process]
+movesearch.exe = kill
+search.exe = kill
+
+
+[regsvr]
+
+
+
+[files]
+{prg}wsearch\*.* = delete
+{prg}wsearch = delete
+{cprograms}划词搜索.lnk = delete
+{uprograms}划词搜索.lnk = delete
+{cstartup}划词搜索.lnk = delete
+{ustartup}划词搜索.lnk = delete
+
+[registry]
+HKEY_CLASSES_ROOT\CLSID\{594BE7B2-23B0-4FAE-A2B9-0C21CC1417CE} = delete
+HKEY_CLASSES_ROOT\TypeLib\{FD536575-73F7-42A3-9E9F-11688F1A006A} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{594BE7B2-23B0-4FAE-A2B9-0C21CC1417CE} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{FD536575-73F7-42A3-9E9F-11688F1A006A} = delete
+HKEY_CLASSES_ROOT\SearchM.Search = delete
+HKEY_CLASSES_ROOT\SearchM.Search.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\SearchM.Search = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\SearchM.Search.1 = delete
+HKEY_CLASSES_ROOT\Interface\{4E1ACE40-F681-4CC4-A7C0-AD1E6C9AD86F} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{4E1ACE40-F681-4CC4-A7C0-AD1E6C9AD86F} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\MoveSearch = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\划词搜索 = delete
+HKEY_CURRENT_USER\SOFTWARE\Pig Move Search = delete
+
+
+[info]
+name = 网络猪
+describe = 网络猪
+author = tomm
+version = 1.22
+
+[indentify]
+HKEY_CURRENT_USER\SOFTWARE\Pig3 = exists
+
+
+[process]
+aupdate.exe = kill
+pig.exe = kill
+movesearch.exe = kill
+search.exe = kill
+
+
+
+[regsvr]
+
+
+
+[files]
+{prg}网络猪 = delete
+{prg}wsearch = delete
+{uprograms}网络猪 = delete
+{cprograms}网络猪 = delete
+
+[registry]
+HKEY_CLASSES_ROOT\Applications\PIG.exe = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Applications\PIG.exe = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Miranda = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MenuOrder\Start Menu\Programs\网络猪 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\网络猪 = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\BCGP AppWizard-Generated Applications\网络猪 = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\BCGP AppWizard-Generated Applications\网络猪\Recent File List = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\BCGP AppWizard-Generated Applications\网络猪\Settings = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\BCGP AppWizard-Generated Applications\网络猪\Settings\ControlBars-Summary = delete 
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MenuOrder\Start Menu\Programs\网络猪 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\PigLocalSearch = delete
+HKEY_CLASSES_ROOT\PigWebInst.Inst = delete
+HKEY_CLASSES_ROOT\PigWebInst.Inst.1 = delete
+HKEY_CURRENT_USER\SOFTWARE\Pig Move Search = delete
+HKEY_CURRENT_USER\SOFTWARE\Pig3 = delete
+HKEY_CURRENT_USER\SOFTWARE\pig3 addbooks = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\PigWebInst.Inst = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\PigWebInst.Inst.1 = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Pig Move Search = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Pig3 = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\pig3 addbooks = delete
+HKEY_CLASSES_ROOT\CLSID\{8DEFB22E-E8D8-4ED0-80E6-08F531349014} = delete
+HKEY_CLASSES_ROOT\TypeLib\{1910022A-E150-41D0-AC1B-4378A06869C6} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{8DEFB22E-E8D8-4ED0-80E6-08F531349014} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{1910022A-E150-41D0-AC1B-4378A06869C6} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components\7EC7EC59D86A2D118A25000CF42C8A45 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{28D47530-CF84-11D1-834C-00A0249F0C28} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{C9CFAA69-6C07-4CA1-A0F7-DEAE4DB7E486} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{72EEB8C3-7F8B-47FA-85CF-8E8F6F8FC0CA} = delete
+HKEY_CLASSES_ROOT\CLSID\{C9CFAA69-6C07-4CA1-A0F7-DEAE4DB7E486} = delete
+HKEY_CLASSES_ROOT\FileTransferProgressBar.FTPB = delete
+HKEY_CLASSES_ROOT\FileTransferProgressBar.FTPB.1 = delete
+HKEY_CLASSES_ROOT\TypeLib\{72EEB8C3-7F8B-47FA-85CF-8E8F6F8FC0CA} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{C9CFAA69-6C07-4CA1-A0F7-DEAE4DB7E486} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\FileTransferProgressBar.FTPB = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\FileTransferProgressBar.FTPB.1 = delete
+HKEY_CLASSES_ROOT\Interface\{97759E23-301B-413F-B77F-0163CED8D408} = delete
+HKEY_CLASSES_ROOT\CLSID\{28D47530-CF84-11D1-834C-00A0249F0C28} = delete
+HKEY_CLASSES_ROOT\TypeLib\{28D47522-CF84-11D1-834C-00A0249F0C28} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{28D47522-CF84-11D1-834C-00A0249F0C28} = delete
+HKEY_CLASSES_ROOT\Gif89.Gif89 = delete
+HKEY_CLASSES_ROOT\Gif89.Gif89.1 = delete
+HKEY_CLASSES_ROOT\Interface\{28D4752F-CF84-11D1-834C-00A0249F0C28} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Gif89.Gif89.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{28D4752F-CF84-11D1-834C-00A0249F0C28} = delete
+
+
+[info]
+name = 搜狗
+describe = 搜狗
+author = tomm
+version = 1.1
+
+[indentify]
+HKEY_LOCAL_MACHINE\SOFTWARE\Sohu R&D = exists
+
+
+[process]
+p2psvr.exe = kill
+
+
+
+[regsvr]
+{prg}p4p\SoDAIE.dll = unregsvr
+{prg}p4p\ToolBar.dll = unregsvr
+{prg}p4p\DtCtr.dll = unregsvr
+{prg}p4p\rss.dll = unregsvr
+
+[files]
+{prg}p4p\*.* = delete
+{prg}p4p = delete
+
+[registry]
+HKEY_CLASSES_ROOT\CLSID\{DEEE7FE9-3E06-43EE-B04D-18866CD0AD9C} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\sogou.Torrent = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\sogoutb.Detector = delete
+HKEY_CLASSES_ROOT\sogoutb.Detector.1 = delete
+HKEY_CURRENT_USER\SOFTWARE\Sohu R&D = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{DEEE7FE9-3E06-43EE-B04D-18866CD0AD9C} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\sogou.Torrent = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\sogoutb.Detector = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\sogoutb.Detector.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Management\ARPCache\Sogou Express = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Sogou Express = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Sohu R&D = delete
+HKEY_CLASSES_ROOT\.$p4p$ = delete
+HKEY_CLASSES_ROOT\CLSID\{08B13A8E-EB71-4421-B417-4EC0995D5BFC}= delete
+HKEY_CLASSES_ROOT\CLSID\{0CA51D02-7739-43EA-8D9A-1E8AD4327B03} = delete
+HKEY_CLASSES_ROOT\CLSID\{0CD02091-E941-4C5E-B1BD-69735BF5D664} = delete
+HKEY_CLASSES_ROOT\CLSID\{5AA23B9D-99C0-4A41-A25D-58E806766680} = delete
+HKEY_CLASSES_ROOT\CLSID\{7FD094E7-C8B9-40BD-9F80-F20A7194D2E6} = delete
+HKEY_CLASSES_ROOT\CLSID\{81B9A3D6-D79F-403E-939B-4F2BE8FD2A34} = delete
+HKEY_CLASSES_ROOT\CLSID\{8755CE6E-0BF7-4441-8751-FB728941B0B4} = delete
+HKEY_CLASSES_ROOT\CLSID\{982CB676-38F0-4D9A-BB72-D9371ABE876E} = delete
+HKEY_CLASSES_ROOT\CLSID\{D977D6A9-BE13-496D-9BE4-175DFAC12628} = delete
+HKEY_CLASSES_ROOT\CLSID\{DBBB7978-AF21-4EF4-9AD1-B2F4BC75696C} = delete
+HKEY_CLASSES_ROOT\CLSID\{DEEE7FE9-3E06-43EE-B04D-18866CD0AD9C} = delete
+HKEY_CLASSES_ROOT\CLSID\{DEEE7FE9-3E06-43EE-B04D-18866CD0AD9C} = delete
+HKEY_CLASSES_ROOT\CLSID\{E03667BC-5EDA-4FD8-992C-ED73265AFAA0} = delete
+HKEY_CLASSES_ROOT\CLSID\{F4FB516E-8F16-44FD-AB1D-260C32B7CF9A} = delete
+HKEY_CLASSES_ROOT\SohuDA.Uncompleted = delete
+HKEY_CLASSES_ROOT\TypeLib\{4FFB0262-EB74-461F-BBC8-7818DF633687} = delete
+HKEY_CLASSES_ROOT\TypeLib\{7B821366-55C1-4B5B-A2D2-1BA9B318790B} = delete
+HKEY_CLASSES_ROOT\TypeLib\{A4566604-F73B-4DD5-8A21-87E7A808D426} = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\使用搜狗直通车下载 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Sohu R&D = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum\Root\LEGACY_P4P_SERVICE = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\Eventlog\Application\P4P Service = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\P4P Service = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\Root\LEGACY_P4P_SERVICE = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Application\P4P Service = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\P4P Service = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Internet Explorer\MenuExt\使用搜狗直通车下载 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Extensions\{8F67DCF3-B1DF-4A39-A787-3775784BF737} = delete
+
+[info]
+name = U88财富快车工具条
+describe = http://www.u88.cn
+author = tomm
+version = 1.22
+
+
+[indentify]
+HKEY_CLASSES_ROOT\CLSID\{3FFD59AA-280D-4AB3-B420-0CFF2B332316} = exists
+
+
+[process]
+u88.exe = kill
+
+
+
+[regsvr]
+{prg}Internet Explorer\2052\toolbarU88.dll = unregsvr
+{prg}Internet Explorer\2052\WebBand.dll = unregsvr
+{prg}Internet Explorer\2052\IEHelper.dll = unregsvr
+
+[files]
+{win}u88icon.ico = delete
+{uprograms}U88财富快车 = delete
+{cprograms}U88财富快车 = delete
+{cdesktop}u88.url = delete
+{udesktop}u88.url = delete
+{prg}Internet Explorer\2052\u88.exe = delete
+{prg}Internet Explorer\2052\u88.ico = delete
+{prg}Internet Explorer\2052\u88icon.ico = delete
+{cfavorites}U88连锁加盟网.url = delete
+{ufavorites}U88连锁加盟网.url = delete
+{cfavorites}U88网址导航.url = delete
+{ufavorites}U88网址导航.url = delete
+{prg}Internet Explorer\2052\toolbarU88.dll = delete
+{prg}Internet Explorer\2052\img = delete
+{prg}Internet Explorer\2052\WebBand.dll = delete
+{prg}Internet Explorer\2052\gdtest.htm = delete
+{prg}Internet Explorer\2052\contextmenu.htm = delete
+{prg}Internet Explorer\2052\2.css = delete
+{prg}Internet Explorer\2052\3.css = delete
+{prg}Internet Explorer\2052\allverx.dat = delete
+{prg}Internet Explorer\2052\aupdate.exe = delete
+{prg}Internet Explorer\2052\IEHelper.dll = delete
+{prg}Internet Explorer\2052\unInstall.exe = delete
+{prg}Internet Explorer\2052\update.dat = delete
+{prg}Internet Explorer\2052\setup.tmp = delete
+{prg}Internet Explorer\2052\update\toolbarU88.dll = delete
+{prg}Internet Explorer\2052\update\img = delete
+{prg}Internet Explorer\2052\update\WebBand.dll = delete
+{prg}Internet Explorer\2052\update\gdtest.htm = delete
+{prg}Internet Explorer\2052\update\contextmenu.htm = delete
+{prg}Internet Explorer\2052\update\2.css = delete
+{prg}Internet Explorer\2052\update\3.css = delete
+{prg}Internet Explorer\2052\update\allverx.dat = delete
+{prg}Internet Explorer\2052\update\aupdate.exe = delete
+{prg}Internet Explorer\2052\update\IEHelper.dll = delete
+{prg}Internet Explorer\2052\update\unInstall.exe = delete
+{prg}Internet Explorer\2052\update\update.dat = delete
+{prg}Internet Explorer\2052\update\setup.tmp = delete
+{prg}Internet Explorer\2052\update\u88setup.exe = delete
+{prg}Internet Explorer\2052\update\waitdown.lst = delete
+{prg}Internet Explorer\2052\update\u88.exe = delete
+{prg}Internet Explorer\2052\update\u88.ico = delete
+{prg}Internet Explorer\2052\update\u88icon.ico = delete
+{prg}Internet Explorer\2052\u88setup.exe = delete
+{prg}Internet Explorer\2052\waitdown.lst = delete
+
+[registry]
+HKEY_CLASSES_ROOT\*\shell\U88连锁加盟网 = delete
+HKEY_CLASSES_ROOT\CLSID\{3FFD59AA-280D-4AB3-B420-0CFF2B332316} = delete
+HKEY_CLASSES_ROOT\Folder\shell\U88连锁加盟网 = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\U88连锁加盟网 = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MenuOrder\Start Menu\Programs\U88财富快车 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\U88连锁加盟网 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{3FFD59AA-280D-4AB3-B420-0CFF2B332316} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\U88连锁加盟网 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Extensions\{3FFD59AA-280D-4AB3-B420-0CFF2B332316} = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Internet Explorer\MenuExt\U88连锁加盟网 = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MenuOrder\Start Menu\Programs\U88财富快车 = delete
+HKEY_CLASSES_ROOT\CLSID\{3FFD59AA-280D-4AB3-B420-0CFF2B332316} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{3FFD59AA-280D-4AB3-B420-0CFF2B332316} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Extensions\{3FFD59AA-280D-4AB3-B420-0CFF2B332316} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\IE5DAT\selfUpdate = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\IE5DAT\setupPath = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\IE5DAT\U88 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Toolbar\{3FFD59AA-280D-4AB3-B420-0CFF2B332316} = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Toolbar\ShellBrowser\{3FFD59AA-280D-4AB3-B420-0CFF2B332316} = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\Toolbar\WebBrowser\{3FFD59AA-280D-4AB3-B420-0CFF2B332316} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Toolbar\{3FFD59AA-280D-4AB3-B420-0CFF2B332316} = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Internet Explorer\Toolbar\ShellBrowser\{3FFD59AA-280D-4AB3-B420-0CFF2B332316} = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Internet Explorer\Toolbar\WebBrowser\{3FFD59AA-280D-4AB3-B420-0CFF2B332316} = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\update = delete
+
+[info]
+name = 完美网译通
+author = tomm
+version = 1.0
+
+[indentify]
+{win}WORLD2\TOOLBAR\hmtoolbar.dll = exists
+
+
+[process]
+
+[regsvr]
+{win}WORLD2\TOOLBAR\hmtoolbar.dll = unregsvr
+
+[files]
+{win}WORLD2 = delete
+
+[registry]
+HKEY_CLASSES_ROOT\CLSID\{F43BD772-ABDD-43b7-A96A-3E9E61946EC0} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\world2 = delete
+HKEY_CLASSES_ROOT\Hugi.HugiObj = delete
+HKEY_CLASSES_ROOT\Hugi.HugiObj.1 = delete
+HKEY_CLASSES_ROOT\Interface\{BA4593A4-8909-4D02-A1EE-144BB60FA683} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{F43BD772-ABDD-43b7-A96A-3E9E61946EC0} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Hugi.HugiObj = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Hugi.HugiObj.1 = delete
+
+
+[info]
+name = Yahoo助手
+describe = http://www.yahoo.com.cn
+author = tomm
+version = 1.38
+
+
+[indentify]
+HKEY_LOCAL_MACHINE\SOFTWARE\Yahoo\Assistant = exists
+
+
+[process]
+assistse.exe = kill
+rundll32.exe = kill
+yassistse.exe = kill
+YLive.exe = kill
+
+[regsvr]
+{prg}Yahoo!\Assistant\yaLive.dll = unregsvr
+{prg}Yahoo!\Assistant\yaLiveEx.dll = unregsvr
+{prg}Yahoo!\Assistant\yaLive.dll = unregsvr
+{prg}Yahoo!\Assistant\yNotifier.dll = unregsvr
+{prg}Yahoo!\Assistant\yscrblock.dll = unregsvr
+{prg}Yahoo!\Assistant\Shell\yAssecblk.dll = unregsvr
+
+{prg}Yahoo!\Assistant\Assist\yasbar.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yadfilter.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yassist.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yprockg.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\YDragSearch.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yoptimum.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yasfsks.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yrepair.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yasctrlh.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yieacore.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yAngling.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yassistex.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yassisres.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\ykeepmain.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yzsnetproto.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yasnoad.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yaswiper.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yeheocx.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\ysettings.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yuninst.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yassecblk.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yasierres.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yasiesec.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yieares.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yieaUI.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\ywiper.dll = unregsvr
+{prg}Yahoo!\Assistant\Assist\yadwreg.dll = unregsvr
+
+
+[files]
+{prg}Yahoo!\Assistant = delete
+{win}cnsinfo.dat = delete
+{sys}cns.dat = delete
+{sys}cns.exe = delete
+{sys}cns.dll = delete
+{sys}drivers\cdntran.sys = delete
+{uprograms}雅虎助手 = delete
+{cprograms}雅虎助手 = delete
+{sys}CnsMinKP.sys = delete
+{sys}drivers\CnsMinKP.sys = delete
+{win}Downloaded Program Files\cns*.* = delete
+{win}Downloaded Program Files\*.ico = delete
+{win}Downloaded Program Files\3721 = delete
+{win}Downloaded Program Files\keepmain*.* = delete
+{win}Downloaded Program Files\zsmod.dll = delete
+
+
+
+[registry]
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\YLive.exe = delete
+HKEY_CURRENT_USER\SOFTWARE\yahoo\assistant = delete
+HKEY_CLASSES_ROOT\CLSID\{57421194-58FB-49AE-9B4F-FD48869B9AD4} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{57421194-58FB-49AE-9B4F-FD48869B9AD4} = delete
+HKEY_CLASSES_ROOT\CLSID\{57421194-58FB-49AE-9B4F-FD48869B9AD4} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Yahoo\Assistant = delete
+HKEY_CLASSES_ROOT\CLSID\{406F94F0-504F-4a40-8DFD-58B0666ABEBD} = delete
+HKEY_CLASSES_ROOT\TypeLib\{9E9914ED-D40B-4B63-AC3B-A22AB9DE158F} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{406F94F0-504F-4a40-8DFD-58B0666ABEBD} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{9E9914ED-D40B-4B63-AC3B-A22AB9DE158F} = delete
+HKEY_CLASSES_ROOT\CLSID\{FE3ECAE7-0A37-4506-8A7D-3CC9A04D2CA8} = delete 
+HKEY_CLASSES_ROOT\TypeLib\{58E9B715-3C97-4048-9CBE-A708E0AEB29E} = delete \
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{FE3ECAE7-0A37-4506-8A7D-3CC9A04D2CA8} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{58E9B715-3C97-4048-9CBE-A708E0AEB29E} = delete
+HKEY_CLASSES_ROOT\CLSID\{38928D50-8A48-44C2-945F-D2F23F771410} = delete 
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{38928D50-8A48-44C2-945F-D2F23F771410} = delete 
+HKEY_CLASSES_ROOT\CLSID\{17F1C8E8-B99B-4D85-927B-A0EE7290455A} = delete 
+HKEY_CLASSES_ROOT\CLSID\{AF53D70E-29DF-443A-92AA-9C314AF5871E} = delete 
+HKEY_CLASSES_ROOT\TypeLib\{F8CC28B5-4042-4054-99CB-8855EFD0FAB7} = delete 
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{17F1C8E8-B99B-4D85-927B-A0EE7290455A} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{AF53D70E-29DF-443A-92AA-9C314AF5871E} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{F8CC28B5-4042-4054-99CB-8855EFD0FAB7} = delete
+HKEY_CLASSES_ROOT\CLSID\{59E99ADD-E926-40e8-BD6F-1532124A4AAA} = delete
+HKEY_CLASSES_ROOT\TypeLib\{95E822B6-6B10-4E86-9603-6CECB6135867} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{59E99ADD-E926-40e8-BD6F-1532124A4AAA} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{95E822B6-6B10-4E86-9603-6CECB6135867} = delete
+HKEY_CLASSES_ROOT\CLSID\{E3128A3A-C191-4149-8631-C632C8FC9919} = delete
+HKEY_CLASSES_ROOT\TypeLib\{CF67E74A-3C62-4867-9DFA-DD2374003333} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{E3128A3A-C191-4149-8631-C632C8FC9919} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{CF67E74A-3C62-4867-9DFA-DD2374003333} = delete
+HKEY_CLASSES_ROOT\CLSID\{C14F7681-33D8-11D3-A09B-00500402F30B} = delete
+HKEY_CLASSES_ROOT\zschkfile = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{C14F7681-33D8-11D3-A09B-00500402F30B} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\zschkfile = delete
+HKEY_CLASSES_ROOT\TypeLib\{4158DB95-DE71-41FF-BEA1-2C3D1C679DF1} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{4158DB95-DE71-41FF-BEA1-2C3D1C679DF1} = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\CnsMinKP = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CnsMinKP = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\!搜一搜 = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Enum\Root\LEGACY_CNSMINKP  = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\CnsMinKP  = delete
+HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Enum\Root\LEGACY_CNSMINKP  = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\Root\LEGACY_CNSMINKP  = delete
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CnsMinKP  = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Internet Explorer\MenuExt\!搜一搜  = delete
+HKEY_CLASSES_ROOT\Interface\{924F5B3A-7A27-484A-B873-E855C9708667}  = delete
+HKEY_CLASSES_ROOT\Interface\{BE08F6BC-C3E6-4149-BEB1-CB449E1B372E}  = delete
+HKEY_CLASSES_ROOT\Angling.AntiFish  = delete
+HKEY_CLASSES_ROOT\Angling.AntiFish.1  = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Angling.AntiFish  = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Angling.AntiFish.1  = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{38928D50-8A48-44C2-945F-D2F23F771410}  = delete
+HKEY_CLASSES_ROOT\CoolBar.CoolBarObj  = delete
+HKEY_CLASSES_ROOT\CoolBar.CoolBarObj.1  = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CoolBar.CoolBarObj  = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CoolBar.CoolBarObj.1  = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{406F94F0-504F-4a40-8DFD-58B0666ABEBD} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{FE3ECAE7-0A37-4506-8A7D-3CC9A04D2CA8} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{406F94F0-504F-4a40-8DFD-58B0666ABEBD} = delete
+HKEY_CLASSES_ROOT\CLSID\{62EED7C6-9F02-42f9-B634-98E2899E147B} = delete
+HKEY_CLASSES_ROOT\TypeLib\{8417D3DB-4004-4259-952D-A6EC64A1800E} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{62EED7C6-9F02-42f9-B634-98E2899E147B} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{8417D3DB-4004-4259-952D-A6EC64A1800E} = delete
+HKEY_CLASSES_ROOT\CLSID\{33BBE430-0E42-4F12-B075-8D21ACB10DCB} = delete
+HKEY_CLASSES_ROOT\YahooAssistBar.PhotoTb = delete
+HKEY_CLASSES_ROOT\YahooAssistBar.PhotoTb.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{33BBE430-0E42-4F12-B075-8D21ACB10DCB} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\YahooAssistBar.PhotoTb = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\YahooAssistBar.PhotoTb.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{33BBE430-0E42-4f12-B075-8D21ACB10DCB} = delete
+HKEY_CLASSES_ROOT\CLSID\{62EED7C6-9F02-42f9-B634-98E2899E147B} = delete
+HKEY_CLASSES_ROOT\TypeLib\{8417D3DB-4004-4259-952D-A6EC64A1800E} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{62EED7C6-9F02-42f9-B634-98E2899E147B} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{8417D3DB-4004-4259-952D-A6EC64A1800E} = delete
+HKEY_CLASSES_ROOT\CLSID\{9C3C2C08-C494-4F52-AE94-85156A447D43} = delete
+HKEY_CLASSES_ROOT\TypeLib\{04D0FD01-C8FA-413B-AD83-519D10B93324} = delete
+HKEY_CLASSES_ROOT\YahooAssistBar.AsNoAdObj = delete
+HKEY_CLASSES_ROOT\YahooAssistBar.AsNoAdObj.1 = delete
+HKEY_CLASSES_ROOT\YahooAssistBar.DragSearch = delete
+HKEY_CLASSES_ROOT\YahooAssistBar.DragSearch.1 = delete
+HKEY_CLASSES_ROOT\YAssist.EasyAssist = delete
+HKEY_CLASSES_ROOT\YAssist.EasyAssist.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\YahooAssistBar.AsNoAdObj = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\YahooAssistBar.AsNoAdObj.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\YahooAssistBar.DragSearch = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\YahooAssistBar.DragSearch.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\YAssist.EasyAssist = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\YAssist.EasyAssist.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Toolbar\{406F94F0-504F-4a40-8DFD-58B0666ABEBD} = delete
+
+[info]
+name = 一搜工具条
+describe = toolbar.yisou.com
+author = tomm
+version = 1.1
+
+[indentify]
+HKEY_LOCAL_MACHINE\SOFTWARE\YiSou = exists
+
+
+[process]
+
+[regsvr]
+{prg}YiSou\YInst\AutoLive1.dll = unregsvr
+{prg}YiSou\minib.dll = unregsvr
+{prg}YiSou\yisou.dll = unregsvr
+{prg}YiSou\yisoub.dll = unregsvr
+{prg}YiSou\yisous.dll = unregsvr
+{prg}YiSou\yisouu.dll = unregsvr
+
+
+[files]
+{prg}YiSou = delete
+
+[registry]
+HKEY_CLASSES_ROOT\CLSID\{115F6E46-FCBC-41ed-B3B5-3BDDD4AAB5E5} = delete
+HKEY_CLASSES_ROOT\CLSID\{DB4F72F5-FA97-4424-A8CD-758FEAE6861F} = delete
+HKEY_CLASSES_ROOT\CLSID\{EF1D17A9-089F-40cc-8D64-7324CDEBA0DB} = delete
+HKEY_CLASSES_ROOT\TypeLib\{2544A4B1-1F82-4F2A-95EA-C97C18BFFB4A} = delete
+HKEY_CLASSES_ROOT\TypeLib\{306DE395-5293-4434-8D82-A3991B8E9261} = delete
+HKEY_CLASSES_ROOT\TypeLib\{C45A4971-735F-4BC1-BB9B-7FD2B13FBBE2} = delete
+HKEY_CLASSES_ROOT\YiSouBar.YiSouBarObj = delete
+HKEY_CLASSES_ROOT\YiSouBar.YiSouBarObj.1 = delete
+HKEY_CURRENT_USER\SOFTWARE\YiSou = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\3721\YiSou = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{115F6E46-FCBC-41ed-B3B5-3BDDD4AAB5E5} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{DB4F72F5-FA97-4424-A8CD-758FEAE6861F} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{EF1D17A9-089F-40cc-8D64-7324CDEBA0DB} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{2544A4B1-1F82-4F2A-95EA-C97C18BFFB4A} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{306DE395-5293-4434-8D82-A3991B8E9261} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{C45A4971-735F-4BC1-BB9B-7FD2B13FBBE2} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\YiSouBar.YiSouBarObj = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\YiSouBar.YiSouBarObj.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{EF1D17A9-089F-40cc-8D64-7324CDEBA0DB} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{115F6E46-FCBC-41ed-B3B5-3BDDD4AAB5E5} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\YiSou = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\YiSou = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Toolbar\{BB936323-19FA-4521-BA29-ECA6A121BC78} = delete
+
+[info]
+name = 娱乐心空
+describe = 娱乐心空
+author = tomm
+version = 1.1
+
+[indentify]
+HKEY_LOCAL_MACHINE\SOFTWARE\yulexk = exists
+
+
+[process]
+Run.exe = kill
+TVClient.bin = kill
+
+
+[regsvr]
+{prg}yulexk\PowerPlayer.dll = unregsvr
+{prg}yulexk\PowerList.ocx = unregsvr
+
+
+[files]
+{prg}yulexk = delete
+{uprograms}yulexk = delete
+{cprograms}yulexk = delete
+{desktop}娱乐心空.lnk = delete
+{cdesktop}娱乐心空.lnk = delete
+{desktop}电影.lnk = delete
+{cdesktop}电影.lnk = delete
+{cstartup}娱乐心空.lnk = delete
+{ustartup}娱乐心空.lnk = delete
+
+[registry]
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MenuOrder\Start Menu\Programs\yulexk = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Run.exe = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\yulexk = delete
+
+
+[info]
+name = YOK工具条
+describe = www.yok.com
+author = tomm
+version = 1.1
+
+[indentify]
+HKEY_CURRENT_USER\SOFTWARE\Yok = exists
+
+
+[process]
+
+[regsvr]
+{prg}YOK.com\SuperSearch\YOK_SuperSearch.dll = unregsvr
+
+
+
+[files]
+{prg}YOK.com\SuperSearch = delete
+{prg}\YOK.com = delete
+
+[registry]
+HKEY_CLASSES_ROOT\CLSID\{75FE2B5A-D3A4-4EFA-AC11-ADC9C9459688} = delete
+HKEY_CLASSES_ROOT\CLSID\{75FE2B5A-D3A4-4EFA-AC11-ADC9C9459688}$hint = 又多了一个流氓软件,自动强制安装,真不知道这些软件作者们怎么想的.
+HKEY_CLASSES_ROOT\CLSID\{88351CEF-BAC0-4A9B-8380-31A173E2926F} = delete
+HKEY_CLASSES_ROOT\CLSID\{F869BB38-FFEF-4589-B986-610B7AD0ADA2} = delete
+HKEY_CLASSES_ROOT\Interface\{8A74C2AF-D08C-41E4-B6C0-11F1C7ED86A5} = delete
+HKEY_CLASSES_ROOT\TypeLib\{7B18218B-2551-4F18-B94D-10D7CA4C14EC} = delet
+HKEY_CLASSES_ROOT\YokToolbar.Band = delete
+HKEY_CLASSES_ROOT\YokToolbar.Band.1 = delete
+HKEY_CLASSES_ROOT\YokToolbar.ContextSearch = delete
+HKEY_CLASSES_ROOT\YokToolbar.YokToolbarBho = delete
+HKEY_CLASSES_ROOT\YokToolbar.YokToolbarBho.1 = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Installer\Products\1A4C4AEDFDEBA18489E9170674841E8F = delete
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\MenuExt\VeryCD搜索 = delete
+HKEY_CURRENT_USER\SOFTWARE\Yok = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{75FE2B5A-D3A4-4EFA-AC11-ADC9C9459688} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{88351CEF-BAC0-4A9B-8380-31A173E2926F} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{F869BB38-FFEF-4589-B986-610B7AD0ADA2} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{8A74C2AF-D08C-41E4-B6C0-11F1C7ED86A5} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{7B18218B-2551-4F18-B94D-10D7CA4C14EC} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\YokToolbar.Band = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\YokToolbar.Band.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\YokToolbar.ContextSearch = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\YokToolbar.ContextSearch.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\YokToolbar.YokToolbarBho = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Classes\YokToolbar.YokToolbarBho.1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-21-1292428093-1383384898-1343024091-500\Components\177B849B4A0EB6F4EED803D8E1962AFD = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-21-1292428093-1383384898-1343024091-500\Components\84B9A7CAD50D165AFE02E0A4FFC499D1 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-21-1292428093-1383384898-1343024091-500\Components\E73C694A76D29B5CFB31176744579904 = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{DEA4C4A1-BEDF-481A-989E-71604748E1F8} = delete
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{DEA4C4A1-BEDF-481A-989E-71604748E1F8} = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Installer\Products\1A4C4AEDFDEBA18489E9170674841E8F = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Installer\Products\1A4C4AEDFDEBA18489E9170674841E8F\SourceList = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Microsoft\Internet Explorer\MenuExt\VeryCD搜索 = delete
+HKEY_USERS\S-1-5-21-1292428093-1383384898-1343024091-500\SOFTWARE\Yok = delete

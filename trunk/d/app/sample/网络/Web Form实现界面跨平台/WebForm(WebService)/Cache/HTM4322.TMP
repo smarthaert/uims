@@ -1,0 +1,37 @@
+<html><head></head>
+<script language=Javascript src="/js/IWCommon.js_5.0.43"></script>
+
+<script language=Javascript src="/js/IWExplorer.js_5.0.43"></script>
+
+<script language=Javascript src="/js/IWCSData.js_5.0.43"></script>
+
+<script language=Javascript src="/js/IWCL.js_5.0.43"></script>
+<script language=Javascript>
+function FormDefaultSubmit() {return false;}
+function SubmitClick(objname, param, ADoValidation) {return parent.SubmitClick(objname, param, ADoValidation);}
+function rollon(row,where){ 
+var tablecolor;
+if (where == 'over'){
+ currentcolor=document.getElementById(row).style.getAttribute("backgroundColor")
+ document.getElementById(row).style.backgroundColor='' 
+ }else{ 
+ document.getElementById(row).style.setAttribute("backgroundColor",currentcolor) }
+}
+var IWDBGRID1IWCL;
+
+function Initialize() {
+document.body.leftMargin = 0;
+document.body.topMargin = 0;
+InitRects(177, 289);
+IWDBGRID1IWCL = new CreateIWCLObject(IWCLForm, "IWDBGRID1", "IWDBGRID1IWCL");
+if (IWDBGRID1IWCL.Item != null) {
+ IWDBGRID1IWCL.SetAlign(alNone);
+ IWDBGRID1IWCL.SetAnchors(new CreateAnchors(true, false, true, false));
+}
+}
+</script>
+<body  BGColor=#C0DCC0 OnLoad="Initialize();" OnResize="Body_OnResize();">
+<form onsubmit="return FormDefaultSubmit();" style="font: 10pt;">
+  <table id="IWDBGRID1" border="0" cellpadding="0" cellspacing="0" width="137"></table>
+</form>
+</body></html>

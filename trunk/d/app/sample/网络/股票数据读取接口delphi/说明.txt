@@ -1,0 +1,159 @@
+{
+更新日志
+2010.10.27
+   增加采用注册回调函数方式获取数据，详细函数声明请参考 uFunction.pas 相关数据结构声明请参考 TDXGrobal.pas
+   以S_打头的均为注册回调函数的函数
+   procedure S_InitMarketData (TDXManager: longword; CallBack  :TOnDecodePacket_INITMARKET); stdcall;
+   procedure S_GetPK (TDXManager: longword; CallBack :TOnDecodePacket_PKDAT); stdcall;
+   procedure S_GetTestRealPK (TDXManager: longword; CallBack :TOnDecodePacket_REALPK); stdcall;
+   procedure S_GetKDays (TDXManager: longword; CallBack  :TOnDecodePacket_DAYS); stdcall;
+   procedure S_GetDeals (TDXManager: longword; CallBack  :TOnDecodePacket_DEALS); stdcall;
+   procedure S_GetMins  (TDXManager: longword; CallBack  :TOnDecodePacket_MINS); stdcall;
+   procedure S_Get_QH_KDays (TDXManager: longword; CallBack  :TOnDecodePacket_FUTURES_DAYS); stdcall;
+   procedure S_Get_QH_TestRealPK (TDXManager: longword; CallBack :TOnDecodePacket_FUTURES_PKDAT); stdcall;
+   procedure S_Get_QH_Mins (TDXManager: longword; CallBack :TOnDecodePacket_FUTURES_MINS); stdcall;
+   procedure S_Connected (TDXManager: longword; CallBack :TRNotifyEvent); stdcall;
+   procedure S_DisConnected (TDXManager: longword; CallBack  :TRNotifyEvent); stdcall;
+2010.10.26
+   //期货，函数用法基本同普通股票函数，在使用 R_Connect 时，请指定期货服务器地址及端口(7721)
+   procedure R_Get_QH_KDays (TDXManager: longword; StkCode :PChar; startcount, count: integer); stdcall;
+   procedure R_Get_QH_TestRealPK (TDXManager: longword; StkCode  :PChar); stdcall;
+}
+
+
+
+{
+******************************************
+以下为Delphi版的数据结构和相关调用函数声明
+使用其他开发语言的，只要转换成自己语言的相应格式就可以了
+目前在 RSRStock.dll 中，提供了如下几个导出函数：
+   DLLVER, R_Open, R_Close, R_Connect, R_DisConnect, R_InitMarketData, 
+   R_GetPK, R_GetTestRealPK, R_GetKDays, R_GetDeals, R_GetMins,
+   R_GetMarket, R_GetMarketByStockCode, R_GetMarketByStockName,
+   R_GetStockName, R_GetStockCode
+它们都使用的是 stdcall 的参数传递格式
+
+使用其他开发语言的，请自行转化 TDXGrobal.pas 里面的Delphi数据机构
+新版本取消了使用回调函数来获得数据的方式，改为使用消息模式
+消息的定义请参看 TDXGrobal.pas
+
+
+******************************************
+}
+
+
+
+{
+创建数据接收组件(使用独立的数据工作线程)
+参数
+Handle  = 调用者窗口 Handle ，数据组件在获得数据后将向这个窗口发送消息
+RegKey  = 注册字符串，试用时直接使用空值
+返回值
+创建的数据接收组件的句柄，需要将该句柄进行保存，以便进行其他数据操作
+}
+  R_Open  :function(Handle: THandle; RegKey: PChar): longword; stdcall;
+
+{
+释放数据接收组件
+参数
+TDXManager = 需要释放的组件的句柄
+}
+  R_Close :procedure(TDXManager: longword); stdcall;
+{
+连接到行情服务器
+参数
+TDXManager = 使用 R_Open 创建的数据接收组件返回的句柄
+ServerAddr = 行情服务器地址，可以是IP或域名
+Port       = 服务器端口 7709
+返回值
+True   成功连接
+False  失败
+}
+  R_Connect :function   (TDXManager: longword; ServerAddr: PChar; port:integer=7709):LongBool; stdcall;
+{
+断开与服务器的连接
+参数
+TDXManager = 使用 R_Open 创建的数据接收组件返回的句柄
+}
+  R_DisConnect  :procedure (TDXManager: longword); stdcall;
+{
+初始化市场数据  获得最新的证券代码与证券名称等数据的表
+参数
+TDXManager = 使用 R_Open 创建的数据接收组件返回的句柄
+Market 0=深圳 1=上海
+}
+  R_InitMarketData  :procedure  (TDXManager: longword; Market: integer); stdcall;
+{
+发送请求盘口要求
+若提供两个参数，则能准确发送
+若仅提供证券名称，也一般能准确发送
+若仅提供证券代码
+因为上海和深圳存在同名的代码，如000001在上海代表大盘指数，在深圳代表深发展，所以有可能发送的是不符合您预期的数据，
+这时候你可以在证券代码后面加市场指定字符，如：000001SH 就代表上海的000001 000001SZ代表深圳的000001
+参数
+TDXManager = 使用 R_Open 创建的数据接收组件返回的句柄
+StkCode = 证券代码
+StkName = 证券名称
+}
+  R_GetPK :procedure  (TDXManager: longword; StkCode  :PChar; StkName :PChar); stdcall;
+
+{
+发送是否有实时数据变化请求
+可以用比较频繁的向服务器发送本请求，测试是否有新的交易数据或盘口变化，如果有，则返回数据，没有，则不返回数据
+参数
+TDXManager = 使用 R_Open 创建的数据接收组件返回的句柄
+StkCode = 证券代码
+Market  = 市场编号
+Time    = 最后一次接收到的盘口数据结构 TTDX_PKBASE.LastDealTime 的值，若=0，则一定会返回当前最新盘口数据
+
+}
+   R_GetTestRealPK : procedure(TDXManager: longword; StkCode: PChar; market, Time: integer);  stdcall;
+
+{
+发送请求获得日K线数据
+参数
+TDXManager = 使用 R_Open 创建的数据接收组件返回的句柄
+StkCode = 证券代码
+Market  = 市场编号
+startcount  = 开始交易日天数，从当前最新交易日往后推的数字，若=0则从最新交易日开始
+count   = 获取的日K线天数
+}
+   R_GetKDays :procedure(TDXManager: longword; StkCode: PChar; market, startcount, count: integer); stdcall;//获得日K线
+
+{
+发送请求获得分笔成交数据
+参数
+startcount  = 从最新一笔交易往后推的开始笔数
+count       = 需要获取的笔数
+}
+   R_GetDeals :procedure (TDXManager: longword; StkCode: PChar; market, startcount, count: integer); //分笔成交
+
+{
+发送请求获得分时成交数据
+参数
+start   = 开始分钟数，一般取0，返回当前所有分时数据
+}
+   R_GetMins  :procedure (TDXManager: longword; StkCode: PChar; market, start: integer); //分时图
+
+{
+获得市场类型，必须在调用 R_InitMarketData 函数获得初始化市场数据后
+当两个参数都正确输入时，可以准确返回市场类别，若只有StkCode参数，因此参数两市可能存在同名，因此返回其中一个市场的类型
+若只有StkName参数，一般情况下都可以准确返回
+参数
+StkCode = 证券代码
+StkName = 证券名称
+返回值
+0=深圳
+1=上海
+255=未找到
+}
+   R_GetMarket :function   (StkCode  :PChar; StkName :PChar): integer; stdcall;
+   R_GetMarketByStockCode :function  (StkCode  :PChar): integer; stdcall;
+   R_GetMarketByStockName :function  (StkName  :PChar): integer; stdcall;
+   R_GetStockName :function  (StkCode :PChar; Market: integer): PChar; stdcall;
+   R_GetStockCode :function  (StkName :PChar): PChar; stdcall;
+{
+获得数据引擎版本号
+返回值   =用日期相隔的版本号
+}
+  GetDLLVER :function ():PChar; stdcall;

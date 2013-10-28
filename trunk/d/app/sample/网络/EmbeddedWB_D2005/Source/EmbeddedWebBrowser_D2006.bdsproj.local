@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2006/07/04 15:35:49.500.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\IEDownloadMgr.pas=</Transaction>
+    <Transaction>2006/07/10 12:11:39.734.pas,C:\Documents and Settings\eran1\Desktop\GEpanel\KEYHOLELib_TLB.pas=</Transaction>
+    <Transaction>2006/07/10 12:11:41.515.pas,C:\Documents and Settings\eran1\Desktop\GEpanel\GEPanel.pas=</Transaction>
+    <Transaction>2006/07/10 12:11:43.109.dcr,C:\Documents and Settings\eran1\Desktop\GEpanel\GEPanel.dcr=</Transaction>
+    <Transaction>2006/07/12 12:12:42.500.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\IEUtils.pas=</Transaction>
+    <Transaction>2006/07/12 12:12:58.656.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\IE5tools.pas=</Transaction>
+    <Transaction>2006/07/12 12:44:26.000.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\BrowseForFolderU.pas=</Transaction>
+    <Transaction>2006/07/12 12:44:34.625.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\DirMonitor.pas=</Transaction>
+    <Transaction>2006/07/12 12:44:49.484.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\intshcut.pas=</Transaction>
+    <Transaction>2006/07/14 08:42:47.109.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\IeConst.pas=</Transaction>
+    <Transaction>2006/07/16 06:43:25.328.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\EWBTools.pas=E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\EwbTools.pas</Transaction>
+    <Transaction>2006/07/16 07:59:31.562.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\EwbTools.pas=</Transaction>
+    <Transaction>2006/07/24 14:19:49.312.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\HighLightRichSyntax.pas=</Transaction>
+    <Transaction>2006/07/24 14:19:53.156.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\HighLightXML.pas=</Transaction>
+    <Transaction>2006/07/24 14:19:57.046.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\HighLightHTML.pas=</Transaction>
+    <Transaction>2006/07/24 14:20:03.578.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\IEGuid.pas=</Transaction>
+    <Transaction>2006/07/26 08:47:46.203.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\IEDownload.pas=E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\SaveFileAs.pas</Transaction>
+    <Transaction>2006/07/26 08:48:07.562.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\SaveFileAs.pas=E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\IEDownload.pas</Transaction>
+    <Transaction>2006/08/03 06:12:08.811.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\extIEParser.pas=E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\TextIEParser.pas</Transaction>
+    <Transaction>2006/08/03 08:26:26.780.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\TextIEParser.pas=E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\IEParser.pas</Transaction>
+    <Transaction>2006/08/07 10:35:00.093.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\BrowseForFolderU.pas=</Transaction>
+    <Transaction>2006/08/08 15:28:52.140.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\BrowseForFolder.pas=E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\Browse4Folder.pas</Transaction>
+    <Transaction>2006/08/10 14:59:19.671.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\Unit1.pas=E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\FilleExtAssociate.pas</Transaction>
+    <Transaction>2006/08/10 15:41:43.171.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\FilleExtAssociate.pas=E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_D2005\Source\FileExtAssociate.pas</Transaction>
+    <Transaction>2006/08/29 14:32:17.251.pas,E:\Borland\BDS\4.0\lib\VCL\EmbeddedWB_Release\EmbeddedWB_D2005\Source\UrlLabel.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

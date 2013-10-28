@@ -1,0 +1,15 @@
+RASDIAL (Win32 application)
+Freeware (c) François PIETTE
+This is a replacement for Windows 95 dialer.
+RasDial maintains a log file with every
+connections. It also maintains a cumulated
+connection duration, global or monthly.
+Support for several RAS connections.
+Auto password, auto username, auto save
+password (reliably), time restrictions with
+password, auto browser, mail and news launch.
+Latest version available at
+http://www.rtfm.be/fpiette
+Comments appreciated at
+francois.piette@rtfm.be or
+francois.piette@pophost.eunet.be

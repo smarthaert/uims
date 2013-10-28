@@ -1,0 +1,137 @@
+object frmMain: TfrmMain
+  Left = 308
+  Top = 224
+  Width = 480
+  Height = 320
+  Caption = 'DGScreenSpy - Client'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  OnKeyUp = FormKeyUp
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnlA: TPanel
+    Left = 0
+    Top = 0
+    Width = 472
+    Height = 22
+    Align = alTop
+    AutoSize = True
+    BevelOuter = bvNone
+    TabOrder = 1
+    object lblA: TLabel
+      Left = 0
+      Top = 0
+      Width = 472
+      Height = 22
+      Align = alClient
+      Alignment = taRightJustify
+      Color = clInfoBk
+      ParentColor = False
+    end
+    object btnConnect: TSpeedButton
+      Left = 2
+      Top = 0
+      Width = 70
+      Height = 22
+      Caption = 'Connect'
+      Flat = True
+      OnClick = btnConnectClick
+    end
+    object btnDisconnect: TSpeedButton
+      Left = 76
+      Top = 0
+      Width = 70
+      Height = 22
+      Caption = 'Disconnect'
+      Enabled = False
+      Flat = True
+      OnClick = btnDisconnectClick
+    end
+    object btnAbout: TSpeedButton
+      Left = 150
+      Top = 0
+      Width = 70
+      Height = 22
+      Caption = '&About'
+      Flat = True
+      OnClick = btnAboutClick
+    end
+    object chkCtl: TCheckBox
+      Left = 224
+      Top = 3
+      Width = 60
+      Height = 17
+      Caption = 'Control'
+      Color = clInfoBk
+      ParentColor = False
+      TabOrder = 0
+    end
+  end
+  object sbA: TScrollBox
+    Left = 0
+    Top = 22
+    Width = 472
+    Height = 271
+    Align = alClient
+    BorderStyle = bsNone
+    Color = clBlack
+    Ctl3D = False
+    ParentColor = False
+    ParentCtl3D = False
+    TabOrder = 0
+    object pbA: TPaintBox
+      Left = 0
+      Top = 0
+      Width = 105
+      Height = 105
+      OnMouseDown = pbAMouseDown
+      OnMouseMove = pbAMouseMove
+      OnMouseUp = pbAMouseUp
+      OnPaint = pbAPaint
+    end
+  end
+  object wsA: TWSocket
+    LineMode = False
+    LineLimit = 65536
+    LineEnd = #13#10
+    LineEcho = False
+    LineEdit = False
+    Port = '9000'
+    Proto = 'tcp'
+    LocalAddr = '0.0.0.0'
+    LocalPort = '0'
+    MultiThreaded = False
+    MultiCast = False
+    MultiCastIpTTL = 1
+    FlushTimeout = 60
+    SendFlags = wsSendNormal
+    LingerOnOff = wsLingerOn
+    LingerTimeout = 0
+    KeepAliveOnOff = wsKeepAliveOnSystem
+    KeepAliveTime = 30000
+    KeepAliveInterval = 1000
+    SocksLevel = '5'
+    SocksAuthentication = socksNoAuthentication
+    LastError = 0
+    ReuseAddr = False
+    ComponentOptions = []
+    ListenBacklog = 5
+    ReqVerLow = 1
+    ReqVerHigh = 1
+    OnDataAvailable = wsADataAvailable
+    OnSessionClosed = wsASessionClosed
+    OnSessionConnected = wsASessionConnected
+    Left = 8
+    Top = 33
+  end
+end

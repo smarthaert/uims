@@ -1,0 +1,296 @@
+A'murchan
+Aberystwyth
+Alderney
+Alnwick
+Altnaharra
+Andover
+Armagh
+Ashford
+Aviemore
+Aylsham
+Ayr
+B'St Edmunds
+B'mouth
+Ballycastle
+Ballymena
+Bangor
+Barnstaple
+Basingstoke
+Bath
+Bathgate
+Bedford
+Belleek
+Ben Nevis
+Benbecula
+Bideford Bay
+Blackburn
+Bodmin
+Bradford
+Braemar
+Braemore
+Bridgwater
+Bridlington
+Brighton
+Bristol
+Bristol AP
+Brough
+Bude
+Cairngorm Mt
+Cairnwell
+Camborne
+Cambrian Mts
+Cardigan
+Carlisle
+Carmarthen
+Cheltenham
+Chester
+Chichester
+Colchester
+Coleraine
+Colwyn Bay
+Cookstown
+Cornwall
+Coventry
+Crawley
+Cromarty
+Cromer
+Croydon
+Cumbernauld
+Derry
+Dornoch
+Douglas(IoM)
+Dover
+Dumfries
+Dundee
+Dunfermline
+Dungannon
+E Kilbride
+Eastbourne
+Elgin
+Enniskillen
+Eskdalemuir
+Exeter
+Farnbrgh
+Fife Ness
+Folkestone
+Fraserburgh
+Ft William
+Gainsborough
+Galashiels
+Gloucester
+Grantham
+Gravesend
+Greenock
+Greenock
+Grimsby
+Grt Malvern
+Guernsey
+H'Wycombe
+H'dersfield
+Haltwhistle
+Harlech
+Harrogate
+Hartlepool
+Harwich
+Hastings
+Hawick
+Helmsdale
+Hereford
+Highlands
+Hillsborough
+Holyhead
+Hull
+Huntly
+Ils of Scilly
+Inveraray
+Ipswich
+Is of Barra
+Is of Lewis
+Is of Skye
+Is of Wight
+Islay
+Isle of Man
+Isle of Portland
+Jedburgh
+K'cudbright
+Keighley
+Kelso
+Keswick
+Killin
+Kilmarnock
+King's Lynn
+King's Lynn
+Kirkcaldy
+Kirkwall
+Kyle Lochal.
+L'shire
+Lairg
+Lake Dist
+Lake Vyrnwy
+Lanark
+Lancaster
+Larne
+Leicester
+Lerwick
+Limavady
+Liskeard
+Lizard Point
+Llangollen
+Lleyn
+Loch Neagh
+Lochboisdale
+Lochranza
+Lossiemouth
+Lowestoft
+Luton
+M'dlesbrough
+M'ford Haven
+Machynlleth
+Maidstone
+Mil'Keynes
+Mildenhall
+Mold
+Montrose
+Motherwell
+Muckle Holm
+N'umberland
+N-Devon
+Newquay
+Newry
+North Rona
+North York
+Northallerton
+Northampton
+Nottingham
+Nuneaton
+Oban
+Omagh
+Orkney/Hoy
+Orkney/Main
+Paisley
+Peebles
+Pennines
+Pennines/N
+Penrith
+Pershore
+Peterbrgh
+Peterhead
+Pitlochry
+Port Askaig
+Portadown
+Porthmadog
+Portree
+Portsmouth
+Preston
+Pt of Ayr
+Ramsgate
+Rugby
+Salisbury
+Scatsa
+Scunthorpe
+Selby
+Sheerness
+Sheffield
+Shrewsbury
+Skegness
+Skerry 群岛
+Skipton
+Slough
+Snowdonia
+Solway Firth
+South Uist
+South Wales
+Southend AP
+Southend/Sea
+Southport
+Spadeadam
+Spalding
+St Mary's
+St. Andrews
+Stanhope
+Stansted
+Stoke/Trent
+Stonehaven
+Stonehenge
+Stornoway
+Stow o/t Wold
+Strabane
+Stranraer
+Stratford/Av
+Strathaven
+Sunderland
+Surrey H.
+Swansea
+Swindon
+Taunton
+Thirsk
+Thurso
+Tiree
+Tobermory
+Tongue
+Torbay
+Torquay
+Tynemouth
+Ullapool
+Wallingford
+Warwick
+Weston-s-Mare
+Weymouth
+Whitby
+Whitehaven
+Wigton
+Worcester
+Workington
+Wrexham
+Yate
+Yeovil
+York
+阿伯德隆
+阿伯丁
+埃克斯摩尔国家公园
+爱丁堡
+巴罗
+贝尔法斯特
+伯明翰
+布莱克浦
+达令顿
+德比
+法尔基尔克
+法尔默思
+费尔岛
+格拉斯哥
+赫布里底群岛北部
+赫布里底群岛南部
+加的夫
+剑桥
+坎贝尔敦
+坎特伯里
+里丁
+利物浦
+利兹
+利兹机场
+林肯
+伦敦-盖特维克
+伦敦德里
+伦敦气象中心
+伦敦
+伦敦市
+曼彻斯特
+南安普敦
+牛津
+纽波特
+纽卡斯尔
+诺里奇
+普利茅斯
+普利茅斯
+设得兰北部
+设得兰南部
+设得兰群岛
+设得兰西部
+威克
+温彻斯特
+温泽
+因弗内斯
+因弗内斯
+泽西岛
+珀斯

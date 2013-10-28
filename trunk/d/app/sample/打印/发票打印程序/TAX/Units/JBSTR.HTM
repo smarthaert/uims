@@ -1,0 +1,1895 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="subject" content="Delphi tools">
+<meta name="Template"
+content="C:\PROGRAM FILES\MICROSOFT OFFICE\OFFICE\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>String Manipulation Routines V1.25</title>
+</head>
+
+<body link="#0000FF" vlink="#800080">
+
+<p><font color="#FF00FF" size="4" face="Arial"><b><u>String
+manipulation routines</u></b></font></p>
+
+<p><font color="#FF0000" face="Arial"><b>jbStr.Pas</b></font></p>
+
+<p><font size="2" face="Arial">Version 1.25</font></p>
+
+<p><font color="#008000" size="2" face="Arial">Adapted to Delphi
+1.0</font></p>
+
+<p><font size="2" face="Arial">Written by Jaro Benes</font></p>
+
+<p><font size="2" face="Arial">Copyright (c) 1991-99 by Jaro
+Benes. All rights reseved.</font></p>
+
+<p><font size="2" face="Arial">Please send comments to </font><a
+href="mailto:micrel@micrel.cz"><font size="2"
+face="MS Sans Serif,Arial">micrel@micrel.cz</font></a></p>
+
+<p><font size="2" face="Arial"><b>Features:</b></font></p>
+
+<p><font color="#008000" size="2" face="Arial">70</font><font
+size="2" face="Arial"> string manipulation non objected routines
+for generally using in Delphi 1.0.</font></p>
+
+<p><font size="2" face="Arial">Tested on Delphi programs.</font></p>
+
+<p><font size="2" face="Arial">Original function is </font><font
+color="#808000" size="2" face="Courier New">Zip</font><font
+size="2" face="Courier New">, </font><font color="#808000"
+size="2" face="Courier New">Smash</font><font size="2"
+face="Courier New">, </font><font color="#808000" size="2"
+face="Courier New">Push</font><font size="2" face="Courier New">,
+</font><font color="#808000" size="2" face="Courier New">Insword</font><font
+size="2" face="Courier New">, </font><font color="#808000"
+size="2" face="Courier New">Hash</font><font size="2"
+face="Courier New">, </font><font color="#808000" size="2"
+face="Courier New">Mask</font><font size="2" face="Courier New">,
+</font><font color="#808000" size="2" face="Courier New">Count</font><font
+size="2" face="Courier New">, </font><font color="#808000"
+size="2" face="Courier New">Flop</font><font size="2"
+face="Courier New">,</font></p>
+
+<p><font color="#808000" size="2" face="Courier New">Strip</font><font
+size="2" face="Courier New">, </font><font color="#808000"
+size="2" face="Courier New">Change</font><font size="2"
+face="Courier New">, </font><font color="#808000" size="2"
+face="Courier New">Mult</font><font size="2" face="Courier New">,
+</font><font color="#808000" size="2" face="Courier New">Num</font><font
+size="2" face="Courier New">, </font><font color="#808000"
+size="2" face="Courier New">Doc</font><font size="2"
+face="Courier New">, </font><font color="#808000" size="2"
+face="Courier New">Turn</font><font size="2" face="Courier New">,
+</font><font color="#808000" size="2" face="Courier New">Form</font><font
+size="2" face="Courier New"> </font><font size="2" face="Arial">and
+</font><font color="#808000" size="2" face="Courier New">Trans</font><font
+size="2" face="Arial">.</font></p>
+
+<p><font size="2" face="Arial">Other function is written for
+adapt old program modules to Delphi system or lost in Delphi</font></p>
+
+<p><font color="#FF00FF" face="Arial"><b><u>List of functions and
+short description</u></b></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">UpCase</font><font
+color="#FF0000" face="Courier New">(CH:Char):Char;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Convert lower case character to
+upper with diacritics</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+C:Char;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">C := UpCase(<b><i>'u'</i></b>);
+<i>{</i></font><font color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> C contain </i><b><i>'U'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">LoCase</font><font
+color="#FF0000" face="Courier New">(CH:Char):Char;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Convert upper character to lower
+with diacritics</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+C:Char;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">C := UpCase(<b><i>'U'</i></b>);
+<i>{</i></font><font color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> C contain </i><b><i>'u'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">StrLoCase</font><font
+color="#FF0000" face="Courier New">(S:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Convert lower case characters in
+all string to upper with diacritics</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+StrLoCase(<b><i>'HAHAHA'</i></b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'hahaha'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">StrUpCase</font><font
+color="#FF0000" face="Courier New">(S:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Convert upper case characters in
+all string to lower with diacritics</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+StrUpCase(<b>'hahaha'</b>); <i>{</i></font><font color="#000080"
+size="2" face="Wingdings"><i>à</i></font><font color="#000080"
+size="2" face="Courier New"><i> S contain </i><b><i>'HAHAHA'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">StrUpCaseNoCs</font><font
+color="#FF0000" face="Courier New">(S:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Standard up case characters string
+without Czech diacritics (for DB-field name)</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+StrUpCase(<b>'hahaha'</b>); <i>{</i></font><font color="#000080"
+size="2" face="Wingdings"><i>à</i></font><font color="#000080"
+size="2" face="Courier New"><i> S contain </i><b><i>'HAHAHA'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">CharStr</font><font
+color="#FF0000" face="Courier New">(CH:Char;Len:Byte):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Make new string with specified
+characters</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+CharStr(<b>'*'</b>,5); <i>{</i></font><font color="#000080"
+size="2" face="Wingdings"><i>à</i></font><font color="#000080"
+size="2" face="Courier New"><i> S contain </i><b><i>'*****'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">StrStr</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>;krat:Byte):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Similar as CharStr, input is
+string</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := StrStr(<b>'*='</b>,5);
+<i>{</i></font><font color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'*=*=*=*=*='</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">PadCh</font><font
+color="#FF0000" face="Courier New">(S:<b>String</b>;CH:Char;Len:Byte):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Right padded string with specified
+character</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := PadCh(<b>'CENA
+'</b>,<b>'*'</b>,9); <i>{</i></font><font color="#000080"
+size="2" face="Wingdings"><i>à</i></font><font color="#000080"
+size="2" face="Courier New"><i> S contain </i><b><i>'CENA ****'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Pad</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>;Len:Byte):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Similar as PadCh, character is
+space</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := Pad(<b>'CENA:'</b>,8);
+<i>{</i></font><font color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'CENA:
+'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">LeftPadCh</font><font
+color="#FF0000" face="Courier New">(S:<b>String</b>;CH:Char;Len:Byte):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Left padded string with specified
+character</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+LeftPadCh(<b>' CENA'</b>,'*',9); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'****
+CENA'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">LeftPad</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>;Len:Byte):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Similar as LeftPadCh, character is
+space</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+LeftPadCh(<b>'CENA'</b>,8); <i>{</i></font><font color="#000080"
+size="2" face="Wingdings"><i>à</i></font><font color="#000080"
+size="2" face="Courier New"><i> S contain </i><b><i>' CENA'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Hash</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>):LongInt;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Simply checksum ordinal code in
+string</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+L:LongInt;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">L := Hash(<b>'Ahoj
+kamaráde'</b>); <i>{</i></font><font color="#000080" size="2"
+face="Wingdings"><i>à</i></font><font color="#000080" size="2"
+face="Courier New"><i> L contain 1303 in code Latin2}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Space</font><font
+color="#FF0000" face="Courier New">(B:Byte):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Make space fill string;</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+Space(4); <i>{</i></font><font color="#000080" size="2"
+face="Wingdings"><i>à</i></font><font color="#000080" size="2"
+face="Courier New"><i> S contain </i><b><i>' '</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">MakeStr</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>;B:Byte):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Function is alias for CharStr;</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+MakeStr(<b>'*'</b>,5); <i>{</i></font><font color="#000080"
+size="2" face="Wingdings"><i>à</i></font><font color="#000080"
+size="2" face="Courier New"><i> S contain </i><b><i>'*****'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">TrimLead</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Trim lead on string character with
+ordinal #0 to #32 (space)</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+TrimLead(<b>#1#2#0'AHOJ'</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'AHOJ'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">TrimTrail</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Trim trail on string character
+with ordinal #0 to #32 (space)</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+TrimTrail(<b>'AHOJ'+#8#2#9</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'AHOJ'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Trim</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Trim lead and trail on string
+character with ordinal #0 to #32 (space)</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := Trim(<b>'
+AHOJ'+#8#2#9</b>); <i>{</i></font><font color="#000080" size="2"
+face="Wingdings"><i>à</i></font><font color="#000080" size="2"
+face="Courier New"><i> S contain </i><b><i>'AHOJ'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">ZeroClip</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Clip lead zero character</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+ZeroClip(<b>'000023658'</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'23658'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">CapitalizeWord</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">For each word in string up case
+first letter</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var </b>S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+CapitalizeWord(<b>'jaro benes'</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'Jaro
+Benes'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">CenterCh</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>;CH:Char;Width:Byte):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">String is centered in specified
+width and with character</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+CenterCh(<b>'AHOJ'</b>,<b>'-'</b>,8); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'--AHOJ--'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Center</font><font
+color="#FF0000" face="Courier New">(Const S:<b>String</b>;Width:Byte):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Similar as CenterCh, with space</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := Center(<b>'AHOJ'</b>,8);
+<i>{</i></font><font color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'
+AHOJ '</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">WordCount</font><font
+color="#FF0000" face="Courier New">(S:<b>String</b>;WordDelims:CharSet):Byte;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Count word on string and use
+specified delimits</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+W:Word;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">W :=
+WordCount(<b>'AHOJ CARLO'</b>,[<b>' '</b>]); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> W contain 2}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Note:</b></font></p>
+
+<p><font size="2" face="Arial">If delimits is <b>','</b> and
+string is <b>',,,,'</b> then result is not correct</font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function </b></font><font
+color="#FF0000" size="4" face="Courier New">ExtractWord</font><font
+color="#FF0000" face="Courier New">(N:Byte;S:<b>String</b>;
+WordDelims:CharSet):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Extract specified word from string</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+ExtractWord(2,<b>'AHOJ CARLO'</b>,[<b>' '</b>]); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'CARLO'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function </b></font><font
+color="#FF0000" size="4" face="Courier New">ChangeWord</font><font
+color="#FF0000" face="Courier New">(N:Byte;Wrd,S:<b>String</b>;
+WordDelims:CharSet):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Exchange specified word in string
+to Wrd</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := '<strong>AHOJ
+CARLO</strong>';</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+ChangeWord(2,<b>'CARLUCCI'</b>,S,[<b>' '</b>]); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'AHOJ
+CARLUCCI'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">GetFirstWord</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>;WordDelims:CharSet):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Get first word from string</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+GetFirstWord('<b>AHOJ CARLO MAY</b>',[' ']); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'AHOJ'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">GetLastWord</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>;WordDelims:CharSet):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Get last word from string</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+GetLastWord(<b>'AHOJ CARLO MAY'</b>,[<b>' '</b>]); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'MAY'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Procedure</b> </font><font
+color="#FF0000" size="4" face="Courier New">WordWrap</font><font
+color="#FF0000" face="Courier New">(InSt:<b>String</b>;<b>Var</b>
+OutSt,Overlap:<b>String</b>; Margin:Byte;PadToMargin:Boolean);</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Break long string for multi line
+formatting</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+R,S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := <b>'xxx
+xxx xxx xxx uuu uuu uuu uuu iii iii iii'</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Repeat</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New">WordWrap(S,R,S,15,False);
+<i>{15 is width of current line}</i></font></p>
+
+<p><font color="#000080" size="2" face="Courier New">.. <i>{R
+hold current wrapped line}</i></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Until</b>
+Length(S)=0;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><i>{R
+contain result:}</i></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><i>{1. line </i><b><i>'xxx
+xxx xxx xxx'</i></b><i>}</i></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><i>{2. line </i><b><i>'uuu
+uuu uuu uuu'</i></b><i>}</i></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><i>{3. line </i><b><i>'iii
+iii iii'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">PopWord</font><font
+color="#FF0000" face="Courier New">(B:Byte;Var S:<b>String</b>;WordDelims:CharSet):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Cut specified word from string</font></p>
+
+<p><font size="2" face="Courier New">Example:</font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+R,S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">R := <b>'AHOJ
+CARLO MAY'</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+PopWord(2,R,[<b>' '</b>]); <i>{</i></font><font color="#000080"
+size="2" face="Wingdings"><i>à</i></font><font color="#000080"
+size="2" face="Courier New"><i> S contain </i><b><i>'CARLO'</i></b><i>
+and R </i><b><i>'AHOJ MAY'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">GetPos</font><font
+color="#FF0000" face="Courier New">(B:Byte;S:<b>String</b>;WordDelims:CharSet):Byte;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Result is first char position of
+specified word</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+W:Word;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">W :=
+GetPos(2,<b>'AHOJ CARLO MAY'</b>,[<b>' '</b>]); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> W contain 6 char
+position of '</i><b><i>CARLO</i></b><i>'}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">GetEnd</font><font
+color="#FF0000" face="Courier New">(B:Byte;S:<b>String</b>;WordDelims:CharSet):Byte;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Result is last char position of
+specified word</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+W:Word;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">W :=
+GetEnd(2,<b>'AHOJ CARLO MAY'</b>,[<b>' '</b>]); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> W contain 10}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">InsWord</font><font
+color="#FF0000" face="Courier New">(iWord,cWord,cString:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Exchange group characters iWord to
+new group cWord on string cString</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+InsWord(<b>'ee'</b>,<b>'oo'</b>,<b>'Lideep'</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'Lidoop'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Smash</font><font
+color="#FF0000" face="Courier New">(C:Char;<b>Const</b>
+S:String):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Delete specified character from
+string</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := Smash(<b>'
+'</b>,<b>' 1 -B CU 182 '</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'1-BCU182'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Mask</font><font
+color="#FF0000" face="Courier New">(CharOfMask:Char;<b>Const</b>
+StrMask,Matrice:<b>String</b>; <b>Var</b> NextPosic:Byte):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Search multiple occurrence group
+characters base of mask</font></p>
+
+<p><font size="2" face="Arial"><b>Restriction:</b></font></p>
+
+<p><font color="#008000" size="2" face="Arial">Length(StrMask)=Length(Matrice)</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Const</b>
+Maska=<b>'uuuu-xxxx=iiiii'</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+Next:Byte;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S,Matric:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">Next := 1; <i>{first
+positon}</i></font></p>
+
+<p><font color="#000080" size="2" face="Courier New">Matric := <b>'JEDN-0038=17115'</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><i>{search </i><b><i>'x'</i></b><i>
+in Maska, return substring from Matric and actualise</i></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><i>next
+position of behind returned substring}</i></font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := Mask(<b>'x'</b>,
+Maska, Matric, Next); <i>{</i></font><font color="#000080"
+size="2" face="Wingdings"><i>à</i></font><font color="#000080"
+size="2" face="Courier New"><i> S contain </i><b><i>'0038'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Count</font><font
+color="#FF0000" face="Courier New">(CH:Char;<b>Const</b> Dest:<b>String</b>;<b>Var</b>
+Posic,Len:Byte):Boolean;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Scanning Dest string if contain CH
+character and if exist return</font></p>
+
+<p><font size="2" face="Arial">position Posit and size Len this
+substring;</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">Posic,Len:Byte;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := <b>'xxxxxx
+x&quot;zzzzzz&quot;ccccc&quot;zzzz&quot;cc'</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">Posic:=0;{begin
+here}</font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>While</b>
+Count(<b>'&quot;'</b>,S,Posic,Len) <b>Do</b> <b>Begin</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><i>{on Posit
+and Len size is found character </i><b><i>'&quot;'</i></b><i>}</i></font></p>
+
+<p><font color="#000080" size="2" face="Courier New">AnyActionHere(S,Posic,Len);
+<i>{change, delimiting etc.}</i></font></p>
+
+<p><font color="#000080" size="2" face="Courier New">Count(<b>'z'</b>,S,Posic,Len);
+<i>{Posic is 10 and Len is 6}</i></font></p>
+
+<p><font color="#000080" size="2" face="Courier New">Inc(Posic,Len);
+<i>{ skip this and search next}</i></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>End</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Push</font><font
+color="#FF0000" face="Courier New">(Posic:Byte;<b>Const</b>
+Source,Dest:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Paste to string other string</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := Push(3,<b>'UUU'</b>,<b>'xxxxxxxx'</b>);
+<i>{</i></font><font color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'xxUUUxxx'</i></b><i>}</i></font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+Push(11,<b>'III'</b>,<b>'xxxxxxxx'</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'xxxxxxxx
+III'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Procedure</b> </font><font
+color="#FF0000" size="4" face="Courier New">Flop</font><font
+color="#FF0000" face="Courier New">(<b>Var</b> S1,S2:<b>String</b>);</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Exchange two string;</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+R,S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := <b>'Carlo'</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">R := <b>'Dominik'</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">Flop(S,R); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'Dominik'</i></b><i>
+and R contain </i><b><i>'Carlo'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Strip</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> Mask,Source:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Delete group character on base
+mask from string</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+Maska,S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">Maska := <b>'XX
+XXXXX XX '</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := <b>'21CU.....
+2156 a á'</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+Strip(Maska,S); <i>{</i></font><font color="#000080" size="2"
+face="Wingdings"><i>à</i></font><font color="#000080" size="2"
+face="Courier New"><i> S contain </i><b><i>'CU 2156 á'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Change</font><font
+color="#FF0000" face="Courier New">(S:<b>String</b>;Source,Dest:Char):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Exchange character Source to Dest
+on S string</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := Change(<b>'Kokorokokoko'</b>,'o','u');
+<i>{</i></font><font color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'Kukurukukuku'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Zip</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> Mask,Source:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Flexible formatting any string on
+base mask</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := Zip(<b>'XX+XX=XX'</b>,<b>'333366'</b>);
+<i>{</i></font><font color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'33+33=66'</i></b><i>}</i></font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := Zip(<b>'XX.XX.XX'</b>,<b>'240298'</b>);
+<i>{</i></font><font color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'24.02.98'</i></b><i>}</i></font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := Zip(<b>'XX-XX.XX.X:XX/X'</b>,<b>'980224Apoá'</b>);
+<i>{</i></font><font color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S == </i><b><i>'98-02.24.A:po/á'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Turn</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">String turn for back formatting</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+Turn('ABCD'); <i>{</i></font><font color="#000080" size="2"
+face="Wingdings"><i>à</i></font><font color="#000080" size="2"
+face="Courier New"><i> S contain 'DCBA'}</i></font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+Turn(Zip(<b>'XXX,XXX'</b>,Turn(<b>'12285'</b>))); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'
+12,285'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">EnTab</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> Sx:<b>String</b>;TabSize:Byte):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Pack space to tabelator character <b>(#9)</b></font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := EnTab(<b>'
+AHOJ'</b>,3); <i>{</i></font><font color="#000080" size="2"
+face="Wingdings"><i>à</i></font><font color="#000080" size="2"
+face="Courier New"><i> S contain </i><b><i>#9#9'AHOJ'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">DeTab</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> Sx:<b>String</b>;TabSize:Byte):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Expand tabelator character <b>(#9)</b>
+to space</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := DeTab(<b>#9#9'AHOJ'</b>,3);
+<i>{</i></font><font color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'
+AHOJ'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">HasExtension</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> Name:<b>String</b>;
+<b>Var</b> DotPos:Word):Boolean;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">File name orientation function,
+scanning extension</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+Posic:Word;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>If</b>
+HasExtension(<b>'MARK.TXT'</b>,Posic) <b>Then &#133;</b></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">DefaultExtension</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> Name, Ext:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">If file name has not extension,
+then push default</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+DefaultExtension(<b>'C:\POKUS\MARK'</b>,<b>'TXT'</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'C:\POKUS\MARK.TXT'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">ForceExtension</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> Name, Ext:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Change old extension</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+ForceExtension(<b>'C:\POKUS\MARK'</b>,<b>'DOC'</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'C:\POKUS\MARK.DOC'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">JustExtension</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> PathName:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Return from filename the extension
+only</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+JustExtension(<b>'C:\POKUS\MARK.DOC'</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'DOC'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">JustFilename</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> PathName:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Return from filename the name and
+extension only</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+JustFilename(<b>'C:\POKUS\MARK.DOC'</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'MARK.DOC'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">JustPathname</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> PathName:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Return from filename the pathname
+only</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+JustPathname(<b>'C:\POKUS\MARK.DOC'</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'C:\POKUS'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">JustName</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> PathName:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Return from filename the name only</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+JustName(<b>'C:\POKUS\MARK.DOC'</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'MARK'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">AddLastChar</font><font
+color="#FF0000" face="Courier New">(C:Char;<b>Const</b> DirName:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">If possible then add character to
+end string</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+AddLastChar(<b>'\'</b>,<b>'C:\POKUS'</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'C:\POKUS\'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">RemLastChar</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> DirName:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Remove last character from string</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+RemLastChar(<b>'C:\POKUS\'</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'C:\POKUS'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">CleanFileName</font><font
+color="#FF0000" face="Courier New">(FileName:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Remove too many character from
+filename</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+CleanFileName(<b>'C:\POKUS\AAA.TXTXTXT'</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'AAA.TXT'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">TestDosName</font><font
+color="#FF0000" face="Courier New">(FName:<b>String</b>):Boolean;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Testing input string to restricted
+letter in DOS style; if name is empty (\.) then error occur</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>If Not</b>
+TestDosName(<b>'C:/POKUS/'</b>) <b>Then</b> ErrorOccurred;</font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">ShortDirName </font><font
+color="#FF0000" face="Courier New">(Len:Byte; <b>Const</b> PName:<b>String</b>):<b>String</b>
+;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">For shorting view directory name,
+path name only</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+ShortDirName(18,<b>'C:\POKUSY\PRACOV\ZADAN\NOVE\POSL\'</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'C:\..\NOVE\POSL\'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">ShortFileName</font><font
+color="#FF0000" face="Courier New">(Len:Byte;<b>Const</b> FName:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Similar as ShortDirName with file
+name</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+ShortFileName(25,<b>'C:\POKUSY\PRACOV\ZADAN\NOVE\POSL\MOJE.TXT'</b>);</font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'C:\..\NOVE\POSL\MOJE.TXT'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Mult</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>):Byte;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Scan multiple occurrence first
+character of string</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+W:Word;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">W := Mult(<b>'AARON'</b>);
+<i>{</i></font><font color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> W contain 2}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Num</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>;Base:Byte):LongInt;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Conversion string number on base <b>2..36</b>
+into long integer</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+L:LongInt</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">L := Num(<b>'FFFF'</b>,16);
+<i>{</i></font><font color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> L contain 65535}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Doc</font><font
+color="#FF0000" face="Courier New">(L:LongInt;<b>Const</b>
+Base:Byte):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Conversion number from long
+integer to string on base <b>2..36</b></font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+Doc(65535,16); <i>{</i></font><font color="#000080" size="2"
+face="Wingdings"><i>à</i></font><font color="#000080" size="2"
+face="Courier New"><i> S contain </i><b><i>'FFFF'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">PackNum</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Very simply bcd pack, accept
+'0'..'9' only,</font></p>
+
+<p><font size="2" face="Arial">if length is odd then padded $F</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+PackNum(<b>'12345'</b>); <i>{</i></font><font color="#000080"
+size="2" face="Wingdings"><i>à</i></font><font color="#000080"
+size="2" face="Courier New"><i> S contain </i><b><i>#1'#E'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">UnpackNum</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Very simply bcd unpack</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+UnPackNum(<b>#1'#E'</b>); <i>{</i></font><font color="#000080"
+size="2" face="Wingdings"><i>à</i></font><font color="#000080"
+size="2" face="Courier New"><i> S contain </i><b><i>'12345'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Str3Long</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>):LongInt;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Reading and conversion to first
+non number character without control</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+L:LongInt;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">L :=
+Str3Long(<b>'12345aaaa'</b>); <i>{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> L contain 12345}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Str2Long</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>;
+<b>Var</b> I:LongInt):Boolean;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Convert long integer string to
+long integer number</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+L:LongInt;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>If Not</b>
+Str2Long(<b>'12345'</b>,L) <b>Then</b> ErrorOccurred;</font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Str2Word</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>;
+<b>Var</b> I:Word):Boolean;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Convert word string to word number</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+W:Word;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>If</b> <b>Not</b>
+Str2Word(<b>'12345'</b>,W) Then ErrorOccurred;</font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Str2Int</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>;
+<b>Var</b> I:Integer):Boolean;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Convert integer string to integer
+number</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+I:Integer;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>If Not</b>
+Str2Int(<b>'-12345'</b>,I) <b>Then</b> ErrorOccurred;</font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Str2Real</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S:<b>String</b>;
+<b>Var</b> R:Real):Boolean;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Convert real string to real number</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+R:Real;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>If</b> <b>Not</b>
+Str2Real('-12345.05',R) <b>Then</b> ErrorOccurred;</font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Long2Str</font><font
+color="#FF0000" face="Courier New">(L:LongInt):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Convert any integer to string</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+Long2Str(12345); <i>{</i></font><font color="#000080" size="2"
+face="Wingdings"><i>à</i></font><font color="#000080" size="2"
+face="Courier New"><i> S contain </i><b><i>'12345'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Real2Str</font><font
+color="#FF0000" face="Courier New">(R:Real; Width, Places:Byte):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Convert real number to string,
+width is size all string and places is from this size</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+Real2Str(0.12589,5,2); <i>{</i></font><font color="#000080"
+size="2" face="Wingdings"><i>à</i></font><font color="#000080"
+size="2" face="Courier New"><i> S contain </i><b><i>' 0.14'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Form</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> Mask:<b>String</b>;
+R:Real):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Simply formatting of real number
+to string</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:<b>String</b>;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := Form(<b>'XXX.XX'</b>,0.13589);
+<i>{</i></font><font color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> S contain </i><b><i>'
+0.14'</i></b><i>}</i></font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := Form(<b>'X.X'</b>,55.256);
+<i>{</i></font><font color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> overflow, S
+contain </i><b><i>'*.*'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" size="2" face="Courier New"><b>Const</b></font></p>
+
+<p><font color="#FF0000" size="2" face="Courier New">swKamenic =
+0;</font><font size="2" face="Courier New"> <i>{Czech code as
+brothers Kamenicky}</i></font></p>
+
+<p><font color="#FF0000" size="2" face="Courier New">swWin31CE =
+1;</font><font size="2" face="Courier New"> <i>{Czech code
+Windows 3.1 CE}</i></font></p>
+
+<p><font color="#FF0000" size="2" face="Courier New">swWin1250 =
+2; </font><font size="2" face="Courier New"><i>{Czech code
+Windows page 1250}</i></font></p>
+
+<p><font color="#FF0000" size="2" face="Courier New">swECMA = 3; </font><font
+size="2" face="Courier New"><i>{code ECMA ansi}</i></font></p>
+
+<p><font color="#FF0000" size="2" face="Courier New">swLatin2 =
+4; </font><font size="2" face="Courier New"><i>{code Latin 2}</i></font></p>
+
+<p><font color="#FF0000" size="2" face="Courier New">swUsaAnsi =
+5; </font><font size="2" face="Courier New"><i>{code as VGA
+generator}</i></font></p>
+
+<p><font color="#FF0000" size="2" face="Courier New">swIbm = 6; </font><font
+size="2" face="Courier New"><i>{code without diacritics}</i></font></p>
+
+<p><font color="#FF0000" size="2" face="Courier New">swSemigraph
+= 7</font><font size="2" face="Courier New">;<i>{as Ibm without
+graphics characters}</i></font></p>
+
+<p><font color="#FF0000" size="2" face="Courier New">swMacIntosh
+= 8;</font><font size="2" face="Courier New"><i>{code for Mac}</i></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Trans</font><font
+color="#FF0000" face="Courier New">(St:<b>String</b>;odkud,kampak:Byte):<b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">String will be transporting from
+odkud code to kampak code,</font></p>
+
+<p><font size="2" face="Arial">this oriented to Czech language
+and not support in the table other</font></p>
+
+<p><font size="2" face="Arial">but table is public</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+Trans(S, swKamenic, swWin1250);<i>{result contain text in new
+code}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Roman2Int</font><font
+color="#FF0000" face="Courier New">(<b>Const</b> S: <b>String</b>):
+LongInt;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Assume function, convert romanum
+number to long integer</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+L:LongInt;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">L :=
+Roman2Num(<b><i>'VII'</i></b><i>);{</i></font><font
+color="#000080" size="2" face="Wingdings"><i>à</i></font><font
+color="#000080" size="2" face="Courier New"><i> L contain 7}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> </font><font
+color="#FF0000" size="4" face="Courier New">Int2Roman</font><font
+color="#FF0000" face="Courier New">(Value: LongInt): <b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Assume function, convert long
+integer to romanum number</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:String;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">..</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+Int2Roman(9<i>);{</i></font><font color="#000080" size="2"
+face="Wingdings"><i>à</i></font><font color="#000080" size="2"
+face="Courier New"><i> S contain </i><b><i>'IX'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" face="Courier New"><b>Function</b> html</font><font
+color="#FF0000" size="4" face="Courier New">SrcEmail</font><font
+color="#FF0000" face="Courier New">(S:<strong>String</strong>): <b>String</b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">Search first E-mail address in
+input string, for more break input string post result.</font></p>
+
+<p><font size="2" face="Arial"><b>Example:</b></font></p>
+
+<p><font color="#000080" size="2" face="Courier New"><b>Var</b>
+S:String;</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S := '<strong>&lt;A
+HREF=&quot;mailto:micrel@micrel.cz&quot;&gt;&lt;IMG BORDER=0
+SRC=&quot;email.gif&quot;&gt;&lt;/A&gt;</strong>'</font></p>
+
+<p><font color="#000080" size="2" face="Courier New">S :=
+htmlSrcEmail(S<i>);{</i></font><font color="#000080" size="2"
+face="Wingdings"><i>à</i></font><font color="#000080" size="2"
+face="Courier New"><i> S contain </i><b><i>'micrel@micrel.cz'</i></b><i>}</i></font></p>
+
+<p><font size="2" face="Arial"><b>Declaration:</b></font></p>
+
+<p><font color="#FF0000" size="2" face="Courier New"><b>Type</b></font></p>
+
+<p><font color="#FF0000" face="Courier New">CharSet</font><font
+color="#FF0000" size="2" face="Courier New">=<b>Set of</b> Char;</font></p>
+
+<p><font color="#FF0000" size="2" face="Courier New"><b>Const</b></font></p>
+
+<p><font color="#FF0000" face="Courier New">MaskZipChar</font><font
+color="#FF0000" size="2" face="Courier New">:Char = <b><i>'X'</i></b>;</font></p>
+
+<p><font size="2" face="Arial"><b>Description:</b></font></p>
+
+<p><font size="2" face="Arial">MaskZipChar is mask character for </font><font
+color="#808000" size="2" face="Arial">Strip</font><font size="2"
+face="Arial">, </font><font color="#808000" size="2" face="Arial">Zip</font><font
+size="2" face="Arial"> and </font><font color="#808000" size="2"
+face="Arial">Form</font><font size="2" face="Arial"> function and
+possible to change</font></p>
+
+<p><font color="#FF00FF" size="2" face="Arial"><b>End of file</b></font></p>
+
+<p><font size="1" face="Arial"><b>{last change 1.III.1999}</b></font></p>
+</body>
+</html>

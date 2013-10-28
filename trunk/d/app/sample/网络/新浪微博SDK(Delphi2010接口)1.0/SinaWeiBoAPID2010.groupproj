@@ -1,0 +1,36 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{01152D21-2BA7-44F2-95BC-F5EC474CAA52}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="Applications\SinaWeiBoKong\SinaWeiBoSDK2010.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="SinaWeiBoSDK2010">
+			<MSBuild Projects="Applications\SinaWeiBoKong\SinaWeiBoSDK2010.dproj"/>
+		</Target>
+		<Target Name="SinaWeiBoSDK2010:Clean">
+			<MSBuild Targets="Clean" Projects="Applications\SinaWeiBoKong\SinaWeiBoSDK2010.dproj"/>
+		</Target>
+		<Target Name="SinaWeiBoSDK2010:Make">
+			<MSBuild Targets="Make" Projects="Applications\SinaWeiBoKong\SinaWeiBoSDK2010.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="SinaWeiBoSDK2010"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="SinaWeiBoSDK2010:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="SinaWeiBoSDK2010:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

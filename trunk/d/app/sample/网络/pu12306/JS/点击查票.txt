@@ -1,0 +1,1 @@
+$(window.frames["main"].document).find("#submitQuery").click();

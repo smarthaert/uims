@@ -1,0 +1,120 @@
+http://bbs.mumayi.net/thread-930596-1-1.html
+
+
+截至07.04.11]WindowsXP-Sp2系统补丁[微软链接下载]
+
+原文出自木蚂蚁社区www.mumayi.net,本贴地址:http://bbs.mumayi.net/viewthread.php?tid=930596
+注：不含KB905474补丁
+http://download.microsoft.com/download/7/9/8/798b010c-0d1a-482f-8596-41cf663490fe/WindowsXP-KB885884-x86-chs.exe
+http://download.windowsupdate.com/msdownload/update/v3-19990518/cabpool/873374_chs_432244254d6cce3fccf13242c238962.exe
+http://download.microsoft.com/download/2/b/7/2b75ebbf-ce4c-4595-8ddf-4d45e4c1ca18/WindowsXP-KB885626-v2-x86-chs.exe
+http://download.microsoft.com/download/d/7/1/d71dd790-08a8-4512-86e8-4e6b818dd4ad/WindowsXP-KB887472-x86-chs.exe
+http://download.microsoft.com/download/6/3/a/63a2d9a3-43c8-47ba-bab1-67ce70de52cb/WindowsXP-KB886677-x86-chs.exe
+http://download.microsoft.com/download/0/f/b/0fbf9f98-6990-4c94-aa71-f40b1c219d87/WindowsXP-KB887797-x86-chs.exe
+http://download.microsoft.com/download/c/5/9/c591d1dd-ed93-4a1a-94ce-ea3ebf9b1619/WindowsXP-KB885835-x86-CHS.exe
+http://download.microsoft.com/download/2/a/0/2a0acca0-41d9-4add-9fa4-2bee366c2608/WindowsXP-KB885836-x86-CHS.exe
+http://download.microsoft.com/download/3/f/2/3f28cd8a-e11a-4c49-9814-a8e5ce97c4ad/WindowsXP-KB887742-x86-CHS.exe
+http://download.microsoft.com/download/7/8/b/78b59cf0-e39c-4a53-9c58-9efdb23b58da/WindowsXP-KB873339-x86-CHS.exe
+http://download.microsoft.com/download/8/2/3/823b5a41-6cfb-4a4f-aefa-3a66e517f447/WindowsXP-KB888302-x86-CHS.exe
+http://download.microsoft.com/download/6/1/e/61e0e420-d142-49b9-b83d-191233f3a7a2/WindowsXP-KB886185-x86-chs.exe
+http://download.microsoft.com/download/5/7/c/57c31d5d-58ae-4414-95e1-46b48b938f6f/WindowsXP-KB891781-x86-CHS.exe
+http://download.microsoft.com/download/a/d/0/ad08b5a7-4a6e-4a00-a2f7-862ef274420d/WindowsXP-KB890859-x86-CHS.exe
+http://download.microsoft.com/download/e/5/d/e5d36b32-6f7c-45c1-82a7-3fa483442bda/WindowsXP-KB894391-x86-CHS.exe
+http://download.microsoft.com/download/5/a/e/5aeb65c6-1f88-4b6a-ae1c-bcd279252a17/WindowsXP-KB896428-x86-CHS.exe
+http://download.microsoft.com/download/1/3/2/13219fbd-224f-4c46-a223-b6fe3cfe328f/WindowsXP-KB898461-x86-CHS.exe
+http://download.microsoft.com/download/1/4/7/147ded26-931c-4daf-9095-ec7baf996f46/WindowsInstaller-KB893803-v2-x86.exe
+http://download.microsoft.com/download/4/f/a/4fa860fc-1bac-4762-839c-9f98d224edcd/WindowsXP-KB896358-x86-CHS.exe
+http://download.microsoft.com/download/0/8/7/08728ce9-67db-4a77-bd6a-9616f45074a2/WindowsXP-KB901214-x86-CHS.exe
+http://download.microsoft.com/download/2/2/f/22f5f4d8-1781-4349-8454-7b411bbc1485/WindowsXP-KB899591-x86-CHS.exe
+http://download.microsoft.com/download/1/6/d/16d83818-9fb2-469f-b317-0929e45479d4/WindowsXP-KB896423-x86-CHS.exe
+http://download.microsoft.com/download/2/c/f/2cf803e8-afc4-40e1-95e2-2ca5642e9adc/WindowsXP-KB899587-x86-CHS.exe
+http://download.microsoft.com/download/d/b/f/dbfeaf32-ff75-4253-9ef9-1a056597fd80/WindowsXP-KB903235-x86-CHS.exe
+http://download.microsoft.com/download/6/6/4/66447413-dc1e-4485-8163-dee0032e1145/WindowsXP-KB893756-x86-CHS.exe
+http://download.microsoft.com/download/2/6/3/26368515-86da-49d4-a944-04aa6e1a5333/WindowsXP-KB889527-v3-x86-CHS.exe
+http://download.microsoft.com/download/d/3/a/d3ad5ea5-6971-41fd-a1eb-4b0e302bb6b5/WindowsXP-KB902400-x86-CHS.exe
+http://www.download.windowsupdate.com/msdownload/update/v3-19990518/cabpool/wgainstall_9160b6b3929938243b7d18417810677d9b9983b7.exe
+http://download.microsoft.com/download/3/3/9/339b7e44-d925-4ac4-b6bd-a0805fe92041/WindowsXP-KB905414-x86-CHS.exe
+http://download.microsoft.com/download/4/1/0/41054944-2438-4fb2-b1d5-785cd7c7c6cd/WindowsXP-KB905749-x86-CHS.exe
+http://download.microsoft.com/download/3/9/6/396d6796-5773-4bc1-aa67-80b7d4507e8c/WindowsXP-KB904706-v2-x86-CHS.exe
+http://download.microsoft.com/download/2/3/f/23fa4df0-6ad6-4650-af7f-27318805fbb4/WindowsXP-KB901017-x86-CHS.exe
+http://download.microsoft.com/download/e/e/a/eea0d254-60aa-4886-b47d-ba41b79f9152/WindowsXP-KB907865-x86-CHS.exe
+http://download.microsoft.com/download/b/b/c/bbc443be-7468-4af9-97fc-f6f5b32536ee/WindowsXP-KB900725-x86-CHS.exe
+http://download.microsoft.com/download/0/3/3/03303215-9e40-4f91-a261-97a4ee0c1363/WindowsXP-KB896424-x86-CHS.exe
+http://download.microsoft.com/download/b/a/b/baba6a8e-9f4c-40a2-94c7-8b971fc9daa8/WindowsXP-KB908519-x86-CHS.exe
+http://download.microsoft.com/download/0/b/1/0b1f0c79-950e-4b64-8da0-3dd8e916efaa/WindowsXP-KB901190-x86-CHS.exe
+http://download.microsoft.com/download/b/9/3/b937adb5-998c-4193-b30c-27617a9124f6/WindowsXP-KB910437-x86-CHS.exe
+http://download.microsoft.com/download/1/1/0/110216c1-4659-45d1-87c6-38d520e628cf/WindowsXP-KB911927-x86-CHS.exe
+http://download.microsoft.com/download/f/4/9/f49d56df-7d46-46ef-a88a-7398cc36cbb1/WindowsMedia-KB911564-x86-CHS.exe
+http://download.microsoft.com/download/1/d/6/1d6db212-4717-4122-bd53-4d27583124be/WindowsXP-KB917425-x86-CHS.exe
+http://download.microsoft.com/download/a/7/a/a7a33758-0018-421a-ab26-98070421be02/WindowsXP-KB908531-v2-x86-CHS.exe
+http://download.microsoft.com/download/b/c/4/bc43aace-f085-4268-b693-890dc488f71b/WindowsXP-KB900485-v2-x86-CHS.exe
+http://download.microsoft.com/download/8/f/4/8f4e0e33-3bf4-474e-8ac1-926a5cd4f466/WindowsXP-KB913580-x86-CHS.exe
+http://www.download.windowsupdate.com/msdownload/update/v3-19990518/cabpool/windowsxp-kb892130-enu-x86_8c36f83d4b58f24121c88186f451b4e87cca5ecf.exe
+http://download.microsoft.com/download/5/a/a/5aa8efea-9f8e-4dd6-8fdb-76c8407c48b2/WindowsXP-KB911562-x86-CHS.exe
+http://download.microsoft.com/download/2/f/b/2fbc82a2-039f-4254-931b-7cfb65ad7135/WindowsXP-KB917953-x86-CHS.exe
+http://download.microsoft.com/download/0/1/b/01b7b20d-41a3-4c7a-9796-8ab3a52b0230/WindowsXP-KB911280-v2-x86-CHS.exe
+http://download.microsoft.com/download/c/7/7/c77e499e-d227-4802-8a9f-eacbf323a5ab/WindowsMedia10-KB917734-x86-CHS.exe
+http://download.microsoft.com/download/4/a/d/4ad45dfd-25ce-4e01-8f2e-f5a53a68d5cc/WindowsMedia9-KB917734-x86-CHS.exe
+http://download.microsoft.com/download/a/5/0/a50caa2a-bc48-405c-9b25-31edfad59783/WindowsXP-KB918439-x86-CHS.exe
+http://download.microsoft.com/download/e/3/9/e395ce0f-82c6-4625-8c29-063a137092cd/WindowsXP-KB914389-x86-CHS.exe
+http://download.microsoft.com/download/4/6/b/46bf4848-a039-429d-a222-6143a12e2cdd/WindowsXP-KB917344-x86-CHS.exe
+http://download.microsoft.com/download/6/2/2/62259943-9b98-4521-bc18-7139cc5e877f/WindowsXP-KB917537-x86-CHS.exe
+http://download.microsoft.com/download/f/5/c/f5cf608e-9e24-4040-8a07-838cf400fe0b/WindowsXP-KB914388-x86-CHS.exe
+http://download.microsoft.com/download/d/3/5/d356b7ae-0283-4fef-849c-288693093fad/WindowsXP-KB916595-x86-CHS.exe
+http://download.microsoft.com/download/4/1/4/414fd3a8-f583-47f0-be16-1bf264d33b58/WindowsXP-KB920683-x86-CHS.exe
+http://download.microsoft.com/download/6/0/d/60d4df74-90ff-4d8b-b7de-7ea88cce56fe/WindowsXP-KB917422-x86-CHS.exe
+http://download.microsoft.com/download/1/7/5/1758ecb2-f9ec-4e10-93fe-001ad50e2570/WindowsXP-KB920670-x86-CHS.exe
+http://download.microsoft.com/download/c/f/d/cfd916ef-46eb-493b-b144-522c6d507c81/WindowsXP-KB920872-x86-CHS.exe
+http://download.microsoft.com/download/9/b/2/9b2e069e-0650-486b-b4f1-47785d492301/WindowsXP-KB919007-x86-CHS.exe
+http://download.microsoft.com/download/9/3/1/93147316-b587-473a-a45e-9c2be5b8dcf1/WindowsXP-KB920685-x86-CHS.exe
+http://download.microsoft.com/download/6/8/e/68e8e7fd-dcee-47db-9600-3a0373fb035c/WindowsXP-KB922582-x86-CHS.exe
+http://download.microsoft.com/download/2/6/2/2624b833-3483-40e7-82f5-c17b0a485415/WindowsXP-KB923996-v2-x86-CHS.exe
+http://download.microsoft.com/download/c/5/6/c56e193f-f2b1-4227-8fee-239090a8f22a/WindowsXP-KB922819-x86-CHS.exe
+http://download.microsoft.com/download/1/7/9/17940d71-46c6-4b7e-8e38-77f06ca29b1f/WindowsXP-KB923191-x86-CHS.exe
+http://download.microsoft.com/download/5/0/0/5005aeb8-0070-400a-8d1f-28c8d9ba0adb/WindowsXP-KB923414-x86-CHS.exe
+http://download.microsoft.com/download/f/0/7/f07ba1b4-1abc-4de7-a3c1-5a7e0eebaf3e/WindowsXP-KB924191-x86-CHS.exe
+http://download.microsoft.com/download/6/1/2/612ae213-a101-4724-9f5e-1d510c031480/WindowsXP-KB924496-x86-CHS.exe
+http://download.microsoft.com/download/f/a/6/fa66ecce-5669-4d88-8d98-8f719a2b0b59/WindowsXP-KB920213-x86-CHS.exe
+http://download.microsoft.com/download/e/2/b/e2bd7998-638c-42ac-ae40-6eed27b7cfa3/WindowsXP-KB923980-x86-CHS.exe
+http://download.microsoft.com/download/b/5/1/b51005fa-dea1-4f78-a976-39f48922cf48/WindowsXP-KB924270-x86-CHS.exe
+http://download.microsoft.com/download/9/2/9/929fdb7d-31ff-49e9-be81-95142120416d/WindowsXP-KB923789-x86-CHS.exe
+http://download.microsoft.com/download/a/2/1/a21ca187-e624-4a9e-976c-d2525212d5b4/WindowsXP-KB923689-x86-CHS.exe
+http://download.microsoft.com/download/e/8/3/e83bf836-7cb1-47a5-828c-b8b98ab8a92b/WindowsXP-KB923694-x86-CHS.exe
+http://download.microsoft.com/download/3/6/d/36d7f391-4ca1-4653-8eb9-00aad55afb97/WindowsMedia6-KB925398-x86-CHS.exe
+http://download.microsoft.com/download/b/d/c/bdcc77c6-fd43-4907-8ad3-59d330dc3460/WindowsXP-KB926255-x86-CHS.exe
+http://download.microsoft.com/download/c/c/a/ccabf13c-1407-4c24-8eb0-01121486904b/WindowsXP-KB926247-x86-CHS.exe
+http://download.microsoft.com/download/2/5/d/25d10ba3-085c-4098-9adc-9b78ea76efac/WindowsXP-KB929969-x86-CHS.exe
+http://download.microsoft.com/download/c/0/0/c00aea46-5115-46e0-a2e0-472df5c2f1ea/IE7-KB929969-WindowsXP-x86-chs.exe
+http://download.microsoft.com/download/7/0/3/70353da6-5446-432f-818a-fecf724eb7bf/WindowsXP-KB928255-x86-CHS.exe
+http://download.microsoft.com/download/9/d/2/9d28befd-6efe-4755-846e-58224d135f79/WindowsXP-KB928843-x86-CHS.exe
+http://download.microsoft.com/download/c/a/b/cab6e2d5-ece7-44bf-8a65-d3d08571a216/WindowsXP-KB927779-x86-CHS.exe
+http://download.microsoft.com/download/2/5/e/25eeceac-24b7-4e6e-b27c-ee88b29bfec2/WindowsXP-KB927802-x86-CHS.exe
+http://download.microsoft.com/download/d/4/7/d4747e4d-41c3-4af2-9935-f22817fc135f/WindowsXP-KB926436-x86-CHS.exe
+http://download.microsoft.com/download/9/9/8/998cd413-53e0-47b3-b0c1-0a9f05ebe5b2/WindowsXP-KB918118-x86-CHS.exe
+http://download.microsoft.com/download/1/b/f/1bf65864-e5e0-421b-a6b8-f4405e3da87a/WindowsXP-KB924667-x86-CHS.exe
+http://download.microsoft.com/download/0/8/c/08ceaede-47c3-4605-bf19-95c3353ad34c/WindowsXP-KB931836-x86-CHS.exe
+http://download.microsoft.com/download/b/3/3/b3311ea8-026a-40d8-abc1-f7318105e70e/WindowsXP-KB928090-x86-CHS.exe
+http://download.microsoft.com/download/7/b/2/7b2c08bd-4b61-4bc4-b54c-50d4df0777d7/IE7-KB928090-WindowsXP-x86-chs.exe
+http://download.microsoft.com/download/3/2/0/320f2a04-c311-41d7-8fd5-9f67be0c8735/WindowsXP-KB929338-x86-CHS.exe
+http://download.microsoft.com/download/5/8/3/58324bce-00c5-42b7-bd05-1353c0604dab/WindowsXP-KB925902-x86-CHS.exe
+http://download.microsoft.com/download/a/b/8/ab85b7d3-f580-41b6-9c86-f9bd6206a573/WindowsXP-KB935448-x86-CHS.exe
+http://download.microsoft.com/download/8/6/a/86af2a0e-d8ee-414d-a24b-cbb8188019a3/WindowsXP-KB932168-x86-CHS.exe
+http://download.microsoft.com/download/5/9/0/590dd85e-4685-4822-bb1b-29d79e929acd/WindowsXP-KB931784-x86-CHS.exe
+http://download.microsoft.com/download/c/d/c/cdc95d35-d6d4-4072-8cae-2e8b6326239c/WindowsXP-KB930178-x86-CHS.exe
+http://download.microsoft.com/download/5/d/9/5d99e3e1-55aa-4ecf-970c-abb8b5213249/WindowsXP-KB931261-x86-CHS.exe
+http://download.microsoft.com/download/4/a/a/4aa524c6-239d-47ff-860b-5b397199cbf8/Windows-KB890830-V1.28.exe
+　　
+为安装方便，可用附件中的BAT批处理进行安装（请将以上补丁及附件下载至同一文件夹内）
+
+ 附件: 您所在的用户组无法下载或查看附件 
+
+   ┏━━━━━━━━━━━━━━━━━━━━━┓
+   ┃             源 码 爱 好 者               ┃
+   ┣━━━━━━━━━━━━━━━━━━━━━┫
+   ┃                                          ┃
+   ┃           提供源码发布与下载             ┃
+   ┃                                          ┃
+   ┃        http://www.codefans.net           ┃
+   ┃                                          ┃
+   ┃            互助、分享、提高              ┃
+   ┗━━━━━━━━━━━━━━━━━━━━━┛

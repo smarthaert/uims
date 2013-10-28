@@ -1,0 +1,14 @@
+
+
+我的常用联系人：
+var cc=$(window.frames["main"].document).find("#passenger_single_tb_id");
+var cc1=cc.find("tbody");
+var cc2=cc1.find("input:eq(1)");
+cc2.click();
+
+
+the confirm button:
+alert($(window.frames["main"].document).find(".long_button_u:eq(2)").html())
+
+
+$(window.frames["main"].document).find("#tip_info_div_name_cardtype").after("<input id='syantBt' type='button' value='刷票' />");

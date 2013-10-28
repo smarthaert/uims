@@ -1,0 +1,84 @@
+object Form1: TForm1
+  Left = 192
+  Top = 178
+  Width = 696
+  Height = 480
+  Caption = 'Form1'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object btn1: TButton
+    Left = 200
+    Top = 160
+    Width = 129
+    Height = 33
+    Caption = 'btn1'
+    TabOrder = 0
+    OnClick = btn1Click
+  end
+  object prprt1: TppReport
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.PaperName = 'Letter'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.mmMarginBottom = 6350
+    PrinterSetup.mmMarginLeft = 6350
+    PrinterSetup.mmMarginRight = 6350
+    PrinterSetup.mmMarginTop = 6350
+    PrinterSetup.mmPaperHeight = 279401
+    PrinterSetup.mmPaperWidth = 215900
+    PrinterSetup.PaperSize = 1
+    BeforePrint = prprt1BeforePrint
+    DeviceType = 'Printer'
+    EmailSettings.ReportFormat = 'PDF'
+    OutlineSettings.CreateNode = True
+    OutlineSettings.CreatePageNodes = True
+    OutlineSettings.Enabled = True
+    OutlineSettings.Visible = True
+    ShowCancelDialog = False
+    ShowPrintDialog = False
+    TextSearchSettings.DefaultString = '<FindText>'
+    TextSearchSettings.Enabled = True
+    Left = 152
+    Top = 40
+    Version = '10.09'
+    mmColumnWidth = 0
+    object pdtlbnd1: TppDetailBand
+      mmBottomOffset = 0
+      mmHeight = 11377
+      mmPrintPosition = 0
+      object p2dbrcd1: Tpp2DBarCode
+        UserName = 'TwoDBarCode1'
+        Alignment = taCenter
+        Border.BorderPositions = []
+        Border.Color = clBlack
+        Border.Style = psSolid
+        Border.Visible = False
+        Color = clBlack
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Courier New'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        BarCodeType = bcPDF417
+        BarHeight = 3
+        BarWidth = 1
+        Data = '2DBarCode'
+        ECCLevel = ecLevel0
+        QuietZone = 0
+        mmHeight = 7673
+        mmLeft = 43127
+        mmTop = 1588
+        mmWidth = 27252
+        BandType = 4
+      end
+    end
+  end
+end
