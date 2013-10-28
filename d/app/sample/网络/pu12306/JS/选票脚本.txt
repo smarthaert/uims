@@ -1,0 +1,26 @@
+var a=$(window.frames["main"].document).find("#syantCheChi");
+var a1=a.text();
+if(a1!="")
+{
+  a1=a1+",";
+}
+//
+var b=$(window.frames["main"].document).find("#gridbox");
+var c=b.find("tr:eq(5)");
+var d=c.find("table:eq(0)");
+var e,f,g;
+d.find("tr:gt(1)").each(function(){
+ e=$(this);
+ f=e.find("td:eq(0)");
+ g=f.text();
+ g=g+",";
+
+if((a1=="")||(a1.indexOf(g) != -1))
+{
+        e.find("td").each(function(){
+          $(this).css("background","#00ff00");
+        });
+        alert(e.find(".btn130").html());
+} //if
+});
+

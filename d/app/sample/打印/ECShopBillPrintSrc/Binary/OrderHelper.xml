@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Xmlini>
+  <Section SectionName="Servers">
+    <Key KeyName="演示网站" KeyValue="http://ecshop/api/orders.php"></Key>
+  </Section>
+  <Section SectionName="Globals">
+    <Key KeyName="UserName" KeyValue=""></Key>
+    <Key KeyName="PassWord" KeyValue=""></Key>
+  </Section>
+</Xmlini>

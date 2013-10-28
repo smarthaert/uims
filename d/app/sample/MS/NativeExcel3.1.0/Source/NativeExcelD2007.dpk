@@ -1,0 +1,116 @@
+package NativeExcelD2007;
+
+{$R *.res}
+{$R 'Dataset2Excel.dcr'}
+{$R 'Dbgrid2Excel.dcr'}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$DESCRIPTION 'NativeExcel (Delphi 2007)'}
+{$IMAGEBASE $400000}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl,
+  vcldb;
+
+contains
+  nexcel in 'nExcel.pas',
+  xlscols in 'xlscols.pas',
+  avltree in 'avltree.pas',
+  xlsrows in 'xlsrows.pas',
+  formula in 'formula.pas',
+  xlscalc in 'xlscalc.pas',
+  xlshash in 'xlshash.pas',
+  xlslist in 'xlslist.pas',
+  xlsextern in 'xlsextern.pas',
+  xlssst in 'xlssst.pas',
+  xlsfrmt in 'xlsfrmt.pas',
+  xlsafit in 'xlsafit.pas',
+  xlsafilt in 'xlsafilt.pas',
+  xlsmasks in 'xlsmasks.pas',
+  xlscsv in 'xlscsv.pas',
+  xlsnames in 'xlsnames.pas',
+  xlsread  in 'xlsread.pas',
+  xlsstrm  in 'xlsstrm.pas',
+  xlsvba  in 'xlsvba.pas',
+  xlsvbar  in 'xlsvbar.pas',
+  xlschart  in 'xlschart.pas',
+  xlsmd5 in 'xlsmd5.pas',
+  xlsrc4 in 'xlsrc4.pas',
+  xlscrypt in 'xlscrypt.pas',
+  xlscf   in 'xlscf.pas',
+  xlsdv   in 'xlsdv.pas',
+  
+  xlshtml  in 'xlshtml.pas',
+  xlsrtf  in 'xlsrtf.pas',
+  xlsblob  in 'xlsblob.pas',
+  xlsdbcell  in 'xlsdbcell.pas',
+  ole in 'ole.pas',
+  xlsescher in 'xlsescher.pas',
+  xlsmd4 in 'xlsmd4.pas',
+  xlsdrw in 'xlsdrw.pas',
+  xlsdrwtp in 'xlsdrwtp.pas',
+  xlsemf   in 'xlsemf.pas',
+  xlsimg in 'xlsimg.pas',
+  xlshyper in 'xlshyper.pas',
+  xlsexpgr in 'xlsexpgr.pas',
+  wstream in 'wstream.pas',
+  cachestream in 'cachestream.pas',
+  dataset2excel in 'dataset2excel.pas',
+  dbgrid2excel in 'dbgrid2excel.pas',
+  xlsxread  in 'xlsxread.pas',
+  
+  xlsxwrite in 'xlsxwrite.pas',
+  zlib_adler32 in 'zlib_adler32.pas',
+  zlib_code in 'zlib_code.pas',
+  zlib_config in 'zlib_config.pas',
+  zlib_deflater in 'zlib_deflater.pas',
+  zlib_deftype in 'zlib_deftype.pas',
+  zlib_gzipstream in 'zlib_gzipstream.pas',
+  zlib_gz_header in 'zlib_gz_header.pas',
+  zlib_inflater in 'zlib_inflater.pas',
+  zlib_inflateregister in 'zlib_inflateregister.pas',
+  zlib_inf_trees in 'zlib_inf_trees.pas',
+  zlib_mapped_arr in 'zlib_mapped_arr.pas',
+  zlib_pendingbuf in 'zlib_pendingbuf.pas',
+  zlib_static_tree in 'zlib_static_tree.pas',
+  zlib_static_tree_desc in 'zlib_static_tree_desc.pas',
+  zlib_tree in 'zlib_tree.pas',
+  zlib_tree_desc in 'zlib_tree_desc.pas',
+  zlib_zlibstream in 'zlib_zlibstream.pas',
+  zlib_const in 'zlib_const.pas',
+  zlib_z_stream in 'zlib_z_stream.pas',
+  ziparchive in 'ziparchive.pas',
+  xlsxfrw in 'xlsxfrw.pas',
+  xmlreader in 'xmlreader.pas',
+  xmlwriter in 'xmlwriter.pas',
+  xlsstylexf in 'xlsstylexf.pas',
+  xlsstylefont in 'xlsstylefont.pas',
+  xlsstylecolor in 'xlsstylecolor.pas',
+  xlsstyleborder in 'xlsstyleborder.pas',
+  xlsstylefill in 'xlsstylefill.pas',
+  xlsxrelations in 'xlsxrelations.pas',
+  xlshashtable in 'xlshashtable.pas',
+  xlslist2 in 'xlslist2.pas',
+  xlsstrb in 'xlsstrb.pas',
+  xlsrgb in 'xlsrgb.pas';
+end.

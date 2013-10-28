@@ -1,0 +1,15 @@
+var u= $(window.frames["main"].document).find(".text_yellow");
+var u1;
+var u2;
+u.each(function(){
+     u1=$(this).text();
+    if(u1=="³µÆ±Ô¤¶©") 
+    {
+       u2=$(this);
+    }
+});
+
+if(u2)
+{
+ u2.click();
+}

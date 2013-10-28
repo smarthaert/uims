@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.044,D:\新浪微博Delphi接口\Component\ProjectGroup1.groupproj=E:\Users\Administrator\Documents\RAD Studio\Projects\ProjectGroup1.groupproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.684,D:\新浪微博Delphi接口\SinaWeiBoAPI.groupproj=D:\新浪微博Delphi接口\Component\SinaWeiBo.groupproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.634,D:\新浪微博Delphi接口\Component\SinaWeiBo.groupproj=D:\新浪微博Delphi接口\Component\ProjectGroup1.groupproj</Transaction>
+    <Transaction>2011-11-10 12:38:14.122.groupproj,F:\新浪微博Delphi接口\SinaWeiBoAPI.groupproj=F:\新浪微博Delphi接口\SinaWeiBoAPID2010.groupproj</Transaction>
+  </Transactions>
+	<Default.Personality>
+		<Projects ActiveProject="SinaWeiBoSDK2010.exe"/>
+	</Default.Personality>
+</BorlandProject>

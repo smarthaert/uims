@@ -1,0 +1,3 @@
+1.本程序在Delphi6下编译通过，其它版本没有测试。
+2.请先安装"控件补丁"中的控件包。
+3.编译Client或Server时，请先设置Search Path指向comm 文件夹。

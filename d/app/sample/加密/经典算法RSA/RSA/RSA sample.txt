@@ -1,0 +1,64 @@
+uses FGInt, FGIntPrimeGeneration, FGIntRSA;
+
+Procedure RSAEncryptAndDecrypt_SignAndVerify;
+var	
+   n, e, d, dp, dq, p, q, phi, one, two, gcd, temp, nilgint : TFGInt;
+   test, signature : String;
+   ok : boolean;
+begin
+ // Enter a random number to generate a prime, i.e.
+ // incremental search starting from that number
+   Base10StringToFGInt('102336547456161301', p);
+   PrimeSearch(p);
+   Base256StringToFGInt('AEFAFGhdhsgoi!ç"ty!a', q);
+   PrimeSearch(q);
+ // Compute the modulus
+   FGIntMul(p, q, n);
+ // Compute p-1, q-1 by adjusting the last digit of the GInt
+   p.Number[1] := p.Number[1] - 1;
+   q.Number[1] := q.Number[1] - 1;
+ // Compute phi(n)
+   FGIntMul(p, q, phi);
+ // Choose a public exponent e such that GCD(e,phi)=1
+ // common values are 3, 65537 but if these aren 't coprime
+ // to phi, use the following code
+   Base10StringToFGInt('65537', e); // just an odd starting point
+   Base10StringToFGInt('1', one);
+   Base10StringToFGInt('2', two);
+   FGIntGCD(phi, e, gcd);
+   While FGIntCompareAbs(gcd, one) <> Eq Do
+   Begin
+      FGIntadd(e, two, temp);
+      FGIntCopy(temp, e);
+      FGIntGCD(phi, e, gcd);
+   End;
+   FGIntDestroy(two);
+   FGIntDestroy(one);
+   FGIntDestroy(gcd);
+ // Compute the modular (multiplicative) inverse of e, i.e. the secret exponent (key)
+   FGIntModInv(e, phi, d);
+   FGIntModInv(e, p, dp);
+   FGIntModInv(e, q, dq);
+   p.Number[1] := p.Number[1] + 1;
+   q.Number[1] := q.Number[1] + 1;
+
+   FGIntDestroy(phi);
+   FGIntDestroy(nilgint);
+ // Now everything is set up to start Encrypting/Decrypting, Signing/Verifying
+   test := 'eagles may soar high, but weasles do not get sucked into jet engines';
+
+   RSAEncrypt(test, e, n, test);
+   RSADecrypt(test, d, n, Nilgint, Nilgint, Nilgint, Nilgint, test);
+ // this Is faster : RSADecrypt(test, nilGInt, n, dp, dq, p, q, test);
+   RSASign(test, d, n, Nilgint, Nilgint, Nilgint, Nilgint, signature);
+ // this Is faster : RSASign(test, nilgint, n, dp, dq, p, q, signature);
+   RSAVerify(test, signature, e, n, ok);
+
+   FGIntDestroy(p);
+   FGIntDestroy(q);
+   FGIntDestroy(dp);
+   FGIntDestroy(dq);
+   FGIntDestroy(e);
+   FGIntDestroy(d);
+   FGIntDestroy(n);
+end;

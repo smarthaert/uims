@@ -1,0 +1,7 @@
+var t=$(window.frames["main"].document).find("#password").parent().next();
+t.html('<input id="syant_bt1" type="button" value="记住用户名密码" />');
+
+$("#syant_bt1").click(function(){
+     var u=$("#password");
+    alert(u.val());
+});

@@ -1,0 +1,120 @@
+<html><head></head>
+<script language=Javascript src="/js/IWCommon.js_5.0.43"></script>
+
+<script language=Javascript src="/js/IWExplorer.js_5.0.43"></script>
+
+<script language=Javascript src="/js/IWCSData.js_5.0.43"></script>
+
+<script language=Javascript src="/js/IWCL.js_5.0.43"></script>
+<script language=Javascript>
+function FormDefaultSubmit() {return false;}
+function SubmitClick(objname, param, ADoValidation) {return parent.SubmitClick(objname, param, ADoValidation);}
+function rollon(row,where){ 
+var tablecolor;
+if (where == 'over'){
+ currentcolor=document.getElementById(row).style.getAttribute("backgroundColor")
+ document.getElementById(row).style.backgroundColor='' 
+ }else{ 
+ document.getElementById(row).style.setAttribute("backgroundColor",currentcolor) }
+}
+var IWDBGRID1IWCL;
+
+function Initialize() {
+document.body.leftMargin = 0;
+document.body.topMargin = 0;
+InitRects(177, 289);
+IWDBGRID1IWCL = new CreateIWCLObject(IWCLForm, "IWDBGRID1", "IWDBGRID1IWCL");
+if (IWDBGRID1IWCL.Item != null) {
+ IWDBGRID1IWCL.SetAlign(alNone);
+ IWDBGRID1IWCL.SetAnchors(new CreateAnchors(true, false, true, false));
+}
+}
+</script>
+<body  BGColor=#C0DCC0 OnLoad="Initialize();" OnResize="Body_OnResize();">
+<form onsubmit="return FormDefaultSubmit();" style="font: 10pt;">
+  <table id="IWDBGRID1" border="0" cellpadding="0" cellspacing="0" width="137"><tr>
+    <th>&nbsp</th>
+    <td valign="middle" align="center" NOWRAP  bgcolor="#C0DCC0">
+      <font style="font-size:10pt;">选择姓名:</font>
+    </td>
+  </tr>
+  <tr id="1">
+    <td>&nbsp </td>
+    <td valign="middle" align="left" NOWRAP>
+      <font style="font-size:10pt;"><a href="#" onclick="return SubmitClickConfirm('IWDBGRID1','0_001     ', true, '')">陈步雄     </a>
+      </font>
+    </td>
+  </tr>
+  <tr id="2">
+    <td>&nbsp </td>
+    <td valign="middle" align="left" NOWRAP>
+      <font style="font-size:10pt;"><a href="#" onclick="return SubmitClickConfirm('IWDBGRID1','0_002     ', true, '')">廖得爱     </a>
+      </font>
+    </td>
+  </tr>
+  <tr id="3">
+    <td>&nbsp </td>
+    <td valign="middle" align="left" NOWRAP>
+      <font style="font-size:10pt;"><a href="#" onclick="return SubmitClickConfirm('IWDBGRID1','0_003     ', true, '')">何绍太     </a>
+      </font>
+    </td>
+  </tr>
+  <tr id="4">
+    <td>&nbsp </td>
+    <td valign="middle" align="left" NOWRAP>
+      <font style="font-size:10pt;"><a href="#" onclick="return SubmitClickConfirm('IWDBGRID1','0_000     ', true, '')">查询      </a>
+      </font>
+    </td>
+  </tr>
+  <tr id="5">
+    <td>&nbsp </td>
+    <td valign="middle" align="left" NOWRAP>
+      <font style="font-size:10pt;"><a href="#" onclick="return SubmitClickConfirm('IWDBGRID1','0_007     ', true, '')">廖菊凤     </a>
+      </font>
+    </td>
+  </tr>
+  <tr id="6">
+    <td>&nbsp </td>
+    <td valign="middle" align="left" NOWRAP>
+      <font style="font-size:10pt;"><a href="#" onclick="return SubmitClickConfirm('IWDBGRID1','0_006     ', true, '')">赵守蕊     </a>
+      </font>
+    </td>
+  </tr>
+  <tr id="7">
+    <td>*</td>
+    <td valign="middle" align="left" NOWRAP>
+      <font style="font-size:10pt;"><a href="#" onclick="return SubmitClickConfirm('IWDBGRID1','0_004     ', true, '')">陈尔来     </a>
+      </font>
+    </td>
+  </tr>
+  <tr id="8">
+    <td>&nbsp </td>
+    <td valign="middle" align="left" NOWRAP>
+      <font style="font-size:10pt;"><a href="#" onclick="return SubmitClickConfirm('IWDBGRID1','0_008     ', true, '')">李玉兰     </a>
+      </font>
+    </td>
+  </tr>
+  <tr id="9">
+    <td>&nbsp </td>
+    <td valign="middle" align="left" NOWRAP>
+      <font style="font-size:10pt;"><a href="#" onclick="return SubmitClickConfirm('IWDBGRID1','0_009     ', true, '')">谢必瑾     </a>
+      </font>
+    </td>
+  </tr>
+  <tr id="10">
+    <td>&nbsp </td>
+    <td valign="middle" align="left" NOWRAP>
+      <font style="font-size:10pt;"><a href="#" onclick="return SubmitClickConfirm('IWDBGRID1','0_010     ', true, '')">管理员     </a>
+      </font>
+    </td>
+  </tr>
+  <tr id="11">
+    <td>&nbsp </td>
+    <td valign="middle" align="left" NOWRAP>
+      <font style="font-size:10pt;"><a href="#" onclick="return SubmitClickConfirm('IWDBGRID1','0_111     ', true, '')">新用户     </a>
+      </font>
+    </td>
+  </tr>
+  </table>
+</form>
+</body></html>

@@ -1,0 +1,9 @@
+[OCR]
+1=discuz_ejew;2;1,>C0FFFF;50*20;1,0;0,0;ejewimage.php?act=ejew;0;2;  //http://x-shop.cn/bbs
+2=discuz_blackwhite;1;1,=000000;32*24;1,0;0,0;seccode.php;0;2;  //http://bbs.ihuge.net
+3=discuz_seccode;2;1,=C8C8C8;62*25;1,0;0,0;seccode.php;0;2;   //http://bbs.ourfr.com
+4=discuz_img;2;1,=C8C8C8;70*20;1,0;0,0;img.php;0;2;  //http://cross.qq.topzj.com
+5=phpwind;2;1,=FFFFFF;60*20;1,1;1,1;ck.php,ck.php?windid=;0;7;  //http://bbs.lupaworld.com
+6=dvbbs7;1;1,>FFF000;80*20;1,1;0,0;dv_getcode.asp;0;1;  //http://www.zifans.com/bbs
+7=dvbbs6;1;0,>7FFFFF;40*10;1,0;0,0;dv_getcode.asp;0;1;  //http://www.369dm.com/bbs
+8=discuz_verifyimg;2;1,=C8C8C8;8p*20;1,0;0,0;verifyimg.php?act=water;1; //http://bbs.thinkdifferent.cc

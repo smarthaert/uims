@@ -1,0 +1,78 @@
+NATIVEEXCEL INSTALLATION NOTES
+
+DELPHI XE
+  - Select the menu Component/Install packages.
+  - Click the Add button and browse to the installation directory. 
+  - Select the DELPHI2011 sub directory. 
+  - Select the file NativeExcelD2011.bpl
+  - Select the menu "Tools/Options..."
+  - Add DELPHI2011 directory into the Library Path in 
+    "Environment Options/Delphi options/Library/Library Path"
+
+DELPHI 2009
+  - Select the menu Component/Install packages.
+  - Click the Add button and browse to the installation directory. 
+  - Select the DELPHI2009 sub directory. 
+  - Select the file NativeExcelD2009.bpl
+  - Select the menu "Tools/Options..."
+  - Add DELPHI2009 directory into the Library Path in 
+    "Environment Options/Delphi options/Library - Win32/Library Path"
+
+DELPHI 2007
+  - Select the menu Component/Install packages.
+  - Click the Add button and browse to the installation directory. 
+  - Select the DELPHI2007 sub directory. 
+  - Select the file NativeExcelD2007.bpl
+  - Select the menu "Tools/Options..."
+  - Add DELPHI2007 directory into the Library Path in 
+    "Environment Options/Delphi options/Library - Win32/Library Path"
+
+DELPHI 2006
+  - Select the menu Component/Install packages.
+  - Click the Add button and browse to the installation directory. 
+  - Select the DELPHI2006 sub directory. 
+  - Select the file NativeExcelD2006.bpl
+  - Select the menu "Tools/Options..."
+  - Add DELPHI2006 directory into the Library Path in 
+    "Environment Options/Delphi options/Library - Win32/Library Path"
+
+DELPHI 2005
+  - Select the menu Component/Install packages.
+  - Click the Add button and browse to the installation directory. 
+  - Select the DELPHI2005 sub directory. 
+  - Select the file NativeExcelD2005.bpl
+  - Select the menu "Tools/Options..."
+  - Add DELPHI2005 directory into the Library Path in 
+    "Environment Options/Delphi options/Library - Win32/Library Path"
+
+DELPHI 7
+  - Select the menu Component/Install packages.
+  - Click the Add button and browse to the installation directory. 
+  - Select the DELPHI7 sub directory. 
+  - Select the file NativeExcelD7.bpl
+  - Add DELPHI7 directory into the Library Path in 
+    "Environment Options/Library/Library Path"
+
+DELPHI 6
+  - Select the menu Component/Install packages.
+  - Click the Add button and browse to the installation directory. 
+  - Select the DELPHI6 sub directory. 
+  - Select the file NativeExcelD6.bpl
+  - Add DELPHI6 directory into the Library Path in 
+    "Environment Options/Library/Library Path"
+
+DELPHI 5
+  - Select the menu Component/Install packages.
+  - Click the Add button and browse to the installation directory. 
+  - Select the DELPHI5 sub directory. 
+  - Select the file NativeExcelD5.bpl
+  - Add DELPHI5 directory into the Library Path in 
+    "Environment Options/Library/Library Path"
+
+DELPHI 4
+  - Select the menu Component/Install packages.
+  - Click the Add button and browse to the installation directory. 
+  - Select the DELPHI4 sub directory. 
+  - Select the file NativeExcelD4.bpl
+  - Add DELPHI4 directory into the Library Path in 
+    "Environment Options/Library/Library Path"

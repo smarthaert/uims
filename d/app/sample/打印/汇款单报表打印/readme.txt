@@ -1,0 +1,2 @@
+本实例数据库为SQLServer数据库，数据库名为mrxt，配置ODBC为mqis。
+使用本例时，请安装SQLServer2000数据库，利用企业管理器恢复数据库脚本或附加数据库。本实例数据库脚本为mrxt.sql，附加文件为mrxt_data和mrxt_long,均保存在本实例data目录下。

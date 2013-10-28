@@ -1,0 +1,125 @@
+object Form8: TForm8
+  Left = 0
+  Top = 0
+  Caption = 
+    'Barcode studio,  demo project, http://psoft.sk, http://barcode-s' +
+    'oftware.eu'
+  ClientHeight = 252
+  ClientWidth = 786
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 440
+    Top = 32
+    Width = 52
+    Height = 13
+    Caption = 'Symbology'
+  end
+  object Label2: TLabel
+    Left = 440
+    Top = 64
+    Width = 77
+    Height = 13
+    Caption = 'Value to encode'
+  end
+  object bc: TpsBarcode
+    Left = 8
+    Top = 16
+    Width = 321
+    Height = 217
+    BackgroundColor = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Arial'
+    Font.Style = []
+    BarcodeSymbology = bcEan13
+    LinesColor = clBlack
+    BarCode = '9771210107001'
+    CaptionUpper.Visible = True
+    CaptionUpper.Font.Charset = DEFAULT_CHARSET
+    CaptionUpper.Font.Color = clWindowText
+    CaptionUpper.Font.Height = -13
+    CaptionUpper.Font.Name = 'Arial'
+    CaptionUpper.Font.Style = []
+    CaptionUpper.AutoSize = True
+    CaptionUpper.Alignment = taLeftJustify
+    CaptionUpper.AutoCaption = False
+    CaptionUpper.MaxHeight = 25
+    CaptionUpper.ParentFont = False
+    CaptionUpper.LineSpacing = 0
+    CaptionUpper.BgColor = clNone
+    CaptionBottom.Visible = True
+    CaptionBottom.Font.Charset = DEFAULT_CHARSET
+    CaptionBottom.Font.Color = clWindowText
+    CaptionBottom.Font.Height = -13
+    CaptionBottom.Font.Name = 'Arial'
+    CaptionBottom.Font.Style = []
+    CaptionBottom.AutoSize = True
+    CaptionBottom.Alignment = taLeftJustify
+    CaptionBottom.AutoCaption = False
+    CaptionBottom.MaxHeight = 25
+    CaptionBottom.ParentFont = False
+    CaptionBottom.LineSpacing = 0
+    CaptionBottom.BgColor = clNone
+    CaptionHuman.Visible = True
+    CaptionHuman.Font.Charset = DEFAULT_CHARSET
+    CaptionHuman.Font.Color = clWindowText
+    CaptionHuman.Font.Height = -13
+    CaptionHuman.Font.Name = 'Arial'
+    CaptionHuman.Font.Style = []
+    CaptionHuman.AutoSize = True
+    CaptionHuman.Alignment = taLeftJustify
+    CaptionHuman.AutoCaption = False
+    CaptionHuman.MaxHeight = 25
+    CaptionHuman.ParentFont = False
+    CaptionHuman.LineSpacing = 0
+    CaptionHuman.BgColor = clNone
+    Params.GS1.FNC1InputType = gs1Separators
+    Params.GS1.FNC1Type = fnc1None
+    Params.PDF417.Mode = psPDF417Alphanumeric
+    Params.PDF417.SecurityLevel = psPDF417AutoEC
+    Params.PDF417.FileSize = 0
+    Params.PDF417.Kind = pkStandard
+    Params.PDF417.Checksum = 0
+    Params.PDF417.UseMacro = False
+    Params.DataMatrix.Encoding = dmeAutomatic
+    Params.DataMatrix.Version = psDMAutomatic
+    Params.QRCode.EccLevel = QrEccLevelM
+    Params.QRCode.Mode = QrAutomatic
+    Params.QRCode.MicroQR = False
+    Params.QRCode.Version = 0
+    Params.QRCode.Mask = 0
+    Params.QRCode.Checksum = 0
+    Options = [boTransparent, boSecurity, boStartStopLines, boAddOnUp, boEnableEditor, boAutoSize, boAutoHint, boAutoCheckDigit, boEditorAfterCreate]
+    ErrorInfo.Mode = emDrawErrorString
+  end
+  object cbSymbology: TpsComboBox
+    Left = 560
+    Top = 29
+    Width = 209
+    Height = 21
+    Style = csDropDownList
+    TabOrder = 1
+    OnChange = cbSymbologyChange
+    Options = []
+    SelectedSymbology = bcNone
+  end
+  object edValue: TEdit
+    Left = 560
+    Top = 56
+    Width = 209
+    Height = 21
+    TabOrder = 2
+    Text = 'edValue'
+    OnChange = edValueChange
+  end
+end

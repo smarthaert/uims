@@ -1,0 +1,58 @@
+package BarcodeStudio;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Barcode studio'}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl,
+  vclx,
+  dbrtl,
+  bdertl,
+  vcldb,
+  vclimg;
+
+contains
+  psBarcodeReg in '..\Source\psBarcodeReg.pas',
+  psCodeSpecs in '..\Source\psCodeSpecs.pas',
+  psCodeRes in '..\Source\psCodeRes.pas',
+  psCodeFN in '..\Source\psCodeFN.pas',
+  psTypes in '..\Source\psTypes.pas',
+  psBarcodeComp in '..\Source\psBarcodeComp.pas',
+  psCodeExceptions in '..\Source\psCodeExceptions.pas',
+  psBarcodeFmt in '..\Source\psBarcodeFmt.pas' {psBarcodeEditorFmt},
+  psCodeGS1 in '..\Source\psCodeGS1.pas',
+  psBarcode in '..\source\psBarcode.pas',
+  psCodeExports in '..\Source\psCodeExports.pas',
+  psCodeReader in '..\Source\psCodeReader.pas',
+  psBoxes in '..\source\psBoxes.pas',
+  psCodeDB in '..\Source\psCodeDB.pas',
+  psReportCanvas in '..\source\psReportCanvas.pas' {psPrintParamsFmt},
+  psCodeFNlite in '..\Source\psCodeFNlite.pas',
+  psCode2D in '..\Source\psCode2D.pas',
+  psCodeProf in '..\Source\psCodeProf.pas',
+  psCodeStudio in '..\Source\psCodeStudio.pas';
+
+end.

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2013-01-20 23:16:58.265.pas,C:\Documents and Settings\delphi\My Documents\RAD Studio\Projects\Unit1.pas=C:\Documents and Settings\delphi\桌面\pu12306\frmMain.pas</Transaction>
+    <Transaction>2013-01-20 23:16:58.265.dfm,C:\Documents and Settings\delphi\My Documents\RAD Studio\Projects\Unit1.dfm=C:\Documents and Settings\delphi\桌面\pu12306\frmMain.dfm</Transaction>
+    <Transaction>2013-01-20 23:17:02.406.dproj,C:\Documents and Settings\delphi\My Documents\RAD Studio\Projects\Project1.dproj=C:\Documents and Settings\delphi\桌面\pu12306\PU12306.dproj</Transaction>
+    <Transaction>2013-01-20 23:46:52.359.pas,C:\Documents and Settings\delphi\桌面\pu12306\Unit1.pas=C:\Documents and Settings\delphi\桌面\pu12306\U_javascript.pas</Transaction>
+    <Transaction>2013-01-20 23:47:24.984.pas,C:\Documents and Settings\delphi\桌面\pu12306\Unit1.pas=C:\Documents and Settings\delphi\桌面\pu12306\U_Syant.pas</Transaction>
+    <Transaction>2013-01-21 00:25:43.015.pas,C:\Documents and Settings\delphi\桌面\pu12306\Unit1.pas=C:\Documents and Settings\delphi\桌面\pu12306\U_Web.pas</Transaction>
+    <Transaction>2013-01-21 20:59:39.562.pas,C:\Documents and Settings\delphi\桌面\pu12306\Unit1.pas=C:\Documents and Settings\delphi\桌面\pu12306\U_Info.pas</Transaction>
+    <Transaction>2013-01-22 19:20:43.843.pas,C:\Documents and Settings\delphi\桌面\pu12306\Unit2.pas=C:\Documents and Settings\delphi\桌面\pu12306\frmContent.pas</Transaction>
+    <Transaction>2013-01-22 19:20:43.843.dfm,C:\Documents and Settings\delphi\桌面\pu12306\Unit2.dfm=C:\Documents and Settings\delphi\桌面\pu12306\frmContent.dfm</Transaction>
+    <Transaction>2013/01/24 17:15:18.078.pas,E:\New Folder\pu12306\U_Syant.pas=</Transaction>
+    <Transaction>2013-01-25 00:13:51.937.pas,C:\Documents and Settings\delphi\桌面\pu12306\Unit1.pas=C:\Documents and Settings\delphi\桌面\pu12306\U_base.pas</Transaction>
+  </Transactions>
+</BorlandProject>

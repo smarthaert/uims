@@ -1,0 +1,43 @@
+1;EAN 8;EAN 8 (2 or 5 digit supplement);bcEan8;1;1234567;stLinear
+2;EAN 13;EAN 13 (2 or 5 digit supplement);bcEan13;2;9771210107001;stLinear
+3;Codabar;Codabar (Monarch, NW-7, USD-4, 2 of 7 code);bcCodabar;3;A0123+-$/:68A;stLinear
+4;Code 39 Standard;Code 39 Standard;bcCode39Standard;4;PSOFT;stLinear
+5;Code 39 Extended;Code 39 Extended;bcCode39Full;5;PSOFT;stLinear
+6;Code 93 Standard;Code 93 Standard;bcCode93Standard;6;PSOFT;stLinear
+7;Code 93 Extended;Code 93 Extended;bcCode93Full;7;PSOFT;stLinear
+8;Code 128;Code 128;bcCode128;8;PSOFT;stLinear
+9;AbcCodabar;AbcCodabar;bcABCCodabar;9;ABCCBA;stLinear
+10;2/5 Datalogic;2/5 Datalogic, Code25, 2 of 5;bc25Datalogic;10;123456;stLinear
+11;2/5 Interleaved (ITF);Code25, 2 of 5, ITF;bc25Interleaved;11;123456;stLinear
+12;2/5 Matrix ;Code25, 2/5 Matrix;bc25Matrix;12;123456;stLinear
+13;2/5 Industrial;Code25, 2/5 Industrial;bc25Industrial;13;123456;stLinear
+14;2/5 IATA;Code25, 2/5 IATA;bc25IATA;14;123456;stLinear
+15;2/5 INVERT;Code25, 2/5 INVERT;bc25Invert;15;123456;stLinear
+16;ITF;ITF6, ITF14 (SSC14), ITF16;bcITF;16;0977121010700;stLinear
+17;ISBN (Bookland);ISBN (International Standard Book Number);bcISBN;17;80-7226-102;stLinear
+18;ISSN;ISSN (International Standard Serial Number);bcISSN;18;80-7226-102;stLinear
+19;ISMN;ISMN (International Standard Music Number);bcISMN;19;80-7226-102;stLinear
+20;UPC-A;UPC-A (with or without supplements);bcUPCA;20;01234567890;stLinear
+21;UPC-E0;UPC-E0 (with or without supplements);bcUPCE0;21;0123456;stLinear
+22;UPC-E1;UPC-E1 (with or without supplements);bcUPCE1;22;0123456;stLinear
+23;UPC-Shipping;UPC-Shipping;bcUPCShipping;23;1234567890123;stLinear
+24;JAN8;Japanese version of  EAN 8;bcJAN8;25;49123456;stLinear
+25;JAN13;Japanese version of  EAN 13;bcJAN13;26;491234567890;stLinear
+26;PostNet;PostNet (ZIP, ZIP+4, DPBC);bcPostNet;28;12345678901;stPostalCode
+27;Planet;Planet Barcode;bcPlanet;29;12345678901;stPostalCode
+28;Royal Mail Barcode;Royal Mail Barcode, RMS4CC;bcRoyalMail;30;123456789;stPostalCode
+29;4 State barcode;4 State barcode;bc4State;31;123456;stPostalCode
+30;Dutch 4-State Postal;Dutch 4-State Postal;bcDutch4StatePostal;32;3224BC10;stPostalCode
+31;Singapore Post 4-State Mail Code;Singapore Post 4-State Mail Code;bcSingapore4StatePostalCode;34;123456;stLinear
+32;PostBar;PostBar, CPC 4 State;bcPostBar;35;123456;stLinear
+33;OPC;OPC (Optical Industry Association);bcOPC;36;1234567897;stLinear
+34;2/5 Coop;Code25, 2/5 Matrix;bc25Coop;37;123456;stLinear
+35;Code 11;Code 11 (USD-8);bcCode11;38;123456;stLinear
+36;PZN;Pharma-Zentral-Nummer;bcPZN;39;123456;stLinear
+37;PDF417;PDF417, MicroPDF417, MAcroPDf, PDF417 Truncated;bcPDF417;40;PSOFT, http://www.psoft.sk, email: peter@psoft.sk;stStacked
+38;FIM;FIM A,B,C,D;bcFim;46;A;stPostalCode
+39;Telepen;Telepen;bcTelepen;47;123456789;stPostalCode
+40;InteligentMail barcode;OneCode 4CB, USPS 4CB, 4-CB, 4-State Customer Barcode, USPS OneCode Solution Barcode;bcIntelligentMail;48;01-234-567094-987654321-01234567891;stPostalCode
+41;Australia Post Barcode;Australia 4-state postal barcode, Australia Post Customer Barcode;bcAustraliaPost;49;1196184209;stPostalCode
+42;DataMatrix;DataMatrix;bcDataMatrix;50;Authors homepage : http://barcode-software.eu , http://psoft.sk;stMatrix
+43;QR Code;QR code, Code QR, Quick Response code, Micro QR code;bcQRCode;51;Authors homepage : http://barcode-software.eu , http://psoft.sk;stMatrix

@@ -1,0 +1,889 @@
+﻿
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<meta name="Robots"   content="none"/>
+<meta http-equiv="Expires" content="0"/>
+<meta http-equiv="Cache-Control"  content="no-cache"/> 
+<meta http-equiv="pragma"  content="no-cache"/> 
+<title>车票预订</title>
+
+<link  href="/otsweb/css/style.css" rel="stylesheet"  type="text/css"/>
+<link  href="/otsweb/css/newsty.css" rel="stylesheet"  type="text/css"/>
+<link  href="/otsweb/css/contact.css" rel="stylesheet"  type="text/css"/>
+<link href="/otsweb/css/validation.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/otsweb/css/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="/otsweb/css/suggest.css"/>
+<link href="/otsweb/css/cupertino/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css" />
+<link href="/otsweb/css/ots_common.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="http://www.12306.cn/mormhweb/images/favicon.ico"/>
+<script type="text/javascript" src="/otsweb/js/common/iepngfix_tilebg.js?version=5.68"></script>
+<script src="/otsweb/js/common/jquery-1.4.2.min.js?version=5.68" type="text/javascript"></script>
+<script src="/otsweb/js/common/autoHeight.js?version=5.68" type="text/javascript"></script>
+<script src="/otsweb/js/common/jquery.bgiframe.min.js?version=5.68" type="text/javascript"></script>
+<script src="/otsweb/js/common/jquery.easyui.min.js?version=5.68" type="text/javascript"></script>
+<script src="/otsweb/js/common/jquery.form.js?version=5.68" type="text/javascript"></script>
+<script src="/otsweb/js/common/datepicker/WdatePicker.js?version=5.68" type="text/javascript"></script>
+<script src="/otsweb/js/common/j.suggest.js?version=5.68" type="text/javascript"></script>
+<script src="/otsweb/js/common/school_display1.js?version=5.68" type="text/javascript"></script>
+<script src="/otsweb/js/common/school_suggest1.js?version=5.68" type="text/javascript"></script>
+<script src="/otsweb/js/common/city_name_suggest.js?version=5.68" type="text/javascript"></script>
+<script src="/otsweb/js/common/trainCodeSuggest.js?version=5.68" type="text/javascript"></script>
+<script src="/otsweb/js/common/date.js?version=5.68" type="text/javascript"></script>
+<script src="/otsweb/js/common/sidetag.js?version=5.68" type="text/javascript"></script>
+
+
+<script>
+   $(document).ready(function(){
+	   if(parent.notLogin==undefined) {
+		   parent.location='/otsweb' + '/main.jsp';
+		   return;
+		   }
+	        var isHide = "";
+	        if (isHide == "true") {
+		        if(parent.hideMenu){
+		        	//parent.hideMenu();
+			    }
+		     } else {
+		    	 if(parent.showMenu){
+		    		 parent.showMenu();
+				 }
+			 }
+			 var clicktitle = '车票预订';
+			 if(parent.clickMenu&&clicktitle!==''){
+				 parent.clickMenu('车票预订');
+		     }
+
+			 
+			 var isLogin= true
+			 var u_name = '王威';
+			 if (isLogin) {
+			  parent.hasLogin(u_name);
+	  	     }else{
+	  	  	  parent.notLogin();
+	      	 }
+	 });
+</script>
+</head>
+<body>
+
+<script type="text/javascript"
+	src="/otsweb/js/common/jquery.validate.min.js?version=5.68"></script>
+<script type="text/javascript"
+	src="/otsweb/js/common/formCheck.js?version=5.68" charset="UTF-8"></script>
+<script
+	src="/otsweb/js/order/constants_passenger_info.js?version=5.68"
+	type="text/javascript"></script>
+<script src="/otsweb/js/order/query_passenger.js?version=5.68"
+	type="text/javascript"></script>
+<script src="/otsweb/js/order/orderQueue.js?version=5.68"
+	type="text/javascript"></script>
+<script src="/otsweb/js/order/save_passenger_info.js?version=5.68"
+	type="text/javascript"></script>
+<script type="text/javascript">
+	var studentTicketStartDate = "06-01 00:00:00&12-01 00:00:00&01-01 00:00:00";
+	var studentTicketEndDate = "09-30 00:00:00&12-31 00:00:00&03-31 00:00:00";
+	var _clickBuyStudentTicket = "";
+	var queueOrderTime = '';
+	var win_pop;
+	var ctx = '/otsweb';
+	var isAsync = '1';
+	//重新选择
+	function cancelToQuery() {
+		var form = document.getElementById("confirmPassenger");
+		form.action = "querySingleAction.do?method=init";
+		form.submit();
+	}
+	//确认是否重新选择
+	function confirmSelect(formId) {
+		if (confirm("重新选择将取消您的订单，是否继续?")) {
+			if ($("#" + formId).valid()) {
+				$(":button").attr("disabled", true);
+				$(":button").addClass("long_button_x");
+			}
+			cancelToQuery();
+		} else {
+			return false;
+		}
+	}
+
+	$(document).ready(function() {
+		//加载数据提示等待
+		$("#showPassengerFilter").html("<div>常用联系人加载中，请稍候...	<div>");
+		loadDataAjax();
+	});
+
+	function loadDataAjax() {
+		var passengerJson = "";
+		var ticketTypeReserveFlags = [{"epayFlag":true,"ticket_type_code":"1"},{"epayFlag":true,"ticket_type_code":"2"},{"epayFlag":false,"ticket_type_code":"3"},{"epayFlag":false,"ticket_type_code":"4"}];
+		var limitBuySeatTicketDTO = {"seat_type_codes":[{"end_station_name":"","end_time":"","id":"M","start_station_name":"","start_time":"","value":"一等座"},{"end_station_name":"","end_time":"","id":"O","start_station_name":"","start_time":"","value":"二等座"},{"end_station_name":"","end_time":"","id":"P","start_station_name":"","start_time":"","value":"特等座"}],"ticket_seat_codeMap":{"3":[{"end_station_name":"","end_time":"","id":"O","start_station_name":"","start_time":"","value":"二等座"}],"2":[{"end_station_name":"","end_time":"","id":"M","start_station_name":"","start_time":"","value":"一等座"},{"end_station_name":"","end_time":"","id":"O","start_station_name":"","start_time":"","value":"二等座"},{"end_station_name":"","end_time":"","id":"P","start_station_name":"","start_time":"","value":"特等座"}],"1":[{"end_station_name":"","end_time":"","id":"M","start_station_name":"","start_time":"","value":"一等座"},{"end_station_name":"","end_time":"","id":"O","start_station_name":"","start_time":"","value":"二等座"},{"end_station_name":"","end_time":"","id":"P","start_station_name":"","start_time":"","value":"特等座"}],"4":[{"end_station_name":"","end_time":"","id":"M","start_station_name":"","start_time":"","value":"一等座"},{"end_station_name":"","end_time":"","id":"O","start_station_name":"","start_time":"","value":"二等座"},{"end_station_name":"","end_time":"","id":"P","start_station_name":"","start_time":"","value":"特等座"}]},"ticket_type_codes":[{"end_station_name":"","end_time":"","id":"1","start_station_name":"","start_time":"","value":"成人票"},{"end_station_name":"","end_time":"","id":"2","start_station_name":"","start_time":"","value":"儿童票"},{"end_station_name":"","end_time":"","id":"3","start_station_name":"","start_time":"","value":"学生票"},{"end_station_name":"","end_time":"","id":"4","start_station_name":"","start_time":"","value":"残军票"}]};
+		var ticketTypeReserveFlagMap = {};
+		$
+				.ajax({
+					url : ctx
+							+ '/order/confirmPassengerAction.do?method=getpassengerJson',
+					type : "POST",
+					dataType : "json",
+					success : function(data) {
+						passengerJson = data.passengerJson;
+						if (passengerJson == null || passengerJson == undefined
+								|| passengerJson == "") {
+							$("#showPassengerFilter").html("未查找到常用联系人");
+						} else {
+							setIframeHight(parent.document
+									.getElementById("main"),
+									passengerJson.length);
+							$
+									.each(
+											ticketTypeReserveFlags,
+											function(index, item) {
+												ticketTypeReserveFlagMap[item.ticket_type_code] = item.epayFlag;
+											});
+							$("#passenger_filter_input").query_passenger(
+									passengerJson, 'showPassengerFilter',
+									false, limitBuySeatTicketDTO,
+									ticketTypeReserveFlagMap);
+							
+						}
+						;
+
+					},
+					error : function(XMLHttpRequest, textStatus, errorThrown) {
+						//alert("网络忙，请稍后重试");
+						$("#showPassengerFilter")
+								.html(
+										"<div>常用联系人加载失败，请<a onclick='javascript:loadDataAjax();'>重试</a>！<div>");
+						return false;
+					}
+				});
+	}
+    //根据常用联系人的个数调整id=main的iframe的高度
+	function setIframeHight(iframe, passengerNum) {
+		var iframeHeight = parseInt(iframe.height);
+		try {
+			var passengerLength =parseInt( passengerNum);
+			var num = passengerLength / 8 + '';
+			var passengerTrNum=num;
+			if(num.indexOf(".")>0){
+				passengerTrNum = parseInt(num.substring(0, num.indexOf(".")));
+				if ((passengerTrNum % 8) > 0) {
+					passengerTrNum = passengerTrNum + 1;
+				}
+				}
+			var passengerTabHeight = passengerTrNum * 25;
+			if (!isNaN(passengerTabHeight)) {
+				iframe.height = iframeHeight + passengerTabHeight;
+			};
+		} catch (e) {
+			iframe.height=2000;
+		};
+	}
+</script>
+
+<div class="conWrap">
+	<div class="enter_w">
+		<!--title -->
+		<div class="wc_titlew">
+			<div class="wc_titleleft">
+				<img src="/otsweb/images/font/yddc.gif" />
+			</div>
+			<div class="wc_titler">
+				<ul>
+					<li class="off"><img src="/otsweb/images/er/jc_off.gif" />完成</li>
+					<li class="off"><img src="/otsweb/images/er/jc_off.gif" />确认</li>
+					<li><img src="/otsweb/images/er/jc_on.gif" />预订</li>
+					<li><img src="/otsweb/images/er/jc_on.gif" />查询</li>
+				</ul>
+			</div>
+		</div>
+
+		<!--title end-->
+		<div class="qr_title">
+			列车信息 <a href="/otsweb/order/querySingleAction.do?method=init">更改车次</a>
+		</div>
+
+		<form name="save_passenger_single" id="confirmPassenger" method="post" action="/otsweb/order/confirmPassengerAction.do?method=confirmPassengerInfoSingle"><div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="9c85472fcca9b2e12d073761d817fcf7"></div>
+			
+
+
+
+
+<script>
+//刷新验证码
+function refreshImg(){
+	$("#img_rrand_code").attr("src","/otsweb/passCodeAction.do?rand=randp"+'&'+Math.random());
+}
+//车次信息-确认提交订单时用
+var train_date_str_ = "2013-02-13";
+var station_train_code_ = "G1002";
+var from_station_name_ = "深圳北";
+var to_station_name_ = "武汉";
+var to_station_code_ = "WHN";
+var start_time_str_ = "07:00";
+var arrive_time_str_ = "11:52";
+var lishi_ = "04:52";
+var cardflag = false;//是否使用护照
+</script>
+<script>
+$().ready(function() {
+	search_class_gray();
+
+	//清空检索文本框的默认值
+	$("#passenger_filter_input").focus(function(){
+		var search = $("#passenger_filter_input").val();
+		if (search == '中文或拼音首字母') {
+			search_class_plain();
+			$("#passenger_filter_input").val("");
+		}
+	});
+
+	// 显示检索文本框的默认值
+	$("#passenger_filter_input").blur(function(){
+		var search = $("#passenger_filter_input").val();
+		if (search == '') {
+			search_class_gray();
+			$("#passenger_filter_input").val("中文或拼音首字母");
+		}
+	});
+});
+
+//文本框样式：正常样式
+function search_class_plain() {
+	$("#passenger_filter_input").removeClass("input_20txt_gray");
+	$("#passenger_filter_input").addClass("input_20txt");
+}
+
+// 文本框样式：灰色字体
+function search_class_gray() {
+	$("#passenger_filter_input").removeClass("input_20txt");
+	$("#passenger_filter_input").addClass("input_20txt_gray");
+}
+</script>
+<input type="hidden" name="leftTicketStr" id="left_ticket"
+	value="O053800394M083800050P099800008" />
+	
+<table width="100%" border="0" cellspacing="1" cellpadding="0"
+	class="qr_box">
+	<colgroup style="width: 20%">
+	</colgroup>
+	<colgroup style="width: 20%">
+	</colgroup>
+	<colgroup style="width: 20%">
+	</colgroup>
+	<colgroup style="width: 20%">
+	</colgroup>
+	<colgroup style="width: 20%">
+	</colgroup>
+	<tr style="background-color: #F3F8FC">
+		<td class="bluetext">2013年02月13日</td>
+		<td class="bluetext">G1002次</td>
+		<td class="bluetext">深圳北（07:00 开 ）
+		</td>
+		<td class="bluetext">武汉（11:52到 ）
+		</td>
+
+		<td class="bluetext">历时（04:52）</td>
+	</tr>
+	
+		
+		
+			<tr>
+		
+		<td>一等座(838.00元)有票</td>
+	
+		
+		
+		<td>二等座(538.00元)有票</td>
+	
+		
+		
+		<td>特等座(998.00元)8张票</td>
+	
+	</tr>
+	<tr>
+		<td colspan="5" class="redtext">以上余票信息随时发生变化，仅作参考</td>
+	</tr>
+</table>
+
+
+	<div class="qr_title">
+		我的常用联系人-<span><a href="/otsweb/passengerAction.do?method=initUsualPassenger12306">增加或修改常用联系人</a></span><span style="margin-left: 2%;">快速搜索&nbsp;</span><input name="textfield" type="text" id="passenger_filter_input"
+				value="中文或拼音首字母" class="input_20txt">
+	</div>
+	<table id="passenger_single_tb_id" width="100%" border="0" cellspacing="1" cellpadding="0" 
+		class="qr_box">
+		<colgroup style="width: 11%">
+		</colgroup>
+		<colgroup style="width: 11%">
+		</colgroup>
+		<colgroup style="width: 11%">
+		</colgroup>
+		<colgroup style="width: 11%">
+		</colgroup>
+		<colgroup style="width: 11%">
+		</colgroup>
+		<colgroup style="width: 11%">
+		</colgroup>
+		<colgroup style="width: 11%">
+		</colgroup>
+		<colgroup style="width: 11%">
+		</colgroup>
+
+		<tr>
+			<td colspan="8" width="100%"><div id="showPassengerFilter"
+					style="width: 100%;"></div></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		
+	</table>
+
+
+
+<div style="width: auto;">
+	<div id="error_info"></div>
+</div>
+<div class="qr_title">
+	乘车人信息&nbsp;<span class="base_txtdiv" style="color: #0055AA;"
+		onmouseover="onStopHover_name_cardtype(this)" onmouseout="onStopOut()">(填写说明)</span>
+</div>
+
+<input type="hidden" name="orderRequest.train_date" value="2013-02-13" id="start_date">
+<input type="hidden" name="orderRequest.train_no" value="6i000G100201" id="train_no">
+<input type="hidden" name="orderRequest.station_train_code" value="G1002" id="station_train_code">
+<input type="hidden" name="orderRequest.from_station_telecode" value="IOQ" id="from_station_telecode">
+<input type="hidden" name="orderRequest.to_station_telecode" value="WHN" id="to_station_telecode">
+<input type="hidden" name="orderRequest.seat_type_code" value="" id="seat_type_code">
+
+<input type="hidden" name="orderRequest.ticket_type_order_num" value="" id="ticket_type_order_num">
+<input type="hidden" name="orderRequest.bed_level_order_num" value="000000000000000000000000000000" id="bed_level_order_num">
+
+<input type="hidden" name="orderRequest.start_time" value="07:00" id="orderRequest_start_time">
+
+<input type="hidden" name="orderRequest.end_time" value="11:52" id="orderRequest_end_time">
+<input type="hidden" name="orderRequest.from_station_name" value="深圳北" id="orderRequest_from_station_name">
+<input type="hidden" name="orderRequest.to_station_name" value="武汉" id="orderRequest_to_station_name">
+<input type="hidden" name="orderRequest.cancel_flag" value="1" id="cancel_flag">
+<input type="hidden" name="orderRequest.id_mode" value="Y" id="orderRequest_id_mode">
+<input type="hidden" value="" id="_type" />
+<input type="hidden" value="2013-02-13" id="_train_date_str" />
+<input type="hidden" value="G1002"
+	id="_station_train_code" />
+<table width="100%" border="0" cellpadding="0" cellspacing="0"
+	class="table_qr">
+	<tr>
+		<th scope="col">&nbsp;</th>
+		<th scope="col">&nbsp;</th>
+		<th scope="col">席别</th>
+		<th scope="col">票种</th>
+		<th scope="col">姓名</th>
+		<th scope="col">证件类型</th>
+		<th scope="col">证件号码</th>
+		<th scope="col">手机号</th>
+		<th scope="col"><input type="checkbox" id="checkbox_select_all" />
+			全部</th>
+	</tr>
+
+		<tr class="passenger_class" id="passenger_1">
+			<td class="s" style="width: 4%">
+			<input type="hidden"
+				name="passengerTickets" id="passenger_1_p" /> <input
+				type="hidden" name="oldPassengers"
+				id="passenger_1_old" />  
+					<a href="#" id="passenger_1_a" class="s">删除</a>
+				</td>
+			<td style="width: 6%"><div
+					id="passenger_1_index">第1位</div></td>
+			<td><select name="passenger_1_seat"
+				id="passenger_1_seat">
+					
+						<option value="M"
+							>一等座</option>
+					
+						<option value="O"
+							>二等座</option>
+					
+						<option value="P"
+							>特等座</option>
+					
+			</select> 
+				</td>
+			<td><select name="passenger_1_ticket"
+				id="passenger_1_ticket" >
+					<option value="1"
+						>成人票</option>
+					<option value="2"
+						>儿童票</option>
+					<option value="3"
+						>学生票</option>
+					<option value="4"
+						>残军票</option>
+			</select></td>
+			<td><input name="passenger_1_name" type="text"
+				id="passenger_1_name" size="12" maxlength="20"
+				class="input_20txt" value=""
+				  /></td>
+			<td><select name="passenger_1_cardtype"
+				id="passenger_1_cardtype"  >
+					
+						<option value="1"
+							>二代身份证</option>
+					
+						<option value="2"
+							>一代身份证</option>
+					
+						<option value="C"
+							>港澳通行证</option>
+					
+						<option value="G"
+							>台湾通行证</option>
+					
+						<option value="B"
+							>护照</option>
+					
+			</select></td>
+			<td><input name="passenger_1_cardno" type="text"
+				id="passenger_1_cardno" size="20" maxlength="35"
+				style="text-transform: uppercase;" class="input_20txt"
+				value=""  /></td>
+			<td><input name="passenger_1_mobileno"
+				type="text" id="passenger_1_mobileno" size="11"
+				maxlength="20" class="input_20txt"
+				value=""  /></td>
+			<td style="width: 16%"><label> 
+						<input type="checkbox" name="checkbox9"
+							id="passenger_1_isSave" value="Y" checked />    保存到常用联系人
+									      
+			</label></td>
+		</tr>
+	
+ 
+		
+			<tr style="display: none" class="passenger_class"
+				id="passenger_2">
+				<td style="width: 4%"><input type="hidden"
+					name="passengerTickets" id="passenger_2_p"
+					disabled="disabled" /> <input type="hidden" name="oldPassengers"
+					id="passenger_2_old" />  
+						<a href="#" id="passenger_2_a" class="s">删除</a>
+					</td>
+				<td style="width: 6%"><div
+						id="passenger_2_index">第2位</div></td>
+				<td>
+				<select name="passenger_2_seat"
+					id="passenger_2_seat"
+					disabled="disabled">
+						
+							<option value="M">一等座</option>
+						
+							<option value="O">二等座</option>
+						
+							<option value="P">特等座</option>
+						
+				</select> 
+				<td><select name="passenger_2_ticket"
+					id="passenger_2_ticket" disabled="disabled">
+						<option value="1">成人票</option>
+						<option value="2">儿童票</option>
+						<option value="3">学生票</option>
+						<option value="4">残军票</option>
+				</select></td>
+				<td><input name="passenger_2_name" type="text"
+					id="passenger_2_name" size="12" maxlength="30"
+					class="input_20txt" value="" disabled="disabled" /></td>
+				<td><select name="passenger_2_cardtype"
+					id="passenger_2_cardtype" disabled="disabled">
+						
+							<option value="1">二代身份证</option>
+						
+							<option value="2">一代身份证</option>
+						
+							<option value="C">港澳通行证</option>
+						
+							<option value="G">台湾通行证</option>
+						
+							<option value="B">护照</option>
+						
+				</select></td>
+				<td><input type="text" id="passenger_2_cardno"
+					name="passenger_2_cardno" size="20" maxlength="20"
+					style="text-transform: uppercase;" class="input_20txt"
+					disabled="disabled" /></td>
+				<td><input type="text"
+					id="passenger_2_mobileno"
+					name="passenger_2_mobileno" size="11"
+					maxlength="20" class="input_20txt" disabled="disabled" /></td>
+				<td style="width: 16%"><label> 
+							<input type="checkbox" name="checkbox9"
+								id="passenger_2_isSave" value="Y" checked />    保存到常用联系人
+									      
+				</label></td>
+				
+			</tr>
+		
+			<tr style="display: none" class="passenger_class"
+				id="passenger_3">
+				<td style="width: 4%"><input type="hidden"
+					name="passengerTickets" id="passenger_3_p"
+					disabled="disabled" /> <input type="hidden" name="oldPassengers"
+					id="passenger_3_old" />  
+						<a href="#" id="passenger_3_a" class="s">删除</a>
+					</td>
+				<td style="width: 6%"><div
+						id="passenger_3_index">第3位</div></td>
+				<td>
+				<select name="passenger_3_seat"
+					id="passenger_3_seat"
+					disabled="disabled">
+						
+							<option value="M">一等座</option>
+						
+							<option value="O">二等座</option>
+						
+							<option value="P">特等座</option>
+						
+				</select> 
+				<td><select name="passenger_3_ticket"
+					id="passenger_3_ticket" disabled="disabled">
+						<option value="1">成人票</option>
+						<option value="2">儿童票</option>
+						<option value="3">学生票</option>
+						<option value="4">残军票</option>
+				</select></td>
+				<td><input name="passenger_3_name" type="text"
+					id="passenger_3_name" size="12" maxlength="30"
+					class="input_20txt" value="" disabled="disabled" /></td>
+				<td><select name="passenger_3_cardtype"
+					id="passenger_3_cardtype" disabled="disabled">
+						
+							<option value="1">二代身份证</option>
+						
+							<option value="2">一代身份证</option>
+						
+							<option value="C">港澳通行证</option>
+						
+							<option value="G">台湾通行证</option>
+						
+							<option value="B">护照</option>
+						
+				</select></td>
+				<td><input type="text" id="passenger_3_cardno"
+					name="passenger_3_cardno" size="20" maxlength="20"
+					style="text-transform: uppercase;" class="input_20txt"
+					disabled="disabled" /></td>
+				<td><input type="text"
+					id="passenger_3_mobileno"
+					name="passenger_3_mobileno" size="11"
+					maxlength="20" class="input_20txt" disabled="disabled" /></td>
+				<td style="width: 16%"><label> 
+							<input type="checkbox" name="checkbox9"
+								id="passenger_3_isSave" value="Y" checked />    保存到常用联系人
+									      
+				</label></td>
+				
+			</tr>
+		
+			<tr style="display: none" class="passenger_class"
+				id="passenger_4">
+				<td style="width: 4%"><input type="hidden"
+					name="passengerTickets" id="passenger_4_p"
+					disabled="disabled" /> <input type="hidden" name="oldPassengers"
+					id="passenger_4_old" />  
+						<a href="#" id="passenger_4_a" class="s">删除</a>
+					</td>
+				<td style="width: 6%"><div
+						id="passenger_4_index">第4位</div></td>
+				<td>
+				<select name="passenger_4_seat"
+					id="passenger_4_seat"
+					disabled="disabled">
+						
+							<option value="M">一等座</option>
+						
+							<option value="O">二等座</option>
+						
+							<option value="P">特等座</option>
+						
+				</select> 
+				<td><select name="passenger_4_ticket"
+					id="passenger_4_ticket" disabled="disabled">
+						<option value="1">成人票</option>
+						<option value="2">儿童票</option>
+						<option value="3">学生票</option>
+						<option value="4">残军票</option>
+				</select></td>
+				<td><input name="passenger_4_name" type="text"
+					id="passenger_4_name" size="12" maxlength="30"
+					class="input_20txt" value="" disabled="disabled" /></td>
+				<td><select name="passenger_4_cardtype"
+					id="passenger_4_cardtype" disabled="disabled">
+						
+							<option value="1">二代身份证</option>
+						
+							<option value="2">一代身份证</option>
+						
+							<option value="C">港澳通行证</option>
+						
+							<option value="G">台湾通行证</option>
+						
+							<option value="B">护照</option>
+						
+				</select></td>
+				<td><input type="text" id="passenger_4_cardno"
+					name="passenger_4_cardno" size="20" maxlength="20"
+					style="text-transform: uppercase;" class="input_20txt"
+					disabled="disabled" /></td>
+				<td><input type="text"
+					id="passenger_4_mobileno"
+					name="passenger_4_mobileno" size="11"
+					maxlength="20" class="input_20txt" disabled="disabled" /></td>
+				<td style="width: 16%"><label> 
+							<input type="checkbox" name="checkbox9"
+								id="passenger_4_isSave" value="Y" checked />    保存到常用联系人
+									      
+				</label></td>
+				
+			</tr>
+		
+			<tr style="display: none" class="passenger_class"
+				id="passenger_5">
+				<td style="width: 4%"><input type="hidden"
+					name="passengerTickets" id="passenger_5_p"
+					disabled="disabled" /> <input type="hidden" name="oldPassengers"
+					id="passenger_5_old" />  
+						<a href="#" id="passenger_5_a" class="s">删除</a>
+					</td>
+				<td style="width: 6%"><div
+						id="passenger_5_index">第5位</div></td>
+				<td>
+				<select name="passenger_5_seat"
+					id="passenger_5_seat"
+					disabled="disabled">
+						
+							<option value="M">一等座</option>
+						
+							<option value="O">二等座</option>
+						
+							<option value="P">特等座</option>
+						
+				</select> 
+				<td><select name="passenger_5_ticket"
+					id="passenger_5_ticket" disabled="disabled">
+						<option value="1">成人票</option>
+						<option value="2">儿童票</option>
+						<option value="3">学生票</option>
+						<option value="4">残军票</option>
+				</select></td>
+				<td><input name="passenger_5_name" type="text"
+					id="passenger_5_name" size="12" maxlength="30"
+					class="input_20txt" value="" disabled="disabled" /></td>
+				<td><select name="passenger_5_cardtype"
+					id="passenger_5_cardtype" disabled="disabled">
+						
+							<option value="1">二代身份证</option>
+						
+							<option value="2">一代身份证</option>
+						
+							<option value="C">港澳通行证</option>
+						
+							<option value="G">台湾通行证</option>
+						
+							<option value="B">护照</option>
+						
+				</select></td>
+				<td><input type="text" id="passenger_5_cardno"
+					name="passenger_5_cardno" size="20" maxlength="20"
+					style="text-transform: uppercase;" class="input_20txt"
+					disabled="disabled" /></td>
+				<td><input type="text"
+					id="passenger_5_mobileno"
+					name="passenger_5_mobileno" size="11"
+					maxlength="20" class="input_20txt" disabled="disabled" /></td>
+				<td style="width: 16%"><label> 
+							<input type="checkbox" name="checkbox9"
+								id="passenger_5_isSave" value="Y" checked />    保存到常用联系人
+									      
+				</label></td>
+				
+			</tr>
+		
+	
+	
+	
+
+	<tr>
+		<td colspan="8">
+		<font color="#FF0000">*</font>&nbsp;请输入验证码：<input type="text" name="randCode" maxlength="4" tabindex="101" value="" id="rand" style="width:60px;" class="input_20txt">&nbsp;<img
+			border=0 src="/otsweb/passCodeAction.do?rand=randp"
+			id="img_rrand_code"
+			style="vertical-align: text-bottom; cursor: hand;"
+			onclick="this.src=this.src+'&'+Math.random();" title="单击刷新验证码"><a
+			href="#" onclick="javascript:refreshImg();" class="bluetext">&nbsp;&nbsp;<u>看不清，换一张</u>
+		</a>
+		</td>
+		
+		
+			<td><a href="#" class="add_ticket_passenger"> <img
+					src="/otsweb/images/er/img_add.gif" height="16" width="16"> <strong>添加1位乘车人</strong>
+			</a></td>
+		
+	</tr>
+	
+		<tr>
+			<td colspan="9" style="border-top: 1px dotted #ccc;">
+			 	<ul>
+					<li style="color: #000000;">一张有效身份证件同一乘车日期同一车次只能购买一张车票。</li>
+					<li style="color: #000000;">购票时可使用的有效身份证件包括：中华人民共和国居民身份证、港澳居民来往内地通行证、台湾居民来往大陆通行证和按规定可使用的有效护照。</li>
+					<li style="color: #000000;">购买儿童票时，乘车儿童有有效身份证件的，请填写本人有效身份证件信息。乘车儿童没有有效身份证件的，应使用同行成年人的有效身份证件信息；购票时不受前条限制，<br>但购票后、开车前须办理换票手续方可进站乘车。
+					</li>
+					<li style="color: #000000;">购买学生票时，须在<a
+						href="/otsweb/passengerAction.do?method=initUsualPassenger">我的常用联系人</a>中登记乘车人的学生详细信息。学生票乘车时间限为每年的暑假6月1日至9月30日、寒假12月1日至3月31日。购票后、开车前，须办理换票手续方可进站乘车。换票时，新生凭录取通知书，毕业生凭学校书面证明，其他凭学生优惠卡。
+					</li>
+					<li style="color: #000000;">购买残疾军人（伤残警察）优待票的，须在购票后、开车前办理换票手续方可进站乘车。换票时，不符合规定的减价优待条件，没有有效"中华人民共和国残疾军人证"或"中华<br>人民共和国伤残人民警察证"的，不予换票，所购车票按规定办理退票手续。
+					</li>
+				</ul></td>
+		</tr>
+	
+</table>
+<!-- 证件填写说明弹出框提示 -->
+
+<!-- 姓名填写说明 -->
+<div id="tip_info_div_name" class="popdivstyle"
+	style="display: none; position: absolute; top: 172px; left: 442px;">
+	<div class="pop_hd">填写说明</div>
+	<div class="pop_cd" id="stopContent">
+		<ol>
+			<li>乘客姓名必须与乘车时所使用的证件上的姓名一致。</li>
+			<li>如乘客姓名中包含生僻字可输入汉语拼音代替。例如"李燊"可输入"李shen"。</li>
+		</ol>
+	</div> 
+	<div class="pop_bd" id="stopContent"></div>
+</div>
+<!-- 证件填写说明 -->
+<div id="tip_info_div_cardtype" class="popdivstyle"
+	style="display: none; position: absolute; top: 172px; left: 442px;">
+	<div class="pop_hd">填写说明</div>
+	<div class="pop_cd" id="stopContent">
+		<ol>
+			<li>乘客证件号码必须与乘车时所使用的证件上的号码一致。</li>
+			<li>请准确、完整填写乘车人证件号码(包括字母、数字)，以免影响您办理换票、乘车等手续。</li>
+		</ol>
+	</div>
+	<div class="pop_bd" id="stopContent"></div>
+</div>
+<!-- 姓名、证件号码填写说明 -->
+<div id="tip_info_div_name_cardtype" class="popdivstyle"
+	style="display: none; position: absolute; top: 172px; left: 442px;">
+	<div class="pop_hd">填写说明</div>
+	<div class="pop_cd" id="stopContent" >
+		
+		<ol>
+			<li>请按乘车时所使用的有效身份证件准确、完整<br/>填写乘车人姓名和证件号码，</li>
+			<li>如姓名中包含生僻字，可输入汉语拼音代替。<br/>例如“李燊”可输入“李shen”。</li>
+		</ol>
+	</div> 
+	<div class="pop_bd" id="stopContent"></div>
+</div>
+
+			<div style="display: none;">
+				<div class="box-top"></div>
+				<div class="box-mid textindent" style="text-align: left;">
+					<h1>选择支付方式。</h1>
+					<p>
+						<input type="radio" name="orderRequest.reserve_flag" value="A" checked="checked" id="reserve_flag_A">
+
+						网上支付<span>须在规定时间内完成支付，快捷进站乘车。</span>
+					</p>
+					<p>
+						<input type="radio" name="orderRequest.reserve_flag" value="B" id="reserve_flag_B">
+						网上预订<span>须在规定时间内取票，否则铁路将不予以保留席位。</span>
+					</p>
+				</div>
+				<div class="box-bottom"></div>
+			</div>
+			<div class="tj_btn">
+				<button type="button"  onmouseout="this.className='long_button_u'"
+					onmousedown="this.className='long_button_u_down'"
+					onmousemove="this.className='long_button_u_over'"
+					class="long_button_u"
+					onclick="return confirmSelect('confirmPassenger');"
+					id="reChooseButton" tabindex="104">重新选择</button>
+				&nbsp;&nbsp;
+				<button type="button" onmouseout="this.className='long_button_u'"
+					onmousedown="this.className='long_button_u_down'"
+					onmousemove="this.className='long_button_u_over'"
+					class="long_button_u" onclick="confirmCancel('confirmPassenger');"
+					id="cancelButton" tabindex="103">取消订单</button>
+				&nbsp;&nbsp;
+				<button type="button" onmouseout="this.className='long_button_u'"
+					onmousedown="this.className='long_button_u_down'"
+					onmousemove="this.className='long_button_u_over'"
+					class="long_button_u"
+					onclick="return submit_form_confirm('confirmPassenger','dc')"
+					tabindex="102">提交订单</button>
+			</div>
+		</form>
+
+		<!--con end-->
+	</div>
+
+</div>
+<script type="text/javascript">
+	
+</script>
+<!--footer end-->
+</body>
+</html>
+
+<script language="javascript">
+var f = function() {
+		var message = "";
+        var messageShow ="";
+        var flag ='null';
+        if(messageShow != ""){
+			if(flag == 'u'){
+				$("#messageUp").css({display:"inline"});
+				document.getElementById("messageUp").innerHTML = message;
+			}else{
+				$("#messageDown").css({display:"inline"});
+				document.getElementById("messageDown").innerHTML = message;
+			}
+         }else{
+     		if ( message != ""){ 
+    			alert(message);
+
+    		}
+
+         } }
+         window.setTimeout(f, 500);
+</script>
+

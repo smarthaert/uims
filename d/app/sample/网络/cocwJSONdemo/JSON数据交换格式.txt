@@ -1,0 +1,8 @@
+JSON数据交换格式Delphi版本(含源代码及实现例子)。
+比XML数据交换格式简单
+
+－研究网址 
+1.官方网站：http://www.json.org/ 
+2.IBM工作室:http://www.ibm.com/developerworks/cn/web/wa-lo-json/ 
+3.WIKI百科：http://en.wikipedia.org/wiki/JSON 
+4.YAHOO专区：http://developer.yahoo.com/common/json.html 

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2010-07-14 23:36:00.578.pas,E:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Unit1.pas=E:\Documents and Settings\Administrator\桌面\新建文件夹\Unit1.pas</Transaction>
+    <Transaction>2010-07-14 23:36:00.578.dfm,E:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Unit1.dfm=E:\Documents and Settings\Administrator\桌面\新建文件夹\Unit1.dfm</Transaction>
+    <Transaction>2010-07-14 23:36:01.328.dproj,E:\Documents and Settings\Administrator\My Documents\RAD Studio\Projects\Project1.dproj=E:\Documents and Settings\Administrator\桌面\新建文件夹\Project1.dproj</Transaction>
+    <Transaction>2010-07-15 09:00:55.078.pas,E:\Documents and Settings\Administrator\桌面\新建文件夹\Unit2.pas=E:\Documents and Settings\Administrator\桌面\批量信息\UntReg.pas</Transaction>
+    <Transaction>2010-07-15 09:06:08.062.dproj,E:\Documents and Settings\Administrator\桌面\新建文件夹\Project1.dproj=E:\Documents and Settings\Administrator\桌面\批量信息\注册器\Project1.dproj</Transaction>
+    <Transaction>2010-07-15 09:14:07.640.dproj,E:\Documents and Settings\Administrator\桌面\批量信息\注册器\Project1.dproj=E:\Documents and Settings\Administrator\桌面\批量信息\注册器\Project1.dproj</Transaction>
+    <Transaction>2010-07-15 09:14:21.546.pas,E:\Documents and Settings\Administrator\桌面\新建文件夹\Unit1.pas=E:\Documents and Settings\Administrator\桌面\批量信息\注册器\UntRegFrm.pas</Transaction>
+    <Transaction>2010-07-15 09:14:21.546.dfm,E:\Documents and Settings\Administrator\桌面\新建文件夹\Unit1.dfm=E:\Documents and Settings\Administrator\桌面\批量信息\注册器\UntRegFrm.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
