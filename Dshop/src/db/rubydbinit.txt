@@ -116,6 +116,29 @@ discount:integer \
 baseline:integer \
 remark:text
 
+#库存表，直接反映现有库存信息stid_pid
+rails destroy scaffold Custstock
+rails generate scaffold Custstock \
+stid:string \
+stname:string \
+pid:string:uniq \
+barcode:string:uniq \
+goodsname:string \
+size:string \
+color:string \
+amount:integer \
+'volume:decimal{10,2}' \
+unit:string \
+'inprice:decimal{10,2}' \
+'pfprice:decimal{10,2}' \
+bundle:integer \
+discount:integer \
+baseline:integer \
+dtype:string \
+'dingjin:decimal{10,2}' \
+remark:text
+
+
 #会员优惠价配置表，特殊会员给予特殊价格pid_custid_startdate_enddate
 rails destroy scaffold Memberprice
 rails generate scaffold Memberprice \
@@ -407,6 +430,8 @@ rails g migration AddExtendsToShippers cid:string area:string custtel2:string te
 
 rails g migration add_dfee_to_ordermain 'dfee:decimal{10,2}'
 
+rails g migration add_custdate_to_custstock custdate:date
+
 
 /usr/bin/mysql -uroot -hlocalhost -pzaqwsxcde123 sgsz_development_0 --local-infile=1 -e "load data local infile '/home/ubuntu/workplace/svn/depot_v1/data/cust.csv' into table shippers fields terminated by ',' lines terminated by '\r\n'(cid,area,custname,custtel,custtel2,sname,address,tel,tel2)"
 
@@ -420,6 +445,10 @@ rails g migration AddExtendsToStocks brand:string series:string kind:string mode
 
 rails g migration AddDeliveryToOrdermains delivery:string
 
+rails g migration AddDeliveryfeeToOrdermains 'deliveryfee:decimal{10,2}'
+
+
+rails generate migration add_customer_id_to_custstock customer_id:string
 
 
 
