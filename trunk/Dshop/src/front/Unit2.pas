@@ -171,12 +171,61 @@ type
     QRLabelrarea: TQRLabel;
     QRLabeldate: TQRLabel;
     qrshp1: TQRShape;
+    OrderPrepare: TQuickRep;
+    qrbndtitle1: TQRBand;
+    qrdbtxt1: TQRDBText;
+    qrdbtxt2: TQRDBText;
+    qrdbtxt3: TQRDBText;
+    qrdbtxt4: TQRDBText;
+    qrdbtxt5: TQRDBText;
+    qrdbtxt6: TQRDBText;
+    qrdbtxt7: TQRDBText;
+    qrdbtxt8: TQRDBText;
+    qrdbtxt9: TQRDBText;
+    qrdbtxt10: TQRDBText;
+    qrdbtxt11: TQRDBText;
+    qrbndtitle2: TQRBand;
+    qrlbl1: TQRLabel;
+    qrlbl3: TQRLabel;
+    qrbndtitle3: TQRBand;
+    qrlbl4: TQRLabel;
+    qrlbl5: TQRLabel;
+    qrlbl6: TQRLabel;
+    qrlbl7: TQRLabel;
+    qrlbl8: TQRLabel;
+    qrlbl10: TQRLabel;
+    qrlbl11: TQRLabel;
+    qrlbl33: TQRLabel;
+    qrlbl34: TQRLabel;
+    qrlbl35: TQRLabel;
+    qrlbl36: TQRLabel;
+    qrbndtitle4: TQRBand;
+    qrlbl37: TQRLabel;
+    qrlbl38: TQRLabel;
+    qrlbl39: TQRLabel;
+    qrlbl40: TQRLabel;
+    qrlbl41: TQRLabel;
+    qrbndtitle5: TQRBand;
+    qrlbl42: TQRLabel;
+    qrlbl43: TQRLabel;
+    qrlbl44: TQRLabel;
+    qrlbl45: TQRLabel;
+    qrlbl46: TQRLabel;
+    qrlbl47: TQRLabel;
+    qrlbl48: TQRLabel;
+    qrlbl49: TQRLabel;
+    qrlbl50: TQRLabel;
+    qrlbl51: TQRLabel;
+    qrlbl52: TQRLabel;
+    qrbndtitle6: TQRBand;
+    qrlbl53: TQRLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action:
       TCloseAction);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure QuickRep1StartPage(Sender: TCustomQuickRep);
+    procedure OrderPrepareStartPage(Sender: TCustomQuickRep);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure RzEdit1KeyPress(Sender: TObject; var Key:
@@ -197,6 +246,8 @@ type
     procedure edt1KeyPress(Sender: TObject; var Key: Char);
     procedure edt4KeyPress(Sender: TObject; var Key: Char);
     procedure qrlbl12Print(sender: TObject; var Value:
+      string);
+    procedure qrlbl40Print(sender: TObject; var Value:
       string);
     procedure edt8KeyPress(Sender: TObject; var Key: Char);
     procedure edt2KeyPress(Sender: TObject; var Key: Char);
@@ -463,6 +514,44 @@ begin
   qrlbl22.Caption := '订购电话:' +
     viniFile.ReadString('System', 'TEL', '');
   qrlbl23.Caption := viniFile.ReadString('System', 'La2',
+    '');
+end;
+
+{打印单据上的信息}
+
+procedure TMain.OrderPrepareStartPage(Sender:
+  TCustomQuickRep);
+var
+  vIniFile: TIniFile;
+begin
+  vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0))
+    +
+    'Config.Ini');
+  qrlbl1.Caption := viniFile.ReadString('System', 'Name',
+    '');
+  qrlbl3.Caption := viniFile.ReadString('System', 'La1',
+    '');
+
+  qrlbl7.Caption := '操作员:' + Label19.Caption;
+  qrlbl4.Caption := '应收:' + Label14.Caption + '元';
+  qrlbl6.Caption := '实收:' + Label15.Caption + '元';
+  qrlbl5.Caption := '找零:' + Label16.Caption + '元';
+
+  qrlbl8.Caption := '收件人:' + Main.edt1.Text;
+  qrlbl10.Caption := '电话:' + Main.edt2.Text;
+  qrlbl11.Caption := '收货地址:' + Main.edt3.Text;
+  qrlbl36.Caption := '付款方式:' + Main.cbb1.Text;
+
+  qrlbl33.Caption := '托运部:' + Main.edt4.Text;
+  qrlbl34.Caption := '电话:' + Main.edt5.Text;
+  qrlbl35.Caption := '托运部地址:' + Main.edt6.Text;
+
+  qrlbl37.Caption := '日期:' + FormatDateTime('dddddd tt',
+    Now);
+  qrlbl38.Caption := '单号:№' + Label26.Caption;
+  qrlbl39.Caption := '订购电话:' +
+    viniFile.ReadString('System', 'TEL', '');
+  qrlbl41.Caption := viniFile.ReadString('System', 'La2',
     '');
 end;
 
@@ -1366,8 +1455,10 @@ begin
 
       //设置件数的时候同时更新数量
       ADOQuerySQL.SQL.Clear;
-      ADOQuerySQL.SQL.Add('update selllogdetails sd,stocks st set sd.bundle="' + RzEdit5.Text +
-        '",sd.amount=st.dozen*' + RzEdit5.Text + ',sd.updated_at=now() where sd.slid = "' +
+      ADOQuerySQL.SQL.Add('update selllogdetails sd,stocks st set sd.bundle="' +
+        RzEdit5.Text +
+        '",sd.amount=st.dozen*' + RzEdit5.Text +
+        ',sd.updated_at=now() where sd.slid = "' +
         Label26.Caption + '" and sd.pid="' +
         ADOQuery1.FieldByName('pid').AsString +
         '" and sd.additional="' +
@@ -1491,7 +1582,7 @@ begin
 
     if not (rzchckbx1.Checked) then
     begin
-
+      //采购产品库
       //当输入为空则结账
       if (RzEdit4.Text = '') and (ADOQuery1.RecordCount > 1)
         then
@@ -1674,6 +1765,15 @@ procedure TMain.qrlbl12Print(sender: TObject; var Value:
   string);
 begin
   Value := '第' + IntToStr(QuickRep1.QRPrinter.PageNumber)
+    +
+    '页 / 共' +
+    IntToStr(FTotalPages) + '页';
+end;
+
+procedure TMain.qrlbl40Print(sender: TObject; var Value:
+  string);
+begin
+  Value := '第' + IntToStr(OrderPrepare.QRPrinter.PageNumber)
     +
     '页 / 共' +
     IntToStr(FTotalPages) + '页';

@@ -132,6 +132,20 @@ begin
   Main.QH2;
 
   SpeedButton1.Click;
+
+  if messagedlg('需要打印订单备货单吗？', mtconfirmation, [mbyes,
+    mbno], 0) = mryes then
+  begin
+    try
+      Main.OrderPrepare.Prepare;
+      Main.FTotalPages := Main.OrderPrepare.QRPrinter.PageCount;
+    finally
+      Main.OrderPrepare.QRPrinter.Cleanup;
+    end;
+
+    Main.OrderPrepare.Print;
+  end;
+
 end;
 
 procedure TQO.c1;

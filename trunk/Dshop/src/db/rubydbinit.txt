@@ -135,6 +135,8 @@ bundle:integer \
 discount:integer \
 baseline:integer \
 dtype:string \
+custdate:date \
+customer_id:string \
 'dingjin:decimal{10,2}' \
 remark:text
 
