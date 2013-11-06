@@ -148,6 +148,19 @@ begin
   Main.mmo1.Text :=
     ADOQuery1.FieldByName('remark').AsString;
 
+  if messagedlg('需要打印订单备货单吗？', mtconfirmation, [mbyes,
+    mbno], 0) = mryes then
+  begin
+    try
+      Main.OrderPrepare.Prepare;
+      Main.FTotalPages := Main.OrderPrepare.QRPrinter.PageCount;
+    finally
+      Main.OrderPrepare.QRPrinter.Cleanup;
+    end;
+
+    Main.OrderPrepare.Print;
+  end;
+
   SpeedButton1.Click;
 end;
 

@@ -104,6 +104,7 @@ object Gathering: TGathering
       Font.Name = #20223#23435'_GB2312'
       Font.Style = []
       ParentFont = False
+      Visible = False
     end
     object Label5: TLabel
       Left = 410
@@ -117,6 +118,7 @@ object Gathering: TGathering
       Font.Name = #20223#23435'_GB2312'
       Font.Style = []
       ParentFont = False
+      Visible = False
     end
     object Label6: TLabel
       Left = 23
@@ -130,6 +132,7 @@ object Gathering: TGathering
       Font.Name = #20223#23435'_GB2312'
       Font.Style = []
       ParentFont = False
+      Visible = False
     end
     object Label7: TLabel
       Left = 132
@@ -145,6 +148,7 @@ object Gathering: TGathering
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
+      Visible = False
     end
     object Label8: TLabel
       Left = 410
@@ -158,6 +162,7 @@ object Gathering: TGathering
       Font.Name = #20223#23435'_GB2312'
       Font.Style = []
       ParentFont = False
+      Visible = False
     end
     object Label9: TLabel
       Left = 177
@@ -171,6 +176,7 @@ object Gathering: TGathering
       Font.Name = #23435#20307
       Font.Style = []
       ParentFont = False
+      Visible = False
     end
     object Label10: TLabel
       Left = 353
@@ -207,6 +213,7 @@ object Gathering: TGathering
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 0
+      Visible = False
       OnKeyDown = RzEdit1KeyDown
     end
     object CheckBox1: TCheckBox

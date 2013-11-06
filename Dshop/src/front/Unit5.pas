@@ -114,6 +114,28 @@ begin
         end;
       end;
       }
+    VK_RETURN: //回车确认等于结帐
+      begin
+        count := count + key;
+
+        Main.ADOQuery2.SQL.Clear;
+        Main.ADOQuery2.SQL.Add('select * from selllogmains where slid="' +
+          Main.Label26.Caption
+          + '"');
+        Main.ADOQuery2.Open;
+        if (Main.ADOQuery2.RecordCount = 1) and
+          (Main.ADOQuery2.FieldByName('pdate').AsString <> '') then
+        begin
+          JZ;
+          Exit;
+        end;
+
+        if RzEdit1.ReadOnly and (Main.cbb1.Text = '现金') then
+          Gathering.Close;
+        if not (RzEdit1.ReadOnly) or (Main.cbb1.Text <> '现金')
+          then
+          JZ;
+      end;
   end;
 end;
 
@@ -125,9 +147,11 @@ var
   vaamount: string;
   vavolume: string;
 begin
+
   vIniFile := TIniFile.Create(ExtractFilePath(ParamStr(0))
     +
     'Config.Ini');
+  {
   //输入数据检查
   try
     begin
@@ -141,6 +165,7 @@ begin
       Exit;
     end;
   end;
+  }
 
   if Main.cbb1.Text = '' then
   begin
@@ -158,6 +183,7 @@ begin
     Exit;
   end;
 
+  {
   //如果使用现金支付，检查输入金额是否小于应付款
   if Main.cbb1.Text = '现金' then
   begin
@@ -175,6 +201,7 @@ begin
       StrToCurr(RzEdit1.Text) -
       StrToCurr(Label2.Caption));
   end;
+  }
 
   //结束输入
   RzEdit1.ReadOnly := True;
@@ -184,12 +211,14 @@ begin
   //写主窗口记录
   Main.Label14.Caption := FormatFloat('0.00',
     StrToCurr(Label2.Caption));
-  Main.Label15.Caption := FormatFloat('0.00',
-    StrToCurr(RzEdit1.Text));
-  Main.Label16.Caption := FormatFloat('0.00',
-    StrToCurr(Label7.Caption));
+  {
+Main.Label15.Caption := FormatFloat('0.00',
+  StrToCurr(RzEdit1.Text));
+Main.Label16.Caption := FormatFloat('0.00',
+  StrToCurr(Label7.Caption));
+  }
 
-  //打印小票
+//打印小票
   if CheckBox1.Checked then
   begin
     if messagedlg('确认打印物流单吗？', mtconfirmation, [mbyes,
