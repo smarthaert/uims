@@ -832,15 +832,32 @@ begin
   SetLength(Result, Length(Data));
 
   case Index of
-    0:
+    1://3均线
       for I := 0 to Length(Result) - 1 do
       begin
-        Result[I] := MA[3][I] - MA[3][I];
+        Result[I] := 0;
         if (MA[0][I] > MA[0][I - 1]) and (MA[0][I - 1] <= MA[0][I - 2]) then
         begin
           Result[I] := 1;
         end
         else if (MA[0][I] < MA[0][I - 1]) and (MA[0][I - 1] >= MA[0][I - 2]) then
+        begin
+          Result[I] := -1;
+        end
+        else
+        begin
+          Result[I] := 0;
+        end;
+      end;
+    5://250均线
+      for I := 0 to Length(Result) - 1 do
+      begin
+        Result[I] := 0;
+        if (MA[1][I] < MA[2][I]) and (MA[2][I] < MA[3][I]) then
+        begin
+          Result[I] := 1;
+        end
+        else if (MA[1][I] > MA[2][I]) and (MA[2][I] > MA[3][I]) then
         begin
           Result[I] := -1;
         end

@@ -11,7 +11,7 @@ const
   VMAC: array[0..3] of Integer = (5, 10, 30, -1);
   RSIC: array[0..1] of Integer = (5, 10);
   PLC: array[0..4] of Integer = (2, 1, 1, 3, 3);
-  ACTC: array[0..0] of Integer = (15);
+  ACTC: array[0..1] of Integer = (1, 5);
 
 type
 { TVertLine }
@@ -137,7 +137,7 @@ type
     VMA: array[0..3] of TArrayOfSingle;
     RSI: array[0..1] of TArrayOfSingle;
     PL: array[0..4] of TArrayOfSingle;
-    ACT: array[0..0] of TArrayOfSingle;
+    ACT: array[0..1] of TArrayOfSingle;
     FStockName: string;
     FPageStart: Integer;
     FUnitWidth: Integer;
@@ -157,7 +157,7 @@ type
     procedure DrawLineStyle(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single; Style: TPenStyle);
     procedure DrawText(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single; Text: string);
     procedure DrawTips(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single);
-    procedure DrawActions(A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single);
+    procedure DrawActions(Index: Integer; A: TArrayOfSingle; Color: TColor; C: TCanvas; R: TRect; High, Low: Single);
     procedure SetStockName(const Value: string);
     procedure SetPageStart(Value: Integer);
     procedure SetUnitWidth(Value: Integer);
@@ -425,7 +425,7 @@ var
 begin
   for I := 0 to Length(ACTC) - 1 do
     if ACTC[I] = 0 then ACT[I] := nil //0代表不计算
-    else ACT[I] := _calcAction_(I, StkDataFile.getCP, MA, ACTC[I]);
+    else ACT[I] := _calcAction_(ACTC[I], StkDataFile.getCP, MA, ACTC[I]);
 end;
 
 procedure TfrmMain2.CalcRSI;
@@ -788,7 +788,7 @@ begin
   for I := 0 to Length(ACTC) - 1 do
     if ACTC[I] > 0 then
     begin
-      DrawActions(MA[I], DEF_COLOR[I - 1], C, R, High, Low)
+      DrawActions(I, MA[ACTC[I] - 1], DEF_COLOR[I - 1], C, R, High, Low)
     end;
 
 end;
@@ -1055,7 +1055,7 @@ begin
   end;
 end;
 
-procedure TfrmMain2.DrawActions(A: TArrayOfSingle; Color: TColor; //MA指标上绘制提示信息
+procedure TfrmMain2.DrawActions(Index: Integer; A: TArrayOfSingle; Color: TColor; //MA指标上绘制提示信息
   C: TCanvas; R: TRect; High, Low: Single);
 var
   I, J, X, Y, Len: Integer;
@@ -1077,38 +1077,80 @@ begin
       if _valid_(J, 0, Len - 1) and (A[J] <> -9999) then //没有计算出来均线时不显示，-1代表无数据
       begin
 
-        X := UnitWidth * I + UnitWidth div 2;
-        Y := Fy2Iy(A[J], R, High, Low);
+        case Index of
+          0: //3均线
+            begin
+              X := UnitWidth * I + UnitWidth div 2;
+              Y := Fy2Iy(A[J], R, High, Low);
 
-        //绘制操作提示
-        if ACT[0][J] = 1 then
-        begin
-          bitmap := Tbitmap.create;
-          bitmap.Width := 12;
-          bitmap.Height := 12;
-          bitmap.Canvas.Brush.Color := clWhite;
-          bitmap.Canvas.Font.Size := 8;
-          bitmap.Canvas.Font.Color := clRed;
-          bitmap.Canvas.TextOut(0, 0, '↑');
-          bitmap.TransparentColor := clWhite; //需要设置为透明背景的颜色
-          bitmap.Transparent := True; //透明背景
-          C.Draw(X - 5, Y - 6, bitmap);
-          bitmap.Free;
-        end
-        else if ACT[0][J] = -1 then
-        begin
-          bitmap := Tbitmap.create;
-          bitmap.Width := 12;
-          bitmap.Height := 12;
-          bitmap.Canvas.Brush.Color := clWhite;
-          bitmap.Canvas.Font.Size := 8;
-          bitmap.Canvas.Font.Color := clGreen;
-          bitmap.Canvas.TextOut(0, 0, '↓');
-          bitmap.TransparentColor := clWhite; //需要设置为透明背景的颜色
-          bitmap.Transparent := True; //透明背景
-          C.Draw(X - 5, Y - 6, bitmap);
-          bitmap.Free;
+            //绘制操作提示
+              if ACT[0][J] = 1 then
+              begin
+                bitmap := Tbitmap.create;
+                bitmap.Width := 12;
+                bitmap.Height := 12;
+                bitmap.Canvas.Brush.Color := clWhite;
+                bitmap.Canvas.Font.Size := 8;
+                bitmap.Canvas.Font.Color := clRed;
+                bitmap.Canvas.TextOut(0, 0, '↑');
+                bitmap.TransparentColor := clWhite; //需要设置为透明背景的颜色
+                bitmap.Transparent := True; //透明背景
+                C.Draw(X - 5, Y - 6, bitmap);
+                bitmap.Free;
+              end
+              else if ACT[0][J] = -1 then
+              begin
+                bitmap := Tbitmap.create;
+                bitmap.Width := 12;
+                bitmap.Height := 12;
+                bitmap.Canvas.Brush.Color := clWhite;
+                bitmap.Canvas.Font.Size := 8;
+                bitmap.Canvas.Font.Color := clGreen;
+                bitmap.Canvas.TextOut(0, 0, '↓');
+                bitmap.TransparentColor := clWhite; //需要设置为透明背景的颜色
+                bitmap.Transparent := True; //透明背景
+                C.Draw(X - 5, Y - 6, bitmap);
+                bitmap.Free;
+              end;
+            end;
+          1: //250均线
+            begin
+              X := UnitWidth * I + UnitWidth div 2;
+              Y := Fy2Iy(A[J], R, High, Low);
+
+            //绘制操作提示
+              if ACT[1][J] = 1 then
+              begin
+                bitmap := Tbitmap.create;
+                bitmap.Width := 12;
+                bitmap.Height := 12;
+                bitmap.Canvas.Brush.Color := clWhite;
+                bitmap.Canvas.Font.Size := 8;
+                bitmap.Canvas.Font.Color := clRed;
+                bitmap.Canvas.TextOut(0, 0, '△');
+                bitmap.TransparentColor := clWhite; //需要设置为透明背景的颜色
+                bitmap.Transparent := True; //透明背景
+                C.Draw(X - 5, Y - 6, bitmap);
+                bitmap.Free;
+              end
+              else if ACT[1][J] = -1 then
+              begin
+                bitmap := Tbitmap.create;
+                bitmap.Width := 12;
+                bitmap.Height := 12;
+                bitmap.Canvas.Brush.Color := clWhite;
+                bitmap.Canvas.Font.Size := 8;
+                bitmap.Canvas.Font.Color := clGreen;
+                bitmap.Canvas.TextOut(0, 0, '▲');
+                bitmap.TransparentColor := clWhite; //需要设置为透明背景的颜色
+                bitmap.Transparent := True; //透明背景
+                C.Draw(X - 5, Y - 6, bitmap);
+                bitmap.Free;
+              end;
+            end;
         end;
+
+
 
       end;
     end;
@@ -2146,7 +2188,7 @@ begin
     end;
   end;
 
-  if messagedlg('是否导出数据',mtconfirmation,[mbyes,mbno],0)=7 then
+  if messagedlg('是否导出数据', mtconfirmation, [mbyes, mbno], 0) = 7 then
     Exit;
 
   //数据导出
@@ -2165,8 +2207,8 @@ begin
       p := StkDataFile.getRec(i);
       //if ACT[0][i] <> 0 then
       //begin
-        str := Format('%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s', [FormatDateTime('yyyy/mm/dd hh:nn', p.Date), Format('%5.1f', [p.OP]), Format('%5.1f', [p.HP]), Format('%5.1f', [p.LP]), Format('%5.1f', [p.CP]), Format('%5.1f', [p.VOL]), FloatToStr(ACT[0][i])]);
-        Writeln(wText, str);
+      str := Format('%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s', [FormatDateTime('yyyy/mm/dd hh:nn', p.Date), Format('%5.1f', [p.OP]), Format('%5.1f', [p.HP]), Format('%5.1f', [p.LP]), Format('%5.1f', [p.CP]), Format('%5.1f', [p.VOL]), FloatToStr(ACT[0][i])]);
+      Writeln(wText, str);
       //end;
 
 
