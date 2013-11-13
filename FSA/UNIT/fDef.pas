@@ -81,7 +81,8 @@ type
     function getUD: TArrayOfSingle;
     function getVOL: TArrayOfSingle;
     procedure save;
-    procedure setM(newM: TMemoryStream);
+    procedure setM(newM: TMemoryStream);     
+    function getM() : TMemoryStream;
   end;
 
 { TDataFile }
@@ -107,7 +108,8 @@ type
   public
     constructor Create(const StockPath: string); reintroduce;
     procedure Reload(const StockName: string);
-    procedure setM(newM: TMemoryStream);
+    procedure setM(newM: TMemoryStream);     
+    function getM() : TMemoryStream;
   end;
 
 implementation
@@ -369,6 +371,7 @@ begin
   else Result := getRec(getCount - Date - 1); //Index Record from tail toward header
 end;
 
+
 function TDataFile.getRecSize: Integer;
 begin //一条记录的大小
   Result := SizeOf(TStkDataRec);
@@ -389,6 +392,11 @@ procedure TDataFile.setM(newM: TMemoryStream);
 begin
   _free_(M);
   M := newM;
+end;
+
+function TDataFile.getM(): TMemoryStream;
+begin
+  Result := M;
 end;
 
 function TDataFile.Seek(Index: Integer): Pointer;
