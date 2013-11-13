@@ -2179,7 +2179,8 @@ begin
     end
     else if period = 1 then
     begin
-
+      M := TMemoryStream.Create;
+      M.CopyFrom(StkDataFile1Min.getM(), StkDataFile1Min.getM().Size);
       StkDataFile.setM(M);
       CLEAR_ALL_CALCULATE_DATA(); //清除计算好的数据
       CalcAll;
