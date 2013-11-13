@@ -7,11 +7,11 @@ uses
   Dialogs, Grids, StdCtrls, Menus, fDef, ExtCtrls, DateUtils, StrUtils, MyGraph;
 
 const
-  MAC: array[0..5] of Integer = (3, 30, 60, 120, 250, 1800);
+  MAC: array[0..6] of Integer = (-3, 3, 30, 60, 120, 250, 1800);
   VMAC: array[0..3] of Integer = (5, 10, 30, -1);
   RSIC: array[0..1] of Integer = (5, 10);
   PLC: array[0..4] of Integer = (2, 1, 1, 3, 3);
-  ACTC: array[0..1] of Integer = (1, 5);
+  ACTC: array[0..1] of Integer = (2, 6);
 
 type
 { TVertLine }
@@ -133,7 +133,7 @@ type
     HoriLine: THoriLine;
     ScaleHigh: array[0..3] of Single;
     ScaleLow: array[0..3] of Single;
-    MA: array[0..5] of TArrayOfSingle;
+    MA: array[0..6] of TArrayOfSingle;
     VMA: array[0..3] of TArrayOfSingle;
     RSI: array[0..1] of TArrayOfSingle;
     PL: array[0..4] of TArrayOfSingle;
@@ -580,11 +580,11 @@ begin
 
     if IS_DRAW_MA then
     begin
-      if (MAC[0] > 0) and IS_DRAW_MA_5 then
-        DrawLineStyle(MA[0], TColor($C6C300), C, R, High, Low, psDot);
-      for I := 1 to Length(MAC) - 1 do
+      if (MAC[1] > 0) and IS_DRAW_MA_5 then
+        DrawLineStyle(MA[1], TColor($C6C300), C, R, High, Low, psDot);
+      for I := 2 to Length(MAC) - 1 do
         if MAC[I] > 0 then
-          DrawLine(MA[I], DEF_COLOR[I - 1], C, R, High, Low);
+          DrawLine(MA[I], DEF_COLOR[I - 2], C, R, High, Low);
     end;
   end;
 end;
@@ -773,22 +773,23 @@ begin
   _setPen_(C, clWhite, 1, psSolid, pmCopy);
 
   //绘制3分钟
-  DrawLineStyle(MA[0], TColor($C6C300), C, R, High, Low, psDot);
+  DrawLineStyle(MA[0], clYellow, C, R, High, Low, psDot);
+  DrawLineStyle(MA[1], TColor($C6C300), C, R, High, Low, psDot);
 
-  for I := 1 to Length(MAC) - 2 do
+  for I := 2 to Length(MAC) - 1 do
     if MAC[I] > 0 then
     begin
 
-      if I = 3 then
-        DrawTips(MA[I], DEF_COLOR[I - 1], C, R, High, Low)
+      if I = 5 then
+        DrawTips(MA[I], DEF_COLOR[I - 2], C, R, High, Low)
       else
-        DrawLine(MA[I], DEF_COLOR[I - 1], C, R, High, Low);
+        DrawLine(MA[I], DEF_COLOR[I - 2], C, R, High, Low);
     end;
 
   for I := 0 to Length(ACTC) - 1 do
     if ACTC[I] > 0 then
     begin
-      DrawActions(I, MA[ACTC[I] - 1], DEF_COLOR[I - 1], C, R, High, Low)
+      DrawActions(I, MA[ACTC[I] - 1], DEF_COLOR[I - 2], C, R, High, Low)
     end;
 
 end;
@@ -1077,6 +1078,9 @@ begin
       if _valid_(J, 0, Len - 1) and (A[J] <> -9999) then //没有计算出来均线时不显示，-1代表无数据
       begin
 
+      //-3 3 30 60 120 250 1800
+      // 0 1 2  3  4   5   6
+      // 2 6
         case Index of
           0: //3均线
             begin
@@ -1113,7 +1117,7 @@ begin
                 bitmap.Free;
               end;
             end;
-          1: //250均线
+          1: //250
             begin
               X := UnitWidth * I + UnitWidth div 2;
               Y := Fy2Iy(A[J], R, High, Low);
@@ -2205,9 +2209,9 @@ begin
     while i < recNum do
     begin
       p := StkDataFile.getRec(i);
-      //if ACT[0][i] <> 0 then
+      //if ACT[1][i] <> 0 then
       //begin
-      str := Format('%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s', [FormatDateTime('yyyy/mm/dd hh:nn', p.Date), Format('%5.1f', [p.OP]), Format('%5.1f', [p.HP]), Format('%5.1f', [p.LP]), Format('%5.1f', [p.CP]), Format('%5.1f', [p.VOL]), FloatToStr(ACT[0][i])]);
+      str := Format('%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s', [FormatDateTime('yyyy/mm/dd hh:nn', p.Date), Format('%5.1f', [p.OP]), Format('%5.1f', [p.HP]), Format('%5.1f', [p.LP]), Format('%5.1f', [p.CP]), Format('%5.1f', [p.VOL]), FloatToStr(ACT[1][i])]);
       Writeln(wText, str);
       //end;
 
@@ -2297,4 +2301,3 @@ end;
 
 
 end.
-

@@ -811,6 +811,14 @@ begin
     Sum := Sum + Data[I];
     if MAC = -1 then
       Result[I] := 4000
+    else if MAC = -3 then //预测价格均线
+    begin
+      if I < 3 then Result[I] := -9999
+      else begin
+        Sum := (2 * Data[I]) + Data[I - 1];
+        Result[I] := Sum / 3;
+      end;
+    end
     else begin
       //if I < MAC then Result[I] := Sum / (I+1)
       if I < MAC then Result[I] := -9999
@@ -832,15 +840,15 @@ begin
   SetLength(Result, Length(Data));
 
   case Index of
-    1://3均线
+    2: //3均线
       for I := 0 to Length(Result) - 1 do
       begin
         Result[I] := 0;
-        if (MA[0][I] > MA[0][I - 1]) and (MA[0][I - 1] <= MA[0][I - 2]) then
+        if (MA[1][I] > MA[1][I - 1]) and (MA[1][I - 1] <= MA[1][I - 2]) then
         begin
           Result[I] := 1;
         end
-        else if (MA[0][I] < MA[0][I - 1]) and (MA[0][I - 1] >= MA[0][I - 2]) then
+        else if (MA[1][I] < MA[1][I - 1]) and (MA[1][I - 1] >= MA[1][I - 2]) then
         begin
           Result[I] := -1;
         end
@@ -849,15 +857,15 @@ begin
           Result[I] := 0;
         end;
       end;
-    5://250均线
+    6: //250均线
       for I := 0 to Length(Result) - 1 do
       begin
         Result[I] := 0;
-        if (MA[1][I] < MA[2][I]) and (MA[2][I] < MA[3][I]) then
+        if (MA[2][I] < MA[3][I]) and (MA[3][I] < MA[4][I]) then
         begin
           Result[I] := 1;
         end
-        else if (MA[1][I] > MA[2][I]) and (MA[2][I] > MA[3][I]) then
+        else if (MA[2][I] > MA[3][I]) and (MA[3][I] > MA[4][I]) then
         begin
           Result[I] := -1;
         end
@@ -1212,4 +1220,3 @@ begin
 end;
 
 end.
-
