@@ -236,6 +236,8 @@ begin
    //M.LoadFromFile(FileName);
     AssignFile(rText, FileName);
     reset(rText);
+
+    readln(rText, line);     //跳过第一行标题
     while not EOF(rText) do
     begin
     {
@@ -261,6 +263,8 @@ begin
       rec.LP := StrToFloat(lstSplit.Strings[5]);
       rec.VOL := StrToInt(lstSplit.Strings[6]);
     }
+    //
+      {
       readln(rText, line);
 
       lstSplit := TStringList.Create;
@@ -284,13 +288,22 @@ begin
       rec.HP := StrToFloat(lstSplit.Strings[5]);
       rec.LP := StrToFloat(lstSplit.Strings[6]);
       rec.VOL := StrToInt(lstSplit.Strings[10]);
-
-      {
-      rec.OP := StrToInt(lstSplit.Strings[2]) / 10000;
-      rec.HP := StrToInt(lstSplit.Strings[3]) / 10000;
-      rec.LP := StrToInt(lstSplit.Strings[4]) / 10000;
-      rec.CP := StrToInt(lstSplit.Strings[5]) / 10000;
       }
+
+      //加载美股
+      readln(rText, line);
+
+      lstSplit := TStringList.Create;
+      lstSplit.Delimiter := ',';
+      lstSplit.DelimitedText := line;
+
+      rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[0], 4)), StrToInt(MidStr(lstSplit.Strings[0], 5, 2)), StrToInt(RightStr(lstSplit.Strings[0], 2)), 15, 0, 0, 0);
+
+      rec.OP := StrToFloat(lstSplit.Strings[2]);
+      rec.CP := StrToFloat(lstSplit.Strings[3]);
+      rec.HP := StrToFloat(lstSplit.Strings[4]);
+      rec.LP := StrToFloat(lstSplit.Strings[5]);
+      rec.VOL := StrToInt(lstSplit.Strings[6]);
 
 
       try
