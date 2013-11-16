@@ -19,19 +19,19 @@ type
 
 type
 
-{ TArrayOfSingle }
+  { TArrayOfSingle }
 
   TArrayOfSingle = array of Single;
   TArrayOfInteger = array of Integer;
 
-{ TStkDataRec }//0000,13100,13100X(nonEtron),13171X(nonBank),17100  数据文件的格式
+  { TStkDataRec }//0000,13100,13100X(nonEtron),13171X(nonBank),17100  数据文件的格式
   PStkDataRec = ^TStkDataRec;
   TStkDataRec = packed record
     Date: TDateTime; //日期
     OP, HP, LP, CP, VOL: Single; //收盘,开盘,最高,最低,涨跌,成交量
   end;
 
-{ IBaseDataFile }
+  { IBaseDataFile }
   IBaseDataFile = interface(IUnknown)
     function getCount: Integer;
     function writeStkDataToM(iFlag: Integer; p_s_k_line_data: LP_s_k_line_data): Integer;
@@ -46,7 +46,7 @@ type
     function seek(Index: Integer): Pointer;
   end;
 
-{ TBaseDataFile }
+  { TBaseDataFile }
   TBaseDataFile = class(TInterfacedObject, IBaseDataFile)
   protected
     M: TMemoryStream;
@@ -70,8 +70,8 @@ type
     destructor Destroy; override;
   end;
 
-{ IDataFile }
- //function getData(Date: WORD): Pointer;->Date<MAX_DATADAY means Index from tail toward header, or Search data by Date
+  { IDataFile }
+   //function getData(Date: WORD): Pointer;->Date<MAX_DATADAY means Index from tail toward header, or Search data by Date
   IDataFile = interface(IBaseDataFile)
     function getData(Date: Integer): Pointer;
     function getStockName: string;
@@ -81,11 +81,11 @@ type
     function getUD: TArrayOfSingle;
     function getVOL: TArrayOfSingle;
     procedure save;
-    procedure setM(newM: TMemoryStream);     
-    function getM() : TMemoryStream;
+    procedure setM(newM: TMemoryStream);
+    function getM(): TMemoryStream;
   end;
 
-{ TDataFile }
+  { TDataFile }
   TDataFile = class(TBaseDataFile, IDataFile)
   protected
     FStockName: string;
@@ -108,8 +108,8 @@ type
   public
     constructor Create(const StockPath: string); reintroduce;
     procedure Reload(const StockName: string);
-    procedure setM(newM: TMemoryStream);     
-    function getM() : TMemoryStream;
+    procedure setM(newM: TMemoryStream);
+    function getM(): TMemoryStream;
   end;
 
 implementation
@@ -124,7 +124,10 @@ var
 begin
   inherited;
   ext := ExtractFileExt(getFilePath);
-  if ext <> '.DAT' then loadFromTxtFile(getFilePath) else loadFromFile(getFilePath);
+  if ext <> '.DAT' then
+    loadFromTxtFile(getFilePath)
+  else
+    loadFromFile(getFilePath);
   //loadFromFile(StockPath);
 end;
 
@@ -142,12 +145,18 @@ end;
 
 function TBaseDataFile.getCount: Integer;
 begin
-  if M = nil then Result := 0 else Result := (M.Size - getHeaderSize) div getRecSize;
+  if M = nil then
+    Result := 0
+  else
+    Result := (M.Size - getHeaderSize) div getRecSize;
 end;
 
 function TBaseDataFile.getHeader: Pointer;
 begin
-  if M <> nil then Result := M.Memory else Result := nil;
+  if M <> nil then
+    Result := M.Memory
+  else
+    Result := nil;
 end;
 
 function TBaseDataFile.getHeaderSize: Integer; //没有文件头信息
@@ -157,7 +166,10 @@ end;
 
 function TBaseDataFile.getRec(Index: Integer): Pointer;
 begin //查找的最大范围是getCount
-  if (Index > -1) and (Index < getCount) then Result := Seek(Index) else Result := nil;
+  if (Index > -1) and (Index < getCount) then
+    Result := Seek(Index)
+  else
+    Result := nil;
 end;
 
 procedure TBaseDataFile.loadFromFile(const FileName: string); //加载指定文件到内存
@@ -183,14 +195,18 @@ var
   AYear, AMonth, ADay, AHour, AMinute, ASecond, AMilliSecond: Word;
 begin
   Result := 0;
-  if M = nil then Result := -1 else
+  if M = nil then
+    Result := -1
+  else
   begin
     AMilliSecond := 0;
     ASecond := 0;
     AMinute := p_s_k_line_data.i_date mod 100;
 
-    if (AMinute < 50) then AHour := Round(p_s_k_line_data.i_date / 100) mod 100
-    else AHour := (Round((p_s_k_line_data.i_date - 10) / 100) mod 100);
+    if (AMinute < 50) then
+      AHour := Round(p_s_k_line_data.i_date / 100) mod 100
+    else
+      AHour := (Round((p_s_k_line_data.i_date - 10) / 100) mod 100);
 
     ADay := Round(p_s_k_line_data.i_date / 100 / 100) mod 100;
     AMonth := Round(p_s_k_line_data.i_date / 100 / 100 / 100) mod 100;
@@ -204,10 +220,14 @@ begin
     stk_sdr.VOL := p_s_k_line_data.i_vol / 100;
     //stk_sdr.f_amount := p_s_k_line_data.f_amount;
 
-    if (stk_sdr.OP < 10.0) then Exit;
-    if (stk_sdr.HP < 10.0) then Exit;
-    if (stk_sdr.LP < 10.0) then Exit;
-    if (stk_sdr.CP < 10.0) then Exit;
+    if (stk_sdr.OP < 10.0) then
+      Exit;
+    if (stk_sdr.HP < 10.0) then
+      Exit;
+    if (stk_sdr.LP < 10.0) then
+      Exit;
+    if (stk_sdr.CP < 10.0) then
+      Exit;
 
     if (iFlag = 0) then
     begin
@@ -233,38 +253,38 @@ begin
   if FileExists(FileName) then
   begin
     M := TMemoryStream.Create;
-   //M.LoadFromFile(FileName);
+    //M.LoadFromFile(FileName);
     AssignFile(rText, FileName);
     reset(rText);
 
-    readln(rText, line);     //跳过第一行标题
+    //readln(rText, line);     //跳过第一行标题
     while not EOF(rText) do
     begin
-    {
-      readln(rText, line);
-
-      lstSplit := TStringList.Create;
-      lstSplit.Delimiter := ' ';
-      lstSplit.DelimitedText := line;
-      //ShowMessage(lstSplit.Strings[0]);
-
-      if length(lstSplit.Strings[1]) = 4 then
-      begin
-        rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[0], 4)), StrToInt(MidStr(lstSplit.Strings[0], 5, 2)), StrToInt(RightStr(lstSplit.Strings[0], 2)), StrToInt(LeftStr(lstSplit.Strings[1], 2)), StrToInt(RightStr(lstSplit.Strings[1], 2)), 0, 0);
-      end
-      else
-      begin
-        rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[0], 4)), StrToInt(MidStr(lstSplit.Strings[0], 5, 2)), StrToInt(RightStr(lstSplit.Strings[0], 2)), StrToInt(LeftStr(lstSplit.Strings[1], 1)), StrToInt(RightStr(lstSplit.Strings[1], 2)), 0, 0);
-      end;
-
-      rec.OP := StrToFloat(lstSplit.Strings[2]);
-      rec.CP := StrToFloat(lstSplit.Strings[3]);
-      rec.HP := StrToFloat(lstSplit.Strings[4]);
-      rec.LP := StrToFloat(lstSplit.Strings[5]);
-      rec.VOL := StrToInt(lstSplit.Strings[6]);
-    }
-    //
       {
+        readln(rText, line);
+
+        lstSplit := TStringList.Create;
+        lstSplit.Delimiter := ' ';
+        lstSplit.DelimitedText := line;
+        //ShowMessage(lstSplit.Strings[0]);
+
+        if length(lstSplit.Strings[1]) = 4 then
+        begin
+          rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[0], 4)), StrToInt(MidStr(lstSplit.Strings[0], 5, 2)), StrToInt(RightStr(lstSplit.Strings[0], 2)), StrToInt(LeftStr(lstSplit.Strings[1], 2)), StrToInt(RightStr(lstSplit.Strings[1], 2)), 0, 0);
+        end
+        else
+        begin
+          rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[0], 4)), StrToInt(MidStr(lstSplit.Strings[0], 5, 2)), StrToInt(RightStr(lstSplit.Strings[0], 2)), StrToInt(LeftStr(lstSplit.Strings[1], 1)), StrToInt(RightStr(lstSplit.Strings[1], 2)), 0, 0);
+        end;
+
+        rec.OP := StrToFloat(lstSplit.Strings[2]);
+        rec.CP := StrToFloat(lstSplit.Strings[3]);
+        rec.HP := StrToFloat(lstSplit.Strings[4]);
+        rec.LP := StrToFloat(lstSplit.Strings[5]);
+        rec.VOL := StrToInt(lstSplit.Strings[6]);
+      }
+      //
+
       readln(rText, line);
 
       lstSplit := TStringList.Create;
@@ -288,23 +308,6 @@ begin
       rec.HP := StrToFloat(lstSplit.Strings[5]);
       rec.LP := StrToFloat(lstSplit.Strings[6]);
       rec.VOL := StrToInt(lstSplit.Strings[10]);
-      }
-
-      //加载美股
-      readln(rText, line);
-
-      lstSplit := TStringList.Create;
-      lstSplit.Delimiter := ',';
-      lstSplit.DelimitedText := line;
-
-      rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[0], 4)), StrToInt(MidStr(lstSplit.Strings[0], 5, 2)), StrToInt(RightStr(lstSplit.Strings[0], 2)), 15, 0, 0, 0);
-
-      rec.OP := StrToFloat(lstSplit.Strings[2]);
-      rec.CP := StrToFloat(lstSplit.Strings[3]);
-      rec.HP := StrToFloat(lstSplit.Strings[4]);
-      rec.LP := StrToFloat(lstSplit.Strings[5]);
-      rec.VOL := StrToInt(lstSplit.Strings[6]);
-
 
       try
         M.Write(rec, SizeOf(rec));
@@ -321,12 +324,16 @@ end;
 
 procedure TBaseDataFile.saveAs(FileName: string);
 begin
-  if M <> nil then M.SaveToFile(FileName);
+  if M <> nil then
+    M.SaveToFile(FileName);
 end;
 
 function TBaseDataFile.seek(Index: Integer): Pointer;
 begin //查找第几条记录所在的内存开始地址
-  if M = nil then Result := nil else Result := Pointer(Integer(getHeader) + getHeaderSize + Index * getRecSize);
+  if M = nil then
+    Result := nil
+  else
+    Result := Pointer(Integer(getHeader) + getHeaderSize + Index * getRecSize);
 end;
 
 { TDataFile }
@@ -370,9 +377,12 @@ begin
     M := (L + H) shr 1;
     D := PWORD(getRec(M))^;
     //ShowMessage(DateToStr(D));
-    if Date = D then Result := getRec(M) //采用二分查找方法，查找指定日期的数据位置
-    else if Date < D then Result := FindData(Date, L, M - 1)
-    else Result := FindData(Date, M + 1, H);
+    if Date = D then
+      Result := getRec(M) //采用二分查找方法，查找指定日期的数据位置
+    else if Date < D then
+      Result := FindData(Date, L, M - 1)
+    else
+      Result := FindData(Date, M + 1, H);
   end;
 end;
 
@@ -381,7 +391,8 @@ begin
   //if Date > 20000 then
   if Date > getCount then //限制的最大的数据范围是20000，为什么呢？
     Result := FindData(Date, 0, getCount - 1) //Search by Date
-  else Result := getRec(getCount - Date - 1); //Index Record from tail toward header
+  else
+    Result := getRec(getCount - Date - 1); //Index Record from tail toward header
 end;
 
 
@@ -395,11 +406,18 @@ begin
   Result := 0;
 end;
 
-function TDataFile.indexOf(Date: TDateTime): Integer; begin Result := indexOf(Date, 0, getCount - 1); end;
+function TDataFile.indexOf(Date: TDateTime): Integer;
+begin Result := indexOf(Date, 0, getCount - 1);
+end;
 
-function TDataFile.getStockName: string; begin Result := FStockName; end;
+function TDataFile.getStockName: string;
+begin Result := FStockName;
+end;
 
-procedure TDataFile.save; begin if M <> nil then M.SaveToFile(getFilePath); end;
+procedure TDataFile.save;
+begin if M <> nil then
+    M.SaveToFile(getFilePath);
+end;
 
 procedure TDataFile.setM(newM: TMemoryStream);
 begin
@@ -414,8 +432,10 @@ end;
 
 function TDataFile.Seek(Index: Integer): Pointer;
 begin
-  if (M = nil) or (getCount = 0) then Result := nil
-  else begin
+  if (M = nil) or (getCount = 0) then
+    Result := nil
+  else
+  begin
     Index := (Index + RecStart) mod getCount;
     Result := Pointer(Integer(M.Memory) + getHeaderSize + Index * getRecSize);
   end;
@@ -438,13 +458,16 @@ begin
     t2 := FormatDateTime('yyyy-mm-dd hh:nn', P.Date);
     if P <> nil then
     begin
-      if Date = P.Date then Result := M
-      else if Date > P.Date then Result := indexOf(Date, L, M - 1)
-      else Result := indexOf(Date, M + 1, H);
+      if Date = P.Date then
+        Result := M
+      else if Date > P.Date then
+        Result := indexOf(Date, L, M - 1)
+      else
+        Result := indexOf(Date, M + 1, H);
     end;
   end;
-    //D := PWORD(getRec(M))^;
-    //ShowMessage(DateToStr(D));
+  //D := PWORD(getRec(M))^;
+  //ShowMessage(DateToStr(D));
 end;
 
 function TDataFile.getCP: TArrayOfSingle;
@@ -471,8 +494,10 @@ var
 begin
   SetLength(Result, getCount);
   for I := 0 to getCount - 1 do
-    if I = 0 then Result[I] := 0
-    else Result[I] := PStkDataRec(getRec(I)).CP - PStkDataRec(getRec(I - 1)).CP;
+    if I = 0 then
+      Result[I] := 0
+    else
+      Result[I] := PStkDataRec(getRec(I)).CP - PStkDataRec(getRec(I - 1)).CP;
 end;
 
 end.

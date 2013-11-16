@@ -30,15 +30,15 @@ unit uFutuDataTypes;
 interface
 
 const
-   //定义版本信息
+  //定义版本信息
   HSFUSDK_VERSION = $10000014;
   HSFUSDK_VERSTRING = 'V1.0.0.14';
 
-   //定义连接服务类型
+  //定义连接服务类型
   SERVICE_TYPE_TRADE = 1; //交易服务
   SERVICE_TYPE_QUOTE = 2; //行情回报服务
 
-    //定义消息类型
+  //定义消息类型
   MSG_TYPE_UNKNOWN = -1; //未知消息类型
 
   MSG_TYPE_USER_LOGIN = 100; //用户登录
@@ -51,10 +51,10 @@ const
   MSG_TYPE_BANK_TRANSFER = 107; //银期转账
   MSG_TYPE_MODIFY_PASSWORD = 108; //客户修改密码
 
-   //20110822 luyj 增加组合委托 修改单号:20110819035
+  //20110822 luyj 增加组合委托 修改单号:20110819035
   MSG_TYPE_CHECK_COMBIN_CODE = 109; //检查组合合约代码
   MSG_TYPE_NEW_COMBIN_ORDER = 110; //组合委托确认
- //20110822 end
+  //20110822 end
 
   MSG_TYPE_GET_TRADING_CODE = 200; //交易编码查询
   MSG_TYPE_GET_PROFIT = 201; //期货客户资金权益查询
@@ -78,20 +78,20 @@ const
   MSG_TYPE_UFT_ORDERHSACK = 219; //委托反馈
   MSG_TYPE_UFT_ORDEREXACK = 220; //成交反馈
 
-   //20110822 luyj 增加组合委托相关查询(06) 修改单号:20110819035
+  //20110822 luyj 增加组合委托相关查询(06) 修改单号:20110819035
   MSG_TYPE_GET_COMBIN_CODE = 221; //查询组合代码
   MSG_TYPE_GET_COMBIN_QUOTE = 222; //查询组合行情
   MSG_TYPE_CHECK_PWD = 223; //校验密码
- //20110822 end
+  //20110822 end
 
- //20120426 tanghui 增加单客户查费用属性和保证金属性 修改单:20120412046
+  //20120426 tanghui 增加单客户查费用属性和保证金属性 修改单:20120412046
   MSG_TYPE_GET_FEE_PROPERTY = 224; //UFT客户查询费用属性
   MSG_TYPE_GET_MARGIN_PROPERTY = 225; //UFT客户查询保证金属性
 
 type
-   //定义Integer指针
+  //定义Integer指针
   PInteger = ^Integer;
-   //订阅类型
+  //订阅类型
   REGType =
     (
     UnKnownType = -1, // 未知类型
@@ -101,7 +101,7 @@ type
     OnlineMsg = 3 // 在线消息
     );
 
-   //订阅动作
+  //订阅动作
   REGAction =
     (
     UnKnownAction = -1, // 未知动作
@@ -111,7 +111,7 @@ type
     Snapshot = 3 // 查询快照(主要指行情)
     );
 
-   //连接的状态
+  //连接的状态
   CONState =
     (
     Uninitialized = -1, // 连接未初始化
@@ -125,7 +125,7 @@ type
     Rejected = $0040 // 被拒绝,将被关闭
     );
 
-    //定义消息模式(FUTU_MSG_MODE定义)
+  //定义消息模式(FUTU_MSG_MODE定义)
   FUTU_MSG_MODE =
     (
     MSG_MODE_UNKNOWN = -1, //未知消息模式
@@ -133,7 +133,7 @@ type
     MSG_MODE_ANSWER = 1 //表示是应答消息
     );
 
- //为兼容性统一以4字节对齐,否则有数据对齐的问题
+  //为兼容性统一以4字节对齐,否则有数据对齐的问题
 {$A4}
   // 单腿行情
   LPCMarketInfo = ^CMarketInfo;

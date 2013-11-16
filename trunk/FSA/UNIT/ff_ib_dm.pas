@@ -38,10 +38,12 @@ begin
 
   s_tmp := FormatDateTime('hhnnss', Now);
 
-  if (StrToInt(s_tmp) < 92900) then Exit;
+  if (StrToInt(s_tmp) < 92900) then
+    Exit;
 
   s_tmp := FormatDateTime('hhnnss', Now);
-  if (StrToInt(s_tmp) > 151500) then Exit;
+  if (StrToInt(s_tmp) > 151500) then
+    Exit;
 
   i_tmp := 0;
   i_loop := 569;
@@ -49,16 +51,17 @@ begin
   with ff_dm do
   begin
     try
-   //ADOConnection1.ConnectionString:='Provider=SQLNCLI.1;Password=gtja@123;Persist Security Info=True;User ID=hxs;Data Source=10.100.16.45';
-   //ADOConnection1.DefaultDatabase:='hlg';
+      //ADOConnection1.ConnectionString:='Provider=SQLNCLI.1;Password=gtja@123;Persist Security Info=True;User ID=hxs;Data Source=10.100.16.45';
+      //ADOConnection1.DefaultDatabase:='hlg';
       ADOConnection1.Connected := False;
       ADOConnection1.Connected := True;
 
-      if not ADOConnection1.Connected then Exit;
+      if not ADOConnection1.Connected then
+        Exit;
 
       ADOQuery1.Close;
 
-   //s_tmp := FormatDateTime('yyymmdd hh:nn:ss',Now);
+      //s_tmp := FormatDateTime('yyymmdd hh:nn:ss',Now);
       s_tmp := '20121116 09:00:00';
 
       sSQL := 'select * from hy_sszj_today where gettime >' + '''' + s_tmp + '''';
@@ -84,14 +87,14 @@ begin
       ADOQuery1.Close;
 
     except
-   // 处理错误
+      // 处理错误
       on E: Exception do
       begin
       end;
 
     end;
 
-  //ADOConnection1.Close;
+    //ADOConnection1.Close;
     ADOConnection1.Connected := False;
 
     if (i_tmp > 0) then

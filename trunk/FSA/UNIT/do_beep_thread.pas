@@ -35,7 +35,7 @@ begin
 
     Sleep(18000);
 
-  //frmMain2.GRID_S001.Cells[0,0]:=pc_what_wk;
+    //frmMain2.GRID_S001.Cells[0,0]:=pc_what_wk;
 
     if (i_comm_ok = 0) then
     begin
@@ -54,8 +54,8 @@ begin
 
     while not Terminated do
     begin
-   //Beep();
-    //s_sleep_us(2000000);
+      //Beep();
+       //s_sleep_us(2000000);
 
       if i_do_main_loop_mark = 0 then
       begin
@@ -65,7 +65,7 @@ begin
         if (not g_bStop) then
         begin
           if (WAIT_OBJECT_0 = WaitForSingleObject(g_hEvent, INFINITE)) then
-     //if(WAIT_OBJECT_0 = WaitForSingleObject(g_hEvent,1000) ) then
+            //if(WAIT_OBJECT_0 = WaitForSingleObject(g_hEvent,1000) ) then
           begin
 
             if (i_comm_ok = 0) then
@@ -77,7 +77,7 @@ begin
               frmMain2.Header.Cells[14, 0] := '联机';
             end;
 
-       //退出
+            //退出
             if g_bStop then
             begin
               Exit;
@@ -87,7 +87,7 @@ begin
             begin
               try
                 W_Log('Call Start', 8, 999, 'check lpComm_Start here!');
-         //Sleep(1000);
+                //Sleep(1000);
                 iRet := m_lpComm.Start(g_iType);
                 if (iRet = 0) then
                 begin
@@ -107,7 +107,7 @@ begin
       end
       else
       begin
-    //s_sleep_us(300000);
+        //s_sleep_us(300000);
         s_sleep_us(200000);
 
         s_tmp := FormatDateTime('hhnn', Now);
@@ -125,7 +125,8 @@ begin
 
         try
 
-          if (i_loop_count mod 100 = 0) then ff_get_qty();
+          if (i_loop_count mod 100 = 0) then
+            ff_get_qty();
 
           if (i_ff_get_qty_88 > 0) then
           begin
@@ -155,10 +156,11 @@ begin
           end;
         end;
 
-  //if( i_loop_count mod 18 =0 )	then ff_get_qty();
-  //if( i_loop_count mod 2 =0 ) then ff_main_wk_loop();
+        //if( i_loop_count mod 18 =0 )	then ff_get_qty();
+        //if( i_loop_count mod 2 =0 ) then ff_main_wk_loop();
         i_loop_count := i_loop_count + 1;
-        if (i_loop_count > 88888888) then i_loop_count := 0;
+        if (i_loop_count > 88888888) then
+          i_loop_count := 0;
       end;
     end;
 

@@ -1,6 +1,6 @@
 object frmMain2: TfrmMain2
   Left = 292
-  Top = 33
+  Top = 69
   AutoScroll = False
   Caption = #37329#34701#25968#25454#30424#21518#20998#26512#22823#24072' - Kylin v1.00'
   ClientHeight = 724
@@ -394,6 +394,11 @@ object frmMain2: TfrmMain2
         Caption = #21152#36733'DAT'#25968#25454
         RadioItem = True
         OnClick = mi0Click
+      end
+      object GOOGLECVS1: TMenuItem
+        Caption = 'GOOGLE'#36130#32463'CVS'
+        RadioItem = True
+        OnClick = GOOGLECVS1Click
       end
     end
     object miSizing: TMenuItem

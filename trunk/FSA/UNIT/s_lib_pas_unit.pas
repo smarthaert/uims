@@ -34,14 +34,14 @@ function GetKeyValue(
   section: PChar;
   key: PChar;
   datatype: PChar;
-         {
-                /* c for null end char */
-                /* s for short */
-                /* i for int */
-                /* l for long */
-                /* f for float */
-                /* d for double */
-          }
+  {
+         /* c for null end char */
+         /* s for short */
+         /* i for int */
+         /* l for long */
+         /* f for float */
+         /* d for double */
+   }
   value: PChar
   ): Integer; cdecl;
 external 'flyingfish.dll' name 'GetKeyValue';

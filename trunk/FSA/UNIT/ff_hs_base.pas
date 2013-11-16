@@ -14,47 +14,47 @@ type
   ////////////////////////继承回调接口//////////////////////////////////
   TMyFuCallBack = class(IFuCallBack)
   public
-        //查询
+    //查询
     function QueryInterface(const iid: PChar; ppv: Pointer): Integer; override; stdcall;
 
-        //引用接口，引用计数加一
+    //引用接口，引用计数加一
     function AddRef(): Integer; override; stdcall;
 
-        //释放接口，引用计数减一，计数为0时释放接口的实现对象
+    //释放接口，引用计数减一，计数为0时释放接口的实现对象
     function Release(): Integer; override; stdcall;
 
- //连接状态的改变
+    //连接状态的改变
     procedure OnConnStateNotify(lpInst: Pointer; iType: Integer; iRet: Integer;
       const szNotifyTime: PChar;
       const szMsg: PChar); override; stdcall;
 
- //登陆应答消息
+    //登陆应答消息
     procedure OnRspLogin(lpInst: Pointer; lpMsg: IFuMessage); override; stdcall;
 
- //登出反馈
+    //登出反馈
     procedure OnRspLogout(lpInst: Pointer; lpMsg: IFuMessage); override; stdcall;
 
-        //订阅\退订行情或者回报的结果
+    //订阅\退订行情或者回报的结果
     procedure OnRspSubResult(lpInst: Pointer; sType: REGType;
       aAction: REGAction; iResult: Integer;
       const lpParam: PChar; const szMsg: PChar); override; stdcall;
 
- //业务接收到业务应答消息
+    //业务接收到业务应答消息
     procedure OnReceivedBiz(lpInst: Pointer; lpAnsData: IFuMessage; iRet: Integer; iKeyID: Integer); override; stdcall;
 
- //接收到单腿市场行情
+    //接收到单腿市场行情
     procedure OnRspMarketInfo(lpInst: Pointer; const lpData: LPCMarketInfo; rAction: REGAction); override; stdcall;
 
- //接收到组合市场行情
+    //接收到组合市场行情
     procedure OnRspArgMaketInfo(lpInst: Pointer; const lpData: LPCArgMarketInfo; rAction: REGAction); override; stdcall;
 
-        //接收到委托反馈消息
+    //接收到委托反馈消息
     procedure OnRecvOrderInfo(lpInst: Pointer; const lpInfo: LPCOrderRspInfo); override; stdcall;
 
- //接收到订单成交反馈
+    //接收到订单成交反馈
     procedure OnRecvOrderRealInfo(lpInst: Pointer; const lpInfo: LPCRealRspInfo); override; stdcall;
 
- //在线个人消息
+    //在线个人消息
     procedure OnRspOnlineMsg(lpInst: Pointer; szUsrID: PChar; szMessage: PChar); override; stdcall;
   end;
   /////////////////////////////////////////////////////////////////////
@@ -68,28 +68,28 @@ type
    */}
 function NewFuMessage(iMsgType: Integer = -1; iMsgMode: Integer = -1): IFuMessage; stdcall; external HSFUSDKDLL;
 
-  {/**
-    * 创建新的系统连接对象
-    *@param lpReserved 保留参数,V1版本必须置为NULL
-    *@return 对象接口对象指针(可以调用其内的函数实现)
-    [线程安全]
-    */}
+{/**
+  * 创建新的系统连接对象
+  *@param lpReserved 保留参数,V1版本必须置为NULL
+  *@return 对象接口对象指针(可以调用其内的函数实现)
+  [线程安全]
+  */}
 function NewFuCommObj(lpReserved: Pointer = nil): Pointer; stdcall;
 external HSFUSDKDLL name 'NewFuCommObj';
 
-  {/**
-    * 获取版本号
-    @return 版本号,十六进制数据,例如0x10000000,表示版本为1.0.0.0
-    [线程安全]
-  */}
+{/**
+  * 获取版本号
+  @return 版本号,十六进制数据,例如0x10000000,表示版本为1.0.0.0
+  [线程安全]
+*/}
 function GetSDKVersion(): Integer; stdcall; external HSFUSDKDLL;
-  /////////////////////////////////////////SDK导出接口////////////////////////////////////////
+/////////////////////////////////////////SDK导出接口////////////////////////////////////////
 
 const
   m_ma_max_index = 11; //for 12 :0..11
 
 type
- //为兼容性统一以4字节对齐,否则有数据对齐的问题
+  //为兼容性统一以4字节对齐,否则有数据对齐的问题
 {$A4}
   // 单腿行情
   LP_s_k_line_data = ^s_k_line_data;
@@ -525,7 +525,8 @@ begin
 
   //Assert(false,s_tmp_log);
 
-  if i_make_ex_test > 0 then for j := 80 to i_s_k_chg_index_wk - 2 do
+  if i_make_ex_test > 0 then
+    for j := 80 to i_s_k_chg_index_wk - 2 do
     begin
 
       f_last_price_wk := as_k_chg[j].i_close / 100;
@@ -585,7 +586,7 @@ begin
         k_index := ff_get_min_ij_index(j, j + 240);
 
         if (j_tmp - i_tmp > 1600) or (i_tmp - k_tmp < 1000) then
-      //if(i_tmp-k_tmp >1600 ) or (j_tmp-i_tmp<1000) then
+          //if(i_tmp-k_tmp >1600 ) or (j_tmp-i_tmp<1000) then
         begin
           i_count := i_count + 1;
           W_Log('MBM short', as_k_chg[j].i_date, i_mbm_log,
@@ -601,55 +602,58 @@ begin
       end;
 
 
-    //ff_short_pass3_mark(j);
-    //ff_pass3_short_120(j);
-    //ff_make_mbm_long(j);
-    //ff_make_mbm_short(j);
+      //ff_short_pass3_mark(j);
+      //ff_pass3_short_120(j);
+      //ff_make_mbm_long(j);
+      //ff_make_mbm_short(j);
 
-    //ff_get_BS_Mark(j);
-    //ff_make_long_MA30(j);
-    //ff_make_long_MA250(j);
+      //ff_get_BS_Mark(j);
+      //ff_make_long_MA30(j);
+      //ff_make_long_MA250(j);
 
-    //ff_check_short_1(j);
-    //ff_check_short_1_ex(j);
-    //ff_check_short_30(j);
-    //ff_check_short_250(j);
-    //ff_check_short_120(j);
+      //ff_check_short_1(j);
+      //ff_check_short_1_ex(j);
+      //ff_check_short_30(j);
+      //ff_check_short_250(j);
+      //ff_check_short_120(j);
 
-    //ff_long_pass_3_ex(j);
-    //ff_check_long_pass_3(j);
+      //ff_long_pass_3_ex(j);
+      //ff_check_long_pass_3(j);
 
       if as_k_chg[j].i_date = 1131314 then
       begin
-    //ff_make_mbm_short(j);
-    //ff_short_pass3_mark(j);
-    //ff_pass3_short_120(j);
+        //ff_make_mbm_short(j);
+        //ff_short_pass3_mark(j);
+        //ff_pass3_short_120(j);
 
-    //ff_make_long_MA30(j);
+        //ff_make_long_MA30(j);
 
-    //ff_check_long_pass_3(j);
-    //ff_check_short_250(j);
-    //ff_check_long_pass_3(j);
-    //ff_check_short_1(j);
-    //ff_check_short_1_ex(j);
+        //ff_check_long_pass_3(j);
+        //ff_check_short_250(j);
+        //ff_check_long_pass_3(j);
+        //ff_check_short_1(j);
+        //ff_check_short_1_ex(j);
       end;
-    //ff_check_M30_short(j);
-    //ff_check_M30_short_ex(j);
+      //ff_check_M30_short(j);
+      //ff_check_M30_short_ex(j);
 
-    //ff_check_rsi_w20(j);
-    //ff_check_rsi_w20_ex(j);
+      //ff_check_rsi_w20(j);
+      //ff_check_rsi_w20_ex(j);
 
-    //ff_check_MA120_BB(j,3);
-    //ff_check_MA120_BB_ex(j);
-    //ff_check_BB_100(j,3);
-    //ff_check_BB_100_ex(j);
+      //ff_check_MA120_BB(j,3);
+      //ff_check_MA120_BB_ex(j);
+      //ff_check_BB_100(j,3);
+      //ff_check_BB_100_ex(j);
     end;
 
-  if i_make_ex_test > 0 then W_Log('MBM long', 88888, i_mbm_log + 1, PChar('Stop:' + IntToStr(j_count_1) + '----------' + 'Cut:' + IntToStr(i_count_1)));
-  if i_make_ex_test > 0 then W_Log('MBM short', 888, i_mbm_log, PChar('Stop:' + IntToStr(j_count) + '----------' + 'Cut:' + IntToStr(i_count)));
+  if i_make_ex_test > 0 then
+    W_Log('MBM long', 88888, i_mbm_log + 1, PChar('Stop:' + IntToStr(j_count_1) + '----------' + 'Cut:' + IntToStr(i_count_1)));
+  if i_make_ex_test > 0 then
+    W_Log('MBM short', 888, i_mbm_log, PChar('Stop:' + IntToStr(j_count) + '----------' + 'Cut:' + IntToStr(i_count)));
 
   //for test
-  if i_make_ex_test > 0 then ExitProcess(888);
+  if i_make_ex_test > 0 then
+    ExitProcess(888);
   //only for test End
 
   for j := 888 to i_s_k_chg_index_wk - 2 do
@@ -665,22 +669,22 @@ begin
   end;
 
 
-   //很重要:检查一下版本是否符合
+  //很重要:检查一下版本是否符合
   if HSFUSDK_VERSION <> GetSDKVersion() then
   begin
     //MessageBox(Self.Handle,'头文件版本与库文件版本不匹配,将可能导致兼容性问题!','版本警告',MB_OK or MB_ICONWARNING);
     Exit;
   end;
 
-   //第一步 创建一个通信对象
+  //第一步 创建一个通信对象
   m_lpComm := NewFuCommObj(nil);
   if nil = m_lpComm then
   begin
     //Form1.AddLog('创建通信对象失败');
     Exit;
   end;
-   //Form1.AddLog('创建通信对象OK');
-   //创建回调对象
+  //Form1.AddLog('创建通信对象OK');
+  //创建回调对象
   m_lpCallBack := TMyFuCallBack.Create;
 
   FF_comm_obj_init();
@@ -701,7 +705,8 @@ begin
   if Assigned(m_lpComm) then
   begin
     //FileClose(iFileHandle);
-    if i_beeping > 0 then ff_stop_do_beep();
+    if i_beeping > 0 then
+      ff_stop_do_beep();
 
     m_lpComm.SubscribeRequest(UnKnownType, CxlAll, 'ALLWWW');
     m_lpComm.DoLogout(pc_username);
@@ -730,14 +735,14 @@ var
 begin
   Result := False;
 
-   //很重要:检查一下版本是否符合
+  //很重要:检查一下版本是否符合
   if HSFUSDK_VERSION <> GetSDKVersion() then
   begin
-     //MessageBox(Self.Handle,'头文件版本与库文件版本不匹配,将可能导致兼容性问题!','版本警告',MB_OK or MB_ICONWARNING);
+    //MessageBox(Self.Handle,'头文件版本与库文件版本不匹配,将可能导致兼容性问题!','版本警告',MB_OK or MB_ICONWARNING);
     Exit;
   end;
 
-   //szServer := '222.66.166.146:2800';
+  //szServer := '222.66.166.146:2800';
   pc_IP := FF_ffconf(m_ff_main_ini, 'Sever', 'IP');
   pc_BLS := FF_ffconf(m_ff_main_ini, 'Sever', 'BLS');
   pc_CLF := FF_ffconf(m_ff_main_ini, 'Sever', 'CLF');
@@ -746,29 +751,29 @@ begin
   pc_username := FF_ffconf(m_ff_local_ini, 'Main', 'FC');
   pc_user_pwd := FF_ffconf(m_ff_local_ini, 'Main', 'FCPWD');
 
-   //sBiz:=
-   //sDatF:=
-   //sL:=
-   //设置配置参数
+  //sBiz:=
+  //sDatF:=
+  //sL:=
+  //设置配置参数
   m_lpComm.SetConfig('futu', 'server', pc_IP); //t2服务器地址
-   //m_lpComm.SetConfig('futu','biz_license_str','31332263F984F45D4B07689AB3352E19'); //授权业务证书串
-   //m_lpComm.SetConfig('futu','comm_license_file','fz_3rd.dat');//t2通信证书
-   //m_lpComm.SetConfig('futu','entrust_type','L');//委托方式
+  //m_lpComm.SetConfig('futu','biz_license_str','31332263F984F45D4B07689AB3352E19'); //授权业务证书串
+  //m_lpComm.SetConfig('futu','comm_license_file','fz_3rd.dat');//t2通信证书
+  //m_lpComm.SetConfig('futu','entrust_type','L');//委托方式
 
   m_lpComm.SetConfig('futu', 'biz_license_str', pc_BLS); //授权业务证书串
   m_lpComm.SetConfig('futu', 'comm_license_file', pc_CLF); //t2通信证书
 
   m_lpComm.SetConfig('futu', 'entrust_type', pc_ENT); //委托方式
 
-   //第二步 初始化接口对象
+  //第二步 初始化接口对象
   iRet := m_lpComm.Init(m_lpCallBack);
   if 0 <> iRet then
   begin
-     //sLog := '接口初始化失败:'+m_lpComm.GetErrorMsg(iRet);
+    //sLog := '接口初始化失败:'+m_lpComm.GetErrorMsg(iRet);
     Exit;
   end;
 
-   //初始化成功
+  //初始化成功
   sLog := '接口初始化成功!';
 
   iRet := m_lpComm.Start(SERVICE_TYPE_TRADE);
@@ -778,8 +783,8 @@ begin
     W_Log('m_lpComm.Start', i_wk_log, i_wk_log, PChar(sLog));
     Exit;
   end;
-   //Form1.AddLog('创建通信对象OK 999');
-   //建立通信连接
+  //Form1.AddLog('创建通信对象OK 999');
+  //建立通信连接
   iRet := m_lpComm.Start(SERVICE_TYPE_QUOTE);
   if 0 <> iRet then
   begin
@@ -787,8 +792,8 @@ begin
     W_Log('m_lpComm.Start', i_wk_log, i_wk_log, PChar(sLog));
     Exit;
   end;
-   //Form1.AddLog('创建通信对象OK 1000');
-   //第三步 一切操作从登陆开始
+  //Form1.AddLog('创建通信对象OK 1000');
+  //第三步 一切操作从登陆开始
   iRet := m_lpComm.DoLogin(pc_username, pc_user_pwd, 1);
   if iRet <> 0 then
   begin
@@ -796,9 +801,9 @@ begin
     W_Log('DoLogin', i_wk_log, i_wk_log, PChar(sLog));
     Exit
   end;
-   //Form1.AddLog('创建通信对象OK 1888');
+  //Form1.AddLog('创建通信对象OK 1888');
 
-  //订阅行情
+ //订阅行情
   m_lpComm.SubscribeRequest(SingleCode, Subscription, pc_what_wk);
   m_lpComm.SubscribeRequest(RspReport, Subscription, pc_username);
 
@@ -825,13 +830,13 @@ function FF_do_logout(pc_fund_account: PChar): Boolean;
 var
   iRet: Integer;
 begin
-   //登出
+  //登出
   if Assigned(m_lpComm) then
   begin
     iRet := m_lpComm.DoLogout(pc_fund_account);
     if 0 <> iRet then
     begin
-        //Form1.AddLog('登出失败:'+m_lpComm.GetErrorMsg(iRet));
+      //Form1.AddLog('登出失败:'+m_lpComm.GetErrorMsg(iRet));
     end;
   end;
 
@@ -862,7 +867,7 @@ end;
 
 procedure TMyFuCallBack.OnConnStateNotify(lpInst: Pointer; iType: Integer; iRet: Integer; const szNotifyTime, szMsg: PChar);
 begin
- //Form1.Addlog('连接状态变化:'+szNotifyTime+'-> '+szMsg+':'+IntToStr(iType));
+  //Form1.Addlog('连接状态变化:'+szNotifyTime+'-> '+szMsg+':'+IntToStr(iType));
   if iRet = 0 then //连接断开了
   begin
     i_comm_ok := 0;
@@ -902,28 +907,40 @@ begin
     FillChar(c_log, SizeOf(c_log), 0);
     StrCopy(c_log, lpInfo.entrust_direction);
 
-      //kaicang
+    //kaicang
     if c_log[0] = '1' then
     begin
       f_short_price := lpInfo.business_price;
       s_tmp := FloatToStrF(lpInfo.business_price, ffFixed, 8, 2);
       i_short_mark := i_short_mark + Round(lpInfo.business_amount);
-        //frmMain2.GRID_S002.Cells[0,13]:='空  '+Trim(s_tmp);
-        //frmMain2.GRID_S002.Cells[1,13]:=IntToStr(i_short_mark);
-      if (i_short_mark > (i_F + i_S - 1)) then i_short_S_mark := 888 else i_short_S_mark := 0;
-      if (i_short_mark > (i_F + i_S + i_T - 1)) then i_short_T_mark := 888 else i_short_T_mark := 0;
+      //frmMain2.GRID_S002.Cells[0,13]:='空  '+Trim(s_tmp);
+      //frmMain2.GRID_S002.Cells[1,13]:=IntToStr(i_short_mark);
+      if (i_short_mark > (i_F + i_S - 1)) then
+        i_short_S_mark := 888
+      else
+        i_short_S_mark := 0;
+      if (i_short_mark > (i_F + i_S + i_T - 1)) then
+        i_short_T_mark := 888
+      else
+        i_short_T_mark := 0;
     end;
 
-      //pingcang
+    //pingcang
     if c_log[0] = '2' then
     begin
       f_short_price := lpInfo.business_price;
       s_tmp := FloatToStrF(lpInfo.business_price, ffFixed, 8, 2);
       i_got_it_mark := i_got_it_mark - Round(lpInfo.business_amount);
-        //frmMain2.GRID_S002.Cells[0,7]:='多  '+Trim(s_tmp);
-        //frmMain2.GRID_S002.Cells[1,7]:=IntToStr(i_short_mark);
-      if (i_got_it_mark > (i_F + i_S - 1)) then i_get_S_mark := 888 else i_get_S_mark := 0;
-      if (i_got_it_mark > (i_F + i_S + i_T - 1)) then i_get_T_mark := 888 else i_get_T_mark := 0;
+      //frmMain2.GRID_S002.Cells[0,7]:='多  '+Trim(s_tmp);
+      //frmMain2.GRID_S002.Cells[1,7]:=IntToStr(i_short_mark);
+      if (i_got_it_mark > (i_F + i_S - 1)) then
+        i_get_S_mark := 888
+      else
+        i_get_S_mark := 0;
+      if (i_got_it_mark > (i_F + i_S + i_T - 1)) then
+        i_get_T_mark := 888
+      else
+        i_get_T_mark := 0;
     end;
 
   end
@@ -932,35 +949,47 @@ begin
     FillChar(c_log, SizeOf(c_log), 0);
     StrCopy(c_log, lpInfo.entrust_direction);
 
-      //kaicang
+    //kaicang
     if c_log[0] = '1' then
     begin
       f_business_price := lpInfo.business_price;
       s_tmp := FloatToStrF(lpInfo.business_price, ffFixed, 8, 2);
       i_got_it_mark := i_got_it_mark + Round(lpInfo.business_amount);
-        //frmMain2.GRID_S002.Cells[0,7]:='多  '+Trim(s_tmp);
-        //frmMain2.GRID_S002.Cells[1,7]:=IntToStr(i_got_it_mark);
-      if (i_got_it_mark > (i_F + i_S - 1)) then i_get_S_mark := 888 else i_get_S_mark := 0;
-      if (i_got_it_mark > (i_F + i_S + i_T - 1)) then i_get_T_mark := 888 else i_get_T_mark := 0;
+      //frmMain2.GRID_S002.Cells[0,7]:='多  '+Trim(s_tmp);
+      //frmMain2.GRID_S002.Cells[1,7]:=IntToStr(i_got_it_mark);
+      if (i_got_it_mark > (i_F + i_S - 1)) then
+        i_get_S_mark := 888
+      else
+        i_get_S_mark := 0;
+      if (i_got_it_mark > (i_F + i_S + i_T - 1)) then
+        i_get_T_mark := 888
+      else
+        i_get_T_mark := 0;
     end;
 
-      //pingcang
+    //pingcang
     if c_log[0] = '2' then
     begin
 
       f_short_price := lpInfo.business_price;
       s_tmp := FloatToStrF(lpInfo.business_price, ffFixed, 8, 2);
       i_short_mark := i_short_mark - Round(lpInfo.business_amount);
-        //frmMain2.GRID_S002.Cells[0,13]:='空  '+Trim(s_tmp);
-        //frmMain2.GRID_S002.Cells[1,13]:=IntToStr(i_short_mark);
-      if (i_short_mark > (i_F + i_S - 1)) then i_short_S_mark := 888 else i_short_S_mark := 0;
-      if (i_short_mark > (i_F + i_S + i_T - 1)) then i_short_T_mark := 888 else i_short_T_mark := 0;
+      //frmMain2.GRID_S002.Cells[0,13]:='空  '+Trim(s_tmp);
+      //frmMain2.GRID_S002.Cells[1,13]:=IntToStr(i_short_mark);
+      if (i_short_mark > (i_F + i_S - 1)) then
+        i_short_S_mark := 888
+      else
+        i_short_S_mark := 0;
+      if (i_short_mark > (i_F + i_S + i_T - 1)) then
+        i_short_T_mark := 888
+      else
+        i_short_T_mark := 0;
     end;
 
   end;
 
-    //frmMain2.CalcAll;
-    //frmMain2.GRID.Repaint;
+  //frmMain2.CalcAll;
+  //frmMain2.GRID.Repaint;
 
 end;
 
@@ -983,22 +1012,22 @@ end;
 
 procedure TMyFuCallBack.OnRspMarketInfo(lpInst: Pointer; const lpData: LPCMarketInfo; rAction: REGAction);
 var
- //iFileHandle : Integer;
+  //iFileHandle : Integer;
   s_tmp: string;
 begin
- //cout<<"单腿行情:("<<lpInfo->futu_exch_type<<":"<<lpInfo->contract_code<<")"<<lpInfo->futu_last_price<<"\t"<<lpInfo->sale_low_price<<"\t";
- //cout<<as_k_chg_ma_rsi[i_s_k_chg_index_wk-1].ai_rsi[0]<<"\t";
- //cout<<as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_ma[2]<<"\t"<<as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_rsi[0]<<"\t"<<i_s_k_chg_index_wk<<"\t"<<as_k_chg[i_s_k_chg_index_wk].i_date<<endl;
-  {
-  Form1.AddLog('收到单腿行情数据:'+lpData.contract_code +'	' +
-         FloatToStrF(lpData.futu_last_price,ffFixed,8,2) + '	MA30' +
+  //cout<<"单腿行情:("<<lpInfo->futu_exch_type<<":"<<lpInfo->contract_code<<")"<<lpInfo->futu_last_price<<"\t"<<lpInfo->sale_low_price<<"\t";
+  //cout<<as_k_chg_ma_rsi[i_s_k_chg_index_wk-1].ai_rsi[0]<<"\t";
+  //cout<<as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_ma[2]<<"\t"<<as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_rsi[0]<<"\t"<<i_s_k_chg_index_wk<<"\t"<<as_k_chg[i_s_k_chg_index_wk].i_date<<endl;
+   {
+   Form1.AddLog('收到单腿行情数据:'+lpData.contract_code +'	' +
+          FloatToStrF(lpData.futu_last_price,ffFixed,8,2) + '	MA30' +
 
-         IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_ma[3]) + ' MA60' +
-         IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_ma[5]) + ' RSI6' +
+          IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_ma[3]) + ' MA60' +
+          IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_ma[5]) + ' RSI6' +
 
-                IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk-1].ai_rsi[0]) + '	' +
-                IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_rsi[0])                );
-  }
+                 IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk-1].ai_rsi[0]) + '	' +
+                 IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_rsi[0])                );
+   }
   s_tmp := FloatToStrF(lpData.futu_last_price, ffFixed, 8, 2) + '	MA30' +
 
   IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_ma[3]) + ' MA60' +
@@ -1007,12 +1036,14 @@ begin
     IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_rsi[0]);
   tm_1 := Now;
 
-  if (lpData.futu_last_price < 10) then Exit;
+  if (lpData.futu_last_price < 10) then
+    Exit;
 
   f_last_price_wk := lpData.futu_last_price;
 
   //20120622 add
-  if (i_got_it_mark = 0) then i_long_FLOSS_MAX := 0;
+  if (i_got_it_mark = 0) then
+    i_long_FLOSS_MAX := 0;
   if (i_got_it_mark > 0) and
     (f_last_price_wk - f_business_price < -3) then
   begin
@@ -1020,7 +1051,8 @@ begin
       i_long_FLOSS_MAX := Round(f_business_price - f_last_price_wk);
   end;
 
-  if (i_short_mark = 0) then i_short_FLOSS_MAX := 0;
+  if (i_short_mark = 0) then
+    i_short_FLOSS_MAX := 0;
   if (i_short_mark > 0) and
     (f_last_price_wk - f_business_price > 3) then
   begin
@@ -1029,8 +1061,10 @@ begin
   end;
   //20120622 add end
 
-  if i_s_k_chg_index_wk > 8 then f_last_price_1 := as_k_chg[i_s_k_chg_index_wk - 1].i_close / 100
-  else f_last_price_1 := f_last_price_wk;
+  if i_s_k_chg_index_wk > 8 then
+    f_last_price_1 := as_k_chg[i_s_k_chg_index_wk - 1].i_close / 100
+  else
+    f_last_price_1 := f_last_price_wk;
 
   if (i_get_price_count < 1) or (i_get_price_count > m_i_max_chg_kline_in_mem - 8) then
   begin
@@ -1075,16 +1109,16 @@ begin
   if (SecondsBetween(tm_0, tm_1) > 59) or
     ((SecondsBetween(tm_0, tm_1) > 50) and (i_will_close_market = 888)) then
   begin
-  {
-  Form1.AddLog('收到单腿行情数据:'+lpData.contract_code +'	' +
-         FloatToStrF(lpData.futu_last_price,ffFixed,8,2) + '	MA30' +
-         IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_ma[3]) + ' MA60' +
-         IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_ma[5]) + ' RSI6' +
-                IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk-1].ai_rsi[0]) + '	' +
-                IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_rsi[0])   +' ' +
-                IntTostr(i_got_it_mark) + ' ' +
-                FloatToStrF(f_business_price,ffFixed,8,2)             );
-  }
+    {
+    Form1.AddLog('收到单腿行情数据:'+lpData.contract_code +'	' +
+           FloatToStrF(lpData.futu_last_price,ffFixed,8,2) + '	MA30' +
+           IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_ma[3]) + ' MA60' +
+           IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_ma[5]) + ' RSI6' +
+                  IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk-1].ai_rsi[0]) + '	' +
+                  IntToStr(as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_rsi[0])   +' ' +
+                  IntTostr(i_got_it_mark) + ' ' +
+                  FloatToStrF(f_business_price,ffFixed,8,2)             );
+    }
 
     as_k_chg[i_s_k_chg_index_wk].i_close := Round(lpData.futu_last_price * 100);
     as_k_chg[i_s_k_chg_index_wk].i_pre_close := Round(lpData.business_amount);
@@ -1101,7 +1135,8 @@ begin
     as_k_chg[i_s_k_chg_index_wk].i_date := StrToInt(s_tmp);
 
     s_tmp := FormatDateTime('hhnn', Now);
-    if (s_tmp = '1514') then i_will_close_market := 888;
+    if (s_tmp = '1514') then
+      i_will_close_market := 888;
 
     s_tmp := FormatDateTime('nn', Now);
 
@@ -1128,7 +1163,7 @@ begin
       begin
         FileWrite(iFileHandle, as_k_chg[i_s_k_chg_index_wk], SizeOf(s_k_line_data));
         FileClose(iFileHandle);
-          //for FF_300k
+        //for FF_300k
         try
 
           frmMain2.StkDataFile.writeStkDataToM(1, @as_k_chg[i_s_k_chg_index_wk]);
@@ -1184,8 +1219,8 @@ begin
     if as_k_chg[i_s_k_chg_index_wk].i_close < as_k_chg[i_s_k_chg_index_wk].i_low then
       as_k_chg[i_s_k_chg_index_wk].i_low := as_k_chg[i_s_k_chg_index_wk].i_close;
 
-   //if i_s_k_chg_index_wk > i_s_k_chg_index_load then
-   //	as_k_chg[i_s_k_chg_index_wk].i_vol:= as_k_chg[i_s_k_chg_index_wk].i_pre_close-as_k_chg[i_s_k_chg_index_wk-1].i_pre_close;
+    //if i_s_k_chg_index_wk > i_s_k_chg_index_load then
+    //	as_k_chg[i_s_k_chg_index_wk].i_vol:= as_k_chg[i_s_k_chg_index_wk].i_pre_close-as_k_chg[i_s_k_chg_index_wk-1].i_pre_close;
 
     try
       frmMain2.StkDataFile.writeStkDataToM(1, @as_k_chg[i_s_k_chg_index_wk]);
@@ -1228,9 +1263,9 @@ begin
   //for
   if ((i_get_price_count mod 18) = 0) then
   begin
-      //frmMain2.CalcAll;
-      //frmMain2.GRID.Repaint;
-      //frmMain2.GridSxxxRePaint;
+    //frmMain2.CalcAll;
+    //frmMain2.GRID.Repaint;
+    //frmMain2.GridSxxxRePaint;
   end;
 
   i_get_price_count := i_get_price_count + 1;
@@ -1282,9 +1317,8 @@ begin
     begin
       if (as_k_chg[i - j].i_close > as_k_chg[(i - j) - 1].i_close) then
         sum1 := sum1 + as_k_chg[i - j].i_close / 100 - as_k_chg[(i - j) - 1].i_close / 100
-      else
-        if (as_k_chg[i - j].i_close < as_k_chg[(i - j) - 1].i_close) then
-          sum2 := sum2 + as_k_chg[(i - j) - 1].i_close / 100 - as_k_chg[i - j].i_close / 100;
+      else if (as_k_chg[i - j].i_close < as_k_chg[(i - j) - 1].i_close) then
+        sum2 := sum2 + as_k_chg[(i - j) - 1].i_close / 100 - as_k_chg[i - j].i_close / 100;
 
     end;
 
@@ -1315,7 +1349,8 @@ var
   f_tmp: Single;
 begin
   f_tmp := 0.0;
-  for k := i - ai_ma_set[j] + 1 to i do f_tmp := f_tmp + as_k_chg[k].i_close;
+  for k := i - ai_ma_set[j] + 1 to i do
+    f_tmp := f_tmp + as_k_chg[k].i_close;
   as_k_chg_ma_rsi[i].ai_ma[j] := Round(f_tmp / ai_ma_set[j]);
   Result := 0;
 end;
@@ -1348,9 +1383,8 @@ begin
   begin
     if (as_k_chg[i - j].i_close > as_k_chg[(i - j) - 1].i_close) then
       sum1 := sum1 + as_k_chg[i - j].i_close / 100 - as_k_chg[(i - j) - 1].i_close / 100
-    else
-      if (as_k_chg[i - j].i_close < as_k_chg[(i - j) - 1].i_close) then
-        sum2 := sum2 + as_k_chg[(i - j) - 1].i_close / 100 - as_k_chg[i - j].i_close / 100;
+    else if (as_k_chg[i - j].i_close < as_k_chg[(i - j) - 1].i_close) then
+      sum2 := sum2 + as_k_chg[(i - j) - 1].i_close / 100 - as_k_chg[i - j].i_close / 100;
 
   end;
 
@@ -1372,7 +1406,9 @@ var
   i_m: Integer;
 begin
   i_m := as_k_chg[i].i_high;
-  for k := i to j do if Integer(as_k_chg[k].i_high) > i_m then i_m := as_k_chg[k].i_high;
+  for k := i to j do
+    if Integer(as_k_chg[k].i_high) > i_m then
+      i_m := as_k_chg[k].i_high;
   Result := i_m;
 end;
 
@@ -1384,7 +1420,8 @@ var
 begin
   i_m := as_k_chg[i].i_high;
   i_index := i;
-  for k := i to j do if Integer(as_k_chg[k].i_high) > i_m then
+  for k := i to j do
+    if Integer(as_k_chg[k].i_high) > i_m then
     begin
       i_m := as_k_chg[k].i_high;
       i_index := k;
@@ -1398,7 +1435,9 @@ var
   i_m: Integer;
 begin
   i_m := as_k_chg[i].i_low;
-  for k := i to j do if Integer(as_k_chg[k].i_low) < i_m then i_m := as_k_chg[k].i_low;
+  for k := i to j do
+    if Integer(as_k_chg[k].i_low) < i_m then
+      i_m := as_k_chg[k].i_low;
   Result := i_m;
 end;
 
@@ -1410,7 +1449,8 @@ var
 begin
   i_index := i;
   i_m := as_k_chg[i].i_low;
-  for k := i to j do if Integer(as_k_chg[k].i_low) < i_m then
+  for k := i to j do
+    if Integer(as_k_chg[k].i_low) < i_m then
     begin
       i_m := as_k_chg[k].i_low;
       i_index := k;
@@ -1422,8 +1462,11 @@ function ff_make_ma_rsi_ex(ii: Integer): Integer;
 var
   j: Integer;
 begin
-  for j := 0 to m_ma_max_index do if (ii > ai_ma_set[j] - 1) then ff_get_ma(ii, j);
-  for j := 0 to 5 do ff_get_rsi_ex(ii, j);
+  for j := 0 to m_ma_max_index do
+    if (ii > ai_ma_set[j] - 1) then
+      ff_get_ma(ii, j);
+  for j := 0 to 5 do
+    ff_get_rsi_ex(ii, j);
   Result := 0;
 end;
 
@@ -1436,12 +1479,15 @@ begin
 
   for i := 0 to i_s_k_chg_index_wk do
   begin
-    for j := 0 to m_ma_max_index do if (i > ai_ma_set[j] - 1) then ff_get_ma(i, j);
+    for j := 0 to m_ma_max_index do
+      if (i > ai_ma_set[j] - 1) then
+        ff_get_ma(i, j);
   end;
 
   i := i_s_k_chg_index_wk;
 
-  for j := 0 to 5 do ff_get_rsi(i, j);
+  for j := 0 to 5 do
+    ff_get_rsi(i, j);
 
   Result := 0;
 end;
@@ -1453,13 +1499,17 @@ var
 begin
 
   Result := -1;
-  if (i < 88) then Exit;
+  if (i < 88) then
+    Exit;
 
-  if (i_act_rsi = 0) then Exit;
+  if (i_act_rsi = 0) then
+    Exit;
 
-  if (i_w20_mark = 888) then Exit;
+  if (i_w20_mark = 888) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i].ai_rsi[0] > 6000) or (as_k_chg_ma_rsi[i].ai_rsi[0] < 2100) then Exit;
+  if (as_k_chg_ma_rsi[i].ai_rsi[0] > 6000) or (as_k_chg_ma_rsi[i].ai_rsi[0] < 2100) then
+    Exit;
 
   if (as_k_chg_ma_rsi[i - 1].ai_rsi[0] < Cardinal(i_rsi_A)) or
     (as_k_chg_ma_rsi[i - 2].ai_rsi[0] < Cardinal(i_rsi_A)) or
@@ -1499,20 +1549,27 @@ begin
 
   Result := -1;
 
-  if (i_act_m120 = 0) then exit;
+  if (i_act_m120 = 0) then
+    exit;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
-  if (i - i_MA120_BB_mark > i_BB_BOX_X * 3) then i_MA120_BB_mark := 0;
+  if (i - i_MA120_BB_mark > i_BB_BOX_X * 3) then
+    i_MA120_BB_mark := 0;
 
-  if (i_MA120_BB_mark > 888) then Exit;
+  if (i_MA120_BB_mark > 888) then
+    Exit;
 
   //ai_ma[6] for MA120
-  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[6] - 100) then Exit;
+  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[6] - 100) then
+    Exit;
 
-  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[6] + 800) then Exit;
+  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[6] + 800) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i].ai_ma[i_ma_index] < (as_k_chg_ma_rsi[i].ai_ma[6])) then Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[i_ma_index] < (as_k_chg_ma_rsi[i].ai_ma[6])) then
+    Exit;
 
   n := ff_get_min_ij_index(i - i_BB_BOX_X - 2, i);
 
@@ -1522,30 +1579,42 @@ begin
 
   a := ff_get_max_ij_index(b - 8 * i_BB_BOX_X, b);
 
-  if (Integer(as_k_chg[a].i_high + 800) < ff_get_max_ij_high(a, n)) then Exit;
+  if (Integer(as_k_chg[a].i_high + 800) < ff_get_max_ij_high(a, n)) then
+    Exit;
 
   //MA30 < MA120
   for j := a - i_BB_BOX_X * 2 to n - i_BB_BOX_X do
   begin
-    if as_k_chg_ma_rsi[j].ai_ma[i_ma_index] > as_k_chg_ma_rsi[j].ai_ma[6] then Exit;
+    if as_k_chg_ma_rsi[j].ai_ma[i_ma_index] > as_k_chg_ma_rsi[j].ai_ma[6] then
+      Exit;
   end;
 
-  if (c > (n - i_BB_BOX_X + 2)) then Exit;
+  if (c > (n - i_BB_BOX_X + 2)) then
+    Exit;
 
-  if as_k_chg[c].i_high > (as_k_chg[n].i_close + 1600) then Exit;
+  if as_k_chg[c].i_high > (as_k_chg[n].i_close + 1600) then
+    Exit;
 
-  if (as_k_chg[a].i_high > (as_k_chg[c].i_high + 600)) then Exit;
+  if (as_k_chg[a].i_high > (as_k_chg[c].i_high + 600)) then
+    Exit;
 
-  if (as_k_chg[c].i_high > (as_k_chg[a].i_high + 600)) then Exit;
+  if (as_k_chg[c].i_high > (as_k_chg[a].i_high + 600)) then
+    Exit;
 
-  if (as_k_chg[n].i_low < as_k_chg[b].i_low) then Exit;
+  if (as_k_chg[n].i_low < as_k_chg[b].i_low) then
+    Exit;
 
-  if (as_k_chg[n].i_close - as_k_chg[b].i_low) < Round((as_k_chg[c].i_high - as_k_chg[b].i_low) / 3) then Exit;
-  if (as_k_chg[n].i_close - as_k_chg[b].i_low) < Round((as_k_chg[a].i_high - as_k_chg[b].i_low) / 3) then Exit;
+  if (as_k_chg[n].i_close - as_k_chg[b].i_low) < Round((as_k_chg[c].i_high - as_k_chg[b].i_low) / 3) then
+    Exit;
+  if (as_k_chg[n].i_close - as_k_chg[b].i_low) < Round((as_k_chg[a].i_high - as_k_chg[b].i_low) / 3) then
+    Exit;
 
-  if (b - a < i_BB_BOX_X * 2) then Exit;
-  if (c - b < i_BB_BOX_X) then Exit;
-  if (i - n < 2) then Exit;
+  if (b - a < i_BB_BOX_X * 2) then
+    Exit;
+  if (c - b < i_BB_BOX_X) then
+    Exit;
+  if (i - n < 2) then
+    Exit;
 
   i_MA120_BB_c := c;
   i_MA120_BB_n := n;
@@ -1564,11 +1633,14 @@ end;
 function ff_check_MA120_BB_ex(i: Integer): Integer;
 begin
   Result := -1;
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
-  if (i - i_MA120_BB_mark > i_BB_BOX_X * 2) then i_MA120_BB_mark := 0;
+  if (i - i_MA120_BB_mark > i_BB_BOX_X * 2) then
+    i_MA120_BB_mark := 0;
 
-  if (i_MA120_BB_mark = 0) then Exit;
+  if (i_MA120_BB_mark = 0) then
+    Exit;
 
   W_Log('M120_BB_EX', i_tmp_log, i_make_log_ex, '1 888!!!');
 
@@ -1589,7 +1661,8 @@ begin
 
   W_Log('M120_BB_EX', i_tmp_log, i_make_log_ex, '4 888!!!');
 
-  if (i_MA120_BB_mark = 0) then Exit;
+  if (i_MA120_BB_mark = 0) then
+    Exit;
 
   W_Log('M120_BB_EX', i_tmp_log, i_make_log_ex, '5 f_last_price_wk  888!!!');
   W_Log('M120_BB_EX', i_tmp_log, i_make_log_ex, '6 max high!!');
@@ -1612,11 +1685,14 @@ function ff_check_rsi_w20_ex(i: Integer): Integer;
 begin
 
   Result := -1;
-  if (i < 88) then Exit;
+  if (i < 88) then
+    Exit;
 
-  if (i_w20_mark = 0) then Exit;
+  if (i_w20_mark = 0) then
+    Exit;
 
-  if i_w20_A_index > i - i_rsi_IA_min then Exit;
+  if i_w20_A_index > i - i_rsi_IA_min then
+    Exit;
 
   //if i - i_w20_A_index > i_rsi_IA_max Then i_w20_mark :=0;
 
@@ -1630,7 +1706,8 @@ begin
     i_w20_mark := 0;
   end;
 
-  if (i_w20_mark = 0) then Exit;
+  if (i_w20_mark = 0) then
+    Exit;
 
   if (ff_get_max_ij_high(i_w20_A_index, i - 2) - ff_get_min_ij_low(i_w20_A_index, i - 2) < i_BOX_Y) then
   begin
@@ -1664,20 +1741,28 @@ begin
 
   Result := -1;
 
-  if (i_act_bb_100 = 0) then exit;
+  if (i_act_bb_100 = 0) then
+    exit;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
-  if (i - i_BB_100_mark > i_BB_100_BOX_X * 5) then i_BB_100_mark := 0;
+  if (i - i_BB_100_mark > i_BB_100_BOX_X * 5) then
+    i_BB_100_mark := 0;
 
-  if (i_BB_100_mark > 888) then Exit;
+  if (i_BB_100_mark > 888) then
+    Exit;
 
   //ai_ma[6] for MA120
-  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[6] - 100) then Exit;
-  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[6] + 1200) then Exit;
+  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[6] - 100) then
+    Exit;
+  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[6] + 1200) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i].ai_ma[3] < (as_k_chg_ma_rsi[i].ai_ma[6])) then Exit;
-  if (as_k_chg_ma_rsi[i].ai_ma[5] < (as_k_chg_ma_rsi[i].ai_ma[6])) then Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[3] < (as_k_chg_ma_rsi[i].ai_ma[6])) then
+    Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[5] < (as_k_chg_ma_rsi[i].ai_ma[6])) then
+    Exit;
 
   n := ff_get_min_ij_index(i - i_BB_100_BOX_X - 2, i);
 
@@ -1687,35 +1772,50 @@ begin
 
   a := ff_get_max_ij_index(b - 12 * i_BB_100_BOX_X, b);
 
-  if (Integer(as_k_chg[a].i_high + 800) < ff_get_max_ij_high(a, n)) then Exit;
+  if (Integer(as_k_chg[a].i_high + 800) < ff_get_max_ij_high(a, n)) then
+    Exit;
 
-  if (Integer(as_k_chg[a].i_high - as_k_chg[b].i_low) > Round((Integer(as_k_chg[a].i_high) - ff_get_min_ij_low(a - 12 * i_BB_100_BOX_X, a)) / 2)) then Exit;
+  if (Integer(as_k_chg[a].i_high - as_k_chg[b].i_low) > Round((Integer(as_k_chg[a].i_high) - ff_get_min_ij_low(a - 12 * i_BB_100_BOX_X, a)) / 2)) then
+    Exit;
 
 
   //MA30 < MA120
   for j := a - i_BB_100_BOX_X * 2 to n - i_BB_100_BOX_X do
   begin
-    if as_k_chg_ma_rsi[j].ai_ma[3] < as_k_chg_ma_rsi[j].ai_ma[6] then Exit;
-    if as_k_chg_ma_rsi[j].ai_ma[5] < (as_k_chg_ma_rsi[j].ai_ma[6] - 200) then Exit;
-    if (as_k_chg[j].i_close < as_k_chg_ma_rsi[j - 1].ai_ma[6] - 100) then Exit;
+    if as_k_chg_ma_rsi[j].ai_ma[3] < as_k_chg_ma_rsi[j].ai_ma[6] then
+      Exit;
+    if as_k_chg_ma_rsi[j].ai_ma[5] < (as_k_chg_ma_rsi[j].ai_ma[6] - 200) then
+      Exit;
+    if (as_k_chg[j].i_close < as_k_chg_ma_rsi[j - 1].ai_ma[6] - 100) then
+      Exit;
   end;
 
-  if (c > (n - i_BB_100_BOX_X + 2)) then Exit;
+  if (c > (n - i_BB_100_BOX_X + 2)) then
+    Exit;
 
-  if as_k_chg[c].i_high > (as_k_chg[n].i_close + 2800) then Exit;
+  if as_k_chg[c].i_high > (as_k_chg[n].i_close + 2800) then
+    Exit;
 
-  if (as_k_chg[a].i_high > (as_k_chg[c].i_high + 1200)) then Exit;
+  if (as_k_chg[a].i_high > (as_k_chg[c].i_high + 1200)) then
+    Exit;
 
-  if (as_k_chg[c].i_high > (as_k_chg[a].i_high + 1200)) then Exit;
+  if (as_k_chg[c].i_high > (as_k_chg[a].i_high + 1200)) then
+    Exit;
 
-  if (as_k_chg[n].i_low < as_k_chg[b].i_low) then Exit;
+  if (as_k_chg[n].i_low < as_k_chg[b].i_low) then
+    Exit;
 
-  if (as_k_chg[n].i_close - as_k_chg[b].i_low) < Round((as_k_chg[c].i_high - as_k_chg[b].i_low) / 3) then Exit;
-  if (as_k_chg[n].i_close - as_k_chg[b].i_low) < Round((as_k_chg[a].i_high - as_k_chg[b].i_low) / 3) then Exit;
+  if (as_k_chg[n].i_close - as_k_chg[b].i_low) < Round((as_k_chg[c].i_high - as_k_chg[b].i_low) / 3) then
+    Exit;
+  if (as_k_chg[n].i_close - as_k_chg[b].i_low) < Round((as_k_chg[a].i_high - as_k_chg[b].i_low) / 3) then
+    Exit;
 
-  if (b - a < i_BB_100_BOX_X * 2) then Exit;
-  if (c - b < i_BB_100_BOX_X) then Exit;
-  if (i - n < 2) then Exit;
+  if (b - a < i_BB_100_BOX_X * 2) then
+    Exit;
+  if (c - b < i_BB_100_BOX_X) then
+    Exit;
+  if (i - n < 2) then
+    Exit;
 
   i_BB_100_c := c;
   i_BB_100_n := n;
@@ -1735,9 +1835,11 @@ end;
 function ff_check_BB_100_ex(i: Integer): Integer;
 begin
   Result := -1;
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
-  if (i_BB_100_mark = 0) then Exit;
+  if (i_BB_100_mark = 0) then
+    Exit;
 
   //W_Log('BB_100_EX',as_k_chg[i].i_date,8,'1 888!!!');
 
@@ -1749,14 +1851,15 @@ begin
 
   if (f_last_price_wk > (as_k_chg[i_BB_100_c].i_high / 100 + 5.0)) then
   begin
-  //W_Log('BB_100_EX',as_k_chg[i].i_high,8,'2.5 f_last_price_wk  888!!!');
-  //W_Log('BB_100_EX',as_k_chg[i].i_date,8,'3 888!!!');
+    //W_Log('BB_100_EX',as_k_chg[i].i_high,8,'2.5 f_last_price_wk  888!!!');
+    //W_Log('BB_100_EX',as_k_chg[i].i_date,8,'3 888!!!');
     i_BB_100_mark := 0;
   end;
 
   //W_Log('BB_100_EX',as_k_chg[i].i_date,8,'4 888!!!');
 
-  if (i_BB_100_mark = 0) then Exit;
+  if (i_BB_100_mark = 0) then
+    Exit;
 
   //W_Log('BB_100_EX',as_k_chg[i].i_high,8,'5 f_last_price_wk  888!!!');
   //W_Log('BB_100_EX',ff_get_max_ij_high(i_BB_100_n,i_BB_100_i),8,'6 max high!!');
@@ -1778,7 +1881,8 @@ function ff_get_S_L_Mark(i: Integer): Integer;
 begin
   Result := -1;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
   i_MA120_120_chg := as_k_chg_ma_rsi[i].ai_ma[6] - as_k_chg_ma_rsi[i - 120].ai_ma[6];
 
@@ -1839,19 +1943,26 @@ begin
 
   Result := -1;
 
-  if (i < 288) then Exit;
+  if (i < 288) then
+    Exit;
 
-  if (i - i_M30_short_mark > i_M30_short_BOX_X * 2) then i_M30_short_mark := 0;
+  if (i - i_M30_short_mark > i_M30_short_BOX_X * 2) then
+    i_M30_short_mark := 0;
 
-  if (i_M30_short_mark > 288) then Exit;
+  if (i_M30_short_mark > 288) then
+    Exit;
 
   //ai_ma[6] for MA120
-  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[5] - 100) then Exit;
+  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[5] - 100) then
+    Exit;
 
-  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[5] - 1200) then Exit;
+  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[5] - 1200) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i].ai_ma[3] < (as_k_chg_ma_rsi[i].ai_ma[6])) then Exit;
-  if (as_k_chg_ma_rsi[i].ai_ma[5] < (as_k_chg_ma_rsi[i].ai_ma[6])) then Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[3] < (as_k_chg_ma_rsi[i].ai_ma[6])) then
+    Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[5] < (as_k_chg_ma_rsi[i].ai_ma[6])) then
+    Exit;
 
   n := ff_get_max_ij_index(i - i_M30_short_BOX_X - 2, i);
 
@@ -1861,15 +1972,18 @@ begin
 
   a := ff_get_min_ij_index(b - 8 * i_M30_short_BOX_X, b);
 
-  if (Integer(as_k_chg[a].i_low + 800) < ff_get_min_ij_low(a, n)) then Exit;
+  if (Integer(as_k_chg[a].i_low + 800) < ff_get_min_ij_low(a, n)) then
+    Exit;
 
   //MA30 < MA120
   for j := a to n - i_M30_short_BOX_X do
   begin
-    if as_k_chg_ma_rsi[j].ai_ma[3] < as_k_chg_ma_rsi[j].ai_ma[6] then Exit;
+    if as_k_chg_ma_rsi[j].ai_ma[3] < as_k_chg_ma_rsi[j].ai_ma[6] then
+      Exit;
   end;
 
-  if (c > (n - i_M30_short_BOX_X + 2)) then Exit;
+  if (c > (n - i_M30_short_BOX_X + 2)) then
+    Exit;
 
   //if ((as_k_chg[c].i_low +1600) < as_k_chg[n].i_close) Then Exit;
 
@@ -1877,11 +1991,15 @@ begin
 
   //if (as_k_chg[c].i_low > (as_k_chg[a].i_low + 800) ) Then Exit;
 
-  if (as_k_chg[n].i_high > as_k_chg[b].i_high) then Exit;
+  if (as_k_chg[n].i_high > as_k_chg[b].i_high) then
+    Exit;
 
-  if (b - a < i_M30_short_BOX_X * 2) then Exit;
-  if (c - b < i_M30_short_BOX_X) then Exit;
-  if (i - n < 2) then Exit;
+  if (b - a < i_M30_short_BOX_X * 2) then
+    Exit;
+  if (c - b < i_M30_short_BOX_X) then
+    Exit;
+  if (i - n < 2) then
+    Exit;
 
   i_M30_short_c := c;
   i_M30_short_n := n;
@@ -1900,9 +2018,11 @@ end;
 function ff_check_M30_short_ex(i: Integer): Integer;
 begin
   Result := -1;
-  if (i < 288) then Exit;
+  if (i < 288) then
+    Exit;
 
-  if (i_M30_short_mark = 0) then Exit;
+  if (i_M30_short_mark = 0) then
+    Exit;
 
   //W_Log('M30_short_EX',as_k_chg[i].i_date,8,'1 888!!!');
 
@@ -1914,20 +2034,22 @@ begin
 
   if (f_last_price_wk < (as_k_chg[i_M30_short_c].i_low / 100 - 15.0)) then
   begin
-  //W_Log('M30_short_EX',as_k_chg[i].i_high,8,'2.5 f_last_price_wk  888!!!');
+    //W_Log('M30_short_EX',as_k_chg[i].i_high,8,'2.5 f_last_price_wk  888!!!');
 
-  //W_Log('M30_short_EX',as_k_chg[i].i_date,8,'3 888!!!');
+    //W_Log('M30_short_EX',as_k_chg[i].i_date,8,'3 888!!!');
     i_M30_short_mark := 0;
   end;
 
   //W_Log('M120_BB_EX',as_k_chg[i].i_date,8,'4 888!!!');
 
-  if (i_M30_short_mark = 0) then Exit;
+  if (i_M30_short_mark = 0) then
+    Exit;
 
   //W_Log('M30_short_EX',as_k_chg[i].i_low,8,'5 f_last_price_wk  888!!!');
   //W_Log('M30_short_EX',ff_get_min_ij_low(i_M30_short_n,i_M30_short_i),8,'6 min low!!');
 
-  if (f_last_price_wk > as_k_chg_ma_rsi[i - 1].ai_ma[6] / 100) then Exit;
+  if (f_last_price_wk > as_k_chg_ma_rsi[i - 1].ai_ma[6] / 100) then
+    Exit;
 
   if (f_last_price_wk < ff_get_min_ij_low(i_M30_short_n, i_M30_short_i) / 100) and
     (f_last_price_wk > (ff_get_min_ij_low(i_M30_short_n, i_M30_short_i) / 100 - 15)) then
@@ -1952,21 +2074,30 @@ begin
 
   Result := -1;
 
-  if (i_act_short = 0) then Exit;
+  if (i_act_short = 0) then
+    Exit;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
-  if (i - i_short_1_mark > i_BB_BOX_X * 3) then i_short_1_mark := 0;
+  if (i - i_short_1_mark > i_BB_BOX_X * 3) then
+    i_short_1_mark := 0;
 
-  if (i_short_1_mark > 888) then Exit;
+  if (i_short_1_mark > 888) then
+    Exit;
 
   //ai_ma[6] for MA120
-  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[6]) then Exit;
-  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[5]) then Exit;
-  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[3]) then Exit;
-  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[8]) then Exit;
+  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[6]) then
+    Exit;
+  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[5]) then
+    Exit;
+  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[3]) then
+    Exit;
+  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[8]) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i].ai_ma[6] > as_k_chg_ma_rsi[i].ai_ma[8] + 30) then Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[6] > as_k_chg_ma_rsi[i].ai_ma[8] + 30) then
+    Exit;
   m := 400;
   a := 0;
   k := i;
@@ -1990,11 +2121,14 @@ begin
     end;
   end;
 
-  if (a = 0) then Exit;
+  if (a = 0) then
+    Exit;
 
-  if (ff_get_max_ij_high(i - i_BB_BOX_X * 8, i) < integer(as_k_chg_ma_rsi[a].ai_ma[6])) then Exit;
+  if (ff_get_max_ij_high(i - i_BB_BOX_X * 8, i) < integer(as_k_chg_ma_rsi[a].ai_ma[6])) then
+    Exit;
 
-  if (ff_get_max_ij_high(i - 3, i) < integer(as_k_chg_ma_rsi[i].ai_ma[3])) then Exit;
+  if (ff_get_max_ij_high(i - 3, i) < integer(as_k_chg_ma_rsi[i].ai_ma[3])) then
+    Exit;
 
 
   b := 0;
@@ -2009,18 +2143,27 @@ begin
     end;
   end;
 
-  if ((b = 0) or (b < a - i_BB_BOX_X * 2)) then Exit;
+  if ((b = 0) or (b < a - i_BB_BOX_X * 2)) then
+    Exit;
 
-  if (as_k_chg[b].i_high + 1200 < as_k_chg_ma_rsi[b].ai_ma[6]) then exit;
+  if (as_k_chg[b].i_high + 1200 < as_k_chg_ma_rsi[b].ai_ma[6]) then
+    exit;
 
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[3] > as_k_chg_ma_rsi[i - 1].ai_ma[5]) then Exit;
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[5] > as_k_chg_ma_rsi[i - 1].ai_ma[6]) then Exit;
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[6] > as_k_chg_ma_rsi[i - 1].ai_ma[8]) then Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[3] > as_k_chg_ma_rsi[i - 1].ai_ma[5]) then
+    Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[5] > as_k_chg_ma_rsi[i - 1].ai_ma[6]) then
+    Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[6] > as_k_chg_ma_rsi[i - 1].ai_ma[8]) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[3] > as_k_chg_ma_rsi[a].ai_ma[3]) then Exit;
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[5] > as_k_chg_ma_rsi[a].ai_ma[5]) then Exit;
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[6] > as_k_chg_ma_rsi[a].ai_ma[6]) then Exit;
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[8] > as_k_chg_ma_rsi[a].ai_ma[8]) then Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[3] > as_k_chg_ma_rsi[a].ai_ma[3]) then
+    Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[5] > as_k_chg_ma_rsi[a].ai_ma[5]) then
+    Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[6] > as_k_chg_ma_rsi[a].ai_ma[6]) then
+    Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[8] > as_k_chg_ma_rsi[a].ai_ma[8]) then
+    Exit;
 
   if (ff_get_max_ij_high(i - 3, i) > integer(as_k_chg_ma_rsi[i].ai_ma[6])) and
     (as_k_chg[i].i_close > as_k_chg_ma_rsi[i].ai_ma[5]) and
@@ -2050,9 +2193,11 @@ end;
 function ff_check_short_1_ex(i: Integer): Integer;
 begin
   Result := -1;
-  if (i < 288) then Exit;
+  if (i < 288) then
+    Exit;
 
-  if (i_short_1_mark = 0) then Exit;
+  if (i_short_1_mark = 0) then
+    Exit;
 
   if (f_last_price_wk > ff_get_max_ij_high(i - 5, i - 1) / 100 + 2.0) then
   begin
@@ -2064,7 +2209,8 @@ begin
     i_short_1_mark := 0;
   end;
 
-  if (i_short_1_mark = 0) then Exit;
+  if (i_short_1_mark = 0) then
+    Exit;
 
   if (f_last_price_wk < as_k_chg_ma_rsi[i - 1].ai_ma[3] / 100) and
     (f_last_price_wk > (as_k_chg_ma_rsi[i - 1].ai_ma[3] / 100 - 5)) then
@@ -2082,7 +2228,8 @@ function ff_get_BS_Mark(i: Integer): Integer;
 begin
   Result := -1;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
   i_B_S_Flag_10 := as_k_chg_ma_rsi[i - 10].ai_ma[6] - as_k_chg_ma_rsi[i - 10].ai_ma[8];
   i_B_S_Flag_18 := as_k_chg_ma_rsi[i - 18].ai_ma[6] - as_k_chg_ma_rsi[i - 18].ai_ma[8];
@@ -2182,15 +2329,20 @@ begin
 
   Result := -1;
 
-  if (i_act_short = 0) then Exit;
+  if (i_act_short = 0) then
+    Exit;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
-  if (i - i_short_250_mark > i_BB_BOX_X) then i_short_250_mark := 0;
+  if (i - i_short_250_mark > i_BB_BOX_X) then
+    i_short_250_mark := 0;
 
-  if (i_short_250_mark > 888) then Exit;
+  if (i_short_250_mark > 888) then
+    Exit;
 
-  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[6]) then Exit;
+  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[6]) then
+    Exit;
 
   b := 0;
   k := i;
@@ -2215,27 +2367,38 @@ begin
     end;
   end;
 
-  if b = 0 then Exit;
+  if b = 0 then
+    Exit;
 
   i_high := ff_get_max_ij_high(b, i);
   i_low := ff_get_min_ij_low(b, i);
 
-  if (i_high < integer(as_k_chg[i].i_close)) then Exit;
+  if (i_high < integer(as_k_chg[i].i_close)) then
+    Exit;
 
-  if (i_low > integer(as_k_chg[i].i_low - 800)) then Exit;
+  if (i_low > integer(as_k_chg[i].i_low - 800)) then
+    Exit;
 
-  if ((i_high - i_low) > integer(3 * (integer(as_k_chg[i].i_high) - i_low))) then Exit;
+  if ((i_high - i_low) > integer(3 * (integer(as_k_chg[i].i_high) - i_low))) then
+    Exit;
 
-  if ((100 * (i_high - i_low) / (i_high + 100)) < 1) then Exit;
+  if ((100 * (i_high - i_low) / (i_high + 100)) < 1) then
+    Exit;
 
-  if (as_k_chg[b].i_close < as_k_chg[i].i_close + 800) then Exit;
+  if (as_k_chg[b].i_close < as_k_chg[i].i_close + 800) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[6] > as_k_chg_ma_rsi[b].ai_ma[6]) then Exit;
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[8] > as_k_chg_ma_rsi[b].ai_ma[8]) then Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[6] > as_k_chg_ma_rsi[b].ai_ma[6]) then
+    Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[8] > as_k_chg_ma_rsi[b].ai_ma[8]) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i].ai_ma[3] > as_k_chg_ma_rsi[i].ai_ma[8]) then Exit;
-  if (as_k_chg_ma_rsi[i].ai_ma[5] > as_k_chg_ma_rsi[i].ai_ma[8]) then Exit;
-  if (as_k_chg_ma_rsi[i].ai_ma[6] > as_k_chg_ma_rsi[i].ai_ma[8]) then Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[3] > as_k_chg_ma_rsi[i].ai_ma[8]) then
+    Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[5] > as_k_chg_ma_rsi[i].ai_ma[8]) then
+    Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[6] > as_k_chg_ma_rsi[i].ai_ma[8]) then
+    Exit;
 
   if (ff_get_max_ij_high(i - 3, i) > integer(as_k_chg_ma_rsi[i].ai_ma[8])) and
     (as_k_chg[i].i_close > as_k_chg_ma_rsi[i].ai_ma[6]) and
@@ -2262,22 +2425,30 @@ begin
 
   Result := -1;
 
-  if (i_act_short = 0) then Exit;
+  if (i_act_short = 0) then
+    Exit;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
-  if (i - i_short_30_mark > i_BB_BOX_X) then i_short_30_mark := 0;
+  if (i - i_short_30_mark > i_BB_BOX_X) then
+    i_short_30_mark := 0;
 
-  if (i_short_30_mark > 888) then Exit;
+  if (i_short_30_mark > 888) then
+    Exit;
 
-  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[5]) then Exit;
-  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[6]) then Exit;
-  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[8]) then Exit;
+  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[5]) then
+    Exit;
+  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[6]) then
+    Exit;
+  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[8]) then
+    Exit;
 
   k := i;
   for j := k - 5 downto k - i_BB_BOX_X - 5 do
   begin
-    if (as_k_chg[j].i_high > as_k_chg_ma_rsi[j].ai_ma[3]) then Exit;
+    if (as_k_chg[j].i_high > as_k_chg_ma_rsi[j].ai_ma[3]) then
+      Exit;
   end;
 
   b := 0;
@@ -2292,18 +2463,24 @@ begin
     end;
   end;
 
-  if b = 0 then Exit;
+  if b = 0 then
+    Exit;
 
   //for 1.5 hour
-  if ((i - b) > 58) then Exit;
+  if ((i - b) > 58) then
+    Exit;
 
   i_high := ff_get_max_ij_high(b, i);
 
-  if (i_high < integer(as_k_chg[i].i_close)) then Exit;
-  if (as_k_chg[b].i_close < as_k_chg[i].i_close + 800) then Exit;
+  if (i_high < integer(as_k_chg[i].i_close)) then
+    Exit;
+  if (as_k_chg[b].i_close < as_k_chg[i].i_close + 800) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[6] > as_k_chg_ma_rsi[b].ai_ma[6] + 100) then Exit;
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[8] > as_k_chg_ma_rsi[b].ai_ma[8] + 100) then Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[6] > as_k_chg_ma_rsi[b].ai_ma[6] + 100) then
+    Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[8] > as_k_chg_ma_rsi[b].ai_ma[8] + 100) then
+    Exit;
 
   if (ff_get_max_ij_high(i - 6, i) > integer(as_k_chg_ma_rsi[i].ai_ma[3])) and
     (as_k_chg[i - 1].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[3]) and
@@ -2335,30 +2512,39 @@ begin
 
   Result := -1;
 
-  if (i_act_short = 0) then Exit;
+  if (i_act_short = 0) then
+    Exit;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
-  if (i - i_short_120_mark > i_BB_BOX_X) then i_short_120_mark := 0;
+  if (i - i_short_120_mark > i_BB_BOX_X) then
+    i_short_120_mark := 0;
 
 
-  if (i_short_120_mark > 888) then Exit;
+  if (i_short_120_mark > 888) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i].ai_ma[6] > as_k_chg_ma_rsi[i].ai_ma[8]) then Exit;
-  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[6]) then Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[6] > as_k_chg_ma_rsi[i].ai_ma[8]) then
+    Exit;
+  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[6]) then
+    Exit;
 
   k := i;
   for j := k - 5 downto k - 128 do
   begin
-    if (as_k_chg[j].i_high > as_k_chg_ma_rsi[j].ai_ma[6]) then Exit;
+    if (as_k_chg[j].i_high > as_k_chg_ma_rsi[j].ai_ma[6]) then
+      Exit;
   end;
 
   i_low := ff_get_min_ij_low(i - i_BB_BOX_X * 8, i);
 
-  if (i_low > integer(as_k_chg[i].i_close)) then Exit;
+  if (i_low > integer(as_k_chg[i].i_close)) then
+    Exit;
 
   i_high := ff_get_max_ij_high(i - i_BB_BOX_X * 3, i - 5);
-  if (i_high > integer(as_k_chg_ma_rsi[i].ai_ma[6])) then Exit;
+  if (i_high > integer(as_k_chg_ma_rsi[i].ai_ma[6])) then
+    Exit;
 
   if (ff_get_max_ij_high(i - 3, i) > integer(as_k_chg_ma_rsi[i].ai_ma[6])) and
     (as_k_chg[i].i_close > as_k_chg_ma_rsi[i].ai_ma[3]) and
@@ -2387,20 +2573,26 @@ begin
 
   Result := -1;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
-  if (i - i_short_pass3_mark > 58) then i_short_pass3_mark := 0;
+  if (i - i_short_pass3_mark > 58) then
+    i_short_pass3_mark := 0;
 
-  if (i_short_pass3_mark > 888) then Exit;
+  if (i_short_pass3_mark > 888) then
+    Exit;
 
-  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[8]) then Exit;
-  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[5]) then Exit;
-  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[6]) then Exit;
+  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[8]) then
+    Exit;
+  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[5]) then
+    Exit;
+  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[6]) then
+    Exit;
 
   k := i;
   for j := k - 8 downto k - 38 do
   begin
-  //  if( as_k_chg_ma_rsi[j].ai_ma[8] < as_k_chg_ma_rsi[j].ai_ma[6] ) Then Exit;
+    //  if( as_k_chg_ma_rsi[j].ai_ma[8] < as_k_chg_ma_rsi[j].ai_ma[6] ) Then Exit;
   end;
 
   k := i;
@@ -2415,7 +2607,8 @@ begin
     end;
   end;
 
-  if (c = 0) then Exit;
+  if (c = 0) then
+    Exit;
 
   k := i;
   b := 0;
@@ -2429,7 +2622,8 @@ begin
     end;
   end;
 
-  if (b = 0) then Exit;
+  if (b = 0) then
+    Exit;
 
   a := 0;
   k := i;
@@ -2443,24 +2637,29 @@ begin
     end;
   end;
 
-  if (a = 0) then Exit;
+  if (a = 0) then
+    Exit;
 
-  if ((i - a) > i_BB_BOX_X) and ((i - b) > i_BB_BOX_X) and ((i - c) > i_BB_BOX_X) then Exit;
+  if ((i - a) > i_BB_BOX_X) and ((i - b) > i_BB_BOX_X) and ((i - c) > i_BB_BOX_X) then
+    Exit;
 
 
   for j := a - 2 downto a - i_BB_BOX_X do
   begin
-    if (as_k_chg_ma_rsi[j].ai_ma[5] > as_k_chg_ma_rsi[j].ai_ma[3]) then Exit;
+    if (as_k_chg_ma_rsi[j].ai_ma[5] > as_k_chg_ma_rsi[j].ai_ma[3]) then
+      Exit;
   end;
 
   for j := b - 2 downto b - i_BB_BOX_X do
   begin
-    if (as_k_chg_ma_rsi[j].ai_ma[6] > as_k_chg_ma_rsi[j].ai_ma[3]) then Exit;
+    if (as_k_chg_ma_rsi[j].ai_ma[6] > as_k_chg_ma_rsi[j].ai_ma[3]) then
+      Exit;
   end;
 
   for j := c - 2 downto c - i_BB_BOX_X do
   begin
-    if (as_k_chg_ma_rsi[j].ai_ma[8] > as_k_chg_ma_rsi[j].ai_ma[3]) then Exit;
+    if (as_k_chg_ma_rsi[j].ai_ma[8] > as_k_chg_ma_rsi[j].ai_ma[3]) then
+      Exit;
   end;
 
   i_short_pass3_mark := i;
@@ -2482,20 +2681,28 @@ begin
 
   Result := -1;
 
-  if (i_act_short = 0) then Exit;
+  if (i_act_short = 0) then
+    Exit;
 
-  if (i_short_pass3_mark = 0) then Exit;
+  if (i_short_pass3_mark = 0) then
+    Exit;
 
-  if (i - i_pass3_short_120_mark > i_BB_BOX_X) then i_pass3_short_120_mark := 0;
+  if (i - i_pass3_short_120_mark > i_BB_BOX_X) then
+    i_pass3_short_120_mark := 0;
 
-  if (i_pass3_short_120_mark > 888) then Exit;
+  if (i_pass3_short_120_mark > 888) then
+    Exit;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i].ai_ma[6] > as_k_chg_ma_rsi[i].ai_ma[8]) then Exit;
-  if (as_k_chg_ma_rsi[i].ai_ma[5] > as_k_chg_ma_rsi[i].ai_ma[8]) then Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[6] > as_k_chg_ma_rsi[i].ai_ma[8]) then
+    Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[5] > as_k_chg_ma_rsi[i].ai_ma[8]) then
+    Exit;
 
-  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[6]) then Exit;
+  if (as_k_chg[i].i_close > as_k_chg_ma_rsi[i - 1].ai_ma[6]) then
+    Exit;
 
   if (ff_get_max_ij_high(i - 3, i) > integer(as_k_chg_ma_rsi[i].ai_ma[6])) and
     (as_k_chg[i].i_close > as_k_chg_ma_rsi[i].ai_ma[3]) and
@@ -2524,28 +2731,37 @@ begin
 
   Result := -1;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
-  if (i - i_pass_3_mark > i_BB_BOX_X) then i_pass_3_mark := 0;
+  if (i - i_pass_3_mark > i_BB_BOX_X) then
+    i_pass_3_mark := 0;
 
-  if (i_pass_3_mark > 888) then Exit;
+  if (i_pass_3_mark > 888) then
+    Exit;
 
-  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[8]) then Exit;
-  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[5]) then Exit;
-  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[6]) then Exit;
+  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[8]) then
+    Exit;
+  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[5]) then
+    Exit;
+  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[6]) then
+    Exit;
 
   k := i;
   for j := k - 8 downto k - 188 do
   begin
-    if (as_k_chg_ma_rsi[j].ai_ma[8] < as_k_chg_ma_rsi[j].ai_ma[6]) then Exit;
-    if (as_k_chg_ma_rsi[j].ai_ma[6] < as_k_chg_ma_rsi[j].ai_ma[5]) then Exit;
+    if (as_k_chg_ma_rsi[j].ai_ma[8] < as_k_chg_ma_rsi[j].ai_ma[6]) then
+      Exit;
+    if (as_k_chg_ma_rsi[j].ai_ma[6] < as_k_chg_ma_rsi[j].ai_ma[5]) then
+      Exit;
   end;
 
   k := i;
   b := 0;
   for j := k - 1 downto k - i_BB_BOX_X * 6 do
   begin
-    if (as_k_chg_ma_rsi[j].ai_ma[8] < as_k_chg_ma_rsi[j].ai_ma[3]) then Exit;
+    if (as_k_chg_ma_rsi[j].ai_ma[8] < as_k_chg_ma_rsi[j].ai_ma[3]) then
+      Exit;
 
     if ((as_k_chg_ma_rsi[j].ai_ma[6] < as_k_chg_ma_rsi[j].ai_ma[3] + 30) and
       (as_k_chg_ma_rsi[j].ai_ma[3] < as_k_chg_ma_rsi[j].ai_ma[6] + 30)) then
@@ -2555,14 +2771,17 @@ begin
     end;
   end;
 
-  if (b = 0) then Exit;
+  if (b = 0) then
+    Exit;
 
   a := 0;
   k := i;
   for j := b - 2 downto k - i_BB_BOX_X * 5 do
   begin
-    if (as_k_chg_ma_rsi[j].ai_ma[8] < as_k_chg_ma_rsi[j].ai_ma[3]) then Exit;
-    if (as_k_chg_ma_rsi[j].ai_ma[6] < as_k_chg_ma_rsi[j].ai_ma[3]) then Exit;
+    if (as_k_chg_ma_rsi[j].ai_ma[8] < as_k_chg_ma_rsi[j].ai_ma[3]) then
+      Exit;
+    if (as_k_chg_ma_rsi[j].ai_ma[6] < as_k_chg_ma_rsi[j].ai_ma[3]) then
+      Exit;
 
     if ((as_k_chg_ma_rsi[j].ai_ma[5] < as_k_chg_ma_rsi[j].ai_ma[3] + 30) and
       (as_k_chg_ma_rsi[j].ai_ma[3] < as_k_chg_ma_rsi[j].ai_ma[5] + 30)) then
@@ -2572,16 +2791,21 @@ begin
     end;
   end;
 
-  if (a = 0) then Exit;
+  if (a = 0) then
+    Exit;
 
   for j := a - 2 downto a - i_BB_BOX_X do
   begin
-    if (as_k_chg_ma_rsi[j].ai_ma[5] < as_k_chg_ma_rsi[j].ai_ma[3]) then Exit;
+    if (as_k_chg_ma_rsi[j].ai_ma[5] < as_k_chg_ma_rsi[j].ai_ma[3]) then
+      Exit;
   end;
 
-  if (as_k_chg_ma_rsi[i].ai_ma[8] > as_k_chg_ma_rsi[i].ai_ma[3]) then Exit;
-  if (as_k_chg_ma_rsi[i].ai_ma[6] > as_k_chg_ma_rsi[i].ai_ma[3]) then Exit;
-  if (as_k_chg_ma_rsi[i].ai_ma[5] > as_k_chg_ma_rsi[i].ai_ma[3]) then Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[8] > as_k_chg_ma_rsi[i].ai_ma[3]) then
+    Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[6] > as_k_chg_ma_rsi[i].ai_ma[3]) then
+    Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[5] > as_k_chg_ma_rsi[i].ai_ma[3]) then
+    Exit;
 
   i_pass_3_mark := i;
   W_Log('pass_3', as_k_chg[i].i_date, 8, 'long pass_3!!!');
@@ -2602,20 +2826,29 @@ begin
 
   Result := -1;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
-  if (i - i_pass_3_mark_ex > i_BB_BOX_X) then i_pass_3_mark_ex := 0;
+  if (i - i_pass_3_mark_ex > i_BB_BOX_X) then
+    i_pass_3_mark_ex := 0;
 
-  if (i_pass_3_mark_ex > 888) then Exit;
+  if (i_pass_3_mark_ex > 888) then
+    Exit;
 
-  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[8]) then Exit;
-  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[5]) then Exit;
-  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[6]) then Exit;
+  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[8]) then
+    Exit;
+  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[5]) then
+    Exit;
+  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[6]) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i].ai_ma[8] > as_k_chg_ma_rsi[i].ai_ma[6] + 50) then Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[8] > as_k_chg_ma_rsi[i].ai_ma[6] + 50) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i].ai_ma[6] < as_k_chg_ma_rsi[i - 20].ai_ma[6] + 50) then Exit;
-  if (as_k_chg_ma_rsi[i].ai_ma[8] + 100 < as_k_chg_ma_rsi[i - 20].ai_ma[8]) then Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[6] < as_k_chg_ma_rsi[i - 20].ai_ma[6] + 50) then
+    Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[8] + 100 < as_k_chg_ma_rsi[i - 20].ai_ma[8]) then
+    Exit;
 
   k := i;
   c := 0;
@@ -2629,7 +2862,8 @@ begin
     end;
   end;
 
-  if (c = 0) then Exit;
+  if (c = 0) then
+    Exit;
 
   k := i;
   b := 0;
@@ -2643,7 +2877,8 @@ begin
     end;
   end;
 
-  if (b = 0) then Exit;
+  if (b = 0) then
+    Exit;
 
   a := 0;
   k := i;
@@ -2657,14 +2892,19 @@ begin
     end;
   end;
 
-  if (a = 0) then Exit;
+  if (a = 0) then
+    Exit;
 
-  if ((i - a) > i_BB_BOX_X) and ((i - b) > i_BB_BOX_X) and ((i - c) > i_BB_BOX_X) then Exit;
+  if ((i - a) > i_BB_BOX_X) and ((i - b) > i_BB_BOX_X) and ((i - c) > i_BB_BOX_X) then
+    Exit;
 
 
-  if (as_k_chg_ma_rsi[i].ai_ma[8] > as_k_chg_ma_rsi[i].ai_ma[3]) then Exit;
-  if (as_k_chg_ma_rsi[i].ai_ma[6] > as_k_chg_ma_rsi[i].ai_ma[3]) then Exit;
-  if (as_k_chg_ma_rsi[i].ai_ma[5] > as_k_chg_ma_rsi[i].ai_ma[3]) then Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[8] > as_k_chg_ma_rsi[i].ai_ma[3]) then
+    Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[6] > as_k_chg_ma_rsi[i].ai_ma[3]) then
+    Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[5] > as_k_chg_ma_rsi[i].ai_ma[3]) then
+    Exit;
 
   i_pass_3_mark_ex := i;
   W_Log('pass_3_ex', as_k_chg[i].i_date, i_wk_log, 'long pass_3_ex!!!');
@@ -2683,28 +2923,37 @@ begin
 
   Result := -1;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
-  if (i - i_pass_3_mark > i_BB_BOX_X) then i_pass_3_mark := 0;
+  if (i - i_pass_3_mark > i_BB_BOX_X) then
+    i_pass_3_mark := 0;
 
-  if (i_pass_3_mark > 888) then Exit;
+  if (i_pass_3_mark > 888) then
+    Exit;
 
-  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[8]) then Exit;
-  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[5]) then Exit;
-  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[6]) then Exit;
+  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[8]) then
+    Exit;
+  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[5]) then
+    Exit;
+  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[6]) then
+    Exit;
 
   k := i;
   for j := k - 8 downto k - 188 do
   begin
-    if (as_k_chg_ma_rsi[j].ai_ma[8] < as_k_chg_ma_rsi[j].ai_ma[6]) then Exit;
-    if (as_k_chg_ma_rsi[j].ai_ma[6] < as_k_chg_ma_rsi[j].ai_ma[5]) then Exit;
+    if (as_k_chg_ma_rsi[j].ai_ma[8] < as_k_chg_ma_rsi[j].ai_ma[6]) then
+      Exit;
+    if (as_k_chg_ma_rsi[j].ai_ma[6] < as_k_chg_ma_rsi[j].ai_ma[5]) then
+      Exit;
   end;
 
   k := i;
   b := 0;
   for j := k - 1 downto k - i_BB_BOX_X * 6 do
   begin
-    if (as_k_chg_ma_rsi[j].ai_ma[8] < as_k_chg_ma_rsi[j].ai_ma[3]) then Exit;
+    if (as_k_chg_ma_rsi[j].ai_ma[8] < as_k_chg_ma_rsi[j].ai_ma[3]) then
+      Exit;
 
     if ((as_k_chg_ma_rsi[j].ai_ma[6] < as_k_chg_ma_rsi[j].ai_ma[3] + 30) and
       (as_k_chg_ma_rsi[j].ai_ma[3] < as_k_chg_ma_rsi[j].ai_ma[6] + 30)) then
@@ -2714,14 +2963,17 @@ begin
     end;
   end;
 
-  if (b = 0) then Exit;
+  if (b = 0) then
+    Exit;
 
   a := 0;
   k := i;
   for j := b - 2 downto k - i_BB_BOX_X * 5 do
   begin
-    if (as_k_chg_ma_rsi[j].ai_ma[8] < as_k_chg_ma_rsi[j].ai_ma[3]) then Exit;
-    if (as_k_chg_ma_rsi[j].ai_ma[6] < as_k_chg_ma_rsi[j].ai_ma[3]) then Exit;
+    if (as_k_chg_ma_rsi[j].ai_ma[8] < as_k_chg_ma_rsi[j].ai_ma[3]) then
+      Exit;
+    if (as_k_chg_ma_rsi[j].ai_ma[6] < as_k_chg_ma_rsi[j].ai_ma[3]) then
+      Exit;
 
     if ((as_k_chg_ma_rsi[j].ai_ma[5] < as_k_chg_ma_rsi[j].ai_ma[3] + 30) and
       (as_k_chg_ma_rsi[j].ai_ma[3] < as_k_chg_ma_rsi[j].ai_ma[5] + 30)) then
@@ -2731,16 +2983,21 @@ begin
     end;
   end;
 
-  if (a = 0) then Exit;
+  if (a = 0) then
+    Exit;
 
   for j := a - 2 downto a - i_BB_BOX_X do
   begin
-    if (as_k_chg_ma_rsi[j].ai_ma[5] < as_k_chg_ma_rsi[j].ai_ma[3]) then Exit;
+    if (as_k_chg_ma_rsi[j].ai_ma[5] < as_k_chg_ma_rsi[j].ai_ma[3]) then
+      Exit;
   end;
 
-  if (as_k_chg_ma_rsi[i].ai_ma[8] > as_k_chg_ma_rsi[i].ai_ma[3]) then Exit;
-  if (as_k_chg_ma_rsi[i].ai_ma[6] > as_k_chg_ma_rsi[i].ai_ma[3]) then Exit;
-  if (as_k_chg_ma_rsi[i].ai_ma[5] > as_k_chg_ma_rsi[i].ai_ma[3]) then Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[8] > as_k_chg_ma_rsi[i].ai_ma[3]) then
+    Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[6] > as_k_chg_ma_rsi[i].ai_ma[3]) then
+    Exit;
+  if (as_k_chg_ma_rsi[i].ai_ma[5] > as_k_chg_ma_rsi[i].ai_ma[3]) then
+    Exit;
 
   i_pass_3_mark := i;
   W_Log('pass_3', as_k_chg[i].i_date, 8, 'long pass_3!!!');
@@ -2761,17 +3018,24 @@ begin
 
   Result := -1;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
-  if (i_short_long_01 <> 1) then Exit;
-  if (i > i_short_long_index + 38) then Exit;
+  if (i_short_long_01 <> 1) then
+    Exit;
+  if (i > i_short_long_index + 38) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[6] < as_k_chg_ma_rsi[i - 8].ai_ma[6]) then Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[6] < as_k_chg_ma_rsi[i - 8].ai_ma[6]) then
+    Exit;
 
-  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[8]) then Exit;
-  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[6]) then Exit;
+  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[8]) then
+    Exit;
+  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[6]) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[3] < as_k_chg_ma_rsi[i - 1].ai_ma[5]) then Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[3] < as_k_chg_ma_rsi[i - 1].ai_ma[5]) then
+    Exit;
 
   k := i;
   b := 0;
@@ -2784,7 +3048,8 @@ begin
     end;
   end;
 
-  if (b = 0) then Exit;
+  if (b = 0) then
+    Exit;
 
   if (ff_get_min_ij_low(b, i) < as_k_chg_ma_rsi[i].ai_ma[3]) and
     (ff_get_min_ij_low(b, i) > as_k_chg_ma_rsi[i].ai_ma[5]) and
@@ -2809,18 +3074,26 @@ begin
 
   Result := -1;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
-  if (i_short_long_01 <> 1) then Exit;
-  if (i > i_short_long_index + 38) then Exit;
+  if (i_short_long_01 <> 1) then
+    Exit;
+  if (i > i_short_long_index + 38) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[8] < as_k_chg_ma_rsi[i - 8].ai_ma[8]) then Exit;
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[6] < as_k_chg_ma_rsi[i - 8].ai_ma[6]) then Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[8] < as_k_chg_ma_rsi[i - 8].ai_ma[8]) then
+    Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[6] < as_k_chg_ma_rsi[i - 8].ai_ma[6]) then
+    Exit;
 
-  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[8]) then Exit;
-  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[6]) then Exit;
+  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[8]) then
+    Exit;
+  if (as_k_chg[i].i_close < as_k_chg_ma_rsi[i - 1].ai_ma[6]) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[3] < as_k_chg_ma_rsi[i - 1].ai_ma[5]) then Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[3] < as_k_chg_ma_rsi[i - 1].ai_ma[5]) then
+    Exit;
 
   k := i;
   b := 0;
@@ -2833,7 +3106,8 @@ begin
     end;
   end;
 
-  if (b = 0) then Exit;
+  if (b = 0) then
+    Exit;
 
   if (ff_get_min_ij_low(b, i) < as_k_chg_ma_rsi[i].ai_ma[5]) and
     (ff_get_min_ij_low(b, i) > as_k_chg_ma_rsi[i].ai_ma[6]) and
@@ -2859,12 +3133,14 @@ begin
 
   Result := -1;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
   //if ( i_short_long_01 <> 1 ) Then Exit;
   //if ( i > i_short_long_index +38) Then Exit;
 
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[8] < as_k_chg_ma_rsi[i - 8].ai_ma[8]) then Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[8] < as_k_chg_ma_rsi[i - 8].ai_ma[8]) then
+    Exit;
 
   b := 0;
   k := i;
@@ -2878,16 +3154,21 @@ begin
     end;
   end;
 
-  if (b = 0) then Exit;
+  if (b = 0) then
+    Exit;
 
-  if (as_k_chg_ma_rsi[i - 1].ai_ma[8] < as_k_chg_ma_rsi[b].ai_ma[8]) then Exit;
+  if (as_k_chg_ma_rsi[i - 1].ai_ma[8] < as_k_chg_ma_rsi[b].ai_ma[8]) then
+    Exit;
 
-  if (i - b < 58) then Exit;
+  if (i - b < 58) then
+    Exit;
 
   for j := b + 8 to b + 58 do
   begin
-    if (as_k_chg_ma_rsi[j].ai_ma[6] < as_k_chg_ma_rsi[j].ai_ma[8]) then Exit;
-    if (as_k_chg[j].i_close < as_k_chg_ma_rsi[j].ai_ma[8]) then Exit;
+    if (as_k_chg_ma_rsi[j].ai_ma[6] < as_k_chg_ma_rsi[j].ai_ma[8]) then
+      Exit;
+    if (as_k_chg[j].i_close < as_k_chg_ma_rsi[j].ai_ma[8]) then
+      Exit;
   end;
 
   if (as_k_chg[i].i_close > ff_get_max_ij_high(i - 8, i - 2)) and
@@ -2912,7 +3193,8 @@ begin
 
   Result := -1;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
   if (
     (as_k_chg_ma_rsi[i - 1].ai_ma[6] < as_k_chg_ma_rsi[i - 1].ai_ma[5]) and
@@ -2947,8 +3229,10 @@ begin
         end;
       end;
 
-      if (b = 0) then Exit;
-      if (i - b < 18) then Exit;
+      if (b = 0) then
+        Exit;
+      if (i - b < 18) then
+        Exit;
 
       i_4ma_long_mbm_mark := i;
 
@@ -2957,9 +3241,11 @@ begin
 
       i_sum_4ma_long_mbm_count := i_sum_4ma_long_mbm_count + 1;
 
-      if (i_4ma_long_mbm_count < 0) then W_Log('MBM 4ma long', as_k_chg[i].i_date, i_mbm_log + 1, PChar('4MA OK! Count:' + IntToStr(i_4ma_long_mbm_count)));
+      if (i_4ma_long_mbm_count < 0) then
+        W_Log('MBM 4ma long', as_k_chg[i].i_date, i_mbm_log + 1, PChar('4MA OK! Count:' + IntToStr(i_4ma_long_mbm_count)));
 
-      if ((i_sum_4ma_long_mbm_count mod 5) = 0) then W_Log('MBM 4ma long sum', as_k_chg[i].i_date, i_mbm_log + 2, PChar('4MA OK! Count:' + IntToStr(i_sum_4ma_long_mbm_count) + ' vs 4ma short ' + IntToStr(i_sum_4ma_short_mbm_count)));
+      if ((i_sum_4ma_long_mbm_count mod 5) = 0) then
+        W_Log('MBM 4ma long sum', as_k_chg[i].i_date, i_mbm_log + 2, PChar('4MA OK! Count:' + IntToStr(i_sum_4ma_long_mbm_count) + ' vs 4ma short ' + IntToStr(i_sum_4ma_short_mbm_count)));
 
       i_4ma_mbm_long := m_i_long;
     end;
@@ -2988,7 +3274,8 @@ begin
 
   Result := -1;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
   if (
     (as_k_chg_ma_rsi[i - 1].ai_ma[6] > as_k_chg_ma_rsi[i - 1].ai_ma[5]) and
@@ -3023,8 +3310,10 @@ begin
         end;
       end;
 
-      if (b = 0) then Exit;
-      if (i - b < 18) then Exit;
+      if (b = 0) then
+        Exit;
+      if (i - b < 18) then
+        Exit;
 
 
 
@@ -3036,9 +3325,11 @@ begin
 
       i_sum_4ma_short_mbm_count := i_sum_4ma_short_mbm_count + 1;
 
-      if (i_4ma_short_mbm_count < 0) then W_Log('MBM 4ma_short', as_k_chg[i].i_date, i_mbm_log, PChar('4MA OK! Count:' + IntToStr(i_4ma_short_mbm_count)));
+      if (i_4ma_short_mbm_count < 0) then
+        W_Log('MBM 4ma_short', as_k_chg[i].i_date, i_mbm_log, PChar('4MA OK! Count:' + IntToStr(i_4ma_short_mbm_count)));
 
-      if ((i_sum_4ma_short_mbm_count mod 5) = 0) then W_Log('MBM short 4ma sum', as_k_chg[i].i_date, i_mbm_log + 3, PChar('4MA OK! Count:' + IntToStr(i_sum_4ma_short_mbm_count) + ' vs 4ma long ' + IntToStr(i_sum_4ma_long_mbm_count)));
+      if ((i_sum_4ma_short_mbm_count mod 5) = 0) then
+        W_Log('MBM short 4ma sum', as_k_chg[i].i_date, i_mbm_log + 3, PChar('4MA OK! Count:' + IntToStr(i_sum_4ma_short_mbm_count) + ' vs 4ma long ' + IntToStr(i_sum_4ma_long_mbm_count)));
 
       i_4ma_mbm_short := m_i_short;
     end;
@@ -3076,7 +3367,8 @@ begin
     i_last_120ma250eq_index := i;
   end;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
   if ((as_k_chg_ma_rsi[i - 1].ai_ma[8] < as_k_chg_ma_rsi[i - 1].ai_ma[6]) and
     (as_k_chg_ma_rsi[i - 1].ai_ma[6] < as_k_chg_ma_rsi[i - 1].ai_ma[5]) and
@@ -3111,13 +3403,16 @@ begin
         end;
       end;
 
-      if (b = 0) then Exit;
-      if (i - b < 58) then Exit;
+      if (b = 0) then
+        Exit;
+      if (i - b < 58) then
+        Exit;
 
 
       if (i_long_mbm_count > 0) then
       begin
-        if ((i - i_long_mbm_index) < 18) then Exit;
+        if ((i - i_long_mbm_index) < 18) then
+          Exit;
       end;
 
 
@@ -3128,20 +3423,29 @@ begin
 
       i_sum_long_mbm_count := i_sum_long_mbm_count + 1;
 
-      if ((i_sum_long_mbm_count mod 5) = 0) then W_Log('MBM long sum', as_k_chg[i].i_date, i_mbm_log + 4, PChar('4MA OK! Count:' + IntToStr(i_sum_long_mbm_count) + ' vs short ' + IntToStr(i_sum_short_mbm_count)));
+      if ((i_sum_long_mbm_count mod 5) = 0) then
+        W_Log('MBM long sum', as_k_chg[i].i_date, i_mbm_log + 4, PChar('4MA OK! Count:' + IntToStr(i_sum_long_mbm_count) + ' vs short ' + IntToStr(i_sum_short_mbm_count)));
 
-      if (i_long_mbm_count = 1) then i_long_mbm_count_action_1 := 1 else i_long_mbm_count_action_1 := 0;
+      if (i_long_mbm_count = 1) then
+        i_long_mbm_count_action_1 := 1
+      else
+        i_long_mbm_count_action_1 := 0;
 
       if (i_long_mbm_count < 3) and (i_long_mbm_count > 0) then
       begin
 
         Result := 0;
 
-        if (i_long_mbm_count = 2) then Result := 0 else Result := 1;
+        if (i_long_mbm_count = 2) then
+          Result := 0
+        else
+          Result := 1;
 
-        if (i_4ma_long_mbm_count > 4) and (i_long_mbm_count = 1) then Result := 0;
+        if (i_4ma_long_mbm_count > 4) and (i_long_mbm_count = 1) then
+          Result := 0;
 
-        if (i_4ma_long_mbm_count < 3) and (i_long_mbm_count = 2) then Result := 1;
+        if (i_4ma_long_mbm_count < 3) and (i_long_mbm_count = 2) then
+          Result := 1;
 
         //if( i_4ma_long_mbm_count >2 ) and ( i_long_mbm_count=3 ) Then Result :=0;
 
@@ -3161,7 +3465,8 @@ begin
 
       end;
 
-      if (i_long_mbm_count < 88) then W_Log('MBM long', as_k_chg[i].i_date, i_mbm_log + 1, PChar('MA OK! Count:' + IntToStr(i_long_mbm_count)));
+      if (i_long_mbm_count < 88) then
+        W_Log('MBM long', as_k_chg[i].i_date, i_mbm_log + 1, PChar('MA OK! Count:' + IntToStr(i_long_mbm_count)));
 
       i_mbm_long := m_i_long;
     end;
@@ -3204,19 +3509,23 @@ begin
   end;
 
 
-  if (i < i_short_mbm_index_1 + 168) then Exit;
+  if (i < i_short_mbm_index_1 + 168) then
+    Exit;
 
-  if (i - i_long_mbm_index < i_BB_BOX_X * 2) then Exit;
+  if (i - i_long_mbm_index < i_BB_BOX_X * 2) then
+    Exit;
 
-  if (i > i_long_mbm_mark + 58) then Exit;
+  if (i > i_long_mbm_mark + 58) then
+    Exit;
 
   //if (i < i_long_mbm_mark + 3 ) Then Exit;
   //if (i > i_last_120ma250eq_index +78 ) Then Exit;
 
-  if (i_long_mbm_count > 3) then Exit;
+  if (i_long_mbm_count > 3) then
+    Exit;
 
   if (i_mbm_long = m_i_long) and
-     //(as_k_chg[i].i_close > ff_get_max_ij_high(i-3,i-1) ) and
+    //(as_k_chg[i].i_close > ff_get_max_ij_high(i-3,i-1) ) and
   (as_k_chg[i].i_close > as_k_chg_ma_rsi[i].ai_ma[3]) then
   begin
     //i_long_mbm_index :=i;
@@ -3242,7 +3551,8 @@ begin
     i_last_120ma250eq_index := i;
   end;
 
-  if (i < 888) then Exit;
+  if (i < 888) then
+    Exit;
 
   if ((as_k_chg_ma_rsi[i - 1].ai_ma[8] > as_k_chg_ma_rsi[i - 1].ai_ma[6]) and
     (as_k_chg_ma_rsi[i - 1].ai_ma[6] > as_k_chg_ma_rsi[i - 1].ai_ma[5]) and
@@ -3277,12 +3587,15 @@ begin
         end;
       end;
 
-      if (b = 0) then Exit;
-      if (i - b < 58) then Exit;
+      if (b = 0) then
+        Exit;
+      if (i - b < 58) then
+        Exit;
 
       if (i_short_mbm_count > 0) then
       begin
-        if ((i - i_short_mbm_index) < 18) then Exit;
+        if ((i - i_short_mbm_index) < 18) then
+          Exit;
       end;
 
       i_short_mbm_mark := i;
@@ -3292,17 +3605,26 @@ begin
       i_short_mbm_count := i_short_mbm_count + 1;
 
       i_sum_short_mbm_count := i_sum_short_mbm_count + 1;
-      if ((i_sum_short_mbm_count mod 5) = 0) then W_Log('MBM short sum', as_k_chg[i].i_date, i_mbm_log + 5, PChar('4MA OK! Count:' + IntToStr(i_sum_short_mbm_count) + ' vs 4ma long ' + IntToStr(i_sum_long_mbm_count)));
+      if ((i_sum_short_mbm_count mod 5) = 0) then
+        W_Log('MBM short sum', as_k_chg[i].i_date, i_mbm_log + 5, PChar('4MA OK! Count:' + IntToStr(i_sum_short_mbm_count) + ' vs 4ma long ' + IntToStr(i_sum_long_mbm_count)));
 
-      if (i_short_mbm_count = 1) then i_short_mbm_count_action_1 := 1 else i_short_mbm_count_action_1 := 0;
+      if (i_short_mbm_count = 1) then
+        i_short_mbm_count_action_1 := 1
+      else
+        i_short_mbm_count_action_1 := 0;
 
       if (i_short_mbm_count < 3) and (i_short_mbm_count > 0) then
       begin
         Result := 0;
 
-        if (i_short_mbm_count = 2) then Result := 0 else Result := 1;
-        if (i_4ma_short_mbm_count > 4) and (i_short_mbm_count = 1) then Result := 0;
-        if (i_4ma_short_mbm_count < 3) and (i_short_mbm_count = 2) then Result := 1;
+        if (i_short_mbm_count = 2) then
+          Result := 0
+        else
+          Result := 1;
+        if (i_4ma_short_mbm_count > 4) and (i_short_mbm_count = 1) then
+          Result := 0;
+        if (i_4ma_short_mbm_count < 3) and (i_short_mbm_count = 2) then
+          Result := 1;
         //if( i_4ma_short_mbm_count >2 ) and ( i_short_mbm_count=3 ) Then Result :=0;
 
         {
@@ -3318,7 +3640,8 @@ begin
       end;
 
 
-      if (i_short_mbm_count < 88) then W_Log('MBM short', as_k_chg[i].i_date, i_mbm_log, PChar('MA OK! Count:' + IntToStr(i_short_mbm_count)));
+      if (i_short_mbm_count < 88) then
+        W_Log('MBM short', as_k_chg[i].i_date, i_mbm_log, PChar('MA OK! Count:' + IntToStr(i_short_mbm_count)));
 
       i_mbm_short := m_i_short;
     end;
@@ -3362,20 +3685,24 @@ begin
     //Exit;
   end;
 
-  if (i < i_long_mbm_index_1 + 168) then Exit;
+  if (i < i_long_mbm_index_1 + 168) then
+    Exit;
 
-  if (i - i_short_mbm_index < i_BB_BOX_X * 2) then Exit;
+  if (i - i_short_mbm_index < i_BB_BOX_X * 2) then
+    Exit;
 
-  if (i > i_short_mbm_mark + 58) then Exit;
+  if (i > i_short_mbm_mark + 58) then
+    Exit;
   //if (i < i_short_mbm_mark +3 ) Then Exit;
 
   //if (i > i_last_120ma250eq_index +68 ) Then Exit;
 
-  if (i_short_mbm_count > 3) then Exit;
+  if (i_short_mbm_count > 3) then
+    Exit;
 
 
   if (i_mbm_short = m_i_short) and
-     //(as_k_chg[i].i_close < ff_get_min_ij_low(i-3,i-1) ) and
+    //(as_k_chg[i].i_close < ff_get_min_ij_low(i-3,i-1) ) and
   (as_k_chg[i].i_close < as_k_chg_ma_rsi[i].ai_ma[3]) then
   begin
     //i_short_mbm_index :=i;
@@ -3392,7 +3719,7 @@ end;
 
 function ff_load_k_base(): Integer;
 var
- //iFileHandle : Integer;
+  //iFileHandle : Integer;
   iFileLength: Integer;
   iBytesRead: Integer;
   i: Integer;
@@ -3432,7 +3759,8 @@ begin
     iBytesRead := FileRead(iFileHandle, pc_Buffer^, iFileLength);
     FileClose(iFileHandle);
   end
-  else Exit;
+  else
+    Exit;
 
   DeleteFile(k_line_file_name);
   iFileHandle := FileCreate(k_line_file_name);
@@ -3457,10 +3785,12 @@ begin
     as_k_chg[i_s_k_chg_index_wk].i_low := as_k_chg[i_s_k_chg_index_wk - 1].i_low;
     as_k_chg[i_s_k_chg_index_wk].f_amount := as_k_chg[i_s_k_chg_index_wk - 1].f_amount;
 
-    for i := 0 to i_s_k_chg_index_wk do ff_make_ma_rsi_ex(i);
+    for i := 0 to i_s_k_chg_index_wk do
+      ff_make_ma_rsi_ex(i);
 
   end
-  else i_s_k_chg_index_wk := 0;
+  else
+    i_s_k_chg_index_wk := 0;
 
   FileClose(iFileHandle);
 
@@ -3480,13 +3810,14 @@ var
 begin
   Result := 0;
 
-  if not Assigned(m_lpComm) then Exit;
+  if not Assigned(m_lpComm) then
+    Exit;
 
- //业务操作委托下单
+  //业务操作委托下单
   lpReqMsg := NewFuMessage(MSG_TYPE_MODIFY_PASSWORD, Integer(MSG_MODE_REQUEST)); //客户修改密码
   lpAnsMsg := NewFuMessage(MSG_TYPE_UNKNOWN, Integer(MSG_MODE_ANSWER)); //接收消息(无关消息类型)
 
- //打包请求参数(字段顺序无关,重复设置字段则覆盖其值)
+  //打包请求参数(字段顺序无关,重复设置字段则覆盖其值)
   lpRecord := lpReqMsg.AddRecord();
 
 
@@ -3495,18 +3826,18 @@ begin
   lpRecord.SetString('password', pc_old_password);
   lpRecord.SetString('new_password', pc_new_password);
 
- //同步接收消息
+  //同步接收消息
   iRet := m_lpComm.SyncSendRecv(lpReqMsg, lpAnsMsg);
   if iRet <> 0 then
   begin
-  //cout<<"同步委托失败:iRet="<<iRet<<" msg:"<<lpComm->GetErrorMsg(iRet)<<endl;
+    //cout<<"同步委托失败:iRet="<<iRet<<" msg:"<<lpComm->GetErrorMsg(iRet)<<endl;
     W_Log('ff_passwd_chg', iRet, i_wk_log, PChar(m_lpComm.GetErrorMsg(iRet)));
   end
   else
   begin
-  //cout<<"同步委托成功!"<<endl;
+    //cout<<"同步委托成功!"<<endl;
   end;
- //Form1.ShowFuMessage(lpAnsMsg);
+  //Form1.ShowFuMessage(lpAnsMsg);
 
 
   if lpAnsMsg.GetCount() > 0 then
@@ -3540,24 +3871,25 @@ var
 begin
   Result := 0;
 
-  if not Assigned(m_lpComm) then Exit;
+  if not Assigned(m_lpComm) then
+    Exit;
 
- //业务操作委托下单
+  //业务操作委托下单
   lpReqMsg := NewFuMessage(MSG_TYPE_NEW_SINGLE_ORDER, Integer(MSG_MODE_REQUEST)); //委托下单
   lpAnsMsg := NewFuMessage(MSG_TYPE_UNKNOWN, Integer(MSG_MODE_ANSWER)); //接收消息(无关消息类型)
 
- //打包请求参数(字段顺序无关,重复设置字段则覆盖其值)
+  //打包请求参数(字段顺序无关,重复设置字段则覆盖其值)
   lpRecord := lpReqMsg.AddRecord();
 
 
   lpRecord.SetString('fund_account', pc_username);
- //lpRecord.SetString('password',pc_user_pwd);
+  //lpRecord.SetString('password',pc_user_pwd);
   lpRecord.SetString('futu_exch_type', 'F4');
   lpRecord.SetString('futures_account', '');
   lpRecord.SetString('contract_code', pc_contract_code);
- //buy
+  //buy
   lpRecord.SetString('entrust_bs', pc_entrust_bs);
- //long,open
+  //long,open
   lpRecord.SetString('futures_direction', pc_direction);
 
   lpRecord.SetString('hedge_type', '0');
@@ -3570,19 +3902,19 @@ begin
 
   lpRecord.SetString('entrust_kind', '0');
 
- //同步接收消息
+  //同步接收消息
   iRet := m_lpComm.SyncSendRecv(lpReqMsg, lpAnsMsg);
   if iRet <> 0 then
   begin
-  //cout<<"同步委托失败:iRet="<<iRet<<" msg:"<<lpComm->GetErrorMsg(iRet)<<endl;
+    //cout<<"同步委托失败:iRet="<<iRet<<" msg:"<<lpComm->GetErrorMsg(iRet)<<endl;
     W_Log('order_ex', iRet, i_wk_log, PChar(m_lpComm.GetErrorMsg(iRet)));
   end
   else
   begin
-  //cout<<"同步委托成功!"<<endl;
+    //cout<<"同步委托成功!"<<endl;
     W_Log('order_ex', 8888, i_wk_log, '同步委托成功!!');
   end;
- //Form1.ShowFuMessage(lpAnsMsg);
+  //Form1.ShowFuMessage(lpAnsMsg);
 
 
   if lpAnsMsg.GetCount() > 0 then
@@ -3609,18 +3941,19 @@ var
 begin
   Result := 0;
 
-  if not Assigned(m_lpComm) then Exit;
+  if not Assigned(m_lpComm) then
+    Exit;
 
- //业务操作委托下单
+  //业务操作委托下单
   lpReqMsg := NewFuMessage(MSG_TYPE_GET_ENTRUST_ORDERS, Integer(MSG_MODE_REQUEST)); //委托下单
   lpAnsMsg := NewFuMessage(MSG_TYPE_UNKNOWN, Integer(MSG_MODE_ANSWER)); //接收消息(无关消息类型)
 
- //打包请求参数(字段顺序无关,重复设置字段则覆盖其值)
+  //打包请求参数(字段顺序无关,重复设置字段则覆盖其值)
   lpRecord := lpReqMsg.AddRecord();
 
 
   lpRecord.SetString('fund_account', pc_username);
- //lpRecord.SetString('password',pc_user_pwd);
+  //lpRecord.SetString('password',pc_user_pwd);
   lpRecord.SetString('futu_exch_type', 'F4');
   lpRecord.SetString('futures_account', '');
   lpRecord.SetString('contract_code', pc_contract_code);
@@ -3630,18 +3963,18 @@ begin
 
   lpRecord.SetString('futu_entrust_type', '0');
 
- //同步接收消息
+  //同步接收消息
   iRet := m_lpComm.SyncSendRecv(lpReqMsg, lpAnsMsg);
   if iRet <> 0 then
   begin
-  //cout<<"同步委托失败:iRet="<<iRet<<" msg:"<<lpComm->GetErrorMsg(iRet)<<endl;
+    //cout<<"同步委托失败:iRet="<<iRet<<" msg:"<<lpComm->GetErrorMsg(iRet)<<endl;
     W_Log('ff_entrust_no', iRet, i_wk_log, PChar(m_lpComm.GetErrorMsg(iRet)));
   end
   else
   begin
-  //cout<<"同步委托成功!"<<endl;
+    //cout<<"同步委托成功!"<<endl;
   end;
- //Form1.ShowFuMessage(lpAnsMsg);
+  //Form1.ShowFuMessage(lpAnsMsg);
 
   if lpAnsMsg.GetCount() > 0 then
   begin
@@ -3671,32 +4004,33 @@ var
 begin
   Result := 0;
 
-  if not Assigned(m_lpComm) then Exit;
+  if not Assigned(m_lpComm) then
+    Exit;
 
- //业务操作委托下单
+  //业务操作委托下单
   lpReqMsg := NewFuMessage(MSG_TYPE_CANCEL_ORDER, Integer(MSG_MODE_REQUEST));
   lpAnsMsg := NewFuMessage(MSG_TYPE_UNKNOWN, Integer(MSG_MODE_ANSWER)); //接收消息(无关消息类型)
 
- //打包请求参数(字段顺序无关,重复设置字段则覆盖其值)
+  //打包请求参数(字段顺序无关,重复设置字段则覆盖其值)
   lpRecord := lpReqMsg.AddRecord();
 
   lpRecord.SetString('fund_account', pc_username);
- //lpRecord.SetString('password',pc_user_pwd);
+  //lpRecord.SetString('password',pc_user_pwd);
   lpRecord.SetString('futu_exch_type', 'F4');
   lpRecord.SetString('entrust_no', c_entrust_no); //委托号
 
- //同步接收消息
+  //同步接收消息
   iRet := m_lpComm.SyncSendRecv(lpReqMsg, lpAnsMsg);
   if iRet <> 0 then
   begin
-  //cout<<"同步委托失败:iRet="<<iRet<<" msg:"<<lpComm->GetErrorMsg(iRet)<<endl;
+    //cout<<"同步委托失败:iRet="<<iRet<<" msg:"<<lpComm->GetErrorMsg(iRet)<<endl;
     W_Log('ff_cancel_entrust_no', iRet, i_wk_log, PChar(m_lpComm.GetErrorMsg(iRet)));
   end
   else
   begin
-  //cout<<"同步委托成功!"<<endl;
+    //cout<<"同步委托成功!"<<endl;
   end;
- //Form1.ShowFuMessage(lpAnsMsg);
+  //Form1.ShowFuMessage(lpAnsMsg);
 
   lpReqMsg.Release();
   lpAnsMsg.Release();
@@ -3713,18 +4047,19 @@ var
 begin
   Result := 0;
 
-  if not Assigned(m_lpComm) then Exit;
+  if not Assigned(m_lpComm) then
+    Exit;
 
- //业务操作委托下单
+  //业务操作委托下单
   lpReqMsg := NewFuMessage(MSG_TYPE_GET_HOLDSINFO, Integer(MSG_MODE_REQUEST)); //委托下单
   lpAnsMsg := NewFuMessage(MSG_TYPE_UNKNOWN, Integer(MSG_MODE_ANSWER)); //接收消息(无关消息类型)
 
- //打包请求参数(字段顺序无关,重复设置字段则覆盖其值)
+  //打包请求参数(字段顺序无关,重复设置字段则覆盖其值)
   lpRecord := lpReqMsg.AddRecord();
 
 
   lpRecord.SetString('fund_account', pc_username);
- //lpRecord.SetString('password',pc_user_pwd);
+  //lpRecord.SetString('password',pc_user_pwd);
   lpRecord.SetString('futu_exch_type', '');
 
   lpRecord.SetString('futures_account', '');
@@ -3739,7 +4074,7 @@ begin
 
   iRet := m_lpComm.SyncSendRecv(lpReqMsg, lpAnsMsg);
 
- //Form1.ShowFuMessage(lpAnsMsg);
+  //Form1.ShowFuMessage(lpAnsMsg);
   if (iRet = 0) and (lpAnsMsg.GetCount() > 0) then
   begin
     lpAnsRecord := lpAnsMsg.GetRecord(0);
@@ -3759,8 +4094,14 @@ begin
 
       //frmMain2.GRID_S002.Cells[1,13]:=Trim(c_log);
 
-      if (i_short_mark > (i_F + i_S - 1)) then i_short_S_mark := 888 else i_short_S_mark := 0;
-      if (i_short_mark > (i_F + i_S + i_T - 1)) then i_short_T_mark := 888 else i_short_T_mark := 0;
+      if (i_short_mark > (i_F + i_S - 1)) then
+        i_short_S_mark := 888
+      else
+        i_short_S_mark := 0;
+      if (i_short_mark > (i_F + i_S + i_T - 1)) then
+        i_short_T_mark := 888
+      else
+        i_short_T_mark := 0;
 
     end
     else if c_log[0] = '1' then
@@ -3779,8 +4120,14 @@ begin
 
       i_got_it_mark := Round(StrToFloat(c_log));
 
-      if (i_got_it_mark > (i_F + i_S - 1)) then i_get_S_mark := 888 else i_get_S_mark := 0;
-      if (i_got_it_mark > (i_F + i_S + i_T - 1)) then i_get_T_mark := 888 else i_get_T_mark := 0;
+      if (i_got_it_mark > (i_F + i_S - 1)) then
+        i_get_S_mark := 888
+      else
+        i_get_S_mark := 0;
+      if (i_got_it_mark > (i_F + i_S + i_T - 1)) then
+        i_get_T_mark := 888
+      else
+        i_get_T_mark := 0;
     end;
 
     if (iRet = 0) and (lpAnsMsg.GetCount() > 1) then
@@ -3794,24 +4141,30 @@ begin
         StrCopy(c_log, lpAnsRecord.GetString('futu_average_price'));
         f_short_price := StrToFloat(c_log);
 
-      //frmMain2.GRID_S002.Cells[0,13]:='空  '+Trim(c_log);
+        //frmMain2.GRID_S002.Cells[0,13]:='空  '+Trim(c_log);
 
         FillChar(c_log, SizeOf(c_log), 0);
         StrCopy(c_log, lpAnsRecord.GetString('real_amount'));
 
-      //frmMain2.GRID_S002.Cells[1,13]:=Trim(c_log);
+        //frmMain2.GRID_S002.Cells[1,13]:=Trim(c_log);
 
         i_short_mark := Round(StrToFloat(c_log));
 
-        if (i_short_mark > (i_F + i_S - 1)) then i_short_S_mark := 888 else i_short_S_mark := 0;
-        if (i_short_mark > (i_F + i_S + i_T - 1)) then i_short_T_mark := 888 else i_short_T_mark := 0;
+        if (i_short_mark > (i_F + i_S - 1)) then
+          i_short_S_mark := 888
+        else
+          i_short_S_mark := 0;
+        if (i_short_mark > (i_F + i_S + i_T - 1)) then
+          i_short_T_mark := 888
+        else
+          i_short_T_mark := 0;
 
       end
       else if c_log[0] = '1' then
       begin
         StrCopy(c_log, lpAnsRecord.GetString('futu_average_price'));
 
-      //frmMain2.GRID_S002.Cells[0,7]:='多  '+Trim(c_log);
+        //frmMain2.GRID_S002.Cells[0,7]:='多  '+Trim(c_log);
 
         f_business_price := StrToFloat(c_log);
 
@@ -3819,12 +4172,18 @@ begin
 
         StrCopy(c_log, lpAnsRecord.GetString('real_amount'));
 
-      //frmMain2.GRID_S002.Cells[1,7]:=Trim(c_log);
+        //frmMain2.GRID_S002.Cells[1,7]:=Trim(c_log);
 
         i_got_it_mark := Round(StrToFloat(c_log));
 
-        if (i_got_it_mark > (i_F + i_S - 1)) then i_get_S_mark := 888 else i_get_S_mark := 0;
-        if (i_got_it_mark > (i_F + i_S + i_T - 1)) then i_get_T_mark := 888 else i_get_T_mark := 0;
+        if (i_got_it_mark > (i_F + i_S - 1)) then
+          i_get_S_mark := 888
+        else
+          i_get_S_mark := 0;
+        if (i_got_it_mark > (i_F + i_S + i_T - 1)) then
+          i_get_T_mark := 888
+        else
+          i_get_T_mark := 0;
       end;
 
     end;
@@ -3929,11 +4288,13 @@ begin
   //frmMain2.GRID_S002.Cells[1,1]:=FloatToStrF(as_k_chg_ma_rsi[i_s_k_chg_index_wk].ai_rsi[0]/100,ffFixed,7,2);
   i_line_no_001 := i_line_no_001 + 1;
 
-  if not Assigned(m_lpComm) then Exit;
+  if not Assigned(m_lpComm) then
+    Exit;
 
   i_line_no_001 := i_line_no_001 + 1;
   //for get K line Only
-  if (i_make_k_only > 0) then Exit;
+  if (i_make_k_only > 0) then
+    Exit;
   i_line_no_001 := i_line_no_001 + 1;
 
   if (i_BSK = 1) or (i_BSK = 2) and (f_last_price_wk > 8.0) then
@@ -3941,8 +4302,10 @@ begin
     ff_entrust_no(pc_what_wk);
     ff_cancel_entrust_no();
 
-    if (i_BSK = 1) then s_tmp := FloatToStrF(f_sale_1 + 1.0, ffFixed, 8, 2);
-    if (i_BSK = 2) then s_tmp := FloatToStrF(f_buy_1 - 1.0, ffFixed, 8, 2);
+    if (i_BSK = 1) then
+      s_tmp := FloatToStrF(f_sale_1 + 1.0, ffFixed, 8, 2);
+    if (i_BSK = 2) then
+      s_tmp := FloatToStrF(f_buy_1 - 1.0, ffFixed, 8, 2);
     ff_order_ex(pc_what_wk, PChar(s_tmp), PChar(IntToStr(i_F)), m_mairu, m_kaicang);
     i_BSK := 0;
     W_Log('main_loop', as_k_chg[i_s_k_chg_index_wk].i_date, i_wk_log, 'BSK,make long position!');
@@ -3950,15 +4313,18 @@ begin
     ff_get_qty();
     //frmMain2.GRID_S002.Repaint;
   end
-  else if (i_BSK = 1) or (i_BSK = 2) then i_BSK := 0;
+  else if (i_BSK = 1) or (i_BSK = 2) then
+    i_BSK := 0;
 
   if (i_BSK = 3) or (i_BSK = 4) and (f_last_price_wk > 8.0) then
   begin
     ff_entrust_no(pc_what_wk);
     ff_cancel_entrust_no();
 
-    if (i_BSK = 3) then s_tmp := FloatToStrF(f_buy_1 - 1.0, ffFixed, 8, 2);
-    if (i_BSK = 4) then s_tmp := FloatToStrF(f_sale_1 + 1.0, ffFixed, 8, 2);
+    if (i_BSK = 3) then
+      s_tmp := FloatToStrF(f_buy_1 - 1.0, ffFixed, 8, 2);
+    if (i_BSK = 4) then
+      s_tmp := FloatToStrF(f_sale_1 + 1.0, ffFixed, 8, 2);
     ff_order_ex(pc_what_wk, PChar(s_tmp), PChar(IntToStr(i_F)), m_maichu, m_kaicang);
     i_BSK := 0;
     W_Log('main_loop', as_k_chg[i_s_k_chg_index_wk].i_date, i_wk_log, 'BSK,make short position!');
@@ -3966,7 +4332,8 @@ begin
     ff_get_qty();
     //frmMain2.GRID_S002.Repaint;
   end
-  else if (i_BSK = 3) or (i_BSK = 4) then i_BSK := 0;
+  else if (i_BSK = 3) or (i_BSK = 4) then
+    i_BSK := 0;
 
   i_line_no_001 := i_line_no_001 + 1;
 
@@ -3978,7 +4345,8 @@ begin
     ff_cancel_entrust_no();
 
     //20120309 chg
-    if (i_got_it_mark < 2) then ff_order_ex(pc_what_wk, PChar(s_tmp), PChar(IntToStr(i_got_it_mark)), m_maichu, m_pingcang)
+    if (i_got_it_mark < 2) then
+      ff_order_ex(pc_what_wk, PChar(s_tmp), PChar(IntToStr(i_got_it_mark)), m_maichu, m_pingcang)
     else
       ff_order_ex(pc_what_wk, PChar(s_tmp), PChar(IntToStr(i_got_it_mark - 1)), m_maichu, m_pingcang);
 
@@ -3987,7 +4355,8 @@ begin
     ff_get_qty();
     //frmMain2.GRID_S002.Repaint;
   end
-  else if (i_BSK = 5) then i_BSK := 0;
+  else if (i_BSK = 5) then
+    i_BSK := 0;
 
   i_line_no_001 := i_line_no_001 + 1;
 
@@ -3999,7 +4368,8 @@ begin
     ff_cancel_entrust_no();
 
     //20120309 chg
-    if (i_got_it_mark < 2) then ff_order_ex(pc_what_wk, PChar(s_tmp), PChar(IntToStr(i_got_it_mark)), m_maichu, m_pingcang)
+    if (i_got_it_mark < 2) then
+      ff_order_ex(pc_what_wk, PChar(s_tmp), PChar(IntToStr(i_got_it_mark)), m_maichu, m_pingcang)
     else
       ff_order_ex(pc_what_wk, PChar(s_tmp), PChar(IntToStr(i_got_it_mark - 1)), m_maichu, m_pingcang);
 
@@ -4008,7 +4378,8 @@ begin
     ff_get_qty();
     //frmMain2.GRID_S002.Repaint;
   end
-  else if (i_BSK = 7) then i_BSK := 0;
+  else if (i_BSK = 7) then
+    i_BSK := 0;
 
 
   i_line_no_001 := i_line_no_001 + 1;
@@ -4020,7 +4391,8 @@ begin
     s_tmp := FloatToStrF(f_last_price_wk + 2.0, ffFixed, 8, 2);
     ff_entrust_no(pc_what_wk);
     ff_cancel_entrust_no();
-    if (i_short_mark < 2) then ff_order_ex(pc_what_wk, PChar(s_tmp), PChar(IntToStr(i_short_mark)), m_mairu, m_pingcang)
+    if (i_short_mark < 2) then
+      ff_order_ex(pc_what_wk, PChar(s_tmp), PChar(IntToStr(i_short_mark)), m_mairu, m_pingcang)
     else
       ff_order_ex(pc_what_wk, PChar(s_tmp), PChar(IntToStr(i_short_mark - 1)), m_mairu, m_pingcang);
 
@@ -4029,7 +4401,8 @@ begin
     ff_get_qty();
     //frmMain2.GRID_S002.Repaint;
   end
-  else if (i_BSK = 6) then i_BSK := 0;
+  else if (i_BSK = 6) then
+    i_BSK := 0;
 
   i_line_no_001 := i_line_no_001 + 1;
 
@@ -4040,7 +4413,8 @@ begin
     s_tmp := FloatToStrF(f_last_price_wk - 2.0, ffFixed, 8, 2);
     ff_entrust_no(pc_what_wk);
     ff_cancel_entrust_no();
-    if (i_short_mark < 2) then ff_order_ex(pc_what_wk, PChar(s_tmp), PChar(IntToStr(i_short_mark)), m_mairu, m_pingcang)
+    if (i_short_mark < 2) then
+      ff_order_ex(pc_what_wk, PChar(s_tmp), PChar(IntToStr(i_short_mark)), m_mairu, m_pingcang)
     else
       ff_order_ex(pc_what_wk, PChar(s_tmp), PChar(IntToStr(i_short_mark - 1)), m_mairu, m_pingcang);
 
@@ -4049,7 +4423,8 @@ begin
     ff_get_qty();
     //frmMain2.GRID_S002.Repaint;
   end
-  else if (i_BSK = 8) then i_BSK := 0;
+  else if (i_BSK = 8) then
+    i_BSK := 0;
 
   if (i_BSK = 9) and (f_last_price_wk > 8.0) then
   begin
@@ -4057,7 +4432,8 @@ begin
     ff_entrust_no(pc_what_wk);
     ff_cancel_entrust_no();
   end
-  else if (i_BSK = 9) then i_BSK := 0;
+  else if (i_BSK = 9) then
+    i_BSK := 0;
 
   i_line_no_001 := i_line_no_001 + 1;
 
@@ -4073,7 +4449,8 @@ begin
 
   i_line_no_001 := i_line_no_001 + 1;
 
-  if (f_last_price_wk < 1) then Exit;
+  if (f_last_price_wk < 1) then
+    Exit;
 
   i_line_no_001 := i_line_no_001 + 1;
   //for auto_clear
@@ -4088,7 +4465,7 @@ begin
       W_Log('main_loop', as_k_chg[i_s_k_chg_index_wk].i_date, i_wk_log, 'Auto_Clear_Long!');
       Sleep(2000);
       ff_get_qty();
-    //frmMain2.GRID_S002.Repaint;
+      //frmMain2.GRID_S002.Repaint;
     end;
   i_line_no_001 := i_line_no_001 + 1;
 
@@ -4105,7 +4482,7 @@ begin
       W_Log('main_loop', as_k_chg[i_s_k_chg_index_wk].i_date, i_wk_log, 'auto_clear_short!');
       Sleep(2000);
       ff_get_qty();
-    //frmMain2.GRID_S002.Repaint;
+      //frmMain2.GRID_S002.Repaint;
     end;
 
   //for auto_clear_end
@@ -4115,7 +4492,7 @@ begin
     (f_last_price_wk > f_last_price_1 + i_A) and
     (i_got_it_mark > 0) and
 
-    //(i_ADD_FLOSS_MAX > i_long_FLOSS_MAX) and
+  //(i_ADD_FLOSS_MAX > i_long_FLOSS_MAX) and
 
   (f_last_price_wk - f_business_price > f_rsi_add) and
     (f_last_price_wk - f_business_price < f_rsi_add * 2) then
@@ -4140,7 +4517,7 @@ begin
     (f_last_price_wk < f_last_price_1 - i_A) and
     (i_short_mark > 0) and
 
-    //(i_ADD_FLOSS_MAX > i_short_FLOSS_MAX) and
+  //(i_ADD_FLOSS_MAX > i_short_FLOSS_MAX) and
 
   (f_short_price - f_last_price_wk > f_rsi_add) and
     (f_short_price - f_last_price_wk < f_rsi_add * 2) then
@@ -4161,7 +4538,8 @@ begin
   i_line_no_001 := i_line_no_001 + 1;
 
   if (i_make_short_mark > 0) and
-    (i_s_k_chg_index_wk - i_make_short_mark > 0) then i_make_short_mark := 0;
+    (i_s_k_chg_index_wk - i_make_short_mark > 0) then
+    i_make_short_mark := 0;
 
   i_tmp_1 := ff_check_short_250(i_s_k_chg_index_wk);
 
@@ -4218,7 +4596,8 @@ begin
   if ((i_tmp = 0) or (i_tmp_1 = 0) or (i_tmp_2 = 0) or (i_tmp_3 = 0) or (i_tmp_4 = 0) or
     ((i_tmp_7 = 0) and (i_s_k_chg_index_wk - i_short_stop_index > 28))) then
   begin
-    if (i_no_trade = 0) then if ((i_only_short = 1) or (i_long_short_ctrl = 0)) then
+    if (i_no_trade = 0) then
+      if ((i_only_short = 1) or (i_long_short_ctrl = 0)) then
       begin
         if i_B_S_Flag < 0 then
         begin
@@ -4274,7 +4653,8 @@ begin
   i_line_no_001 := i_line_no_001 + 1;
 
   if (i_make_long_mark > 0) and
-    (i_s_k_chg_index_wk - i_make_long_mark > 0) then i_make_long_mark := 0;
+    (i_s_k_chg_index_wk - i_make_long_mark > 0) then
+    i_make_long_mark := 0;
 
   ff_check_rsi_w20(i_s_k_chg_index_wk - 1);
   i_line_no_001 := i_line_no_001 + 1;
@@ -4300,7 +4680,8 @@ begin
 
   if ((i_tmp = 0) or (i_tmp_1 = 0) or (i_tmp_2 = 0) or (i_tmp_3 = 0) or (i_tmp_4 = 0) or (i_tmp_5 = 0) or (i_tmp_6 = 0) or (i_tmp_7 = 0)) then
   begin
-    if (i_no_trade = 0) then if ((i_only_long = 1) or (i_long_short_ctrl = 0)) then
+    if (i_no_trade = 0) then
+      if ((i_only_long = 1) or (i_long_short_ctrl = 0)) then
       begin
         if (i_B_S_Flag > 0) or ((i_s_k_chg_index_wk - i_short_stop_index < 28) and (i_tmp = 0)) or
           (i_tmp_3 = 0) or (i_tmp_4 = 0) or (i_tmp_5 = 0) or (i_tmp_6 = 0) or (i_tmp_2 = 0) or
@@ -4322,7 +4703,7 @@ begin
   end;
   i_line_no_001 := i_line_no_001 + 1;
 
- //for short Stop
+  //for short Stop
   if (i_short_mark > 0) and (f_last_price_wk > (f_short_price + f_rsi_cut_short)) then
   begin
     i_stop_short_count := i_stop_short_count + 1;
@@ -4376,7 +4757,8 @@ begin
     begin
       i_M120_stop := 8;
     end
-    else i_M120_stop := 0;
+    else
+      i_M120_stop := 0;
 
     if (i_M30 > 0) and
       ((Integer(as_k_chg_ma_rsi[i_s_k_chg_index_wk - 1].ai_ma[3]) + i_M30) <
@@ -4388,16 +4770,17 @@ begin
     begin
       i_M30_stop := 8;
     end
-    else i_M30_stop := 0;
+    else
+      i_M30_stop := 0;
 
     if (i_M120_stop = 888) or (i_M30_stop = 888) or
       ((i_M30_stop = 0) and (i_M120_stop = 0)) then
     begin
 
-    //M30 delta check
-    //if ( (Integer(as_k_chg_ma_rsi[ i_s_k_chg_index_wk-1 ].ai_ma[3]) + i_M30 ) >
-    //    Integer(as_k_chg_ma_rsi[ i_s_k_chg_index_wk-2 ].ai_ma[3])  ) Then
-    //begin
+      //M30 delta check
+      //if ( (Integer(as_k_chg_ma_rsi[ i_s_k_chg_index_wk-1 ].ai_ma[3]) + i_M30 ) >
+      //    Integer(as_k_chg_ma_rsi[ i_s_k_chg_index_wk-2 ].ai_ma[3])  ) Then
+      //begin
 
       if (i_stop_short_count > 1) then
       begin
@@ -4419,7 +4802,7 @@ begin
 
   i_line_no_001 := i_line_no_001 + 1;
 
- //for Stop
+  //for Stop
   if (i_got_it_mark > 0) and (f_last_price_wk - f_business_price > f_rsi_stop_long) then
   begin
 
@@ -4435,7 +4818,8 @@ begin
     begin
       i_M120_stop := 8;
     end
-    else i_M120_stop := 0;
+    else
+      i_M120_stop := 0;
 
     if (i_M30 > 0) and
       (Integer(as_k_chg_ma_rsi[i_s_k_chg_index_wk - 1].ai_ma[3]) <
@@ -4447,7 +4831,8 @@ begin
     begin
       i_M30_stop := 8;
     end
-    else i_M30_stop := 0;
+    else
+      i_M30_stop := 0;
 
     if (i_M120_stop = 888) or (i_M30_stop = 888) or
       ((i_M30_stop = 0) and (i_M120_stop = 0)) then
@@ -4501,7 +4886,8 @@ end;
 function do_beep(): Boolean;
 begin
   Result := False;
-  if i_beeping = 1 then Exit;
+  if i_beeping = 1 then
+    Exit;
   i_beeping := 1;
   g_hEvent := CreateEvent(nil, TRUE, FALSE, nil);
   //Application.ProcessMessages;
@@ -4517,7 +4903,8 @@ end;
 function ff_stop_do_beep(): Boolean;
 begin
   Result := True;
-  if i_beeping = 0 then Exit;
+  if i_beeping = 0 then
+    Exit;
   th_main_loop.Terminate;
   th_beep.Terminate;
   sleep(3000);
@@ -4534,103 +4921,135 @@ begin
   Result := True;
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'A_min');
-  if pc_tmp <> nil then i_rsi_A := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_rsi_A := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'B_min');
-  if pc_tmp <> nil then i_rsi_B := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_rsi_B := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'C_min');
-  if pc_tmp <> nil then i_rsi_C := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_rsi_C := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'AB_max');
-  if pc_tmp <> nil then i_rsi_AB := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_rsi_AB := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'BC_max');
-  if pc_tmp <> nil then i_rsi_BC := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_rsi_BC := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'IA_min');
-  if pc_tmp <> nil then i_rsi_IA_min := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_rsi_IA_min := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'IA_max');
-  if pc_tmp <> nil then i_rsi_IA_max := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_rsi_IA_max := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'CUT');
-  if pc_tmp <> nil then f_rsi_cut := StrToFloat(pc_tmp);
+  if pc_tmp <> nil then
+    f_rsi_cut := StrToFloat(pc_tmp);
 
   //f_mbm_cut_all :=f_rsi_cut*3;
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'STOP');
-  if pc_tmp <> nil then f_rsi_stop := StrToFloat(pc_tmp);
+  if pc_tmp <> nil then
+    f_rsi_stop := StrToFloat(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'ADD');
-  if pc_tmp <> nil then f_rsi_add := StrToFloat(pc_tmp);
+  if pc_tmp <> nil then
+    f_rsi_add := StrToFloat(pc_tmp);
 
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'F');
-  if pc_tmp <> nil then i_F := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_F := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'S');
-  if pc_tmp <> nil then i_S := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_S := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'T');
-  if pc_tmp <> nil then i_T := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_T := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'A');
-  if pc_tmp <> nil then i_A := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_A := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'M30');
-  if pc_tmp <> nil then i_M30 := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_M30 := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'M120');
-  if pc_tmp <> nil then i_M120 := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_M120 := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'BOX_Y');
-  if pc_tmp <> nil then i_BOX_Y := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_BOX_Y := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_local_ini, 'What', 'KONLY');
-  if pc_tmp <> nil then i_make_k_only := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_make_k_only := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_local_ini, 'What', 'LS_CTRL');
-  if pc_tmp <> nil then i_long_short_ctrl := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_long_short_ctrl := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_local_ini, 'What', 'CODE');
-  if pc_tmp <> nil then pc_what_wk := pc_tmp;
+  if pc_tmp <> nil then
+    pc_what_wk := pc_tmp;
 
   pc_tmp := FF_ffconf(m_ff_local_ini, 'What', 'MBM_ONLY');
-  if pc_tmp <> nil then i_mbm_only := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_mbm_only := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_ma120_ini, 'M120BB', 'BOX_Y');
-  if pc_tmp <> nil then i_BB_BOX_Y := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_BB_BOX_Y := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_ma120_ini, 'M120BB', 'BOX_X');
-  if pc_tmp <> nil then i_BB_BOX_X := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_BB_BOX_X := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_bb100_ini, 'BB_100', 'BOX_X');
-  if pc_tmp <> nil then i_BB_100_BOX_X := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_BB_100_BOX_X := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_bb100_ini, 'BB_100', 'BOX_Y');
-  if pc_tmp <> nil then i_BB_100_BOX_Y := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_BB_100_BOX_Y := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_m30_short_ini, 'M30', 'BOX_X');
-  if pc_tmp <> nil then i_M30_short_BOX_X := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_M30_short_BOX_X := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_m30_short_ini, 'M30', 'BOX_Y');
-  if pc_tmp <> nil then i_M30_short_BOX_Y := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_M30_short_BOX_Y := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_short_1_ini, 'Main', 'ACT');
-  if pc_tmp <> nil then i_act_short := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_act_short := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'ACT');
-  if pc_tmp <> nil then i_act_rsi := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_act_rsi := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_rsi_ini, 'W20', 'ADD_FLOSS_MAX');
-  if pc_tmp <> nil then i_ADD_FLOSS_MAX := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_ADD_FLOSS_MAX := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_ma120_ini, 'M120BB', 'ACT');
-  if pc_tmp <> nil then i_act_m120 := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_act_m120 := StrToInt(pc_tmp);
 
   pc_tmp := FF_ffconf(m_ff_bb100_ini, 'BB_100', 'ACT');
-  if pc_tmp <> nil then i_act_bb_100 := StrToInt(pc_tmp);
+  if pc_tmp <> nil then
+    i_act_bb_100 := StrToInt(pc_tmp);
 
   f_rsi_stop_long := f_rsi_stop;
   f_rsi_stop_short := f_rsi_stop;
