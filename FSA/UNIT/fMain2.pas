@@ -14,7 +14,7 @@ const
   ACTC: array[0..1] of Integer = (2, 6);
 
 type
-{ TVertLine }
+  { TVertLine }
   TVertLine = class(TGraphicControl)
   private
     FVisible: Boolean;
@@ -28,7 +28,7 @@ type
   end;
 
 type
-{ THoriLine }
+  { THoriLine }
   THoriLine = class(TGraphicControl)
   private
     FVisible: Boolean;
@@ -41,7 +41,7 @@ type
     property Position: Integer read FPosition write SetPosition;
   end;
 
-{ TfrmMain2 }
+  { TfrmMain2 }
   TfrmMain2 = class(TForm)
     GRID: TStringGrid;
     MainMenu1: TMainMenu;
@@ -90,6 +90,7 @@ type
     N22: TMenuItem;
     N51: TMenuItem;
     N23: TMenuItem;
+    GOOGLECVS1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure GRIDDrawCell(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
@@ -124,6 +125,7 @@ type
     procedure XTDAT1Click(Sender: TObject);
     procedure DATTXT1Click(Sender: TObject);
     procedure N23Click(Sender: TObject);
+    procedure GOOGLECVS1Click(Sender: TObject);
   private
     FDataIndex: Integer;
     function GetDataPerPage: Integer;
@@ -262,16 +264,18 @@ begin
   C := GRID.Canvas;
   C.Pen.Color := clGreen;
   C.Brush.Color := GRID.Color;
-  if ACol < 1 then Inc(Rect.Right);
-  if ARow < 3 then Inc(Rect.Bottom);
+  if ACol < 1 then
+    Inc(Rect.Right);
+  if ARow < 3 then
+    Inc(Rect.Bottom);
   C.Rectangle(Rect); //绘制不同区域的分界线
   case ACol of
     0: case ARow of
         0: ;
         1: DrawK(C, Rect);
         2: DrawV(C, Rect);
-       //3: DrawRSI(C, Rect);
-        //2: DrawPL(C, Rect);
+        //3: DrawRSI(C, Rect);
+         //2: DrawPL(C, Rect);
         3: DrawMA(C, Rect);
         //3: DrawV(C, Rect);
       end;
@@ -284,7 +288,8 @@ begin
         2: DrawScaleV(C, Rect);
       end;
   end;
-  if (VertLine <> nil) and VertLine.Visible then VertLine.Paint;
+  if (VertLine <> nil) and VertLine.Visible then
+    VertLine.Paint;
 end;
 
 //切换数据文件时
@@ -336,7 +341,8 @@ var
   P: PStkDataRec;
 begin
   Value := Max(1, Min(40, Value));
-  if Value > 1 then Value := Value div 2 * 2;
+  if Value > 1 then
+    Value := Value div 2 * 2;
   if (Value <> FUnitWidth) and (StkDataFile <> nil) then
   begin
     FUnitWidth := Value;
@@ -351,37 +357,37 @@ begin
     GRID.Repaint; //必须
     ITERATE_DATA(FDataIndex);
 
-  //GRID.Repaint;//必须
+    //GRID.Repaint;//必须
 
-    {
-    IF FDataIndex <> -1 THEN
-    BEGIN
-    //绘制MA部分
-    GRID.Canvas.Font.Color := DEF_COLOR[0];
-    GRID.Canvas.TextOut(0,GRID.RowHeights[0] + 1,'MA30: ' + FormatFloat('0,000.00', MA[0][StkDataFile.getCount-FDataIndex]));
-    GRID.Canvas.Font.Color := DEF_COLOR[1];
-    GRID.Canvas.TextOut(90,GRID.RowHeights[0] + 1,'MA60: ' + FormatFloat('0,000.00', MA[1][StkDataFile.getCount-FDataIndex]));
-    GRID.Canvas.Font.Color := DEF_COLOR[2];
-    GRID.Canvas.TextOut(180,GRID.RowHeights[0] + 1,'MA120: ' + FormatFloat('0,000.00', MA[2][StkDataFile.getCount-FDataIndex]));
-    GRID.Canvas.Font.Color := DEF_COLOR[3];
-    GRID.Canvas.TextOut(278,GRID.RowHeights[0] + 1,'MA250: ' + FormatFloat('0,000.00', MA[3][StkDataFile.getCount-FDataIndex]));
+      {
+      IF FDataIndex <> -1 THEN
+      BEGIN
+      //绘制MA部分
+      GRID.Canvas.Font.Color := DEF_COLOR[0];
+      GRID.Canvas.TextOut(0,GRID.RowHeights[0] + 1,'MA30: ' + FormatFloat('0,000.00', MA[0][StkDataFile.getCount-FDataIndex]));
+      GRID.Canvas.Font.Color := DEF_COLOR[1];
+      GRID.Canvas.TextOut(90,GRID.RowHeights[0] + 1,'MA60: ' + FormatFloat('0,000.00', MA[1][StkDataFile.getCount-FDataIndex]));
+      GRID.Canvas.Font.Color := DEF_COLOR[2];
+      GRID.Canvas.TextOut(180,GRID.RowHeights[0] + 1,'MA120: ' + FormatFloat('0,000.00', MA[2][StkDataFile.getCount-FDataIndex]));
+      GRID.Canvas.Font.Color := DEF_COLOR[3];
+      GRID.Canvas.TextOut(278,GRID.RowHeights[0] + 1,'MA250: ' + FormatFloat('0,000.00', MA[3][StkDataFile.getCount-FDataIndex]));
 
 
-    //绘制VOL部分
-    P := StkDataFile.getData(FDataIndex);
-    IF P <> NIL THEN
-    BEGIN
-    GRID.Canvas.Font.Color := DEF_COLOR[5];
-    GRID.Canvas.TextOut(0,GRID.RowHeights[0] + GRID.RowHeights[1] + 1,'VOL: ' + FormatFloat('000,000.00', P.VOL));
-    END;
-    //绘制PL部分
-    GRID.Canvas.Font.Color := DEF_COLOR[0];
-    if PL[0][StkDataFile.getCount-FDataIndex -1] > 0 then
-      GRID.Canvas.TextOut(0,GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1,'PL250: ' + FormatFloat('+0,000.00', PL[0][StkDataFile.getCount-FDataIndex -1]))
-    else
-      GRID.Canvas.TextOut(0,GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1,'PL250: ' + FormatFloat(' -0,000.00', -PL[0][StkDataFile.getCount-FDataIndex -1]));
-   END;
-    }
+      //绘制VOL部分
+      P := StkDataFile.getData(FDataIndex);
+      IF P <> NIL THEN
+      BEGIN
+      GRID.Canvas.Font.Color := DEF_COLOR[5];
+      GRID.Canvas.TextOut(0,GRID.RowHeights[0] + GRID.RowHeights[1] + 1,'VOL: ' + FormatFloat('000,000.00', P.VOL));
+      END;
+      //绘制PL部分
+      GRID.Canvas.Font.Color := DEF_COLOR[0];
+      if PL[0][StkDataFile.getCount-FDataIndex -1] > 0 then
+        GRID.Canvas.TextOut(0,GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1,'PL250: ' + FormatFloat('+0,000.00', PL[0][StkDataFile.getCount-FDataIndex -1]))
+      else
+        GRID.Canvas.TextOut(0,GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1,'PL250: ' + FormatFloat(' -0,000.00', -PL[0][StkDataFile.getCount-FDataIndex -1]));
+     END;
+      }
   end;
 end;
 
@@ -398,7 +404,8 @@ function TfrmMain2.GetDataPerPage: Integer;
 begin
   if FUnitWidth > 0 then
     Result := _width_(GRID.CellRect(0, 1)) div FUnitWidth //左边总宽度除以单元宽度
-  else Result := 0;
+  else
+    Result := 0;
 end;
 
 procedure TfrmMain2.CalcMA;
@@ -406,8 +413,10 @@ var
   I: Integer;
 begin
   for I := 0 to Length(MAC) - 1 do
-    if MAC[I] = 0 then MA[I] := nil
-    else MA[I] := _calcMA_(StkDataFile.getCP, MAC[I]);
+    if MAC[I] = 0 then
+      MA[I] := nil
+    else
+      MA[I] := _calcMA_(StkDataFile.getCP, MAC[I]);
 end;
 
 procedure TfrmMain2.CalcPL;
@@ -415,8 +424,10 @@ var
   I: Integer;
 begin
   for I := 0 to Length(PLC) - 1 do
-    if PLC[I] = 0 then PL[I] := nil //0代表不计算
-    else PL[I] := _calcPL_(I, StkDataFile.getCP, MA, PLC[I]);
+    if PLC[I] = 0 then
+      PL[I] := nil //0代表不计算
+    else
+      PL[I] := _calcPL_(I, StkDataFile.getCP, MA, PLC[I]);
 end;
 
 procedure TfrmMain2.CalcAction;
@@ -424,8 +435,10 @@ var
   I: Integer;
 begin
   for I := 0 to Length(ACTC) - 1 do
-    if ACTC[I] = 0 then ACT[I] := nil //0代表不计算
-    else ACT[I] := _calcAction_(ACTC[I], StkDataFile.getCP, MA, ACTC[I]);
+    if ACTC[I] = 0 then
+      ACT[I] := nil //0代表不计算
+    else
+      ACT[I] := _calcAction_(ACTC[I], StkDataFile.getCP, MA, ACTC[I]);
 end;
 
 procedure TfrmMain2.CalcRSI;
@@ -444,8 +457,10 @@ var
   I: Integer;
 begin
   for I := 0 to Length(VMAC) - 1 do
-    if VMAC[I] = 0 then VMA[I] := nil
-    else VMA[I] := _calcMA_(StkDataFile.getVOL, VMAC[I]);
+    if VMAC[I] = 0 then
+      VMA[I] := nil
+    else
+      VMA[I] := _calcMA_(StkDataFile.getVOL, VMAC[I]);
 end;
 
 procedure TfrmMain2.DrawK(C: TCanvas; R: TRect);
@@ -463,7 +478,8 @@ begin
   HA := nil;
   LA := nil;
 
-  if IS_SHOW_DATESCALE then DRAW_DATE_SCALE(C, R, True);
+  if IS_SHOW_DATESCALE then
+    DRAW_DATE_SCALE(C, R, True);
 
   // 查找最高最低
   if FindKLineScaleHighLow(StkDataFile, High, Low, HA, LA, HIndex, LIndex) then
@@ -494,7 +510,8 @@ begin
         Rt.Right := Rt.Left + TW + 2;
         if not IS_FRACTION_UNDERLINE then
           _textRectBackground_(C, Rt, str, C.Font.Height, DEF_COLOR[4], GRID.Color, taCenter, tlTop, True)
-        else _textRect_(C, Rt, str, DEF_COLOR[4], GRID.Color, taCenter, tlTop, False);
+        else
+          _textRect_(C, Rt, str, DEF_COLOR[4], GRID.Color, taCenter, tlTop, False);
       end;
     end;
 
@@ -515,7 +532,8 @@ begin
         Rt.Right := Rt.Left + TW + 2;
         if not IS_FRACTION_UNDERLINE then
           _textRectBackground_(C, Rt, str, C.Font.Height, TColor($00FF04), GRID.Color, taCenter, tlTop, True)
-        else _textRect_(C, Rt, str, TColor($00FF04), GRID.Color, taCenter, tlTop, False);
+        else
+          _textRect_(C, Rt, str, TColor($00FF04), GRID.Color, taCenter, tlTop, False);
       end;
     end;
 
@@ -531,7 +549,7 @@ begin
         Y2 := Fy2Iy(P^.CP, R, High, Low);
         M := Min(Y1, Y2); //Measured by pixels
         N := Max(Y1, Y2); //Measured by pixels
-//
+        //
         X1 := UnitWidth * I + UnitWidth div 2;
         X2 := X1;
         Y1 := Fy2Iy(P^.HP, R, High, Low);
@@ -541,9 +559,11 @@ begin
           _line_(C, X1, Y1, X2, M, clWhite); //HP
           _line_(C, X1, N, X2, Y2, clWhite); //LP
         end
-        else if UnitWidth < 2 then _line_(C, X1, Y1, X2, Y2) //HP to LP
-        else begin
-         //保留值
+        else if UnitWidth < 2 then
+          _line_(C, X1, Y1, X2, Y2) //HP to LP
+        else
+        begin
+          //保留值
           X3 := X2;
           Y3 := Y2;
           C3 := C.Pen.Color;
@@ -553,24 +573,29 @@ begin
           _line_(C, X1, Y2, X2, Y2, clWhite); //CP to CP
           _line_(C, X1, Y1, X3, Y3, C3) //HP to LP
         end;
-//
+        //
         X1 := 1 + UnitWidth * I;
         X2 := UnitWidth * (I + 1);
         Y1 := Fy2Iy(P^.OP, R, High, Low);
         Y2 := Fy2Iy(P^.CP, R, High, Low);
-        if Y1 > Y2 then C.Pen.Color := DEF_COLOR[4] //阳线颜色
-        else if Y1 < Y2 then C.Pen.Color := clAqua //阴线颜色
-        else C.Pen.Color := clLime;
+        if Y1 > Y2 then
+          C.Pen.Color := DEF_COLOR[4] //阳线颜色
+        else if Y1 < Y2 then
+          C.Pen.Color := clAqua //阴线颜色
+        else
+          C.Pen.Color := clLime;
         C.Brush.Color := C.Pen.Color;
         if UnitWidth > 2 then
         begin
-          if (X1 = X2) or (Y1 = Y2) then _line_(C, X1, Y1, X2, Y2, clLime)
+          if (X1 = X2) or (Y1 = Y2) then
+            _line_(C, X1, Y1, X2, Y2, clLime)
           else if Y1 > Y2 then
           begin
             C.Brush.Color := clBlack;
             C.Rectangle(Rect(X1, Y1, X2, Y2));
           end
-          else begin
+          else
+          begin
             C.Brush.Color := C.Pen.Color;
             C.Rectangle(Rect(X1, Y1, X2, Y2));
           end;
@@ -622,7 +647,8 @@ begin
     D := (High - Low) / 10;
     High := High + D;
     InflateRect(R, 0, -2);
-    if ShowBackgroundDotLine then DRAW_HORZ_SCALE(C, R, ScaleLow[2], ScaleHigh[2], Low, High, _height_(R) div 25, True);
+    if ShowBackgroundDotLine then
+      DRAW_HORZ_SCALE(C, R, ScaleLow[2], ScaleHigh[2], Low, High, _height_(R) div 25, True);
     _setPen_(C, GRID.Color, 1, psSolid, pmCopy);
     _setBrush_(C, GRID.Color, bsSolid);
     for I := 0 to DataPerPage - 1 do
@@ -631,9 +657,12 @@ begin
       P := StkDataFile.getData(J);
       if P <> nil then
       begin
-        if P^.CP > P^.OP then C.Pen.Color := DEF_COLOR[4]
-        else if P^.CP < P^.OP then C.Pen.Color := clAqua
-        else C.Pen.Color := clLime;
+        if P^.CP > P^.OP then
+          C.Pen.Color := DEF_COLOR[4]
+        else if P^.CP < P^.OP then
+          C.Pen.Color := clAqua
+        else
+          C.Pen.Color := clLime;
         C.Brush.Color := C.Pen.Color;
         X1 := 1 + UnitWidth * I;
         X2 := UnitWidth * (I + 1);
@@ -649,7 +678,8 @@ begin
             C.Brush.Color := C.Pen.Color;
           end;
         end
-        else _line_(C, X1, Y1, X1, Y2);
+        else
+          _line_(C, X1, Y1, X1, Y2);
       end;
     end;
 
@@ -680,9 +710,12 @@ begin
   if ShowBackgroundDotLine then
   begin
     _setPen_(C, DEF_COLOR[4], 1, psDot, pmCopy);
-    Y := Fy2Iy(80, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, DEF_COLOR[4]);
-    Y := Fy2Iy(50, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, clSilver);
-    Y := Fy2Iy(20, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, clAqua);
+    Y := Fy2Iy(80, R, High, Low);
+    _line_(C, R.Left + 1, Y, R.Right, Y, DEF_COLOR[4]);
+    Y := Fy2Iy(50, R, High, Low);
+    _line_(C, R.Left + 1, Y, R.Right, Y, clSilver);
+    Y := Fy2Iy(20, R, High, Low);
+    _line_(C, R.Left + 1, Y, R.Right, Y, clAqua);
   end;
   _setPen_(C, DEF_COLOR[4], 1, psSolid, pmCopy);
 
@@ -706,9 +739,12 @@ begin
   if ShowBackgroundDotLine then
   begin
     _setPen_(C, clWhite, 1, psDot, pmCopy);
-    Y := Fy2Iy(80, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, DEF_COLOR[4]); //绘制上线
-    Y := Fy2Iy(0, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, clSilver);
-    Y := Fy2Iy(-80, R, High, Low); _line_(C, R.Left + 1, Y, R.Right, Y, clGreen);
+    Y := Fy2Iy(80, R, High, Low);
+    _line_(C, R.Left + 1, Y, R.Right, Y, DEF_COLOR[4]); //绘制上线
+    Y := Fy2Iy(0, R, High, Low);
+    _line_(C, R.Left + 1, Y, R.Right, Y, clSilver);
+    Y := Fy2Iy(-80, R, High, Low);
+    _line_(C, R.Left + 1, Y, R.Right, Y, clGreen);
   end;
   _setPen_(C, clWhite, 1, psSolid, pmCopy);
 
@@ -765,7 +801,8 @@ begin
         Rt.Right := Rt.Left + TW + 2;
         if not IS_FRACTION_UNDERLINE then
           _textRectBackground_(C, Rt, str, C.Font.Height, DEF_COLOR[4], GRID.Color, taCenter, tlTop, True)
-        else _textRect_(C, Rt, str, DEF_COLOR[4], GRID.Color, taCenter, tlTop, False);
+        else
+          _textRect_(C, Rt, str, DEF_COLOR[4], GRID.Color, taCenter, tlTop, False);
       end;
     end;
   end;
@@ -804,14 +841,17 @@ function TfrmMain2.FindKLineScaleHighLow(DataFile: IDataFile;
   begin
     Result := False;
     Interval := Max(10, DataPerPage div 20);
-    if Length(HA) = 0 then Exit;
-    if Interval < 1 then Exit;
+    if Length(HA) = 0 then
+      Exit;
+    if Interval < 1 then
+      Exit;
     if Index > -1 then
     begin
       FH := 0;
       SS := Max(0, Index - Interval);
       EE := Min(Length(HA) - 1, Index + Interval);
-      for I := SS to EE do FH := Max(FH, HA[I]);
+      for I := SS to EE do
+        FH := Max(FH, HA[I]);
       Result := (HA[Index] = FH);
     end;
   end;
@@ -824,14 +864,17 @@ function TfrmMain2.FindKLineScaleHighLow(DataFile: IDataFile;
   begin
     Result := False;
     Interval := Max(10, DataPerPage div 20);
-    if Length(LA) = 0 then Exit;
-    if Interval < 1 then Exit;
+    if Length(LA) = 0 then
+      Exit;
+    if Interval < 1 then
+      Exit;
     if Index > -1 then
     begin
       FL := MaxSingle;
       SS := Max(0, Index - Interval);
       EE := Min(Length(LA) - 1, Index + Interval);
-      for I := SS to EE do FL := Min(FL, LA[I]);
+      for I := SS to EE do
+        FL := Min(FL, LA[I]);
       Result := (LA[Index] = FL);
     end;
   end;
@@ -857,8 +900,10 @@ begin
         SetLength(LA, Length(LA) + 1);
         HA[Length(HA) - 1] := P.HP;
         LA[Length(LA) - 1] := P.LP;
-        if Length(HA) > 1 then HA[Length(HA) - 1] := HA[Length(HA) - 1] * 0.9995 + HA[Length(HA) - 2] * 0.0005;
-        if Length(LA) > 1 then LA[Length(LA) - 1] := LA[Length(LA) - 1] * 0.9995 + LA[Length(LA) - 2] * 0.0005;
+        if Length(HA) > 1 then
+          HA[Length(HA) - 1] := HA[Length(HA) - 1] * 0.9995 + HA[Length(HA) - 2] * 0.0005;
+        if Length(LA) > 1 then
+          LA[Length(LA) - 1] := LA[Length(LA) - 1] * 0.9995 + LA[Length(LA) - 2] * 0.0005;
       end;
       High := Max(High, P.HP);
       Low := Min(Low, P.LP);
@@ -918,7 +963,8 @@ begin
   if (ScaleHigh > ScaleLow) and (_height_(R) > 0) then
   begin
     RatioY := (ScaleHigh - ScaleLow) / _height_(R);
-    if RatioY > 0 then Result := R.Top + Round((ScaleHigh - FY) / RatioY);
+    if RatioY > 0 then
+      Result := R.Top + Round((ScaleHigh - FY) / RatioY);
   end;
 end;
 
@@ -955,7 +1001,8 @@ begin
           C.MoveTo(X, Y);
           FirstDataFound := True;
         end
-        else C.LineTo(X, Y);
+        else
+          C.LineTo(X, Y);
       end;
     end;
   end;
@@ -990,7 +1037,8 @@ begin
           C.MoveTo(X, Y);
           FirstDataFound := True;
         end
-        else C.LineTo(X, Y);
+        else
+          C.LineTo(X, Y);
       end;
     end;
   end;
@@ -1026,30 +1074,27 @@ begin
           C.MoveTo(X, Y);
           FirstDataFound := True;
         end
-        else
-          if A[J] = 1 then
-          begin
-              //C.Brush.Color := DEF_COLOR[4];
-              //C.Brush.Color := clBlack;
-              //C.TextOut(X, Y-12, '↑')
-            _line_(C, X, Y - 10, X, Y, DEF_COLOR[4]); //多头排列
-          end
-          else
-            if A[J] = -1 then
-            begin
-              //C.Brush.Color := DEF_COLOR[3];
-              //C.Brush.Color := clBlack;
-              //C.TextOut(X, Y, '↓');
-              _line_(C, X, Y, X, Y + 10, DEF_COLOR[3]); //空头排列
-            end
-            else
-              if A[J] = 0 then
-              begin
-              //C.Brush.Color := DEF_COLOR[3];
-              //C.Brush.Color := clBlack;
-              //C.TextOut(X, Y, '↓');
-                _line_(C, X - 3, Y, X + 3, Y, DEF_COLOR[1]); //粘合
-              end;
+        else if A[J] = 1 then
+        begin
+          //C.Brush.Color := DEF_COLOR[4];
+          //C.Brush.Color := clBlack;
+          //C.TextOut(X, Y-12, '↑')
+          _line_(C, X, Y - 10, X, Y, DEF_COLOR[4]); //多头排列
+        end
+        else if A[J] = -1 then
+        begin
+          //C.Brush.Color := DEF_COLOR[3];
+          //C.Brush.Color := clBlack;
+          //C.TextOut(X, Y, '↓');
+          _line_(C, X, Y, X, Y + 10, DEF_COLOR[3]); //空头排列
+        end
+        else if A[J] = 0 then
+        begin
+          //C.Brush.Color := DEF_COLOR[3];
+          //C.Brush.Color := clBlack;
+          //C.TextOut(X, Y, '↓');
+          _line_(C, X - 3, Y, X + 3, Y, DEF_COLOR[1]); //粘合
+        end;
 
       end;
     end;
@@ -1078,16 +1123,16 @@ begin
       if _valid_(J, 0, Len - 1) and (A[J] <> -9999) then //没有计算出来均线时不显示，-1代表无数据
       begin
 
-      //-3 3 30 60 120 250 1800
-      // 0 1 2  3  4   5   6
-      // 2 6
+        //-3 3 30 60 120 250 1800
+        // 0 1 2  3  4   5   6
+        // 2 6
         case Index of
           0: //3均线
             begin
               X := UnitWidth * I + UnitWidth div 2;
               Y := Fy2Iy(A[J], R, High, Low);
 
-            //绘制操作提示
+              //绘制操作提示
               if ACT[0][J] = 1 then
               begin
                 bitmap := Tbitmap.create;
@@ -1122,7 +1167,7 @@ begin
               X := UnitWidth * I + UnitWidth div 2;
               Y := Fy2Iy(A[J], R, High, Low);
 
-            //绘制操作提示
+              //绘制操作提示
               if ACT[1][J] = 1 then
               begin
                 bitmap := Tbitmap.create;
@@ -1192,7 +1237,8 @@ begin
           C.MoveTo(X, Y);
           FirstDataFound := True;
         end
-        else C.LineTo(X, Y);
+        else
+          C.LineTo(X, Y);
 
         //绘制粘合
         if PL[4][J] < 2.0 then
@@ -1256,11 +1302,12 @@ begin
           C.MoveTo(XX, R.Top);
           C.LineTo(XX, R.Bottom);
         end
-        else _setPen_(C, GRID.Color, 1, psDot, pmCopy);
+        else
+          _setPen_(C, GRID.Color, 1, psDot, pmCopy);
 
         if ShowText then
         begin
-     //str := IntToStr(ymd);
+          //str := IntToStr(ymd);
           str := FormatDateTime('yyyy/MM/dd ', P.Date); // + days[DayofWeek(P.Date)];
           C.Font.Name := 'ARIAL';
           C.Font.Height := Max(2, Round(_height_(R) * 0.05) - 2);
@@ -1288,7 +1335,7 @@ begin
           IS_ONLINE_HQ := Checked;
           if IS_ONLINE_HQ then //联机
           begin
-          //启动在线行情
+            //启动在线行情
             FF_creat_comm_obj();
           end
           else
@@ -1330,7 +1377,7 @@ begin
 
   if OpenDialog1.Execute then
   begin
-  //ShowMessage(OpenDialog1.FileName);
+    //ShowMessage(OpenDialog1.FileName);
     Value := OpenDialog1.FileName;
 
     if (StkDataFile = nil) or (Value <> FStockName) then
@@ -1347,7 +1394,7 @@ begin
         end;
         CalcAll;
         GRID.Repaint;
-      //Header.Cells[0,0] := Copy(FStockName,4,Length(FStockName)-3);
+        //Header.Cells[0,0] := Copy(FStockName,4,Length(FStockName)-3);
         Header.Cells[0, 0] := ExtractFileName(FStockName);
         MOVE_VERTLINE(DataIndex);
         MOVE_HORILINE(DataIndex);
@@ -1482,34 +1529,38 @@ begin
     Q := StkDataFile.getData(Index + 1);
     if P <> nil then
     begin
-     //Header.Cells[01,0] := FormatDateTime('YYYY-MM-DD', P.Date);
+      //Header.Cells[01,0] := FormatDateTime('YYYY-MM-DD', P.Date);
       Header.Cells[01, 0] := FormatDateTime('yyyy-mm-dd  hh:nn', P.Date);
       Header.Cells[03, 0] := _vs_(P.OP);
       Header.Cells[05, 0] := _vs_(P.HP);
       Header.Cells[07, 0] := _vs_(P.LP);
       Header.Cells[09, 0] := _vs_(P.CP);
-      if Q = nil then Header.Cells[11, 0] := ''
-      else Header.Cells[11, 0] := _vs_(P.CP - Q.CP, 2, True, True);
+      if Q = nil then
+        Header.Cells[11, 0] := ''
+      else
+        Header.Cells[11, 0] := _vs_(P.CP - Q.CP, 2, True, True);
       //Header.Cells[13, 0] := _vs_(P.VOL, _if_(Pos('指数', StockName) > 0, 2, 0));
       Header.Cells[13, 0] := _vs_(P.VOL, 0, True, False);
     end
-    else begin
+    else
+    begin
       Header.Cells[01, 0] := IntToStr(FDataIndex);
       for I := 2 to Header.ColCount - 1 do
-        if I mod 2 = 1 then Header.Cells[I, 0] := '';
+        if I mod 2 = 1 then
+          Header.Cells[I, 0] := '';
     end;
 
-    {
+
     //绘制当前位置
     GRID.Canvas.Font.Color := DEF_COLOR[0];
     if DataIndex > 0 then
       GRID.Canvas.TextOut(800, GRID.RowHeights[0] + 1, '位置: ' + '[' + FormatFloat('00,000', StkDataFile.getCount - DataIndex) + ']  ' + FormatFloat('0,000', (StkDataFile.getCount - PageStart) / DataPerPage) + ' / ' + FormatFloat('0,000', StkDataFile.getCount / DataPerPage))
     else
       GRID.Canvas.TextOut(800, GRID.RowHeights[0] + 1, '位置: ' + '[' + FormatFloat('00,000', StkDataFile.getCount) + ']  ' + FormatFloat('0,000', (StkDataFile.getCount - PageStart) / DataPerPage) + ' / ' + FormatFloat('0,000', StkDataFile.getCount / DataPerPage));
-    }
+
     if Index >= 0 then
     begin
-    //绘制MA部分
+      //绘制MA部分
       GRID.Canvas.Font.Size := 8;
       GRID.Canvas.Font.Color := DEF_COLOR[0];
       if MA[0][StkDataFile.getCount - Index - 1] <> -9999 then
@@ -1533,7 +1584,7 @@ begin
         GRID.Canvas.TextOut(428, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
 
 
-    //绘制VOL部分
+      //绘制VOL部分
       GRID.Canvas.Font.Color := DEF_COLOR[5];
       P := StkDataFile.getData(Index);
       if P <> nil then
@@ -1542,7 +1593,7 @@ begin
         GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + 1, 'VOL: ' + '                 ');
 
 
-    //绘制粘合部分
+      //绘制粘合部分
       GRID.Canvas.Font.Color := DEF_COLOR[4];
       if PL[4][StkDataFile.getCount - Index - 1] <> -9999 then
       begin
@@ -1556,51 +1607,51 @@ begin
         GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '粘合: ' + '                  ');
       end;
 
-    {
-    //绘制PL部分
-      GRID.Canvas.Font.Color := DEF_COLOR[4];
-      if PL[0][StkDataFile.getCount - Index - 1] <> -9999 then
-      begin
-        if PL[0][StkDataFile.getCount - Index - 1] > 0 then
-          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL偏离: ' + FormatFloat('+0.00', PL[0][StkDataFile.getCount - Index - 1]) + '                 ')
+      {
+      //绘制PL部分
+        GRID.Canvas.Font.Color := DEF_COLOR[4];
+        if PL[0][StkDataFile.getCount - Index - 1] <> -9999 then
+        begin
+          if PL[0][StkDataFile.getCount - Index - 1] > 0 then
+            GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL偏离: ' + FormatFloat('+0.00', PL[0][StkDataFile.getCount - Index - 1]) + '                 ')
+          else
+            GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL偏离: ' + FormatFloat(' -0.00', -PL[0][StkDataFile.getCount - Index - 1]) + '                 ');
+        end
         else
-          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL偏离: ' + FormatFloat(' -0.00', -PL[0][StkDataFile.getCount - Index - 1]) + '                 ');
-      end
-      else
-      begin
-        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL偏离: ' + '                  ');
-      end;
+        begin
+          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL偏离: ' + '                  ');
+        end;
 
-      GRID.Canvas.Font.Color := DEF_COLOR[3];
-      if PL[1][StkDataFile.getCount - Index - 1] <> -9999 then
-      begin
-        if PL[1][StkDataFile.getCount - Index - 1] > 0 then
-          GRID.Canvas.TextOut(120, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250斜率: ' + FormatFloat('+0.00', PL[1][StkDataFile.getCount - Index - 1]) + '                 ')
+        GRID.Canvas.Font.Color := DEF_COLOR[3];
+        if PL[1][StkDataFile.getCount - Index - 1] <> -9999 then
+        begin
+          if PL[1][StkDataFile.getCount - Index - 1] > 0 then
+            GRID.Canvas.TextOut(120, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250斜率: ' + FormatFloat('+0.00', PL[1][StkDataFile.getCount - Index - 1]) + '                 ')
+          else
+            GRID.Canvas.TextOut(120, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250斜率: ' + FormatFloat(' -0.00', -PL[1][StkDataFile.getCount - Index - 1]) + '                 ');
+        end
         else
-          GRID.Canvas.TextOut(120, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250斜率: ' + FormatFloat(' -0.00', -PL[1][StkDataFile.getCount - Index - 1]) + '                 ');
-      end
-      else
-      begin
-        GRID.Canvas.TextOut(120, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250斜率: ' + '                  ');
-      end;
+        begin
+          GRID.Canvas.TextOut(120, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250斜率: ' + '                  ');
+        end;
 
-      GRID.Canvas.Font.Color := DEF_COLOR[1];
-      if PL[2][StkDataFile.getCount - Index - 1] <> -9999 then
-      begin
-        if PL[2][StkDataFile.getCount - Index - 1] > 0 then
-          GRID.Canvas.TextOut(240, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250与120距离: ' + FormatFloat('+0.00', PL[2][StkDataFile.getCount - Index - 1]) + '                 ')
+        GRID.Canvas.Font.Color := DEF_COLOR[1];
+        if PL[2][StkDataFile.getCount - Index - 1] <> -9999 then
+        begin
+          if PL[2][StkDataFile.getCount - Index - 1] > 0 then
+            GRID.Canvas.TextOut(240, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250与120距离: ' + FormatFloat('+0.00', PL[2][StkDataFile.getCount - Index - 1]) + '                 ')
+          else
+            GRID.Canvas.TextOut(240, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250与120距离: ' + FormatFloat(' -0.00', -PL[2][StkDataFile.getCount - Index - 1]) + '                 ');
+        end
         else
-          GRID.Canvas.TextOut(240, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250与120距离: ' + FormatFloat(' -0.00', -PL[2][StkDataFile.getCount - Index - 1]) + '                 ');
-      end
-      else
-      begin
-        GRID.Canvas.TextOut(240, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250与120距离: ' + '                  ');
-      end
-      }
+        begin
+          GRID.Canvas.TextOut(240, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250与120距离: ' + '                  ');
+        end
+        }
     end
     else //越界部分
     begin
-    //绘制MA部分
+      //绘制MA部分
       GRID.Canvas.Font.Size := 8;
       GRID.Canvas.Font.Color := DEF_COLOR[0];
       GRID.Canvas.TextOut(0, GRID.RowHeights[0] + 1, 'MA30: ' + '                ');
@@ -1610,16 +1661,16 @@ begin
       GRID.Canvas.TextOut(280, GRID.RowHeights[0] + 1, 'MA120: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[3];
       GRID.Canvas.TextOut(428, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
-    {
-    //绘制PL部分
-      GRID.Canvas.Font.Color := DEF_COLOR[4];
-      GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL偏离: ' + '                  ');
+      {
+      //绘制PL部分
+        GRID.Canvas.Font.Color := DEF_COLOR[4];
+        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, 'PL偏离: ' + '                  ');
 
-      GRID.Canvas.Font.Color := DEF_COLOR[3];
-      GRID.Canvas.TextOut(120, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250斜率: ' + '                  ');
-      GRID.Canvas.Font.Color := DEF_COLOR[1];
-      GRID.Canvas.TextOut(240, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250与120距离: ' + '                  ');
-      }
+        GRID.Canvas.Font.Color := DEF_COLOR[3];
+        GRID.Canvas.TextOut(120, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250斜率: ' + '                  ');
+        GRID.Canvas.Font.Color := DEF_COLOR[1];
+        GRID.Canvas.TextOut(240, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '250与120距离: ' + '                  ');
+        }
     end;
 
   end;
@@ -1647,13 +1698,18 @@ begin
     00: Q.FC := clYellow;
     01: Q.FC := clWhite;
     11: Q.FC := _if_(Pos('+', Q.S) > 0, DEF_COLOR[4], _if_(Pos('-', Q.S) > 0, clAqua, Q.FC));
-  else Q.FC := _if_(ACol mod 2 = 0, clSilver, clFuchsia);
+  else
+    Q.FC := _if_(ACol mod 2 = 0, clSilver, clFuchsia);
   end;
   case ACol of
     11, 13: Q.AL := taLeftJustify;
-    1: if FDataIndex > -1 then Q.AL := taRightJustify else Q.AL := taCenter;
+    1: if FDataIndex > -1 then
+        Q.AL := taRightJustify
+      else
+        Q.AL := taCenter;
   end;
-  with Q do _textRect_(Header.Canvas, R, S, FC, BC, AL, TL, Transparent);
+  with Q do
+    _textRect_(Header.Canvas, R, S, FC, BC, AL, TL, Transparent);
 end;
 
 procedure TfrmMain2.miPageLastClick(Sender: TObject);
@@ -1756,7 +1812,8 @@ end;
 
 procedure TfrmMain2.FormMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
-  if Shift = [ssLeft] then DataIndex := PixelToDataIndex(X);
+  if Shift = [ssLeft] then
+    DataIndex := PixelToDataIndex(X);
 end;
 
 procedure TfrmMain2.FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
@@ -1764,7 +1821,8 @@ var
   R: TRect;
   C: TCanvas;
 begin
-  if Shift = [ssLeft] then DataIndex := PixelToDataIndex(X);
+  if Shift = [ssLeft] then
+    DataIndex := PixelToDataIndex(X);
 
   {
   FDataIndex := DataIndex;
@@ -1801,7 +1859,8 @@ end;
 
 procedure TfrmMain2.FormActivate(Sender: TObject);
 begin
-  if (VertLine <> nil) and VertLine.Visible then VertLine.Paint;
+  if (VertLine <> nil) and VertLine.Visible then
+    VertLine.Paint;
 end;
 
 function TfrmMain2.DataIndexToPixel(DataIndex: Integer): Integer;
@@ -1879,10 +1938,13 @@ procedure TfrmMain2.CLEAR_ALL_CALCULATE_DATA;
 var
   I: Integer;
 begin
-  for I := 0 to Length(MA) - 1 do MA[I] := nil;
-  for I := 0 to Length(VMA) - 1 do VMA[I] := nil;
+  for I := 0 to Length(MA) - 1 do
+    MA[I] := nil;
+  for I := 0 to Length(VMA) - 1 do
+    VMA[I] := nil;
   //for I := 0 to Length(RSI)-1 do RSI[I] := nil;
-  for I := 0 to Length(PL) - 1 do PL[I] := nil;
+  for I := 0 to Length(PL) - 1 do
+    PL[I] := nil;
 end;
 
 function TfrmMain2.PixelToDataIndex(X: Integer): Integer;
@@ -1896,7 +1958,8 @@ begin
 end;
 
 procedure TfrmMain2.N15Click(Sender: TObject);
-var str: string;
+var
+  str: string;
   lstSplit: TStringList;
   idx: Integer;
   date: TDateTime;
@@ -1930,9 +1993,9 @@ begin
           date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[0], 4)), StrToInt(MidStr(lstSplit.Strings[0], 6, 2)), StrToInt(RightStr(lstSplit.Strings[0], 2)), StrToInt(LeftStr(lstSplit.Strings[1], 2)), StrToInt(MidStr(lstSplit.Strings[1], 4, 2)), StrToInt(RightStr(lstSplit.Strings[1], 2)), 0);
       end;
 
-    //AFormat.ShortDateFormat := 'yyyy-mm-dd hh:nn:ss';
-    //AFormat.DateSeparator := '-';
-    //date := StrToDateTime(str, AFormat);
+      //AFormat.ShortDateFormat := 'yyyy-mm-dd hh:nn:ss';
+      //AFormat.DateSeparator := '-';
+      //date := StrToDateTime(str, AFormat);
 
       idx := StkDataFile.indexOf(date);
       if idx <> -1 then
@@ -1951,7 +2014,7 @@ begin
   begin
     OpenDialog1.Filter := '图像文件(*.JPG)|*.JPG';
     if OpenDialog1.Execute then
-    //避免截取内容被遮挡
+      //避免截取内容被遮挡
       GRID.Repaint;
     ITERATE_DATA(FDataIndex);
   end;
@@ -1969,7 +2032,7 @@ var
   rText: TextFile;
 begin
 
-//加载TXT文件转换为DAT文件
+  //加载TXT文件转换为DAT文件
   OpenDialog1.Filter := '文本文件(*.txt)|*.txt';
 
   if OpenDialog1.Execute then
@@ -1977,7 +2040,7 @@ begin
     if FileExists(OpenDialog1.FileName) then
     begin
       M := TMemoryStream.Create;
-   //M.LoadFromFile(FileName);
+      //M.LoadFromFile(FileName);
       AssignFile(rText, OpenDialog1.FileName);
       reset(rText);
       while not EOF(rText) do
@@ -2037,62 +2100,62 @@ begin
 
 
 
- {
-      period := 270;
-      //从当前的内存中获取数据
-      M := TMemoryStream.Create;
-      recNum := StkDataFile.getCount;
-      i := 0;
-      while i < recNum do
-      begin
-        p := StkDataFile.getRec(i);
+  {
+       period := 270;
+       //从当前的内存中获取数据
+       M := TMemoryStream.Create;
+       recNum := StkDataFile.getCount;
+       i := 0;
+       while i < recNum do
+       begin
+         p := StkDataFile.getRec(i);
 
-        //加工不同周期的数据
-        if ((i + 1) mod period) = 1 then
-        begin
-          rec.OP := P.OP;
-          rec.HP := P.HP;
-          rec.LP := P.LP;
-          rec.VOL := 0;
-        end;
+         //加工不同周期的数据
+         if ((i + 1) mod period) = 1 then
+         begin
+           rec.OP := P.OP;
+           rec.HP := P.HP;
+           rec.LP := P.LP;
+           rec.VOL := 0;
+         end;
 
-        if rec.HP < p.CP then
-        begin
-          rec.HP := p.CP;
-        end;
+         if rec.HP < p.CP then
+         begin
+           rec.HP := p.CP;
+         end;
 
-        if rec.LP > P.LP then
-        begin
-          rec.LP := P.LP;
-        end;
+         if rec.LP > P.LP then
+         begin
+           rec.LP := P.LP;
+         end;
 
-        rec.VOL := rec.VOL + P.VOL;
+         rec.VOL := rec.VOL + P.VOL;
 
-        time := FormatDateTime('hh:nn', P.Date);
+         time := FormatDateTime('hh:nn', P.Date);
 
-        if (((i + 1) mod period) = 0) or (time = '15:15') then
-        begin
-          rec.Date := P.Date;
-          rec.CP := p.CP;
-          try
-          M.Write(rec, SizeOf(rec));
+         if (((i + 1) mod period) = 0) or (time = '15:15') then
+         begin
+           rec.Date := P.Date;
+           rec.CP := p.CP;
+           try
+           M.Write(rec, SizeOf(rec));
 
-          finally
+           finally
 
-          end;
-        end;
+           end;
+         end;
 
 
-        i := i + 1;
-      end;
+         i := i + 1;
+       end;
 
-      SaveDialog1.Filter := '文本文件(*.DAT)|*.DAT';
+       SaveDialog1.Filter := '文本文件(*.DAT)|*.DAT';
 
-      if SaveDialog1.Execute then
-        M.SaveToFile(SaveDialog1.FileName);
+       if SaveDialog1.Execute then
+         M.SaveToFile(SaveDialog1.FileName);
 
-      _free_(M);
-    }
+       _free_(M);
+     }
 end;
 
 
@@ -2105,7 +2168,8 @@ var
   rText: TextFile;
   M: TMemoryStream;
   P: PStkDataRec;
-var wText: TextFile;
+var
+  wText: TextFile;
 begin
 
   InputQuery('请输入周期包含的分钟数量：', '', str);
@@ -2253,7 +2317,7 @@ begin
           M := TMemoryStream.Create;
 
           M.LoadFromFile(SaveDialog1.FileName);
-    //移动指针到最后位置
+          //移动指针到最后位置
           M.Seek(M.Size, 0);
           AssignFile(rText, OpenDialog1.FileName);
           reset(rText);
@@ -2284,9 +2348,9 @@ begin
           end;
 
         end;
-      //SaveDialog1.Filter := '文本文件(*.DAT)|*.DAT';
+        //SaveDialog1.Filter := '文本文件(*.DAT)|*.DAT';
 
-      //if SaveDialog1.Execute then
+        //if SaveDialog1.Execute then
         M.SaveToFile(SaveDialog1.FileName);
 
         _free_(M);
@@ -2300,5 +2364,67 @@ end;
 
 
 
+//加载GOOGLEcsv文件，文件格式
+//标题
+//数据 日期(YYYY-MM-DD 倒序) 高（无数据时为-） 开（无数据时为-） 低（无数据时为-） 收（无数据时为-） 成交量（无数据时为-）
+
+procedure TfrmMain2.GOOGLECVS1Click(Sender: TObject);
+var
+  sl, lstSplit: TStringList;
+  M: TMemoryStream;
+  i: Integer;
+  rec: TStkDataRec;
+begin
+  OpenDialog1.Filter := '文本文件(*.csv)|*.csv';
+
+  if OpenDialog1.Execute then
+  begin
+    FStockName := OpenDialog1.FileName;
+    M := TMemoryStream.Create;
+
+    sl := TStringList.Create;
+    sl.LoadFromFile(OpenDialog1.FileName);
+    for i := 0 to (sl.Count - 2) do
+    begin
+      //加载美股
+
+      lstSplit := TStringList.Create;
+      lstSplit.Delimiter := ',';
+      lstSplit.DelimitedText := sl[sl.Count - 1 - i];
+
+      rec.Date := EncodeDateTime(StrToInt(LeftStr(lstSplit.Strings[0], 4)), StrToInt(MidStr(lstSplit.Strings[0], 6, 2)), StrToInt(RightStr(lstSplit.Strings[0], 2)), 15, 0, 0, 0);
+
+      rec.CP := StrToFloat(lstSplit.Strings[4]);
+      if lstSplit.Strings[1] = '-' then
+      begin
+        rec.OP := rec.CP;
+        rec.HP := rec.CP;
+        rec.LP := rec.CP;
+      end
+      else
+      begin
+        rec.OP := StrToFloat(lstSplit.Strings[1]);
+        rec.HP := StrToFloat(lstSplit.Strings[2]);
+        rec.LP := StrToFloat(lstSplit.Strings[3]);
+      end;
+      rec.VOL := StrToInt(lstSplit.Strings[5]);
+
+
+      try
+        M.Write(rec, SizeOf(rec));
+
+      finally
+
+      end;
+    end;
+    M.Position := 0;
+    StkDataFile.setM(M);
+    CLEAR_ALL_CALCULATE_DATA(); //清除计算好的数据
+    CalcAll;
+    GRID.Repaint;
+    ITERATE_DATA(DataIndex);
+  end;
+end;
 
 end.
+

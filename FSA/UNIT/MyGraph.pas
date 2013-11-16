@@ -15,9 +15,9 @@ type
       SaveType: TSaveType; PicQuality: Word);
     function GetLastLoadPicInfoStr: string;
   end;
-////////////////////////////////////////////////////////////////////
-//屏幕读取函数，分别抓取整个屏幕，当前窗口，
-//当前窗口客户区，当前鼠标处对象
+  ////////////////////////////////////////////////////////////////////
+  //屏幕读取函数，分别抓取整个屏幕，当前窗口，
+  //当前窗口客户区，当前鼠标处对象
 procedure CapFullScr(var Dest: TBitmap; IncludeCursor: boolean);
 procedure CapWindow(WinHandle: HWND; var Dest: TBitmap; IncludeCursor: boolean);
 procedure CapClient(WinHandle: HWND; var Dest: TBitmap; IncludeCursor: boolean);
@@ -41,7 +41,8 @@ begin
   Dest.Height := Screen.Height;
   DC := GetDC(0);
   bitblt(dest.canvas.handle, 0, 0, Screen.Width, Screen.Height, DC, 0, 0, SRCCOPY);
-  if IncludeCursor then DrawCursor(Dest, 0, 0);
+  if IncludeCursor then
+    DrawCursor(Dest, 0, 0);
   ReleaseDC(0, DC);
 end;
 
@@ -55,7 +56,8 @@ begin
   Dest.Height := r.Bottom - r.Top;
   DC := GetWindowDC(WinHandle);
   bitblt(dest.canvas.handle, 0, 0, Dest.Width, Dest.height, DC, 0, 0, SRCCOPY);
-  if IncludeCursor then DrawCursor(Dest, r.Left, r.Top);
+  if IncludeCursor then
+    DrawCursor(Dest, r.Left, r.Top);
   ReleaseDC(WinHandle, DC);
 end;
 
@@ -70,7 +72,8 @@ begin
   Dest.Height := r.Bottom - r.Top;
   DC := GetDC(WinHandle);
   bitblt(dest.canvas.handle, 0, 0, Dest.Width, Dest.height, DC, 0, 0, SRCCOPY);
-  if IncludeCursor then DrawCursor(Dest, _r.Right - r.right, _r.bottom - r.bottom);
+  if IncludeCursor then
+    DrawCursor(Dest, _r.Right - r.right, _r.bottom - r.bottom);
   ReleaseDC(WinHandle, DC);
 end;
 
@@ -90,12 +93,14 @@ begin
   bitblt(dest.canvas.handle, 0, 0, Dest.Width, Dest.height, DC, 0, 0, SRCCOPY);
   Pos.x := Pos.x - r.Left - 10;
   pos.y := pos.y - r.Top - 10;
-  if IncludeCursor then DrawCursor(Dest, r.Left, r.Top);
+  if IncludeCursor then
+    DrawCursor(Dest, r.Left, r.Top);
   ReleaseDC(WinHandle, DC);
 end;
 
 procedure DrawCursor(var Dest: TBitmap; ObjectLeft, ObjectTop: Integer);
-var GlobalCur: TIcon;
+var
+  GlobalCur: TIcon;
   windowhld: hwnd;
   threadld: dword;
   Pos: TPoint;
@@ -169,7 +174,7 @@ begin
       Exit;
     end;
     bmp.PixelFormat := SaveBit;
-   //缩放处理
+    //缩放处理
     if StretchMode = 0 then
     begin
       if StretchPer <> 100 then
@@ -228,7 +233,7 @@ begin
     if CompareText(Ext, '.bmp') = 0 then
       Result.LoadFromFile(PathName);
     PicTypeInfoStr := 'BMP位图';
-     ////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////
     if ((ComPareText(Ext, '.jpg') = 0) or (ComPareText(Ext, '.jpeg') = 0)) then
     begin
       jpeg := TJPEGImage.Create;
@@ -241,7 +246,7 @@ begin
         raise;
       end;
     end;
-     /////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////
     PicInfoStr := IntToStr(Result.Width) + 'x' + IntToStr(Result.Height);
     case Result.PixelFormat of
       pf1bit: PicInfoStr := PicInfoStr + 'x1位';
@@ -267,7 +272,7 @@ begin
   case SaveType of
     stBitMap:
       Pic.SaveToFile(PathName);
-   ///////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////
     stJPEG:
       begin
         Jpeg := TJpegImage.Create;
@@ -281,7 +286,7 @@ begin
           raise;
         end;
       end;
-   ///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////
   end;
 end;
 end.

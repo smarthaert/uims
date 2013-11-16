@@ -34,7 +34,7 @@ type
   TMAS_Procedure = procedure;
   TMAS_ProcEvent = procedure of object;
 
-{ TTextRectInfo }
+  { TTextRectInfo }
   PMAS_TextRectInfo = ^TTextRectInfo;
   TTextRectInfo = packed record
     R: TRect;
@@ -45,15 +45,15 @@ type
     Transparent: Boolean; //透明
   end;
 
-{ TCharSet }
+  { TCharSet }
   TCharSet = set of Char;
 
-{ ISplitStrList }
+  { ISplitStrList }
   ISplitStrList = interface(IUnknown)
     function sl: TStringList;
   end;
 
-{ TSplitStrList }
+  { TSplitStrList }
   TSplitStrList = class(TInterfacedObject, ISplitStrList)
   protected
     L: TStringList;
@@ -65,7 +65,7 @@ type
     destructor Destroy; override;
   end;
 
-{ TStockFileRec }
+  { TStockFileRec }
   PStockFileRec = ^TStockFileRec;
   TStockFileRec = packed record
     ID: string[7];
@@ -75,10 +75,10 @@ type
     Ref, Bid, Ask, Deal, Diff, Open, High, Low, Vol: Single;
   end;
 
-{ TPriceState }
+  { TPriceState }
   TPriceState = (psCeil, psUp, psEven, psDown, psFloor, psNonTrade);
 
-{ TStock }
+  { TStock }
   TStock = class(TPersistent)
   private
     function GetKey: string;
@@ -200,7 +200,7 @@ function _CalcFontHeight_(Rect: TRect; const S: string): Integer; overload;
 const
   FILTER_KEY_STKIDNAME = '<td align=center bgcolor=#FFFfff nowrap><a href=/q/q_';
   FILTER_KEY_STKDATA = '<td align="center" bgcolor="#FFFfff" nowrap>';
-//TPriceState = (psCeil, psUp, psEven, psDown, psFloor, psNonTrade);
+  //TPriceState = (psCeil, psUp, psEven, psDown, psFloor, psNonTrade);
   PSFC_COLOR: array[TPriceState] of TColor = (clYellow, clRed, clBlack, clGreen, clWhite, clBlack);
   PSBC_COLOR: array[TPriceState] of TColor = (clRed, clBtnFace, clBtnFace, clBtnFace, clGreen, clBtnFace);
 
@@ -215,7 +215,8 @@ begin
   inherited Create;
   FClearObjectOnFree := ClearObjectOnFree;
   L := _split_(CVS, ',');
-  if Sorted then L.Sorted := True;
+  if Sorted then
+    L.Sorted := True;
 end;
 
 destructor TSplitStrList.Destroy;
@@ -238,7 +239,8 @@ end;
 
 procedure CalcColWidths(G: TStringGrid);
 begin
-  with G do DefaultColWidth := (ClientWidth - 14) div ColCount;
+  with G do
+    DefaultColWidth := (ClientWidth - 14) div ColCount;
 end;
 
 procedure CalcRowHeights(G: TStringGrid);
@@ -263,46 +265,126 @@ begin
   G.Font.Height := ABS(Min(G.DefaultRowHeight - 2, Round(G.DefaultColWidth / ColWordLen) - 1));
 end;
 
-function _if_(B: Boolean; T, F: Single): Single; begin if B then Result := T else Result := F; end;
+function _if_(B: Boolean; T, F: Single): Single;
+begin if B then
+    Result := T
+  else
+    Result := F;
+end;
 
-function _if_(B: Boolean; T, F: Integer): Integer; begin if B then Result := T else Result := F; end;
+function _if_(B: Boolean; T, F: Integer): Integer;
+begin if B then
+    Result := T
+  else
+    Result := F;
+end;
 
-function _if_(B: Boolean; T, F: Int64): Int64; begin if B then Result := T else Result := F; end;
+function _if_(B: Boolean; T, F: Int64): Int64;
+begin if B then
+    Result := T
+  else
+    Result := F;
+end;
 
-function _if_(B: Boolean; T, F: Pointer): Pointer; begin if B then Result := T else Result := F; end;
+function _if_(B: Boolean; T, F: Pointer): Pointer;
+begin if B then
+    Result := T
+  else
+    Result := F;
+end;
 
-function _if_(B: Boolean; T, F: string): string; begin if B then Result := T else Result := F; end;
+function _if_(B: Boolean; T, F: string): string;
+begin if B then
+    Result := T
+  else
+    Result := F;
+end;
 
-function _if_(B: Boolean; T, F: TObject): TObject; begin if B then Result := T else Result := F; end;
+function _if_(B: Boolean; T, F: TObject): TObject;
+begin if B then
+    Result := T
+  else
+    Result := F;
+end;
 
-function _if_(B: Boolean; T, F: Boolean): Boolean; begin if B then Result := T else Result := F; end;
+function _if_(B: Boolean; T, F: Boolean): Boolean;
+begin if B then
+    Result := T
+  else
+    Result := F;
+end;
 
-function _if_(B: Boolean; T, F: TDateTime): TDateTime; begin if B then Result := T else Result := F; end;
+function _if_(B: Boolean; T, F: TDateTime): TDateTime;
+begin if B then
+    Result := T
+  else
+    Result := F;
+end;
 
-function _if_(B: Boolean; T, F: TRect): TRect; begin if B then Result := T else Result := F; end;
+function _if_(B: Boolean; T, F: TRect): TRect;
+begin if B then
+    Result := T
+  else
+    Result := F;
+end;
 
-function _if_(B: Boolean; T, F: WORD): WORD; begin if B then Result := T else Result := F; end;
+function _if_(B: Boolean; T, F: WORD): WORD;
+begin if B then
+    Result := T
+  else
+    Result := F;
+end;
 
-function _if_(B: Boolean; T, F: TAlignment): TAlignment; begin if B then Result := T else Result := F; end;
+function _if_(B: Boolean; T, F: TAlignment): TAlignment;
+begin if B then
+    Result := T
+  else
+    Result := F;
+end;
 
-procedure _if_(B: Boolean; T: TMAS_ProcEvent; F: TMAS_ProcEvent); begin if B and Assigned(T) then (T) else if not B and Assigned(F) then (F); end;
+procedure _if_(B: Boolean; T: TMAS_ProcEvent; F: TMAS_ProcEvent);
+begin if B and Assigned(T) then
+    (T)
+  else if not B and Assigned(F) then
+    (F);
+end;
 
-procedure _if_(B: Boolean; T: TMAS_Procedure; F: TMAS_Procedure); begin if B and Assigned(T) then (T) else if not B and Assigned(F) then (F); end;
+procedure _if_(B: Boolean; T: TMAS_Procedure; F: TMAS_Procedure);
+begin if B and Assigned(T) then
+    (T)
+  else if not B and Assigned(F) then
+    (F);
+end;
 
-procedure _if_(B: Boolean; T: TMAS_ProcEvent; F: TMAS_Procedure); begin if B and Assigned(T) then (T) else if not B and Assigned(F) then (F); end;
+procedure _if_(B: Boolean; T: TMAS_ProcEvent; F: TMAS_Procedure);
+begin if B and Assigned(T) then
+    (T)
+  else if not B and Assigned(F) then
+    (F);
+end;
 
-procedure _if_(B: Boolean; T: TMAS_Procedure; F: TMAS_ProcEvent); begin if B and Assigned(T) then (T) else if not B and Assigned(F) then (F); end;
+procedure _if_(B: Boolean; T: TMAS_Procedure; F: TMAS_ProcEvent);
+begin if B and Assigned(T) then
+    (T)
+  else if not B and Assigned(F) then
+    (F);
+end;
 
-function _width_(const R: TRect): Integer; begin Result := Max(0, R.Right - R.Left); end;
+function _width_(const R: TRect): Integer;
+begin Result := Max(0, R.Right - R.Left);
+end;
 
-function _height_(const R: TRect): Integer; begin Result := Max(0, R.Bottom - R.Top); end;
+function _height_(const R: TRect): Integer;
+begin Result := Max(0, R.Bottom - R.Top);
+end;
 
 
 procedure _free_(var Obj);
 begin
   if TObject(Obj) <> nil then
     FreeAndNil(Obj)
-  else Pointer(Obj) := nil;
+  else
+    Pointer(Obj) := nil;
 end;
 
 function _split_(S, Delimiter: string): TStringList;
@@ -320,7 +402,8 @@ procedure _clearObject_(List: TStringList);
 var
   I: Integer;
 begin
-  if List = nil then Exit;
+  if List = nil then
+    Exit;
   for I := 0 to List.Count - 1 do
     if List.Objects[I] <> nil then
       List.Objects[I].Free;
@@ -350,7 +433,8 @@ var
 begin
   Result := S;
   for I := 1 to Length(Result) do
-    if Result[I] in CharSet then Result[I] := ',';
+    if Result[I] in CharSet then
+      Result[I] := ',';
 end;
 
 function _isStockIdName_(S: string): Boolean;
@@ -381,7 +465,8 @@ begin
   Result := '';
   Src := _extract_IDNAME_(Src);
   I := Pos(#$20, Src);
-  if I > 0 then Result := Trim(Copy(Src, 1, I - 1));
+  if I > 0 then
+    Result := Trim(Copy(Src, 1, I - 1));
 end;
 
 function _extractStkNAME_(Src: string): string;
@@ -391,7 +476,8 @@ begin
   Result := '';
   Src := _extract_IDNAME_(Src);
   I := Pos(#$20, Src);
-  if I > 0 then Result := Trim(Copy(Src, I + 1, Length(Src) - I - 1));
+  if I > 0 then
+    Result := Trim(Copy(Src, I + 1, Length(Src) - I - 1));
 end;
 
 function _extractStkData_(Src: string; Head, Tail: string; Check: Boolean): string;
@@ -405,7 +491,8 @@ begin
   begin
     Len := Length(Head);
     Src := Trim(Copy(Src, I + Len, J - I - Len));
-    if not Check then Result := Src
+    if not Check then
+      Result := Src
     else
       for I := 1 to Length(Src) do
         if Src[I] in ['0'..'9', '.', ':'] then
@@ -447,10 +534,14 @@ begin
   Src := Copy(Src, 9, Length(Src) - 8);
   if (Src <> '') and (Src <> '⌒') then
   begin
-    if Pos('〉', Src) > 0 then Src := Copy(Src, 3, Length(Src) - 2)
-    else if Pos('《', Src) > 0 then Src := Copy(Src, 3, Length(Src) - 2)
-    else if Pos('【', Src) > 0 then Src := '-' + Copy(Src, 3, Length(Src) - 2)
-    else if Pos('】', Src) > 0 then Src := '-' + Copy(Src, 3, Length(Src) - 2);
+    if Pos('〉', Src) > 0 then
+      Src := Copy(Src, 3, Length(Src) - 2)
+    else if Pos('《', Src) > 0 then
+      Src := Copy(Src, 3, Length(Src) - 2)
+    else if Pos('【', Src) > 0 then
+      Src := '-' + Copy(Src, 3, Length(Src) - 2)
+    else if Pos('】', Src) > 0 then
+      Src := '-' + Copy(Src, 3, Length(Src) - 2);
     Result := StrToFloat(Src);
   end;
 end;
@@ -465,21 +556,34 @@ end;
 
 function TStock.getKey: string;
 begin
-  with FRec do Result := Format('%2.2d%2.2d%2.2d%6s', [Market, Kind, Sector, Trim(ID)]); //模拟交易所顺序
+  with FRec do
+    Result := Format('%2.2d%2.2d%2.2d%6s', [Market, Kind, Sector, Trim(ID)]); //模拟交易所顺序
 end;
 
-function TStock.Ceil: Single; begin Result := RoundStkPrice(FRec.Ref * 1.07, False); end;
+function TStock.Ceil: Single;
+begin Result := RoundStkPrice(FRec.Ref * 1.07, False);
+end;
 
-function TStock.Floor: Single; begin Result := RoundStkPrice(FRec.Ref * 0.93); end;
+function TStock.Floor: Single;
+begin Result := RoundStkPrice(FRec.Ref * 0.93);
+end;
 
-function TStock.GetID: string; begin Result := Trim(FRec.ID); end;
+function TStock.GetID: string;
+begin Result := Trim(FRec.ID);
+end;
 
-function TStock.GetName: string; begin Result := Trim(FRec.Name); end;
+function TStock.GetName: string;
+begin Result := Trim(FRec.Name);
+end;
 
 function AdjustStkName(S: string): string;
 begin
-  if Pos(' ', S) > 0 then S := ElimitBlankStr(S);
-  if Length(S) = 4 then Result := Copy(S, 1, 2) + '' + Copy(S, 3, 2) else Result := S;
+  if Pos(' ', S) > 0 then
+    S := ElimitBlankStr(S);
+  if Length(S) = 4 then
+    Result := Copy(S, 1, 2) + '' + Copy(S, 3, 2)
+  else
+    Result := S;
 end;
 
 function ElimitBlankStr(S: string): string;
@@ -488,7 +592,8 @@ var
 begin
   Result := '';
   for I := 1 to Length(S) do
-    if S[I] <> #$20 then Result := Result + S[I];
+    if S[I] <> #$20 then
+      Result := Result + S[I];
 end;
 
 function _format_(Precise: Integer): string;
@@ -499,9 +604,11 @@ end;
 function _vs_(Value: Extended; Precise: Integer; ShowZero, Signed: Boolean): string;
 begin
   Result := '';
-  if (Value = 0) and (not ShowZero) then Exit;
+  if (Value = 0) and (not ShowZero) then
+    Exit;
   Result := Format(_format_(Precise), [Value]);
-  if Signed and (Value > 0) then Result := '+' + Result;
+  if Signed and (Value > 0) then
+    Result := '+' + Result;
 end;
 
 
@@ -509,14 +616,16 @@ function TStock.DiffPercentage: Single;
 begin
   if FRec.Ref > 0 then
     Result := FRec.Diff / FRec.Ref * 100
-  else Result := 0;
+  else
+    Result := 0;
 end;
 
 function TStock.HiLoRange: Single;
 begin
   if (FRec.Low > 0) and (FRec.High > FRec.Low) then
     Result := FRec.High / FRec.Low * 100 - 100
-  else Result := 0;
+  else
+    Result := 0;
 end;
 
 procedure _textRect_(Canvas: TCanvas; Rect: TRect; Str: string; fgColor, bgColor: TColor;
@@ -533,30 +642,37 @@ begin
     IsChinese := False;
     if (Str = '') or (Str = '.') or (Str = '◆') or (Str = '□') or (Str = '.') then
       Canvas.Font.Name := 'ARIAL'
-    else begin
+    else
+    begin
       I := 1;
       while I < Length(Str) do
       begin
         IsChinese := Ord(Str[I]) > 127;
-        if IsChinese then Break;
+        if IsChinese then
+          Break;
         Inc(I);
       end;
       Canvas.Font.Name := _if_(IsChinese, FONT_CHINESE, FONT_DIGIT);
     end;
 
-    if (not Transparent) then Canvas.FillRect(Rect);
+    if (not Transparent) then
+      Canvas.FillRect(Rect);
 
-    if IS_CHINESE_AUTOCOLOR and IsChinese then begin {} end
+    if IS_CHINESE_AUTOCOLOR and IsChinese then
+    begin {}
+    end
     else if IS_FRACTION_UNDERLINE and not IsChinese then
     begin
       Canvas.Font.Style := Canvas.Font.Style + [fsBold];
       case Alignment of
         taLeftJustify: DRAW_UNDERLINE_ALIGNLEFT(Canvas, Rect, Str, fgColor, bgColor, Alignment, Layout);
         taRightJustify: DRAW_UNDERLINE_ALIGNRIGHT(Canvas, Rect, Str, fgColor, bgColor, Alignment, Layout);
-      else DRAW_UNDERLINE_ALIGNCENTER(Canvas, Rect, Str, fgColor, bgColor, Alignment, Layout);
+      else
+        DRAW_UNDERLINE_ALIGNCENTER(Canvas, Rect, Str, fgColor, bgColor, Alignment, Layout);
       end;
     end
-    else DrawText(Canvas.Handle, PChar(Str), -1, Rect, _textRect_fmt_(Alignment, Layout));
+    else
+      DrawText(Canvas.Handle, PChar(Str), -1, Rect, _textRect_fmt_(Alignment, Layout));
 
   finally
     Canvas.Font.Height := OFH;
@@ -569,12 +685,14 @@ begin
   case (Alignment) of
     taLeftJustify: Result := Result or DT_LEFT;
     taRightJustify: Result := Result or DT_RIGHT;
-  else Result := Result or DT_CENTER;
+  else
+    Result := Result or DT_CENTER;
   end;
   case (Layout) of
     tlTop: Result := Result or DT_TOP;
     tlBottom: Result := Result or DT_BOTTOM;
-  else Result := Result or DT_VCENTER;
+  else
+    Result := Result or DT_VCENTER;
   end;
 end;
 
@@ -587,12 +705,15 @@ var
 begin
   OFH := Canvas.Font.Height;
   I := Pos('.', Str);
-  if I < 1 then DrawText(Canvas.Handle, PChar(Str), -1, Rect, _textRect_fmt_(Alignment, Layout))
-  else begin
+  if I < 1 then
+    DrawText(Canvas.Handle, PChar(Str), -1, Rect, _textRect_fmt_(Alignment, Layout))
+  else
+  begin
     S1 := Copy(Str, 1, I - 1);
     S2 := Copy(Str, I + 1, Length(Str) - I);
     S3 := '';
-    with Canvas, Rect do R1 := Classes.Rect(Left, Top, Left + TextWidth(S1), Bottom);
+    with Canvas, Rect do
+      R1 := Classes.Rect(Left, Top, Left + TextWidth(S1), Bottom);
     SubtractRect(R2, Rect, R1);
     Canvas.Font.Height := OFH * 9 div 10;
     if (Length(S2) > 1) and (S2[Length(S2)] in ['%']) then
@@ -600,7 +721,8 @@ begin
       S2 := Copy(S2, 1, Length(S2) - 1);
       S3 := '%';
       TR := R2;
-      with Canvas, TR do R2 := Classes.Rect(Left, Top, Left + TextWidth(S2), Bottom);
+      with Canvas, TR do
+        R2 := Classes.Rect(Left, Top, Left + TextWidth(S2), Bottom);
       SubtractRect(R3, TR, R2);
     end;
 
@@ -609,12 +731,14 @@ begin
     for I := 1 to 3 do
     begin
       Canvas.Font.Style := Canvas.Font.Style - [fsUnderLine];
-      if I = 2 then Canvas.Font.Style := Canvas.Font.Style + [fsUnderLine];
+      if I = 2 then
+        Canvas.Font.Style := Canvas.Font.Style + [fsUnderLine];
       Canvas.Font.Height := _if_(I in [2, 3], OFH * 9 div 10, OFH);
       case I of
         1: DrawText(Canvas.Handle, PChar(S1), -1, R1, _textRect_fmt_(Alignment, Layout));
         2: DrawText(Canvas.Handle, PChar(S2), -1, R2, _textRect_fmt_(Alignment, Layout));
-        3: if S3 <> '' then DrawText(Canvas.Handle, PChar(S3), -1, R3, _textRect_fmt_(Alignment, Layout));
+        3: if S3 <> '' then
+            DrawText(Canvas.Handle, PChar(S3), -1, R3, _textRect_fmt_(Alignment, Layout));
       end;
     end;
   end;
@@ -629,19 +753,23 @@ var
 begin
   OFH := Canvas.Font.Height;
   I := Pos('.', Str);
-  if I < 1 then DrawText(Canvas.Handle, PChar(Str), -1, Rect, _textRect_fmt_(Alignment, Layout))
-  else begin
+  if I < 1 then
+    DrawText(Canvas.Handle, PChar(Str), -1, Rect, _textRect_fmt_(Alignment, Layout))
+  else
+  begin
     S1 := Copy(Str, 1, I - 1);
     S2 := Copy(Str, I + 1, Length(Str) - I);
     S3 := '';
     Canvas.Font.Height := OFH * 9 div 10;
-    with Canvas, Rect do R2 := Classes.Rect(Left + _width_(Rect) - TextWidth(S2), Top, Right, Bottom);
+    with Canvas, Rect do
+      R2 := Classes.Rect(Left + _width_(Rect) - TextWidth(S2), Top, Right, Bottom);
     SubtractRect(R1, Rect, R2);
     if (Length(S2) > 1) and (S2[Length(S2)] in ['%']) then
     begin
       S2 := Copy(S2, 1, Length(S2) - 1);
       S3 := '%';
-      with Canvas, R2 do R3 := Classes.Rect(Left + _width_(R2) - TextWidth(S3), Top, Right, Bottom);
+      with Canvas, R2 do
+        R3 := Classes.Rect(Left + _width_(R2) - TextWidth(S3), Top, Right, Bottom);
       SubtractRect(R2, R2, R3);
     end;
 
@@ -650,12 +778,14 @@ begin
     for I := 1 to 3 do
     begin
       Canvas.Font.Style := Canvas.Font.Style - [fsUnderLine];
-      if I = 2 then Canvas.Font.Style := Canvas.Font.Style + [fsUnderLine];
+      if I = 2 then
+        Canvas.Font.Style := Canvas.Font.Style + [fsUnderLine];
       Canvas.Font.Height := _if_(I in [2, 3], OFH * 9 div 10, OFH);
       case I of
         1: DrawText(Canvas.Handle, PChar(S1), -1, R1, _textRect_fmt_(Alignment, Layout));
         2: DrawText(Canvas.Handle, PChar(S2), -1, R2, _textRect_fmt_(Alignment, Layout));
-        3: if S3 <> '' then DrawText(Canvas.Handle, PChar(S3), -1, R3, _textRect_fmt_(Alignment, Layout));
+        3: if S3 <> '' then
+            DrawText(Canvas.Handle, PChar(S3), -1, R3, _textRect_fmt_(Alignment, Layout));
       end;
     end;
   end;
@@ -670,14 +800,17 @@ var
 begin
   OFH := Canvas.Font.Height;
   I := Pos('.', Str);
-  if I < 1 then DrawText(Canvas.Handle, PChar(Str), -1, Rect, _textRect_fmt_(Alignment, Layout))
-  else begin
+  if I < 1 then
+    DrawText(Canvas.Handle, PChar(Str), -1, Rect, _textRect_fmt_(Alignment, Layout))
+  else
+  begin
     S1 := Copy(Str, 1, I - 1);
     S2 := Copy(Str, I + 1, Length(Str) - I);
     S3 := '';
     R1 := Rect;
     R2 := Rect;
-    if (Length(S1) + Length(S2)) > 0 then R1.Right := R1.Left + Round(_width_(Rect) * Length(S1) / (Length(S1) + Length(S2)));
+    if (Length(S1) + Length(S2)) > 0 then
+      R1.Right := R1.Left + Round(_width_(Rect) * Length(S1) / (Length(S1) + Length(S2)));
     R2.Left := R1.Left + _width_(R1);
     R2.Right := R2.Left + _width_(Rect) - _width_(R1);
     Canvas.Font.Height := OFH * 9 div 10;
@@ -686,7 +819,8 @@ begin
       S2 := Copy(S2, 1, Length(S2) - 1);
       S3 := '%';
       TR := R2;
-      with Canvas, TR do R2 := Classes.Rect(Left, Top, Left + TextWidth(S2), Bottom);
+      with Canvas, TR do
+        R2 := Classes.Rect(Left, Top, Left + TextWidth(S2), Bottom);
       SubtractRect(R3, TR, R2);
     end;
 
@@ -695,12 +829,14 @@ begin
     for I := 1 to 3 do
     begin
       Canvas.Font.Style := Canvas.Font.Style - [fsUnderLine];
-      if I = 2 then Canvas.Font.Style := Canvas.Font.Style + [fsUnderLine];
+      if I = 2 then
+        Canvas.Font.Style := Canvas.Font.Style + [fsUnderLine];
       Canvas.Font.Height := _if_(I in [2, 3], OFH * 9 div 10, OFH);
       case I of
         1: DrawText(Canvas.Handle, PChar(S1), -1, R1, _textRect_fmt_(taRightJustify, Layout));
         2: DrawText(Canvas.Handle, PChar(S2), -1, R2, _textRect_fmt_(taLeftJustify, Layout));
-        3: if S3 <> '' then DrawText(Canvas.Handle, PChar(S3), -1, R3, _textRect_fmt_(taLeftJustify, Layout));
+        3: if S3 <> '' then
+            DrawText(Canvas.Handle, PChar(S3), -1, R3, _textRect_fmt_(taLeftJustify, Layout));
       end;
     end;
   end;
@@ -724,17 +860,25 @@ function RoundStkPrice(Price: Single; RoundUp: Boolean): Single;
     Result := 0;
     if Precise > 0 then
     begin
-      if RoundUp then Result := Round((Price + Precise / 2) / Precise) * Precise
-      else Result := Trunc(Price / Precise) * Precise;
+      if RoundUp then
+        Result := Round((Price + Precise / 2) / Precise) * Precise
+      else
+        Result := Trunc(Price / Precise) * Precise;
     end;
   end;
 begin
-  if Price < 10 then Result := DoRound(Price, RoundUp, 0.01)
-  else if Price < 50 then Result := DoRound(Price, RoundUp, 0.05)
-  else if Price < 100 then Result := DoRound(Price, RoundUp, 0.1)
-  else if Price < 500 then Result := DoRound(Price, RoundUp, 0.5)
-  else if Price < 1000 then Result := DoRound(Price, RoundUp, 1)
-  else Result := DoRound(Price, RoundUp, 5)
+  if Price < 10 then
+    Result := DoRound(Price, RoundUp, 0.01)
+  else if Price < 50 then
+    Result := DoRound(Price, RoundUp, 0.05)
+  else if Price < 100 then
+    Result := DoRound(Price, RoundUp, 0.1)
+  else if Price < 500 then
+    Result := DoRound(Price, RoundUp, 0.5)
+  else if Price < 1000 then
+    Result := DoRound(Price, RoundUp, 1)
+  else
+    Result := DoRound(Price, RoundUp, 5)
 end;
 
 
@@ -745,13 +889,20 @@ end;
 
 function TStock.PriceState(Price: Single): TPriceState;
 begin
-  if Price * FRec.Ref = 0 then Result := psNonTrade
-  else if (Ceil = Floor) then Result := psNonTrade
-  else if Price > (Ceil - 0.0001) then Result := psCeil
-  else if Price < (Floor + 0.0001) then Result := psFloor
-  else if Price > FRec.Ref then Result := psUp
-  else if Price < FRec.Ref then Result := psDown
-  else Result := psEven;
+  if Price * FRec.Ref = 0 then
+    Result := psNonTrade
+  else if (Ceil = Floor) then
+    Result := psNonTrade
+  else if Price > (Ceil - 0.0001) then
+    Result := psCeil
+  else if Price < (Floor + 0.0001) then
+    Result := psFloor
+  else if Price > FRec.Ref then
+    Result := psUp
+  else if Price < FRec.Ref then
+    Result := psDown
+  else
+    Result := psEven;
 end;
 
 function TStock.psBC(Price: Single): TColor;
@@ -772,7 +923,8 @@ end;
 
 procedure _lineBox_(Canvas: TCanvas; Rect: TRect);
 begin
-  with Rect do _lineBox_(Canvas, Left, Top, Right - 1, Bottom - 1);
+  with Rect do
+    _lineBox_(Canvas, Left, Top, Right - 1, Bottom - 1);
 end;
 
 procedure _lineBox_(Canvas: TCanvas; X1, Y1, X2, Y2: Integer);
@@ -780,7 +932,8 @@ begin
   with Canvas do
   begin
     MoveTo(X1, Y1);
-    if (X1 = X2) or (Y1 = Y2) then LineTo(X2, Y2)
+    if (X1 = X2) or (Y1 = Y2) then
+      LineTo(X2, Y2)
     else
       PolyLine([Point(X1, Y1),
         Point(X2, Y1),
@@ -803,7 +956,8 @@ var
   I: Integer;
 begin
   Result := nil;
-  if Length(Data) * MAC = 0 then Exit;
+  if Length(Data) * MAC = 0 then
+    Exit;
   SetLength(Result, Length(Data));
   Sum := 0;
   for I := 0 to Length(Result) - 1 do
@@ -813,16 +967,21 @@ begin
       Result[I] := 4000
     else if MAC = -3 then //预测价格均线
     begin
-      if I < 3 then Result[I] := -9999
-      else begin
+      if I < 3 then
+        Result[I] := -9999
+      else
+      begin
         Sum := (2 * Data[I]) + Data[I - 1];
         Result[I] := Sum / 3;
       end;
     end
-    else begin
+    else
+    begin
       //if I < MAC then Result[I] := Sum / (I+1)
-      if I < MAC then Result[I] := -9999
-      else begin
+      if I < MAC then
+        Result[I] := -9999
+      else
+      begin
         Sum := Sum - Data[I - MAC];
         Result[I] := Sum / MAC;
       end;
@@ -836,7 +995,8 @@ var
   I: Integer;
 begin
   Result := nil;
-  if Length(Data) / ACTC = 0 then Exit;
+  if Length(Data) / ACTC = 0 then
+    Exit;
   SetLength(Result, Length(Data));
 
   case Index of
@@ -886,7 +1046,8 @@ var
   I: Integer;
 begin
   Result := nil;
-  if Length(Data) * PLC = 0 then Exit;
+  if Length(Data) * PLC = 0 then
+    Exit;
   SetLength(Result, Length(Data));
 
 
@@ -923,11 +1084,10 @@ begin
           begin
             if (MA[0][I] < MA[1][I]) and (MA[1][I] < MA[2][I]) and (MA[2][I] < MA[3][I]) then
               Result[I] := -1
+            else if (MA[0][I] > MA[1][I]) and (MA[1][I] > MA[2][I]) and (MA[2][I] > MA[3][I]) then
+              Result[I] := 1
             else
-              if (MA[0][I] > MA[1][I]) and (MA[1][I] > MA[2][I]) and (MA[2][I] > MA[3][I]) then
-                Result[I] := 1
-              else
-                Result[I] := -9999;
+              Result[I] := -9999;
           end
           else
             Result[I] := -9999;
@@ -992,11 +1152,17 @@ begin
   au := 0;
   ad := 0;
   SetLength(Result, Length(UD));
-  if (Length(UD) < 2) or (RSIC < 2) then EXIT;
+  if (Length(UD) < 2) or (RSIC < 2) then
+    EXIT;
   for I := 0 to Length(UD) - 1 do //Length(UD)-1 do
   begin
-    if I = 0 then begin au := Max(0, UD[I]); ad := Max(0, -UD[I]); Result[I] := 50; end //
-    else begin
+    if I = 0 then
+    begin au := Max(0, UD[I]);
+      ad := Max(0, -UD[I]);
+      Result[I] := 50;
+    end //
+    else
+    begin
       au := (au * (RSIC - 1) + Max(0, UD[I])) / RSIC;
       ad := (ad * (RSIC - 1) + Max(0, -UD[I])) / RSIC;
       Result[I] := Result[I - 1] * 2 / 3 + _div_(au, au + ad) * 100 / 3
@@ -1007,8 +1173,10 @@ end;
 function _div_(Value, DivNum: Single; DefaultWhenDivZero: Single): Extended;
 begin
   try
-    if DivNum <> 0 then Result := Value / DivNum
-    else Result := DefaultWhenDivZero;
+    if DivNum <> 0 then
+      Result := Value / DivNum
+    else
+      Result := DefaultWhenDivZero;
   except
     Result := 0;
   end;
@@ -1055,12 +1223,16 @@ var
   I, TW, TH, Y, GapX, Precise: Integer;
   Rt: TRect;
 begin
-  if Length(Values) = 0 then Exit;
+  if Length(Values) = 0 then
+    Exit;
   _setBrush_(C, clBlack, bsSolid);
   C.Font.Name := 'ARIAL';
   C.Font.Height := Min(_height_(R) div Length(Values), Round(_width_(R) / 5.5)); //字体大小
   TH := C.TextHeight('0');
-  if H > 1000 then Precise := 0 else Precise := 2;
+  if H > 1000 then
+    Precise := 0
+  else
+    Precise := 2;
   TW := C.TextWidth(_vs_(H, Precise, True, False)) + 4;
   GapX := Max(0, (_width_(R) - TW) div 2);
   for I := 0 to Length(Values) - 1 do
@@ -1091,8 +1263,10 @@ begin
   begin
     D := (H + L) / 2;
     for I := 0 to LineCount - 1 do
-      if FValueList[I] > D then FValueList[I] := _round_(FValueList[I], 0)
-      else if FValueList[I] < D then FValueList[I] := _round_(FValueList[I], 1);
+      if FValueList[I] > D then
+        FValueList[I] := _round_(FValueList[I], 0)
+      else if FValueList[I] < D then
+        FValueList[I] := _round_(FValueList[I], 1);
   end;
 
   DRAW_SCALE(C, R, FValueList, L, H, LL, HH);
@@ -1108,19 +1282,28 @@ function _round_(Price: Single; ued: Integer): Single;
       case ued of
         -1: Result := Trunc(Price / Precise) * Precise;
         1: Result := Round((Price + Precise / 2) / Precise) * Precise;
-      else Result := Trunc((Price + Precise / 2) / Precise) * Precise
+      else
+        Result := Trunc((Price + Precise / 2) / Precise) * Precise
       end;
     end;
   end;
 begin
-  if Price < 10 then Result := DoRound(Price, 0.01)
-  else if Price < 50 then Result := DoRound(Price, 0.05)
-  else if Price < 100 then Result := DoRound(Price, 0.1)
-  else if Price < 500 then Result := DoRound(Price, 0.5)
-  else if Price < 1000 then Result := DoRound(Price, 1)
-  else if Price < 5000 then Result := DoRound(Price, 5)
-  else if Price < 10000 then Result := DoRound(Price, 10)
-  else Result := DoRound(Price, 100);
+  if Price < 10 then
+    Result := DoRound(Price, 0.01)
+  else if Price < 50 then
+    Result := DoRound(Price, 0.05)
+  else if Price < 100 then
+    Result := DoRound(Price, 0.1)
+  else if Price < 500 then
+    Result := DoRound(Price, 0.5)
+  else if Price < 1000 then
+    Result := DoRound(Price, 1)
+  else if Price < 5000 then
+    Result := DoRound(Price, 5)
+  else if Price < 10000 then
+    Result := DoRound(Price, 10)
+  else
+    Result := DoRound(Price, 100);
 end;
 
 function ArrayOdSingle(A: array of Single): TArrayOfSingle;
@@ -1128,7 +1311,8 @@ var
   I: Integer;
 begin
   SetLength(Result, Length(A));
-  for I := 0 to Length(A) - 1 do Result[I] := A[I];
+  for I := 0 to Length(A) - 1 do
+    Result[I] := A[I];
 end;
 
 function Fy2Iy(FY: Single; R: TRect; ScaleHigh, ScaleLow: Single): Integer;
@@ -1139,7 +1323,8 @@ begin
   if (ScaleHigh > ScaleLow) and (_height_(R) > 0) then
   begin
     RatioY := (ScaleHigh - ScaleLow) / _height_(R);
-    if RatioY > 0 then Result := R.Top + Round((ScaleHigh - FY) / RatioY);
+    if RatioY > 0 then
+      Result := R.Top + Round((ScaleHigh - FY) / RatioY);
   end;
 end;
 
@@ -1174,11 +1359,14 @@ begin
     -bmp.Canvas.Pen.Width,
     -bmp.Canvas.Pen.Width);
 
-  if FontHeight = -1 then bmp.Canvas.Font.Height := _CalcFontHeight_(BitmapRect, mStr)
+  if FontHeight = -1 then
+    bmp.Canvas.Font.Height := _CalcFontHeight_(BitmapRect, mStr)
 
-  else bmp.Canvas.Font.Height := FontHeight;
+  else
+    bmp.Canvas.Font.Height := FontHeight;
 
-  if IsFontBold then bmp.Canvas.Font.Style := bmp.Canvas.Font.Style + [fsBold];
+  if IsFontBold then
+    bmp.Canvas.Font.Style := bmp.Canvas.Font.Style + [fsBold];
   P := Pos('|', mStr);
   J := _if_(P > 0, 2, 1);
   S[0] := _if_(P > 0, Trim(Copy(mStr, 1, P - 1)), mStr);
@@ -1187,8 +1375,10 @@ begin
   TR := Transparent;
   for I := 0 to J - 1 do
   begin
-    if P > 0 then AL := _if_(I = 0, taLeftJustify, taRightJustify);
-    if P > 0 then TR := _if_(I = 0, False, True);
+    if P > 0 then
+      AL := _if_(I = 0, taLeftJustify, taRightJustify);
+    if P > 0 then
+      TR := _if_(I = 0, False, True);
     _textRect_(bmp.Canvas, BitmapRect, S[I], fgColor, bgColor, AL, Layout, TR);
   end;
   Canvas.CopyMode := cmSrcInvert;
@@ -1209,14 +1399,16 @@ end;
 
 function _inflate_(R: TRect; dx, dy: Integer): TRect;
 begin
-  Result := R; InflateRect(Result, dx, dy);
+  Result := R;
+  InflateRect(Result, dx, dy);
 end;
 
 function _CalcFontHeight_(Rect: TRect; const S: string): Integer;
 begin
   if Length(S) > 0 then
     Result := Round(Min(_width_(Rect) * 2 / Length(S), _height_(Rect)))
-  else Result := 0;
+  else
+    Result := 0;
 end;
 
 end.
