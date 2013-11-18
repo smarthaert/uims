@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html tabindex="1">
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
+	<link rel="stylesheet" type="text/css" href="css/popup.css" />
+</head>
+<body>
+
+	<div id="welcome">
+		<div class="jumbotron">
+		  <h1>欢迎使用美股期权模拟交易系统</h1>
+		  <p>本系统采用浏览器插件的形式，让您模拟下单，自动计算盈亏，所有数据保存在本地浏览器中。</p>
+		  <p><a class="btn btn-primary btn-lg" role="button">开始使用...</a></p>
+		</div>
+	</div>
+ 	<div id="main">
+		<nav class="navbar navbar-default" role="navigation">
+		  <div class="navbar-header">
+		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		      <span class="sr-only">Toggle navigation</span>
+		      <span class="icon-bar"></span>
+		      <span class="icon-bar"></span>
+		      <span class="icon-bar"></span>
+		    </button>
+		    <a class="navbar-brand" href="#">Kylin</a>
+		  </div>
+
+		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		    <ul class="nav navbar-nav">
+		      <li class="active"><a href="#">账户</a></li>
+		      <li><a href="#">设置</a></li>
+		      <li><a href="#">自选股<span class="badge">14</span></a></li>
+		      <li class="dropdown">
+		        <a href="#" class="dropdown-toggle" data-toggle="dropdown">操作 <b class="caret"></b></a>
+		        <ul class="dropdown-menu">
+		          <li><a href="#">买入</a></li>
+		          <li><a href="#">卖出</a></li>
+		          <li class="divider"></li>
+		          <li><a href="#">成交记录</a></li>
+		          <li class="divider"></li>
+		          <li><a href="#">盈亏</a></li>
+		        </ul>
+		      </li>
+		    </ul>
+		    <form class="navbar-form navbar-left" role="search">
+		      <div class="form-group">
+		        <input type="text" class="form-control" placeholder="正股代码">
+		      </div>
+		      <button type="submit" class="btn btn-default">查询</button>
+		    </form>
+		  </div>
+		</nav>
+	</div>
+
+	
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/popup.js"></script>
+</body>
+</html>
