@@ -1564,22 +1564,22 @@ begin
       GRID.Canvas.Font.Size := 8;
       GRID.Canvas.Font.Color := DEF_COLOR[0];
       if MA[0][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + 1, 'MA30: ' + FormatFloat('0,000.00', MA[1][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + 1, 'MA30: ' + FormatFloat('0,000.00', MA[2][StkDataFile.getCount - Index - 1]))
       else
         GRID.Canvas.TextOut(0, GRID.RowHeights[0] + 1, 'MA30: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[1];
       if MA[1][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(140, GRID.RowHeights[0] + 1, 'MA60: ' + FormatFloat('0,000.00', MA[2][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(140, GRID.RowHeights[0] + 1, 'MA60: ' + FormatFloat('0,000.00', MA[3][StkDataFile.getCount - Index - 1]))
       else
         GRID.Canvas.TextOut(140, GRID.RowHeights[0] + 1, 'MA60: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[2];
       if MA[2][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(280, GRID.RowHeights[0] + 1, 'MA120: ' + FormatFloat('0,000.00', MA[3][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(280, GRID.RowHeights[0] + 1, 'MA120: ' + FormatFloat('0,000.00', MA[4][StkDataFile.getCount - Index - 1]))
       else
         GRID.Canvas.TextOut(280, GRID.RowHeights[0] + 1, 'MA120: ' + '                ');
       GRID.Canvas.Font.Color := DEF_COLOR[3];
       if MA[3][StkDataFile.getCount - Index - 1] <> -9999 then
-        GRID.Canvas.TextOut(428, GRID.RowHeights[0] + 1, 'MA250: ' + FormatFloat('0,000.00', MA[4][StkDataFile.getCount - Index - 1]))
+        GRID.Canvas.TextOut(428, GRID.RowHeights[0] + 1, 'MA250: ' + FormatFloat('0,000.00', MA[5][StkDataFile.getCount - Index - 1]))
       else
         GRID.Canvas.TextOut(428, GRID.RowHeights[0] + 1, 'MA250: ' + '                ');
 
