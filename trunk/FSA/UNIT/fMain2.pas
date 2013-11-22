@@ -2276,7 +2276,7 @@ begin
       p := StkDataFile.getRec(i);
       //if ACT[1][i] <> 0 then
       //begin
-      str := Format('%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s', [FormatDateTime('yyyy/mm/dd hh:nn', p.Date), Format('%5.1f', [p.OP]), Format('%5.1f', [p.HP]), Format('%5.1f', [p.LP]), Format('%5.1f', [p.CP]), Format('%5.1f', [p.VOL]), FloatToStr(ACT[1][i])]);
+      str := Format('%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s' + #9 + '%s', [FormatDateTime('yyyy/mm/dd hh:nn', p.Date), Format('%5.1f', [p.OP]), Format('%5.1f', [p.HP]), Format('%5.1f', [p.LP]), Format('%5.1f', [p.CP]), Format('%5.1f', [p.VOL]), FloatToStr(ACT[0][i])]);
       Writeln(wText, str);
       //end;
 
