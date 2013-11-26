@@ -1176,7 +1176,7 @@ begin
                 bitmap.Canvas.Brush.Color := clWhite;
                 bitmap.Canvas.Font.Size := 8;
                 bitmap.Canvas.Font.Color := clRed;
-                bitmap.Canvas.TextOut(0, 0, '△');
+                bitmap.Canvas.TextOut(0, 0, '∧');
                 bitmap.TransparentColor := clWhite; //需要设置为透明背景的颜色
                 bitmap.Transparent := True; //透明背景
                 C.Draw(X - 5, Y - 6, bitmap);
@@ -1190,7 +1190,7 @@ begin
                 bitmap.Canvas.Brush.Color := clWhite;
                 bitmap.Canvas.Font.Size := 8;
                 bitmap.Canvas.Font.Color := clGreen;
-                bitmap.Canvas.TextOut(0, 0, '▲');
+                bitmap.Canvas.TextOut(0, 0, '∨');
                 bitmap.TransparentColor := clWhite; //需要设置为透明背景的颜色
                 bitmap.Transparent := True; //透明背景
                 C.Draw(X - 5, Y - 6, bitmap);
@@ -1248,7 +1248,7 @@ begin
           bitmap.Height := 12;
           bitmap.Canvas.Brush.Color := clWhite;
           bitmap.Canvas.Font.Size := 8;
-          bitmap.Canvas.Font.Color := clMaroon;
+          bitmap.Canvas.Font.Color := clOlive;
           bitmap.Canvas.TextOut(0, 0, '○');
           bitmap.TransparentColor := clWhite; //需要设置为透明背景的颜色
           bitmap.Transparent := True; //透明背景
