@@ -1055,36 +1055,36 @@ begin
     0:
       for I := 0 to Length(Result) - 1 do
       begin
-        if MA[3][I] <> -9999 then
-          Result[I] := Data[I] - MA[3][I] //250周期偏离
+        if MA[4][I] <> -9999 then
+          Result[I] := Data[I] - MA[4][I] //250周期偏离
         else
           Result[I] := -9999;
       end;
     1:
       for I := 5 to Length(Result) - 1 do
       begin
-        if MA[3][I - 5] <> -9999 then
-          Result[I] := MA[3][I] - MA[3][I - 5] //250斜率
+        if MA[4][I - 5] <> -9999 then
+          Result[I] := MA[4][I] - MA[4][I - 5] //250斜率
         else
           Result[I] := -9999;
       end;
     2:
       for I := 0 to Length(Result) - 1 do
       begin
-        if MA[3][I] <> -9999 then
-          Result[I] := MA[3][I] - MA[2][I] //250与120距离
+        if MA[4][I] <> -9999 then
+          Result[I] := MA[4][I] - MA[3][I] //250与120距离
         else
           Result[I] := -9999;
       end;
     3: //均线多空排列
       for I := 0 to Length(Result) - 1 do
       begin
-        if MA[3][I] <> -9999 then
-          if ((max(abs(MA[2][I] - MA[3][I]), max(abs(MA[1][I] - MA[3][I]), max(abs(MA[1][I] - MA[2][I]), max(abs(MA[0][I] - MA[3][I]), max(abs(MA[0][I] - MA[1][I]), abs(MA[0][I] - MA[2][I]))))))) < 15) and (abs(MA[3][I] - MA[3][I - 1]) > 0.05) then
+        if MA[4][I] <> -9999 then
+          if ((max(abs(MA[3][I] - MA[4][I]), max(abs(MA[2][I] - MA[4][I]), max(abs(MA[2][I] - MA[3][I]), max(abs(MA[1][I] - MA[4][I]), max(abs(MA[1][I] - MA[2][I]), abs(MA[1][I] - MA[3][I]))))))) < 15) and (abs(MA[4][I] - MA[4][I - 1]) > 0.05) then
           begin
-            if (MA[0][I] < MA[1][I]) and (MA[1][I] < MA[2][I]) and (MA[2][I] < MA[3][I]) then
+            if (MA[1][I] < MA[2][I]) and (MA[2][I] < MA[3][I]) and (MA[3][I] < MA[4][I]) then
               Result[I] := -1
-            else if (MA[0][I] > MA[1][I]) and (MA[1][I] > MA[2][I]) and (MA[2][I] > MA[3][I]) then
+            else if (MA[1][I] > MA[2][I]) and (MA[2][I] > MA[3][I]) and (MA[3][I] > MA[4][I]) then
               Result[I] := 1
             else
               Result[I] := -9999;
@@ -1096,7 +1096,7 @@ begin
       for I := 0 to Length(Result) - 1 do
       begin
         if MA[2][I] <> -9999 then
-          Result[I] := max(MA[1][I], max(MA[2][I], MA[3][I])) - min(MA[1][I], min(MA[2][I], MA[3][I]))
+          Result[I] := max(MA[2][I], max(MA[3][I], MA[4][I])) - min(MA[2][I], min(MA[3][I], MA[4][I]))
         else
           Result[I] := -9999;
         {
