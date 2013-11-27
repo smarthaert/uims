@@ -1592,7 +1592,7 @@ begin
       else
         GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + 1, 'VOL: ' + '                 ');
 
-
+      {
       //绘制粘合部分
       GRID.Canvas.Font.Color := DEF_COLOR[4];
       if PL[4][StkDataFile.getCount - Index - 1] <> -9999 then
@@ -1605,6 +1605,21 @@ begin
       else
       begin
         GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '粘合: ' + '                  ');
+      end;
+      }
+
+      //绘制能量部分
+      GRID.Canvas.Font.Color := DEF_COLOR[4];
+      if MA[1][StkDataFile.getCount - Index - 1] <> -9999 then
+      begin
+        if MA[0][StkDataFile.getCount - Index - 1]-MA[1][StkDataFile.getCount - Index - 1] > 0 then
+          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '能量: ' + FormatFloat('+0.00', MA[0][StkDataFile.getCount - Index - 1]-MA[1][StkDataFile.getCount - Index - 1]) + '                 ')
+        else
+          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '能量: ' + FormatFloat(' -0.00', MA[0][StkDataFile.getCount - Index - 1]-MA[1][StkDataFile.getCount - Index - 1]) + '                 ');
+      end
+      else
+      begin
+        GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '能量: ' + '                  ');
       end;
 
       {
