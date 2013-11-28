@@ -91,6 +91,7 @@ type
     N51: TMenuItem;
     N23: TMenuItem;
     GOOGLECVS1: TMenuItem;
+    mi1002: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure GRIDDrawCell(Sender: TObject; ACol, ARow: Integer; Rect: TRect; State: TGridDrawState);
@@ -1161,6 +1162,22 @@ begin
                 C.Draw(X - 5, Y - 6, bitmap);
                 bitmap.Free;
               end;
+
+              //绘制操作提示
+              if IS_DRAW_135TIP_5 and (abs(MA[0][J]-MA[1][J]) < 4.7) then
+              begin
+                bitmap := Tbitmap.create;
+                bitmap.Width := 12;
+                bitmap.Height := 12;
+                bitmap.Canvas.Brush.Color := clWhite;
+                bitmap.Canvas.Font.Size := 8;
+                bitmap.Canvas.Font.Color := clRed;
+                bitmap.Canvas.TextOut(0, 0, '＄');
+                bitmap.TransparentColor := clWhite; //需要设置为透明背景的颜色
+                bitmap.Transparent := True; //透明背景
+                C.Draw(X - 5, Y - 6, bitmap);
+                bitmap.Free;
+              end;
             end;
           1: //250
             begin
@@ -1345,7 +1362,8 @@ begin
           end;
         end;
       100: IS_DRAW_MA := Checked;
-      1001: IS_DRAW_MA_5 := Checked;
+      1001: IS_DRAW_MA_5 := Checked;       
+      1002: IS_DRAW_135TIP_5 := Checked;
       101: IS_SHOW_DATESCALE := Checked;
       102: ShowBackgroundDotLine := Checked;
       103: IS_FRACTION_UNDERLINE := Checked;

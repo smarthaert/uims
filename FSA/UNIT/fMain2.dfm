@@ -518,6 +518,11 @@ object frmMain2: TfrmMain2
         Checked = True
         OnClick = mi1001Click
       end
+      object mi1002: TMenuItem
+        Tag = 1002
+        Caption = #26174#31034'135'#33021#37327#25552#31034
+        OnClick = mi1001Click
+      end
       object N13: TMenuItem
         Caption = '-'
       end
