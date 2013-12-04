@@ -1164,7 +1164,7 @@ begin
               end;
 
               //绘制操作提示
-              if IS_DRAW_135TIP_5 and (abs(MA[0][J]-MA[1][J]) < 4.7) then
+              if IS_DRAW_135TIP_5 and (abs(MA[0][J] - MA[1][J]) < DRAW_135TIP_VULUE) then
               begin
                 bitmap := Tbitmap.create;
                 bitmap.Width := 12;
@@ -1341,6 +1341,8 @@ begin
 end;
 
 procedure TfrmMain2.mi1001Click(Sender: TObject);
+var
+  str: string;
 begin
   with TMenuItem(Sender) do
   begin
@@ -1362,8 +1364,26 @@ begin
           end;
         end;
       100: IS_DRAW_MA := Checked;
-      1001: IS_DRAW_MA_5 := Checked;       
-      1002: IS_DRAW_135TIP_5 := Checked;
+      1001: IS_DRAW_MA_5 := Checked;
+      1002:
+        begin
+          if IS_DRAW_135TIP_5 = False then
+          begin
+            InputQuery('请输入提示阀值：', '例如：4.7[默认]/9.1', str);
+            //ShowMessage(str); //显示输入的内容
+            if str <> '' then
+            begin
+              DRAW_135TIP_VULUE := StrToFloat(str);
+              if DRAW_135TIP_VULUE < 0 then
+                ShowMessage('数值不合法！');
+            end
+            else
+            begin
+              DRAW_135TIP_VULUE := 4.7;
+            end;
+          end;       
+          IS_DRAW_135TIP_5 := Checked;
+        end;
       101: IS_SHOW_DATESCALE := Checked;
       102: ShowBackgroundDotLine := Checked;
       103: IS_FRACTION_UNDERLINE := Checked;
@@ -1630,10 +1650,10 @@ begin
       GRID.Canvas.Font.Color := DEF_COLOR[4];
       if MA[1][StkDataFile.getCount - Index - 1] <> -9999 then
       begin
-        if MA[0][StkDataFile.getCount - Index - 1]-MA[1][StkDataFile.getCount - Index - 1] > 0 then
-          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '能量: ' + FormatFloat('+0.00', MA[0][StkDataFile.getCount - Index - 1]-MA[1][StkDataFile.getCount - Index - 1]) + '                 ')
+        if MA[0][StkDataFile.getCount - Index - 1] - MA[1][StkDataFile.getCount - Index - 1] > 0 then
+          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '能量: ' + FormatFloat('+0.00', MA[0][StkDataFile.getCount - Index - 1] - MA[1][StkDataFile.getCount - Index - 1]) + '                 ')
         else
-          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '能量: ' + FormatFloat(' -0.00', MA[0][StkDataFile.getCount - Index - 1]-MA[1][StkDataFile.getCount - Index - 1]) + '                 ');
+          GRID.Canvas.TextOut(0, GRID.RowHeights[0] + GRID.RowHeights[1] + GRID.RowHeights[2] + 1, '能量: ' + FormatFloat(' -0.00', MA[0][StkDataFile.getCount - Index - 1] - MA[1][StkDataFile.getCount - Index - 1]) + '                 ');
       end
       else
       begin
@@ -2290,7 +2310,12 @@ begin
     end;
   end;
 
-  if messagedlg('是否导出数据', mtconfirmation, [mbyes, mbno], 0) = 7 then
+  if ((period >= 1) and (period <= 270)) then
+  begin
+    if messagedlg('是否导出数据', mtconfirmation, [mbyes, mbno], 0) = 7 then
+      Exit;
+  end
+  else
     Exit;
 
   //数据导出
@@ -2460,4 +2485,3 @@ begin
 end;
 
 end.
-

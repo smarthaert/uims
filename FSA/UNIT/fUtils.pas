@@ -26,6 +26,7 @@ var
   IS_ONLINE_HQ: Boolean = False; //在线行情
   IS_DRAW_MA_5: Boolean = False;
   IS_DRAW_135TIP_5: Boolean = False;
+  DRAW_135TIP_VULUE: Double;
   IS_SHOW_DATESCALE: Boolean = True; //日期座标开关
   IS_IMG_SAVE_TO_FILE: Boolean = false; //日期座标开关
   ShowBackgroundDotLine: Boolean = True;
