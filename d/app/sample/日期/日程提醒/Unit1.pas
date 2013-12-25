@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   ComCtrls, ToolWin, ExtCtrls, ImgList, Menus, Grids, DBGrids,shellapi,
-  StdCtrls,inifiles,mmsystem,Registry, abfComponents;
+  StdCtrls,inifiles,mmsystem,Registry, abfComponents,DateUtils;
 
 type
   TForm1 = class(TForm)
@@ -70,6 +70,7 @@ type
     MenuItem9: TMenuItem;
     abfTrayIcon1: TabfTrayIcon;
     Memo1: TMemo;
+    ToolButton16: TToolButton;
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);
@@ -79,7 +80,8 @@ type
     procedure MenuItem1Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
     procedure E1Click(Sender: TObject);
-    procedure V1Click(Sender: TObject);
+    procedure V1Click(Sender: TObject);   
+    procedure Tipreset();
     procedure H1Click(Sender: TObject);
     procedure ToolButton1Click(Sender: TObject);
   private
@@ -246,7 +248,7 @@ begin
     end;
   end;
 end;
-//获取近日数据
+//获取今日数据
 procedure TForm1.getTodayData;
 VAR
   i:integer;
@@ -517,6 +519,48 @@ begin
 		end;
   end;
 end;
+
+//重新设定提醒时间{************************************************************}
+procedure TForm1.Tipreset();     
+var
+  i:integer;
+  fn:string;
+  //整条记录,开始日期,时间,类别,内容
+  r,s,t,l:string;
+  sHour, sMin, sSec: string;
+  Hour, Min, Sec, MSec: Word;    
+  dtDate:TDateTime;
+begin
+  
+  Memo1.Lines:=form1.stringgrid1.Rows[form1.stringgrid1.Row];
+  dtDate := StrToDateTime(Memo1.lines[0] + ' ' + Memo1.lines[1]);
+  dtDate := IncMinute(dtDate,5);//分钟
+
+  s:=datetostr(dtDate);
+  decodetime(dtDate,Hour, Min, Sec, MSec);
+  sHour:=inttostr(hour);
+  sMin:=inttostr(min);
+  sSec:='00';
+  if strlen(pchar(shour))=1 then shour:='0'+shour;
+  if strlen(pchar(smin))=1 then smin:='0'+smin;
+  t:=sHour+':'+sMin+':'+sSec;
+  l:=Memo1.lines[2];
+
+  r:=s+'*'+t+'*'+l+'*自动';//合成记录
+
+  with form1 do//根据情况更新数据
+  begin
+
+    ListBox1.Items.Insert(0,r);//向同步列表框中添加
+    //保存数据                                    
+    fn:=extractfiledir(application.ExeName)+'\clocker.dat';
+    ListBox1.Items.SaveToFile(fn);
+    getdata;//刷新数据
+    getTodayData;//更新当日提醒数据
+    stringgrid1.Row:=stringgrid1.tag;//恢复修改前的选中行
+  end;	
+end;
+
 //帮助菜单{************************************************************}
 procedure TForm1.H1Click(Sender: TObject);
 var
@@ -530,9 +574,9 @@ begin
 		end;
 		42:
 		begin
-			a:='电子提醒簿 V1.0';
-			b:='水石工作室 张长安 '+#13#10+
-				 '2001 By Water&Stone Studio';
+			a:='桌面时钟提醒 V1.0';
+			b:='Kylin '+#13#10+
+				 '2013 By kylin Studio';
 			shellabout(application.handle,pchar(a),pchar(b),application.Icon.Handle);
 		end;
 	end;
@@ -549,6 +593,7 @@ begin
     6:h1click(n17);
     7:h1click(n15);
     8:hide; //隐藏窗体
+    9:Tipreset;
   end;
 end;
 

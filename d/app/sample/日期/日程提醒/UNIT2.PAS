@@ -56,7 +56,7 @@ var
   sHour, sMin, sSec: string;
   Hour, Min, Sec, MSec: Word;
 begin
-  //获得个字段值
+  //获得各字段值
   s:=datetostr(DateTimePicker1.date);
   decodetime(DateTimePicker2.Time,Hour, Min, Sec, MSec);
   if (combobox2.ItemIndex=0)then

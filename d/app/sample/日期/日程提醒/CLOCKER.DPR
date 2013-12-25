@@ -7,7 +7,8 @@ uses
   Unit2 in 'Unit2.pas' {Form2},
   Unit3 in 'Unit3.pas' {Form3},
   Unit4 in 'Unit4.pas' {Form4},
-  shortcut in 'shortcut.pas' {frmshortcut};
+  shortcut in 'shortcut.pas' {frmshortcut},
+  btOdeum in 'btOdeum.pas';
 
 {$R *.RES}
 var
