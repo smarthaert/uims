@@ -1,6 +1,6 @@
 object Form2: TForm2
-  Left = 274
-  Top = 212
+  Left = 460
+  Top = 236
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Form2'
@@ -10,7 +10,7 @@ object Form2: TForm2
   Font.Charset = GB2312_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
-  Font.Name = '宋体'
+  Font.Name = #23435#20307
   Font.Style = []
   Icon.Data = {
     0000010001002020040000000000E80200001600000028000000200000004000
@@ -47,7 +47,7 @@ object Form2: TForm2
     Top = 180
     Width = 117
     Height = 25
-    Caption = '确 认'
+    Caption = #30830' '#35748
     Flat = True
     OnClick = SpeedButton3Click
   end
@@ -56,7 +56,7 @@ object Form2: TForm2
     Top = 180
     Width = 117
     Height = 25
-    Caption = '放 弃'
+    Caption = #25918' '#24323
     Flat = True
     OnClick = SpeedButton4Click
   end
@@ -65,11 +65,11 @@ object Form2: TForm2
     Top = 188
     Width = 102
     Height = 12
-    Caption = '水石工作室 张长安'
+    Caption = #27700#30707#24037#20316#23460' '#24352#38271#23433
     Font.Charset = GB2312_CHARSET
     Font.Color = clSilver
     Font.Height = -12
-    Font.Name = '宋体'
+    Font.Name = #23435#20307
     Font.Style = []
     ParentFont = False
   end
@@ -78,20 +78,16 @@ object Form2: TForm2
     Top = 8
     Width = 361
     Height = 61
-    Caption = '开始日期/时间及事件间类别'
+    Caption = #24320#22987#26085#26399'/'#26102#38388#21450#20107#20214#38388#31867#21035
     TabOrder = 0
     object DateTimePicker1: TDateTimePicker
       Left = 16
       Top = 24
       Width = 113
       Height = 20
-      CalAlignment = dtaLeft
-      Date = 35334.497359838
-      Time = 35334.497359838
+      Date = 35334.497359838000000000
+      Time = 35334.497359838000000000
       DateFormat = dfLong
-      DateMode = dmComboBox
-      Kind = dtkDate
-      ParseInput = False
       TabOrder = 0
     end
     object DateTimePicker2: TDateTimePicker
@@ -99,14 +95,10 @@ object Form2: TForm2
       Top = 24
       Width = 57
       Height = 20
-      CalAlignment = dtaLeft
-      Date = 35334.9165277778
-      Time = 35334.9165277778
+      Date = 35334.916527777800000000
+      Time = 35334.916527777800000000
       Checked = False
-      DateFormat = dfShort
-      DateMode = dmComboBox
       Kind = dtkTime
-      ParseInput = False
       TabOrder = 1
     end
     object ComboBox1: TComboBox
@@ -118,11 +110,11 @@ object Form2: TForm2
       ItemHeight = 12
       TabOrder = 2
       Items.Strings = (
-        '当次有效'
-        '每天一次'
-        '每周一次'
-        '每月一次'
-        '每年一次')
+        #24403#27425#26377#25928
+        #27599#22825#19968#27425
+        #27599#21608#19968#27425
+        #27599#26376#19968#27425
+        #27599#24180#19968#27425)
     end
     object ComboBox2: TComboBox
       Left = 200
@@ -133,8 +125,8 @@ object Form2: TForm2
       ItemHeight = 12
       TabOrder = 3
       Items.Strings = (
-        '上午'
-        '下午')
+        #19978#21320
+        #19979#21320)
     end
   end
   object GroupBox2: TGroupBox
@@ -142,7 +134,7 @@ object Form2: TForm2
     Top = 74
     Width = 361
     Height = 95
-    Caption = '提醒内容'
+    Caption = #25552#37266#20869#23481
     TabOrder = 1
     object memo1: TMemo
       Left = 12
@@ -159,14 +151,14 @@ object Form2: TForm2
     Top = 216
     Width = 361
     Height = 81
-    Caption = '提醒时动作'
+    Caption = #25552#37266#26102#21160#20316
     TabOrder = 2
     object SpeedButton1: TSpeedButton
       Left = 328
       Top = 16
       Width = 24
       Height = 24
-      Hint = '选取目标文件'
+      Hint = #36873#21462#30446#26631#25991#20214
       Caption = '...'
       Flat = True
       Font.Charset = GB2312_CHARSET
@@ -183,7 +175,7 @@ object Form2: TForm2
       Top = 44
       Width = 24
       Height = 24
-      Hint = '选取目标文件'
+      Hint = #36873#21462#30446#26631#25991#20214
       Caption = '...'
       Flat = True
       Font.Charset = GB2312_CHARSET
@@ -200,7 +192,7 @@ object Form2: TForm2
       Top = 22
       Width = 73
       Height = 17
-      Caption = '执行程序'
+      Caption = #25191#34892#31243#24207
       TabOrder = 0
     end
     object CheckBox2: TCheckBox
@@ -208,7 +200,7 @@ object Form2: TForm2
       Top = 50
       Width = 69
       Height = 17
-      Caption = '播放声音'
+      Caption = #25773#25918#22768#38899
       TabOrder = 1
     end
     object Edit1: TEdit
