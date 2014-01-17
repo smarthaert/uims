@@ -7,7 +7,7 @@ uses
   Dialogs, Grids, StdCtrls, Menus, fDef, ExtCtrls, DateUtils, StrUtils, MyGraph;
 
 const
-  MAC: array[0..6] of Integer = (-3, 3, 30, 60, 120, 250, 1800);
+  MAC: array[0..9] of Integer = (-3, 3, 30, 60, 120, 250, 900, 1800, 3600, 7200);
   VMAC: array[0..3] of Integer = (5, 10, 30, -1);
   RSIC: array[0..1] of Integer = (5, 10);
   PLC: array[0..4] of Integer = (2, 1, 1, 3, 3);
@@ -136,7 +136,7 @@ type
     HoriLine: THoriLine;
     ScaleHigh: array[0..3] of Single;
     ScaleLow: array[0..3] of Single;
-    MA: array[0..6] of TArrayOfSingle;
+    MA: array[0..9] of TArrayOfSingle;
     VMA: array[0..3] of TArrayOfSingle;
     RSI: array[0..1] of TArrayOfSingle;
     PL: array[0..4] of TArrayOfSingle;
