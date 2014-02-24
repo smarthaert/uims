@@ -1,0 +1,19 @@
+~/.muttrc
+
+set sendmail="/usr/bin/msmtp"
+set use_from=yes
+set realname="PMdev"
+set from=xxjsbadmin@yeah.net
+set envelope_from=yes
+
+
+
+~/.msmtprc
+
+account default
+host smtp.yeah.net
+from xxjsbadmin@yeah.net
+auth plain
+user xxjsbadmin
+password zaqwsxcde123
+logfile ~/.msmtp.log
